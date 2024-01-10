@@ -1,18 +1,11 @@
-=== SmartCut Cut-To-Size ===
+=== SmartCut ===
 
 Contributors: cutrevolution
-
-Tags: cut-to-size, cut list, cut list optimizer, cutlist
-
+Tags: cut-to-size,cut list,cut list optimizer,cutlist
 Requires at least: 6.0
-
 Tested up to: 6.3
-
-Stable tag: 3.0.0
-
+Stable tag: 3.0.4
 Requires PHP: 7.0
-
-License: None
 
 Quotation and cut list generation for your cut-to-size business.
 
@@ -56,4 +49,8 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 
 == Changelog ==
 
-[Release notes](https://store.smartcut.dev/release-notes/)
+= 3.0.4 =
+
+- Added automatic updates
+- Better presentation
+- Improved reliability
