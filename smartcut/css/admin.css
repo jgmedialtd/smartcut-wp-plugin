@@ -1,0 +1,29 @@
+#smartcut-product-options .info {
+  margin-left: 10px;
+  margin-bottom: 20px;
+  margin-top: -5px;
+}
+
+.smartcut-tools p {
+  font-size: 16px;
+}
+.smartcut-tools .issue {
+  background-color: yellow;
+}
+.smartcut-tools span.warning {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.smartcut-table {
+  font-size: 16px;
+  width: 100%;
+}
+.smartcut-table td {
+  padding: 5px;
+  line-height: 1.4;
+}
+
+/*# sourceMappingURL=admin.css.map */

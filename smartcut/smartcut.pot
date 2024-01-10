@@ -1,0 +1,182 @@
+# Copyright (C) 2023 SmartCut
+# This file is distributed under the same license as the SmartCut plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: SmartCut 2.5.21\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-12-30T15:27:43+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: smartcut\n"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+msgid "SmartCut"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://smartcut.dev"
+msgstr ""
+
+#. Description of the plugin
+msgid "Calculate cut lists & pricing for cut-to-size businesses."
+msgstr ""
+
+#: cutlist/cart.php:23
+#: cutlist/cart.php:40
+msgid "Job ID"
+msgstr ""
+
+#: cutlist/cart.php:24
+#: cutlist/cart.php:41
+#: cutlist/cart.php:323
+msgid "Total parts"
+msgstr ""
+
+#: cutlist/cart.php:25
+#: cutlist/cart.php:42
+msgid "Part area"
+msgstr ""
+
+#: cutlist/cart.php:26
+msgid "Cut length"
+msgstr ""
+
+#: cutlist/cart.php:27
+msgid "Total cuts"
+msgstr ""
+
+#: cutlist/cart.php:28
+#: cutlist/cart.php:43
+#: cutlist/cart.php:327
+msgid "Cut length price"
+msgstr ""
+
+#: cutlist/cart.php:29
+#: cutlist/cart.php:44
+#: cutlist/cart.php:328
+msgid "Price per part"
+msgstr ""
+
+#: cutlist/cart.php:30
+#: cutlist/cart.php:45
+#: cutlist/cart.php:326
+msgid "Banding price"
+msgstr ""
+
+#: cutlist/cart.php:31
+#: cutlist/cart.php:46
+#: cutlist/cart.php:329
+msgid "Cut to size surcharge"
+msgstr ""
+
+#: cutlist/cart.php:32
+msgid "Custom price"
+msgstr ""
+
+#: cutlist/cart.php:33
+#: cutlist/cart.php:47
+#: cutlist/cart.php:325
+msgid "Dimensions"
+msgstr ""
+
+#: cutlist/cart.php:34
+#: cutlist/cart.php:48
+#: cutlist/cart.php:330
+msgid "Machining"
+msgstr ""
+
+#: cutlist/cart.php:95
+#: cutlist/cart.php:324
+#: cutlist/cart.php:373
+msgid "Include offcuts"
+msgstr ""
+
+#: cutlist/cart.php:143
+msgid "Yes"
+msgstr ""
+
+#: cutlist/cart.php:143
+msgid "No"
+msgstr ""
+
+#: cutlist/product-admin.php:227
+#: cutlist/product-admin.php:239
+#: cutlist/product-admin.php:276
+#: cutlist/product-admin.php:300
+msgid "Use global setting"
+msgstr ""
+
+#: cutlist/product.php:180
+msgid "Add your cuts below. Units are inches."
+msgstr ""
+
+#: cutlist/product.php:182
+msgid "Add your cuts below. Units are mm."
+msgstr ""
+
+#: cutlist/product.php:189
+msgid "This product is priced by part area, so adding fractions of a sheet to the cart is possible."
+msgstr ""
+
+#: cutlist/product.php:192
+msgid "This product is priced by full sheet plus cut length."
+msgstr ""
+
+#: cutlist/product.php:195
+msgid "This product is priced by full sheet plus number of parts."
+msgstr ""
+
+#: cutlist/product.php:198
+#: cutlist/product.php:204
+msgid "This product is priced by full sheet."
+msgstr ""
+
+#: cutlist/product.php:201
+msgid "This product is priced by cut length."
+msgstr ""
+
+#: cutlist/product.php:215
+msgid "Banding key:"
+msgstr ""
+
+#: cutlist/product.php:219
+msgid "per foot"
+msgstr ""
+
+#: cutlist/product.php:219
+msgid "per meter"
+msgstr ""
+
+#: cutlist/product.php:232
+msgid "Banding total"
+msgstr ""
+
+#: cutlist/product.php:240
+msgid "Cut length total"
+msgstr ""
+
+#: cutlist/product.php:247
+msgid "Part total"
+msgstr ""
+
+#: cutlist/product.php:254
+msgid "Surcharge total"
+msgstr ""
+
+#: sc-widgets.php:21
+msgid "Display all of your cuts in a single list"
+msgstr ""
+
+#: sc-widgets.php:34
+msgid "WooCommerce must be active"
+msgstr ""
+
+#: sc-widgets.php:64
+msgid "Your cut list"
+msgstr ""
