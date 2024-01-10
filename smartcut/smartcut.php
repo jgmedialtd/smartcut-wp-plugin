@@ -9,16 +9,16 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.0.1
+ * Version: 3.0.0
  * Author URI: https://smartcut.dev
  */
 
-define('SMARTCUT_CURRENT_VERSION', '3.0.1'); // This needs to be kept in sync with the version above.
+namespace SmartCut;
+
+define('SMARTCUT_CURRENT_VERSION', '3.0.0'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
-
-namespace SmartCut;
 
 use WC_Product_Variation;
 
