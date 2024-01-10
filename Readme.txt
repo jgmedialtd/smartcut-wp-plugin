@@ -15,10 +15,10 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 
 - Features -
 
-- Linear, sheet & roll calculations
-- Quotation
+- Linear, sheet or roll calculations
+- Fast quotations
 - Cut list diagrams
-- Machining (e.g. holes)
+- Machining (e.g. holes, radius corners)
 - Decimal & fractional units
 - Edge banding for wood based sheet materials
 - PDF & CSV of the cut requirements is attached to every order
