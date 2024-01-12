@@ -1,4 +1,4 @@
-# The SmartCut WordPress Plugin
+# The SmartCut WooCommerce Plugin
 
 ## Revolutionizing Efficiency in the Cut-to-Size Industry
 
