@@ -132,7 +132,7 @@ function get_machining_pricing($product_id)
 {
     $settings = get_product_settings($product_id);
 
-    if ($settings['enable_machining'] === '0') return [];
+    if (!isset($settings['enable_machining']) || $settings['enable_machining'] === '0') return [];
 
     $machining = [
         'corners' => isset($settings['corners']) ? $settings['corners'] : null,
@@ -142,6 +142,8 @@ function get_machining_pricing($product_id)
     $machining_price = [];
 
     foreach ($machining as $type => $slug) {
+
+        if(!$slug) continue;
 
         $product = get_page_by_path($slug, OBJECT, 'product');
 
