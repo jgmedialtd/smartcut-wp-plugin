@@ -315,14 +315,14 @@ function product_tab_content()
 
 			create_input(
 				$fields,
-				'holes',
+				'machining_holes_product',
 				'Holes',
 				'☝ Slug of your holes product. Leave blank to use global settings.'
 			);
 
 			create_input(
 				$fields,
-				'corners',
+				'machining_corners_product',
 				'Corners',
 				'☝ Slug of your corner product. Leave blank to use global settings.'
 			);

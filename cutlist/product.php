@@ -73,7 +73,7 @@ function get_banding_data($product_id)
 
                 $price = $product->is_on_sale() ? $product->get_sale_price() : $product->get_price();
 
-                $banding_data[$slug] = ['name' => $product->get_name(), 'price' => floatval($price), 'symbol' => \get_woocommerce_currency_symbol()];
+                $banding_data[$slug] = ['name' => $product->get_name(), 'price' => $price, 'symbol' => \get_woocommerce_currency_symbol()];
             }
         }
     }
@@ -135,15 +135,15 @@ function get_machining_pricing($product_id)
     if (!isset($settings['enable_machining']) || $settings['enable_machining'] === '0') return [];
 
     $machining = [
-        'corners' => isset($settings['corners']) ? $settings['corners'] : null,
-        'holes' => isset($settings['holes']) ? $settings['holes'] : null
+        'corners' => isset($settings['machining_corners_product']) ? $settings['machining_corners_product'] : null,
+        'holes' => isset($settings['machining_holes_product']) ? $settings['machining_holes_product'] : null
     ];
 
     $machining_price = [];
 
     foreach ($machining as $type => $slug) {
 
-        if(!$slug) continue;
+        if (!$slug) continue;
 
         $product = get_page_by_path($slug, OBJECT, 'product');
 
@@ -238,6 +238,7 @@ function add_html($banding_data)
     printf('<p id="smartcut-pricing-notes">%s</p>', $pricing_notes);
 
     $banding_enabled = $banding_data && (!isset($settings['disable_banding']) || $settings['disable_banding'] !== '1');
+    $machining_enabled = isset($settings['enable_machining']) && $settings['enable_machining'] === '1';
 
     if ($banding_enabled) :
 
@@ -260,6 +261,11 @@ function add_html($banding_data)
     if ($banding_enabled) :
 
         printf('<tr id="smartcut-banding-total"><td class="price">%s</td><td>%s</td></tr>', __('Banding total', 'smartcut'), wc_price(0));
+
+    endif;
+
+    if ($machining_enabled) :
+        printf('<tr id="smartcut-machining-total"><td class="price">%s</td><td>%s</td></tr>', __('Machining total', 'smartcut'), wc_price(0));
 
     endif;
 
@@ -547,7 +553,7 @@ function enqueue_scripts()
         $variations = array_map(function ($item) {
 
             return [
-                'price' => floatval($item->get_price()),
+                'price' => $item->get_price(),
                 'display_price' => \wc_get_price_to_display($item), //including taxes etc
                 'attributes' => $item->get_attributes()
             ];

@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.0.9
+ * Version: 3.0.10
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.0.9'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.0.10'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -233,8 +233,8 @@ function create_product_template_tools_page()
             'thickness' => ['10'],
             'stock_type' => 'sheet',
             'cut_preference' => 'length',
-            'holes' => 'sc-machining-holes',
-            'corners' => 'sc-machining-corners',
+            'machining_holes_product' => 'sc-machining-holes',
+            'machining_corners_product' => 'sc-machining-corners',
             'price' => 100,
         ],
 
@@ -414,8 +414,8 @@ function create_product_template_tools_page()
             if (isset($product_data['cut_length_price'])) $content .= add_table_row(['Cut length price', $product_data['cut_length_price']]);
             if (isset($product_data['per_part_price'])) $content .= add_table_row(['Price per part', $product_data['per_part_price']]);
             if (isset($product_data['banding_types'])) $content .= add_table_row(['Edge banding types', $product_data['banding_types']]);
-            if (isset($product_data['holes'])) $content .= add_table_row(['Holes', $product_data['holes']]);
-            if (isset($product_data['corners'])) $content .= add_table_row(['Corners', $product_data['corners']]);
+            if (isset($product_data['machining_holes_product'])) $content .= add_table_row(['Holes', $product_data['machining_holes_product']]);
+            if (isset($product_data['machining_corners_product'])) $content .= add_table_row(['Corners', $product_data['machining_corners_product']]);
             if (isset($product_data['surcharge_type'])) $content .= add_table_row(['Surcharge type', $product_data['surcharge_type']]);
             if (isset($product_data['surcharge'])) $content .= add_table_row(['Surcharge', $product_data['surcharge']]);
 
@@ -469,14 +469,14 @@ function create_product_template_tools_page()
                 'stock_type' => isset($product_data['stock_type']) ? $product_data['stock_type'] : 'sheet',
                 'cut_preference' =>  isset($product_data['cut_preference']) ? $product_data['cut_preference'] : 'length',
                 'banding_types' => isset($product_data['banding_types']) ? $product_data['banding_types'] : '',
-                'holes' => isset($product_data['holes']) ? $product_data['holes'] : '',
-                'corners' => isset($product_data['corners']) ? $product_data['corners'] : '',
+                'machining_holes_product' => isset($product_data['machining_holes_product']) ? $product_data['machining_holes_product'] : '',
+                'machining_corners_product' => isset($product_data['machining_corners_product']) ? $product_data['machining_corners_product'] : '',
                 'pricing_strategy' => isset($product_data['pricing_strategy']) ? $product_data['pricing_strategy'] : 'full_sheet',
                 'cut_length_price' => isset($product_data['cut_length_price']) ? $product_data['cut_length_price'] : '0.00',
                 'per_part_price' => isset($product_data['per_part_price']) ? $product_data['per_part_price'] : '0.00',
                 'surcharge_type' => isset($product_data['surcharge_type']) ? $product_data['surcharge_type'] : 'none',
                 'surcharge' => isset($product_data['surcharge']) ? $product_data['surcharge'] : '0.00',
-                'disable_machining' => isset($product_data['holes']) || isset($product_data['corners']) ? '0' : '1',
+                'disable_machining' => isset($product_data['machining_holes_product']) || isset($product_data['machining_corners_product']) ? '0' : '1',
             ];
 
             foreach ($settings as $key => $setting) {

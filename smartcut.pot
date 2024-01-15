@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SmartCut plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartCut 3.0.8\n"
+"Project-Id-Version: SmartCut 3.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-15T14:28:07+00:00\n"
+"POT-Creation-Date: 2024-01-15T15:20:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: smartcut\n"
@@ -54,13 +54,13 @@ msgstr ""
 
 #: cutlist/cart.php:28
 #: cutlist/cart.php:44
-#: cutlist/cart.php:330
+#: cutlist/cart.php:329
 msgid "Cut length price"
 msgstr ""
 
 #: cutlist/cart.php:29
 #: cutlist/cart.php:45
-#: cutlist/cart.php:331
+#: cutlist/cart.php:330
 msgid "Price per part"
 msgstr ""
 
@@ -72,30 +72,30 @@ msgstr ""
 
 #: cutlist/cart.php:31
 #: cutlist/cart.php:47
-#: cutlist/cart.php:329
-msgid "Machining price"
-msgstr ""
-
-#: cutlist/cart.php:32
-#: cutlist/cart.php:48
-#: cutlist/cart.php:332
+#: cutlist/cart.php:331
 msgid "Cut to size surcharge"
 msgstr ""
 
-#: cutlist/cart.php:33
+#: cutlist/cart.php:32
 msgid "Custom price"
+msgstr ""
+
+#: cutlist/cart.php:33
+#: cutlist/cart.php:48
+#: cutlist/cart.php:327
+msgid "Dimensions"
 msgstr ""
 
 #: cutlist/cart.php:34
 #: cutlist/cart.php:49
-#: cutlist/cart.php:327
-msgid "Dimensions"
+#: cutlist/cart.php:332
+msgid "Machining"
 msgstr ""
 
 #: cutlist/cart.php:35
 #: cutlist/cart.php:50
 #: cutlist/cart.php:333
-msgid "Machining"
+msgid "Machining price"
 msgstr ""
 
 #: cutlist/cart.php:97
@@ -148,31 +148,35 @@ msgstr ""
 msgid "This product is priced by cut length."
 msgstr ""
 
-#: cutlist/product.php:245
+#: cutlist/product.php:246
 msgid "Banding key:"
 msgstr ""
 
-#: cutlist/product.php:249
+#: cutlist/product.php:250
 msgid "per foot"
 msgstr ""
 
-#: cutlist/product.php:249
+#: cutlist/product.php:250
 msgid "per meter"
 msgstr ""
 
-#: cutlist/product.php:262
+#: cutlist/product.php:263
 msgid "Banding total"
 msgstr ""
 
-#: cutlist/product.php:270
+#: cutlist/product.php:268
+msgid "Machining total"
+msgstr ""
+
+#: cutlist/product.php:276
 msgid "Cut length total"
 msgstr ""
 
-#: cutlist/product.php:277
+#: cutlist/product.php:283
 msgid "Part total"
 msgstr ""
 
-#: cutlist/product.php:284
+#: cutlist/product.php:290
 msgid "Surcharge total"
 msgstr ""
 

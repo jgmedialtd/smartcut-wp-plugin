@@ -28,11 +28,11 @@ function get_field_keys($inputs = false)
             __('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
             __('Price per part', 'smartcut') => 'smartcut_per_part_price',
             __('Banding price', 'smartcut') => 'smartcut_banding_price',
-            __('Machining price', 'smartcut') => 'smartcut_machining_price',
             __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
             __('Custom price', 'smartcut') => 'smartcut_custom_price', //used to override the natural price
             __('Dimensions', 'smartcut') => 'smartcut_dimensions',
             __('Machining', 'smartcut')  => 'smartcut_machining', //is machining present
+            __('Machining price', 'smartcut') => 'smartcut_machining_price',
         ];
     }
 
@@ -44,10 +44,10 @@ function get_field_keys($inputs = false)
         __('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
         __('Price per part', 'smartcut') => 'smartcut_per_part_price',
         __('Banding price', 'smartcut') => 'smartcut_banding_price',
-        __('Machining price', 'smartcut') => 'smartcut_machining_price',
         __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
         __('Dimensions', 'smartcut') => 'smartcut_dimensions',
         __('Machining', 'smartcut')  => 'smartcut_machining', //is machining present
+        __('Machining price', 'smartcut') => 'smartcut_machining_price',
 
     ];
 
@@ -326,11 +326,11 @@ function get_item_data($item_data, $cart_item_data)
         __('Include offcuts', 'smartcut') => 'include_offcuts',
         __('Dimensions', 'smartcut') => 'smartcut_dimensions',
         __('Banding price', 'smartcut') => 'smartcut_banding_price',
-        __('Machining price', 'smartcut') => 'smartcut_machining_price',
         __('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
         __('Price per part', 'smartcut') => 'smartcut_per_part_price',
         __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
-        __('Machining', 'smartcut') => 'smartcut_machining'
+        __('Machining', 'smartcut') => 'smartcut_machining',
+        __('Machining price', 'smartcut') => 'smartcut_machining_price'
     ];
 
     foreach ($keys as $name => $value) {

@@ -35,8 +35,8 @@ function get_global_setting_fields()
         'stock_type' => 'string',
         'pricing_strategy' => 'string',
         'banding_types' => 'string',
-        'corners' => 'string',
-        'holes' => 'string',
+        'machining_corners_product' => 'string',
+        'machining_holes_product' => 'string',
         'units' => 'string',
         'product_category' => 'string',
         'surcharge_type' => 'string',
@@ -437,14 +437,14 @@ class Options
                 'callback_args' => ['banding_types', 'Banding pricing is controlled by individual banding products. This field includes the slugs of your banding products. Separate with a comma.']
             ],
             [
-                'id' => 'holes',
+                'id' => 'machining_holes_product',
                 'label' => 'Holes',
-                'callback_args' => ['holes', 'Hole pricing is controlled by an individual hole product. This field includes the slug of your hole product.']
+                'callback_args' => ['machining_holes_product', 'Hole pricing is controlled by an individual hole product. This field includes the slug of your hole product.']
             ],
             [
-                'id' => 'corners',
+                'id' => 'machining_corners_product',
                 'label' => 'Corners',
-                'callback_args' => ['corners', 'Corner pricing is controlled by an individual corner product. This field includes the slug of your corner product.']
+                'callback_args' => ['machining_corners_product', 'Corner pricing is controlled by an individual corner product. This field includes the slug of your corner product.']
             ],
 
 
