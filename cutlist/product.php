@@ -71,10 +71,9 @@ function get_banding_data($product_id)
             if (!empty($product)) {
                 $product = \wc_get_product($product);
 
-                $price = $product->get_price();
-                if ($product->is_on_sale()) $price = $product->get_sale_price();
+                $price = $product->is_on_sale() ? $product->get_sale_price() : $product->get_price();
 
-                $banding_data[$slug] = ['name' => $product->get_name(), 'price' => $price, 'symbol' => \get_woocommerce_currency_symbol()];
+                $banding_data[$slug] = ['name' => $product->get_name(), 'price' => floatval($price), 'symbol' => \get_woocommerce_currency_symbol()];
             }
         }
     }
@@ -118,8 +117,7 @@ function get_banding_products($product_id)
             if (!empty($product)) {
                 $product = \wc_get_product($product);
 
-                $price = $product->get_price();
-                if ($product->is_on_sale()) $price = $product->get_sale_price();
+                $price = $product->is_on_sale() ? $product->get_sale_price() : $product->get_price();
 
                 $banding_data[$slug] = ['name' => $product->get_name(), 'price' => $price, 'symbol' => \get_woocommerce_currency_symbol()];
             }
@@ -128,6 +126,36 @@ function get_banding_products($product_id)
 
     return $banding_data;
 };
+
+function get_machining_pricing($product_id)
+
+{
+    $settings = get_product_settings($product_id);
+
+    if ($settings['enable_machining'] === '0') return [];
+
+    $machining = [
+        'corners' => isset($settings['corners']) ? $settings['corners'] : null,
+        'holes' => isset($settings['holes']) ? $settings['holes'] : null
+    ];
+
+    $machining_price = [];
+
+    foreach ($machining as $type => $slug) {
+
+        $product = get_page_by_path($slug, OBJECT, 'product');
+
+        if (!empty($product)) {
+            $product = \wc_get_product($product);
+
+            $price = $product->is_on_sale() ? $product->get_sale_price() : $product->get_price();
+
+            $machining_price[$type] = floatval($price);
+        }
+    }
+
+    return $machining_price;
+}
 
 /**
  * get the product settings, with product settings overriding global settings
@@ -517,8 +545,8 @@ function enqueue_scripts()
         $variations = array_map(function ($item) {
 
             return [
-                'price' => $item->get_price(),
-                'display_price' => \wc_get_price_to_display($item),
+                'price' => floatval($item->get_price()),
+                'display_price' => \wc_get_price_to_display($item), //including taxes etc
                 'attributes' => $item->get_attributes()
             ];
         }, $variations);
@@ -535,6 +563,7 @@ function enqueue_scripts()
     $config['input_fields'] = $input_fields;
     $config['settings'] = $settings;
     $config['banding_data'] = get_banding_data($product_id);
+    $config['machining_pricing'] = get_machining_pricing($product_id);
     $config['product_type'] = $product->get_type();
     $config['is_in_stock'] = $product->is_in_stock();
     $config['thousands_separator'] = wc_get_price_thousand_separator();

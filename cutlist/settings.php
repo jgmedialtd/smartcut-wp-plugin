@@ -35,6 +35,8 @@ function get_global_setting_fields()
         'stock_type' => 'string',
         'pricing_strategy' => 'string',
         'banding_types' => 'string',
+        'corners' => 'string',
+        'holes' => 'string',
         'units' => 'string',
         'product_category' => 'string',
         'surcharge_type' => 'string',
@@ -86,7 +88,6 @@ function get_global_setting_fields()
 
 function get_product_setting_fields()
 {
-
     return [
         'disable_machining' => 'boolean'
     ];
@@ -162,7 +163,6 @@ function get_product_categories($cutlist_categories)
     }
 
     return $categories;
-
 }
 
 class Options
@@ -436,6 +436,17 @@ class Options
                 'label' => 'Banding types',
                 'callback_args' => ['banding_types', 'Banding pricing is controlled by individual banding products. This field includes the slugs of your banding products. Separate with a comma.']
             ],
+            [
+                'id' => 'holes',
+                'label' => 'Holes',
+                'callback_args' => ['holes', 'Hole pricing is controlled by an individual hole product. This field includes the slug of your hole product.']
+            ],
+            [
+                'id' => 'corners',
+                'label' => 'Corners',
+                'callback_args' => ['corners', 'Corner pricing is controlled by an individual corner product. This field includes the slug of your corner product.']
+            ],
+
 
         ], 'pricing_section');
 
@@ -504,6 +515,8 @@ class Options
                 'label' => 'Enable drilled holes',
                 'callback_args' => ['machining_holes']
             ],
+
+
             [
                 'id' => 'machining_holes_default_diameter',
                 'label' => 'Default diameter',

@@ -28,6 +28,7 @@ function get_field_keys($inputs = false)
             __('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
             __('Price per part', 'smartcut') => 'smartcut_per_part_price',
             __('Banding price', 'smartcut') => 'smartcut_banding_price',
+            __('Machining price', 'smartcut') => 'smartcut_machining_price',
             __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
             __('Custom price', 'smartcut') => 'smartcut_custom_price', //used to override the natural price
             __('Dimensions', 'smartcut') => 'smartcut_dimensions',
@@ -43,6 +44,7 @@ function get_field_keys($inputs = false)
         __('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
         __('Price per part', 'smartcut') => 'smartcut_per_part_price',
         __('Banding price', 'smartcut') => 'smartcut_banding_price',
+        __('Machining price', 'smartcut') => 'smartcut_machining_price',
         __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
         __('Dimensions', 'smartcut') => 'smartcut_dimensions',
         __('Machining', 'smartcut')  => 'smartcut_machining', //is machining present
@@ -280,7 +282,7 @@ function set_cart_price($cart)
 
     if (is_admin() && !defined('DOING_AJAX')) return;
 
-    $added_costs = ['smartcut_cut_length_price', 'smartcut_per_part_price', 'smartcut_banding_price', 'smartcut_cut_to_size_surcharge'];
+    $added_costs = ['smartcut_cut_length_price', 'smartcut_per_part_price', 'smartcut_banding_price', 'smartcut_machining_price', 'smartcut_cut_to_size_surcharge'];
 
     foreach ($cart->get_cart() as $cart_item) {
 
@@ -324,6 +326,7 @@ function get_item_data($item_data, $cart_item_data)
         __('Include offcuts', 'smartcut') => 'include_offcuts',
         __('Dimensions', 'smartcut') => 'smartcut_dimensions',
         __('Banding price', 'smartcut') => 'smartcut_banding_price',
+        __('Machining price', 'smartcut') => 'smartcut_machining_price',
         __('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
         __('Price per part', 'smartcut') => 'smartcut_per_part_price',
         __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
@@ -334,7 +337,7 @@ function get_item_data($item_data, $cart_item_data)
 
         if (isset($cart_item_data[$value])) {
 
-            if ($value === 'smartcut_banding_price' || $value === 'smartcut_cut_length_price' || $value === 'smartcut_per_part_price' || $value === 'smartcut_cut_to_size_surcharge') {
+            if ($value === 'smartcut_banding_price' || $value === 'smartcut_machining_price' || $value === 'smartcut_cut_length_price' || $value === 'smartcut_per_part_price' || $value === 'smartcut_cut_to_size_surcharge') {
 
                 if (empty($cart_item_data[$value]) || floatval($cart_item_data[$value]) === 0) continue;
 

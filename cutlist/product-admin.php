@@ -313,6 +313,20 @@ function product_tab_content()
 				'Disable machining '
 			);
 
+			create_input(
+				$fields,
+				'holes',
+				'Holes',
+				'☝ Slug of your holes product. Leave blank to use global settings.'
+			);
+
+			create_input(
+				$fields,
+				'corners',
+				'Corners',
+				'☝ Slug of your corner product. Leave blank to use global settings.'
+			);
+
 			?>
 		</div>
 	</div>
