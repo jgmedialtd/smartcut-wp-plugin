@@ -9788,15 +9788,7 @@ class hn {
    */
   trimDimensions() {
     var e, n, i, r;
-    if (this.trimmed)
-      return !1;
-    if (this.trim && Object.values(this.trim).filter((s) => !isNaN(parseFloat(s))).length) {
-      if (A(this.l) && (this.l -= ((e = this == null ? void 0 : this.trim) != null && e.x1 ? this.trim.x1 : 0) + ((n = this == null ? void 0 : this.trim) != null && n.x2 ? this.trim.x2 : 0), this.l <= 0))
-        throw console.error(this), new Error(`trimming rectangle ${this.id} has produced a negative length`);
-      if (A(this.w) && (this.w -= ((i = this == null ? void 0 : this.trim) != null && i.y1 ? this.trim.y1 : 0) + ((r = this == null ? void 0 : this.trim) != null && r.y2 ? this.trim.y2 : 0), this.w <= 0))
-        throw console.error(this), new Error(`trimming rectangle ${this.id} has produced a negative width`);
-    }
-    return this.trimmed = !0, !0;
+    return this.trimmed ? !1 : (this.trim && Object.values(this.trim).filter((s) => !isNaN(parseFloat(s))).length && (A(this.l) && (this.l -= ((e = this == null ? void 0 : this.trim) != null && e.x1 ? this.trim.x1 : 0) + ((n = this == null ? void 0 : this.trim) != null && n.x2 ? this.trim.x2 : 0), this.l <= 0 && (console.error(this), this.issues.push(this.createIssue("Applying trim has produced a negative length")))), A(this.w) && (this.w -= ((i = this == null ? void 0 : this.trim) != null && i.y1 ? this.trim.y1 : 0) + ((r = this == null ? void 0 : this.trim) != null && r.y2 ? this.trim.y2 : 0), this.w <= 0 && (console.error(this), this.issues.push(this.createIssue("Applying trim has produced a negative width"))))), this.trimmed = !0, !0);
   }
   /**
    * increase the size of the stock to the original size
@@ -10001,7 +9993,13 @@ class gn {
     p(this, "options");
     switch (e = al(e), this.issues = [], this.options = (e == null ? void 0 : e.options) ?? null, this.stockType = (e == null ? void 0 : e.stockType) ?? n, ["sheet", "linear", "roll"].includes(this.stockType) || this.issues.push(`Saw stock type: ${this.stockType} not valid`), this.stockType || (this.stockType = "sheet"), this.cutType = e == null ? void 0 : e.cutType, this.stockType) {
       case "sheet":
-        ["efficiency", "guillotine", "beam", null, void 0].includes(this.cutType) || this.issues.push(`Saw cut type: ${this.cutType} not valid for stock type: ${this.stockType}`);
+        [
+          "efficiency",
+          "guillotine",
+          "beam",
+          null,
+          void 0
+        ].includes(this.cutType) || this.issues.push(`Saw cut type: ${this.cutType} not valid for stock type: ${this.stockType}`);
         break;
       case "roll":
         ["efficiency", "guillotine", null, void 0].includes(this.cutType) || this.issues.push(`Saw cut type: ${this.cutType} not valid for stock type: ${this.stockType}`);
@@ -10023,7 +10021,13 @@ class gn {
     }
     switch (A(e == null ? void 0 : e.bladeWidth) ? typeof e.bladeWidth == "string" ? this.bladeWidth = U(e.bladeWidth) : this.bladeWidth = e.bladeWidth : this.bladeWidth = 0, (isNaN(this.bladeWidth) || this.bladeWidth < 0) && (this.issues.push(`Blade width: ${this.bladeWidth ?? "N/A"} is not valid`), this.bladeWidth = 0), this.stockType) {
       case "sheet":
-        ["efficiency", "guillotine", "beam", null, void 0].includes(this.cutType) || this.issues.push(`Invalid cut type: ${this.cutType} for stock type: ${n}, cut preference: ${this.cutPreference}`), this.cutType === "guillotine" && (["l", "w", "flex"].includes(this.cutPreference) || this.issues.push(`Invalid cut preference: ${this.cutPreference} for stock type: ${n}, cut type: ${this.cutType}`)), this.cutType === "beam" && (this.cutPreference = "l"), this.cutType || (this.cutType = "efficiency");
+        [
+          "efficiency",
+          "guillotine",
+          "beam",
+          null,
+          void 0
+        ].includes(this.cutType) || this.issues.push(`Invalid cut type: ${this.cutType} for stock type: ${n}, cut preference: ${this.cutPreference}`), this.cutType === "guillotine" && (["l", "w", "flex"].includes(this.cutPreference) || this.issues.push(`Invalid cut preference: ${this.cutPreference} for stock type: ${n}, cut type: ${this.cutType}`)), this.cutType === "beam" && (this.cutPreference = "l"), this.cutType || (this.cutType = "efficiency");
         break;
       case "linear":
         this.cutType = null, this.cutPreference = null;
@@ -10211,7 +10215,12 @@ class fr extends hn {
   }
   //get an array of banding in the order L1, L2, W1, W2
   get bandingArray() {
-    return [this.banding.y1, this.banding.y2, this.banding.x1, this.banding.x2];
+    return [
+      this.banding.y1,
+      this.banding.y2,
+      this.banding.x1,
+      this.banding.x2
+    ];
   }
   //get an array of banding types in the order L1, L2, W1, W2
   get bandingTypeArray() {
@@ -14088,7 +14097,7 @@ function ik(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const rk = /* @__PURE__ */ qf(
-  () => import("./Machining-IjwtqjbT.js")
+  () => import("./Machining-B1D5lmvK.js")
 ), Ad = {
   name: "CheckoutCalculator",
   components: {
@@ -16051,7 +16060,7 @@ function uS(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "onLog", "onError", "onDebug", "onResult"]);
 }
-const fS = /* @__PURE__ */ Ti(cS, [["render", uS]]), hS = /* @__PURE__ */ qf(() => import("./Vanilla-rv4oKX9l.js")), dS = /* @__PURE__ */ ki({
+const fS = /* @__PURE__ */ Ti(cS, [["render", uS]]), hS = /* @__PURE__ */ qf(() => import("./Vanilla-73bO8p8X.js")), dS = /* @__PURE__ */ ki({
   name: "Launch",
   components: {
     Wordpress: fS,
