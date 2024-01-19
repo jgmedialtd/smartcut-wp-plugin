@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.0.11
+ * Version: 3.0.12
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.0.11'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.0.12'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -282,6 +282,18 @@ function create_product_template_tools_page()
             'length' => '2440',
             'width' => '1220',
             'thickness' => ['8', '12', '12,24'],
+            'stock_type' => 'sheet',
+            'cut_preference' => 'length',
+            'content' => '<p>This product allows for double thickness bonded sheets to be added to the same calculation.</p>',
+        ],
+
+        'SC - Single thickness with double' => [
+            'variable' => true,
+            'variations' => ['thickness'],
+            'price' => 100,
+            'length' => '2440',
+            'width' => '1220',
+            'thickness' => ['12,24'],
             'stock_type' => 'sheet',
             'cut_preference' => 'length',
             'content' => '<p>This product allows for double thickness bonded sheets to be added to the same calculation.</p>',
