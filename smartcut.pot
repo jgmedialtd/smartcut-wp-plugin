@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SmartCut plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartCut 3.0.13\n"
+"Project-Id-Version: SmartCut 3.0.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-19T19:30:16+00:00\n"
+"POT-Creation-Date: 2024-01-20T11:37:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: smartcut\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: cutlist/cart.php:24
 #: cutlist/cart.php:42
-#: cutlist/cart.php:325
+#: cutlist/cart.php:367
 msgid "Total parts"
 msgstr ""
 
@@ -54,25 +54,25 @@ msgstr ""
 
 #: cutlist/cart.php:28
 #: cutlist/cart.php:44
-#: cutlist/cart.php:329
+#: cutlist/cart.php:371
 msgid "Cut length price"
 msgstr ""
 
 #: cutlist/cart.php:29
 #: cutlist/cart.php:45
-#: cutlist/cart.php:330
+#: cutlist/cart.php:372
 msgid "Price per part"
 msgstr ""
 
 #: cutlist/cart.php:30
 #: cutlist/cart.php:46
-#: cutlist/cart.php:328
+#: cutlist/cart.php:370
 msgid "Banding price"
 msgstr ""
 
 #: cutlist/cart.php:31
 #: cutlist/cart.php:47
-#: cutlist/cart.php:331
+#: cutlist/cart.php:373
 msgid "Cut to size surcharge"
 msgstr ""
 
@@ -82,33 +82,41 @@ msgstr ""
 
 #: cutlist/cart.php:33
 #: cutlist/cart.php:48
-#: cutlist/cart.php:327
+#: cutlist/cart.php:369
 msgid "Dimensions"
 msgstr ""
 
 #: cutlist/cart.php:34
 #: cutlist/cart.php:49
-#: cutlist/cart.php:332
+#: cutlist/cart.php:374
 msgid "Machining"
 msgstr ""
 
 #: cutlist/cart.php:35
 #: cutlist/cart.php:50
-#: cutlist/cart.php:333
+#: cutlist/cart.php:375
 msgid "Machining price"
 msgstr ""
 
 #: cutlist/cart.php:97
-#: cutlist/cart.php:326
-#: cutlist/cart.php:376
+#: cutlist/cart.php:368
+#: cutlist/cart.php:418
 msgid "Include offcuts"
 msgstr ""
 
-#: cutlist/cart.php:145
+#: cutlist/cart.php:140
+msgid "This cut list is already in your cart."
+msgstr ""
+
+#: cutlist/cart.php:168
+msgid "Add to cart process stopped."
+msgstr ""
+
+#: cutlist/cart.php:188
 msgid "Yes"
 msgstr ""
 
-#: cutlist/cart.php:145
+#: cutlist/cart.php:188
 msgid "No"
 msgstr ""
 

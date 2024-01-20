@@ -115,16 +115,59 @@ function add_hidden_fields()
     };
 }
 
+
+/**
+ * check if the job id is already in the cart, and abort if so
+ * @param boolean $passed
+ * @return boolean
+ */
+function validate_cart($passed)
+{
+
+    // get the data being added to the cart
+    $job_id = isset($_POST['smartcut_job_id']) ? $_POST['smartcut_job_id'] : null;
+
+    if (!$job_id) return $passed;
+
+    //sometimes the cart item data is already set
+    $current_cart_contents = WC()->cart->get_cart();
+
+    //run the loop in reverse as the latest item is most likely to be repeated
+    $cart_contents = array_reverse($current_cart_contents, true);
+    foreach ($cart_contents as $key => $value) {
+        if ($value['smartcut_job_id'] === $job_id) {
+            $passed = false;
+            wc_add_notice(__('This cut list is already in your cart.', 'smartcut'), 'error');
+        }
+    }
+
+    return $passed;
+}
+
+add_filter('woocommerce_add_to_cart_validation', 'SmartCut\Cutlist\Cart\validate_cart', 10, 3);
+
 /**
  * add custom cart item data
  * @param array $cart_item_data
- * @return mixed
+ * @return array
  */
 function add_cart_item_data($cart_item_data)
 {
 
     $job_id = isset($_POST['smartcut_job_id']) ? $_POST['smartcut_job_id'] : null;
     if (!$job_id) return $cart_item_data;
+
+    //sometimes the cart item data is already set
+    $current_cart_contents = WC()->cart->get_cart();
+
+    //run the loop in reverse as the latest item is most likely to be repeated
+    $cart_contents = array_reverse($current_cart_contents, true);
+    foreach ($cart_contents as $key => $value) {
+        if ($value['smartcut_job_id'] === $job_id) {
+            $passed = false;
+            wc_add_notice(__('Add to cart process stopped.', 'smartcut'), 'error');
+        }
+    }
 
     $keys = get_field_keys(true);
 
@@ -172,10 +215,9 @@ function add_cart_item_data($cart_item_data)
     $response = wp_remote_retrieve_body($response);
 
     if ($response_code === 200) {
-        //[] update
         $cart_item_data = attach_files_to_cart($job_id, $response, $file_types, $file_options, $cart_item_data);
     } else {
-        trigger_error("SmartCut - creating PDF failed for job $job_id with response $response_code", E_USER_WARNING);
+        trigger_error("SmartCut - creating files failed for job $job_id with response $response_code", E_USER_WARNING);
     }
 
     return $cart_item_data;
