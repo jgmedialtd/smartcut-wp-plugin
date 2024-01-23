@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.0.15
+ * Version: 3.0.16
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.0.15'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.0.16'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -749,9 +749,16 @@ function create_health_check_tools_page()
         return;
     }
 
-    printf('<p>Found <strong>%d</strong> products in the <strong>"%s"</strong> %s...</p><br />', $number_products, $cutlist_category, ($num_cutlist_categories > 1 ? 'categories' : 'category'));
+    printf('<p>Found <strong>%d</strong> products in the <strong>"%s"</strong> %s...</p>', $number_products, $cutlist_category, ($num_cutlist_categories > 1 ? 'categories' : 'category'));
 
-    echo '<table class="smartcut-table">';
+    foreach ($cutlist_categories as $category) {
+        $category_exists = term_exists($category, 'product_cat');
+        if (!$category_exists) {
+            printf('<p class="issue"><span class="warning">⚠️</span> Product category with slug <strong>%s</strong> does not exist</p>', $category);
+        }
+    }
+
+    echo '<br /><table class="smartcut-table">';
 
     $count = 0;
     $issue_count = 0;

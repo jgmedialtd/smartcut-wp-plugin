@@ -51,6 +51,7 @@ function get_global_setting_fields()
         //floats
         'blade_width' => 'float',
         'surcharge' => 'float',
+        'min_banding_charge' => 'float',
         'cut_length_price' => 'float',
         'per_part_price' => 'float',
         'stock_trim_x1' => 'float',
@@ -437,6 +438,11 @@ class Options
                 'callback_args' => ['banding_types', 'Banding pricing is controlled by individual banding products. This field includes the slugs of your banding products. Separate with a comma.']
             ],
             [
+                'id' => 'min_banding_charge',
+                'label' => 'Minimum banding charge',
+                'callback_args' => ['min_banding_charge', 'Minimum charge for banding. Set to zero for no minimum.']
+            ],
+            [
                 'id' => 'machining_holes_product',
                 'label' => 'Holes',
                 'callback_args' => ['machining_holes_product', 'Hole pricing is controlled by an individual hole product. This field includes the slug of your hole product.']
@@ -723,6 +729,16 @@ class Options
                         $sanitary_values[$key] = 0;
                         break;
                 }
+            }
+        }
+
+        //check the product category(ies) exists
+        $product_categories = get_product_categories($input['product_category']);
+
+        foreach ($product_categories as $category) {
+            $category_exists = term_exists($category, 'product_cat');
+            if (!$category_exists) {
+                add_settings_error('product_category', 'product_category', "Product category with slug '$category' does not exist", 'error');
             }
         }
 
