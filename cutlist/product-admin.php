@@ -236,11 +236,15 @@ function product_tab_content()
 				'cut_preference',
 				'Cut preference',
 				[
+					'' => 'N/A',
 					'global' => __('Use global setting', 'smartcut'),
 					'length' => 'Length',
 					'width' => 'Width',
 					'efficiency' => 'Efficiency',
-				]
+					'beam' => 'Beam saws',
+				],
+				null,
+				'SmartCut\Cutlist\Admin\cut_preference_script'
 			);
 
 			create_input(
@@ -384,6 +388,65 @@ function save_option_fields($post_id)
 
 add_action('woocommerce_process_product_meta_simple', 'SmartCut\Cutlist\Admin\save_option_fields');
 add_action('woocommerce_process_product_meta_variable', 'SmartCut\Cutlist\Admin\save_option_fields');
+
+function cut_preference_script()
+{
+
+?>
+	<script>
+		jQuery(document).ready(function($) {
+			//cut preference logic
+			var stockTypeField = $('#smartcut_stock_type');
+			var cutPreferenceField = $('#smartcut_cut_preference');
+			var cutPreferenceOptions = $('#smartcut_cut_preference option');
+
+			stockTypeField.change(function() {
+				updateCutPreference(true);
+			});
+
+			function disableCutPreferenceOptions() {
+				cutPreferenceField.val('');
+				cutPreferenceField.prop('disabled', true);
+			}
+
+			function enableCutPreferenceOptions(preselect = false) {
+
+				//enable the rest
+				cutPreferenceField.prop('disabled', false);
+
+				//disable none as an option
+				cutPreferenceOptions.eq(0).prop('disabled', true);
+
+				if (preselect) {
+					cutPreferenceOptions.eq(1).prop('selected', true);
+				}
+
+
+			}
+
+			function updateCutPreference(preselect = false) {
+
+				var stockType = stockTypeField.val();
+
+				switch (stockType) {
+					case 'sheet':
+						enableCutPreferenceOptions(preselect);
+						break;
+					case 'linear':
+					case 'roll':
+						disableCutPreferenceOptions();
+						break;
+					default:
+						break;
+				}
+
+			};
+
+			updateCutPreference();
+		});
+	</script>
+<?php
+}
 
 function surcharge_script()
 {

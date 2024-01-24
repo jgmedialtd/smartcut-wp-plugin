@@ -286,21 +286,6 @@ class Options
                 'callback_args' => ['blade_width']
             ],
             [
-                'id' => 'max_parts',
-                'label' => 'Max parts',
-                'callback_args' => ['max_parts', 'Set to the max number of parts in your API plan or set to zero for unlimited']
-            ],
-            [
-                'id' => 'cut_preference',
-                'label' => 'Cut preference',
-                'callback' => array($this, 'create_drop_down'),
-                'callback_args' => ['cut_preference', null, [
-                    'length' => 'Length',
-                    'width' => 'Width',
-                    'efficiency' => 'Efficiency',
-                ]]
-            ],
-            [
                 'id' => 'stock_type',
                 'label' => 'Stock type',
                 'callback' => array($this, 'create_drop_down'),
@@ -312,6 +297,18 @@ class Options
 
             ],
             [
+                'id' => 'cut_preference',
+                'label' => 'Cut preference',
+                'callback' => array($this, 'create_drop_down'),
+                'callback_args' => ['cut_preference', null, [
+                    '' => 'N/A',
+                    'length' => 'Length',
+                    'width' => 'Width',
+                    'efficiency' => 'Efficiency',
+                    'beam' => 'Beam saws',
+                ]]
+            ],
+            [
                 'id' => 'units',
                 'label' => 'Units',
                 'callback' => array($this, 'create_drop_down'),
@@ -319,6 +316,11 @@ class Options
                     'decimal' => 'Decimal / mm',
                     'fraction' => 'Fractions / inches',
                 ]]
+            ],
+            [
+                'id' => 'max_parts',
+                'label' => 'Max parts',
+                'callback_args' => ['max_parts', 'Set to the max number of parts in your API plan or set to zero for unlimited']
             ],
             [
                 'id' => 'disable_orientation',
@@ -947,6 +949,57 @@ class Options
     ?>
         <script>
             jQuery(document).ready(function($) {
+
+                //cut preference logic
+                var stockTypeField = $('#stock_type');
+                var cutPreferenceField = $('#cut_preference');
+                var cutPreferenceOptions = $('#cut_preference option');
+
+                stockTypeField.change(function() {
+                    updateCutPreference(true);
+                });
+
+                function disableCutPreferenceOptions() {
+                    cutPreferenceField.val('');
+                    cutPreferenceField.prop('disabled', true);
+                }
+
+                function enableCutPreferenceOptions(preselect = false) {
+
+                    //enable the rest
+                    cutPreferenceField.prop('disabled', false);
+
+                    //disable none as an option
+                    cutPreferenceOptions.eq(0).prop('disabled', true);
+
+                    if (preselect) {
+                        cutPreferenceOptions.eq(1).prop('selected', true);
+                    }
+
+                }
+
+                function updateCutPreference(preselect = false) {
+
+                    var stockType = stockTypeField.val();
+
+                    switch (stockType) {
+                        case 'sheet':
+                            enableCutPreferenceOptions(preselect);
+                            break;
+                        case 'linear':
+                        case 'roll':
+                            disableCutPreferenceOptions();
+                            break;
+                        default:
+                            break;
+                    }
+
+                };
+
+                updateCutPreference();
+
+
+                //pricing strategy logic
                 var pricingStrategyField = $('#pricing_strategy');
                 var pricingField = $('#cut_length_price');
 

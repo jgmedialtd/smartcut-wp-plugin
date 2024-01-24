@@ -65,3 +65,19 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 
 - Visual now resizes when window resizes
 - Improved styling
+
+= 3.0.13 =
+
+- Fixed bug with pricing by part number
+
+= 3.0.16 =
+
+- Better product category validation & help messaging
+- Added banding minimum pricing
+- Prevent a job from being added to the cart if it's already present
+
+= 3.0.17 =
+
+- Added beam saw setting
+- Fixed trim bug
+- Better options validation for stock type & cut preferences
