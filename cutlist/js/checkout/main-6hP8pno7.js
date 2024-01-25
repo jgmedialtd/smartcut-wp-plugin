@@ -13924,7 +13924,6 @@ function EE(t) {
 }
 const Ix = {
   name: "StockNavigation",
-  emits: ["show-stock"],
   props: {
     stockList: {
       type: Array,
@@ -13943,6 +13942,7 @@ const Ix = {
       default: null
     }
   },
+  emits: ["show-stock"],
   methods: {
     showStock(t) {
       this.$emit("show-stock", t);
@@ -13959,7 +13959,10 @@ function Dx(t, e, n, i, r, s) {
     (tt(!0), nt(Lt, null, Nn(n.stockList, (o, a) => (tt(), nt("button", {
       key: a,
       class: Wn(["nav-button", { selected: o.id === n.activeStockId }]),
-      style: Ut({ backgroundColor: o.id === n.activeStockId ? "#" + n.secondaryColor : "#" + n.primaryColor }),
+      type: "button",
+      style: Ut({
+        backgroundColor: o.id === n.activeStockId ? "#" + n.secondaryColor : "#" + n.primaryColor
+      }),
       onMousedown: (l) => s.showStock(o.id)
     }, [
       X("div", Rx, gt(a + 1), 1),
@@ -14091,7 +14094,7 @@ function rk(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const sk = /* @__PURE__ */ Uf(
-  () => import("./Machining-NhukrRx-.js")
+  () => import("./Machining-bN8KY30x.js")
 ), Cd = {
   name: "CheckoutCalculator",
   components: {
@@ -16098,7 +16101,7 @@ function fS(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "onLog", "onError", "onDebug", "onResult"]);
 }
-const hS = /* @__PURE__ */ Ti(uS, [["render", fS]]), dS = /* @__PURE__ */ Uf(() => import("./Vanilla-Lt-Xvjh9.js")), mS = /* @__PURE__ */ ki({
+const hS = /* @__PURE__ */ Ti(uS, [["render", fS]]), dS = /* @__PURE__ */ Uf(() => import("./Vanilla-YRw02HxN.js")), mS = /* @__PURE__ */ ki({
   name: "Launch",
   components: {
     Wordpress: hS,
