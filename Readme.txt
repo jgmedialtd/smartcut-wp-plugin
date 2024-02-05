@@ -82,6 +82,8 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 - Fixed trim bug
 - Better options validation for stock type & cut preferences
 
-= 3.0.18 =
+= 3.0.22 =
 
 - Fixed translation bug
+- Added stack height setting for beam saws
+- Added stack count to visual
