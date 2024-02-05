@@ -50,6 +50,7 @@ function get_global_setting_fields()
 
         //floats
         'blade_width' => 'float',
+        'stack_height' => 'float',
         'surcharge' => 'float',
         'min_banding_charge' => 'float',
         'cut_length_price' => 'float',
@@ -307,6 +308,11 @@ class Options
                     'efficiency' => 'Efficiency',
                     'beam' => 'Beam saws',
                 ]]
+            ],
+            [
+                'id' => 'stack_height',
+                'label' => 'Stack height',
+                'callback_args' => ['stack_height', 'Set the maximum height of a stack of identical stock', 'stack_height_script']
             ],
             [
                 'id' => 'units',
@@ -944,6 +950,33 @@ class Options
     <?php
     }
 
+    public function stack_height_script()
+    {
+
+    ?>
+        <script>
+            jQuery(document).ready(function($) {
+                var cutPreferenceField = $('#cut_preference');
+                var stackHeightField = $('#stack_height');
+
+                function toggleStackHeightField() {
+                    if (cutPreferenceField.val() === 'beam') {
+                        stackHeightField.prop('disabled', false);
+                    } else {
+                        stackHeightField.val('');
+                        stackHeightField.prop('disabled', true);
+                    }
+                }
+                toggleStackHeightField();
+
+                cutPreferenceField.change(function() {
+                    toggleStackHeightField();
+                });
+            });
+        </script>
+    <?php
+    }
+
     public function cut_length_price_script()
     {
     ?>
@@ -1048,6 +1081,7 @@ class Options
         </script>
 <?php
     }
+
 
     public function stock_trim_callback($name)
     {
