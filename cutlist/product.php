@@ -497,10 +497,13 @@ function enqueue_scripts()
     wp_enqueue_script(
         'smartcut-checkout',
         plugins_url('js/checkout/checkout.js', __FILE__),
-        [],
+        ['jquery'],
         SMARTCUT_CURRENT_VERSION,
         true
     );
+
+    wp_script_add_data('smartcut-checkout', 'type', 'module');
+
 
     $error_messages = check_product_setup($product_id);
 
