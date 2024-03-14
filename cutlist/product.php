@@ -502,7 +502,7 @@ function enqueue_scripts()
         true
     );
 
-    wp_script_add_data('smartcut-checkout', 'type', 'module');
+    // wp_script_add_data('smartcut-checkout', 'type', 'module');
 
 
     $error_messages = check_product_setup($product_id);
