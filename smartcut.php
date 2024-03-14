@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.0.26
+ * Version: 3.0.27
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.0.26'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.0.27'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -51,12 +51,25 @@ function print_smartcut_version()
 
 add_shortcode('smartcut_version', 'SmartCut\print_smartcut_version');
 
+//ensuring script has type module
 add_filter('wp_script_attributes', static function (array $attr): array {
     if ('smartcut-checkout-js' === $attr['id']) {
         $attr['type'] = 'module';
     }
     return $attr;
 }, 99999);
+
+//fallback if wp_script_attributes fails
+add_action('script_loader_tag', function ($tag, $handle) {
+
+    if ($handle !== 'smartcut-checkout') return $tag;
+
+    if (strpos($tag, 'type="module"') !== false) {
+        return $tag;
+    } else {
+        return str_replace('></script>', ' type="module"></script>', $tag);
+    }
+}, 999999, 2);
 
 function admin_notice($message, $class = 'notice notice-warning is-dismissible')
 {

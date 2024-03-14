@@ -586,6 +586,7 @@ function enqueue_scripts()
 
 add_action('wp_enqueue_scripts', 'SmartCut\Cutlist\Product\enqueue_scripts');
 
+
 function enqueue_styles()
 {
 

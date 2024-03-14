@@ -164,7 +164,6 @@ function add_cart_item_data($cart_item_data)
     $cart_contents = array_reverse($current_cart_contents, true);
     foreach ($cart_contents as $key => $value) {
         if (isset($value['smartcut_job_id']) && $value['smartcut_job_id'] === $job_id) {
-            $passed = false;
             wc_add_notice(__('Add to cart process stopped.', 'smartcut'), 'error');
         }
     }
