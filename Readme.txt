@@ -91,3 +91,7 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 = 3.0.25 =
 
 - Fixed loading issue for rare combinations of plugins and theme
+
+= 3.0.26 =
+
+- Minor bug fixes

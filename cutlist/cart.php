@@ -135,7 +135,7 @@ function validate_cart($passed)
     //run the loop in reverse as the latest item is most likely to be repeated
     $cart_contents = array_reverse($current_cart_contents, true);
     foreach ($cart_contents as $key => $value) {
-        if ($value['smartcut_job_id'] === $job_id) {
+        if (isset($value['smartcut_job_id']) && $value['smartcut_job_id'] === $job_id) {
             $passed = false;
             wc_add_notice(__('This cut list is already in your cart.', 'smartcut'), 'error');
         }
@@ -163,7 +163,7 @@ function add_cart_item_data($cart_item_data)
     //run the loop in reverse as the latest item is most likely to be repeated
     $cart_contents = array_reverse($current_cart_contents, true);
     foreach ($cart_contents as $key => $value) {
-        if ($value['smartcut_job_id'] === $job_id) {
+        if (isset($value['smartcut_job_id']) && $value['smartcut_job_id'] === $job_id) {
             $passed = false;
             wc_add_notice(__('Add to cart process stopped.', 'smartcut'), 'error');
         }
