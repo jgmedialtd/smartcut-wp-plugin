@@ -88,6 +88,6 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 - Added stack height setting for beam saws
 - Added stack count to visual
 
-= 3.0.23 =
+= 3.0.25 =
 
 - Fixed loading issue for rare combinations of plugins and theme

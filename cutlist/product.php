@@ -430,7 +430,6 @@ function check_product_setup($product_id = null)
             }
         }
 
-
         if (empty($size_values)) {
             $messages[] = 'The size attribute has no values. Please add some values to the size attribute.';
         } else if (count($size_values) < 2) {
@@ -491,9 +490,6 @@ function enqueue_scripts()
 
     if (!should_activate($product)) return;
 
-    $env = wp_get_environment_type();
-
-
     wp_enqueue_script(
         'smartcut-checkout',
         plugins_url('js/checkout/checkout.js', __FILE__),
@@ -501,9 +497,6 @@ function enqueue_scripts()
         SMARTCUT_CURRENT_VERSION,
         true
     );
-
-    // wp_script_add_data('smartcut-checkout', 'type', 'module');
-
 
     $error_messages = check_product_setup($product_id);
 
