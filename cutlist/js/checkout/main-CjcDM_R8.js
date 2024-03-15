@@ -15890,7 +15890,7 @@ function SS(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const ES = /* @__PURE__ */ hh(
-  () => import("./Machining-CNlM0K0b.js")
+  () => import("./Machining-DNg_qXxO.js")
 ), op = {
   name: "CheckoutCalculator",
   components: {
@@ -16516,7 +16516,8 @@ const ES = /* @__PURE__ */ hh(
         y1: 0,
         y2: 0
       },
-      cost: o = 0
+      cost: o = 0,
+      notes: a = ""
     }) {
       return new wd({
         id: (this.inputStock.length + 1).toString(),
@@ -16528,7 +16529,8 @@ const ES = /* @__PURE__ */ hh(
         cost: o,
         autoAdd: !0,
         name: r,
-        trim: s
+        trim: s,
+        notes: a
       });
     },
     createShapeInput({
@@ -16577,7 +16579,8 @@ const ES = /* @__PURE__ */ hh(
         cost: t == null ? void 0 : t.cost,
         trim: t.trim,
         allowExactFitShapes: t.allowExactFitShapes,
-        type: this.saw.stockType
+        type: this.saw.stockType,
+        notes: t == null ? void 0 : t.notes
       });
       return console.log(s), this.stockList.push(s), s.issues;
     },
@@ -16747,7 +16750,7 @@ function nf(t) {
     }
   });
 }
-const Sr = (t) => (Om("data-v-60a6cb0f"), t = t(), Pm(), t), TS = {
+const Sr = (t) => (Om("data-v-c40dfece"), t = t(), Pm(), t), TS = {
   id: "shape-input",
   class: "inputs no-margin-top grid-table"
 }, AS = /* @__PURE__ */ Sr(() => /* @__PURE__ */ Z("div", { class: "cell" }, null, -1)), CS = {
@@ -17184,7 +17187,7 @@ function O2(t, e, n, i, r, s) {
   ], 64);
 }
 typeof nf == "function" && nf(op);
-const P2 = /* @__PURE__ */ $i(op, [["render", O2], ["__scopeId", "data-v-60a6cb0f"]]), N2 = {
+const P2 = /* @__PURE__ */ $i(op, [["render", O2], ["__scopeId", "data-v-c40dfece"]]), N2 = {
   name: "Wordpress",
   //needs to be Wordpress not WordPress
   components: {
@@ -17261,7 +17264,8 @@ const P2 = /* @__PURE__ */ $i(op, [["render", O2], ["__scopeId", "data-v-60a6cb0
               c.l,
               c.w,
               c.t,
-              c.price
+              c.price,
+              n == null ? void 0 : n.attributes
             );
             this.stock.push(u);
           });
@@ -17281,7 +17285,8 @@ const P2 = /* @__PURE__ */ $i(op, [["render", O2], ["__scopeId", "data-v-60a6cb0
             this.product.l,
             this.product.w,
             l,
-            a.price
+            a.price,
+            n == null ? void 0 : n.attributes
           )
         ), this.enableCutToSize();
       }
@@ -17511,7 +17516,14 @@ const P2 = /* @__PURE__ */ $i(op, [["render", O2], ["__scopeId", "data-v-60a6cb0
         y2: this.settings.stock_type === "linear" ? 0 : this.settings.stock_trim_y2 ?? 0
       };
     },
-    createStock(t = null, e = null, n = null, i = null) {
+    createStock(t = null, e = null, n = null, i = null, r = null) {
+      let s;
+      if (typeof r == "object") {
+        s = [];
+        for (const [a, l] of Object.entries(r))
+          a !== "attribute_size" && a !== "attribute_thickness" && s.push(`${a.replace("attribute_", "")}: ${l}`);
+        s = s.join(" - ");
+      }
       return {
         name: this.product.stock_name,
         type: this.settings.stock_type,
@@ -17519,7 +17531,8 @@ const P2 = /* @__PURE__ */ $i(op, [["render", O2], ["__scopeId", "data-v-60a6cb0
         w: e,
         t: n,
         cost: parseFloat(i),
-        trim: this.getStockTrim()
+        trim: this.getStockTrim(),
+        notes: s
       };
     },
     configureStock() {
@@ -17534,6 +17547,7 @@ const P2 = /* @__PURE__ */ $i(op, [["render", O2], ["__scopeId", "data-v-60a6cb0
         );
         this.stock.push(s);
       }) : this.stock.push(
+        //[] add attributes
         this.createStock(
           this.product.l,
           this.product.w,
@@ -17712,7 +17726,7 @@ function I2(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "onLog", "onError", "onDebug", "onResult"]);
 }
-const L2 = /* @__PURE__ */ $i(N2, [["render", I2]]), M2 = /* @__PURE__ */ hh(() => import("./Vanilla-xRLJScaS.js")), R2 = /* @__PURE__ */ Mi({
+const L2 = /* @__PURE__ */ $i(N2, [["render", I2]]), M2 = /* @__PURE__ */ hh(() => import("./Vanilla-DZIUhb2a.js")), R2 = /* @__PURE__ */ Mi({
   name: "Launch",
   components: {
     Wordpress: L2,

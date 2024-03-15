@@ -41,6 +41,10 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 - Head to Tools > SmartCut Templates to create template products.
 - Sign up for an account at [SmartCut](https://smartcut.dev/) and add your domain.
 
+== Documentation ==
+
+Docs can be found here: [Setting up your store](https://store.smartcut.dev/setting-up-your-store/)
+
 == Privacy & data collection ==
 
 - This plugin does not collect or use any personal data.
@@ -96,3 +100,8 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 
 - Minor bug fixes
 - Fixed bug with LiteSpeed servers
+
+= 3.0.28 =
+
+- Better documentation
+- Added variation data to notes column in PDF and CSV exports
