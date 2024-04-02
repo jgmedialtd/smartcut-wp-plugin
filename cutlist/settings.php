@@ -18,6 +18,7 @@ function get_global_setting_fields()
         'disable_banding' => 'boolean',
         'disable_orientation' => 'boolean',
         'disable_part_name' => 'boolean',
+        'enable_import' => 'boolean',
         'layout_dxf' => 'boolean',
 
         //machining booleans
@@ -332,13 +333,19 @@ class Options
                 'id' => 'disable_orientation',
                 'label' => 'Disable part orientation',
 
-                'callback_args' => ['disable_orientation', 'Remove the option to allow users to set the rotation of parts']
+                'callback_args' => ['disable_orientation', 'Uncheck this option to allow users to set the rotation of parts']
             ],
             [
                 'id' => 'disable_part_name',
                 'label' => 'Disable part name',
 
-                'callback_args' => ['disable_part_name', 'Remove the option to allow users to name their parts']
+                'callback_args' => ['disable_part_name', 'Uncheck this option to allow users to name their parts']
+            ],
+            [
+                'id' => 'enable_import',
+                'label' => 'Enable CSV import',
+
+                'callback_args' => ['enable_import', 'Check this option to allow users to import from CSV']
             ],
             [
                 'id' => 'layout_dxf',

@@ -272,6 +272,12 @@ function product_tab_content()
 				'Disable part name'
 			);
 
+			create_input(
+				$fields,
+				'enable_import',
+				'Enable CSV import'
+			);
+
 			create_drop_down(
 				$fields,
 				'pricing_strategy',
