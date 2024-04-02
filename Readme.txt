@@ -105,3 +105,12 @@ Docs can be found here: [Setting up your store](https://store.smartcut.dev/setti
 
 - Better documentation
 - Added variation data to notes column in PDF and CSV exports
+
+= 3.1.01 =
+
+**Major update to banding**
+
+- Improved banding inputs
+- Introduced variable banding products
+- Product setup error messages are now shown on the front end
+- New product templates for variable banding

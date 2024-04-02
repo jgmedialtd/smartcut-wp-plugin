@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.0.28
+ * Version: 3.1.1
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.0.28'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.1.1'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -178,6 +178,14 @@ function create_product_template_tools_page()
             'content' => '<p>Pricing should be per meter / foot.</p>'
         ],
 
+        'SC - Variable banding' => [
+            'variable' => true,
+            'is_banding' => true,
+            'variations' => ['color', 'thickness'],
+            'attributes' => ['color' => ['Red', 'Green', 'Blue'], 'thickness' => ['1mm', '2mm']],
+            'price' => 1,
+        ],
+
         'SC - Machining - holes' => [
             'is_machining' => true,
             'price' => 1,
@@ -195,6 +203,26 @@ function create_product_template_tools_page()
             'width' => '1220',
             'stock_type' => 'sheet',
             'cut_preference' => 'length',
+            'price' => 100,
+        ],
+
+        //simple sheet - simple banding
+        'SC - Simple sheet with banding, price by full sheet' => [
+            'length' => '2440',
+            'width' => '1220',
+            'stock_type' => 'sheet',
+            'cut_preference' => 'length',
+            'banding_types' => 'sc-banding-a,sc-banding-b',
+            'price' => 100,
+        ],
+
+        //simple sheet - variable banding
+        'SC - Simple sheet with variable banding, price by full sheet' => [
+            'length' => '2440',
+            'width' => '1220',
+            'stock_type' => 'sheet',
+            'cut_preference' => 'length',
+            'banding_types' => 'sc-variable-banding',
             'price' => 100,
         ],
 
@@ -222,15 +250,6 @@ function create_product_template_tools_page()
             'cut_preference' => 'length',
             'pricing_strategy' => 'part_area',
             'price' => 1,
-        ],
-
-        'SC - Simple sheet with banding, price by full sheet' => [
-            'length' => '2440',
-            'width' => '1220',
-            'stock_type' => 'sheet',
-            'cut_preference' => 'length',
-            'banding_types' => 'sc-banding-a,sc-banding-b',
-            'price' => 100,
         ],
 
         //machining
@@ -406,7 +425,6 @@ function create_product_template_tools_page()
             if ($variable_product) $product = new \WC_Product_Variable();
             else $product = new \WC_Product();
 
-
             $product->set_name($name);
             $product->set_status('private');
 
@@ -417,9 +435,16 @@ function create_product_template_tools_page()
 
             if ($logo_id) $product->set_image_id($logo_id);
 
-            $content = '<p>Dimensions are set in Attributes. Other settings available in the SmartCut menu.</p>';
+            if (!isset($product_data['is_banding']) && !isset($product_data['is_machining'])) {
+
+                $content = '<p>Dimensions are set in Attributes. Other settings available in the SmartCut menu.</p>';
+            } else {
+                $content = '';
+            }
 
             if (isset($product_data['content'])) $content .= $product_data['content'];
+
+
 
             $content .= '<table><tr><th>Attribute</th><th>Value</th></tr>';
 
@@ -461,6 +486,17 @@ function create_product_template_tools_page()
             if (isset($product_data['thickness']) && is_array($product_data['thickness'])) $attributes['thickness'] = implode(' | ', $product_data['thickness']);
             if (isset($product_data['size']) && is_array($product_data['size'])) $attributes['size'] = implode(' | ', $product_data['size']);
 
+            //generic attributes
+            if (isset($product_data['attributes'])) {
+
+                foreach ($product_data['attributes'] as $name => $value) {
+                    if (is_array($value)) {
+                        $value = implode(' | ', $value);
+                    }
+                    $attributes[$name] = $value;
+                }
+            }
+
             $product_attributes = [];
 
             foreach ($attributes as $attribute_name => $attribute_value) {
@@ -476,6 +512,7 @@ function create_product_template_tools_page()
                         $product_attribute->set_variation(true);
                     }
                 }
+
                 $product_attributes[] = $product_attribute;
             }
 
@@ -525,44 +562,40 @@ function create_product_template_tools_page()
                 $product_data['variations'] = isset($product_data['variations']) ? $product_data['variations'] : [];
 
                 //thickness only
-                if (count($product_data['variations']) === 1) {
-                    foreach ($product_data['variations'] as $key => $attribute_name) {
+                if (in_array('thickness', $product_data['variations']) && !in_array('size', $product_data['variations'])) {
 
-                        foreach ($product_data[$attribute_name] as $thickness) {
+                    //requires thickness product data
+                    if (isset($product_data['thickness']) && is_array($product_data['thickness'])) {
+                        foreach ($product_data['thickness'] as $thickness) {
                             $variation = new WC_Product_Variation();
                             $variation->set_parent_id($product_id);
                             //set the thickness as the variation description
-                            $variation->set_description($attribute_name . ': ' . $thickness);
+                            $variation->set_description('thickness' . ': ' . $thickness);
                             $variation->set_attributes([
-                                $attribute_name => $thickness,
+                                'thickness' => $thickness,
                             ]);
                             $variation->set_regular_price(number_format($price, 2, '.'));
                             $variation->save();
                             $price = $price + 100;
                         }
                     }
+                }
 
-                    //thickness & size
-                } else if (count($product_data['variations']) === 2) {
+                //size & thickness
+                else if (in_array('thickness', $product_data['variations']) && in_array('size', $product_data['variations'])) {
 
-                    foreach ($product_data['variations'] as $key => $attribute_name) {
-
-                        $next_key = $key + 1;
-                        $next_name = isset($product_data['variations'][$next_key]) ? $product_data['variations'][$next_key] : null;
-
-                        if (!$next_name) break;
-
-
-                        foreach ($product_data[$attribute_name] as $thickness) {
-                            foreach ($product_data[$next_name] as $size) {
+                    //requires thickness & size product data
+                    if (isset($product_data['thickness']) && isset($product_data['size']) && is_array($product_data['thickness']) && is_array($product_data['size'])) {
+                        foreach ($product_data['thickness'] as $thickness) {
+                            foreach ($product_data['size'] as $size) {
 
                                 $variation = new WC_Product_Variation();
                                 $variation->set_parent_id($product_id);
                                 //set the thickness as the variation description
                                 $variation->set_description(ucfirst($attribute_name) . ': ' . $thickness);
                                 $variation->set_attributes([
-                                    $attribute_name => $thickness,
-                                    $next_name => $size,
+                                    'thickness' => $thickness,
+                                    'size' => $size,
                                 ]);
 
                                 $variation->set_regular_price(number_format($size !== 'Cut to size' ? $price : 0, 2, '.'));
@@ -571,6 +604,13 @@ function create_product_template_tools_page()
                             }
                         }
                     }
+                }
+
+
+                //other attributes - assume all combinations needed
+                if (isset($product_data['attributes']) && count($product_data['attributes']) > 0) {
+
+                    create_product_variations($product_id, $product_data['attributes'], 100);
                 }
             }
 
@@ -581,6 +621,60 @@ function create_product_template_tools_page()
     echo '<br /><h2>Templates complete</h2>';
 
     echo '</div>';
+}
+function create_product_variations($product_id, $attributes, $price)
+{
+    // Generate all combinations of attributes.
+    $combinations = generate_attribute_combinations($attributes);
+
+    foreach ($combinations as $combination) {
+        $variation = new WC_Product_Variation();
+        $variation->set_parent_id($product_id);
+
+        // Dynamically creating description from all attributes for this variation
+        $descriptionParts = [];
+        foreach ($combination as $attribute => $value) {
+            $descriptionParts[] = ucfirst($attribute) . ': ' . $value;
+        }
+        $variation->set_description(implode(", ", $descriptionParts));
+
+        // Set the attributes for the variation.
+        $variation->set_attributes($combination);
+
+        // Example price logic - adjust as needed.
+        $variation->set_regular_price($price);
+        $variation->save();
+
+        $price += 1;
+
+        // Adjust base price or any other logic post-saving the variation.
+    }
+}
+
+function generate_attribute_combinations($attributes)
+{
+    // Convert attributes to array of arrays to work with combination generator
+    $input = [];
+    foreach ($attributes as $attribute => $values) {
+        $input[] = array_map(function ($value) use ($attribute) {
+            return [$attribute => $value];
+        }, $values);
+    }
+
+    // Cartesian product algorithm
+    $result = [[]];
+    foreach ($input as $key => $values) {
+        $append = [];
+        foreach ($result as $product) {
+            foreach ($values as $item) {
+                $product = array_merge($product, $item);
+                $append[] = $product;
+            }
+        }
+        $result = $append;
+    }
+
+    return $result;
 }
 
 function create_product_variation($product_id, $variation_data)

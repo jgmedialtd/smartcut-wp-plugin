@@ -43,7 +43,7 @@ function check_product_admin_page()
 
 		if (!\SmartCut\check_category($product_id, $settings)) {
 
-			return \SmartCut\admin_notice('⚠️ SmartCut - to set this as a cut-to-size product, add the category with the slug "' . $settings['product_category'] . '"', 'notice notice-info is-dismissible');
+			return \SmartCut\admin_notice('ℹ SmartCut - to set this as a cut-to-size product, add the category with the slug "' . $settings['product_category'] . '"', 'notice notice-info is-dismissible');
 		}
 	}
 

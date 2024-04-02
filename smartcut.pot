@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SmartCut plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartCut 3.0.27\n"
+"Project-Id-Version: SmartCut 3.1.00\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-15T13:20:26+00:00\n"
+"POT-Creation-Date: 2024-04-02T11:25:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: smartcut\n"
@@ -127,65 +127,57 @@ msgstr ""
 msgid "Use global setting"
 msgstr ""
 
-#: cutlist/product.php:210
+#: cutlist/product.php:241
 msgid "Add your cuts below. Units are inches."
 msgstr ""
 
-#: cutlist/product.php:212
+#: cutlist/product.php:243
 msgid "Add your cuts below. Units are mm."
 msgstr ""
 
-#: cutlist/product.php:219
+#: cutlist/product.php:250
 msgid "This product is priced by part area, so adding fractions of a sheet to the cart is possible."
 msgstr ""
 
-#: cutlist/product.php:222
+#: cutlist/product.php:253
 msgid "This product is priced by full sheet plus cut length."
 msgstr ""
 
-#: cutlist/product.php:225
+#: cutlist/product.php:256
 msgid "This product is priced by full sheet plus number of parts."
 msgstr ""
 
-#: cutlist/product.php:228
-#: cutlist/product.php:234
+#: cutlist/product.php:259
+#: cutlist/product.php:265
 msgid "This product is priced by full sheet."
 msgstr ""
 
-#: cutlist/product.php:231
+#: cutlist/product.php:262
 msgid "This product is priced by cut length."
 msgstr ""
 
-#: cutlist/product.php:246
-msgid "Banding key:"
-msgstr ""
-
-#: cutlist/product.php:250
-msgid "per foot"
-msgstr ""
-
-#: cutlist/product.php:250
-msgid "per meter"
-msgstr ""
-
-#: cutlist/product.php:263
+#: cutlist/product.php:295
 msgid "Banding total"
 msgstr ""
 
-#: cutlist/product.php:268
+#: cutlist/product.php:300
 msgid "Machining total"
 msgstr ""
 
-#: cutlist/product.php:276
+#: cutlist/product.php:308
 msgid "Cut length total"
 msgstr ""
 
-#: cutlist/product.php:283
+#: cutlist/product.php:315
 msgid "Part total"
 msgstr ""
 
-#: cutlist/product.php:290
+#: cutlist/product.php:322
 msgid "Surcharge total"
+msgstr ""
+
+#: cutlist/product.php:556
+msgid "Smartcut - product setup error: "
 msgstr ""
 
 #: sc-widgets.php:21

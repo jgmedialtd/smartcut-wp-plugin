@@ -71,9 +71,40 @@ function get_banding_data($product_id)
             if (!empty($product)) {
                 $product = \wc_get_product($product);
 
-                $price = $product->is_on_sale() ? $product->get_sale_price() : $product->get_price();
+                //cater for variable banding products
+                if ($product instanceof \WC_Product_Variable) {
 
-                $banding_data[$slug] = ['name' => $product->get_name(), 'price' => $price, 'symbol' => \get_woocommerce_currency_symbol()];
+                    $variations = $product->get_available_variations();
+
+                    //get all of the available attributes for all the variations
+                    $attributes = $product->get_attributes();
+
+                    $options = [];
+                    foreach ($attributes as $attribute) {
+                        $attribute_name = strtolower($attribute->get_name());
+                        $attribute_options = array_map('strtolower', $attribute->get_options());
+                        $options[$attribute_name] = $attribute_options;
+                    }
+
+                    $banding_data[$slug] = ['name' => $product->get_name(), 'options' => $options, 'variations' => []];
+
+                    foreach ($variations as $variation) {
+                        $variation_id = $variation['variation_id'];
+                        $variation = wc_get_product($variation_id);
+                        $price = $variation->is_on_sale() ? $variation->get_sale_price() : $variation->get_price();
+                        $attributes = $variation->get_attributes();
+                        $attributes = array_map('strtolower', $attributes);
+                        $banding_data[$slug]['variations'][$variation_id] = ['name' => $variation->get_name(), 'price' => $price, 'options' => $attributes];
+                    }
+                }
+                //simple product
+                else {
+                    $price = $product->is_on_sale() ? $product->get_sale_price() : $product->get_price();
+                    $product_name = $product->get_name();
+                    $option_name = strtolower($product_name);
+                    $option_key = str_replace(' ', '-', $option_name);
+                    $banding_data[$slug] = ['name' => $product_name, 'price' => $price, 'options' => [$option_key => $option_name]];
+                }
             }
         }
     }
@@ -240,7 +271,8 @@ function add_html($banding_data)
     $banding_enabled = $banding_data && (!isset($settings['disable_banding']) || $settings['disable_banding'] !== '1');
     $machining_enabled = isset($settings['enable_machining']) && $settings['enable_machining'] === '1';
 
-    if ($banding_enabled) :
+    //banding key
+    /* if ($banding_enabled) :
 
         echo '<div id="smartcut-banding-key">';
         printf('<div class="title">%s</div>', __('Banding key:', 'smartcut'));
@@ -251,7 +283,7 @@ function add_html($banding_data)
         endforeach;
         echo '</div>';
 
-    endif;
+    endif; */
 
     //additional pricing
 
@@ -362,9 +394,27 @@ function check_product_setup($product_id = null)
     //banding
     if (isset($product_settings['banding_types'])) {
         $banding_types = get_banding_slugs($product_settings['banding_types']);
+        $number_of_variable_banding_products = 0;
+        $number_of_simple_banding_products = 0;
         foreach ($banding_types as $slug) {
             $banding_product_page = get_page_by_path($slug, \OBJECT, 'product');
-            if (!$banding_product_page) $messages[] = sprintf('The banding type "%s" does not exist. Please create a product with this slug.', $slug);
+            if (!$banding_product_page) {
+                $messages[] = sprintf('The banding type "%s" does not exist. Please create a product with this slug.', $slug);
+                continue;
+            }
+
+            $banding_product = wc_get_product($banding_product_page->ID);
+
+            if ($banding_product->is_type('variable')) {
+                $number_of_variable_banding_products++;
+            } else {
+                $number_of_simple_banding_products++;
+            }
+        }
+        if ($number_of_variable_banding_products > 0 && $number_of_simple_banding_products > 0) {
+            $messages[] = 'Variable banding products cannot be combined with simple banding products. A single variable banding product or multiple simple banding products are valid.';
+        } else if ($number_of_variable_banding_products > 1) {
+            $messages[] = 'Only one variable banding product can be used at a time. A single variable banding product or multiple simple banding products are valid.';
         }
     }
 
@@ -502,7 +552,12 @@ function enqueue_scripts()
 
     if (count($error_messages) > 0) {
 
+        foreach ($error_messages as $error_message) {
+            wc_add_notice(__('Smartcut - product setup error: ', 'smartcut') . $error_message, 'error');
+        }
+
         $error_messages = implode(', ', $error_messages);
+
         return trigger_error('SmartCut - product setup errors: ' . $error_messages, E_USER_WARNING);
     }
 
