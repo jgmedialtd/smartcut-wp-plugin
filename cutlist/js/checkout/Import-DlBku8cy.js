@@ -1,5 +1,5 @@
-import { _ as ye, o as ve, k as ke, l as Ce, t as De, q as Re, E as xe, G as Oe, H as Ie, I as _e, r as Te, n as Le } from "./main-Cn7rH0vF.js";
-const Se = {
+import { _ as ve, o as ke, k as we, l as Re, t as xe, q as Oe, E as Ie, G as Te, H as Le, I as Se, J as _e, r as Ae, n as Fe, K as ye } from "./main-tszMGzSg.js";
+const Me = {
   name: "Drop",
   props: {
     requiredType: {
@@ -35,81 +35,81 @@ const Se = {
   },
   methods: {
     onDrop(i) {
-      const g = i.dataTransfer.files[0];
-      g.type !== this.requiredType && alert(
+      const p = i.dataTransfer.files[0];
+      p.type !== this.requiredType && alert(
         "We did not detect a valid file type - this might be safe to ignore"
       );
-      const l = new FileReader();
-      l.addEventListener("progress", (m) => {
-        if (m.loaded && m.total) {
-          const L = m.loaded / m.total * 100;
+      const u = new FileReader();
+      u.addEventListener("progress", (g) => {
+        if (g.loaded && g.total) {
+          const L = g.loaded / g.total * 100;
           this.loadingProgress = L;
         }
-      }), l.addEventListener("loadend", () => {
-        this.file = l.result, this.$emit("drop", l.result);
-      }), l.readAsText(g);
+      }), u.addEventListener("loadend", () => {
+        this.file = u.result, this.$emit("drop", u.result);
+      }), u.readAsText(p);
     },
     eventHandler(i) {
       this.dropClass = (i == null ? void 0 : i.type) ?? null, i.preventDefault();
     }
   }
 };
-function Ae(i, g, c, l, m, L) {
-  return ve(), ke("div", {
+function qe(i, p, c, u, g, L) {
+  return ke(), we("div", {
     id: "drop",
-    class: Re({ thinking: c.thinking, [m.dropClass]: !0 }),
-    onDrop: g[0] || (g[0] = xe((...K) => L.onDrop && L.onDrop(...K), ["prevent"]))
+    class: Oe({ thinking: c.thinking, [g.dropClass]: !0 }),
+    onDrop: p[0] || (p[0] = Ie((...W) => L.onDrop && L.onDrop(...W), ["prevent"]))
   }, [
-    Ce("div", null, De(c.thinking ? "Loading, please wait..." : c.label), 1)
+    Re("div", null, xe(c.thinking ? "Loading, please wait..." : c.label), 1)
   ], 34);
 }
-const Fe = /* @__PURE__ */ ye(Se, [["render", Ae]]);
-var Me = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function qe(i) {
+const ze = /* @__PURE__ */ ve(Me, [["render", qe]]);
+var He = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function Pe(i) {
   return i && i.__esModule && Object.prototype.hasOwnProperty.call(i, "default") ? i.default : i;
 }
-var we = { exports: {} };
+var be = { exports: {} };
 /* @license
 Papa Parse
 v5.4.1
 https://github.com/mholt/PapaParse
 License: MIT
 */
-(function(i, g) {
-  (function(c, l) {
-    i.exports = l();
-  })(Me, function c() {
-    var l = typeof self < "u" ? self : typeof window < "u" ? window : l !== void 0 ? l : {}, m = !l.document && !!l.postMessage, L = l.IS_PAPA_WORKER || !1, K = {}, be = 0, f = { parse: function(t, e) {
+(function(i, p) {
+  (function(c, u) {
+    i.exports = u();
+  })(He, function c() {
+    var u = typeof self < "u" ? self : typeof window < "u" ? window : u !== void 0 ? u : {}, g = !u.document && !!u.postMessage, L = u.IS_PAPA_WORKER || !1, W = {}, Ce = 0, f = { parse: function(t, e) {
       var r = (e = e || {}).dynamicTyping || !1;
       if (v(r) && (e.dynamicTypingFunction = r, r = {}), e.dynamicTyping = r, e.transform = !!v(e.transform) && e.transform, e.worker && f.WORKERS_SUPPORTED) {
         var n = function() {
           if (!f.WORKERS_SUPPORTED)
             return !1;
-          var d = (F = l.URL || l.webkitURL || null, D = c.toString(), f.BLOB_URL || (f.BLOB_URL = F.createObjectURL(new Blob(["var global = (function() { if (typeof self !== 'undefined') { return self; } if (typeof window !== 'undefined') { return window; } if (typeof global !== 'undefined') { return global; } return {}; })(); global.IS_PAPA_WORKER=true; ", "(", D, ")();"], { type: "text/javascript" })))), p = new l.Worker(d), F, D;
-          return p.onmessage = Ee, p.id = be++, K[p.id] = p;
+          var d = (F = u.URL || u.webkitURL || null, D = c.toString(), f.BLOB_URL || (f.BLOB_URL = F.createObjectURL(new Blob(["var global = (function() { if (typeof self !== 'undefined') { return self; } if (typeof window !== 'undefined') { return window; } if (typeof global !== 'undefined') { return global; } return {}; })(); global.IS_PAPA_WORKER=true; ", "(", D, ")();"], { type: "text/javascript" })))), m = new u.Worker(d), F, D;
+          return m.onmessage = De, m.id = Ce++, W[m.id] = m;
         }();
         return n.userStep = e.step, n.userChunk = e.chunk, n.userComplete = e.complete, n.userError = e.error, e.step = v(e.step), e.chunk = v(e.chunk), e.complete = v(e.complete), e.error = v(e.error), delete e.worker, void n.postMessage({ input: t, config: e, workerId: n.id });
       }
       var a = null;
       return f.NODE_STREAM_INPUT, typeof t == "string" ? (t = function(d) {
         return d.charCodeAt(0) === 65279 ? d.slice(1) : d;
-      }(t), a = e.download ? new ae(e) : new ne(e)) : t.readable === !0 && v(t.read) && v(t.on) ? a = new ue(e) : (l.File && t instanceof File || t instanceof Object) && (a = new oe(e)), a.stream(t);
+      }(t), a = e.download ? new ae(e) : new ne(e)) : t.readable === !0 && v(t.read) && v(t.on) ? a = new ue(e) : (u.File && t instanceof File || t instanceof Object) && (a = new oe(e)), a.stream(t);
     }, unparse: function(t, e) {
       var r = !1, n = !0, a = ",", d = `\r
-`, p = '"', F = p + p, D = !1, o = null, x = !1;
+`, m = '"', F = m + m, D = !1, o = null, x = !1;
       (function() {
         if (typeof e == "object") {
           if (typeof e.delimiter != "string" || f.BAD_DELIMITERS.filter(function(s) {
             return e.delimiter.indexOf(s) !== -1;
-          }).length || (a = e.delimiter), (typeof e.quotes == "boolean" || typeof e.quotes == "function" || Array.isArray(e.quotes)) && (r = e.quotes), typeof e.skipEmptyLines != "boolean" && typeof e.skipEmptyLines != "string" || (D = e.skipEmptyLines), typeof e.newline == "string" && (d = e.newline), typeof e.quoteChar == "string" && (p = e.quoteChar), typeof e.header == "boolean" && (n = e.header), Array.isArray(e.columns)) {
+          }).length || (a = e.delimiter), (typeof e.quotes == "boolean" || typeof e.quotes == "function" || Array.isArray(e.quotes)) && (r = e.quotes), typeof e.skipEmptyLines != "boolean" && typeof e.skipEmptyLines != "string" || (D = e.skipEmptyLines), typeof e.newline == "string" && (d = e.newline), typeof e.quoteChar == "string" && (m = e.quoteChar), typeof e.header == "boolean" && (n = e.header), Array.isArray(e.columns)) {
             if (e.columns.length === 0)
               throw new Error("Option columns is empty");
             o = e.columns;
           }
-          e.escapeChar !== void 0 && (F = e.escapeChar + p), (typeof e.escapeFormulae == "boolean" || e.escapeFormulae instanceof RegExp) && (x = e.escapeFormulae instanceof RegExp ? e.escapeFormulae : /^[=+\-@\t\r].*$/);
+          e.escapeChar !== void 0 && (F = e.escapeChar + m), (typeof e.escapeFormulae == "boolean" || e.escapeFormulae instanceof RegExp) && (x = e.escapeFormulae instanceof RegExp ? e.escapeFormulae : /^[=+\-@\t\r].*$/);
         }
       })();
-      var h = new RegExp(se(p), "g");
+      var h = new RegExp(se(m), "g");
       if (typeof t == "string" && (t = JSON.parse(t)), Array.isArray(t)) {
         if (!t.length || Array.isArray(t[0]))
           return B(null, t, D);
@@ -127,22 +127,22 @@ License: MIT
             0 < A && (R += a), R += q(s[A], A);
           0 < b.length && (R += d);
         }
-        for (var u = 0; u < b.length; u++) {
-          var _ = M ? s.length : b[u].length, E = !1, T = M ? Object.keys(b[u]).length === 0 : b[u].length === 0;
-          if (z && !M && (E = z === "greedy" ? b[u].join("").trim() === "" : b[u].length === 1 && b[u][0].length === 0), z === "greedy" && M) {
+        for (var l = 0; l < b.length; l++) {
+          var _ = M ? s.length : b[l].length, E = !1, T = M ? Object.keys(b[l]).length === 0 : b[l].length === 0;
+          if (z && !M && (E = z === "greedy" ? b[l].join("").trim() === "" : b[l].length === 1 && b[l][0].length === 0), z === "greedy" && M) {
             for (var k = [], H = 0; H < _; H++) {
               var O = S ? s[H] : H;
-              k.push(b[u][O]);
+              k.push(b[l][O]);
             }
             E = k.join("").trim() === "";
           }
           if (!E) {
             for (var w = 0; w < _; w++) {
               0 < w && !T && (R += a);
-              var W = M && S ? s[w] : w;
-              R += q(b[u][W], w);
+              var K = M && S ? s[w] : w;
+              R += q(b[l][K], w);
             }
-            u < b.length - 1 && (!z || 0 < _ && !T) && (R += d);
+            l < b.length - 1 && (!z || 0 < _ && !T) && (R += d);
           }
         }
         return R;
@@ -160,28 +160,28 @@ License: MIT
             if (-1 < M.indexOf(S[A]))
               return !0;
           return !1;
-        }(R, f.BAD_DELIMITERS) || -1 < R.indexOf(a) || R.charAt(0) === " " || R.charAt(R.length - 1) === " ") ? p + R + p : R;
+        }(R, f.BAD_DELIMITERS) || -1 < R.indexOf(a) || R.charAt(0) === " " || R.charAt(R.length - 1) === " ") ? m + R + m : R;
       }
     } };
     if (f.RECORD_SEP = "", f.UNIT_SEP = "", f.BYTE_ORDER_MARK = "\uFEFF", f.BAD_DELIMITERS = ["\r", `
-`, '"', f.BYTE_ORDER_MARK], f.WORKERS_SUPPORTED = !m && !!l.Worker, f.NODE_STREAM_INPUT = 1, f.LocalChunkSize = 10485760, f.RemoteChunkSize = 5242880, f.DefaultDelimiter = ",", f.Parser = he, f.ParserHandle = ce, f.NetworkStreamer = ae, f.FileStreamer = oe, f.StringStreamer = ne, f.ReadableStreamStreamer = ue, l.jQuery) {
-      var ie = l.jQuery;
+`, '"', f.BYTE_ORDER_MARK], f.WORKERS_SUPPORTED = !g && !!u.Worker, f.NODE_STREAM_INPUT = 1, f.LocalChunkSize = 10485760, f.RemoteChunkSize = 5242880, f.DefaultDelimiter = ",", f.Parser = he, f.ParserHandle = ce, f.NetworkStreamer = ae, f.FileStreamer = oe, f.StringStreamer = ne, f.ReadableStreamStreamer = ue, u.jQuery) {
+      var ie = u.jQuery;
       ie.fn.parse = function(t) {
         var e = t.config || {}, r = [];
         return this.each(function(d) {
-          if (!(ie(this).prop("tagName").toUpperCase() === "INPUT" && ie(this).attr("type").toLowerCase() === "file" && l.FileReader) || !this.files || this.files.length === 0)
+          if (!(ie(this).prop("tagName").toUpperCase() === "INPUT" && ie(this).attr("type").toLowerCase() === "file" && u.FileReader) || !this.files || this.files.length === 0)
             return !0;
-          for (var p = 0; p < this.files.length; p++)
-            r.push({ file: this.files[p], inputElem: this, instanceConfig: ie.extend({}, e) });
+          for (var m = 0; m < this.files.length; m++)
+            r.push({ file: this.files[m], inputElem: this, instanceConfig: ie.extend({}, e) });
         }), n(), this;
         function n() {
           if (r.length !== 0) {
-            var d, p, F, D, o = r[0];
+            var d, m, F, D, o = r[0];
             if (v(t.before)) {
               var x = t.before(o.file, o.inputElem);
               if (typeof x == "object") {
                 if (x.action === "abort")
-                  return d = "AbortError", p = o.file, F = o.inputElem, D = x.reason, void (v(t.error) && t.error({ name: d }, p, F, D));
+                  return d = "AbortError", m = o.file, F = o.inputElem, D = x.reason, void (v(t.error) && t.error({ name: d }, m, F, D));
                 if (x.action === "skip")
                   return void a();
                 typeof x.config == "object" && (o.instanceConfig = ie.extend(o.instanceConfig, x.config));
@@ -214,11 +214,11 @@ License: MIT
         this._partialLine = "";
         var d = this._handle.parse(a, this._baseIndex, !this._finished);
         if (!this._handle.paused() && !this._handle.aborted()) {
-          var p = d.meta.cursor;
-          this._finished || (this._partialLine = a.substring(p - this._baseIndex), this._baseIndex = p), d && d.data && (this._rowCount += d.data.length);
+          var m = d.meta.cursor;
+          this._finished || (this._partialLine = a.substring(m - this._baseIndex), this._baseIndex = m), d && d.data && (this._rowCount += d.data.length);
           var F = this._finished || this._config.preview && this._rowCount >= this._config.preview;
           if (L)
-            l.postMessage({ results: d, workerId: f.WORKER_ID, finished: F });
+            u.postMessage({ results: d, workerId: f.WORKER_ID, finished: F });
           else if (v(this._config.chunk) && !r) {
             if (this._config.chunk(d, this._handle), this._handle.paused() || this._handle.aborted())
               return void (this._halted = !0);
@@ -228,12 +228,12 @@ License: MIT
         }
         this._halted = !0;
       }, this._sendError = function(e) {
-        v(this._config.error) ? this._config.error(e) : L && this._config.error && l.postMessage({ workerId: f.WORKER_ID, error: e, finished: !1 });
+        v(this._config.error) ? this._config.error(e) : L && this._config.error && u.postMessage({ workerId: f.WORKER_ID, error: e, finished: !1 });
       };
     }
     function ae(t) {
       var e;
-      (t = t || {}).chunkSize || (t.chunkSize = f.RemoteChunkSize), Q.call(this, t), this._nextChunk = m ? function() {
+      (t = t || {}).chunkSize || (t.chunkSize = f.RemoteChunkSize), Q.call(this, t), this._nextChunk = g ? function() {
         this._readChunk(), this._chunkLoaded();
       } : function() {
         this._readChunk();
@@ -243,7 +243,7 @@ License: MIT
         if (this._finished)
           this._chunkLoaded();
         else {
-          if (e = new XMLHttpRequest(), this._config.withCredentials && (e.withCredentials = this._config.withCredentials), m || (e.onload = G(this._chunkLoaded, this), e.onerror = G(this._chunkError, this)), e.open(this._config.downloadRequestBody ? "POST" : "GET", this._input, !m), this._config.downloadRequestHeaders) {
+          if (e = new XMLHttpRequest(), this._config.withCredentials && (e.withCredentials = this._config.withCredentials), g || (e.onload = G(this._chunkLoaded, this), e.onerror = G(this._chunkError, this)), e.open(this._config.downloadRequestBody ? "POST" : "GET", this._input, !g), this._config.downloadRequestHeaders) {
             var r = this._config.downloadRequestHeaders;
             for (var n in r)
               e.setRequestHeader(n, r[n]);
@@ -257,7 +257,7 @@ License: MIT
           } catch (d) {
             this._chunkError(d.message);
           }
-          m && e.status === 0 && this._chunkError();
+          g && e.status === 0 && this._chunkError();
         }
       }, this._chunkLoaded = function() {
         e.readyState === 4 && (e.status < 200 || 400 <= e.status ? this._chunkError() : (this._start += this._config.chunkSize ? this._config.chunkSize : e.responseText.length, this._finished = !this._config.chunkSize || this._start >= function(r) {
@@ -283,8 +283,8 @@ License: MIT
           var d = Math.min(this._start + this._config.chunkSize, this._input.size);
           a = r.call(a, this._start, d);
         }
-        var p = e.readAsText(a, this._config.encoding);
-        n || this._chunkLoaded({ target: { result: p } });
+        var m = e.readAsText(a, this._config.encoding);
+        n || this._chunkLoaded({ target: { result: m } });
       }, this._chunkLoaded = function(a) {
         this._start += this._config.chunkSize, this._finished = !this._config.chunkSize || this._start >= this._input.size, this.parseChunk(a.target.result);
       }, this._chunkError = function() {
@@ -330,41 +330,41 @@ License: MIT
       }, this);
     }
     function ce(t) {
-      var e, r, n, a = Math.pow(2, 53), d = -a, p = /^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/, F = /^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/, D = this, o = 0, x = 0, h = !1, B = !1, q = [], s = { data: [], errors: [], meta: {} };
+      var e, r, n, a = Math.pow(2, 53), d = -a, m = /^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/, F = /^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/, D = this, o = 0, x = 0, h = !1, B = !1, q = [], s = { data: [], errors: [], meta: {} };
       if (v(t.step)) {
         var b = t.step;
-        t.step = function(u) {
-          if (s = u, M())
+        t.step = function(l) {
+          if (s = l, M())
             R();
           else {
             if (R(), s.data.length === 0)
               return;
-            o += u.data.length, t.preview && o > t.preview ? r.abort() : (s.data = s.data[0], b(s, D));
+            o += l.data.length, t.preview && o > t.preview ? r.abort() : (s.data = s.data[0], b(s, D));
           }
         };
       }
-      function z(u) {
-        return t.skipEmptyLines === "greedy" ? u.join("").trim() === "" : u.length === 1 && u[0].length === 0;
+      function z(l) {
+        return t.skipEmptyLines === "greedy" ? l.join("").trim() === "" : l.length === 1 && l[0].length === 0;
       }
       function R() {
-        return s && n && (A("Delimiter", "UndetectableDelimiter", "Unable to auto-detect delimiting character; defaulted to '" + f.DefaultDelimiter + "'"), n = !1), t.skipEmptyLines && (s.data = s.data.filter(function(u) {
-          return !z(u);
+        return s && n && (A("Delimiter", "UndetectableDelimiter", "Unable to auto-detect delimiting character; defaulted to '" + f.DefaultDelimiter + "'"), n = !1), t.skipEmptyLines && (s.data = s.data.filter(function(l) {
+          return !z(l);
         })), M() && function() {
           if (!s)
             return;
-          function u(E, T) {
+          function l(E, T) {
             v(t.transformHeader) && (E = t.transformHeader(E, T)), q.push(E);
           }
           if (Array.isArray(s.data[0])) {
             for (var _ = 0; M() && _ < s.data.length; _++)
-              s.data[_].forEach(u);
+              s.data[_].forEach(l);
             s.data.splice(0, 1);
           } else
-            s.data.forEach(u);
+            s.data.forEach(l);
         }(), function() {
           if (!s || !t.header && !t.dynamicTyping && !t.transform)
             return s;
-          function u(E, T) {
+          function l(E, T) {
             var k, H = t.header ? {} : [];
             for (k = 0; k < E.length; k++) {
               var O = k, w = E[k];
@@ -373,15 +373,15 @@ License: MIT
             return t.header && (k > q.length ? A("FieldMismatch", "TooManyFields", "Too many fields: expected " + q.length + " fields but parsed " + k, x + T) : k < q.length && A("FieldMismatch", "TooFewFields", "Too few fields: expected " + q.length + " fields but parsed " + k, x + T)), H;
           }
           var _ = 1;
-          return !s.data.length || Array.isArray(s.data[0]) ? (s.data = s.data.map(u), _ = s.data.length) : s.data = u(s.data, 0), t.header && s.meta && (s.meta.fields = q), x += _, s;
+          return !s.data.length || Array.isArray(s.data[0]) ? (s.data = s.data.map(l), _ = s.data.length) : s.data = l(s.data, 0), t.header && s.meta && (s.meta.fields = q), x += _, s;
         }();
       }
       function M() {
         return t.header && q.length === 0;
       }
-      function S(u, _) {
-        return E = u, t.dynamicTypingFunction && t.dynamicTyping[E] === void 0 && (t.dynamicTyping[E] = t.dynamicTypingFunction(E)), (t.dynamicTyping[E] || t.dynamicTyping) === !0 ? _ === "true" || _ === "TRUE" || _ !== "false" && _ !== "FALSE" && (function(T) {
-          if (p.test(T)) {
+      function S(l, _) {
+        return E = l, t.dynamicTypingFunction && t.dynamicTyping[E] === void 0 && (t.dynamicTyping[E] = t.dynamicTypingFunction(E)), (t.dynamicTyping[E] || t.dynamicTyping) === !0 ? _ === "true" || _ === "TRUE" || _ !== "false" && _ !== "FALSE" && (function(T) {
+          if (m.test(T)) {
             var k = parseFloat(T);
             if (d < k && k < a)
               return !0;
@@ -390,17 +390,17 @@ License: MIT
         }(_) ? parseFloat(_) : F.test(_) ? new Date(_) : _ === "" ? null : _) : _;
         var E;
       }
-      function A(u, _, E, T) {
-        var k = { type: u, code: _, message: E };
+      function A(l, _, E, T) {
+        var k = { type: l, code: _, message: E };
         T !== void 0 && (k.row = T), s.errors.push(k);
       }
-      this.parse = function(u, _, E) {
+      this.parse = function(l, _, E) {
         var T = t.quoteChar || '"';
         if (t.newline || (t.newline = function(O, w) {
           O = O.substring(0, 1048576);
-          var W = new RegExp(se(w) + "([^]*?)" + se(w), "gm"), P = (O = O.replace(W, "")).split("\r"), $ = O.split(`
-`), V = 1 < $.length && $[0].length < P[0].length;
-          if (P.length === 1 || V)
+          var K = new RegExp(se(w) + "([^]*?)" + se(w), "gm"), P = (O = O.replace(K, "")).split("\r"), $ = O.split(`
+`), J = 1 < $.length && $[0].length < P[0].length;
+          if (P.length === 1 || J)
             return `
 `;
           for (var U = 0, C = 0; C < P.length; C++)
@@ -408,30 +408,30 @@ License: MIT
 ` && U++;
           return U >= P.length / 2 ? `\r
 ` : "\r";
-        }(u, T)), n = !1, t.delimiter)
-          v(t.delimiter) && (t.delimiter = t.delimiter(u), s.meta.delimiter = t.delimiter);
+        }(l, T)), n = !1, t.delimiter)
+          v(t.delimiter) && (t.delimiter = t.delimiter(l), s.meta.delimiter = t.delimiter);
         else {
-          var k = function(O, w, W, P, $) {
-            var V, U, C, I;
+          var k = function(O, w, K, P, $) {
+            var J, U, C, I;
             $ = $ || [",", "	", "|", ";", f.RECORD_SEP, f.UNIT_SEP];
             for (var ee = 0; ee < $.length; ee++) {
-              var y = $[ee], re = 0, J = 0, te = 0;
+              var y = $[ee], re = 0, V = 0, te = 0;
               C = void 0;
               for (var Z = new he({ comments: P, delimiter: y, newline: w, preview: 10 }).parse(O), Y = 0; Y < Z.data.length; Y++)
-                if (W && z(Z.data[Y]))
+                if (K && z(Z.data[Y]))
                   te++;
                 else {
                   var X = Z.data[Y].length;
-                  J += X, C !== void 0 ? 0 < X && (re += Math.abs(X - C), C = X) : C = X;
+                  V += X, C !== void 0 ? 0 < X && (re += Math.abs(X - C), C = X) : C = X;
                 }
-              0 < Z.data.length && (J /= Z.data.length - te), (U === void 0 || re <= U) && (I === void 0 || I < J) && 1.99 < J && (U = re, V = y, I = J);
+              0 < Z.data.length && (V /= Z.data.length - te), (U === void 0 || re <= U) && (I === void 0 || I < V) && 1.99 < V && (U = re, J = y, I = V);
             }
-            return { successful: !!(t.delimiter = V), bestDelimiter: V };
-          }(u, t.newline, t.skipEmptyLines, t.comments, t.delimitersToGuess);
+            return { successful: !!(t.delimiter = J), bestDelimiter: J };
+          }(l, t.newline, t.skipEmptyLines, t.comments, t.delimitersToGuess);
           k.successful ? t.delimiter = k.bestDelimiter : (n = !0, t.delimiter = f.DefaultDelimiter), s.meta.delimiter = t.delimiter;
         }
         var H = de(t);
-        return t.preview && t.header && H.preview++, e = u, r = new he(H), s = r.parse(e, _, E), R(), h ? { meta: { paused: !0 } } : s || { meta: { paused: !1 } };
+        return t.preview && t.header && H.preview++, e = l, r = new he(H), s = r.parse(e, _, E), R(), h ? { meta: { paused: !0 } } : s || { meta: { paused: !1 } };
       }, this.paused = function() {
         return h;
       }, this.pause = function() {
@@ -448,7 +448,7 @@ License: MIT
       return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
     function he(t) {
-      var e, r = (t = t || {}).delimiter, n = t.newline, a = t.comments, d = t.step, p = t.preview, F = t.fastMode, D = e = t.quoteChar === void 0 || t.quoteChar === null ? '"' : t.quoteChar;
+      var e, r = (t = t || {}).delimiter, n = t.newline, a = t.comments, d = t.step, m = t.preview, F = t.fastMode, D = e = t.quoteChar === void 0 || t.quoteChar === null ? '"' : t.quoteChar;
       if (t.escapeChar !== void 0 && (D = t.escapeChar), (typeof r != "string" || -1 < f.BAD_DELIMITERS.indexOf(r)) && (r = ","), a === r)
         throw new Error("Comment character same as delimiter");
       a === !0 ? a = "#" : (typeof a != "string" || -1 < f.BAD_DELIMITERS.indexOf(a)) && (a = !1), n !== `
@@ -459,7 +459,7 @@ License: MIT
       this.parse = function(h, B, q) {
         if (typeof h != "string")
           throw new Error("Input must be a string");
-        var s = h.length, b = r.length, z = n.length, R = a.length, M = v(d), S = [], A = [], u = [], _ = o = 0;
+        var s = h.length, b = r.length, z = n.length, R = a.length, M = v(d), S = [], A = [], l = [], _ = o = 0;
         if (!h)
           return j();
         if (t.header && !B) {
@@ -467,10 +467,10 @@ License: MIT
           for (var O in E) {
             var w = E[O];
             v(t.transformHeader) && (w = t.transformHeader(w, O));
-            var W = w, P = k[w] || 0;
-            for (0 < P && (H = !0, W = w + "_" + P), k[w] = P + 1; T.includes(W); )
-              W = W + "_" + P;
-            T.push(W);
+            var K = w, P = k[w] || 0;
+            for (0 < P && (H = !0, K = w + "_" + P), k[w] = P + 1; T.includes(K); )
+              K = K + "_" + P;
+            T.push(K);
           }
           if (H) {
             var $ = h.split(n);
@@ -478,37 +478,37 @@ License: MIT
           }
         }
         if (F || F !== !1 && h.indexOf(e) === -1) {
-          for (var V = h.split(n), U = 0; U < V.length; U++) {
-            if (u = V[U], o += u.length, U !== V.length - 1)
+          for (var J = h.split(n), U = 0; U < J.length; U++) {
+            if (l = J[U], o += l.length, U !== J.length - 1)
               o += n.length;
             else if (q)
               return j();
-            if (!a || u.substring(0, R) !== a) {
+            if (!a || l.substring(0, R) !== a) {
               if (M) {
-                if (S = [], te(u.split(r)), le(), x)
+                if (S = [], te(l.split(r)), le(), x)
                   return j();
               } else
-                te(u.split(r));
-              if (p && p <= U)
-                return S = S.slice(0, p), j(!0);
+                te(l.split(r));
+              if (m && m <= U)
+                return S = S.slice(0, m), j(!0);
             }
           }
           return j();
         }
         for (var C = h.indexOf(r, o), I = h.indexOf(n, o), ee = new RegExp(se(D) + se(e), "g"), y = h.indexOf(e, o); ; )
           if (h[o] !== e)
-            if (a && u.length === 0 && h.substring(o, o + R) === a) {
+            if (a && l.length === 0 && h.substring(o, o + R) === a) {
               if (I === -1)
                 return j();
               o = I + z, I = h.indexOf(n, o), C = h.indexOf(r, o);
             } else if (C !== -1 && (C < I || I === -1))
-              u.push(h.substring(o, C)), o = C + b, C = h.indexOf(r, o);
+              l.push(h.substring(o, C)), o = C + b, C = h.indexOf(r, o);
             else {
               if (I === -1)
                 break;
-              if (u.push(h.substring(o, I)), X(I + z), M && (le(), x))
+              if (l.push(h.substring(o, I)), X(I + z), M && (le(), x))
                 return j();
-              if (p && S.length >= p)
+              if (m && S.length >= m)
                 return j(!0);
             }
           else
@@ -522,14 +522,14 @@ License: MIT
                   C !== -1 && C < y + 1 && (C = h.indexOf(r, y + 1)), I !== -1 && I < y + 1 && (I = h.indexOf(n, y + 1));
                   var re = Z(I === -1 ? C : Math.min(C, I));
                   if (h.substr(y + 1 + re, b) === r) {
-                    u.push(h.substring(o, y).replace(ee, e)), h[o = y + 1 + re + b] !== e && (y = h.indexOf(e, o)), C = h.indexOf(r, o), I = h.indexOf(n, o);
+                    l.push(h.substring(o, y).replace(ee, e)), h[o = y + 1 + re + b] !== e && (y = h.indexOf(e, o)), C = h.indexOf(r, o), I = h.indexOf(n, o);
                     break;
                   }
-                  var J = Z(I);
-                  if (h.substring(y + 1 + J, y + 1 + J + z) === n) {
-                    if (u.push(h.substring(o, y).replace(ee, e)), X(y + 1 + J + z), C = h.indexOf(r, o), y = h.indexOf(e, o), M && (le(), x))
+                  var V = Z(I);
+                  if (h.substring(y + 1 + V, y + 1 + V + z) === n) {
+                    if (l.push(h.substring(o, y).replace(ee, e)), X(y + 1 + V + z), C = h.indexOf(r, o), y = h.indexOf(e, o), M && (le(), x))
                       return j();
-                    if (p && S.length >= p)
+                    if (m && S.length >= m)
                       return j(!0);
                     break;
                   }
@@ -543,18 +543,18 @@ License: MIT
           S.push(N), _ = o;
         }
         function Z(N) {
-          var me = 0;
+          var ge = 0;
           if (N !== -1) {
             var fe = h.substring(y + 1, N);
-            fe && fe.trim() === "" && (me = fe.length);
+            fe && fe.trim() === "" && (ge = fe.length);
           }
-          return me;
+          return ge;
         }
         function Y(N) {
-          return q || (N === void 0 && (N = h.substring(o)), u.push(N), o = s, te(u), M && le()), j();
+          return q || (N === void 0 && (N = h.substring(o)), l.push(N), o = s, te(l), M && le()), j();
         }
         function X(N) {
-          o = N, te(u), u = [], I = h.indexOf(n, o);
+          o = N, te(l), l = [], I = h.indexOf(n, o);
         }
         function j(N) {
           return { data: S, errors: A, meta: { delimiter: r, linebreak: n, aborted: x, truncated: !!N, cursor: _ + (B || 0) } };
@@ -568,14 +568,14 @@ License: MIT
         return o;
       };
     }
-    function Ee(t) {
-      var e = t.data, r = K[e.workerId], n = !1;
+    function De(t) {
+      var e = t.data, r = W[e.workerId], n = !1;
       if (e.error)
         r.userError(e.error, e.file);
       else if (e.results && e.results.data) {
         var a = { abort: function() {
           n = !0, pe(e.workerId, { data: [], errors: [], meta: { aborted: !0 } });
-        }, pause: ge, resume: ge };
+        }, pause: me, resume: me };
         if (v(r.userStep)) {
           for (var d = 0; d < e.results.data.length && (r.userStep({ data: e.results.data[d], errors: e.results.errors, meta: e.results.meta }, a), !n); d++)
             ;
@@ -586,10 +586,10 @@ License: MIT
       e.finished && !n && pe(e.workerId, e.results);
     }
     function pe(t, e) {
-      var r = K[t];
-      v(r.userComplete) && r.userComplete(e), r.terminate(), delete K[t];
+      var r = W[t];
+      v(r.userComplete) && r.userComplete(e), r.terminate(), delete W[t];
     }
-    function ge() {
+    function me() {
       throw new Error("Not implemented.");
     }
     function de(t) {
@@ -608,22 +608,22 @@ License: MIT
     function v(t) {
       return typeof t == "function";
     }
-    return L && (l.onmessage = function(t) {
+    return L && (u.onmessage = function(t) {
       var e = t.data;
       if (f.WORKER_ID === void 0 && e && (f.WORKER_ID = e.workerId), typeof e.input == "string")
-        l.postMessage({ workerId: f.WORKER_ID, results: f.parse(e.input, e.config), finished: !0 });
-      else if (l.File && e.input instanceof File || e.input instanceof Object) {
+        u.postMessage({ workerId: f.WORKER_ID, results: f.parse(e.input, e.config), finished: !0 });
+      else if (u.File && e.input instanceof File || e.input instanceof Object) {
         var r = f.parse(e.input, e.config);
-        r && l.postMessage({ workerId: f.WORKER_ID, results: r, finished: !0 });
+        r && u.postMessage({ workerId: f.WORKER_ID, results: r, finished: !0 });
       }
     }), (ae.prototype = Object.create(Q.prototype)).constructor = ae, (oe.prototype = Object.create(Q.prototype)).constructor = oe, (ne.prototype = Object.create(ne.prototype)).constructor = ne, (ue.prototype = Object.create(Q.prototype)).constructor = ue, f;
   });
-})(we);
-var ze = we.exports;
-const He = /* @__PURE__ */ qe(ze), Pe = {
+})(be);
+var Ue = be.exports;
+const je = /* @__PURE__ */ Pe(Ue), Ee = {
   name: "ImportCSV",
   components: {
-    Drop: Fe
+    Drop: ze
   },
   props: {
     units: {
@@ -632,6 +632,16 @@ const He = /* @__PURE__ */ qe(ze), Pe = {
     }
   },
   emits: ["error", "import"],
+  setup() {
+    const { t: i, locale: p, fallbackLocale: c } = Te({
+      locale: "en_US"
+    });
+    return {
+      t: i,
+      locale: p,
+      fallbackLocale: c
+    };
+  },
   data() {
     return {
       // headings: true,
@@ -662,7 +672,7 @@ const He = /* @__PURE__ */ qe(ze), Pe = {
         "banding",
         "cost"
       ],
-      fieldNames: Oe,
+      fieldNames: Le,
       manualMapping: {
         selectedColumnHeading: "",
         selectedColumnIndex: "",
@@ -671,9 +681,9 @@ const He = /* @__PURE__ */ qe(ze), Pe = {
     };
   },
   computed: {
-    locale() {
-      return navigator.language.toUpperCase();
-    },
+    /* importLocale() {
+        return navigator.language.toUpperCase();
+    }, */
     fieldFormat() {
       return {
         l: this.units === "decimal" ? "Decimal" : "Fraction",
@@ -684,50 +694,50 @@ const He = /* @__PURE__ */ qe(ze), Pe = {
       };
     },
     separators() {
-      return Ie();
+      return Se();
     },
     someInvalid() {
       return Object.values(this.itemValidation).some((i) => Object.values(i).some(
-        (g) => g === !1 && Object.keys(i).some(
+        (p) => p === !1 && Object.keys(i).some(
           (c) => this.partFields.includes(c)
         )
       ));
     },
     someDuplicates() {
-      var i, g;
-      return ((g = (i = this.duplicateIndexes) == null ? void 0 : i.flat()) == null ? void 0 : g.length) > 0;
+      var i, p;
+      return ((p = (i = this.duplicateIndexes) == null ? void 0 : i.flat()) == null ? void 0 : p.length) > 0;
     },
     itemValidation() {
       const i = {};
-      return this.items.forEach((g, c) => {
+      return this.items.forEach((p, c) => {
         i[c] = {};
-        for (const [l, m] of Object.entries(g)) {
-          if (!this.partFields.includes(l))
+        for (const [u, g] of Object.entries(p)) {
+          if (!this.partFields.includes(u))
             continue;
-          const L = this.validate(l, m);
-          (L === !0 || L === !1) && (i[c][l] = L);
+          const L = this.validate(u, g);
+          (L === !0 || L === !1) && (i[c][u] = L);
         }
       }), i;
     }
   },
   methods: {
     parse(i) {
-      He.parse(i, {
+      je.parse(i, {
         header: !1,
         dynamicTyping: !1,
         //parse numbers
         worker: !0,
-        complete: (g) => this.process(g),
+        complete: (p) => this.process(p),
         error: () => this.$emit("error")
       });
     },
     process(i) {
       this.userRows = i, this.userRows = this.userRows.data.filter(
-        (g) => g.some((c) => c)
+        (p) => p.some((c) => c)
       ), this.userHeaders = this.userRows[0], this.columnMap = {};
-      for (let g = this.userHeaders.length; g--; ) {
-        const c = this.userHeaders[g], l = this.predictHeadingType(c);
-        l ? this.columnMap[g] = l : this.columnMap[g] = null;
+      for (let p = this.userHeaders.length; p--; ) {
+        const c = this.userHeaders[p], u = this.predictHeadingType(c);
+        u ? this.columnMap[p] = u : this.columnMap[p] = null;
       }
       this.processColumnMap(), this.userRows.shift(), this.populateColumnData(), this.importParts();
     },
@@ -769,7 +779,7 @@ const He = /* @__PURE__ */ qe(ze), Pe = {
           "dir"
         ]
       }).reduce(
-        (l, [m, L]) => (L.some((K) => i && i.toLowerCase() === K) && l.push(m), l),
+        (u, [g, L]) => (L.some((W) => i && i.toLowerCase() === W) && u.push(g), u),
         []
       );
       return c.length > 1 ? null : c[0];
@@ -778,37 +788,37 @@ const He = /* @__PURE__ */ qe(ze), Pe = {
       this.showDataMismatch = !1, this.mappedHeaders = Object.values(this.columnMap).map(
         (c) => !c || c === "N" ? null : this.partFields.includes(c) ? c : (this.showDataMismatch = !0, null)
       );
-      const g = this.mappedHeaders.filter(
-        (c, l) => this.mappedHeaders.indexOf(c) !== l
+      const p = this.mappedHeaders.filter(
+        (c, u) => this.mappedHeaders.indexOf(c) !== u
       ).map(
         (c) => this.mappedHeaders.reduce(
-          (l, m, L) => (m && m === c && l.push(L), l),
+          (u, g, L) => (g && g === c && u.push(L), u),
           []
         )
       );
-      this.duplicateIndexes = g;
+      this.duplicateIndexes = p;
     },
     stripSpacesAroundCommas(i) {
       return i && i.replace(/\s*,\s*/g, ",");
     },
-    validate(i, g) {
-      if (g === "???")
+    validate(i, p) {
+      if (p === "???")
         return !0;
-      function c(m) {
-        return !m || (m = m.trim().toLowerCase(), m === "l" || m === "w");
+      function c(g) {
+        return !g || (g = g.trim().toLowerCase(), g === "l" || g === "w");
       }
-      const l = {
-        orientationLock: (m) => c(m)
+      const u = {
+        orientationLock: (g) => c(g)
       };
-      return i in l ? l[i](g) : null;
+      return i in u ? u[i](p) : null;
     },
     populateColumnData() {
-      const i = this.userRows.map((g) => {
+      const i = this.userRows.map((p) => {
         const c = {};
-        return this.userHeaders.forEach((l, m) => {
-          if (this.duplicateIndexes.flat().includes(m))
-            return c[this.columnMap[m]] = "???";
-          c[this.columnMap[m]] = g[m];
+        return this.userHeaders.forEach((u, g) => {
+          if (this.duplicateIndexes.flat().includes(g))
+            return c[this.columnMap[g]] = "???";
+          c[this.columnMap[g]] = p[g];
         }), c;
       });
       this.items = i;
@@ -829,22 +839,23 @@ const He = /* @__PURE__ */ qe(ze), Pe = {
     },
     isDuplicate(i) {
       return this.duplicateIndexes.some(
-        (g) => g.includes(i)
+        (p) => p.includes(i)
       );
     }
   }
-}, Ue = { id: "import-file" };
-function je(i, g, c, l, m, L) {
-  const K = Te("Drop");
-  return ve(), ke("div", Ue, [
-    Le(K, {
-      label: "Drop CSV file here",
+}, Ne = { id: "import-file" };
+function Be(i, p, c, u, g, L) {
+  const W = Ae("Drop");
+  return ke(), we("div", Ne, [
+    Fe(W, {
+      label: u.t("Drop CSV file here"),
       "required-type": "text/csv",
       onDrop: L.parse
-    }, null, 8, ["onDrop"])
+    }, null, 8, ["label", "onDrop"])
   ]);
 }
-const Be = /* @__PURE__ */ ye(Pe, [["render", je]]);
+typeof ye == "function" && ye(Ee);
+const We = /* @__PURE__ */ ve(Ee, [["render", Be]]);
 export {
-  Be as default
+  We as default
 };
