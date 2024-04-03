@@ -16065,8 +16065,8 @@ function NS(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const IS = /* @__PURE__ */ nl(
-  () => import("./Machining-B_gZMpX9.js")
-), LS = /* @__PURE__ */ nl(() => import("./Import-BnMM6rBg.js")), op = {
+  () => import("./Machining-B-aBSJp1.js")
+), LS = /* @__PURE__ */ nl(() => import("./Import-ier7SVRD.js")), op = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: sS,
@@ -16187,7 +16187,7 @@ const IS = /* @__PURE__ */ nl(
         justifyContent: "flex-end",
         paddingRight: "10px",
         marginTop: "10px",
-        marginBottom: "10px",
+        marginBottom: "0px",
         userSelect: "none",
         alignItems: "center"
       },
@@ -17010,7 +17010,7 @@ function sf(t) {
     }
   });
 }
-const Fl = (t) => (Om("data-v-9942703e"), t = t(), Pm(), t), MS = {
+const Fl = (t) => (Om("data-v-2ba08a10"), t = t(), Pm(), t), MS = {
   id: "shape-input",
   class: "inputs no-margin-top grid-table"
 }, RS = /* @__PURE__ */ Fl(() => /* @__PURE__ */ st("div", { class: "cell" }, null, -1)), DS = {
@@ -17423,7 +17423,7 @@ function C2(t, e, n, i, r, s) {
   ], 64);
 }
 typeof sf == "function" && sf(op);
-const O2 = /* @__PURE__ */ oi(op, [["render", C2], ["__scopeId", "data-v-9942703e"]]), P2 = {
+const O2 = /* @__PURE__ */ oi(op, [["render", C2], ["__scopeId", "data-v-2ba08a10"]]), P2 = {
   name: "Wordpress",
   //needs to be Wordpress not WordPress
   components: {
@@ -18019,7 +18019,7 @@ function N2(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
-const I2 = /* @__PURE__ */ oi(P2, [["render", N2]]), L2 = /* @__PURE__ */ nl(() => import("./Vanilla-D1-_WCSU.js")), M2 = /* @__PURE__ */ ri({
+const I2 = /* @__PURE__ */ oi(P2, [["render", N2]]), L2 = /* @__PURE__ */ nl(() => import("./Vanilla-Jxm5ztMJ.js")), M2 = /* @__PURE__ */ ri({
   name: "Launch",
   components: {
     Wordpress: I2,
