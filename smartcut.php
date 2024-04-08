@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.1.5
+ * Version: 3.1.6
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.1.5'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.1.6'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -444,8 +444,6 @@ function create_product_template_tools_page()
 
             if (isset($product_data['content'])) $content .= $product_data['content'];
 
-
-
             $content .= '<table><tr><th>Attribute</th><th>Value</th></tr>';
 
             if (isset($product_data['length'])) $content .= add_table_row(['Length', $product_data['length']]);
@@ -468,7 +466,7 @@ function create_product_template_tools_page()
             $product->set_description($content);
 
             //category
-            if (!isset($product_data['is_banding']) && !isset($product_data['is_machining'])) {
+            if ((!isset($product_data['is_banding']) || $product_data['is_banding'] === false) && (!isset($product_data['is_machining']) || $product_data['is_machining'] === false)) {
 
                 $category = get_term_by('slug', $cutlist_category, 'product_cat');
 
