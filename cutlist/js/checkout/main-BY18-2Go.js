@@ -9777,7 +9777,7 @@ function V0(t) {
   return t instanceof Cn;
 }
 function kr(t) {
-  return t ? (t = t.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^ a-z0-9._\-()[]\|]/gim, ""), t.trim()) : null;
+  return t ? (t = t.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^ a-z0-9._\-|]/gim, ""), t.trim()) : null;
 }
 function vl(t, e = 50) {
   return t ? (t = t.substring(0, e), t.trim()) : null;
@@ -16005,8 +16005,8 @@ function ES(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const TS = /* @__PURE__ */ nl(
-  () => import("./Machining-BDHBu-LY.js")
-), AS = /* @__PURE__ */ nl(() => import("./Import-WXsqp_97.js")), rp = {
+  () => import("./Machining-cyRvCFzE.js")
+), AS = /* @__PURE__ */ nl(() => import("./Import-DCSyfMRi.js")), rp = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: Zk,
@@ -17976,7 +17976,7 @@ function E2(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
-const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-CkPGam4c.js")), C2 = /* @__PURE__ */ ri({
+const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-Fj4ouWD-.js")), C2 = /* @__PURE__ */ ri({
   name: "Launch",
   components: {
     Wordpress: T2,

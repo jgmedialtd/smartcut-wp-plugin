@@ -1,1 +1,1 @@
-import "./main-B1Tn1U25.js";
+import "./main-BY18-2Go.js";
