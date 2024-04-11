@@ -11015,12 +11015,12 @@ class Sl {
         continue;
       const n = Object.values(this.bandingOptions[e]);
       n.some((r) => r) && (n.every((r) => r) || this.issues.push("If using banding, all options must be set."));
-      const i = n.filter((r) => r).map((r) => r.toString().trim().replace("-", ":"));
+      const i = n.filter((r) => r).map((r) => r.toString().trim().replace("|", "_"));
       if (!i.length) {
         this.banding[e] = !1, this.bandingType[e] = "";
         continue;
       }
-      this.banding[e] = !0, this.bandingType[e] = i.join("-");
+      this.banding[e] = !0, this.bandingType[e] = i.join("|");
     }
   }
   removeBandingApartFromBandingOptions() {
@@ -16006,8 +16006,8 @@ function ES(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const TS = /* @__PURE__ */ nl(
-  () => import("./Machining-D7wXJ7Lr.js")
-), AS = /* @__PURE__ */ nl(() => import("./Import-BEAd8ado.js")), rp = {
+  () => import("./Machining-mB5lqUUs.js")
+), AS = /* @__PURE__ */ nl(() => import("./Import-DgVtrnu3.js")), rp = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: Zk,
@@ -16792,7 +16792,7 @@ const TS = /* @__PURE__ */ nl(
           bandingType: r.bandingType,
           machining: r.machining
         });
-        this.shapeList.push(s), (n = s == null ? void 0 : s.issues) != null && n.length && t.push(...s.issues);
+        console.log(["banding", s.banding, s.bandingType]), this.shapeList.push(s), (n = s == null ? void 0 : s.issues) != null && n.length && t.push(...s.issues);
       }
       return this.changePartQuantitiesBasedOnThickness(), t;
     },
@@ -16958,7 +16958,7 @@ function sf(t) {
     }
   });
 }
-const Fl = (t) => (Am("data-v-2f269590"), t = t(), Cm(), t), CS = {
+const Fl = (t) => (Am("data-v-def2c694"), t = t(), Cm(), t), CS = {
   id: "shape-input",
   class: "inputs no-margin-top grid-table"
 }, OS = /* @__PURE__ */ Fl(() => /* @__PURE__ */ st("div", { class: "cell" }, null, -1)), PS = {
@@ -17371,7 +17371,7 @@ function x2(t, e, n, i, r, s) {
   ], 64);
 }
 typeof sf == "function" && sf(rp);
-const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-2f269590"]]), S2 = {
+const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-def2c694"]]), S2 = {
   name: "Wordpress",
   //needs to be Wordpress not WordPress
   components: {
@@ -17651,6 +17651,8 @@ const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-2f26959
       });
     },
     formatPrice(t = 0, e = !1) {
+      if (!t)
+        return this.addCurrencySymbol("0.00");
       typeof t == "string" && (t = parseFloat(t));
       const n = t.toFixed(this.formatting.number_of_decimals).replace(".", this.formatting.decimal_separator);
       return e ? this.addCurrencySymbol(n) : n;
@@ -17761,11 +17763,15 @@ const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-2f26959
         )
       ));
     },
+    formatBandingKey(t) {
+      return t.replace("-", "_");
+    },
     //map the banding data into options
     getBandingOptions(t) {
       if (!t)
         return null;
       const e = {};
+      debugger;
       for (const n of Object.values(t)) {
         const i = n == null ? void 0 : n.options;
         if (!(n == null ? void 0 : n.variations)) {
@@ -17779,15 +17785,17 @@ const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-2f26959
         ))
           e[s] = Array.isArray(o) ? o : [o];
       }
-      return e;
+      return this.log(["bandingOptions", e]), e;
     },
     //find the price of a banding option based on an array of options
     findBandingPrice(t) {
-      const n = Object.values(this.bandingData).map((i) => i != null && i.variations ? Object.values(i.variations) : i).flat().find((i) => {
+      const e = Object.values(this.bandingData).map((i) => i != null && i.variations ? Object.values(i.variations) : i).flat();
+      this.log(["all variations", e]);
+      const n = e.find((i) => {
         const r = Object.values(i.options);
         return r ? t.every((s, o) => {
           const a = r == null ? void 0 : r[o];
-          return a ? a === t[o] : !1;
+          return a ? a.trim().replace("|", "_") === t[o] : !1;
         }) : !1;
       });
       return n ? n.price : null;
@@ -17798,8 +17806,10 @@ const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-2f26959
       let e = 0;
       if (typeof t == "object") {
         for (let [i, r] of Object.entries(t)) {
-          typeof r == "string" && (r = parseFloat(r));
-          const s = i.split("-"), o = this.findBandingPrice(s);
+          typeof r == "string" && (r = parseFloat(r)), this.log(["banding key", i]);
+          const s = i.split("|");
+          this.log(["banding key", i]);
+          const o = this.findBandingPrice(s);
           if (o === null)
             continue;
           const a = r / (this.settings.units === "fraction" ? 12 : 1e3) * parseFloat(o);
@@ -17840,7 +17850,8 @@ const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-2f26959
       return !1;
     },
     isBandingEnabled() {
-      return !(this.settings.disable_banding === !0 || !this.bandingData || !Object.values(this.bandingData).length);
+      var t;
+      return (t = this.settings) != null && t.disable_banding ? !(this.settings.disable_banding === !0 || !this.bandingData || !Object.values(this.bandingData).length) : !0;
     },
     isMachiningEnabled() {
       return this.settings.enable_machining === !0;
@@ -17967,7 +17978,7 @@ function E2(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
-const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-Cm2stWGT.js")), C2 = /* @__PURE__ */ ri({
+const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-Zj091gzH.js")), C2 = /* @__PURE__ */ ri({
   name: "Launch",
   components: {
     Wordpress: T2,
