@@ -9470,7 +9470,7 @@ const Is = {
   }
 };
 function fo(t) {
-  return t ? (t = t.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^ a-z0-9._-]/gim, ""), t.trim()) : null;
+  return t ? (t = t.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^ a-z0-9._\-()[]]/gim, ""), t.trim()) : null;
 }
 function pd(t, e = 50) {
   return t ? (t = t.substring(0, e), t.trim()) : null;
@@ -16006,8 +16006,8 @@ function ES(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const TS = /* @__PURE__ */ nl(
-  () => import("./Machining-mB5lqUUs.js")
-), AS = /* @__PURE__ */ nl(() => import("./Import-DgVtrnu3.js")), rp = {
+  () => import("./Machining-DtujZAms.js")
+), AS = /* @__PURE__ */ nl(() => import("./Import-CVvSRlwe.js")), rp = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: Zk,
@@ -17771,7 +17771,6 @@ const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-def2c69
       if (!t)
         return null;
       const e = {};
-      debugger;
       for (const n of Object.values(t)) {
         const i = n == null ? void 0 : n.options;
         if (!(n == null ? void 0 : n.variations)) {
@@ -17978,7 +17977,7 @@ function E2(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
-const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-Zj091gzH.js")), C2 = /* @__PURE__ */ ri({
+const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-CT3mjphY.js")), C2 = /* @__PURE__ */ ri({
   name: "Launch",
   components: {
     Wordpress: T2,
