@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SmartCut plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartCut 3.1.11\n"
+"Project-Id-Version: SmartCut 3.1.12\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-11T14:37:07+00:00\n"
+"POT-Creation-Date: 2024-04-15T16:31:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: smartcut\n"
@@ -29,18 +29,18 @@ msgid "Calculate cut lists & pricing for cut-to-size businesses."
 msgstr ""
 
 #: cutlist/cart.php:23
-#: cutlist/cart.php:41
+#: cutlist/cart.php:47
 msgid "Job ID"
 msgstr ""
 
 #: cutlist/cart.php:24
-#: cutlist/cart.php:42
-#: cutlist/cart.php:366
+#: cutlist/cart.php:48
+#: cutlist/cart.php:375
 msgid "Total parts"
 msgstr ""
 
 #: cutlist/cart.php:25
-#: cutlist/cart.php:43
+#: cutlist/cart.php:49
 msgid "Part area"
 msgstr ""
 
@@ -53,26 +53,26 @@ msgid "Total cuts"
 msgstr ""
 
 #: cutlist/cart.php:28
-#: cutlist/cart.php:44
-#: cutlist/cart.php:370
+#: cutlist/cart.php:50
+#: cutlist/cart.php:379
 msgid "Cut length price"
 msgstr ""
 
 #: cutlist/cart.php:29
-#: cutlist/cart.php:45
-#: cutlist/cart.php:371
+#: cutlist/cart.php:51
+#: cutlist/cart.php:380
 msgid "Price per part"
 msgstr ""
 
 #: cutlist/cart.php:30
-#: cutlist/cart.php:46
-#: cutlist/cart.php:369
+#: cutlist/cart.php:52
+#: cutlist/cart.php:378
 msgid "Banding price"
 msgstr ""
 
 #: cutlist/cart.php:31
-#: cutlist/cart.php:47
-#: cutlist/cart.php:372
+#: cutlist/cart.php:53
+#: cutlist/cart.php:381
 msgid "Cut to size surcharge"
 msgstr ""
 
@@ -81,42 +81,42 @@ msgid "Custom price"
 msgstr ""
 
 #: cutlist/cart.php:33
-#: cutlist/cart.php:48
-#: cutlist/cart.php:368
+#: cutlist/cart.php:54
+#: cutlist/cart.php:377
 msgid "Dimensions"
 msgstr ""
 
-#: cutlist/cart.php:34
-#: cutlist/cart.php:49
-#: cutlist/cart.php:373
+#: cutlist/cart.php:38
+#: cutlist/cart.php:59
+#: cutlist/cart.php:382
 msgid "Machining"
 msgstr ""
 
-#: cutlist/cart.php:35
-#: cutlist/cart.php:50
-#: cutlist/cart.php:374
+#: cutlist/cart.php:39
+#: cutlist/cart.php:60
+#: cutlist/cart.php:383
 msgid "Machining price"
 msgstr ""
 
-#: cutlist/cart.php:97
-#: cutlist/cart.php:367
-#: cutlist/cart.php:417
+#: cutlist/cart.php:106
+#: cutlist/cart.php:376
+#: cutlist/cart.php:426
 msgid "Include offcuts"
 msgstr ""
 
-#: cutlist/cart.php:140
+#: cutlist/cart.php:149
 msgid "This cut list is already in your cart."
 msgstr ""
 
-#: cutlist/cart.php:167
+#: cutlist/cart.php:176
 msgid "Add to cart process stopped."
 msgstr ""
 
-#: cutlist/cart.php:187
+#: cutlist/cart.php:196
 msgid "Yes"
 msgstr ""
 
-#: cutlist/cart.php:187
+#: cutlist/cart.php:196
 msgid "No"
 msgstr ""
 

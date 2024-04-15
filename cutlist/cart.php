@@ -19,7 +19,7 @@ function get_field_keys($inputs = false)
     if ($inputs) {
 
         //these get added as fields to the product page and added to each cart item
-        return  [
+        $fields = [
             __('Job ID', 'smartcut') => 'smartcut_job_id',
             __('Total parts', 'smartcut') => 'smartcut_total_parts',
             __('Part area', 'smartcut') => 'smartcut_part_area',
@@ -31,9 +31,15 @@ function get_field_keys($inputs = false)
             __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
             __('Custom price', 'smartcut') => 'smartcut_custom_price', //used to override the natural price
             __('Dimensions', 'smartcut') => 'smartcut_dimensions',
-            __('Machining', 'smartcut')  => 'smartcut_machining', //is machining present
-            __('Machining price', 'smartcut') => 'smartcut_machining_price',
+
         ];
+
+        if ($options['enable_machining'] === '1') {
+            $fields[__('Machining', 'smartcut')]  = 'smartcut_machining'; //is machining present
+            $fields[__('Machining price', 'smartcut')] = 'smartcut_machining_price';
+        }
+
+        return $fields;
     }
 
     //these fields get added to the order (underscore hides from the user but shows to the admin)
@@ -46,10 +52,13 @@ function get_field_keys($inputs = false)
         __('Banding price', 'smartcut') => 'smartcut_banding_price',
         __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
         __('Dimensions', 'smartcut') => 'smartcut_dimensions',
-        __('Machining', 'smartcut')  => 'smartcut_machining', //is machining present
-        __('Machining price', 'smartcut') => 'smartcut_machining_price',
 
     ];
+
+    if ($options['enable_machining'] === '1') {
+        $fields[__('Machining', 'smartcut')]  = 'smartcut_machining'; //is machining present
+        $fields[__('Machining price', 'smartcut')] = 'smartcut_machining_price';
+    }
 
     //the _ prefix prevents being shown to user https://stackoverflow.com/questions/62364016/woocommerce_add_custom_meta_as_hidden_order_item_meta_for_internal_use
     //[] consider a single zip

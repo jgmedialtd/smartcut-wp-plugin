@@ -7116,9 +7116,10 @@ class fo extends d0 {
   }
 }
 class Lt {
-  constructor(e, n) {
+  constructor(e, n, i = null) {
     v(this, "x");
     v(this, "y");
+    v(this, "z");
     v(this, "a");
     //shape id
     v(this, "b");
@@ -7130,7 +7131,7 @@ class Lt {
     v(this, "raycast");
     v(this, "collision");
     v(this, "tooClose");
-    this.x = parseFloat(e), this.y = parseFloat(n), this.validate();
+    this.x = parseFloat(e), this.y = parseFloat(n), this.z = parseFloat(i) || 0, this.validate();
   }
   clone(e = null, n = null) {
     const i = structuredClone(this), r = new Lt(e === null ? i.x : e, n === null ? i.y : n);
@@ -14333,7 +14334,8 @@ class Pk {
       text: "#ffffff"
     },
     options: k = {
-      disableClick: !1
+      disableClick: !1,
+      enableStretch: !0
     },
     vueComponent: S
   }) {
@@ -14368,6 +14370,7 @@ class Pk {
     v(this, "measurementScale", ct.scaleLinear());
     v(this, "xAxis");
     v(this, "yAxis");
+    v(this, "stretched");
     v(this, "shapeXAxis");
     v(this, "shapeYAxis");
     v(this, "cutMeasurementXAxes");
@@ -14421,7 +14424,7 @@ class Pk {
       return;
     const g = this.el.node();
     if (g !== null) {
-      this.htmlEl = g, this.vueComponent = S, this.env = ((b = S == null ? void 0 : S.gs) == null ? void 0 : b.env) === "development" ? "development" : "production", this.app = l || !1, this.embed = c || !1, this.height = u, this.width = f, this.device = l ? "app" : "desktop", this.elWidth = this.htmlEl.offsetWidth, this.elHeight = this.htmlEl.offsetHeight, this.w = 0, this.h = 0, this.padding = 0, this.mobileBreakpoint = 450, this.main = i, this.saw = a, this.cutMeasurementXAxes = [], this.cutMeasurementYAxes = [], this.axisSpacing = 16, this.flipY = h, this.flipX = p, y = {
+      this.htmlEl = g, this.vueComponent = S, this.env = ((b = S == null ? void 0 : S.gs) == null ? void 0 : b.env) === "development" ? "development" : "production", this.app = l || !1, this.embed = c || !1, this.height = u, this.width = f, this.device = l ? "app" : "desktop", this.stretched = !1, this.elWidth = this.htmlEl.offsetWidth, this.elHeight = this.htmlEl.offsetHeight, this.w = 0, this.h = 0, this.padding = 0, this.mobileBreakpoint = 450, this.main = i, this.saw = a, this.cutMeasurementXAxes = [], this.cutMeasurementYAxes = [], this.axisSpacing = 16, this.flipY = h, this.flipX = p, y = {
         ...y
       };
       for (const [w, _] of Object.entries(y))
@@ -14512,6 +14515,20 @@ class Pk {
   updateSize(e = !1) {
     return this.debounce(this._updateSize.bind(this), 10, e)();
   }
+  requiresStretch(e, n = null) {
+    return e ? (n === null && (n = e.w / e.l), n < 0.15) : !1;
+  }
+  setAspectRatio(e) {
+    if (e) {
+      this.w = this.elWidth;
+      const n = e.w / e.l;
+      this.xScale.domain([0, e.l]).range([this.padding, this.w - this.padding]), this.requiresStretch(e, n) && this.options.enableStretch ? (this.h = this.htmlEl.clientWidth * 0.15 + this.padding * 2, this.stretched = !0) : (this.h = this.xScale(e.getShortSide()) + this.padding, this.stretched = !1), this.yScale.domain([0, e.w]).range([this.padding, this.h - this.padding]), this.yAxisScale.domain(this.flipY ? [0, e.w] : [e.w, 0]).range([this.padding, this.h - this.padding]), this.yPositionScale.domain([0, e.w]).range(
+        this.flipY ? [this.padding, this.h - this.padding] : [this.h - this.padding, this.padding]
+      ), n > 2 && (this.w = this.htmlEl.clientWidth / n + this.padding * 2, this.xScale.domain([0, e.l]).range([this.padding, this.w - this.padding]), this.h = this.xScale(e.getShortSide()) + this.padding), this.xPositionScale.domain([0, e.l]).range(
+        this.flipX ? [this.w - this.padding, this.padding] : [this.padding, this.w - this.padding]
+      ), this.measurementScale.domain([0, e.l]).range([0, this.w - this.padding * 2]), this.w > 0 && this.h > 0 && (n > 2 ? this.el.style("width", this.w + "px") : this.el.style("width", ""), this.el.style("height", this.h + "px"));
+    }
+  }
   _updateSize() {
     if (!this.htmlEl || this.htmlEl.style.display === "none")
       return;
@@ -14519,29 +14536,16 @@ class Pk {
     const e = At.call(this.vueComponent, ["stockList"]), n = At.call(this.vueComponent, ["shapeList"]);
     if (!(e != null && e.length) || !(n != null && n.length))
       return !1;
-    this.setDevice();
-    const [i, r] = this.findLargestStockDimensions();
-    if (!(i != null && i.l) || !(r != null && r.w))
-      return !1;
-    if (r && i) {
-      this.w = this.elWidth;
-      const s = i.w / i.l;
-      this.xScale.domain([0, i.l]).range([this.padding, this.w - this.padding]), s < 0.15 ? this.h = this.htmlEl.clientWidth * 0.15 + this.padding * 2 : this.h = this.xScale(i.getShortSide()) + this.padding, this.yScale.domain([0, r.w]).range([this.padding, this.h - this.padding]), this.yAxisScale.domain(this.flipY ? [0, r.w] : [r.w, 0]).range([this.padding, this.h - this.padding]), this.yPositionScale.domain([0, r.w]).range(
-        this.flipY ? [this.padding, this.h - this.padding] : [this.h - this.padding, this.padding]
-      ), s > 2 && (this.w = this.htmlEl.clientWidth / s + this.padding * 2, this.xScale.domain([0, i.l]).range([this.padding, this.w - this.padding]), this.h = this.xScale(i.getShortSide()) + this.padding), this.xPositionScale.domain([0, i.l]).range(
-        this.flipX ? [this.w - this.padding, this.padding] : [this.padding, this.w - this.padding]
-      ), this.measurementScale.domain([0, i.l]).range([0, this.w - this.padding * 2]), this.w > 0 && this.h > 0 && (s > 2 ? this.el.style("width", this.w + "px") : this.el.style("width", ""), this.el.style("height", this.h + "px"));
-    }
-    this.refreshStock(), this.refreshShapes();
+    this.setDevice(), this.refreshStock(), this.refreshShapes();
   }
   refreshStock() {
     const e = At.call(this.vueComponent, ["stockList"]);
     if (!(e != null && e.length))
       return !1;
     const n = At.call(this.vueComponent, ["activeStock"]);
-    this.initStock(n), this.resetCuts();
+    this.initStock(n);
     const i = At.call(this.vueComponent, ["activeCuts"]);
-    this.initCuts(i), this.resetSegments();
+    this.initCuts(i);
     const r = At.call(this.vueComponent, [
       "activeSegments"
     ]);
@@ -14557,37 +14561,44 @@ class Pk {
   }
   //init or update the stock
   initStock(e) {
-    if (this.resetStock(), !e || !(e != null && e.w) || !(e != null && e.l) || !this.elWidth)
+    if (this.resetStock(), this.setAspectRatio(e), !e || !(e != null && e.w) || !(e != null && e.l) || !this.elWidth)
       return !1;
     this.stockType = e.type;
     let n;
-    const [i, r] = this.findLargestStockDimensions();
-    if (!(i != null && i.l) || !(r != null && r.w))
-      return !1;
-    typeof e == "object" && (n = [e]), this.device === "desktop" && this.main && (this.xAxis = this.axisGroup.append("g").attr("transform", `translate(0, ${this.padding})`).attr("class", "axis stock x").call(ct.axisTop(this.xScale).ticks(5).tickSize(2)).selectAll("text").attr("dy", -5), this.yAxis = this.axisGroup.append("g").attr("transform", `translate(${this.w - this.padding}, 0)`).attr("class", "axis stock y").call(ct.axisRight(this.yAxisScale).ticks(5).tickSize(2)).selectAll("text").attr("dx", 5)), this.stockGroup.data(n).attr(
+    if (typeof e == "object" && (n = [e]), this.device === "desktop" && this.main) {
+      this.xAxis = this.axisGroup.append("g").attr("transform", `translate(0, ${this.padding})`).attr("class", "axis stock x").call(ct.axisTop(this.xScale).ticks(5).tickSize(2)).selectAll("text").attr("dy", -5);
+      const i = this.requiresStretch(e);
+      (!i || i && this.stretched) && (this.yAxis = this.axisGroup.append("g").attr(
+        "transform",
+        `translate(${this.w - this.padding}, 0)`
+      ).attr("class", "axis stock y").call(
+        ct.axisRight(this.yAxisScale).ticks(5).tickSize(2)
+      ).selectAll("text").attr("dx", 5));
+    }
+    this.stockGroup.data(n).attr(
       "transform",
       () => `translate(${this.padding},${this.padding})`
-    ), this.stockGroup.append("rect").attr("class", "background stock-area").attr("width", this.getWidthAttribute(i)).attr("height", this.getHeightAttribute(i)), this.stockGroup.append("rect").attr("class", "background stock").style("fill", this.colors.stock).attr("width", (s) => this.getWidthAttribute(s)).attr("height", (s) => this.getHeightAttribute(s)).attr("x", (s) => {
-      s.x = 0;
-      const o = s.x;
-      s.x = 0;
-      const a = this.getRectangleCoordinate(s, "x") - this.padding;
-      return s.x = o, a;
-    }).attr("y", (s) => {
-      s.y = 0;
-      const o = s.y;
-      s.y = 0;
-      const a = this.getRectangleCoordinate(s, "y") - this.padding;
-      return s.y = o, a;
-    }), this.stock = this.stockGroup.append("rect").attr("width", (s) => this.getWidthAttribute(s)).attr("height", (s) => this.getHeightAttribute(s)).attr(
+    ), this.stockGroup.append("rect").attr("class", "background stock").style("fill", this.colors.stock).attr("width", (i) => this.getWidthAttribute(i)).attr("height", (i) => this.getHeightAttribute(i)).attr("x", (i) => {
+      i.x = 0;
+      const r = i.x;
+      i.x = 0;
+      const s = this.getRectangleCoordinate(i, "x") - this.padding;
+      return i.x = r, s;
+    }).attr("y", (i) => {
+      i.y = 0;
+      const r = i.y;
+      i.y = 0;
+      const s = this.getRectangleCoordinate(i, "y") - this.padding;
+      return i.y = r, s;
+    }), this.stock = this.stockGroup.append("rect").attr("width", (i) => this.getWidthAttribute(i)).attr("height", (i) => this.getHeightAttribute(i)).attr(
       "x",
-      (s) => this.getRectangleCoordinate(s, "x") - this.padding
+      (i) => this.getRectangleCoordinate(i, "x") - this.padding
     ).attr(
       "y",
-      (s) => this.getRectangleCoordinate(s, "y") - this.padding
+      (i) => this.getRectangleCoordinate(i, "y") - this.padding
     ).attr("class", "stock-pattern").style(
       "fill",
-      (s) => s != null && s.grain ? `url(#grain-${s.grain.toLowerCase()})` : "url(#stripes)"
+      (i) => i != null && i.grain ? `url(#grain-${i.grain.toLowerCase()})` : "url(#stripes)"
     );
   }
   getWidthAttribute(e) {
@@ -15139,7 +15150,7 @@ class Pk {
   initCuts(e) {
     if (!e || !(e != null && e.length) || !this.main || !this.elWidth)
       return !1;
-    this.cuts = this.cutGroup.selectAll("line").data(e).join("line").attr("class", "cut").attr("stroke-width", (n) => {
+    this.resetCuts(), this.cuts = this.cutGroup.selectAll("line").data(e).join("line").attr("class", "cut").attr("stroke-width", (n) => {
       const i = this.measurementScale(
         this.getBladeWidth(n.stock)
       );
@@ -15150,7 +15161,7 @@ class Pk {
   initSegments(e) {
     if (!e || !(e != null && e.length) || !this.main || !this.elWidth)
       return !1;
-    this.segments = this.segmentGroup.selectAll("rect").data(e).join("rect").attr("class", "segment").style("opacity", (n) => {
+    this.resetSegments(), this.segments = this.segmentGroup.selectAll("rect").data(e).join("rect").attr("class", "segment").style("opacity", (n) => {
       if ((n == null ? void 0 : n.offcut) === !0)
         return 0.5;
     }).classed("offcut", (n) => n.offcut).classed("merged", (n) => n.merged).classed("near", (n) => n.shapePosition === "near").classed("far", (n) => n.shapePosition === "far").classed("completed", (n) => n.completed).attr("x", (n) => this.getRectangleCoordinate(n, "x")).attr("y", (n) => this.getRectangleCoordinate(n, "y")).attr("width", (n) => this.getWidthAttribute(n)).attr("height", (n) => this.getHeightAttribute(n)), !this.app && this.env === "development" && (this.segments.on("mousedown", function(n, i) {
@@ -15564,11 +15575,10 @@ function Bk() {
   const e = At.call(this, ["stockList"]);
   if (!(e != null && e.length))
     return !1;
-  t.resetStock();
   const n = At.call(this, ["activeStock"]);
-  t.initStock(n), t.resetCuts();
+  t.initStock(n);
   const i = At.call(this, ["activeCuts"]);
-  t.initCuts(i), t.resetSegments();
+  t.initCuts(i);
   const r = At.call(this, ["activeSegments"]);
   t.initSegments(r), t.resetPositions(), typeof this.toggleSegments == "function" && this.toggleSegments(!1), this != null && this.cutMode && (this == null || this.showCut(0));
 }
@@ -16005,8 +16015,8 @@ function ES(t) {
   return t.machining ? (n = (e = t.machining) == null ? void 0 : e.holes) != null && n.length || (r = (i = t.machining) == null ? void 0 : i.hingeHoles) != null && r.length ? !0 : (o = (s = t.machining) == null ? void 0 : s.corners) != null && o.length ? (l = (a = t.machining) == null ? void 0 : a.corners) == null ? void 0 : l.some((c) => c.type && c.size) : !1 : !1;
 }
 const TS = /* @__PURE__ */ nl(
-  () => import("./Machining-cyRvCFzE.js")
-), AS = /* @__PURE__ */ nl(() => import("./Import-DCSyfMRi.js")), rp = {
+  () => import("./Machining-Ckmi9rVf.js")
+), AS = /* @__PURE__ */ nl(() => import("./Import-C9ChKa_z.js")), rp = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: Zk,
@@ -16957,7 +16967,7 @@ function of(t) {
     }
   });
 }
-const $l = (t) => (Am("data-v-2f269590"), t = t(), Cm(), t), CS = {
+const $l = (t) => (Am("data-v-7a04fdc4"), t = t(), Cm(), t), CS = {
   id: "shape-input",
   class: "inputs no-margin-top grid-table"
 }, OS = /* @__PURE__ */ $l(() => /* @__PURE__ */ st("div", { class: "cell" }, null, -1)), PS = {
@@ -17288,6 +17298,7 @@ function x2(t, e, n, i, r, s) {
               ])), 128))
             ]),
             st("button", {
+              type: "button",
               class: "delete icon-left",
               "aria-label": i.t("delete banding"),
               onClick: (_) => s.deleteBanding(b)
@@ -17370,7 +17381,7 @@ function x2(t, e, n, i, r, s) {
   ], 64);
 }
 typeof of == "function" && of(rp);
-const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-2f269590"]]), S2 = {
+const k2 = /* @__PURE__ */ oi(rp, [["render", x2], ["__scopeId", "data-v-7a04fdc4"]]), S2 = {
   name: "Wordpress",
   //needs to be Wordpress not WordPress
   components: {
@@ -17976,7 +17987,7 @@ function E2(t, e, n, i, r, s) {
     onResult: s.result
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
-const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-Fj4ouWD-.js")), C2 = /* @__PURE__ */ ri({
+const T2 = /* @__PURE__ */ oi(S2, [["render", E2]]), A2 = /* @__PURE__ */ nl(() => import("./Vanilla-BVTsh0ex.js")), C2 = /* @__PURE__ */ ri({
   name: "Launch",
   components: {
     Wordpress: T2,
