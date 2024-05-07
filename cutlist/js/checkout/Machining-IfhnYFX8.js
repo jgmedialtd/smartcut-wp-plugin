@@ -1,7 +1,7 @@
 var W = Object.defineProperty;
 var L = (t, e, s) => e in t ? W(t, e, { enumerable: !0, configurable: !0, writable: !0, value: s }) : t[e] = s;
 var c = (t, e, s) => (L(t, typeof e != "symbol" ? e + "" : e, s), s);
-import { d as S, a as u, v as k, m as F, g as z, b as P, e as M, i as Y, f as A, s as V, h as O, j as B, _ as G, r as E, o as l, k as h, l as o, n as w, t as f, p as y, q as H, F as v, u as x, w as T, x as U, y as _, z as D, A as C, B as j, D as R } from "./main-CSm4HxgH.js";
+import { d as S, a as u, v as k, m as F, g as z, b as P, e as M, i as Y, f as A, s as V, h as O, j as B, _ as G, r as E, o as l, k as h, l as o, n as w, t as f, p as y, q as H, F as v, u as x, w as T, x as U, y as _, z as D, A as C, B as j, D as R } from "./main-BKxqokZO.js";
 class N {
   constructor({
     HTMLElement: e,
@@ -418,7 +418,9 @@ const q = {
               min: () => typeof this.options.holes.minDiameter < "u" ? u(this.options.holes.minDiameter) : 0,
               max: this.getMaxHoleDiameter(),
               childType: (e = this.options.holes.diameters) != null && e.length ? "number" : void 0,
-              options: (s = this.options.holes.diameters) != null && s.length ? this.getSelectOptions(this.options.holes.diameters) : void 0
+              options: (s = this.options.holes.diameters) != null && s.length ? this.getSelectOptions(
+                this.options.holes.diameters
+              ) : void 0
             },
             depth: {
               enabled: this.options.holes.enableDepth && typeof this.shape.t < "u" && u(this.shape.t) > 0,
@@ -427,7 +429,9 @@ const q = {
               min: () => typeof this.options.holes.minDepth < "u" ? u(this.options.holes.minDepth) : 0,
               max: this.getMaxHoleDepth(),
               childType: (a = this.options.holes.depths) != null && a.length ? "number" : void 0,
-              options: (i = this.options.holes.depths) != null && i.length ? this.getSelectOptions(this.options.holes.depths) : void 0
+              options: (i = this.options.holes.depths) != null && i.length ? this.getSelectOptions(
+                this.options.holes.depths
+              ) : void 0
             },
             side: {
               enabled: this.options.sides.enabled,
@@ -464,7 +468,9 @@ const q = {
               min: () => typeof this.options.holes.minDepth < "u" ? u(this.options.holes.minDepth) : 0,
               max: this.getMaxHoleDepth(),
               childType: (r = this.options.holes.depths) != null && r.length ? "number" : void 0,
-              options: (d = this.options.holes.depths) != null && d.length ? this.getSelectOptions(this.options.holes.depths) : void 0
+              options: (d = this.options.holes.depths) != null && d.length ? this.getSelectOptions(
+                this.options.holes.depths
+              ) : void 0
             },
             //[] separate option for hinges
             diameter: {
@@ -474,7 +480,9 @@ const q = {
               min: () => typeof this.options.holes.minDiameter < "u" ? u(this.options.holes.minDiameter) : 0,
               max: this.getMaxHoleDiameter(),
               childType: (m = this.options.holes.diameters) != null && m.length ? "number" : void 0,
-              options: (b = this.options.holes.diameters) != null && b.length ? this.getSelectOptions(this.options.holes.diameters) : void 0
+              options: (b = this.options.holes.diameters) != null && b.length ? this.getSelectOptions(
+                this.options.holes.diameters
+              ) : void 0
             },
             numHoles: {
               enabled: !0,
@@ -540,7 +548,9 @@ const q = {
               label: "Type",
               type: "select",
               childType: "string",
-              options: this.getSelectOptions(this.options.corners.types)
+              options: this.getSelectOptions(
+                this.options.corners.types
+              )
             },
             size: {
               enabled: !0,
@@ -602,53 +612,69 @@ const q = {
             enabled: this.options.banding.enableCorners,
             type: "select",
             label: "A",
-            options: this.getSelectOptions(this.options.banding.types),
+            options: this.getSelectOptions(
+              this.options.banding.types
+            ),
             disabled: () => !this.shape.machining.corners[0].size
           },
           b: {
             enabled: this.options.banding.enableCorners,
             type: "select",
             label: "B",
-            options: this.getSelectOptions(this.options.banding.types),
+            options: this.getSelectOptions(
+              this.options.banding.types
+            ),
             disabled: () => !this.shape.machining.corners[1].size
           },
           c: {
             enabled: this.options.banding.enableCorners,
             type: "select",
             label: "C",
-            options: this.getSelectOptions(this.options.banding.types),
+            options: this.getSelectOptions(
+              this.options.banding.types
+            ),
             disabled: () => !this.shape.machining.corners[2].size
           },
           d: {
             enabled: this.options.banding.enableCorners,
             type: "select",
             label: "D",
-            options: this.getSelectOptions(this.options.banding.types),
+            options: this.getSelectOptions(
+              this.options.banding.types
+            ),
             disabled: () => !this.shape.machining.corners[3].size
           },
           y1: {
             enabled: !0,
             type: "select",
             label: "L1",
-            options: this.getSelectOptions(this.options.banding.types)
+            options: this.getSelectOptions(
+              this.options.banding.types
+            )
           },
           y2: {
             enabled: !0,
             type: "select",
             label: "L2",
-            options: this.getSelectOptions(this.options.banding.types)
+            options: this.getSelectOptions(
+              this.options.banding.types
+            )
           },
           x1: {
             enabled: !0,
             type: "select",
             label: "W1",
-            options: this.getSelectOptions(this.options.banding.types)
+            options: this.getSelectOptions(
+              this.options.banding.types
+            )
           },
           x2: {
             enabled: !0,
             type: "select",
             label: "W2",
-            options: this.getSelectOptions(this.options.banding.types)
+            options: this.getSelectOptions(
+              this.options.banding.types
+            )
           }
         }
       }
@@ -703,7 +729,9 @@ const q = {
         this.fieldDefinitions[this.currentPrimary][this.currentSecondary]
       ).filter(
         (t) => this.fieldDefinitions[this.currentPrimary][this.currentSecondary][t].enabled
-      ) : this.currentPrimary ? Object.keys(this.fieldDefinitions[this.currentPrimary]).filter(
+      ) : this.currentPrimary ? Object.keys(
+        this.fieldDefinitions[this.currentPrimary]
+      ).filter(
         (t) => this.fieldDefinitions[this.currentPrimary][t].enabled
       ) : [];
     },
@@ -1019,7 +1047,10 @@ const q = {
     remove(t) {
       switch (this.currentSecondary) {
         case "holes":
-          return this.localShape.machining.holes.splice(t, 1);
+          return this.localShape.machining.holes.splice(
+            t,
+            1
+          );
         case "hingeHoles":
           return this.localShape.machining.hingeHoles.splice(
             t,
@@ -1083,7 +1114,9 @@ const q = {
       }
     },
     getValidationMessages(t) {
-      const e = this.validationMessages.filter((s) => s.index === t);
+      const e = this.validationMessages.filter(
+        (s) => s.index === t
+      );
       return e.length ? e.map((s) => s.message) : [];
     }
   }
@@ -1239,7 +1272,10 @@ function Ve(t, e, s, p, a, i) {
                 id: "banding-" + r,
                 "onUpdate:modelValue": (d) => i.localShape.banding[r] = d,
                 type: "checkbox",
-                disabled: i.isFieldDisabled(i.currentFields[r], void 0)
+                disabled: i.isFieldDisabled(
+                  i.currentFields[r],
+                  void 0
+                )
               }, null, 8, fe), [
                 [
                   D,
@@ -1258,11 +1294,17 @@ function Ve(t, e, s, p, a, i) {
                 "onUpdate:modelValue": (d) => i.localShape.bandingType[r] = d,
                 "aria-label": "Banding type"
               }, [
-                o("option", xe, f(i.isFieldDisabled(i.currentFields[r], void 0) ? "N/A" : "Select type"), 1),
+                o("option", xe, f(i.isFieldDisabled(
+                  i.currentFields[r],
+                  void 0
+                ) ? "N/A" : "Select type"), 1),
                 (l(!0), h(v, null, x(a.bandingTypes, (d) => (l(), h("option", {
                   key: d,
                   value: d.toLowerCase(),
-                  disabled: i.isFieldDisabled(i.currentFields[r], void 0)
+                  disabled: i.isFieldDisabled(
+                    i.currentFields[r],
+                    void 0
+                  )
                 }, f(d.toUpperCase()), 9, He))), 128))
               ], 8, ve), [
                 [
@@ -1284,7 +1326,9 @@ function Ve(t, e, s, p, a, i) {
                 w(g, { icon: ["fass", "trash"] })
               ])
             ], 8, Te),
-            (l(!0), h(v, null, x(i.getValidationMessages(r), (d, n) => (l(), h("div", {
+            (l(!0), h(v, null, x(i.getValidationMessages(
+              r
+            ), (d, n) => (l(), h("div", {
               key: n,
               class: "group validation",
               style: _({
@@ -1330,7 +1374,10 @@ function Ve(t, e, s, p, a, i) {
                 "onUpdate:modelValue": (b) => r[n] = b,
                 type: i.getInputType(i.currentFields[n]),
                 inputmode: i.getInputMode(i.currentFields[n]),
-                disabled: i.isFieldDisabled(i.currentFields[n], d),
+                disabled: i.isFieldDisabled(
+                  i.currentFields[n],
+                  d
+                ),
                 placeholder: i.currentFields[n].label ?? n,
                 min: i.getMinValue(i.currentFields[n]),
                 max: i.getMaxValue(i.currentFields[n])
@@ -1349,7 +1396,10 @@ function Ve(t, e, s, p, a, i) {
                 id: n + "-" + m,
                 "onUpdate:modelValue": (b) => r[n] = b,
                 type: "checkbox",
-                disabled: i.isFieldDisabled(i.currentFields[n], d)
+                disabled: i.isFieldDisabled(
+                  i.currentFields[n],
+                  d
+                )
               }, null, 8, Le)), [
                 [D, r[n]]
               ]) : i.currentFields[n].type === "select" ? T((l(), h("select", {
@@ -1385,7 +1435,9 @@ function Ve(t, e, s, p, a, i) {
                 w(g, { icon: ["fass", "trash"] })
               ])
             ], 8, Pe),
-            (l(!0), h(v, null, x(i.getValidationMessages(d), (n, m) => (l(), h("div", {
+            (l(!0), h(v, null, x(i.getValidationMessages(
+              d
+            ), (n, m) => (l(), h("div", {
               key: m,
               class: "group validation",
               style: _({

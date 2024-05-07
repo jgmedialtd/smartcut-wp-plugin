@@ -1,5 +1,5 @@
-import { _ as ke, o as we, k as be, l as De, t as Re, q as Oe, E as Ie, G as Te, H as Fe, I as Se, J as ye, r as Le, n as Ae, K as ve } from "./main-CSm4HxgH.js";
-const Me = {
+import { m as Re, _ as ke, o as we, k as be, l as De, t as Oe, q as Ie, E as Te, G as Fe, H as Se, I as Le, J as ye, r as Ae, n as Me, K as ve } from "./main-BKxqokZO.js";
+const qe = {
   name: "Drop",
   props: {
     requiredType: {
@@ -24,7 +24,8 @@ const Me = {
     return {
       dropClass: null,
       events: ["dragenter", "dragover", "dragleave", "dragend", "drop"],
-      loadingProgress: 0
+      loadingProgress: 0,
+      files: Re([])
     };
   },
   mounted() {
@@ -56,7 +57,7 @@ const Me = {
       }
       this.requiredType && (c.every((h) => h.type === this.requiredType) || alert(
         "We did not detect a valid file type - this might be safe to ignore"
-      )), this.files = [];
+      )), this.files.length = 0;
       for (let h = 0; h < c.length; h++) {
         const u = c[h];
         let g;
@@ -74,25 +75,25 @@ const Me = {
         const H = h / c.length * 100;
         this.loadingProgress = H;
       }
-      this.$emit("drop", this.files);
+      this.$emit("drop", structuredClone(this.files)), this.files.length = 0;
     },
     eventHandler(i) {
       this.dropClass = (i == null ? void 0 : i.type) ?? null, i.preventDefault();
     }
   }
 };
-function qe(i, c, h, u, g, F) {
+function Pe(i, c, h, u, g, F) {
   return we(), be("div", {
     id: "drop",
-    class: Oe({ thinking: h.thinking, [g.dropClass]: !0 }),
-    onDrop: c[0] || (c[0] = Ie((...H) => F.onDrop && F.onDrop(...H), ["prevent"]))
+    class: Ie({ thinking: h.thinking, [g.dropClass]: !0 }),
+    onDrop: c[0] || (c[0] = Te((...H) => F.onDrop && F.onDrop(...H), ["prevent"]))
   }, [
-    De("div", null, Re(h.thinking ? "Loading, please wait..." : h.label), 1)
+    De("div", null, Oe(h.thinking ? "Loading, please wait..." : h.label), 1)
   ], 34);
 }
-const Pe = /* @__PURE__ */ ke(Me, [["render", qe]]);
-var ze = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function He(i) {
+const ze = /* @__PURE__ */ ke(qe, [["render", Pe]]);
+var He = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function Ue(i) {
   return i && i.__esModule && Object.prototype.hasOwnProperty.call(i, "default") ? i.default : i;
 }
 var Ee = { exports: {} };
@@ -105,7 +106,7 @@ License: MIT
 (function(i, c) {
   (function(h, u) {
     i.exports = u();
-  })(ze, function h() {
+  })(He, function h() {
     var u = typeof self < "u" ? self : typeof window < "u" ? window : u !== void 0 ? u : {}, g = !u.document && !!u.postMessage, F = u.IS_PAPA_WORKER || !1, H = {}, he = 0, p = { parse: function(t, e) {
       var r = (e = e || {}).dynamicTyping || !1;
       if (v(r) && (e.dynamicTypingFunction = r, r = {}), e.dynamicTyping = r, e.transform = !!v(e.transform) && e.transform, e.worker && p.WORKERS_SUPPORTED) {
@@ -123,7 +124,7 @@ License: MIT
       }(t), a = e.download ? new ae(e) : new ne(e)) : t.readable === !0 && v(t.read) && v(t.on) ? a = new ue(e) : (u.File && t instanceof File || t instanceof Object) && (a = new oe(e)), a.stream(t);
     }, unparse: function(t, e) {
       var r = !1, n = !0, a = ",", f = `\r
-`, m = '"', A = m + m, x = !1, o = null, R = !1;
+`, m = '"', A = m + m, x = !1, o = null, D = !1;
       (function() {
         if (typeof e == "object") {
           if (typeof e.delimiter != "string" || p.BAD_DELIMITERS.filter(function(s) {
@@ -133,7 +134,7 @@ License: MIT
               throw new Error("Option columns is empty");
             o = e.columns;
           }
-          e.escapeChar !== void 0 && (A = e.escapeChar + m), (typeof e.escapeFormulae == "boolean" || e.escapeFormulae instanceof RegExp) && (R = e.escapeFormulae instanceof RegExp ? e.escapeFormulae : /^[=+\-@\t\r].*$/);
+          e.escapeChar !== void 0 && (A = e.escapeChar + m), (typeof e.escapeFormulae == "boolean" || e.escapeFormulae instanceof RegExp) && (D = e.escapeFormulae instanceof RegExp ? e.escapeFormulae : /^[=+\-@\t\r].*$/);
         }
       })();
       var d = new RegExp(se(m), "g");
@@ -146,13 +147,13 @@ License: MIT
         return typeof t.data == "string" && (t.data = JSON.parse(t.data)), Array.isArray(t.data) && (t.fields || (t.fields = t.meta && t.meta.fields || o), t.fields || (t.fields = Array.isArray(t.data[0]) ? t.fields : typeof t.data[0] == "object" ? Object.keys(t.data[0]) : []), Array.isArray(t.data[0]) || typeof t.data[0] == "object" || (t.data = [t.data])), K(t.fields || [], t.data || [], x);
       throw new Error("Unable to serialize unrecognized input");
       function K(s, b, P) {
-        var D = "";
+        var R = "";
         typeof s == "string" && (s = JSON.parse(s)), typeof b == "string" && (b = JSON.parse(b));
         var M = Array.isArray(s) && 0 < s.length, S = !Array.isArray(b[0]);
         if (M && n) {
           for (var L = 0; L < s.length; L++)
-            0 < L && (D += a), D += q(s[L], L);
-          0 < b.length && (D += f);
+            0 < L && (R += a), R += q(s[L], L);
+          0 < b.length && (R += f);
         }
         for (var l = 0; l < b.length; l++) {
           var _ = M ? s.length : b[l].length, E = !1, T = M ? Object.keys(b[l]).length === 0 : b[l].length === 0;
@@ -165,14 +166,14 @@ License: MIT
           }
           if (!E) {
             for (var w = 0; w < _; w++) {
-              0 < w && !T && (D += a);
+              0 < w && !T && (R += a);
               var W = M && S ? s[w] : w;
-              D += q(b[l][W], w);
+              R += q(b[l][W], w);
             }
-            l < b.length - 1 && (!P || 0 < _ && !T) && (D += f);
+            l < b.length - 1 && (!P || 0 < _ && !T) && (R += f);
           }
         }
-        return D;
+        return R;
       }
       function q(s, b) {
         if (s == null)
@@ -180,14 +181,14 @@ License: MIT
         if (s.constructor === Date)
           return JSON.stringify(s).slice(1, 25);
         var P = !1;
-        R && typeof s == "string" && R.test(s) && (s = "'" + s, P = !0);
-        var D = s.toString().replace(d, A);
+        D && typeof s == "string" && D.test(s) && (s = "'" + s, P = !0);
+        var R = s.toString().replace(d, A);
         return (P = P || r === !0 || typeof r == "function" && r(s, b) || Array.isArray(r) && r[b] || function(M, S) {
           for (var L = 0; L < S.length; L++)
             if (-1 < M.indexOf(S[L]))
               return !0;
           return !1;
-        }(D, p.BAD_DELIMITERS) || -1 < D.indexOf(a) || D.charAt(0) === " " || D.charAt(D.length - 1) === " ") ? m + D + m : D;
+        }(R, p.BAD_DELIMITERS) || -1 < R.indexOf(a) || R.charAt(0) === " " || R.charAt(R.length - 1) === " ") ? m + R + m : R;
       }
     } };
     if (p.RECORD_SEP = "", p.UNIT_SEP = "", p.BYTE_ORDER_MARK = "\uFEFF", p.BAD_DELIMITERS = ["\r", `
@@ -205,14 +206,14 @@ License: MIT
           if (r.length !== 0) {
             var f, m, A, x, o = r[0];
             if (v(t.before)) {
-              var R = t.before(o.file, o.inputElem);
-              if (typeof R == "object") {
-                if (R.action === "abort")
-                  return f = "AbortError", m = o.file, A = o.inputElem, x = R.reason, void (v(t.error) && t.error({ name: f }, m, A, x));
-                if (R.action === "skip")
+              var D = t.before(o.file, o.inputElem);
+              if (typeof D == "object") {
+                if (D.action === "abort")
+                  return f = "AbortError", m = o.file, A = o.inputElem, x = D.reason, void (v(t.error) && t.error({ name: f }, m, A, x));
+                if (D.action === "skip")
                   return void a();
-                typeof R.config == "object" && (o.instanceConfig = ie.extend(o.instanceConfig, R.config));
-              } else if (R === "skip")
+                typeof D.config == "object" && (o.instanceConfig = ie.extend(o.instanceConfig, D.config));
+              } else if (D === "skip")
                 return void a();
             }
             var d = o.instanceConfig.complete;
@@ -357,14 +358,14 @@ License: MIT
       }, this);
     }
     function pe(t) {
-      var e, r, n, a = Math.pow(2, 53), f = -a, m = /^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/, A = /^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/, x = this, o = 0, R = 0, d = !1, K = !1, q = [], s = { data: [], errors: [], meta: {} };
+      var e, r, n, a = Math.pow(2, 53), f = -a, m = /^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/, A = /^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/, x = this, o = 0, D = 0, d = !1, K = !1, q = [], s = { data: [], errors: [], meta: {} };
       if (v(t.step)) {
         var b = t.step;
         t.step = function(l) {
           if (s = l, M())
-            D();
+            R();
           else {
-            if (D(), s.data.length === 0)
+            if (R(), s.data.length === 0)
               return;
             o += l.data.length, t.preview && o > t.preview ? r.abort() : (s.data = s.data[0], b(s, x));
           }
@@ -373,7 +374,7 @@ License: MIT
       function P(l) {
         return t.skipEmptyLines === "greedy" ? l.join("").trim() === "" : l.length === 1 && l[0].length === 0;
       }
-      function D() {
+      function R() {
         return s && n && (L("Delimiter", "UndetectableDelimiter", "Unable to auto-detect delimiting character; defaulted to '" + p.DefaultDelimiter + "'"), n = !1), t.skipEmptyLines && (s.data = s.data.filter(function(l) {
           return !P(l);
         })), M() && function() {
@@ -397,10 +398,10 @@ License: MIT
               var O = k, w = E[k];
               t.header && (O = k >= q.length ? "__parsed_extra" : q[k]), t.transform && (w = t.transform(w, O)), w = S(O, w), O === "__parsed_extra" ? (z[O] = z[O] || [], z[O].push(w)) : z[O] = w;
             }
-            return t.header && (k > q.length ? L("FieldMismatch", "TooManyFields", "Too many fields: expected " + q.length + " fields but parsed " + k, R + T) : k < q.length && L("FieldMismatch", "TooFewFields", "Too few fields: expected " + q.length + " fields but parsed " + k, R + T)), z;
+            return t.header && (k > q.length ? L("FieldMismatch", "TooManyFields", "Too many fields: expected " + q.length + " fields but parsed " + k, D + T) : k < q.length && L("FieldMismatch", "TooFewFields", "Too few fields: expected " + q.length + " fields but parsed " + k, D + T)), z;
           }
           var _ = 1;
-          return !s.data.length || Array.isArray(s.data[0]) ? (s.data = s.data.map(l), _ = s.data.length) : s.data = l(s.data, 0), t.header && s.meta && (s.meta.fields = q), R += _, s;
+          return !s.data.length || Array.isArray(s.data[0]) ? (s.data = s.data.map(l), _ = s.data.length) : s.data = l(s.data, 0), t.header && s.meta && (s.meta.fields = q), D += _, s;
         }();
       }
       function M() {
@@ -458,7 +459,7 @@ License: MIT
           k.successful ? t.delimiter = k.bestDelimiter : (n = !0, t.delimiter = p.DefaultDelimiter), s.meta.delimiter = t.delimiter;
         }
         var z = fe(t);
-        return t.preview && t.header && z.preview++, e = l, r = new de(z), s = r.parse(e, _, E), D(), d ? { meta: { paused: !0 } } : s || { meta: { paused: !1 } };
+        return t.preview && t.header && z.preview++, e = l, r = new de(z), s = r.parse(e, _, E), R(), d ? { meta: { paused: !0 } } : s || { meta: { paused: !1 } };
       }, this.paused = function() {
         return d;
       }, this.pause = function() {
@@ -482,11 +483,11 @@ License: MIT
 ` && n !== "\r" && n !== `\r
 ` && (n = `
 `);
-      var o = 0, R = !1;
+      var o = 0, D = !1;
       this.parse = function(d, K, q) {
         if (typeof d != "string")
           throw new Error("Input must be a string");
-        var s = d.length, b = r.length, P = n.length, D = a.length, M = v(f), S = [], L = [], l = [], _ = o = 0;
+        var s = d.length, b = r.length, P = n.length, R = a.length, M = v(f), S = [], L = [], l = [], _ = o = 0;
         if (!d)
           return j();
         if (t.header && !K) {
@@ -510,9 +511,9 @@ License: MIT
               o += n.length;
             else if (q)
               return j();
-            if (!a || l.substring(0, D) !== a) {
+            if (!a || l.substring(0, R) !== a) {
               if (M) {
-                if (S = [], te(l.split(r)), le(), R)
+                if (S = [], te(l.split(r)), le(), D)
                   return j();
               } else
                 te(l.split(r));
@@ -524,7 +525,7 @@ License: MIT
         }
         for (var C = d.indexOf(r, o), I = d.indexOf(n, o), ee = new RegExp(se(x) + se(e), "g"), y = d.indexOf(e, o); ; )
           if (d[o] !== e)
-            if (a && l.length === 0 && d.substring(o, o + D) === a) {
+            if (a && l.length === 0 && d.substring(o, o + R) === a) {
               if (I === -1)
                 return j();
               o = I + P, I = d.indexOf(n, o), C = d.indexOf(r, o);
@@ -533,7 +534,7 @@ License: MIT
             else {
               if (I === -1)
                 break;
-              if (l.push(d.substring(o, I)), X(I + P), M && (le(), R))
+              if (l.push(d.substring(o, I)), X(I + P), M && (le(), D))
                 return j();
               if (m && S.length >= m)
                 return j(!0);
@@ -554,7 +555,7 @@ License: MIT
                   }
                   var V = Y(I);
                   if (d.substring(y + 1 + V, y + 1 + V + P) === n) {
-                    if (l.push(d.substring(o, y).replace(ee, e)), X(y + 1 + V + P), C = d.indexOf(r, o), y = d.indexOf(e, o), M && (le(), R))
+                    if (l.push(d.substring(o, y).replace(ee, e)), X(y + 1 + V + P), C = d.indexOf(r, o), y = d.indexOf(e, o), M && (le(), D))
                       return j();
                     if (m && S.length >= m)
                       return j(!0);
@@ -584,13 +585,13 @@ License: MIT
           o = B, te(l), l = [], I = d.indexOf(n, o);
         }
         function j(B) {
-          return { data: S, errors: L, meta: { delimiter: r, linebreak: n, aborted: R, truncated: !!B, cursor: _ + (K || 0) } };
+          return { data: S, errors: L, meta: { delimiter: r, linebreak: n, aborted: D, truncated: !!B, cursor: _ + (K || 0) } };
         }
         function le() {
           f(j()), S = [], L = [];
         }
       }, this.abort = function() {
-        R = !0;
+        D = !0;
       }, this.getCharIndex = function() {
         return o;
       };
@@ -646,11 +647,11 @@ License: MIT
     }), (ae.prototype = Object.create(Q.prototype)).constructor = ae, (oe.prototype = Object.create(Q.prototype)).constructor = oe, (ne.prototype = Object.create(ne.prototype)).constructor = ne, (ue.prototype = Object.create(Q.prototype)).constructor = ue, p;
   });
 })(Ee);
-var Ue = Ee.exports;
-const Ne = /* @__PURE__ */ He(Ue), Ce = {
+var Ne = Ee.exports;
+const je = /* @__PURE__ */ Ue(Ne), Ce = {
   name: "ImportCSV",
   components: {
-    Drop: Pe
+    Drop: ze
   },
   props: {
     units: {
@@ -660,7 +661,7 @@ const Ne = /* @__PURE__ */ He(Ue), Ce = {
   },
   emits: ["error", "import"],
   setup() {
-    const { t: i, locale: c, fallbackLocale: h } = Te({
+    const { t: i, locale: c, fallbackLocale: h } = Fe({
       locale: "en_US"
     });
     return {
@@ -699,7 +700,7 @@ const Ne = /* @__PURE__ */ He(Ue), Ce = {
         "banding",
         "cost"
       ],
-      fieldNames: Fe,
+      fieldNames: Se,
       manualMapping: {
         selectedColumnHeading: "",
         selectedColumnIndex: "",
@@ -718,7 +719,7 @@ const Ne = /* @__PURE__ */ He(Ue), Ce = {
       };
     },
     separators() {
-      return Se();
+      return Le();
     },
     someInvalid() {
       return Object.values(this.itemValidation).some((i) => Object.values(i).some(
@@ -748,7 +749,7 @@ const Ne = /* @__PURE__ */ He(Ue), Ce = {
     parse(i) {
       var h;
       const c = (h = i == null ? void 0 : i[0]) == null ? void 0 : h.data;
-      c && Ne.parse(c, {
+      c && je.parse(c, {
         header: !1,
         dynamicTyping: !1,
         //parse numbers
@@ -869,11 +870,11 @@ const Ne = /* @__PURE__ */ He(Ue), Ce = {
       );
     }
   }
-}, je = { id: "import-file" };
-function Be(i, c, h, u, g, F) {
-  const H = Le("Drop");
-  return we(), be("div", je, [
-    Ae(H, {
+}, Be = { id: "import-file" };
+function Ke(i, c, h, u, g, F) {
+  const H = Ae("Drop");
+  return we(), be("div", Be, [
+    Me(H, {
       label: u.t("Drop CSV file here"),
       "required-type": "text/csv",
       onDrop: F.parse
@@ -881,7 +882,7 @@ function Be(i, c, h, u, g, F) {
   ]);
 }
 typeof ve == "function" && ve(Ce);
-const We = /* @__PURE__ */ ke(Ce, [["render", Be]]);
+const $e = /* @__PURE__ */ ke(Ce, [["render", Ke]]);
 export {
-  We as default
+  $e as default
 };
