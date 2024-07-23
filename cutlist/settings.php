@@ -376,7 +376,7 @@ class Options
             [
                 'id' => 'allow_offcuts',
                 'label' => 'Allow offcuts',
-                'callback_args' => ['allow_offcuts', 'Allow offcuts to be included']
+                'callback_args' => ['allow_offcuts', 'Allow offcuts to be included in each order']
             ],
             [
                 'id' => 'product_category',

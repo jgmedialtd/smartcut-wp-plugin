@@ -2,6 +2,10 @@ table.variations .label {
   text-transform: capitalize;
 }
 
+#smartcut-app {
+  margin-bottom: 20px;
+}
+
 .woocommerce-variation-description {
   text-transform: capitalize;
 }
