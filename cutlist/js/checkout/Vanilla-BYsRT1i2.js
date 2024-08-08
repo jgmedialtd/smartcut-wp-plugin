@@ -1,4 +1,4 @@
-import { C as s, g as l, _ as a, r as u, o as g, c as h } from "./main-C_wf2F0k.js";
+import { C as s, g as l, _ as a, r as u, o as g, c as h } from "./main-BzCMbwUQ.js";
 const d = {
   name: "Vanilla",
   components: {
