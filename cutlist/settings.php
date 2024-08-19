@@ -383,7 +383,6 @@ class Options
                 'label' => 'Product category',
                 'callback_args' => ['product_category', 'The slug(s) of the product categories to show the cut list tool. Use commas to separate with no spaces.']
             ],
-
             [
                 'id' => 'hide_diagram',
                 'label' => 'Cutting diagram',

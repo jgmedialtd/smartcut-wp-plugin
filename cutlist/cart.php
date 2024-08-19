@@ -13,7 +13,6 @@ use WC_Order_Item_Product;
  */
 function get_field_keys($inputs = false)
 {
-
     $options = get_option('smartcut_options');
 
     if ($inputs) {
@@ -22,6 +21,7 @@ function get_field_keys($inputs = false)
         $fields = [
             __('Job ID', 'smartcut') => 'smartcut_job_id',
             __('Total parts', 'smartcut') => 'smartcut_total_parts',
+			__('Stock summary', 'smartcut') => 'smartcut_stock_summary',
             __('Part area', 'smartcut') => 'smartcut_part_area',
             __('Cut length', 'smartcut') => 'smartcut_total_cut_length',
             __('Total cuts', 'smartcut') => 'smartcut_total_cuts',
@@ -31,7 +31,6 @@ function get_field_keys($inputs = false)
             __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
             __('Custom price', 'smartcut') => 'smartcut_custom_price', //used to override the natural price
             __('Dimensions', 'smartcut') => 'smartcut_dimensions',
-
         ];
 
         if ($options['enable_machining'] === '1') {
@@ -52,7 +51,7 @@ function get_field_keys($inputs = false)
         __('Banding price', 'smartcut') => 'smartcut_banding_price',
         __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
         __('Dimensions', 'smartcut') => 'smartcut_dimensions',
-
+		__('Stock summary', 'smartcut') => 'smartcut_stock_summary',
     ];
 
     if ($options['enable_machining'] === '1') {
@@ -97,7 +96,6 @@ function get_file_key($type, $option, $file_extension)
  */
 function add_user_fields()
 {
-
     $options = get_option('smartcut_options');
     if (isset($options['allow_offcuts']) && $options['allow_offcuts'] === '1') {
 
@@ -132,7 +130,6 @@ function add_hidden_fields()
  */
 function validate_cart($passed)
 {
-
     // get the data being added to the cart
     $job_id = isset($_POST['smartcut_job_id']) ? $_POST['smartcut_job_id'] : null;
 
@@ -371,7 +368,8 @@ function get_item_data($item_data, $cart_item_data)
 {
 
     $keys = [
-        // __('Total cuts', 'smartcut') => 'smartcut-total-cuts',
+        // __('Total cuts', 'smartcut') => 'smartcut_total_cuts',
+		__('Stock', 'smartcut') => 'smartcut_stock_summary',
         __('Total parts', 'smartcut') => 'smartcut_total_parts',
         __('Include offcuts', 'smartcut') => 'include_offcuts',
         __('Dimensions', 'smartcut') => 'smartcut_dimensions',
@@ -380,7 +378,7 @@ function get_item_data($item_data, $cart_item_data)
         __('Price per part', 'smartcut') => 'smartcut_per_part_price',
         __('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
         __('Machining', 'smartcut') => 'smartcut_machining',
-        __('Machining price', 'smartcut') => 'smartcut_machining_price'
+        __('Machining price', 'smartcut') => 'smartcut_machining_price',
     ];
 
     foreach ($keys as $name => $value) {
