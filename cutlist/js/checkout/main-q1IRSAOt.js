@@ -21318,7 +21318,7 @@ function zO(e, t, n, i, s, r) {
     ]), 2)
   ], 2);
 }
-const VO = /* @__PURE__ */ Fi(WO, [["render", zO]]), GO = /* @__PURE__ */ Jo(() => import("./Machining-CAJVu62F.js")), HO = /* @__PURE__ */ Jo(() => import("./ImportCSV-C1cuRVlL.js")), KO = /* @__PURE__ */ Jo(() => import("./InputField-Qil9ZzrO.js")), tb = {
+const VO = /* @__PURE__ */ Fi(WO, [["render", zO]]), GO = /* @__PURE__ */ Jo(() => import("./Machining-CajVIu-v.js")), HO = /* @__PURE__ */ Jo(() => import("./ImportCSV-DWd_AOI7.js")), KO = /* @__PURE__ */ Jo(() => import("./InputField-BWGymaZi.js")), tb = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: AO,
@@ -21801,7 +21801,7 @@ const VO = /* @__PURE__ */ Fi(WO, [["render", zO]]), GO = /* @__PURE__ */ Jo(() 
   mounted() {
     if (this.mounted) return;
     const e = new URL(window.location.href), t = e.searchParams.toString(), n = e.origin + e.pathname + (t ? `?${t}` : "");
-    this.currentURL !== n && (this.inputShapes.length = 0), this.currentURL = n, this.locale = this.options.locale, vO.call(this, "https://api.cutlistevo.com/"), this.socket.connect(), this.socket.emit("getUserFromDomain"), this.viewportWidth = window.innerWidth, this.resizeTimer = null;
+    this.currentURL !== n && (this.inputShapes.length = 0), this.currentURL = n, this.locale = this.options.locale, vO.call(this, "http://localhost:5000/"), this.socket.connect(), this.socket.emit("getUserFromDomain"), this.viewportWidth = window.innerWidth, this.resizeTimer = null;
     const i = this.debounce(this.handleResize, 30);
     window.addEventListener("resize", i, {
       passive: !0
@@ -23378,7 +23378,7 @@ function _P(e, t, n, i, s, r) {
     onResult: r.result
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
-const xP = /* @__PURE__ */ Fi(vP, [["render", _P]]), SP = /* @__PURE__ */ Jo(() => import("./Vanilla-D3B9Qvhx.js")), kP = /* @__PURE__ */ Di({
+const xP = /* @__PURE__ */ Fi(vP, [["render", _P]]), SP = /* @__PURE__ */ Jo(() => import("./Vanilla-hjB-ifuO.js")), kP = /* @__PURE__ */ Di({
   name: "Launch",
   components: {
     Wordpress: xP,
@@ -26429,7 +26429,7 @@ const LI = Zv({
   messages: d_
 }), gp = document.querySelector("#smartcut-app"), DI = gp ? gp.getAttribute("data-type") : "", vf = o1(EP, { type: DI });
 vf.use(LI);
-vf.component("font-awesome-icon", CI);
+vf.component("FontAwesomeIcon", CI);
 vf.mount("#smartcut-app");
 export {
   Tn as A,

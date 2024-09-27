@@ -206,7 +206,7 @@ function add_cart_item_data($cart_item_data)
     }
 
     //add machining
-    if (isset($cart_item_data['smartcut_machining']) && $cart_item_data['smartcut_machining'] === 'Y') {
+    if (isset($cart_item_data['smartcut_machining']) && $cart_item_data['smartcut_machining'] === 'true') {
         $file_types[] = 'pdf';
         $file_options[] = 'machining';
         $file_types[] = 'dxf';
