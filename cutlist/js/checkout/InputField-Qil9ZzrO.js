@@ -1,4 +1,4 @@
-import { l as f, k as h, L as c, g as y, M as b, v as r, _ as m, o as n, n as u, t as d, u as s, p as g, F as o, y as p } from "./main-DNx7nhge.js";
+import { p as f, n as h, N as c, g as y, O as b, v as r, _ as m, o as n, q as u, w as d, x as s, t as g, F as o, A as p } from "./main-D5Psi2Cp.js";
 const k = {
   name: "CustomInput",
   props: {
@@ -22,23 +22,23 @@ const k = {
     labelPosition: {
       type: String,
       default: "first",
-      validator(l) {
-        return ["first", "last"].includes(l);
+      validator(a) {
+        return ["first", "last"].includes(a);
       }
     },
     type: {
       type: String,
       default: "string",
-      validator(l) {
-        return ["unitDependent", "string", "integer", "float", "checkbox", "select"].includes(l);
+      validator(a) {
+        return ["unitDependent", "string", "integer", "float", "checkbox", "select"].includes(a);
       }
     },
     //used for select / checkbox
     output: {
       type: String,
       default: "string",
-      validator(l) {
-        return ["string", "integer", "float", "boolean"].includes(l);
+      validator(a) {
+        return ["string", "integer", "float", "boolean"].includes(a);
       }
     },
     options: {
@@ -80,8 +80,8 @@ const k = {
     units: {
       type: String,
       default: "decimal",
-      validator(l) {
-        return ["decimal", "fraction"].includes(l);
+      validator(a) {
+        return ["decimal", "fraction"].includes(a);
       }
     },
     min: {
@@ -110,8 +110,8 @@ const k = {
         select: "Select",
         delete: "Delete"
       }),
-      validator(l) {
-        const t = Object.keys(l);
+      validator(a) {
+        const t = Object.keys(a);
         return ["select", "delete"].every((e) => t.includes(e));
       }
     }
@@ -135,15 +135,15 @@ const k = {
     this.setDefault();
   },
   mounted() {
-    const l = y.call(this, "input");
-    l && this.focus && this.$nextTick(() => l.focus());
+    const a = y.call(this, "input");
+    a && this.focus && this.$nextTick(() => a.focus());
   },
   methods: {
     getType() {
       return this.type === "unitDependent" ? this.units === "fraction" ? "string" : "float" : this.type;
     },
-    handleInput(l) {
-      let t = l.target.value;
+    handleInput(a) {
+      let t = a.target.value;
       switch ((t === "" || t === null) && this.allowBlank && this.updateValue(null), this.getType()) {
         case "integer":
           t = t.replace(/[^0-9-]/g, ""), t = parseInt(t);
@@ -156,47 +156,47 @@ const k = {
         return this.updateValue(null);
       typeof this.min == "number" && t < this.min && (t = this.min), typeof this.max == "number" && t > this.max && (t = this.max), this.updateValue(t);
     },
-    updateValue(l, t = "update") {
-      if (l === null) return this.$emit(t, l);
+    updateValue(a, t = "update") {
+      if (a === null) return this.$emit(t, a);
       if (this.type === "unitDependent" || this.output === "unitDependent") {
         if (this.units === "fraction")
-          return l = l.replace(/[^0-9/ ]+/g, "").replace(/\s{2,}/g, " ").trim(), this.$emit(t, l);
+          return a = a.replace(/[^0-9/ ]+/g, "").replace(/\s{2,}/g, " ").trim(), this.$emit(t, a);
         if (this.units === "decimal")
-          return this.$emit(t, parseFloat(l));
+          return this.$emit(t, parseFloat(a));
       }
       switch (this.outputType) {
         case "string":
-          return this.$emit(t, l);
+          return this.$emit(t, a);
         case "integer":
-          return this.$emit(t, parseInt(l));
+          return this.$emit(t, parseInt(a));
         case "float":
-          return this.$emit(t, parseFloat(l));
+          return this.$emit(t, parseFloat(a));
         case "boolean":
-          return this.$emit(t, b(l));
+          return this.$emit(t, b(a));
         default:
-          return this.$emit(t, l);
+          return this.$emit(t, a);
       }
     },
     setDefault() {
       !r(this.value) && r(this.default) && this.updateValue(this.default);
     }
   }
-}, _ = ["for"], B = ["id", "inputmode", "type", "value", "placeholder", "disabled", "readonly", "min", "max", "aria-label"], x = ["id", "disabled", "checked", "aria-label"], v = ["id", "value", "disabled", "aria-label"], I = ["disabled"], S = {
+}, _ = ["for"], x = ["id", "inputmode", "type", "value", "placeholder", "disabled", "readonly", "min", "max", "aria-label"], B = ["id", "disabled", "checked", "aria-label"], v = ["id", "value", "disabled", "aria-label"], I = ["disabled"], S = {
   key: 0,
   value: " "
 }, V = ["hidden", "value"], D = ["for"];
-function N(l, t, e, C, F, a) {
+function N(a, t, e, C, F, l) {
   return n(), u(o, null, [
     e.label && e.enableLabel && e.labelPosition === "first" ? (n(), u("label", {
       key: 0,
-      for: a.thisId
+      for: l.thisId
     }, d(e.label), 9, _)) : s("", !0),
     e.type === "string" || e.type === "integer" || e.type === "float" || e.type === "unitDependent" ? (n(), u("input", {
       key: 1,
-      id: a.thisId,
+      id: l.thisId,
       ref: "input",
-      inputmode: a.inputMode,
-      type: a.inputType,
+      inputmode: l.inputMode,
+      type: l.inputType,
       value: e.value,
       placeholder: e.placeholder,
       disabled: e.disabled,
@@ -204,26 +204,26 @@ function N(l, t, e, C, F, a) {
       min: e.min,
       max: e.max,
       "aria-label": e.label,
-      onChange: t[0] || (t[0] = (...i) => a.handleInput && a.handleInput(...i))
-    }, null, 40, B)) : s("", !0),
+      onChange: t[0] || (t[0] = (...i) => l.handleInput && l.handleInput(...i))
+    }, null, 40, x)) : s("", !0),
     e.type === "checkbox" ? (n(), u("input", {
       key: 2,
-      id: a.thisId,
+      id: l.thisId,
       ref: "input",
       type: "checkbox",
       disabled: e.readonly || e.disabled,
       checked: e.value === e.trueValue,
       "aria-label": e.label,
-      onChange: t[1] || (t[1] = (i) => a.updateValue(i.target.checked ? e.trueValue : e.falseValue))
-    }, null, 40, x)) : s("", !0),
+      onChange: t[1] || (t[1] = (i) => l.updateValue(i.target.checked ? e.trueValue : e.falseValue))
+    }, null, 40, B)) : s("", !0),
     e.type === "select" ? (n(), u("select", {
       key: 3,
-      id: a.thisId,
+      id: l.thisId,
       ref: "input",
       value: e.value,
       disabled: e.readonly || e.disabled,
       "aria-label": e.label,
-      onChange: t[2] || (t[2] = (i) => a.updateValue(i.target.value))
+      onChange: t[2] || (t[2] = (i) => l.updateValue(i.target.value))
     }, [
       g("option", {
         value: "",
@@ -243,7 +243,7 @@ function N(l, t, e, C, F, a) {
     }, d(e.label), 9, D)) : s("", !0)
   ], 64);
 }
-const O = /* @__PURE__ */ m(k, [["render", N]]);
+const w = /* @__PURE__ */ m(k, [["render", N]]);
 export {
-  O as default
+  w as default
 };
