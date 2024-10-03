@@ -10,7 +10,7 @@ namespace SmartCut\Filters;
 function plugin_row_meta($links)
 {
 
-    $docs_url = apply_filters('woocommerce_docs_url', 'https://smartcut.dev/wp-plugin');
+    $docs_url = apply_filters('woocommerce_docs_url', 'https://store.smartcut.dev/setting-up-your-store/');
 
     $row_meta = array(
         'docs'    => '<a href="' . esc_url($docs_url) . '" aria-label="' . esc_attr__('View WooCommerce documentation', 'woocommerce') . '">' . esc_html__('Docs', 'woocommerce') . '</a>',

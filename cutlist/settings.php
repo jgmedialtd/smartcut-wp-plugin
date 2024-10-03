@@ -214,7 +214,7 @@ class Options
                 <li>• Use mm or inches for units - <strong>be consistent throughout</strong>.</li>
                 <li>• When ready to go live, sign up for a subscription to the <a target="_blank" href="https://smartcut.dev/">SmartCut API</a>.</li>
                 <li>• Set your domain in <a target="_blank" href="https://smartcut.dev/account">your account</a>.</li>
-                <li>• Read the notes <a target="_blank" href="https://smartcut.dev/wp-plugin">here</a>.</li>
+                <li>• Read the notes <a target="_blank" href="https://store.smartcut.dev/setting-up-your-store/">here</a>.</li>
             </ul>
 
             <br />
