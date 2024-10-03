@@ -2,7 +2,7 @@
 
 ## Revolutionizing Efficiency in the Cut-to-Size Industry
 
-[SmartCut API](https://smartcut.dev/)
+[The SmartCut Cutlist Optimizer API](https://smartcut.dev/)
 
 ### Overview
 
