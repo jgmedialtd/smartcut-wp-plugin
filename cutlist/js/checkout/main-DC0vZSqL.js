@@ -30686,9 +30686,9 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2);
 }
 const MachiningButton = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-const Machining2 = /* @__PURE__ */ defineAsyncComponent(() => import("./Machining-DfjLR8ot.js"));
-const ImportCSV = /* @__PURE__ */ defineAsyncComponent(() => import("./ImportCSV-CO4cZX1O.js"));
-const InputField = /* @__PURE__ */ defineAsyncComponent(() => import("./InputField-CR0lNKZm.js"));
+const Machining2 = /* @__PURE__ */ defineAsyncComponent(() => import("./Machining-BMtEtAnh.js"));
+const ImportCSV = /* @__PURE__ */ defineAsyncComponent(() => import("./ImportCSV-Dw-a1pM6.js"));
+const InputField = /* @__PURE__ */ defineAsyncComponent(() => import("./InputField-xEsDa5i1.js"));
 const _sfc_main$2 = {
   name: "CheckoutCalculator",
   components: {
@@ -31225,7 +31225,7 @@ const _sfc_main$2 = {
     this.currentURL = newURL;
     this.locale = this.options.locale;
     {
-      initSocket.call(this, "http://localhost:5000/");
+      initSocket.call(this, "https://api.cutlistevo.com/");
     }
     this.socket.connect();
     this.socket.emit("getUserFromDomain");
@@ -33375,7 +33375,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
 const Wordpress = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
-const Vanilla = /* @__PURE__ */ defineAsyncComponent(() => import("./Vanilla-CqkcHFyq.js"));
+const Vanilla = /* @__PURE__ */ defineAsyncComponent(() => import("./Vanilla-DOelkE19.js"));
 const _sfc_main = /* @__PURE__ */ defineComponent({
   name: "Launch",
   components: {
