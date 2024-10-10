@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.1.31
+ * Version: 3.1.32
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.1.31'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.1.32'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -329,7 +329,7 @@ function create_product_template_tools_page()
 
         'SC - Multiple thicknesses, multiple stock sizes, price by part area, no option to purchase full sheet' => [
             'variable' => true,
-            'variations' => ['thickness'],
+            'variations' => ['thickness', 'size'],
             'price' => 100,
             'size' => ['100x100', '1000x1000'],
             'thickness' => ['8', '12'],
@@ -425,8 +425,10 @@ function create_product_template_tools_page()
         wp_reset_postdata();
 
         if ($product_post) {
+
             printf('<p>✅ "%s" already exists</p>', $name);
             continue;
+
         } else {
 
             printf('<p>Creating %s...</p>', $name);
