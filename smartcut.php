@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.1.30
+ * Version: 3.1.31
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.1.30'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.1.31'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -325,20 +325,31 @@ function create_product_template_tools_page()
             'content' => '<p>This product allows for double thickness bonded sheets to be added to the same calculation.</p>',
         ],
 
-        //no option to buy different full sheets
+        //no option to purchase full sheets
+
         'SC - Multiple thicknesses, multiple stock sizes, price by part area, no option to purchase full sheet' => [
             'variable' => true,
             'variations' => ['thickness'],
-            'price' => 10,
+            'price' => 100,
             'size' => ['100x100', '1000x1000'],
             'thickness' => ['8', '12'],
             'stock_type' => 'sheet',
             'cut_preference' => 'length',
-            '<p>If using multiple stock sizes in a variable product without giving the user the option to purchase the full board there is no option to price the sizes differently.</p>',
             'pricing_strategy' => 'part_area',
         ],
 
         //option to purchase full sheet
+
+		'SC - Multiple thicknesses, single stock size, option to purchase full sheet' => [
+            'variable' => true,
+            'variations' => ['thickness', 'size'],
+            'price' => 100,
+            'size' => ['1000x1000', 'Cut to size'],
+            'thickness' => ['8', '12'],
+            'stock_type' => 'sheet',
+            'cut_preference' => 'length',
+        ],
+
         'SC - Multiple thicknesses, multiple stock sizes, option to purchase full sheet' => [
             'variable' => true,
             'variations' => ['thickness', 'size'],

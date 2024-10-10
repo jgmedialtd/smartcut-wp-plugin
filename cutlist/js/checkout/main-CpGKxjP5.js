@@ -21260,7 +21260,7 @@ function GO(e, t, n, i, s, r) {
     ve(o, { icon: ["fass", "hammer"] })
   ], 2);
 }
-const HO = /* @__PURE__ */ ui(VO, [["render", GO]]), KO = /* @__PURE__ */ Qo(() => import("./Machining-CcBetDDF.js")), YO = /* @__PURE__ */ Qo(() => import("./ImportCSV-BxymXODo.js")), XO = /* @__PURE__ */ Qo(() => import("./InputField-D1pcK_2P.js")), ib = {
+const HO = /* @__PURE__ */ ui(VO, [["render", GO]]), KO = /* @__PURE__ */ Qo(() => import("./Machining-Bxv1Asxd.js")), YO = /* @__PURE__ */ Qo(() => import("./ImportCSV-BR4gnuG0.js")), XO = /* @__PURE__ */ Qo(() => import("./InputField-DLduBW76.js")), ib = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: TO,
@@ -21827,12 +21827,16 @@ const HO = /* @__PURE__ */ ui(VO, [["render", GO]]), KO = /* @__PURE__ */ Qo(() 
       this.inputShapes.length = 0, this.addInputShape(1);
     },
     addBondedThicknesses(e, t) {
+      if (console.log("bonded", e), !Array.isArray(e)) {
+        this.$emit("error", "addBondedThicknesses expects an array");
+        return;
+      }
       const n = [];
       for (let i = 0; i < e.length; i++) {
         let s = e[i];
         this.units === "decimal" && (s = parseFloat(s)), this.thicknesses.push(s), t && t.thicknesses.push(s), n.push(this.thicknesses.length - 1);
       }
-      this.bondedThicknesses.push(n);
+      this.bondedThicknesses.push(n), console.log("thicknesses", this.thicknesses), console.log("bondedThicknesses", this.bondedThicknesses);
     },
     init(e) {
       var t, n, i, s, r, o, a, l, u, c;
@@ -22004,7 +22008,11 @@ const HO = /* @__PURE__ */ ui(VO, [["render", GO]]), KO = /* @__PURE__ */ Qo(() 
     getThicknessesFromStock(e = []) {
       if (this.thicknesses = [], this.bondedThicknesses = [], this.setFieldEnabled("t", !1), !!e.length) {
         for (const t of e)
-          t != null && t.t && (typeof t.t == "string" && t.t.includes(",") ? this.getBondedThicknesses(t.t, !0).length === 2 && (this.addBondedThicknesses(t.t), this.setFieldEnabled("t", !0), t.t = this.thicknesses[0]) : this.thicknesses.includes(t.t) || this.thicknesses.push(t.t));
+          if (t != null && t.t)
+            if (typeof t.t == "string" && t.t.includes(",")) {
+              const n = this.getBondedThicknesses(t.t, !0);
+              n.length === 2 ? (this.addBondedThicknesses(n), this.setFieldEnabled("t", !0), t.t = this.thicknesses[0]) : this.$emit("error", "bonded thickness found which does not have 2 options");
+            } else this.thicknesses.includes(t.t) || this.thicknesses.push(t.t);
         this.thicknesses.length > 1 && this.setFieldEnabled("t", !0);
       }
     },
@@ -22750,7 +22758,7 @@ function wP(e, t, n, i, s, r) {
   ], 64);
 }
 typeof Ud == "function" && Ud(ib);
-const vP = /* @__PURE__ */ ui(ib, [["render", wP], ["__scopeId", "data-v-c2e5589b"]]), _P = {
+const vP = /* @__PURE__ */ ui(ib, [["render", wP], ["__scopeId", "data-v-39170cf2"]]), _P = {
   name: "Wordpress",
   //needs to be Wordpress not WordPress
   components: {
@@ -23325,7 +23333,7 @@ function xP(e, t, n, i, s, r) {
     onResult: r.result
   }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"]);
 }
-const SP = /* @__PURE__ */ ui(_P, [["render", xP]]), kP = /* @__PURE__ */ Qo(() => import("./Vanilla-B2c7zOkS.js")), CP = /* @__PURE__ */ ri({
+const SP = /* @__PURE__ */ ui(_P, [["render", xP]]), kP = /* @__PURE__ */ Qo(() => import("./Vanilla-B9LKmnN4.js")), CP = /* @__PURE__ */ ri({
   name: "Launch",
   components: {
     Wordpress: SP,
