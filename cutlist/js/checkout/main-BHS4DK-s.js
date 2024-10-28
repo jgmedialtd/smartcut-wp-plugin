@@ -22142,7 +22142,7 @@ function MP(e, t, n, i, s, r) {
     me(o, { icon: ["fass", "hammer"] })
   ], 10, IP);
 }
-const LP = /* @__PURE__ */ nn(NP, [["render", MP]]), DP = /* @__PURE__ */ mr(() => import("./Machining-u4Ceqtsn.js")), RP = /* @__PURE__ */ mr(() => import("./ImportCSV-BedcvBZV.js")), FP = /* @__PURE__ */ mr(() => import("./ObjectViewer-d37pGUpY.js")), ib = {
+const LP = /* @__PURE__ */ nn(NP, [["render", MP]]), DP = /* @__PURE__ */ mr(() => import("./Machining-swFmXE0S.js")), RP = /* @__PURE__ */ mr(() => import("./ImportCSV-J19PekhN.js")), FP = /* @__PURE__ */ mr(() => import("./ObjectViewer-iztDbO7C.js")), ib = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: $O,
@@ -23583,7 +23583,7 @@ function rN(e, t, n, i, s, r) {
   ], 64);
 }
 typeof Uo == "function" && Uo(ib);
-const oN = /* @__PURE__ */ nn(ib, [["render", rN], ["__scopeId", "data-v-b90c29be"]]), aN = /* @__PURE__ */ mr(() => import("./ObjectViewer-d37pGUpY.js")), lN = {
+const oN = /* @__PURE__ */ nn(ib, [["render", rN], ["__scopeId", "data-v-b90c29be"]]), aN = /* @__PURE__ */ mr(() => import("./ObjectViewer-iztDbO7C.js")), lN = {
   name: "Wordpress",
   //needs to be Wordpress not WordPress
   components: {
@@ -24044,6 +24044,7 @@ const oN = /* @__PURE__ */ nn(ib, [["render", rN], ["__scopeId", "data-v-b90c29b
         return !1;
       switch (this.settings.pricing_strategy) {
         case "full_sheet":
+        case "part_area":
         case "full_sheet_plus_cut_length":
         case "full_sheet_plus_num_parts":
           return !0;
@@ -24102,7 +24103,7 @@ const oN = /* @__PURE__ */ nn(ib, [["render", rN], ["__scopeId", "data-v-b90c29b
             this.log([
               `part area in square ${this.settings.units === "fraction" ? "feet" : "meters"}`,
               g
-            ]), t && (this.el.quantity.value = g.toFixed(2)), this.el.cart_button.disabled = !1;
+            ]), t ? (this.el.quantity.value = g.toFixed(2), this.el.quantity.style.display = "inline-block") : (this.el.quantity.value = 1, this.el.quantity.style.display = "none"), this.el.cart_button.disabled = !1;
           }
           break;
         case "cut_length":
@@ -24216,7 +24217,7 @@ function uN(e, t, n, i, s, r) {
     }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"])
   ], 64);
 }
-const fN = /* @__PURE__ */ nn(lN, [["render", uN]]), hN = /* @__PURE__ */ mr(() => import("./Vanilla-C1W5vLfD.js")), dN = /* @__PURE__ */ En({
+const fN = /* @__PURE__ */ nn(lN, [["render", uN]]), hN = /* @__PURE__ */ mr(() => import("./Vanilla-B0eCU0Je.js")), dN = /* @__PURE__ */ En({
   name: "Launch",
   components: {
     Wordpress: fN,
