@@ -22142,7 +22142,7 @@ function MP(e, t, n, i, s, r) {
     me(o, { icon: ["fass", "hammer"] })
   ], 10, IP);
 }
-const LP = /* @__PURE__ */ nn(NP, [["render", MP]]), DP = /* @__PURE__ */ mr(() => import("./Machining-D-x6_pjQ.js")), RP = /* @__PURE__ */ mr(() => import("./ImportCSV-2oJcUplN.js")), FP = /* @__PURE__ */ mr(() => import("./ObjectViewer-YuPGv_G0.js")), ib = {
+const LP = /* @__PURE__ */ nn(NP, [["render", MP]]), DP = /* @__PURE__ */ mr(() => import("./Machining-u4Ceqtsn.js")), RP = /* @__PURE__ */ mr(() => import("./ImportCSV-BedcvBZV.js")), FP = /* @__PURE__ */ mr(() => import("./ObjectViewer-d37pGUpY.js")), ib = {
   name: "CheckoutCalculator",
   components: {
     StockNavigation: $O,
@@ -22657,7 +22657,7 @@ const LP = /* @__PURE__ */ nn(NP, [["render", MP]]), DP = /* @__PURE__ */ mr(() 
   mounted() {
     if (this.mounted) return;
     const e = new URL(window.location.href), t = e.searchParams.toString(), n = e.origin + e.pathname + (t ? `?${t}` : "");
-    this.currentURL !== n && (this.inputShapes.length = 0), this.currentURL = n, this.locale = this.options.locale, EO.call(this, "https://api.cutlistevo.com/"), this.socket.connect(), this.socket.emit("getUserFromDomain"), this.viewportWidth = window.innerWidth, this.resizeTimer = null;
+    this.currentURL !== n && (this.inputShapes.length = 0, this.addInputShape(1)), this.currentURL = n, this.locale = this.options.locale, EO.call(this, "https://api.cutlistevo.com/"), this.socket.connect(), this.socket.emit("getUserFromDomain"), this.viewportWidth = window.innerWidth, this.resizeTimer = null;
     const i = this.debounce(this.handleResize, 30);
     window.addEventListener("resize", i, {
       passive: !0
@@ -23077,7 +23077,7 @@ ${this.$t(n)}`;
         finishOptions: l,
         customData: u
       });
-      return console.log(a), (p = (d = this == null ? void 0 : this.banding) == null ? void 0 : d.labels) != null && p.length && this.initExtrasOptions(h, "banding"), (E = (w = this == null ? void 0 : this.finish) == null ? void 0 : w.labels) != null && E.length && this.initExtrasOptions(h, "finish"), h;
+      return (p = (d = this == null ? void 0 : this.banding) == null ? void 0 : d.labels) != null && p.length && this.initExtrasOptions(h, "banding"), (E = (w = this == null ? void 0 : this.finish) == null ? void 0 : w.labels) != null && E.length && this.initExtrasOptions(h, "finish"), h;
     },
     addInputShape(e = 1) {
       for (let t = e; t--; ) {
@@ -23583,7 +23583,7 @@ function rN(e, t, n, i, s, r) {
   ], 64);
 }
 typeof Uo == "function" && Uo(ib);
-const oN = /* @__PURE__ */ nn(ib, [["render", rN], ["__scopeId", "data-v-3b76f742"]]), aN = /* @__PURE__ */ mr(() => import("./ObjectViewer-YuPGv_G0.js")), lN = {
+const oN = /* @__PURE__ */ nn(ib, [["render", rN], ["__scopeId", "data-v-b90c29be"]]), aN = /* @__PURE__ */ mr(() => import("./ObjectViewer-d37pGUpY.js")), lN = {
   name: "Wordpress",
   //needs to be Wordpress not WordPress
   components: {
@@ -24102,7 +24102,7 @@ const oN = /* @__PURE__ */ nn(ib, [["render", rN], ["__scopeId", "data-v-3b76f74
             this.log([
               `part area in square ${this.settings.units === "fraction" ? "feet" : "meters"}`,
               g
-            ]), this.el.quantity.value = g.toFixed(2), this.el.cart_button.disabled = !1;
+            ]), t && (this.el.quantity.value = g.toFixed(2)), this.el.cart_button.disabled = !1;
           }
           break;
         case "cut_length":
@@ -24216,7 +24216,7 @@ function uN(e, t, n, i, s, r) {
     }, null, 8, ["debug", "stock", "units", "onLog", "onError", "onDebug", "onResult"])
   ], 64);
 }
-const fN = /* @__PURE__ */ nn(lN, [["render", uN]]), hN = /* @__PURE__ */ mr(() => import("./Vanilla-DCKKMDcz.js")), dN = /* @__PURE__ */ En({
+const fN = /* @__PURE__ */ nn(lN, [["render", uN]]), hN = /* @__PURE__ */ mr(() => import("./Vanilla-C1W5vLfD.js")), dN = /* @__PURE__ */ En({
   name: "Launch",
   components: {
     Wordpress: fN,
