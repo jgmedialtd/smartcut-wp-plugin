@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SmartCut plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartCut 3.1.33\n"
+"Project-Id-Version: SmartCut 3.1.34\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-10T13:31:46+00:00\n"
+"POT-Creation-Date: 2024-10-28T14:28:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: smartcut\n"
@@ -29,23 +29,23 @@ msgid "Calculate cut lists & pricing for cut-to-size businesses."
 msgstr ""
 
 #: cutlist/cart.php:22
-#: cutlist/cart.php:46
+#: cutlist/cart.php:47
 msgid "Job ID"
 msgstr ""
 
 #: cutlist/cart.php:23
-#: cutlist/cart.php:47
-#: cutlist/cart.php:373
+#: cutlist/cart.php:48
+#: cutlist/cart.php:375
 msgid "Total parts"
 msgstr ""
 
 #: cutlist/cart.php:24
-#: cutlist/cart.php:54
+#: cutlist/cart.php:56
 msgid "Stock summary"
 msgstr ""
 
 #: cutlist/cart.php:25
-#: cutlist/cart.php:48
+#: cutlist/cart.php:49
 msgid "Part area"
 msgstr ""
 
@@ -58,134 +58,144 @@ msgid "Total cuts"
 msgstr ""
 
 #: cutlist/cart.php:28
-#: cutlist/cart.php:49
-#: cutlist/cart.php:377
+#: cutlist/cart.php:50
+#: cutlist/cart.php:380
 msgid "Cut length price"
 msgstr ""
 
 #: cutlist/cart.php:29
-#: cutlist/cart.php:50
-#: cutlist/cart.php:378
+#: cutlist/cart.php:51
+#: cutlist/cart.php:381
 msgid "Price per part"
 msgstr ""
 
 #: cutlist/cart.php:30
-#: cutlist/cart.php:51
-#: cutlist/cart.php:376
+#: cutlist/cart.php:52
+#: cutlist/cart.php:378
 msgid "Banding price"
 msgstr ""
 
 #: cutlist/cart.php:31
-#: cutlist/cart.php:52
+#: cutlist/cart.php:53
 #: cutlist/cart.php:379
-msgid "Cut to size surcharge"
+msgid "Finish price"
 msgstr ""
 
 #: cutlist/cart.php:32
-msgid "Custom price"
+#: cutlist/cart.php:54
+#: cutlist/cart.php:382
+msgid "Cut to size surcharge"
 msgstr ""
 
 #: cutlist/cart.php:33
-#: cutlist/cart.php:53
-#: cutlist/cart.php:375
+msgid "Custom price"
+msgstr ""
+
+#: cutlist/cart.php:34
+#: cutlist/cart.php:55
+#: cutlist/cart.php:377
 msgid "Dimensions"
 msgstr ""
 
-#: cutlist/cart.php:37
-#: cutlist/cart.php:58
-#: cutlist/cart.php:380
+#: cutlist/cart.php:38
+#: cutlist/cart.php:60
+#: cutlist/cart.php:383
 msgid "Machining"
 msgstr ""
 
-#: cutlist/cart.php:38
-#: cutlist/cart.php:59
-#: cutlist/cart.php:381
+#: cutlist/cart.php:39
+#: cutlist/cart.php:61
+#: cutlist/cart.php:384
 msgid "Machining price"
 msgstr ""
 
-#: cutlist/cart.php:104
-#: cutlist/cart.php:374
-#: cutlist/cart.php:424
+#: cutlist/cart.php:106
+#: cutlist/cart.php:376
+#: cutlist/cart.php:436
 msgid "Include offcuts"
 msgstr ""
 
-#: cutlist/cart.php:146
+#: cutlist/cart.php:148
 msgid "This cut list is already in your cart."
 msgstr ""
 
-#: cutlist/cart.php:173
+#: cutlist/cart.php:175
 msgid "Add to cart process stopped."
 msgstr ""
 
-#: cutlist/cart.php:193
+#: cutlist/cart.php:195
 msgid "Yes"
 msgstr ""
 
-#: cutlist/cart.php:193
+#: cutlist/cart.php:195
 msgid "No"
 msgstr ""
 
-#: cutlist/cart.php:372
+#: cutlist/cart.php:374
 msgid "Stock"
 msgstr ""
 
 #: cutlist/product-admin.php:227
 #: cutlist/product-admin.php:240
-#: cutlist/product-admin.php:286
-#: cutlist/product-admin.php:310
+#: cutlist/product-admin.php:299
+#: cutlist/product-admin.php:323
 msgid "Use global setting"
 msgstr ""
 
-#: cutlist/product.php:241
+#: cutlist/product.php:433
 msgid "Add your cuts below. Units are inches."
 msgstr ""
 
-#: cutlist/product.php:243
+#: cutlist/product.php:435
 msgid "Add your cuts below. Units are mm."
 msgstr ""
 
-#: cutlist/product.php:250
+#: cutlist/product.php:442
 msgid "This product is priced by part area, so adding fractions of a sheet to the cart is possible."
 msgstr ""
 
-#: cutlist/product.php:253
+#: cutlist/product.php:445
 msgid "This product is priced by full sheet plus cut length."
 msgstr ""
 
-#: cutlist/product.php:256
+#: cutlist/product.php:448
 msgid "This product is priced by full sheet plus number of parts."
 msgstr ""
 
-#: cutlist/product.php:259
-#: cutlist/product.php:265
+#: cutlist/product.php:451
+#: cutlist/product.php:457
 msgid "This product is priced by full sheet."
 msgstr ""
 
-#: cutlist/product.php:262
+#: cutlist/product.php:454
 msgid "This product is priced by cut length."
 msgstr ""
 
-#: cutlist/product.php:295
+#: cutlist/product.php:476
 msgid "Banding total"
 msgstr ""
 
-#: cutlist/product.php:300
+#: cutlist/product.php:482
+msgid "Finish total"
+msgstr ""
+
+#: cutlist/product.php:487
 msgid "Machining total"
 msgstr ""
 
-#: cutlist/product.php:308
+#: cutlist/product.php:494
 msgid "Cut length total"
 msgstr ""
 
-#: cutlist/product.php:315
+#: cutlist/product.php:501
 msgid "Part total"
 msgstr ""
 
-#: cutlist/product.php:322
+#: cutlist/product.php:508
 msgid "Surcharge total"
 msgstr ""
 
-#: cutlist/product.php:556
+#: cutlist/product.php:761
 msgid "Smartcut - product setup error: "
 msgstr ""
 

@@ -256,8 +256,21 @@ function product_tab_content()
 
 			create_input(
 				$fields,
+				'finish_types',
+				'Finish types',
+				'☝ Slugs of your fininsh products. Separate with commas. Leave blank to use global settings.'
+			);
+
+			create_input(
+				$fields,
 				'disable_banding',
 				'Disable banding'
+			);
+
+			create_input(
+				$fields,
+				'disable_finish',
+				'Disable finish'
 			);
 
 			create_input(

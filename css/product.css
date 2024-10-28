@@ -10,7 +10,8 @@ table.variations .label {
   text-transform: capitalize;
 }
 
-#smartcut-banding-total {
+#smartcut-banding-total,
+#smartcut-finish-total {
   margin-top: 10px;
 }
 
