@@ -7,9 +7,6 @@
 .smartcut-tools p {
   font-size: 16px;
 }
-.smartcut-tools .issue {
-  background-color: yellow;
-}
 .smartcut-tools span.warning {
   color: red;
   font-weight: bold;
@@ -25,5 +22,3 @@
   padding: 5px;
   line-height: 1.4;
 }
-
-/*# sourceMappingURL=admin.css.map */

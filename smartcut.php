@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.2.1
+ * Version: 3.2.2
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.2.1'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.2.2'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -25,7 +25,13 @@ use WC_Product_Variation;
 //plugin update checker
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-//https://github.com/YahnisElsts/plugin-update-checker?tab=readme-ov-file#getting-started
+/*
+
+@method static \YahnisElsts\PluginUpdateChecker\v5\PucFactory buildUpdateChecker(string $repositoryUrl, string $pluginFile, string $slug)
+https://github.com/YahnisElsts/plugin-update-checker?tab=readme-ov-file#getting-started
+
+*/
+
 $myUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://github.com/jgmedialtd/smartcut-wp-plugin',
 	__FILE__,
@@ -114,55 +120,36 @@ function register_tools_page()
 function create_product_template_tools_page()
 {
 
+	echo '<style>
+        .smartcut-fixed-header {
+            position: sticky;
+            top: 32px;
+			margin-left: -20px;
+			margin-right: -20px;
+            background: white;
+            padding: 20px;
+            z-index: 100;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+    </style>';
+
 	echo '<div class="smartcut-tools">';
 
+	echo '<div class="smartcut-fixed-header">';
 	echo '<h1 class="wp-heading-inline">SmartCut Templates</h1>';
+
+	// Add the recreate button form
+	echo '<form method="post" id="recreate-form">';
+	wp_nonce_field('smartcut_recreate_templates');
+	echo '<p><button type="submit" name="smartcut_recreate_templates" class="button button-primary">Delete & recreate all</button></p>';
+	echo '</form>';
+	echo '</div>';
 
 	if (!is_woocommerce_active()) {
 		echo '<p><span class="warning">⚠️</span> WooCommerce must be active</p>';
 		return;
 	};
-
-	$cutlist_settings = get_settings('cutlist');
-
-	if (!isset($cutlist_settings) || count($cutlist_settings) === 0) {
-		echo '<p><span class="warning">⚠️</span> No cut list settings found - head to Settings > SmartCut and save your preferences.</p>';
-		return;
-	}
-
-	$cutlist_categories = \SmartCut\Cutlist\Settings\get_product_categories($cutlist_settings['product_category']);
-
-	if (count($cutlist_categories)) {
-		$cutlist_category = $cutlist_categories[0];
-	}
-
-	if (!$cutlist_category) {
-		echo '<p><span class="warning">⚠️</span> No cut list product category found, ensure this is set in Settings > SmartCut</p>';
-		return;
-	}
-
-	//add smartcut logo to the media library if it isn't already there
-
-	// The URL of the image in the plugin's assets folder
-	$image_url = plugins_url('assets/smartcut-logo.png', __FILE__);
-
-	$logo_id = attachment_url_to_postid($image_url);
-
-	if ($logo_id === 0) {
-
-		// Download the image and save it in the media library
-		$logo_id = media_sideload_image($image_url, 0, 'SmartCut logo', 'id');
-
-		// If there was an error, $media will be a WP_Error object
-		if (is_wp_error($logo_id)) {
-			printf('<p><span class="warning">⚠️</span> Error uploading logo: %s</p>', $logo_id->get_error_message());
-			$logo_id = 0;
-		} else {
-			echo '<p>✅ Product image uploaded successfully</p>';
-		}
-	} else {
-		echo '<p>✅ Product image already exists in the media library</p>';
-	}
 
 	$template_products = [
 
@@ -436,6 +423,54 @@ function create_product_template_tools_page()
 
 	];
 
+	// Handle form submission
+	if (isset($_POST['smartcut_recreate_templates']) && check_admin_referer('smartcut_recreate_templates')) {
+		delete_and_recreate_templates($template_products);
+	}
+
+
+	$cutlist_settings = get_settings('cutlist');
+
+	if (!isset($cutlist_settings) || count($cutlist_settings) === 0) {
+		echo '<div class="notice notice-error"><p><span class="warning">⚠️</span> No cut list settings found - head to Settings > SmartCut and save your preferences.</p></div>';
+		return;
+	}
+
+	$cutlist_categories = \SmartCut\Cutlist\Settings\get_product_categories($cutlist_settings['product_category']);
+
+	if (count($cutlist_categories)) {
+		$cutlist_category = $cutlist_categories[0];
+	}
+
+	if (!$cutlist_category) {
+		echo '<div class="notice notice-error"><p><span class="warning">⚠️</span> No cut list product category found, ensure this is set in Settings > SmartCut</p></div>';
+		return;
+	}
+
+	echo '<div class="notice notice-info"><h2>Creating templates</h2></div><br />';
+	//add smartcut logo to the media library if it isn't already there
+
+	// The URL of the image in the plugin's assets folder
+	$image_url = plugins_url('assets/smartcut-logo.png', __FILE__);
+
+	$logo_id = attachment_url_to_postid($image_url);
+
+	if ($logo_id === 0) {
+
+		// Download the image and save it in the media library
+		$logo_id = media_sideload_image($image_url, 0, 'SmartCut logo', 'id');
+
+		// If there was an error, $media will be a WP_Error object
+		if (is_wp_error($logo_id)) {
+			printf('<div class="notice notice-error"><p><span class="warning">⚠️</span> Error uploading logo: %s</p></div>', $logo_id->get_error_message());
+			$logo_id = 0;
+		} else {
+			echo '<div class="notice notice-success"><p>✅ Product image uploaded successfully</p></div>';
+		}
+	} else {
+		echo '<div class="notice notice-success"><p>✅ Product image already exists in the media library</p></div>';
+	}
+
 	function add_table_row($data = [])
 	{
 
@@ -472,11 +507,11 @@ function create_product_template_tools_page()
 
 		if ($product_post) {
 
-			printf('<p>✅ "%s" already exists</p>', $name);
+			printf('<div class="notice notice-success"><p>✅ "%s" already exists</p></div>', $name);
 			continue;
 		} else {
 
-			printf('<p>Creating %s...</p>', $name);
+			// printf('<div class="notice notice-info"><p>Creating %s...</p></div>', $name);
 
 			$variable_product = isset($product_data['variable']) && $product_data['variable'] === true;
 
@@ -679,14 +714,54 @@ function create_product_template_tools_page()
 				}
 			}
 
-			printf('<p>✅ Created "%s"</p>', $name);
+			printf('<div class="notice notice-success"><p>✅ Created "%s"</p></div>', $name);
 		}
 	}
 
-	echo '<br /><h2>Templates complete</h2>';
+	echo '<br /><div class="notice notice-info"><h2>Templates complete</h2></div>';
 
 	echo '</div>';
 }
+
+function delete_and_recreate_templates($template_products)
+{
+	echo '<div class="notice notice-info"><h2>Deleting existing templates...</h2></div><br />';
+
+	// Delete existing template products
+	foreach ($template_products as $name => $product_data) {
+		$args = array(
+			'post_type' => 'product',
+			'post_status' => \wp_get_environment_type() === 'development' ? 'publish' : 'private',
+			'title' => $name,
+			'posts_per_page' => -1
+		);
+
+		$query = new \WP_Query($args);
+
+		if ($query->have_posts()) {
+			while ($query->have_posts()) {
+				$query->the_post();
+				$product_id = get_the_ID();
+
+				// Delete the product and its variations
+				$product = wc_get_product($product_id);
+				if ($product) {
+					if ($product->is_type('variable')) {
+						foreach ($product->get_children() as $variation_id) {
+							wp_delete_post($variation_id, true);
+						}
+					}
+					wp_delete_post($product_id, true);
+					printf('<div class="notice notice-success"><p>🗑 Deleted "%s"</p></div>', $name);
+				}
+			}
+		}
+		wp_reset_postdata();
+	}
+
+	echo '<br />';
+}
+
 function create_product_variations($product_id, $attributes, $price)
 {
 	// Generate all combinations of attributes.
@@ -839,18 +914,18 @@ function create_health_check_tools_page()
 
 	echo '<h1 class="wp-heading-inline">SmartCut Health</h1>';
 
-	phpversion() >= '7.0' ? printf('<p>✅ PHP version %s</p>', phpversion()) : printf('<p class="issue"><span class="warning">⚠️</span> PHP version %s - SmartCut recommends PHP 7.0 or greater</p>', phpversion());
+	phpversion() >= '7.0' ? printf('<div class="notice notice-success"><p>✅ PHP version %s</p></div>', phpversion()) : printf('<div class="notice notice-error"><p class="issue"><span class="warning">⚠️</span> PHP version %s - SmartCut recommends PHP 7.0 or greater</p></div>', phpversion());
 
 	if (!is_woocommerce_active()) {
-		echo '<p class="issue"><span class="warning">⚠️</span> WooCommerce must be active</p>';
+		echo '<div class="notice notice-error"><p><span class="warning">⚠️</span> WooCommerce must be active</p></div>';
 		return;
 	}
 
 	$theme = wp_get_theme();
 	if ($theme->template === 'storefront') {
-		echo '<p>✅ Storefront theme detected - SmartCut is only compatable with themes which correctly implement WooCommerce.</p>';
+		echo '<div class="notice notice-success"><p>✅ Storefront theme detected - SmartCut is only compatable with themes which correctly implement WooCommerce.</p></div>';
 	} else {
-		echo '<p class="issue">SmartCut is only compatable with themes which correctly implement the WooCommerce actions & filters such as Storefront. Swap to Storefront if you are having problems.</p>';
+		echo '<div class="notice notice-warning"><p class="issue">SmartCut is only compatable with themes which correctly implement the WooCommerce actions & filters such as Storefront. Swap to Storefront if you are having problems.</p></div>';
 	}
 
 	$active_plugins = get_option('active_plugins');
@@ -871,21 +946,21 @@ function create_health_check_tools_page()
 	}
 
 	if (count($bad_plugins) > 0) {
-		printf('<p class="issue">The following active plugins may cause issues <strong>%s</strong></p>', implode(', ', $bad_plugins));
-		echo '<p class="issue">☝ If you do choose to use the plugins above be very careful with javascript compression or changing the natural load order of scripts.</p>';
+		printf('<div class="notice notice-warning"><p class="issue">The following active plugins may cause issues <strong>%s</strong></p></div>', implode(', ', $bad_plugins));
+		echo '<div class="notice notice-warning"><p class="issue">☝ If you do choose to use the plugins above be very careful with javascript compression or changing the natural load order of scripts.</p></div>';
 	}
 
 	$cutlist_settings = get_settings('cutlist');
 
 	if (!isset($cutlist_settings) || count($cutlist_settings) === 0) {
-		echo '<p><span class="warning">⚠️</span> No cut list settings found - head to Settings > SmartCut and save your preferences.</p>';
+		echo '<div class="notice notice-error"><p><span class="warning">⚠️</span> No cut list settings found - head to Settings > SmartCut and save your preferences.</p></div>';
 		return;
 	}
 
 	$cutlist_category = isset($cutlist_settings['product_category']) ? $cutlist_settings['product_category'] : '';
 
 	if (!$cutlist_category) {
-		echo '<p><span class="warning">⚠️</span> No cut list product category found, ensure this is set in Settings > SmartCut</p>';
+		echo '<div class="notice notice-error"><p><span class="warning">⚠️</span> No cut list product category found, ensure this is set in Settings > SmartCut</p></div>';
 		return;
 	}
 
@@ -911,20 +986,19 @@ function create_health_check_tools_page()
 
 	if (!$number_products) {
 
-		printf('<p><span class="warning">⚠️</span> No products found in the <strong>%s</strong> %s</p>', $cutlist_category, ($num_cutlist_categories > 1 ? 'categories' : 'category'));
+		printf('<div class="notice notice-error"><p><span class="warning">⚠️</span> No products found in the <strong>%s</strong> %s</p></div>', $cutlist_category, ($num_cutlist_categories > 1 ? 'categories' : 'category'));
 		return;
 	}
 
-	printf('<p>Found <strong>%d</strong> products in the <strong>"%s"</strong> %s...</p>', $number_products, $cutlist_category, ($num_cutlist_categories > 1 ? 'categories' : 'category'));
+	printf('<br /><div class="notice notice-info"><p>Found <strong>%d</strong> products in the <strong>"%s"</strong> %s...</p></div><br />', $number_products, $cutlist_category, ($num_cutlist_categories > 1 ? 'categories' : 'category'));
 
 	foreach ($cutlist_categories as $category) {
 		$category_exists = term_exists($category, 'product_cat');
 		if (!$category_exists) {
-			printf('<p class="issue"><span class="warning">⚠️</span> Product category with slug <strong>%s</strong> does not exist</p>', $category);
+			printf('<div class="notice notice-error"><p class="issue"><span class="warning">⚠️</span> Product category with slug <strong>%s</strong> does not exist</p></div>', $category);
 		}
 	}
 
-	echo '<br /><table class="smartcut-table">';
 
 	$count = 0;
 	$issue_count = 0;
@@ -939,22 +1013,21 @@ function create_health_check_tools_page()
 		$product_messages = \SmartCut\Cutlist\Product\check_product_setup($product_id);
 
 		if (count($product_messages) === 0) {
-			printf('<tr><td>✅ %s</td></tr>', $product->post_title);
+			printf('<div class="notice notice-success"><p>✅ %s</p></div>', $product->post_title);
 			continue;
 		};
 
 		$issue_count++;
 
-		printf('<tr><td><span class="warning">⚠️</span><a href="%s" target="_blank">%s</a></td></tr>', get_permalink($product_id), $product->post_title);
+		printf('<div class="notice notice-error"><p><span class="warning">⚠️</span><a href="%s" target="_blank">%s</a></p></div>', get_permalink($product_id), $product->post_title);
 
-		foreach ($product_messages as $message) printf('<tr><td class="issue">%s</td></tr>', $message);
+		foreach ($product_messages as $message) printf('<div class="notice notice-error"><p>%s</p></div>', $message);
 	}
 
-	echo '</table>';
 
-	printf('<br /><p>Checked <strong>%d</strong> products, found <strong>%d</strong> issues</p>', $count, $issue_count);
+	printf('<br /><div class="notice notice-info"><p>Checked <strong>%d</strong> products, found <strong>%d</strong> issues</p></div>', $count, $issue_count);
 
-	echo '<br /><h2>Checks complete</h2>';
+	echo '<br /><div class="notice notice-info"><h2>Checks complete</h2></div>';
 
 	echo '</div>';
 };
