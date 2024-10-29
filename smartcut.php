@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.1.37
+ * Version: 3.2.1
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.1.37'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.2.1'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -318,16 +318,6 @@ function create_product_template_tools_page()
 			'machining_holes_product' => 'sc-machining-holes',
 			'machining_corners_product' => 'sc-machining-corners',
 			'price' => 100,
-		],
-
-		//simple sheet - multiple sizes
-		'SC - Simple sheet, multiple stock sizes, charge by part area' => [
-			'price' => 10,
-			'size' => ['100x100', '1000x1000'],
-			'stock_type' => 'sheet',
-			'cut_preference' => 'length',
-			'content' => '<p>To charge by part area, set the product price to price per square meter / foot.</p><p>If using multiple stock sizes in a simple product, there is no option to price the sizes differently. Use a variable product to achieve this.</p>',
-			'pricing_strategy' => 'part_area'
 		],
 
 		'SC - Multiple thicknesses, single stock size, multiple simple banding options, price by full sheet plus number of parts' => [
