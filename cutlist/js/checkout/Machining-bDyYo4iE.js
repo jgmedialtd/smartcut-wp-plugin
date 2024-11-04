@@ -1,7 +1,7 @@
 var z = Object.defineProperty;
 var P = (e, t, s) => t in e ? z(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
 var p = (e, t, s) => P(e, typeof t != "symbol" ? t + "" : t, s);
-import { i as y, j as b, v as W, k as B, I as A, l as C, p as Y, q as O, s as L, u as E, w as V, x as G, y as M, z as I, A as $, B as U, _ as R, r as F, o as r, d, f as c, D as x, t as f, h as m, n as v, E as T, F as H, e as w, G as j, H as N, b as D } from "./main-DZxDd4D_.js";
+import { i as y, j as b, v as D, k as B, I as A, l as T, p as Y, q as O, s as L, u as E, w as V, x as G, y as M, z as I, A as $, B as U, _ as R, r as F, o as r, d, f as c, D as x, t as f, h as m, n as v, E as W, F as H, e as w, G as j, H as N, b as C } from "./main-BCzShMxm.js";
 class q {
   constructor({
     HTMLElement: t,
@@ -179,7 +179,7 @@ class q {
       let u, a, n;
       switch (g) {
         case 0:
-          if (!W(t.a) || t.a === !1) return;
+          if (!D(t.a) || t.a === !1) return;
           u = {
             x: this.xScale(0) - s,
             y: this.getYScale()(b(o.size ?? 0))
@@ -192,7 +192,7 @@ class q {
           };
           break;
         case 1:
-          if (!W(t.b) || t.b === !1) return;
+          if (!D(t.b) || t.b === !1) return;
           u = {
             x: this.xScale(this.shapeL - b(o.size ?? 0)),
             y: this.getYScale()(0) + (this.currentSide === 0 ? s : -s)
@@ -205,7 +205,7 @@ class q {
           };
           break;
         case 2:
-          if (!W(t.c) || t.c === !1) return;
+          if (!D(t.c) || t.c === !1) return;
           u = {
             x: this.xScale(this.shapeL) + s,
             y: this.getYScale()(this.shapeW - b(o.size ?? 0))
@@ -218,7 +218,7 @@ class q {
           };
           break;
         case 3:
-          if (!W(t.d) || t.d === !1) return;
+          if (!D(t.d) || t.d === !1) return;
           u = {
             x: this.xScale(b(o.size ?? 0)),
             y: this.getYScale()(this.shapeW) + (this.currentSide === 1 ? s : -s)
@@ -367,7 +367,7 @@ const X = B({
     var e, t, s, i, h, o, g, u, a, n, l, S;
     return {
       loaded: !1,
-      vis: C({}),
+      vis: T({}),
       visInit: !1,
       disableWatchers: !1,
       listeners: {},
@@ -831,8 +831,8 @@ const X = B({
         t[0].contentRect.width !== this.visWrapperWidth && (this.visWrapperWidth = t[0].contentRect.width, this.visWrapperWidth && this.vis.updateSize());
       }, 10));
     }).observe(e)), this.bandingTypes = this.options.banding.types ?? [], Array.isArray(this.bandingTypes) && this.bandingTypes.length)
-      for (const t of Object.keys(this.localShape.bandingType))
-        this.localShape.bandingType[t] && !this.bandingTypes.includes(this.localShape.bandingType[t]) && this.bandingTypes.push(this.localShape.bandingType[t]);
+      for (const t of Object.keys(this.localShape.banding))
+        this.localShape.banding[t] && !this.bandingTypes.includes(this.localShape.banding[t]) && this.bandingTypes.push(this.localShape.banding[t]);
     this.loaded = !0;
   },
   methods: {
@@ -932,7 +932,7 @@ const X = B({
       return this.currentPrimary && this.currentSecondary ? e = this.localShape[this.currentPrimary][this.currentSecondary] : this.currentPrimary && (e = this.localShape[this.currentPrimary]), Array.isArray(e) ? e : [e];
     },
     initVis() {
-      this.shape && (this.vis = C(new q({
+      this.shape && (this.vis = T(new q({
         HTMLElement: document.querySelector("#machining-diagram"),
         shape: this.localShape,
         vueComponent: this
@@ -1205,7 +1205,7 @@ function xe(e, t, s, i, h, o) {
         e.currentPrimary === "banding" && e.options.banding.enableTypes && e.options.banding.types === null ? (r(), d("div", {
           key: 3,
           class: "grid-table banding-types",
-          style: T({
+          style: W({
             "grid-template-columns": e.columnsStyle
           })
         }, [
@@ -1239,7 +1239,7 @@ function xe(e, t, s, i, h, o) {
         e.currentPrimary === "banding" ? (r(), d("div", {
           key: 4,
           class: "grid-table banding",
-          style: T({
+          style: W({
             "grid-template-columns": e.columnsStyle
           })
         }, [
@@ -1297,7 +1297,7 @@ function xe(e, t, s, i, h, o) {
             ), (n, l) => (r(), d("div", {
               key: l,
               class: "group validation",
-              style: T({
+              style: W({
                 "grid-column-end": "span " + e.columns
               })
             }, f(n), 5))), 128))
@@ -1306,7 +1306,7 @@ function xe(e, t, s, i, h, o) {
         e.currentPrimary !== "banding" && e.currentShapeFields.length ? (r(), d("div", {
           key: 5,
           class: v(["grid-table", e.currentPrimary]),
-          style: T({
+          style: W({
             "grid-template-columns": e.columnsStyle
           })
         }, [
@@ -1331,7 +1331,7 @@ function xe(e, t, s, i, h, o) {
               key: S,
               class: v(["cell", { invalid: e.isInvalid(n, l) }])
             }, [
-              e.currentFields[l].type !== "select" && e.currentFields[l].type !== "checkbox" ? (r(), D(u, {
+              e.currentFields[l].type !== "select" && e.currentFields[l].type !== "checkbox" ? (r(), C(u, {
                 key: 0,
                 id: l + "-" + S,
                 type: e.currentFields[l].output ?? "unitDependent",
@@ -1342,7 +1342,7 @@ function xe(e, t, s, i, h, o) {
                 units: e.units,
                 output: e.currentFields[l].output,
                 onUpdate: (k) => e.updateField(a, l, k)
-              }, null, 8, ["id", "type", "placeholder", "disabled", "value", "units", "output", "onUpdate"])) : e.currentFields[l].type === "checkbox" ? (r(), D(u, {
+              }, null, 8, ["id", "type", "placeholder", "disabled", "value", "units", "output", "onUpdate"])) : e.currentFields[l].type === "checkbox" ? (r(), C(u, {
                 key: 1,
                 id: l + "-" + S,
                 type: "checkbox",
@@ -1351,7 +1351,7 @@ function xe(e, t, s, i, h, o) {
                 value: a[l],
                 output: e.currentFields[l].output,
                 onUpdate: (k) => e.updateField(a, l, k)
-              }, null, 8, ["id", "disabled", "value", "output", "onUpdate"])) : e.currentFields[l].type === "select" ? (r(), D(u, {
+              }, null, 8, ["id", "disabled", "value", "output", "onUpdate"])) : e.currentFields[l].type === "select" ? (r(), C(u, {
                 key: 2,
                 id: l + "-" + S,
                 type: "select",
@@ -1376,7 +1376,7 @@ function xe(e, t, s, i, h, o) {
             ), (l, S) => (r(), d("div", {
               key: S,
               class: "group validation",
-              style: T({
+              style: W({
                 "grid-column-end": "span " + e.columns
               })
             }, f(l), 5))), 128))
