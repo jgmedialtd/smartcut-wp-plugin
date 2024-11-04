@@ -1,7 +1,7 @@
 var z = Object.defineProperty;
 var P = (e, t, s) => t in e ? z(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
 var p = (e, t, s) => P(e, typeof t != "symbol" ? t + "" : t, s);
-import { i as y, j as b, v as W, k as B, I as A, l as C, p as Y, q as O, s as L, u as E, w as V, x as G, y as M, z as I, A as $, B as U, _ as R, r as F, o as r, d, f as c, D as x, t as f, h as m, n as v, E as T, F as H, e as w, G as j, H as N, b as D } from "./main-Ct21Qp5z.js";
+import { i as y, j as b, v as W, k as B, I as A, l as C, p as Y, q as O, s as L, u as E, w as V, x as G, y as M, z as I, A as $, B as U, _ as R, r as F, o as r, d, f as c, D as x, t as f, h as m, n as v, E as T, F as H, e as w, G as j, H as N, b as D } from "./main-DZxDd4D_.js";
 class q {
   constructor({
     HTMLElement: t,
@@ -1280,8 +1280,8 @@ function xe(e, t, s, i, h, o) {
                     void 0
                   )
                 })),
-                value: e.shape.bandingType[a],
-                onUpdate: (n) => e.localShape.bandingType[a] = n
+                value: e.shape.banding[a],
+                onUpdate: (n) => e.localShape.banding[a] = n
               }, null, 8, ["id", "disabled", "options", "value", "onUpdate"])
             ])) : m("", !0),
             c("div", {
