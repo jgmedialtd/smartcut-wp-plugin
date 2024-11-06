@@ -9,13 +9,13 @@
  * Requires PHP: 7.0
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 3.2.5
+ * Version: 3.2.6
  * Author URI: https://smartcut.dev
  */
 
 namespace SmartCut;
 
-define('SMARTCUT_CURRENT_VERSION', '3.2.5'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '3.2.6'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -307,6 +307,18 @@ function create_product_template_tools_page()
 			'price' => 100,
 		],
 
+		'SC - Simple sheet with machining & banding, price by full sheet' => [
+			'length' => '2440',
+			'width' => '1220',
+			'thickness' => ['10'],
+			'stock_type' => 'sheet',
+			'cut_preference' => 'length',
+			'banding_types' => 'sc-banding-a,sc-banding-b',
+			'machining_holes_product' => 'sc-machining-holes',
+			'machining_corners_product' => 'sc-machining-corners',
+			'price' => 100,
+		],
+
 		'SC - Multiple thicknesses, single stock size, multiple simple banding options, price by full sheet plus number of parts' => [
 			'variable' => true,
 			'variations' => ['thickness'],
@@ -507,7 +519,7 @@ function create_product_template_tools_page()
 
 		if ($product_post) {
 
-			printf('<div class="notice notice-success"><p>✅ "%s" already exists</p></div>', $name);
+			printf('<div class="notice notice-info"><p>"%s" already exists</p></div>', $name);
 			continue;
 		} else {
 

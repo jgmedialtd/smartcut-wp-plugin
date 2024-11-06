@@ -1,5 +1,5 @@
-import { C as l, m as u, g as o, c as s, a as g, _ as h, r as d, o as f, b as p } from "./main-BCzShMxm.js";
-const m = {
+import { C as l, m as u, g as i, c as s, a as g, _ as h, r as f, o as d, b as m } from "./main-CKJk9-ug.js";
+const p = {
   name: "Vanilla",
   components: {
     CheckoutCalculator: l
@@ -39,7 +39,7 @@ const m = {
       this.debug = !this.debug;
     },
     init(t) {
-      u.call(this, t), this.stock = t.stock, this.pricing.banding = o(t, ["banding", "pricing"]), this.pricing.finish = o(t, ["finish", "pricing"]), this.pricing.machining = o(t, ["machining", "pricing"]), s(t, ["options", "currency"]) && (this.currency = o(t, ["options", "currency"])), s(t, ["options", "locale"]) && (this.locale = o(t, ["options", "locale"]).replace("_", "-")), this.$nextTick(() => {
+      u.call(this, t), this.stock = t.stock, this.pricing.banding = i(t, ["banding", "pricing"]), this.pricing.finish = i(t, ["finish", "pricing"]), this.pricing.machining = i(t, ["machining", "pricing"]), s(t, ["options", "currency"]) && (this.currency = i(t, ["options", "currency"])), s(t, ["options", "locale"]) && (this.locale = i(t, ["options", "locale"]).replace("_", "-")), this.$nextTick(() => {
         const n = g.call(this, "calculator");
         n && n.init(t);
       });
@@ -49,7 +49,7 @@ const m = {
       window.dispatchEvent(t);
     },
     result(t) {
-      var r, i;
+      var o, r;
       const n = t;
       if (n.checkout = {
         formattedTotalStockCost: "",
@@ -61,7 +61,7 @@ const m = {
           style: "currency",
           currency: this.currency
         }
-      ), (r = t == null ? void 0 : t.metadata) != null && r.bandingLengthByType)
+      ), (o = t == null ? void 0 : t.metadata) != null && o.bandingLengthByType)
         for (const [e, a] of Object.entries(t.metadata.bandingLengthByType)) {
           if (!s(this.pricing, ["banding", e])) {
             this.error(`Banding price ${e} not found`);
@@ -69,7 +69,7 @@ const m = {
           }
           n.checkout.formattedBandingCost[e] = (a / 1e3 * this.pricing.banding[e]).toLocaleString(this.locale, { style: "currency", currency: this.currency });
         }
-      if ((i = t == null ? void 0 : t.metadata) != null && i.finishAreaByType)
+      if ((r = t == null ? void 0 : t.metadata) != null && r.finishAreaByType)
         for (const [e, a] of Object.entries(t.metadata.finishAreaByType)) {
           if (!s(this.pricing, ["finish", e])) {
             this.error(`Finish price ${e} not found`);
@@ -83,39 +83,42 @@ const m = {
       window.dispatchEvent(c);
     },
     formatPrice(t = 0, n = this.locale) {
+      if (t === !0) return "";
       try {
         n = n.replace("_", "-");
         const c = Number(t);
-        return c ? isNaN(c) ? (console.error("Invalid price:", t), "") : c.toLocaleString(n, {
+        return !c && c !== 0 ? "" : isNaN(c) ? (console.error("formatPrice - invalid price:", t), "") : c.toLocaleString(n, {
           style: "currency",
           currency: this.currency
-        }) : "";
+        });
       } catch (c) {
         return console.error("Error formatting price:", c), "";
       }
     },
     findExtrasPrice(t, n) {
-      var i;
-      if (!((i = this.pricing) != null && i[t])) return null;
+      var r;
+      if (!((r = this.pricing) != null && r[t])) return null;
       const c = n.join("|");
-      return o(this.pricing, [t, c]) || null;
+      return i(this.pricing, [t, c]) || null;
     }
   }
 };
-function y(t, n, c, r, i, e) {
-  const a = d("CheckoutCalculator");
-  return f(), p(a, {
+function y(t, n, c, o, r, e) {
+  const a = f("CheckoutCalculator");
+  return d(), m(a, {
     ref: "calculator",
-    debug: i.debug,
-    stock: i.stock,
+    debug: r.debug,
+    stock: r.stock,
+    "find-extras-price": e.findExtrasPrice,
+    "format-price": e.formatPrice,
     onLog: e.log,
     onError: e.error,
     onDebug: e.toggleDebug,
     onResult: e.result,
     onCalculating: e.calculating
-  }, null, 8, ["debug", "stock", "onLog", "onError", "onDebug", "onResult", "onCalculating"]);
+  }, null, 8, ["debug", "stock", "find-extras-price", "format-price", "onLog", "onError", "onDebug", "onResult", "onCalculating"]);
 }
-const k = /* @__PURE__ */ h(m, [["render", y]]);
+const k = /* @__PURE__ */ h(p, [["render", y]]);
 export {
   k as default
 };
