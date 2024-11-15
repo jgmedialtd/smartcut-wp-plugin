@@ -1,4 +1,4 @@
-import { p as Ee, _ as be, o as ve, d as ke, f as xe, t as Oe, n as De, R as Re, S as Ie, T as Le, u as Te, q as Se, U as Fe, V as pe, r as Ae, N as Me } from "./main-Da74uB3y.js";
+import { q as Ee, _ as be, o as ve, b as ke, h as xe, t as Oe, n as De, R as Re, S as Ie, T as Le, u as Te, s as Se, U as Fe, V as pe, r as Ae, e as Me } from "./main-BZ3wIwF-.js";
 const qe = {
   name: "Drop",
   props: {
@@ -391,28 +391,28 @@ License: MIT
         var S = t.quoteChar || '"';
         if (t.newline || (t.newline = function(L, w) {
           L = L.substring(0, 1048576);
-          var V = new RegExp(ae(w) + "([^]*?)" + ae(w), "gm"), N = (L = L.replace(V, "")).split("\r"), $ = L.split(`
-`), J = 1 < $.length && $[0].length < N[0].length;
-          if (N.length === 1 || J) return `
+          var V = new RegExp(ae(w) + "([^]*?)" + ae(w), "gm"), U = (L = L.replace(V, "")).split("\r"), $ = L.split(`
+`), J = 1 < $.length && $[0].length < U[0].length;
+          if (U.length === 1 || J) return `
 `;
-          for (var U = 0, x = 0; x < N.length; x++) N[x][0] === `
-` && U++;
-          return U >= N.length / 2 ? `\r
+          for (var B = 0, x = 0; x < U.length; x++) U[x][0] === `
+` && B++;
+          return B >= U.length / 2 ? `\r
 ` : "\r";
         }(h, S)), a = !1, t.delimiter) v(t.delimiter) && (t.delimiter = t.delimiter(h), o.meta.delimiter = t.delimiter);
         else {
-          var k = function(L, w, V, N, $) {
-            var J, U, x, T;
+          var k = function(L, w, V, U, $) {
+            var J, B, x, T;
             $ = $ || [",", "	", "|", ";", m.RECORD_SEP, m.UNIT_SEP];
             for (var te = 0; te < $.length; te++) {
               var b = $[te], re = 0, G = 0, ie = 0;
               x = void 0;
-              for (var Z = new de({ comments: N, delimiter: b, newline: w, preview: 10 }).parse(L), X = 0; X < Z.data.length; X++) if (V && z(Z.data[X])) ie++;
+              for (var Z = new de({ comments: U, delimiter: b, newline: w, preview: 10 }).parse(L), X = 0; X < Z.data.length; X++) if (V && z(Z.data[X])) ie++;
               else {
                 var ee = Z.data[X].length;
                 G += ee, x !== void 0 ? 0 < ee && (re += Math.abs(ee - x), x = ee) : x = ee;
               }
-              0 < Z.data.length && (G /= Z.data.length - ie), (U === void 0 || re <= U) && (T === void 0 || T < G) && 1.99 < G && (U = re, J = b, T = G);
+              0 < Z.data.length && (G /= Z.data.length - ie), (B === void 0 || re <= B) && (T === void 0 || T < G) && 1.99 < G && (B = re, J = b, T = G);
             }
             return { successful: !!(t.delimiter = J), bestDelimiter: J };
           }(h, t.newline, t.skipEmptyLines, t.comments, t.delimitersToGuess);
@@ -446,14 +446,14 @@ License: MIT
       this.parse = function(c, W, H) {
         if (typeof c != "string") throw new Error("Input must be a string");
         var o = c.length, C = i.length, z = a.length, D = u.length, P = v(p), A = [], M = [], h = [], y = l = 0;
-        if (!c) return B();
+        if (!c) return N();
         if (t.header && !W) {
           var E = c.split(a)[0].split(i), S = [], k = {}, j = !1;
           for (var L in E) {
             var w = E[L];
             v(t.transformHeader) && (w = t.transformHeader(w, L));
-            var V = w, N = k[w] || 0;
-            for (0 < N && (j = !0, V = w + "_" + N), k[w] = N + 1; S.includes(V); ) V = V + "_" + N;
+            var V = w, U = k[w] || 0;
+            for (0 < U && (j = !0, V = w + "_" + U), k[w] = U + 1; S.includes(V); ) V = V + "_" + U;
             S.push(V);
           }
           if (j) {
@@ -462,26 +462,26 @@ License: MIT
           }
         }
         if (q || q !== !1 && c.indexOf(e) === -1) {
-          for (var J = c.split(a), U = 0; U < J.length; U++) {
-            if (h = J[U], l += h.length, U !== J.length - 1) l += a.length;
-            else if (H) return B();
+          for (var J = c.split(a), B = 0; B < J.length; B++) {
+            if (h = J[B], l += h.length, B !== J.length - 1) l += a.length;
+            else if (H) return N();
             if (!u || h.substring(0, D) !== u) {
               if (P) {
-                if (A = [], ie(h.split(i)), he(), I) return B();
+                if (A = [], ie(h.split(i)), he(), I) return N();
               } else ie(h.split(i));
-              if (g && g <= U) return A = A.slice(0, g), B(!0);
+              if (g && g <= B) return A = A.slice(0, g), N(!0);
             }
           }
-          return B();
+          return N();
         }
         for (var x = c.indexOf(i, l), T = c.indexOf(a, l), te = new RegExp(ae(O) + ae(e), "g"), b = c.indexOf(e, l); ; ) if (c[l] !== e) if (u && h.length === 0 && c.substring(l, l + D) === u) {
-          if (T === -1) return B();
+          if (T === -1) return N();
           l = T + z, T = c.indexOf(a, l), x = c.indexOf(i, l);
         } else if (x !== -1 && (x < T || T === -1)) h.push(c.substring(l, x)), l = x + C, x = c.indexOf(i, l);
         else {
           if (T === -1) break;
-          if (h.push(c.substring(l, T)), ee(T + z), P && (he(), I)) return B();
-          if (g && A.length >= g) return B(!0);
+          if (h.push(c.substring(l, T)), ee(T + z), P && (he(), I)) return N();
+          if (g && A.length >= g) return N(!0);
         }
         else for (b = l, l++; ; ) {
           if ((b = c.indexOf(e, b + 1)) === -1) return H || M.push({ type: "Quotes", code: "MissingQuotes", message: "Quoted field unterminated", row: A.length, index: l }), X();
@@ -496,8 +496,8 @@ License: MIT
               }
               var G = Z(T);
               if (c.substring(b + 1 + G, b + 1 + G + z) === a) {
-                if (h.push(c.substring(l, b).replace(te, e)), ee(b + 1 + G + z), x = c.indexOf(i, l), b = c.indexOf(e, l), P && (he(), I)) return B();
-                if (g && A.length >= g) return B(!0);
+                if (h.push(c.substring(l, b).replace(te, e)), ee(b + 1 + G + z), x = c.indexOf(i, l), b = c.indexOf(e, l), P && (he(), I)) return N();
+                if (g && A.length >= g) return N(!0);
                 break;
               }
               M.push({ type: "Quotes", code: "InvalidQuotes", message: "Trailing quote on quoted field is malformed", row: A.length, index: l }), b++;
@@ -517,16 +517,16 @@ License: MIT
           return ye;
         }
         function X(K) {
-          return H || (K === void 0 && (K = c.substring(l)), h.push(K), l = o, ie(h), P && he()), B();
+          return H || (K === void 0 && (K = c.substring(l)), h.push(K), l = o, ie(h), P && he()), N();
         }
         function ee(K) {
           l = K, ie(h), h = [], T = c.indexOf(a, l);
         }
-        function B(K) {
+        function N(K) {
           return { data: A, errors: M, meta: { delimiter: i, linebreak: a, aborted: I, truncated: !!K, cursor: y + (W || 0) } };
         }
         function he() {
-          p(B()), A = [], M = [];
+          p(N()), A = [], M = [];
         }
       }, this.abort = function() {
         I = !0;
@@ -580,7 +580,7 @@ License: MIT
   });
 })(we);
 var ze = we.exports;
-const je = /* @__PURE__ */ Ie(ze), Ne = {
+const je = /* @__PURE__ */ Ie(ze), Ue = {
   name: "ImportCSV",
   components: {
     Drop: He
@@ -884,10 +884,10 @@ const je = /* @__PURE__ */ Ie(ze), Ne = {
       return r ? this.bandingChoiceCombinations.has(r.toLowerCase()) : !0;
     }
   }
-}, Ue = { id: "import-file" };
-function Be(r, d, s, n, f, _) {
+}, Be = { id: "import-file" };
+function Ne(r, d, s, n, f, _) {
   const R = Ae("Drop");
-  return ve(), ke("div", Ue, [
+  return ve(), ke("div", Be, [
     Me(R, {
       label: n.t("Drop CSV file here"),
       "required-type": "text/csv",
@@ -895,7 +895,7 @@ function Be(r, d, s, n, f, _) {
     }, null, 8, ["label", "onDrop"])
   ]);
 }
-const We = /* @__PURE__ */ be(Ne, [["render", Be]]);
+const We = /* @__PURE__ */ be(Ue, [["render", Ne]]);
 export {
   We as default
 };

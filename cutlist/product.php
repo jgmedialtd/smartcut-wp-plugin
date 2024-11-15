@@ -389,7 +389,6 @@ function get_machining_pricing($product_id)
  */
 function get_product_settings($product_id = null)
 {
-
 	$product_id = $product_id ? $product_id : get_the_ID();
 
 	if (!$product_id) return;
@@ -426,7 +425,6 @@ function get_product_settings($product_id = null)
  */
 function add_html($banding_data, $finish_data)
 {
-
 	$settings = get_product_settings();
 
 	if ($settings['units'] === 'fraction') {
@@ -469,7 +467,6 @@ function add_html($banding_data, $finish_data)
 	//additional pricing
 
 	echo '<table id="smartcut-pricing-table">';
-
 
 	if ($banding_enabled) :
 
@@ -540,7 +537,6 @@ add_action('wp', 'SmartCut\Cutlist\Product\init', 100);
 
 function get_attribute_value($attribute, $attributes)
 {
-
 	if (!isset($attributes[$attribute])) return null;
 
 	$attribute = $attributes[$attribute];
@@ -850,7 +846,6 @@ add_action('wp_enqueue_scripts', 'SmartCut\Cutlist\Product\enqueue_scripts');
 
 function enqueue_styles()
 {
-
 	if (!should_activate()) return;
 
 	wp_enqueue_style(

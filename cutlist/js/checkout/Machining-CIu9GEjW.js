@@ -1,7 +1,7 @@
 var B = Object.defineProperty;
 var Y = (e, t, s) => t in e ? B(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
 var h = (e, t, s) => Y(e, typeof t != "symbol" ? t + "" : t, s);
-import { i as v, j as u, k as E, v as T, l as O, I as V, E as M, u as G, p as F, q as I, s as $, w as P, x as A, y as R, z as j, A as U, B as N, D as K, G as q, H as J, J as Q, K as X, L as Z, M as _, _ as ee, r as W, o as r, d, N as L, h as b, f as m, t as y, n as x, b as D, O as z, F as k, e as C, P as te, Q as se } from "./main-Da74uB3y.js";
+import { j as v, k as u, l as E, v as T, p as O, I as V, E as M, u as G, q as F, s as I, w as $, x as P, y as A, z as R, A as j, B as U, D as N, G as K, H as q, J, K as Q, L as X, M as Z, d as _, _ as ee, r as W, o as r, b as d, e as L, i as b, h as m, t as y, n as x, N as D, O as z, F as k, f as C, P as te, Q as se } from "./main-BZ3wIwF-.js";
 class ie {
   constructor({
     HTMLElement: t,
@@ -277,7 +277,7 @@ class ie {
     s > 600 && (s = 600), this.xScale.domain([0, this.shapeL]).range([this.padding, this.w - this.padding]), t > 0.3 ? this.h = this.xScale(this.shape.getShortSide()) + this.padding : (t = 0.3, this.h = this.w * t), this.h > s && (this.h = s, this.w = this.h / t, this.xScale.domain([0, this.shapeL]).range([this.padding, this.w - this.padding])), this.yScale.domain([this.shapeW, 0]).range([this.padding, this.h - this.padding]), this.yScaleFlipped.domain([0, this.shapeW]).range([this.padding, this.h - this.padding]), this.measurementScale.domain([0, this.shapeL]).range([0, this.w - this.padding * 2]), this.HTMLElement.style.height = this.h + "px", this.create();
   }
 }
-const ae = _(() => import("./ObjectViewer-BYXKUAeY.js")), ne = O({
+const ae = _(() => import("./ObjectViewer-Bu9x0GW7.js")), ne = O({
   name: "Machining",
   components: { InputField: V, ExtrasInputs: M, ObjectViewer: ae },
   props: {

@@ -1,8 +1,9 @@
-import { C as l, m as u, g as i, c as s, a as g, _ as h, r as f, o as d, b as m } from "./main-Da74uB3y.js";
-const p = {
+import { C as h, m as f, g as i, c as s, a as d, d as m, _ as p, r as l, o as y, b, e as u, F as k } from "./main-BZ3wIwF-.js";
+const C = m(() => import("./FormulaPricing-FdHd4Gy_.js")), w = {
   name: "Vanilla",
   components: {
-    CheckoutCalculator: l
+    CheckoutCalculator: h,
+    FormulaPricing: C
   },
   data() {
     return {
@@ -39,8 +40,8 @@ const p = {
       this.debug = !this.debug;
     },
     init(t) {
-      u.call(this, t), this.stock = t.stock, this.pricing.banding = i(t, ["banding", "pricing"]), this.pricing.finish = i(t, ["finish", "pricing"]), this.pricing.machining = i(t, ["machining", "pricing"]), s(t, ["options", "currency"]) && (this.currency = i(t, ["options", "currency"])), s(t, ["options", "locale"]) && (this.locale = i(t, ["options", "locale"]).replace("_", "-")), this.$nextTick(() => {
-        const n = g.call(this, "calculator");
+      f.call(this, t), this.stock = t.stock, this.pricing.banding = i(t, ["banding", "pricing"]), this.pricing.finish = i(t, ["finish", "pricing"]), this.pricing.machining = i(t, ["machining", "pricing"]), s(t, ["options", "currency"]) && (this.currency = i(t, ["options", "currency"])), s(t, ["options", "locale"]) && (this.locale = i(t, ["options", "locale"]).replace("_", "-")), this.$nextTick(() => {
+        const n = d.call(this, "calculator");
         n && n.init(t);
       });
     },
@@ -103,22 +104,25 @@ const p = {
     }
   }
 };
-function y(t, n, c, o, r, e) {
-  const a = f("CheckoutCalculator");
-  return d(), m(a, {
-    ref: "calculator",
-    debug: r.debug,
-    stock: r.stock,
-    "find-extras-price": e.findExtrasPrice,
-    "format-price": e.formatPrice,
-    onLog: e.log,
-    onError: e.error,
-    onDebug: e.toggleDebug,
-    onResult: e.result,
-    onCalculating: e.calculating
-  }, null, 8, ["debug", "stock", "find-extras-price", "format-price", "onLog", "onError", "onDebug", "onResult", "onCalculating"]);
+function P(t, n, c, o, r, e) {
+  const a = l("CheckoutCalculator"), g = l("FormulaPricing");
+  return y(), b(k, null, [
+    u(a, {
+      ref: "calculator",
+      debug: r.debug,
+      stock: r.stock,
+      "find-extras-price": e.findExtrasPrice,
+      "format-price": e.formatPrice,
+      onLog: e.log,
+      onError: e.error,
+      onDebug: e.toggleDebug,
+      onResult: e.result,
+      onCalculating: e.calculating
+    }, null, 8, ["debug", "stock", "find-extras-price", "format-price", "onLog", "onError", "onDebug", "onResult", "onCalculating"]),
+    u(g)
+  ], 64);
 }
-const k = /* @__PURE__ */ h(p, [["render", y]]);
+const E = /* @__PURE__ */ p(w, [["render", P]]);
 export {
-  k as default
+  E as default
 };
