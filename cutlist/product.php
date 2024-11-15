@@ -502,7 +502,7 @@ function add_html($banding_data, $finish_data)
 	if ($settings['surcharge_type'] !== 'none') :
 
 		echo '<tr id="smartcut-surcharge-total">';
-		printf('<td class="price">%s</td><td>%s</td>', __('Surcharge total', 'smartcut'), wc_price(0));
+		printf('<td class="price">%s</td><td>%s</td>', __('Cutting charge total', 'smartcut'), wc_price(0));
 		echo '</tr>';
 
 	endif;
