@@ -942,7 +942,12 @@ add_action('woocommerce_cart_item_removed', function (string $cartItemKey, WC_Ca
 // Handle full cart emptied
 add_action('woocommerce_before_cart_emptied', function (): void {
 
-	if (is_checkout() && did_action('woocommerce_checkout_order_processed')) {
+	if (
+		is_checkout() ||
+		wp_doing_ajax() && !empty($_POST['wc-ajax']) && $_POST['wc-ajax'] === 'checkout' ||
+		defined('DOING_WCAPI') ||
+		did_action('woocommerce_checkout_order_processed')
+	) {
 		return;
 	}
 

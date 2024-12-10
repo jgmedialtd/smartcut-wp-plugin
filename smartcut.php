@@ -9,7 +9,7 @@
  * Requires PHP: 7.1
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 4.0.2
+ * Version: 4.0.3
  * Author URI: https://smartcut.dev
  */
 
