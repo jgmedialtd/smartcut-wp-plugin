@@ -1,6 +1,5 @@
-import { S, i } from "./main-BuWv0poc.js";
+import { S as f, i } from "./main-BFZHuxOW.js";
 export {
-  S as default,
+  f as default,
   i as i18n
 };
-//# sourceMappingURL=checkout.js.map
