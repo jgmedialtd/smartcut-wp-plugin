@@ -9,7 +9,7 @@
  * Requires PHP: 7.1
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 4.0.6
+ * Version: 4.0.7
  * Author URI: https://smartcut.dev
  */
 
@@ -19,7 +19,7 @@ include_once 'settings.php';
 include_once 'helpers.php';
 include_once 'cutlist/cart.php';
 
-define('SMARTCUT_CURRENT_VERSION', '4.0.6'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '4.0.7'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';

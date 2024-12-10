@@ -1,9 +1,9 @@
-import { C as x, g as c, m as F, c as f } from "./Launch-D4jITcGc.js";
-import { B as O, r, s as A, L as U, N as D, o as H, j as C, k as $, H as T, u as J, A as N, F as M, K as I, n as K } from "./main-v3lVj8qt.js";
+import { C as x, g as c, m as F, c as f } from "./Launch-DeD3i9WV.js";
+import { B as O, r, s as A, L as U, N as D, o as H, j as C, k as $, H as T, u as J, A as N, F as M, K as I, n as K } from "./main-Dy3ES8Z9.js";
 const G = /* @__PURE__ */ O({
   __name: "Vanilla",
   setup(W, { expose: R }) {
-    const j = I(() => import("./FormulaPricing-DJ3KH544.js")), l = r(!1), y = r([]), o = r({
+    const j = I(() => import("./FormulaPricing-mTfm4X3y.js")), l = r(!1), y = r([]), o = r({
       banding: null,
       finish: null,
       machining: null
@@ -34,7 +34,7 @@ const G = /* @__PURE__ */ O({
       var p;
       if (!((p = o.value) != null && p[e])) return null;
       const t = n.join("|");
-      return c(o.value, [e, t]) || null;
+      return c(o.value, [e, t]);
     }, _ = (e) => {
       F.call({ debug: l.value }, e), y.value = e.stock, o.value.banding = c(e, ["banding", "pricing"]), o.value.finish = c(e, ["finish", "pricing"]), o.value.machining = c(e, ["machining", "pricing"]), f(e, ["options", "currency"]) && (u.value = c(e, ["options", "currency"])), f(e, ["options", "locale"]) && (i.value = c(e, ["options", "locale"]).replace("_", "-")), (f(e, ["options", "formula", "url"]) || f(e, ["options", "formula", "spec"])) && (s.value = "formula", m.value = c(e, ["options", "formula", "url"]) ?? null, v.value = c(e, ["options", "formula", "spec"]) ?? null), K(() => {
         g.value && g.value.init(e);

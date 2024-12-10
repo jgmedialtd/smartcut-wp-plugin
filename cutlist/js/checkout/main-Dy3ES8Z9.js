@@ -10006,7 +10006,7 @@ const Dg = Qm({
     capitalize: (e) => e.charAt(0).toUpperCase() + e.slice(1),
     title: (e) => e.split(" ").map((t) => t.charAt(0).toUpperCase() + t.slice(1)).join(" ")
   }
-}), Fg = /* @__PURE__ */ wf(() => import("./Launch-D4jITcGc.js").then((e) => e.L));
+}), Fg = /* @__PURE__ */ wf(() => import("./Launch-DeD3i9WV.js").then((e) => e.L));
 let ut = null;
 const Ug = async () => {
   const e = document.querySelector("#smartcut-app");
