@@ -9,7 +9,7 @@
  * Requires PHP: 7.1
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 4.0.4
+ * Version: 4.0.5
  * Author URI: https://smartcut.dev
  */
 
@@ -19,7 +19,7 @@ include_once 'settings.php';
 include_once 'helpers.php';
 include_once 'cutlist/cart.php';
 
-define('SMARTCUT_CURRENT_VERSION', '3.3.0'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '4.0.5'); // This needs to be kept in sync with the version above.
 
 //composer
 require __DIR__ . '/vendor/autoload.php';
@@ -36,8 +36,6 @@ define('SMARTCUT_ENDPOINT', $endpoint);
 
 class Plugin
 {
-	private const VERSION = '4.0.0';
-
 	private $settings;
 	private static $instance = null;
 	private $globalSettings = [];
@@ -152,7 +150,7 @@ class Plugin
 			'smartcut-site-wide-style',
 			plugins_url('/css/site-wide.css', __FILE__),
 			[],
-			self::VERSION
+			SMARTCUT_CURRENT_VERSION
 		);
 
 		if (is_singular('product')) {
@@ -160,7 +158,7 @@ class Plugin
 				'smartcut-product-style',
 				plugins_url('/css/product.css', __FILE__),
 				[],
-				self::VERSION
+				SMARTCUT_CURRENT_VERSION
 			);
 		}
 	}
@@ -171,13 +169,13 @@ class Plugin
 			'smartcut-admin-style',
 			plugins_url('/css/admin.css', __FILE__),
 			[],
-			self::VERSION
+			SMARTCUT_CURRENT_VERSION
 		);
 	}
 
 	public function printVersion(): string
 	{
-		return wp_kses_post('<div>SmartCut version: ' . self::VERSION . '</div>');
+		return wp_kses_post('<div>SmartCut version: ' . SMARTCUT_CURRENT_VERSION . '</div>');
 	}
 
 	public function allowJsonUploads($mimes): array
