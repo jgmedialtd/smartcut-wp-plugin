@@ -318,6 +318,9 @@ class CartManager
 		}
 
 		static $priceFields = null;
+		static $addedCosts = null;
+
+		// Initialize both static variables if they haven't been set
 		if ($priceFields === null) {
 			$priceFields = array_keys(array_filter(
 				self::$fields,
@@ -325,7 +328,18 @@ class CartManager
 					return ($field['type'] ?? '') === self::TYPE_PRICE;
 				}
 			));
-			$addedCosts = array_map([self::class, 'getFieldKey'], $priceFields);
+
+			// Ensure $priceFields is not empty before creating $addedCosts
+			if (!empty($priceFields)) {
+				$addedCosts = array_map([self::class, 'getFieldKey'], $priceFields);
+			} else {
+				$addedCosts = []; // Provide a default empty array if no price fields exist
+			}
+		}
+
+		// Ensure $addedCosts is an array before proceeding
+		if (!is_array($addedCosts)) {
+			$addedCosts = [];
 		}
 
 		foreach ($cart->get_cart() as $cartItem) {
