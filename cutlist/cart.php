@@ -7,453 +7,944 @@ use WC_Order;
 use WC_Order_Item_Product;
 
 /**
- * get the keys for all the keys used by smartcut
- * @param bool $inputs
- * @return string[]
+ * Custom exception classes for better error handling
  */
-function get_field_keys($inputs = false)
+class FileValidationException extends \Exception {};
+class FileDownloadException extends \Exception {};
+class FileUploadException extends \Exception {};
+
+class CartManager
 {
-	$options = get_option('smartcut_options');
+	/**
+	 * Field grouping constants
+	 * Define the different categories of fields in the system
+	 */
+	const GROUP_COMMON = 'common';        // Common fields shown in both input and output
+	const GROUP_INPUT = 'input_only';     // Fields used only during input/processing
+	const GROUP_MACHINING = 'machining';  // Machining-specific fields
+	const GROUP_FILES = 'files';          // File-related fields
 
-	if ($inputs) {
+	/**
+	 * Field type constants
+	 * Define the different types of fields and their display/processing behavior
+	 */
+	const TYPE_PRICE = 'price';  // Fields that represent monetary values
+	const TYPE_LINK = 'link';    // Fields that represent clickable links
 
-		//these get added as fields to the product page and added to each cart item
-		$fields = [
-			__('Job ID', 'smartcut') => 'smartcut_job_id',
-			__('Total parts', 'smartcut') => 'smartcut_total_parts',
-			__('Stock summary', 'smartcut') => 'smartcut_stock_summary',
-			__('Part area', 'smartcut') => 'smartcut_part_area',
-			__('Cut length', 'smartcut') => 'smartcut_total_cut_length',
-			__('Total cuts', 'smartcut') => 'smartcut_total_cuts',
-			__('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
-			__('Price per part', 'smartcut') => 'smartcut_per_part_price',
-			__('Banding price', 'smartcut') => 'smartcut_banding_price',
-			__('Finish price', 'smartcut') => 'smartcut_finish_price',
-			__('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
-			__('Custom price', 'smartcut') => 'smartcut_custom_price', //used to override the natural price
-			__('Dimensions', 'smartcut') => 'smartcut_dimensions',
-		];
+	/**
+	 * File handling constants
+	 * Configure file upload constraints and accepted formats
+	 */
+	const VALID_FILE_EXTENSIONS = ['pdf', 'csv', 'dxf', 'ptx', 'zip'];
+	const MAX_FILE_SIZE = 10 * 1024 * 1024;  // 10MB in bytes
 
-		if ($options['enable_machining'] === '1') {
-			$fields[__('Machining', 'smartcut')]  = 'smartcut_machining'; //is machining present
-			$fields[__('Machining price', 'smartcut')] = 'smartcut_machining_price';
+	/**
+	 * Retry mechanism constants
+	 * Configure retry behavior for file operations
+	 */
+	const MAX_RETRY_ATTEMPTS = 3;
+	const RETRY_DELAY = 1;  // Delay between retries in seconds
+
+	/**
+	 * Security constants
+	 * Define security-related values for form handling
+	 */
+	const NONCE_ACTION = 'smartcut_add_to_cart';
+	const NONCE_FIELD = 'smartcut_nonce';
+
+	/**
+	 * Cart field definitions
+	 */
+	private static $fields = [
+		'job_id' => [
+			'label' => 'Job ID',
+			'group' => self::GROUP_COMMON,
+			'display_order' => 1
+		],
+		'order_summary_pdf' => [
+			'label' => 'Order summary',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_LINK,
+			'display_order' => 2
+		],
+		'layout_pdf' => [
+			'label' => 'Layout PDF',
+			'group' => self::GROUP_FILES,
+			'display_order' => 3
+		],
+		'stock_summary' => [
+			'label' => 'Stock summary',
+			'group' => self::GROUP_COMMON,
+			'display_order' => 4
+		],
+		'total_parts' => [
+			'label' => 'Total parts',
+			'group' => self::GROUP_COMMON,
+			'display_order' => 5
+		],
+
+		// 'part_area' => ['label' => 'Part area', 'group' => self::GROUP_COMMON, 'display_order' => 3],
+		'dimensions' => ['label' => 'Dimensions', 'group' => self::GROUP_COMMON, 'display_order' => 6],
+
+		// Special fields
+		'include_offcuts' => ['label' => 'Include offcuts', 'display_order' => 7],
+
+		// Pricing fields
+		'banding_price' => [
+			'label' => 'Banding price',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 8
+		],
+		'finish_price' => [
+			'label' => 'Finish price',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 9
+		],
+		'hardware_price' => [
+			'label' => 'Hardware price',
+			'group' => self::GROUP_INPUT,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 10
+		],
+		'cut_length_price' => [
+			'label' => 'Cut length price',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 11
+		],
+		'per_part_price' => [
+			'label' => 'Price per part',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 12
+		],
+		'cut_to_size_surcharge' => [
+			'label' => 'Cut to size surcharge',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 13
+		],
+
+		// Machining fields
+		'machining' => [
+			'label' => 'Machining',
+			'group' => self::GROUP_MACHINING,
+			'display_order' => 14
+		],
+		'machining_price' => [
+			'label' => 'Machining price',
+			'group' => self::GROUP_MACHINING,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 15
+		],
+
+		// Input only fields
+		'total_cut_length' => [
+			'label' => 'Cut length',
+			'group' => self::GROUP_INPUT
+		],
+		'total_cuts' => [
+			'label' => 'Total cuts',
+			'group' => self::GROUP_INPUT
+		],
+		'custom_price' => [
+			'label' => 'Custom price',
+			'group' => self::GROUP_INPUT
+		],
+
+		// Files
+		'files_zip' => [
+			'label' => 'Files',
+			'group' => self::GROUP_FILES,
+			'private' => true
+		],
+	];
+
+	/**
+	 * Attach files to cart with improved error handling
+	 */
+	private static function attachFileToCart(string $jobId, string $url, string $type, array $cartItemData): array
+	{
+		if (!filter_var($url, FILTER_VALIDATE_URL)) {
+			throw new FileValidationException("Invalid URL: $url");
+		}
+
+		if (empty($jobId) || !preg_match('/^[a-zA-Z0-9-]+$/', $jobId)) {
+			throw new FileValidationException("Invalid job ID");
+		}
+
+		$info = pathinfo($url);
+		if (empty($info['extension'])) {
+			throw new FileValidationException("Unable to obtain file extension");
+		}
+
+		$file = self::remoteGetWithRetry($url);
+
+		$responseCode = wp_remote_retrieve_response_code($file);
+
+		if (is_wp_error($file) || $responseCode !== 200) {
+			throw new FileDownloadException("Failed to download file from $url, the response code was $responseCode");
+		}
+
+		$content = wp_remote_retrieve_body($file);
+		if (strlen($content) > self::MAX_FILE_SIZE) {
+			throw new FileValidationException(sprintf(
+				"File too large: %s MB (max: %s MB)",
+				round(strlen($content) / 1048576, 1),
+				round(self::MAX_FILE_SIZE / 1048576, 1)
+			));
+		}
+
+		$filename = sprintf(
+			'smartcut-%s-%s-%s.%s',
+			sanitize_file_name($jobId),
+			$type,
+			uniqid(),
+			strtolower($info['extension'])
+		);
+
+		$uploadsDir = wp_get_upload_dir();
+		if (!empty($uploadsDir['error'])) {
+			throw new FileUploadException("Upload directory error: " . $uploadsDir['error']);
+		}
+
+		$upload = wp_upload_bits($filename, null, $content);
+		if (!empty($upload['error'])) {
+			throw new FileUploadException("Upload failed: " . $upload['error']);
+		}
+
+		$fileKey = self::getFileKey($type, $info['extension']);
+		$cartItemData[$fileKey] = $upload['url'];
+
+		return $cartItemData;
+	}
+
+
+	/**
+	 * Validate cart with nonce verification
+	 */
+	public static function validateCart(bool $passed, $productId = null, $quantity = null)
+	{
+		if (!isset($_POST[self::NONCE_FIELD]) || !wp_verify_nonce($_POST[self::NONCE_FIELD], self::NONCE_ACTION)) {
+			wc_add_notice('Security check failed.', 'error');
+			return false;
+		}
+
+		$jobId = isset($_POST['smartcut_job_id']) ? sanitize_text_field($_POST['smartcut_job_id']) : '';
+		if (!$jobId) return $passed;
+
+		$transientKey = 'smartcut_job_' . md5($jobId);
+		$exists = get_transient($transientKey);
+
+		if ($exists) {
+			wc_add_notice(__('Cut list already in cart.', 'smartcut'), 'error');
+			return false;
+		}
+
+		foreach (WC()->cart->get_cart() as $item) {
+			if (isset($item['smartcut_job_id']) && $item['smartcut_job_id'] === $jobId) {
+				set_transient($transientKey, true, 600);
+				wc_add_notice(__('Cut list already in cart.', 'smartcut'), 'error');
+				return false;
+			}
+		}
+
+		return $passed;
+	}
+
+	/**
+	 * Optimized cart item data handling with cached settings
+	 */
+	public static function addCartItemData(array $cartItemData, int $productId): array
+	{
+		try {
+			$jobId = sanitize_text_field($_POST['smartcut_job_id'] ?? '');
+			if (!$jobId) {
+				return $cartItemData;
+			}
+
+			// Verify nonce
+			if (!wp_verify_nonce($_POST[self::NONCE_FIELD] ?? '', self::NONCE_ACTION)) {
+				return $cartItemData;
+			}
+
+			// Add fields from POST data
+			foreach (self::getFieldKeys(true, $productId) as $key) {
+				if (isset($_POST[$key]) && !empty($_POST[$key])) {
+					$cartItemData[$key] = sanitize_text_field($_POST[$key]);
+				}
+			}
+
+			// Handle offcuts
+			if (isset($_POST['include_offcuts'])) {
+				$cartItemData['include_offcuts'] = sanitize_text_field($_POST['include_offcuts']) === '1'
+					? __('Yes', 'smartcut')
+					: __('No', 'smartcut');
+			}
+
+			// Handle file attachments and order summary PDF
+			$cartItemData = self::handleFileAttachments($cartItemData, $jobId);
+
+			// The order summary is generated on the front end and then send as a blob via a form field
+			if (isset($_POST['smartcut_order_summary_pdf'])) {
+				$cartItemData = self::attachBlobToCart($_POST['smartcut_order_summary_pdf'], $cartItemData);
+			}
+
+			return $cartItemData;
+		} catch (\Exception $e) {
+			if ($e instanceof FileValidationException) {
+				$errorPrefix = 'File validation issue - ';
+			} elseif ($e instanceof FileDownloadException) {
+				$errorPrefix = 'File download issue - ';
+			} elseif ($e instanceof FileUploadException) {
+				$errorPrefix = 'File upload issue - ';
+			} else {
+				$errorPrefix = '';
+			}
+
+			throw new \Exception('Could not add to cart: ' . $errorPrefix . ' ' . $e->getMessage());
+		}
+	}
+
+	/**
+	 * Optimized price calculation with caching
+	 */
+	public static function setCartPrice(WC_Cart $cart): void
+	{
+		if (is_admin() && !defined('DOING_AJAX')) {
+			return;
+		}
+
+		static $priceFields = null;
+		if ($priceFields === null) {
+			$priceFields = array_keys(array_filter(
+				self::$fields,
+				function ($field) {
+					return ($field['type'] ?? '') === self::TYPE_PRICE;
+				}
+			));
+			$addedCosts = array_map([self::class, 'getFieldKey'], $priceFields);
+		}
+
+		foreach ($cart->get_cart() as $cartItem) {
+			$product = $cartItem['data'];
+			$quantity = $cartItem['quantity'];
+
+			$basePrice = self::hasCustomPrice($cartItem)
+				? floatval($cartItem['smartcut_custom_price'])
+				: floatval($product->get_price());
+
+			$surcharges = array_reduce(
+				$addedCosts,
+				function ($total, $key) use ($cartItem, $quantity) {
+					return empty($cartItem[$key])
+						? $total
+						: $total + (floatval($cartItem[$key]) / $quantity);
+				},
+				0
+			);
+
+			$product->set_price($basePrice + $surcharges);
+		}
+	}
+
+	/**
+	 * Add optimized form fields with proper security
+	 */
+	public static function addHiddenFields($productId = null)
+	{
+		$fieldKeys = self::getFieldKeys(true, $productId);
+		$output = '';
+		foreach ($fieldKeys as $value) {
+			$output .= sprintf(
+				'<input type="hidden" name="%1$s" id="%2$s" value="">',
+				esc_attr($value),
+				esc_attr(str_replace('_', '-', $value))
+			);
+		}
+		echo $output;
+	}
+
+	/**
+	 * Helper methods for field and file handling
+	 */
+	private static function getFieldKey(string $key): string
+	{
+		return 'smartcut_' . $key;
+	}
+
+	private static function getFileKey(string $type, $fileExtension): string
+	{
+		return implode('_', ['smartcut', $type, $fileExtension]);
+	}
+
+	private static function getFileName(string $key): string
+	{
+		$cleanKey = str_replace('smartcut_', '', $key);
+		foreach (self::$fields as $fieldKey => $field) {
+			if ($field['group'] === self::GROUP_FILES && $fieldKey === $cleanKey) {
+				return $field['label'];
+			}
+		}
+		return ucfirst($cleanKey);
+	}
+
+	private static function fileExistsInUrl(string $url): bool
+	{
+		return (bool) preg_match('/\.(' . implode('|', self::VALID_FILE_EXTENSIONS) . ')$/', $url);
+	}
+
+	private static function getLocalFilePath(string $url, array $uploadDir): string
+	{
+		return str_replace($uploadDir['baseurl'], $uploadDir['basedir'], $url);
+	}
+
+	private static function isMachiningEnabled(array $settings): bool
+	{
+		return isset($settings['enable_machining']) && $settings['enable_machining'] === '1';
+	}
+
+	private static function hasCustomPrice(array $cartItem): bool
+	{
+		return array_key_exists('smartcut_custom_price', $cartItem)
+			&& !empty($cartItem['smartcut_custom_price']);
+	}
+
+	/**
+	 * Get field keys based on context (inputs vs order fields)
+	 * @param bool $inputs Whether to get input fields or cart / order fields
+	 * @param int|null $productId Product ID for settings
+	 * @return array Associative array of field keys
+	 */
+	public static function getFieldKeys(bool $inputs = false, ?string $productId = null): array
+	{
+		$settings = \SmartCut\Settings\getProductSettings($productId);
+		$fields = [];
+
+		foreach (self::$fields as $key => $field) {
+			$group = $field['group'] ?? '';
+
+			if (self::shouldSkipField($inputs, $group, $key, $settings)) {
+				continue;
+			}
+
+			$fields[$field['label']] = self::getFieldKey($key);
+		}
+
+		// Handle file fields for non-input mode
+		if (!$inputs) {
+			$prefix = ($settings['customer_cutlist'] ?? false) ? '' : '_';
+			$files = [
+				['layout', 'pdf', $prefix . 'Cut list PDF'],
+				['files', 'zip', $prefix . 'Files'],
+			];
+
+			foreach ($files as [$type, $ext, $label]) {
+				$fields[__($label, 'smartcut')] = self::getFileKey($type, $ext);
+			}
 		}
 
 		return $fields;
 	}
 
-	//these fields get added to the order (underscore hides from the user but shows to the admin)
-	$order_keys = [
-		__('Job ID', 'smartcut') => 'smartcut_job_id',
-		__('Total parts', 'smartcut') => 'smartcut_total_parts',
-		__('Part area', 'smartcut') => 'smartcut_part_area',
-		__('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
-		__('Price per part', 'smartcut') => 'smartcut_per_part_price',
-		__('Banding price', 'smartcut') => 'smartcut_banding_price',
-		__('Finish price', 'smartcut') => 'smartcut_finish_price',
-		__('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
-		__('Dimensions', 'smartcut') => 'smartcut_dimensions',
-		__('Stock summary', 'smartcut') => 'smartcut_stock_summary',
-	];
-
-	if ($options['enable_machining'] === '1') {
-		$fields[__('Machining', 'smartcut')]  = 'smartcut_machining'; //is machining present
-		$fields[__('Machining price', 'smartcut')] = 'smartcut_machining_price';
-	}
-
-	//the _ prefix prevents being shown to user https://stackoverflow.com/questions/62364016/woocommerce_add_custom_meta_as_hidden_order_item_meta_for_internal_use
-	//[] consider a single zip
-	if ($options['customer_cutlist']) {
-		$order_keys['Cut list PDF'] = get_file_key('pdf', 'layout', 'pdf');
-		$order_keys['Cut list CSV'] = get_file_key('csv', 'parts', 'csv');
-	} else {
-		$order_keys['_Cut list PDF'] = get_file_key('pdf', 'layout', 'pdf');
-		$order_keys['_Cut list CSV'] =  get_file_key('csv', 'parts', 'csv');
-	}
-
-	$order_keys['_Machining DXF'] = get_file_key('dxf', 'machining', 'zip');
-	$order_keys['_Machining PDF'] = get_file_key('pdf', 'machining', 'pdf');
-	$order_keys['_Layout DXF'] = get_file_key('dxf', 'layout', 'zip');
-
-	//order
-	return $order_keys;
-}
-
-/**
- * a consistent way of obtaining the key for a file from a cart object
- * @param string $type
- * @param string $file_extension
- * @return string
- */
-function get_file_key($type, $option, $file_extension)
-{
-	$array =  ['smartcut', $type, $option, $file_extension];
-	return implode('_', $array);
-}
-
-
-/**
- * add user fields to the product page
- * @return void
- */
-function add_user_fields()
-{
-	$options = get_option('smartcut_options');
-	if (isset($options['allow_offcuts']) && $options['allow_offcuts'] === '1') {
-
-		\woocommerce_form_field('include_offcuts', [
-			'type'          => 'checkbox',
-			'label'         => __('Include offcuts', 'smartcut'),
-			'required'  => false,
-		]);
-	}
-}
-
-/**
- * add a custom text input field to the product page
- * @return void
- */
-function add_hidden_fields()
-{
-	$keys = get_field_keys(true);
-
-	if (is_array($keys)) {
-		foreach ($keys as $key => $value) {
-			printf('<input type="hidden" name="%s" id="%s" value="">', $value, str_replace('_', '-', $value));
+	private static function shouldSkipField(bool $inputs, string $group, string $key, array $settings): bool
+	{
+		if ($inputs) {
+			return ($group === self::GROUP_FILES) ||
+				($group === self::GROUP_MACHINING && !self::isMachiningEnabled($settings));
 		}
-	};
-}
 
-
-/**
- * check if the job id is already in the cart, and abort if so
- * @param boolean $passed
- * @return boolean
- */
-function validate_cart($passed)
-{
-	// get the data being added to the cart
-	$job_id = isset($_POST['smartcut_job_id']) ? $_POST['smartcut_job_id'] : null;
-
-	if (!$job_id) return $passed;
-
-	//sometimes the cart item data is already set
-	$current_cart_contents = WC()->cart->get_cart();
-
-	//run the loop in reverse as the latest item is most likely to be repeated
-	$cart_contents = array_reverse($current_cart_contents, true);
-	foreach ($cart_contents as $key => $value) {
-		if (isset($value['smartcut_job_id']) && $value['smartcut_job_id'] === $job_id) {
-			$passed = false;
-			wc_add_notice(__('This cut list is already in your cart.', 'smartcut'), 'error');
-		}
+		return $group === self::GROUP_INPUT ||
+			$key === 'include_offcuts' ||
+			($group === self::GROUP_MACHINING && !self::isMachiningEnabled($settings));
 	}
 
-	return $passed;
-}
+	public static function getItemData(array $itemData, array $cartItemData): array
+	{
+		$settings = \SmartCut\Settings\getProductSettings();
+		$displayFields = [];
 
-add_filter('woocommerce_add_to_cart_validation', 'SmartCut\Cutlist\Cart\validate_cart', 10, 3);
-
-/**
- * add custom cart item data
- * @param array $cart_item_data
- * @return array
- */
-function add_cart_item_data($cart_item_data)
-{
-
-	$job_id = isset($_POST['smartcut_job_id']) ? $_POST['smartcut_job_id'] : null;
-	if (!$job_id) return $cart_item_data;
-
-	//sometimes the cart item data is already set
-	$current_cart_contents = WC()->cart->get_cart();
-
-	//run the loop in reverse as the latest item is most likely to be repeated
-	$cart_contents = array_reverse($current_cart_contents, true);
-	foreach ($cart_contents as $key => $value) {
-		if (isset($value['smartcut_job_id']) && $value['smartcut_job_id'] === $job_id) {
-			wc_add_notice(__('Add to cart process stopped.', 'smartcut'), 'error');
-		}
-	}
-
-	$keys = get_field_keys(true);
-
-	if (is_array($keys)) {
-
-		//attach fields to the cart item data
-		foreach ($keys as $key) {
-			if (isset($_POST[$key])) {
-				$value = sanitize_text_field($_POST[$key]);
-				$cart_item_data[$key] = $value;
-			}
-		}
-	}
-
-	//include_offcuts is set by woocommerce checkbox so smartcut prefix not needed
-	if (isset($_POST['include_offcuts'])) {
-		$value = sanitize_text_field($_POST['include_offcuts']);
-		$cart_item_data['include_offcuts'] = $value === '1' ? __('Yes', 'smartcut') : __('No', 'smartcut');
-	}
-
-	//create the files
-	$file_types = ['pdf', 'csv'];
-	$file_options = ['layout', 'parts'];
-
-	$settings = \SmartCut\get_settings('cutlist');
-
-	//add DXF
-	if (isset($settings['layout_dxf']) && $settings['layout_dxf'] === "1") {
-		$file_types[] = 'dxf';
-		$file_options[] = 'layout';
-	}
-
-	//add machining
-	if (isset($cart_item_data['smartcut_machining']) && $cart_item_data['smartcut_machining'] === 'true') {
-		$file_types[] = 'pdf';
-		$file_options[] = 'machining';
-		$file_types[] = 'dxf';
-		$file_options[] = 'machining';
-	}
-
-	$file_query = http_build_query(['types' => $file_types, 'options' => $file_options, 'id' => $job_id]);
-	$response = wp_remote_get(SMARTCUT_ENDPOINT . "export-checkout/multiple/?$file_query");
-
-	$response_code = wp_remote_retrieve_response_code($response);
-	$response = wp_remote_retrieve_body($response);
-
-	if ($response_code === 200) {
-		$cart_item_data = attach_files_to_cart($job_id, $response, $file_types, $file_options, $cart_item_data);
-	} else {
-		trigger_error("SmartCut - creating files failed for job $job_id with response $response_code", E_USER_WARNING);
-	}
-
-	return $cart_item_data;
-}
-
-function attach_files_to_cart($job_id, $file_list, $file_types, $file_options, $cart_item_data)
-{
-
-	if (!$job_id || !$file_list) {
-		throw new \Exception('SmartCut - list of files does not exist or is empty');
-	}
-
-	$file_list = explode(',', $file_list);
-
-	if (!isset($file_list) || !count($file_list)) {
-		throw new \Exception('SmartCut - list of files does not exist or is empty');
-	}
-
-	foreach ($file_list as $index => $url) {
-
-		$file = wp_remote_get($url);
-		$info = pathinfo($url);
-		$file_name = $info['filename'];
-		$file_extension = $info['extension'];
-
-		$response_code = wp_remote_retrieve_response_code($file);
-
-		if ($response_code === 200) {
-
-			$body = wp_remote_retrieve_body($file);
-			$uploads_dir = wp_get_upload_dir();
-			$uploads_path = $uploads_dir['path'];
-
-			//file may have already been saved
-			if (!file_exists("$uploads_path/$file_name.$file_extension")) {
-
-				//save the file to the library
-				$upload = wp_upload_bits("$file_name.$file_extension", null, $body);
-
-				if ($upload && isset($upload['error']) && !$upload['error']) {
-					$file_url = $upload['url'];
-				} else {
-					throw new \Exception('SmartCut - failed to upload file via wp_upload_bits');
-				}
-			} else {
-
-				$uploads_url = $uploads_dir['url'];
-				$file_url = "$uploads_url/$file_name.$file_extension";
+		foreach (self::$fields as $key => $field) {
+			if (!self::shouldDisplayField($field, $key, $settings)) {
+				continue;
 			}
 
-			if ($file_url) {
-				//attach the id of the asset to the cart item
-				$type = $file_types[$index];
-				$option = $file_options[$index];
-				$key = get_file_key($type, $option, $file_extension);
-				$cart_item_data[$key] = $file_url;
-			} else {
-				throw new \Exception("SmartCut - failed to attach $file_extension file to cart for $file_name with response $response_code");
+			$fullKey = $key === 'include_offcuts' ? $key : self::getFieldKey($key);
+			if (!isset($cartItemData[$fullKey])) {
+				continue;
 			}
-		} else {
-			throw new \Exception("SmartCut - failed to get $file_extension file from server with response $response_code");
+
+			$value = $cartItemData[$fullKey];
+
+			$displayFields[] = [
+				'key' => $field['label'],
+				'value' => self::formatFieldValue($field, $value),
+				'display' => false,
+				'display_order' => $field['display_order'] ?? null
+			];
+		}
+
+		usort($displayFields, function ($a, $b) {
+			return $a['display_order'] <=> $b['display_order'];
+		});
+
+		return array_merge($itemData, $displayFields);
+	}
+
+	private static function shouldDisplayField(array $field, string $key, array $settings): bool
+	{
+		if ($key === 'layout_pdf') return $settings['customer_cutlist'] ?? false;
+
+		$group = $field['group'] ?? '';
+
+		if ($group === self::GROUP_INPUT) {
+			return false;
+		}
+
+		if ($key === 'include_offcuts') {
+			return false;
+		}
+
+		if ($group === self::GROUP_MACHINING && !self::isMachiningEnabled($settings)) {
+			return false;
+		}
+
+		if ($key === 'layout_pdf' && ($settings['customer_cutlist'] ?? false)) {
+			return false;
+		}
+
+		if (!isset($field['display_order'])) {
+			return false;
+		}
+
+		return true;
+	}
+
+	private static function formatFieldValue(array $field, string $value)
+	{
+		$type = $field['type'] ?? '';
+		$group = $field['group'] ?? '';
+
+		if ($type === self::TYPE_PRICE) {
+			return empty($value) || floatval($value) === 0 ?
+				null :
+				wc_price(floatval($value));
+		}
+
+		if ($type === self::TYPE_LINK || $group === self::GROUP_FILES) {
+			return sprintf(
+				'<a href="%s" target="_blank">%s</a>',
+				esc_url($value),
+				__('View file', 'smartcut')
+			);
+		}
+
+		return \wc_clean($value);
+	}
+
+	public static function checkoutCreateOrderLineItem(WC_Order_Item_Product $item, string $cartItemKey, array $values, WC_Order $order): void
+	{
+		$settings = \SmartCut\Settings\getProductSettings($item->get_product_id());
+		$metaData = [];
+
+		foreach (self::$fields as $key => $field) {
+			$group = $field['group'] ?? '';
+			$fullKey = self::getFieldKey($key);
+			$isPrivate = isset($field['private']) && $field['private'] === true;
+
+			$skipField =
+				$group === self::GROUP_INPUT ||
+				($group === self::GROUP_MACHINING && !self::isMachiningEnabled($settings));
+
+			if ($skipField || !isset($values[$fullKey])) {
+				continue;
+			}
+
+			$value = $values[$fullKey];
+			$isFile = $group === self::GROUP_FILES;
+			$isLink = ($field['type'] ?? '') === self::TYPE_LINK;
+
+			$metaValue = $isFile || $isLink
+				? sprintf('<a href="%s" target="_blank">View</a>', esc_url($value))
+				: stripslashes($value);
+
+			$metaKey = $isFile ? self::getFileName($fullKey) : $field['label'];
+
+			//the _ prefix prevents being shown to user https://stackoverflow.com/questions/62364016/woocommerce_add_custom_meta_as_hidden_order_item_meta_for_internal_use
+			if ($isPrivate) $metaKey = '_' . $metaKey;
+
+			$displayOrder = $field['display_order'] ?? 999;
+
+			$metaData[] = [
+				'key' => $metaKey,
+				'value' => $metaValue,
+				'order' => $displayOrder
+			];
+		}
+
+		if (isset($values['include_offcuts'])) {
+			$metaData[] = [
+				'key' => __('Include offcuts', 'smartcut'),
+				'value' => stripslashes($values['include_offcuts']),
+				'order' => self::$fields['include_offcuts']['display_order'] ?? 999
+			];
+		}
+
+		usort($metaData, function ($a, $b) {
+			return $a['order'] <=> $b['order'];
+		});
+
+		foreach ($metaData as $meta) {
+			$item->add_meta_data($meta['key'], $meta['value'], true);
 		}
 	}
 
+	/**
+	 * Add nonce field to the form
+	 */
+	public static function addUserFields(): void
+	{
+		// Add nonce field before other fields
+		wp_nonce_field(self::NONCE_ACTION, self::NONCE_FIELD);
 
-
-	return $cart_item_data;
-}
-
-/**
- * these surcharges are shown in the cart totals
- * @param WC_Cart $cart
- * @deprecated - now setting each cart item individually using set_cart_price
- * @return void
- */
-/* function add_product_surcharges($cart)
-{
-    if (is_admin() && !defined('DOING_AJAX')) return;
-
-    $surcharges = ['Cut to size surcharge' => 'smartcut_cut_to_size_surcharge'];
-
-    foreach ($cart->cart_contents as $key => $item) {
-
-        foreach ($surcharges as $name => $surcharge) {
-
-            $surcharge_price = isset($item[$surcharge]) ? floatval($item[$surcharge]) : 0;
-
-            if ($surcharge_price) {
-                $cart->add_fee(__($name, 'smartcut'), floatval($item[$surcharge]), true, '');
-            }
-        }
-    }
-} */
-
-
-/**
- * set the price of the cart item to include banding, cut length and surcharges
- * @param WC_Cart $cart
- * @var WC_Product $product
- * @return void
- */
-function set_cart_price($cart)
-{
-
-	if (is_admin() && !defined('DOING_AJAX')) return;
-
-	$added_costs = ['smartcut_cut_length_price', 'smartcut_per_part_price', 'smartcut_banding_price', 'smartcut_finish_price', 'smartcut_machining_price', 'smartcut_cut_to_size_surcharge'];
-
-	foreach ($cart->get_cart() as $cart_item) {
-
-		$product = $cart_item['data'];
-		$quantity = $cart_item['quantity'];
-		$price = 0;
-
-		//get the initial price
-		if (array_key_exists('smartcut_custom_price', $cart_item) && !empty($cart_item['smartcut_custom_price'])) {
-			$price = floatval($cart_item['smartcut_custom_price']);
-		} else {
-			$price = floatval($product->get_price());
+		// Original user fields code
+		$options = \SmartCut\Settings\getGlobalSettings();
+		if (isset($options['allow_offcuts']) && $options['allow_offcuts'] === '1') {
+			\woocommerce_form_field('include_offcuts', [
+				'type' => 'checkbox',
+				'label' => __('Include offcuts', 'smartcut'),
+				'required' => false,
+			]);
 		}
-
-		//add the surcharges
-		foreach ($added_costs as $key) {
-
-			if (!array_key_exists($key, $cart_item) || empty($cart_item[$key])) continue;
-
-			//divide by quantity to get the price per basket item
-			$price += (floatval($cart_item[$key]) / $quantity);
-		}
-
-		$product->set_price($price);
 	}
-}
 
+	/**
+	 * Handle file attachments for cart items with improved validation and error handling
+	 *
+	 * @param array $cartItemData Current cart item data
+	 * @param string $jobId Job identifier
+	 * @return array Updated cart item data
+	 * @throws FileValidationException|FileDownloadException|FileUploadException
+	 */
+	private static function handleFileAttachments(array $cartItemData, string $jobId): array
+	{
+		// Validate job ID
+		if (!preg_match('/^[a-zA-Z0-9-]+$/', $jobId)) {
+			throw new FileValidationException("Invalid job ID format");
+		}
 
-/**
- * display custom item data in the cart
- * @param array $item_data
- * @param array $cart_item_data
- * @return mixed
- */
-function get_item_data($item_data, $cart_item_data)
-{
+		//Assemble the query to export-checkout/multiple
+		$fileTypes = ['pdf', 'csv'];
+		$fileOptions = ['layout', 'parts'];
+		$settings = \SmartCut\Settings\getGlobalSettings();
 
-	$keys = [
-		// __('Total cuts', 'smartcut') => 'smartcut_total_cuts',
-		__('Stock', 'smartcut') => 'smartcut_stock_summary',
-		__('Total parts', 'smartcut') => 'smartcut_total_parts',
-		__('Include offcuts', 'smartcut') => 'include_offcuts',
-		__('Dimensions', 'smartcut') => 'smartcut_dimensions',
-		__('Banding price', 'smartcut') => 'smartcut_banding_price',
-		__('Finish price', 'smartcut') => 'smartcut_finish_price',
-		__('Cut length price', 'smartcut') => 'smartcut_cut_length_price',
-		__('Price per part', 'smartcut') => 'smartcut_per_part_price',
-		__('Cut to size surcharge', 'smartcut') => 'smartcut_cut_to_size_surcharge',
-		__('Machining', 'smartcut') => 'smartcut_machining',
-		__('Machining price', 'smartcut') => 'smartcut_machining_price',
-	];
+		// dxf
+		if ($settings['layout_dxf'] ?? false === "1") {
+			$fileTypes[] = 'dxf';
+			$fileOptions[] = 'layout';
+		}
 
-	foreach ($keys as $name => $value) {
+		//ptx
+		if ($settings['layout_ptx'] ?? false === "1") {
+			$fileTypes[] = 'ptx';
+			$fileOptions[] = 'layout';
+		}
 
-		if (isset($cart_item_data[$value])) {
+		// Add machining files if required
+		if (($cartItemData['smartcut_machining'] ?? '') === 'true') {
+			array_push($fileTypes, 'pdf', 'dxf');
+			array_push($fileOptions, 'machining', 'machining');
+		}
 
-			$valid_values = [
-				'smartcut_banding_price',
-				'smartcut_finish_price',
-				'smartcut_machining_price',
-				'smartcut_cut_length_price',
-				'smartcut_per_part_price',
-				'smartcut_cut_to_size_surcharge'
+		// Build query
+		$queryParams = [
+			'types' => $fileTypes,
+			'options' => $fileOptions,
+			'id' => $jobId
+		];
+
+		if ($settings['customer_cutlist'] ?? false === "1") {
+			// Remove PDF and layout from arrays
+			$pdfIndex = array_search('pdf', $fileTypes);
+
+			if ($pdfIndex !== false) {
+				unset($fileTypes[$pdfIndex]);
+				unset($fileOptions[$pdfIndex]);
+
+				$fileTypes = array_values($fileTypes);
+				$fileOptions = array_values($fileOptions);
+			}
+
+			$queryParams['types'] = $fileTypes;
+			$queryParams['options'] = $fileOptions;
+		}
+
+		$response = self::remoteGetWithRetry(SMARTCUT_ENDPOINT . "export-checkout/multiple/?" . http_build_query($queryParams));
+
+		$cartItemData = self::attachFileToCart(
+			$jobId,
+			wp_remote_retrieve_body($response),
+			'files',
+			$cartItemData
+		);
+
+		if ($settings['customer_cutlist'] ?? false === "1") {
+			// Handle separate layout PDF download
+			$pdfQueryParams = [
+				'type' => 'pdf',
+				'option' => 'layout',
+				'id' => $jobId
 			];
 
-			if (in_array($value, $valid_values)) {
+			$pdfResponse = self::remoteGetWithRetry(SMARTCUT_ENDPOINT . "export-checkout/single/?" . http_build_query($pdfQueryParams));
 
-				if (empty($cart_item_data[$value]) || floatval($cart_item_data[$value]) === 0) continue;
-
-				$item_data[] = array(
-					'key' => $name,
-					'value' => number_format(floatval($cart_item_data[$value]), 2)
-				);
-			} else {
-
-				$item_data[] = array(
-					'key' => $name,
-					'value' => \wc_clean($cart_item_data[$value])
-				);
-			}
+			// Attach the PDF separately
+			$cartItemData = self::attachFileToCart(
+				$jobId,
+				wp_remote_retrieve_body($pdfResponse),
+				'layout',
+				$cartItemData
+			);
 		}
+
+		return $cartItemData;
 	}
 
-	return $item_data;
-}
+	/**
+	 * Download files with retry logic
+	 *
+	 * @param string $url URL to download from
+	 * @return array|WP_Error Response from wp_remote_get
+	 * @throws FileDownloadException
+	 */
+	private static function remoteGetWithRetry(string $url)
+	{
+		$attempts = 0;
+		$lastResponseCode = null;
 
+		while ($attempts <  self::MAX_RETRY_ATTEMPTS) {
+			$response = wp_remote_get($url);
+			$responseCode = wp_remote_retrieve_response_code($response);
 
-/**
- * add custom meta to order
- * @param WC_Order_Item_Product $item
- * @param string $cart_item_key
- * @param array $values
- * @param WC_Order $order
- * @return void
- */
-function checkout_create_order_line_item($item, $cart_item_key, $values, $order)
-{
+			if ($responseCode === 200) {
+				return $response;
+			}
 
-	$keys = get_field_keys(false);
+			$attempts++;
+			$lastResponseCode = $responseCode;
 
-	//add the offcuts field, which is added via WooCommerce checkbox
-	$keys[__('Include offcuts', 'smartcut')] = 'include_offcuts';
+			if ($attempts < self::MAX_RETRY_ATTEMPTS) {
+				sleep(self::RETRY_DELAY);
+			}
+		}
 
-	foreach ($keys as $name => $value) {
-		if (isset($values[$value])) {
-			$item->add_meta_data(
-				$name,
-				stripslashes($values[$value]),
-				true
+		throw new FileDownloadException(sprintf(
+			"Failed to download cut list files after %d attempts. Last response code: %d",
+			self::MAX_RETRY_ATTEMPTS,
+			$lastResponseCode
+		));
+	}
+
+	private static function attachBlobToCart(string $base64_data, array $cartItemData): array
+	{
+		if (empty($base64_data)) {
+			return $cartItemData;
+		}
+
+		$pdfContent = base64_decode($base64_data);
+		$fileName = 'order-summary-' . uniqid();
+		$upload = wp_upload_bits("$fileName.pdf", null, $pdfContent);
+
+		if ($upload && empty($upload['error'])) {
+			$cartItemData['smartcut_order_summary_pdf'] = $upload['url'];
+		} else {
+			throw new \Exception(
+				'Failed to upload order summary PDF: ' . ($upload['error'] ?? 'Unknown error')
+			);
+		}
+
+		return $cartItemData;
+	}
+
+	public static function isCartItemCutToSize(array $cartItem): bool
+	{
+		return isset($cartItem['smartcut_job_id']) && !empty($cartItem['smartcut_job_id']);
+	}
+
+	public static function disableCartQuantity(string $productQuantity, string $cartItemKey, array $cartItem): string
+	{
+
+		if (\is_cart() && self::isCartItemCutToSize($cartItem)) {
+			return sprintf('%2$s <input type="hidden" name="cart[%1$s][qty]" value="%2$s" />', $cartItemKey, $cartItem['quantity']);
+		}
+
+		return $productQuantity;
+	}
+
+	/**
+	 * Common file cleanup method that can be used by both cart and order cleanup
+	 */
+	private static function cleanupFiles(array $filesToClean, array $uploadDir, int $batchSize = 100): array
+	{
+		$filesDeleted = 0;
+		$deletedFiles = [];
+
+		foreach (array_chunk($filesToClean, $batchSize) as $batch) {
+			foreach ($batch as $fileUrl) {
+				if (!self::fileExistsInUrl($fileUrl)) {
+					continue;
+				}
+
+				$filePath = self::getLocalFilePath($fileUrl, $uploadDir);
+				if (!file_exists($filePath)) {
+					continue;
+				}
+
+				if (wp_delete_file($filePath)) {
+					$filesDeleted++;
+					$deletedFiles[] = basename($filePath);
+				}
+			}
+		}
+
+		return [
+			'count' => $filesDeleted,
+			'files' => $deletedFiles
+		];
+	}
+
+	public static function cleanupCartItemFiles(array $removedItem): void
+	{
+		if (empty($removedItem)) return;
+
+		try {
+			if (!empty($removedItem['smartcut_job_id'])) {
+				delete_transient('smartcut_job_' . md5($removedItem['smartcut_job_id']));
+			}
+
+			$uploadsDir = wp_get_upload_dir();
+			if (!empty($uploadsDir['error'])) {
+				throw new \Exception("Unable to get upload directory: " . $uploadsDir['error']);
+			}
+
+			$filesToClean = [];
+
+			// Add order summary PDF
+			$orderSummaryKey = self::getFieldKey('order_summary_pdf');
+			if (!empty($removedItem[$orderSummaryKey])) {
+				$filesToClean[] = $removedItem[$orderSummaryKey];
+			}
+
+			// Add file group fields
+			foreach (self::$fields as $fieldKey => $field) {
+				if (isset($field['group']) && $field['group'] === self::GROUP_FILES) {
+					$cartKey = self::getFieldKey($fieldKey);
+					if (!empty($removedItem[$cartKey])) {
+						$filesToClean[] = $removedItem[$cartKey];
+					}
+				}
+			}
+
+			self::cleanupFiles($filesToClean, $uploadsDir);
+		} catch (\Exception $e) {
+			throw new \WP_Error(
+				'smartcut_cart_file_deletion_failed',
+				sprintf('Could not delete cart files: %s', $e->getMessage())
 			);
 		}
 	}
+
+	public static function cleanupOrderFiles(int $orderId): void
+	{
+		$order = new WC_Order($orderId);
+
+		if (!$order) {
+			return;
+		}
+
+		try {
+			$uploadDir = wp_upload_dir();
+			if (!empty($uploadDir['error'])) {
+				throw new \Exception("Unable to get upload directory: {$uploadDir['error']}");
+			}
+
+			$filesToClean = [];
+
+			// Extract file URLs from order item meta
+			foreach ($order->get_items() as $item) {
+				foreach ($item->get_meta_data() as $meta) {
+					$data = $meta->get_data();
+					if (!is_string($data['value'])) {
+						continue;
+					}
+
+					preg_match('/href="([^"]+)"/', $data['value'], $matches);
+					if (!empty($matches[1])) {
+						$filesToClean[] = $matches[1];
+					}
+				}
+			}
+
+			self::cleanupFiles($filesToClean, $uploadDir);
+		} catch (\Exception $e) {
+			throw new \WP_Error(
+				'smartcut_order_file_deletion_failed',
+				sprintf('Could not delete order files: %s', $e->getMessage())
+			);
+		}
+	}
+
+	public static function clearCart(): void
+	{
+		if (!isset($_GET['cc'])) return;
+
+		if (function_exists('WC')) {
+			$cart = WC()->cart;
+			if ($cart) {
+				$cart->empty_cart();
+			}
+		}
+
+		wp_redirect(remove_query_arg('cc'));
+		exit;
+	}
 }
 
-/* function add_to_cart_js($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data)
-{
-?>
-    <script type="text/javascript">
-        debugger;
-        var event = new Event('added_to_cart');
-        document.body.dispatchEvent(event);
-    </script>
-<?php
-}
-add_action('woocommerce_add_to_cart', 'SmartCut\Cutlist\Cart\add_to_cart_js', 10, 6); */
+// Main WooCommerce hooks
+add_filter('woocommerce_add_to_cart_validation', [CartManager::class, 'validateCart'], 10, 3);
+add_filter('woocommerce_add_cart_item_data', [CartManager::class, 'addCartItemData'], 10, 2);
+add_action('woocommerce_before_calculate_totals', [CartManager::class, 'setCartPrice'], 10, 1);
+add_filter('woocommerce_get_item_data', [CartManager::class, 'getItemData'], 10, 2);
+add_filter('woocommerce_cart_item_quantity', [CartManager::class, 'disableCartQuantity'], 10, 3);
+
+add_action('woocommerce_checkout_create_order_line_item', [CartManager::class, 'checkoutCreateOrderLineItem'], 10, 4);
+add_action('woocommerce_before_add_to_cart_button', [CartManager::class, 'addUserFields']);
+add_action('woocommerce_before_add_to_cart_button', [CartManager::class, 'addHiddenFields']);
+
+// Handle order deletion
+add_action('before_delete_post', function (int $postId): void {
+	if (get_post_type($postId) === 'shop_order') {
+		CartManager::cleanupOrderFiles($postId);
+	}
+}, 1, 1);
+
+// Handle individual item removal
+add_action('woocommerce_cart_item_removed', function (string $cartItemKey, WC_Cart $cart): void {
+	$removedItem = $cart->removed_cart_contents[$cartItemKey] ?? null;
+
+	if ($removedItem) {
+		CartManager::cleanupCartItemFiles($removedItem);
+	}
+}, 10, 2);
+
+// Handle full cart emptied
+add_action('woocommerce_before_cart_emptied', function (): void {
+	$cart = WC()->cart;
+	if (!$cart) return;
+
+	foreach ($cart->get_cart() as $cartKey => $cartItem) {
+		CartManager::cleanupCartItemFiles($cartItem);
+	}
+});

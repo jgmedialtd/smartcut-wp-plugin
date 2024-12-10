@@ -16,4 +16,6 @@ The SmartCut API represents a cutting-edge solution specifically tailored for th
 - Machining (e.g. holes, radius corners)
 - Decimal & fractional units
 - Edge banding for wood based sheet materials
-- PDF & CSV files are attached to every order
+- Finishes for both faces of the material
+- PDF, CSV, DXF & PTX files can be attached to every order
+- Formula based pricing

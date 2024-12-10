@@ -3,9 +3,9 @@
 Contributors: cutrevolution
 Tags: cut-to-size,cut list,cut list optimizer,cutlist
 Requires at least: 6.0
-Tested up to: 6.5
+Tested up to: 6.7
 Stable tag: 3.0.4
-Requires PHP: 7.0
+Requires PHP: 7.1
 
 Quotation and cut list generation for your cut-to-size business.
 
@@ -22,6 +22,7 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 - Decimal & fractional units
 - Edge banding for wood based sheet materials
 - PDF & CSV of the cut requirements is attached to every order
+- Formula based pricing for custom products such as cabinets
 
 ## Pricing models
 
@@ -30,6 +31,7 @@ This plugin uses the [SmartCut API](https://smartcut.dev/) to generate cut lists
 - Cut length
 - Full stock plus cut length
 - Cut-to-size surcharge
+- Formula based
 
 == Installation ==
 

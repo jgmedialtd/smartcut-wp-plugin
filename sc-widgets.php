@@ -6,87 +6,87 @@ namespace SmartCut\Widgets;
 
 function register()
 {
-    register_widget('SmartCut\Widgets\Cart_Cutlist');
+	register_widget('SmartCut\Widgets\Cart_Cutlist');
 }
 
 add_action('widgets_init', 'SmartCut\Widgets\register');
 
-class Cart_Cutlist extends \WP_Widget
+class CartCutlist extends \WP_Widget
 {
-    public function __construct()
-    {
-        parent::__construct(
-            'sc-cutlist',
-            'SmartCut - Cut list',
-            array('description' => __('Display all of your cuts in a single list', 'smartcut'))
-        );
-    }
+	public function __construct()
+	{
+		parent::__construct(
+			'sc-cutlist',
+			'SmartCut - Cut list',
+			array('description' => __('Display all of your cuts in a single list', 'smartcut'))
+		);
+	}
 
 
-    public function widget($args, $instance)
-    {
+	public function widget($args, $instance)
+	{
 
 ?>
-        <div class="smartcut-widget">
-            <?php
+		<div class="smartcut-widget">
+			<?php
 
-            if (!class_exists('WooCommerce')) {
-                return _e('WooCommerce must be active', 'smartcut');
-            }
+			if (!class_exists('WooCommerce')) {
+				return _e('WooCommerce must be active', 'smartcut');
+			}
 
-            $wc = \WC();
+			$wc = \WC();
 
-            if (!$wc) return;
+			if (!$wc) return;
 
-            $cart = \WC()->cart;
+			$cart = \WC()->cart;
 
-            if (!$cart) return;
+			if (!$cart) return;
 
-            $cart_items = \WC()->cart->get_cart();
+			$cartItems = \WC()->cart->get_cart();
 
-            if (!$cart_items) return;
+			if (!$cartItems) return;
 
-            $all_dimensions = array();
+			$allDimensions = array();
 
-            foreach ($cart_items as $key => $value) {
-                $product = $value['data'];
-                $name = $product->get_name();
-                $dimensions = isset($value['smartcut_dimensions']) ? explode(', ', $value['smartcut_dimensions']) : array();
-                array_unshift($dimensions, $name);
+			foreach ($cartItems as $key => $value) {
+				$product = $value['data'];
+				$name = $product->get_name();
+				$dimensions = isset($value['smartcut_dimensions']) ? explode(', ', $value['smartcut_dimensions']) : array();
+				array_unshift($dimensions, $name);
 
-                if ($dimensions) {
-                    $all_dimensions[$key] = $dimensions;
-                }
-            }
+				if ($dimensions) {
+					$allDimensions[$key] = $dimensions;
+				}
+			}
 
-            ?>
-            <div>
-                <div class="title"><?php _e('Your cut list', 'smartcut') ?></div>
-                <ul>
-                    <?php
+			?>
+			<div>
+				<div class="title"><?php _e('Your cut list', 'smartcut') ?></div>
+				<ul>
+					<?php
 
-                    // _e('Your parts list:', 'smartcut')
-                    foreach ($all_dimensions as $cart_key => $dimensions_array) :
-                    ?>
-                        <li>
+					// _e('Your parts list:', 'smartcut')
+					foreach ($allDimensions as $cartKey => $dimensionsArray) :
+					?>
+						<li>
 
-                            <?php foreach ($dimensions_array as $index => $value) : ?>
-                                <?php if ($index === 0) : ?>
-                                    <div class="product-name">
-                                        <div><?php echo $value; ?></div>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="item"><?php echo $value; ?></div>
-                                <?php endif ?>
-                            <?php endforeach; ?>
-                        </li>
-                    <?php
-                    endforeach;
-                    ?>
-                </ul>
-                <a class="cart-link" href="<?php echo esc_url(\wc_get_cart_url()); ?>">View Cart</a>
-            </div>
-        </div>
+							<?php foreach ($dimensionsArray as $index => $value) : ?>
+								<?php if ($index === 0) : ?>
+									<div class="product-name">
+										<div><?php echo $value; ?></div>
+									</div>
+								<?php else : ?>
+									<div class="item"><?php echo $value; ?></div>
+								<?php endif ?>
+							<?php endforeach; ?>
+						</li>
+					<?php
+					endforeach;
+					?>
+				</ul>
+				<a class="cart-link" href="<?php echo esc_url(\wc_get_cart_url()); ?>">View Cart</a>
+			</div>
+		</div>
 <?php
-    }
+	}
 }

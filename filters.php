@@ -7,46 +7,45 @@ namespace SmartCut\Filters;
  * @param array $links
  * @return array
  */
-function plugin_row_meta($links)
+function pluginRowMeta($links)
 {
+	$docsUrl = apply_filters('woocommerce_docs_url', 'https://store.smartcut.dev/setting-up-your-store/');
 
-    $docs_url = apply_filters('woocommerce_docs_url', 'https://store.smartcut.dev/setting-up-your-store/');
+	$rowMeta = array(
+		'docs'    => '<a href="' . esc_url($docsUrl) . '" aria-label="' . esc_attr__('View WooCommerce documentation', 'woocommerce') . '">' . esc_html__('Docs', 'woocommerce') . '</a>',
+	);
 
-    $row_meta = array(
-        'docs'    => '<a href="' . esc_url($docs_url) . '" aria-label="' . esc_attr__('View WooCommerce documentation', 'woocommerce') . '">' . esc_html__('Docs', 'woocommerce') . '</a>',
-    );
-
-    return array_merge($links, $row_meta);
+	return array_merge($links, $rowMeta);
 }
 
-add_filter('plugin_row_meta', 'SmartCut\Filters\plugin_row_meta');
+add_filter('plugin_row_meta', 'SmartCut\Filters\pluginRowMeta');
 
 
 //add a class to the quantity input for js selection
 add_filter('woocommerce_quantity_input_classes', function ($a) {
-    array_push($a, 'smartcut-stock-quantity');
-    return $a;
+	array_push($a, 'smartcut-stock-quantity');
+	return $a;
 });
 
 //reformat price to allow selection from JS layer
 add_filter('wc_price', function ($a) {
 
-    $decimal_separator = preg_quote(wc_get_price_decimal_separator(), '/');
-    $thousand_separator = preg_quote(wc_get_price_thousand_separator(), '/');
-    $decimals = wc_get_price_decimals();
+	$decimalSeparator = preg_quote(wc_get_price_decimal_separator(), '/');
+	$thousandSeparator = preg_quote(wc_get_price_thousand_separator(), '/');
+	$decimals = wc_get_price_decimals();
 
-    $pattern = "/\d{1,3}(?:{$thousand_separator}\d{3})*{$decimal_separator}\d{1,{$decimals}}/";
+	$pattern = "/\d{1,3}(?:{$thousandSeparator}\d{3})*{$decimalSeparator}\d{1,{$decimals}}/";
 
-    preg_match($pattern, $a, $matches);
+	preg_match($pattern, $a, $matches);
 
-    if (!empty($matches)) {
+	if (!empty($matches)) {
 
-        $price = $matches[0];
+		$price = $matches[0];
 
-        $price_selector = "<span class='smartcut-price-selector'>{$price}</span>";
+		$priceSelector = "<span class='smartcut-price-selector'>{$price}</span>";
 
-        $a = str_replace($price, $price_selector, $a);
-    }
+		$a = str_replace($price, $priceSelector, $a);
+	}
 
-    return $a;
+	return $a;
 });

@@ -1,0 +1,117 @@
+{
+	"name": "Cabinet carcass",
+	"numbers": "decimal",
+	"units": "mm",
+	"inputs": {
+		"height": {
+			"type": "float",
+			"min": 0,
+			"max": 1000,
+			"default": 1000,
+			"label": "Height"
+		},
+		"width": {
+			"type": "float",
+			"min": 0,
+			"max": 1000,
+			"default": 600,
+			"label": "Width"
+		},
+		"depth": {
+			"type": "float",
+			"min": 0,
+			"max": 1000,
+			"default": 300,
+			"label": "Depth"
+		},
+		"quantity": {
+			"type": "integer",
+			"min": 1,
+			"max": 10,
+			"default": 1,
+			"label": "Quantity of carcasses"
+		},
+		"shelves": {
+			"type": "integer",
+			"min": 0,
+			"max": 10,
+			"default": 0,
+			"label": "Number of shelves"
+		}
+	},
+	"panels": {
+		"back": {
+			"material": "plywood",
+			"name": "Back panel",
+			"orientationLock": "l",
+			"l": "=inputs.height",
+			"w": "=inputs.width",
+			"t": 18,
+			"q": "=1 * inputs.quantity"
+		},
+		"side": {
+			"material": "plywood",
+			"name": "Side panel",
+			"orientationLock": "l",
+			"bandingOptions": {
+				"x1": {
+					"type": "sc-banding-a"
+				},
+				"x2": {
+					"type": "sc-banding-a"
+				},
+				"y1": {
+					"type": "sc-banding-a"
+				},
+				"y2": {
+					"type": "sc-banding-a"
+				}
+			},
+			"finishOptions": {
+				"a": {
+					"type": "sc-finish-a"
+				},
+				"b": {
+					"type": "sc-finish-a"
+				}
+			},
+			"l": "=inputs.height",
+			"w": "=inputs.depth",
+			"t": 18,
+			"q": "=2 * inputs.quantity"
+		},
+		"base": {
+			"material": "plywood",
+			"orientationLock": "l",
+			"name": "Base panel",
+			"l": "=inputs.width",
+			"w": "=inputs.depth",
+			"t": 10,
+			"q": "=1 * inputs.quantity"
+		},
+		"top": {
+			"material": "plywood",
+			"name": "Top panel",
+			"orientationLock": "l",
+			"l": "=inputs.width",
+			"w": "=inputs.depth",
+			"t": 18,
+			"q": "=1 * inputs.quantity"
+		},
+		"shelf": {
+			"material": "plywood",
+			"name": "Shelf",
+			"l": "=inputs.width - panels.side.t * 2",
+			"w": "=inputs.depth - panels.back.t",
+			"t": 10,
+			"q": "=1 * inputs.shelves * inputs.quantity"
+		}
+	},
+	"hardware": {
+		"runners": {
+			"name": "Runners",
+			"q": "=2 * inputs.shelves * inputs.quantity",
+			"cost": 10
+		}
+	}
+}

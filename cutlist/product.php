@@ -2,7 +2,7 @@
 
 namespace SmartCut\Cutlist\Product;
 
-function should_activate($product = null)
+function shouldActivate($product = null)
 {
 
 	if (!is_singular('product')) return false;
@@ -16,67 +16,67 @@ function should_activate($product = null)
 
 /**
  * Convert a comma-separated string of type slugs into a cleaned array
- * @param string|array $type_string The input string or array of types
- * @param string $extra_key The type of extra data (e.g., 'banding', 'finish')
+ * @param string|array $typeString The input string or array of types
+ * @param string $extraKey The type of extra data (e.g., 'banding', 'finish')
  * @return array Cleaned and validated array of slugs
  * @throws \InvalidArgumentException If the input is invalid
  */
-function get_extra_slugs($type_string, $extra_key)
+function getExtraSlugs($typeString, $extraKey)
 {
 	// Handle empty input
-	if (empty($type_string)) {
+	if (empty($typeString)) {
 		return [];
 	}
 
 	// If input is already an array, skip string processing
-	if (is_array($type_string)) {
-		$type_array = $type_string;
+	if (is_array($typeString)) {
+		$typeArray = $typeString;
 	} else {
 		// Validate string input
-		if (!is_string($type_string)) {
+		if (!is_string($typeString)) {
 			throw new \InvalidArgumentException(
 				sprintf(
 					'Invalid input type for %s slugs. Expected string or array, got %s',
-					$extra_key,
-					gettype($type_string)
+					$extraKey,
+					gettype($typeString)
 				)
 			);
 		}
 
 		// Clean and split the string
-		$type_string = trim($type_string);
-		$type_string = str_replace([' ', '\n', '\r', '\t'], '', $type_string);
-		$type_array = explode(',', $type_string);
+		$typeString = trim($typeString);
+		$typeString = str_replace([' ', '\n', '\r', '\t'], '', $typeString);
+		$typeArray = explode(',', $typeString);
 	}
 
 	// Clean and validate each slug
-	$cleaned_array = array_map(function ($slug) use ($extra_key) {
+	$cleanedArray = array_map(function ($slug) use ($extraKey) {
 		// Basic sanitization
 		$slug = trim($slug);
 		$slug = sanitize_title($slug); // WordPress function to create valid slugs
 
 		return $slug;
-	}, $type_array);
+	}, $typeArray);
 
 	// Filter out empty or invalid slugs
-	$filtered_array = array_filter($cleaned_array, function ($slug) {
+	$filteredArray = array_filter($cleanedArray, function ($slug) {
 		return !empty($slug) && is_string($slug);
 	});
 
 	// Remove duplicates
-	$unique_array = array_unique($filtered_array);
+	$uniqueArray = array_unique($filteredArray);
 
 	// Reindex array
-	$final_array = array_values($unique_array);
+	$finalArray = array_values($uniqueArray);
 
 	// Validate final array
-	if (empty($final_array)) {
+	if (empty($finalArray)) {
 		if (defined('WP_DEBUG') && WP_DEBUG) {
 			trigger_error(
 				sprintf(
 					'No valid %s slugs found in input: %s',
-					$extra_key,
-					is_string($type_string) ? $type_string : print_r($type_string, true)
+					$extraKey,
+					is_string($typeString) ? $typeString : print_r($typeString, true)
 				),
 				E_USER_WARNING
 			);
@@ -84,123 +84,119 @@ function get_extra_slugs($type_string, $extra_key)
 		return [];
 	}
 
-	return $final_array;
+	return $finalArray;
 }
 
 /**
  * Get extra data for a product based on the specified key
- * @param string $product_id The ID of the product
- * @param string $extra_key The type of extra data to retrieve (e.g., 'banding', 'finish', etc.)
+ * @param string $productId The ID of the product
+ * @param string $extraKey The type of extra data to retrieve (e.g., 'banding', 'finish', etc.)
  * @return array Extra data for the product
  * @throws \InvalidArgumentException If the extra_key is invalid or required components are missing
  */
-function get_extra_data($product_id, $extra_key)
+function getExtraData($productId, $extraKey)
 {
 	// Validate inputs
-	if (empty($product_id)) {
+	if (empty($productId)) {
 		throw new \InvalidArgumentException('Product ID is required');
 	}
 
-	if (empty($extra_key)) {
+	if (empty($extraKey)) {
 		throw new \InvalidArgumentException('Extra key is required');
 	}
 
 	// Validate that the product exists
-	$product = wc_get_product($product_id);
+	$product = wc_get_product($productId);
 	if (!$product) {
 		return null;
 	}
 
 	// Convert extra_key to necessary meta keys
-	$disable_key = "disable_{$extra_key}";
-	$types_key = "smartcut_{$extra_key}_types";
+	$disableKey = "disable_{$extraKey}";
+	$typesKey = "smartcut_{$extraKey}_types";
 
 	// Verify that the settings structure exists
-	$options = \SmartCut\get_settings('cutlist');
+	$options = \SmartCut\Settings\getGlobalSettings();
+
 	if (!is_array($options)) {
 		throw new \InvalidArgumentException('SmartCut settings are not properly configured');
 	}
 
 	// Check if the extra feature is disabled for this product
-	$is_disabled = \get_post_meta($product_id, $disable_key, true);
-	if ($is_disabled === '1') {
-		return null;
-	}
+	$isDisabled = \get_post_meta($productId, $disableKey, true);
+	if ($isDisabled === '1') return null;
 
 	// Check if this extra_key is supported in the settings
-	$settings_key = "{$extra_key}_types";
+	$settingsKey = "{$extraKey}_types";
 
 	// Get global settings for this extra feature
-	$types = isset($options[$settings_key]) ? $options[$settings_key] : null;
+	$types = isset($options[$settingsKey]) ? $options[$settingsKey] : null;
 
 	// Check for product-specific types that override global settings
-	$product_types = \get_post_meta($product_id, $types_key, true);
-	if (!empty($product_types)) {
-		$types = $product_types;
-	}
+	$productTypes = \get_post_meta($productId, $typesKey, true);
 
-	// If no types are defined, return empty with message
-	if (empty($types)) {
-		return null;
-	}
+	if (!empty($productTypes)) $types = $productTypes;
 
-	$extra_data = [];
+	// If no types are defined, return empty
+	if (empty($types)) return null;
+
+	$extraData = [];
 
 	try {
 		// Get the slugs using the dynamic function name
-		$slugs = get_extra_slugs($types, $extra_key);
+		$slugs = getExtraSlugs($types, $extraKey);
 
 		if (!is_array($slugs)) {
-			throw new \InvalidArgumentException("Invalid slugs returned from 'get_extra_slugs'");
+			throw new \InvalidArgumentException("Invalid slugs returned from 'getExtraSlugs'");
 		}
 
 		// Process each type
 		foreach ($slugs as $slug) {
 			$product = get_page_by_path($slug, OBJECT, 'product');
-			if (empty($product)) {
-				continue;
-			}
+
+			if (empty($product)) continue;
 
 			$product = \wc_get_product($product);
-			if (!$product) {
-				continue;
-			}
+
+			if (!$product) continue;
 
 			// Handle variable products
+			//[] test keys are correct
 			if ($product instanceof \WC_Product_Variable) {
 				$variations = $product->get_available_variations();
 				$attributes = $product->get_attributes();
 
 				$options = [];
+
 				foreach ($attributes as $attribute) {
-					$attribute_name = strtolower($attribute->get_name());
-					$attribute_options = array_map('strtolower', $attribute->get_options());
-					$options[$attribute_name] = $attribute_options;
+					$attributeName = strtolower($attribute->get_name());
+					$attributeOptions = array_map('strtolower', $attribute->get_options());
+					$options[$attributeName] = $attributeOptions;
 				}
 
-				$extra_data[$slug] = [
+				$extraData[$slug] = [
 					'name' => $product->get_name(),
 					'options' => $options,
 					'variations' => []
 				];
 
 				foreach ($variations as $variation) {
-					$variation_id = $variation['variation_id'];
-					$variation_product = wc_get_product($variation_id);
+					$variationId = $variation['variation_id'];
+					$variationProduct = wc_get_product($variationId);
 
-					if (!$variation_product) {
+					if (!$variationProduct) {
 						continue;
 					}
 
-					$price = $variation_product->is_on_sale()
-						? $variation_product->get_sale_price()
-						: $variation_product->get_price();
+					$price = $variationProduct->is_on_sale()
+						? $variationProduct->get_sale_price()
+						: $variationProduct->get_price();
 
-					$attributes = $variation_product->get_attributes();
+					$attributes = $variationProduct->get_attributes();
 					$attributes = array_map('strtolower', $attributes);
 
-					$extra_data[$slug]['variations'][$variation_id] = [
-						'name' => $variation_product->get_name(),
+					$extraData[$slug]['variations'][$variationId] = [
+						'name' => $variationProduct->get_name(),
 						'price' => $price,
 						'options' => $attributes
 					];
@@ -212,24 +208,24 @@ function get_extra_data($product_id, $extra_key)
 					? $product->get_sale_price()
 					: $product->get_price();
 
-				$product_name = $product->get_name();
-				$option_name = strtolower($product_name);
-				$option_key = str_replace(' ', '-', $option_name);
+				$productName = $product->get_name();
+				$productSlug = $product->get_slug();
+				$optionName = strtolower($productName);
 
-				$extra_data[$slug] = [
-					'name' => $product_name,
+				$extraData[$slug] = [
+					'name' => $productName,
 					'price' => $price,
-					'options' => [$option_key => $option_name]
+					'options' => [$productSlug => $optionName]
 				];
 			}
 		}
 
 		// If we processed everything but got no data, return meaningful message
-		if (empty($extra_data)) {
+		if (empty($extraData)) {
 			return null;
 		}
 
-		return $extra_data;
+		return $extraData;
 	} catch (\Exception $e) {
 		return null;
 	}
@@ -237,73 +233,73 @@ function get_extra_data($product_id, $extra_key)
 
 /**
  * Get the associated products for a given product and extra type
- * @param string $product_id The ID of the product
- * @param string $extra_key The type of extra data (e.g., 'banding', 'finish')
+ * @param string $productId The ID of the product
+ * @param string $extraKey The type of extra data (e.g., 'banding', 'finish')
  * @return array Associative array of product data or error information
  * @throws \InvalidArgumentException If input parameters are invalid
  */
-function get_extra_products($product_id, $extra_key)
+function getExtraProducts($productId, $extraKey)
 {
 	// Validate inputs
-	if (empty($product_id)) {
+	if (empty($productId)) {
 		throw new \InvalidArgumentException('Product ID is required');
 	}
 
-	if (empty($extra_key)) {
+	if (empty($extraKey)) {
 		throw new \InvalidArgumentException('Extra key is required');
 	}
 
 	// Convert extra_key to necessary meta keys
-	$disable_key = "disable_{$extra_key}";
-	$types_key = "smartcut_{$extra_key}_types";
-	$settings_key = "{$extra_key}_types";
+	$disableKey = "disable_{$extraKey}";
+	$typesKey = "smartcut_{$extraKey}_types";
+	$settingsKey = "{$extraKey}_types";
 
 	try {
 		// Check if feature is disabled for this product
-		$is_disabled = \get_post_meta($product_id, $disable_key, true);
-		if ($is_disabled === '1') {
+		$isDisabled = \get_post_meta($productId, $disableKey, true);
+		if ($isDisabled === '1') {
 			return [
 				'disabled' => true,
-				'message' => sprintf('%s is disabled for this product', ucfirst($extra_key))
+				'message' => sprintf('%s is disabled for this product', ucfirst($extraKey))
 			];
 		}
 
 		// Get settings
-		$options = \SmartCut\get_settings('cutlist');
-		if (!is_array($options) || !isset($options[$settings_key])) {
+		$options = \SmartCut\Settings\getGlobalSettings();
+		if (!is_array($options) || !isset($options[$settingsKey])) {
 			return [
 				'error' => true,
-				'message' => sprintf('No %s types configured in settings', $extra_key)
+				'message' => sprintf('No %s types configured in settings', $extraKey)
 			];
 		}
 
 		// Get types from settings
-		$types = $options[$settings_key];
+		$types = $options[$settingsKey];
 
 		// Check for product-specific types that override global settings
-		$product_types = \get_post_meta($product_id, $types_key, true);
-		if (!empty($product_types)) {
-			$types = $product_types;
+		$productTypes = \get_post_meta($productId, $typesKey, true);
+		if (!empty($productTypes)) {
+			$types = $productTypes;
 		}
 
 		if (empty($types)) {
 			return [
 				'error' => true,
-				'message' => sprintf('No %s types defined', $extra_key)
+				'message' => sprintf('No %s types defined', $extraKey)
 			];
 		}
 
 		// Convert types to slugs using our generic function
-		$slugs = get_extra_slugs($types, $extra_key);
+		$slugs = getExtraSlugs($types, $extraKey);
 
 		if (empty($slugs)) {
 			return [
 				'error' => true,
-				'message' => sprintf('No valid %s slugs found', $extra_key)
+				'message' => sprintf('No valid %s slugs found', $extraKey)
 			];
 		}
 
-		$extra_data = [];
+		$extraData = [];
 
 		// Process each product
 		foreach ($slugs as $slug) {
@@ -321,39 +317,39 @@ function get_extra_products($product_id, $extra_key)
 				? $product->get_sale_price()
 				: $product->get_price();
 
-			$extra_data[$slug] = [
+			$extraData[$slug] = [
 				'name' => $product->get_name(),
 				'price' => $price,
 				'symbol' => \get_woocommerce_currency_symbol(),
-				'type' => $extra_key,
+				'type' => $extraKey,
 				'slug' => $slug,
 				'product_id' => $product->get_id()
 			];
 		}
 
-		if (empty($extra_data)) {
+		if (empty($extraData)) {
 			return [
 				'error' => true,
-				'message' => sprintf('No valid %s products found', $extra_key)
+				'message' => sprintf('No valid %s products found', $extraKey)
 			];
 		}
 
 		return [
 			'success' => true,
-			'data' => $extra_data
+			'data' => $extraData
 		];
 	} catch (\Exception $e) {
 		return [
 			'error' => true,
-			'message' => sprintf('Error processing %s products: %s', $extra_key, $e->getMessage())
+			'message' => sprintf('Error processing %s products: %s', $extraKey, $e->getMessage())
 		];
 	}
 }
 
-function get_machining_pricing($product_id)
+function getMachiningPricing($productId)
 
 {
-	$settings = get_product_settings($product_id);
+	$settings = \SmartCut\Settings\getProductSettings($productId);
 
 	if (!isset($settings['enable_machining']) || $settings['enable_machining'] === '0') return [];
 
@@ -362,7 +358,7 @@ function get_machining_pricing($product_id)
 		'holes' => isset($settings['machining_holes_product']) ? $settings['machining_holes_product'] : null
 	];
 
-	$machining_price = [];
+	$machiningPrice = [];
 
 	foreach ($machining as $type => $slug) {
 
@@ -375,57 +371,22 @@ function get_machining_pricing($product_id)
 
 			$price = $product->is_on_sale() ? $product->get_sale_price() : $product->get_price();
 
-			$machining_price[$type] = floatval($price);
+			$machiningPrice[$type] = floatval($price);
 		}
 	}
 
-	return $machining_price;
+	return $machiningPrice;
 }
 
-/**
- * get the product settings, with product settings overriding global settings
- * @param string $product_id
- * @return array
- */
-function get_product_settings($product_id = null)
-{
-	$product_id = $product_id ? $product_id : get_the_ID();
-
-	if (!$product_id) return;
-
-	$settings_fields = \SmartCut\Cutlist\Settings\get_global_setting_fields();
-	$global_settings = \SmartCut\get_settings('cutlist');
-
-	foreach ($settings_fields as $key => $type) {
-
-		$name = 'smartcut_' . $key;
-		$product_setting = \get_post_meta($product_id, $name, true);
-
-		//override the global setting
-		if ($product_setting && !empty($product_setting) && $product_setting !== 'global') {
-			$global_settings[$key] = $product_setting;
-		}
-	}
-
-	//special cases for 'disable' options - these are needed for some new features for they're not autmatically enabled on existing sites
-	foreach (['machining'] as $key) {
-		$product_setting_name = 'smartcut_disable_' . $key;
-		$global_setting_name = 'enable_' . $key;
-		$product_setting = \get_post_meta($product_id, $product_setting_name, true);
-		if ($product_setting === '1') $global_settings[$global_setting_name] = '0';
-	}
-
-	return $global_settings;
-}
 
 /**
  * add the html for the cutlist to the product page
- * @param array $banding_data
+ * @param array $bandingData
  * @return void
  */
-function add_html($banding_data, $finish_data)
+function addHtml($bandingData, $finishData)
 {
-	$settings = get_product_settings();
+	$settings = \SmartCut\Settings\getProductSettings();
 
 	if ($settings['units'] === 'fraction') {
 		printf('<p id="smartcut-intro-text">%s</p>', __('Add your cuts below. Units are inches.', 'smartcut'));
@@ -434,56 +395,39 @@ function add_html($banding_data, $finish_data)
 	}
 	include 'html/wrapper.php';
 
-	$pricing_notes = null;
+	$pricingNotes = null;
 	switch ($settings['pricing_strategy']) {
 		case 'part_area':
-			$pricing_notes = __('This product is priced by part area, so adding fractions of a sheet to the cart is possible.', 'smartcut');
+			$pricingNotes = __('This product is priced by part area, so adding fractions of a sheet to the cart is possible.', 'smartcut');
 			break;
 		case 'full_sheet_plus_cut_length':
-			$pricing_notes = __('This product is priced by full sheet plus cut length.', 'smartcut');
+			$pricingNotes = __('This product is priced by full sheet plus cut length.', 'smartcut');
 			break;
 		case 'full_sheet_plus_num_parts':
-			$pricing_notes = __('This product is priced by full sheet plus number of parts.', 'smartcut');
+			$pricingNotes = __('This product is priced by full sheet plus number of parts.', 'smartcut');
 			break;
 		case 'full_sheet':
-			$pricing_notes = __('This product is priced by full sheet.', 'smartcut');
+			$pricingNotes = __('This product is priced by full sheet.', 'smartcut');
 			break;
 		case 'cut_length':
-			$pricing_notes = __('This product is priced by cut length.', 'smartcut');
+			$pricingNotes = __('This product is priced by cut length.', 'smartcut');
 			break;
 		default:
-			$pricing_notes =  __('This product is priced by full sheet.', 'smartcut');
+			$pricingNotes =  __('This product is priced by full sheet.', 'smartcut');
 			break;
 	}
 
-	printf('<p id="smartcut-pricing-notes">%s</p>', $pricing_notes);
+	printf('<p id="smartcut-pricing-notes">%s</p>', $pricingNotes);
 
-	$banding_enabled = $banding_data && (!isset($settings['disable_banding']) || $settings['disable_banding'] !== '1');
+	$bandingEnabled = $bandingData && (!isset($settings['disable_banding']) || $settings['disable_banding'] !== '1');
 
-	$finish_enabled = $finish_data && (!isset($settings['disable_finish']) || $settings['disable_finish'] !== '1');
+	$finishEnabled = $finishData && (!isset($settings['disable_finish']) || $settings['disable_finish'] !== '1');
 
-	$machining_enabled = isset($settings['enable_machining']) && $settings['enable_machining'] === '1';
+	$machiningEnabled = isset($settings['enable_machining']) && $settings['enable_machining'] === '1';
 
 	//additional pricing
 
 	echo '<table id="smartcut-pricing-table">';
-
-	if ($banding_enabled) :
-
-		printf('<tr id="smartcut-banding-total"><td class="price">%s</td><td>%s</td></tr>', __('Banding total', 'smartcut'), wc_price(0));
-
-	endif;
-
-	if ($finish_enabled) :
-
-		printf('<tr id="smartcut-finish-total"><td class="price">%s</td><td>%s</td></tr>', __('Finish total', 'smartcut'), wc_price(0));
-
-	endif;
-
-	if ($machining_enabled) :
-		printf('<tr id="smartcut-machining-total"><td class="price">%s</td><td>%s</td></tr>', __('Machining total', 'smartcut'), wc_price(0));
-
-	endif;
 
 	if ($settings['pricing_strategy'] === 'full_sheet_plus_cut_length') :
 
@@ -494,9 +438,37 @@ function add_html($banding_data, $finish_data)
 
 	if ($settings['pricing_strategy'] === 'full_sheet_plus_num_parts') :
 
+		echo '<tr id="smartcut-stock-total">';
+		printf('<td class="price">%s</td><td>%s</td>', __('Stock total', 'smartcut'), wc_price(0));
+		echo '</tr>';
+
 		echo '<tr id="smartcut-per-part-total">';
 		printf('<td class="price">%s</td><td>%s</td>', __('Part total', 'smartcut'), wc_price(0));
 		echo '</tr>';
+
+	endif;
+
+	if ($bandingEnabled) :
+
+		echo '<tr id="smartcut-banding-total">';
+		printf('<td class="price">%s</td><td>%s</td></tr>', __('Banding total', 'smartcut'), wc_price(0));
+		echo '</tr>';
+
+	endif;
+
+	if ($finishEnabled) :
+
+		echo '<tr id="smartcut-finish-total">';
+		printf('<td class="price">%s</td><td>%s</td></tr>', __('Finish total', 'smartcut'), wc_price(0));
+		echo '</tr>';
+
+	endif;
+
+	if ($machiningEnabled) :
+		echo '<tr id="smartcut-machining-total">';
+		printf('<td class="price">%s</td><td>%s</td></tr>', __('Machining total', 'smartcut'), wc_price(0));
+		echo '</tr>';
+
 	endif;
 
 	if ($settings['surcharge_type'] !== 'none') :
@@ -512,30 +484,30 @@ function add_html($banding_data, $finish_data)
 
 function init()
 {
-	$post_id = get_the_ID();
+	$postId = get_the_ID();
 
-	$product = \wc_get_product($post_id);
+	$product = \wc_get_product($postId);
 
 	if (!$product) return;
 
-	if (!should_activate($product)) return;
+	if (!shouldActivate($product)) return;
 
-	$banding_data = get_extra_data($post_id, 'banding');
-	$finish_data = get_extra_data($post_id, 'finish');
+	$bandingData = getExtraData($postId, 'banding');
+	$finishData = getExtraData($postId, 'finish');
 
 	$type = $product->get_type();
 
 	$action = $type === 'variable' ? 'woocommerce_after_variations_table' : 'woocommerce_before_add_to_cart_form';
 
 	//add the necessary user facing html to the product page
-	add_action($action, function () use ($banding_data, $finish_data) {
-		add_html($banding_data, $finish_data);
+	add_action($action, function () use ($bandingData, $finishData) {
+		addHtml($bandingData, $finishData);
 	}, 10);
 }
 
 add_action('wp', 'SmartCut\Cutlist\Product\init', 100);
 
-function get_attribute_value($attribute, $attributes)
+function getAttributeValue($attribute, $attributes)
 {
 	if (!isset($attributes[$attribute])) return null;
 
@@ -554,48 +526,48 @@ function get_attribute_value($attribute, $attributes)
 /**
  * Check extra product type setup for variable/simple product combinations
  * @param array $types Array of product slugs
- * @param string $extra_key The type of extra data (e.g., 'banding', 'finish')
+ * @param string $extraKey The type of extra data (e.g., 'banding', 'finish')
  * @return array Array of error messages
  */
-function check_extra_product_setup($types, $extra_key)
+function checkExtraProductSetup($types, $extraKey)
 {
 	$messages = [];
-	$variable_products = 0;
-	$simple_products = 0;
+	$variableProducts = 0;
+	$simpleProducts = 0;
 
 	foreach ($types as $slug) {
-		$product_page = get_page_by_path($slug, \OBJECT, 'product');
-		if (!$product_page) {
+		$productPage = get_page_by_path($slug, \OBJECT, 'product');
+		if (!$productPage) {
 			$messages[] = sprintf(
 				'The %s type "%s" does not exist. Please create a product with this slug.',
-				$extra_key,
+				$extraKey,
 				$slug
 			);
 			continue;
 		}
 
-		$product = wc_get_product($product_page->ID);
+		$product = wc_get_product($productPage->ID);
 		if ($product->is_type('variable')) {
-			$variable_products++;
+			$variableProducts++;
 		} else {
-			$simple_products++;
+			$simpleProducts++;
 		}
 	}
 
-	if ($variable_products > 0 && $simple_products > 0) {
+	if ($variableProducts > 0 && $simpleProducts > 0) {
 		$messages[] = sprintf(
 			'Variable %s products cannot be combined with simple %s products. A single variable %s product or multiple simple %s products are valid.',
-			$extra_key,
-			$extra_key,
-			$extra_key,
-			$extra_key
+			$extraKey,
+			$extraKey,
+			$extraKey,
+			$extraKey
 		);
-	} else if ($variable_products > 1) {
+	} elseif ($variableProducts > 1) {
 		$messages[] = sprintf(
 			'Only one variable %s product can be used at a time. A single variable %s product or multiple simple %s products are valid.',
-			$extra_key,
-			$extra_key,
-			$extra_key
+			$extraKey,
+			$extraKey,
+			$extraKey
 		);
 	}
 
@@ -604,84 +576,90 @@ function check_extra_product_setup($types, $extra_key)
 
 /**
  * Check product setup and return any warning messages
- * @param int|null $product_id
+ * @param int|null $productId
  * @return array Array of warning messages
  */
-function check_product_setup($product_id = null)
+function checkProductSetup($productId = null)
 {
-	if (!$product_id) return [];
+	if (!$productId) return [];
 
-	$product = wc_get_product($product_id);
+	$product = wc_get_product($productId);
 	$messages = [];
 
-	$product_settings = get_product_settings($product_id);
+	$productSettings = \SmartCut\Settings\getProductSettings($productId);
 
 	// Product category
-	if (!\SmartCut\check_category($product_id, $product_settings)) return [];
+	if (!\SmartCut\Helpers\checkCategory($productId, $productSettings)) return [];
 
 	// Check extra product types (banding and finish)
-	$extra_types = ['banding', 'finish'];
+	$extraTypes = ['banding', 'finish'];
 
-	foreach ($extra_types as $extra_key) {
-		$types_key = "{$extra_key}_types";
+	foreach ($extraTypes as $extraKey) {
+		$typesKey = "{$extraKey}_types";
 
-		if (isset($product_settings[$types_key])) {
-			$types = get_extra_slugs($product_settings[$types_key], $extra_key);
+		if (isset($productSettings[$typesKey])) {
+			$types = getExtraSlugs($productSettings[$typesKey], $extraKey);
 			if (!empty($types)) {
-				$extra_messages = check_extra_product_setup($types, $extra_key);
-				$messages = array_merge($messages, $extra_messages);
+				$extraMessages = checkExtraProductSetup($types, $extraKey);
+				$messages = array_merge($messages, $extraMessages);
 			}
 		}
 	}
 
 	// Prices
-	$pricing_strategy = $product_settings['pricing_strategy'];
+	if (isset($productSettings['pricing_strategy'])) {
 
-	if (isset($pricing_strategy) && $pricing_strategy === 'full_sheet_plus_cut_length') {
-		if (!isset($product_settings['cut_length_price'])) {
-			$messages[] = 'When using the full sheet plus cut length pricing strategy, a price must be supplied for the cut length.';
+		$pricingStrategy = $productSettings['pricing_strategy'];
+
+		if ($pricingStrategy === 'full_sheet_plus_cut_length') {
+			if (!isset($productSettings['cut_length_price'])) {
+				$messages[] = 'When using the full sheet plus cut length pricing strategy, a price must be supplied for the cut length.';
+			}
+		}
+
+		if ($pricingStrategy === 'full_sheet_plus_num_parts') {
+			if (!isset($productSettings['per_part_price'])) {
+				$messages[] = 'When using the full sheet plus number of parts pricing strategy, a part price must be supplied.';
+			}
 		}
 	}
 
-	if (isset($pricing_strategy) && $pricing_strategy === 'full_sheet_plus_num_parts') {
-		if (!isset($product_settings['per_part_price'])) {
-			$messages[] = 'When using the full sheet plus number of parts pricing strategy, a part price must be supplied.';
-		}
-	}
+	if (isset($productSettings['surcharge_type'])) {
 
-	$surcharge_type = $product_settings['surcharge_type'];
-
-	if (isset($surcharge_type) && $surcharge_type !== 'none') {
-		if (!isset($product_settings['surcharge'])) {
-			$messages[] = 'If a surcharge type is specified, a surcharge price must be supplied.';
+		if ($productSettings['surcharge_type'] !== 'none') {
+			if (!isset($productSettings['surcharge'])) {
+				$messages[] = 'If a surcharge type is specified, a surcharge price must be supplied.';
+			}
 		}
 	}
 
 	// Attributes
-	$required_attributes = ['length', 'width'];
+	$requiredAttributes = ['length', 'width'];
 
-	$product_attributes = $product->get_attributes();
+	$productAttributes = $product->get_attributes();
 
-	if (isset($product_attributes['thickness'])) {
-		$thickness_options = $product_attributes['thickness']->get_options();
+	if (isset($productAttributes['thickness'])) {
 
-		foreach ($thickness_options as $thickness) {
+		$thicknessOptions = $productAttributes['thickness']->get_options();
+
+		foreach ($thicknessOptions as $thickness) {
 			if (!preg_match('/^(\d+(\.\d+)?|(\d+(\.\d+)?,)+\d+(\.\d+)?)$/', $thickness)) {
 				$messages[] = sprintf('The thickness attribute %s is not formatted correctly. It should use numbers only with no units, or numbers separated by a comma with no spaces.', $thickness);
 			}
 		}
 	}
 
-	if (isset($product_attributes['size'])) {
-		$size_values = $product_attributes['size']->get_options();
+	if (isset($productAttributes['size'])) {
 
-		if (count($size_values) > 1) {
+		$sizeValues = $productAttributes['size']->get_options();
+
+		if (count($sizeValues) > 1) {
 			if (!$product->is_type('variable')) {
 				$messages[] = 'You are using the size attribute with a simple product - this means individual stock sizes cannot be priced separately. If this is intentional, it is safe to ignore this message.';
 			}
 		}
 
-		foreach ($size_values as $size) {
+		foreach ($sizeValues as $size) {
 			if (!preg_match('/^\D+$/', $size)) {
 				if (!preg_match('/\d+x\d+/', $size)) {
 					$messages[] = sprintf('The size attribute %s must be in the format 2440x1220', $size);
@@ -689,27 +667,27 @@ function check_product_setup($product_id = null)
 			}
 		}
 
-		if (empty($size_values)) {
+		if (empty($sizeValues)) {
 			$messages[] = 'The size attribute has no values. Please add some values to the size attribute.';
-		} else if (count($size_values) < 2) {
+		} elseif (count($sizeValues) < 2) {
 			$messages[] = 'If using the size attribute, you must have at least 2 values. Otherwise, use dimension attributes such as length.';
 		}
 
-		foreach ($required_attributes as $attribute) {
-			if (isset($product_attributes[$attribute])) {
+		foreach ($requiredAttributes as $attribute) {
+			if (isset($productAttributes[$attribute])) {
 				$messages[] = 'If using the size attribute, you must not also use dimension attributes.';
 				break;
 			}
 		}
 	} else {
 		// Check for the presence of the correct attributes
-		$missing_attributes = [];
+		$missingAttributes = [];
 
-		foreach ($required_attributes as $attribute) {
-			if (!isset($product_attributes[$attribute])) {
-				$missing_attributes[] = $attribute;
+		foreach ($requiredAttributes as $attribute) {
+			if (!isset($productAttributes[$attribute])) {
+				$missingAttributes[] = $attribute;
 			} else {
-				$values = $product_attributes[$attribute]->get_options();
+				$values = $productAttributes[$attribute]->get_options();
 
 				if (count($values) === 1) {
 					if (!preg_match('/^\d+$/', $values[0])) {
@@ -721,25 +699,30 @@ function check_product_setup($product_id = null)
 			}
 		}
 
-		if (count($missing_attributes) > 0) {
-			$missing_attributes = array_map('strtoupper', $missing_attributes);
-			$messages[] = sprintf('The following required product attributes have not been set: %s', implode(', ', $missing_attributes));
+		if (count($missingAttributes) > 0) {
+			$missingAttributes = array_map('strtoupper', $missingAttributes);
+			$messages[] = sprintf('The following required product attributes have not been set: %s', implode(', ', $missingAttributes));
 		}
 	}
 
 	return $messages;
 }
 
-function enqueue_scripts()
+function getFormulaUrl($attachmentId)
 {
-	$product_id = get_the_ID();
+	return $attachmentId ? wp_get_attachment_url($attachmentId) : null;
+}
 
-	if (!$product_id) return;
+function enqueueScripts()
+{
+	$productId = get_the_ID();
+
+	if (!$productId) return;
 
 	//get the product attribute data
-	$product = \wc_get_product($product_id);
+	$product = \wc_get_product($productId);
 
-	if (!should_activate($product)) return;
+	if (!shouldActivate($product)) return;
 
 	wp_enqueue_script(
 		'smartcut-checkout',
@@ -749,17 +732,17 @@ function enqueue_scripts()
 		true
 	);
 
-	$error_messages = check_product_setup($product_id);
+	$errorMessages = checkProductSetup($productId);
 
-	if (count($error_messages) > 0) {
+	if (count($errorMessages) > 0) {
 
-		foreach ($error_messages as $error_message) {
-			wc_add_notice(__('Smartcut - product setup error: ', 'smartcut') . $error_message, 'error');
+		foreach ($errorMessages as $errorMessage) {
+			wc_add_notice(__('Smartcut - product setup error: ', 'smartcut') . $errorMessage, 'error');
 		}
 
-		$error_messages = implode(', ', $error_messages);
+		$errorMessages = implode(', ', $errorMessages);
 
-		return trigger_error('SmartCut - product setup errors: ' . $error_messages, E_USER_WARNING);
+		return trigger_error('SmartCut - product setup errors: ' . $errorMessages, E_USER_WARNING);
 	}
 
 	$attributes = $product->get_attributes();
@@ -777,17 +760,17 @@ function enqueue_scripts()
 
 	$dimensions = ['l' => 'length', 'w' => 'width', 't' => 'thickness'];
 
-	foreach ($dimensions as $dimension => $attribute_key) {
+	foreach ($dimensions as $dimension => $attributeKey) {
 
-		$attribute_value = get_attribute_value($attribute_key, $attributes);
-		if (isset($attribute_value) && strpos($attribute_value, '|') === false) $dimensions[$dimension] = intval($attribute_value);
+		$attributeValue = getAttributeValue($attributeKey, $attributes);
+		if (isset($attributeValue) && strpos($attributeValue, '|') === false) $dimensions[$dimension] = intval($attributeValue);
 		else $dimensions[$dimension] = null;
 		$config[$dimension] = $dimensions[$dimension];
 	}
 
 	//detect multiple sizes, which is set with the 'size' attribute
 	$config['multiple_sizes'] = false;
-	$size = get_attribute_value('size', $attributes);
+	$size = getAttributeValue('size', $attributes);
 
 	if (isset($size) && $size !== null) {
 		$config['multiple_sizes'] = true;
@@ -796,7 +779,12 @@ function enqueue_scripts()
 		unset($config['w']);
 	}
 
-	$settings = get_product_settings();
+	$settings = \SmartCut\Settings\getProductSettings($productId, 'cutlist');
+
+	//[] formula url
+	if (isset($settings['enable_formula']) && $settings['enable_formula'] === true) {
+		$settings['formula_url'] = getFormulaUrl($settings['formula_json']);
+	}
 
 	//variation data
 	if (isset($variations)) {
@@ -812,19 +800,19 @@ function enqueue_scripts()
 		}, $variations);
 
 		$config['variations'] = $variations;
+	} else {
+		// Set the price of the product if variations are not set
+		$config['price'] = $product->get_price();
 	}
 
-	$input_fields = \SmartCut\Cutlist\Cart\get_field_keys(true);
-	$input_fields = array_values($input_fields);
+	$inputFields = \SmartCut\Cutlist\Cart\CartManager::getFieldKeys(true, $productId);
+	$inputFields = array_values($inputFields);
 
-	$settings_fields = \SmartCut\Cutlist\Settings\get_global_setting_fields();
-
-	$config['settings_fields'] = $settings_fields;
-	$config['input_fields'] = $input_fields;
+	$config['input_fields'] = $inputFields;
 	$config['settings'] = $settings;
-	$config['banding_data'] = get_extra_data($product_id, 'banding');
-	$config['finish_data'] = get_extra_data($product_id, 'finish');
-	$config['machining_pricing'] = get_machining_pricing($product_id);
+	$config['banding_data'] = getExtraData($productId, 'banding');
+	$config['finish_data'] = getExtraData($productId, 'finish');
+	$config['machining_pricing'] = getMachiningPricing($productId);
 	$config['product_type'] = $product->get_type();
 	$config['is_in_stock'] = $product->is_in_stock();
 	$config['thousands_separator'] = wc_get_price_thousand_separator();
@@ -835,32 +823,31 @@ function enqueue_scripts()
 	$config['locale'] = get_locale();
 	$config['version'] = SMARTCUT_CURRENT_VERSION;
 
-	//send the data the script in the config variable
-	$localize_script = wp_localize_script("smartcut-checkout", "smartcutConfig", $config);
-
-	if (!$localize_script) trigger_error('SmartCut - localize script failed', E_USER_WARNING);
+	// Add the configuration as an inline script
+	$configJson = json_encode($config);
+	$scriptSuccess = wp_add_inline_script('smartcut-checkout', "window.smartcutConfig = $configJson;", 'before');
+	if (!$scriptSuccess) trigger_error('SmartCut - adding smartcutConfig failed', E_USER_WARNING);
 }
 
-add_action('wp_enqueue_scripts', 'SmartCut\Cutlist\Product\enqueue_scripts');
+add_action('wp_enqueue_scripts', 'SmartCut\Cutlist\Product\enqueueScripts');
 
-
-function enqueue_styles()
+function enqueueStyles()
 {
-	if (!should_activate()) return;
+	if (!shouldActivate()) return;
 
 	wp_enqueue_style(
 		'smartcut-style',
 		plugins_url('../css/product.css', __FILE__),
 		array(),
-		SMARTCUT_CURRENT_VERSION,
+		SMARTCUT_CURRENT_VERSION
 	);
 
 	wp_enqueue_style(
 		'smartcut-checkout-style',
 		plugins_url('../cutlist/css/checkout/style.css', __FILE__),
 		array(),
-		SMARTCUT_CURRENT_VERSION,
+		SMARTCUT_CURRENT_VERSION
 	);
 }
 
-add_action('wp_enqueue_scripts', 'SmartCut\Cutlist\Product\enqueue_styles');
+add_action('wp_enqueue_scripts', 'SmartCut\Cutlist\Product\enqueueStyles');
