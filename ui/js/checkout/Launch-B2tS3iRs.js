@@ -1,7 +1,7 @@
 var S2 = Object.defineProperty;
 var k2 = (n, t, e) => t in n ? S2(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var tt = (n, t, e) => k2(n, typeof t != "symbol" ? t + "" : t, e);
-import { i as A2, u as Ee, o as Lo, n as Qr, r as Pe, a as N2, w as hr, g as C2, b as P2, c as L2, s as uo, d as fa, e as bp, f as Ar, m as da, h as I2, j as te, k as fe, F as Zn, l as Lr, p as gi, q as jn, t as we, v as yn, x as Xg, y as Jg, z as E2, A as Le, B as is, C as on, D as Of, E as Zg, G as Fl, H as Wn, I as Ln, J as qu, K as O2, L as go, M as T2, N as F2 } from "./main-8EuuSrTZ.js";
+import { i as A2, u as Ee, o as Lo, n as Qr, r as Pe, a as N2, w as hr, g as C2, b as P2, c as L2, s as uo, d as fa, e as bp, f as Ar, m as da, h as I2, j as te, k as fe, F as Zn, l as Lr, p as gi, q as jn, t as we, v as yn, x as Xg, y as Jg, z as E2, A as Le, B as is, C as on, D as Of, E as Zg, G as Fl, H as Wn, I as Ln, J as qu, K as O2, L as go, M as T2, N as F2 } from "./main-ELq8kMue.js";
 let xu;
 const M2 = new Uint8Array(16);
 function R2() {
@@ -15385,7 +15385,7 @@ function(n) {
  */
 function(n) {
   function t() {
-    return (Ie.canvg ? Promise.resolve(Ie.canvg) : import("./index.es-BZHxGO0K.js")).catch(function(e) {
+    return (Ie.canvg ? Promise.resolve(Ie.canvg) : import("./index.es-mlpQcdNr.js")).catch(function(e) {
       return Promise.reject(new Error("Could not load canvg: " + e));
     }).then(function(e) {
       return e.default ? e.default : e;
@@ -17579,7 +17579,7 @@ const na = /* @__PURE__ */ Oc(tw), ia = 5, dl = 10, Iu = ",", ra = {
 }, oa = { left: 10 };
 let aa = [];
 const ew = (n, t, e = (i) => i.toString()) => {
-  var u;
+  var h;
   const { t: i } = A2.global, r = new Ne({ orientation: "landscape" });
   let s = 10;
   r.setFontSize(20), r.text(i("pdf.orderSummary"), 10, s), s += 15, r.setFontSize(14), r.text("Your parts", 10, s), s += ia, aa = [
@@ -17592,18 +17592,18 @@ const ew = (n, t, e = (i) => i.toString()) => {
     `Banding (${pr.join(Iu)})`,
     `Finish (${fr.join(Iu)})`
   ];
-  const o = n.parts.map((d) => {
-    var m;
-    const p = pr.map((b) => d.banding[b] || "-").join(Iu), f = fr.map((b) => d.banding[b] || "-").join(Iu);
+  const o = n.parts.map((u) => {
+    var f;
+    const d = pr.map((m) => u.banding[m] || "-").join(Iu), p = fr.map((m) => u.banding[m] || "-").join(Iu);
     return [
-      e(d.l),
-      e(d.w),
-      e(d.t) || "-",
-      ((m = d == null ? void 0 : d.material) == null ? void 0 : m.toUpperCase()) || "-",
-      e(d.q),
-      d.name || "-",
-      p,
-      f
+      e(u.l),
+      e(u.w),
+      e(u.t) || "-",
+      ((f = u == null ? void 0 : u.material) == null ? void 0 : f.toUpperCase()) || "-",
+      e(u.q),
+      u.name || "-",
+      d,
+      p
     ];
   });
   na(r, {
@@ -17621,62 +17621,65 @@ const ew = (n, t, e = (i) => i.toString()) => {
     i("quantity")
     // 'Cost'
   ];
-  const a = n.stock.map((d) => {
-    var p;
+  const a = n.stock.map((u) => {
+    var d;
     return [
-      e(d.l),
-      e(d.w),
-      e(d.t) || "-",
-      ((p = d == null ? void 0 : d.material) == null ? void 0 : p.toUpperCase()) || "-",
-      e(d.q)
+      e(u.l),
+      e(u.w),
+      e(u.t) || "-",
+      ((d = u == null ? void 0 : u.material) == null ? void 0 : d.toUpperCase()) || "-",
+      e(u.q)
       // stock.cost
     ];
   });
-  na(r, {
+  if (na(r, {
     startY: s,
     head: [aa],
     body: a,
     margin: oa,
     headStyles: ra,
     styles: sa
-  }), s = r.autoTable.previous.finalY + dl, r.setFontSize(14), r.text(i("pdf.rollRequirements"), 10, s), s += ia, aa = [
-    i("name"),
-    i("material"),
-    i("length")
-  ];
-  const l = n.stock.map((d) => {
-    var p, f;
-    return [
-      ((p = d == null ? void 0 : d.name) == null ? void 0 : p.toUpperCase()) || "-",
-      ((f = d == null ? void 0 : d.material) == null ? void 0 : f.toUpperCase()) || "-",
-      e(d.analysis.rollLength)
+  }), s = r.autoTable.previous.finalY + dl, n.metadata.totalRollLength > 0) {
+    r.setFontSize(14), r.text(i("pdf.rollRequirements"), 10, s), s += ia, aa = [
+      i("name"),
+      i("material"),
+      i("length")
     ];
-  });
-  if (na(r, {
-    startY: s,
-    head: [aa],
-    body: l,
-    margin: oa,
-    headStyles: ra,
-    styles: sa
-  }), s = r.autoTable.previous.finalY + dl, t && Object.values(t)) {
+    const u = n.stock.map((d) => {
+      var p, f;
+      return [
+        ((p = d == null ? void 0 : d.name) == null ? void 0 : p.toUpperCase()) || "-",
+        ((f = d == null ? void 0 : d.material) == null ? void 0 : f.toUpperCase()) || "-",
+        e(d.analysis.rollLength)
+      ];
+    });
+    na(r, {
+      startY: s,
+      head: [aa],
+      body: u,
+      margin: oa,
+      headStyles: ra,
+      styles: sa
+    }), s = r.autoTable.previous.finalY + dl;
+  }
+  if (t && Object.values(t)) {
     r.setFontSize(14), r.text("Hardware", 10, s), s += ia;
-    const d = Object.values(t).map((p) => [
-      p.name.toUpperCase(),
-      e(p.q)
+    const u = Object.values(t).map((d) => [
+      d.name.toUpperCase(),
+      e(d.q)
       // item.totalCost.toFixed( 2 )
     ]);
     na(r, {
       startY: s,
       head: [[i("pdf.item"), i("quantity")]],
-      body: d,
+      body: u,
       margin: oa,
       headStyles: ra,
       styles: sa
     }), s = r.autoTable.previous.finalY + dl;
   }
   r.setFontSize(14), r.text(i("pdf.totals"), 10, s), s += ia;
-  const h = [
+  const l = [
     [i("pdf.totalParts"), e(n.metadata.totalPartsProduced)],
     [i("pdf.partArea"), e(n.metadata.totalPartArea)],
     [i("pdf.totalStockRequired"), e(n.metadata.totalUsedStock)],
@@ -17686,21 +17689,21 @@ const ew = (n, t, e = (i) => i.toString()) => {
   ];
   if (na(r, {
     startY: s,
-    body: h,
+    body: l,
     margin: oa,
     headStyles: ra,
     styles: sa
-  }), s = r.autoTable.previous.finalY + dl, (u = window == null ? void 0 : window.smartcutImages) != null && u.length) {
+  }), s = r.autoTable.previous.finalY + dl, (h = window == null ? void 0 : window.smartcutImages) != null && h.length) {
     r.addPage();
-    let d = 10;
-    r.setFontSize(14), r.text(i("pdf.images"), 10, d), d += ia;
-    const p = window.smartcutImages.flatMap((f, m) => f.metadata.map((b) => [
-      m + 1,
-      b.newName
+    let u = 10;
+    r.setFontSize(14), r.text(i("pdf.images"), 10, u), u += ia;
+    const d = window.smartcutImages.flatMap((p, f) => p.metadata.map((m) => [
+      f + 1,
+      m.newName
     ]));
     na(r, {
-      startY: d,
-      body: p,
+      startY: u,
+      body: d,
       head: [[i("pdf.partIndex"), i("pdf.fileName")]],
       margin: oa,
       headStyles: ra,
@@ -24928,7 +24931,7 @@ const hk = /* @__PURE__ */ Pa(lk, [["render", ck]]), fk = { id: "uploader" }, dk
   },
   emits: ["update", "remove"],
   setup(n, { emit: t }) {
-    const e = go(() => import("./ObjectViewer-BL5zQO-E.js")), i = Pe(null), r = Pe(!0), s = Pe({
+    const e = go(() => import("./ObjectViewer-BBe4fcs3.js")), i = Pe(null), r = Pe(!0), s = Pe({
       shapeId: "",
       files: [],
       previewUrls: [],
@@ -25104,7 +25107,7 @@ Only JPG and PNG files are allowed.`), b.value = "";
   },
   emits: ["inputs-changed", "calculating", "result", "log", "error"],
   setup(n, { expose: t, emit: e }) {
-    const i = go(() => import("./Machining-CxWodtQp.js")), r = go(() => import("./ImportCSV-OwvluLRr.js")), s = go(() => import("./ObjectViewer-BL5zQO-E.js")), o = n, a = e, { t: l, locale: h } = Zg({
+    const i = go(() => import("./Machining-DKCJYcVm.js")), r = go(() => import("./ImportCSV-BJUDscrC.js")), s = go(() => import("./ObjectViewer-BBe4fcs3.js")), o = n, a = e, { t: l, locale: h } = Zg({
       locale: "en_US",
       useScope: "global"
     }), u = "production", d = window.location.hostname;
@@ -25463,7 +25466,7 @@ Only JPG and PNG files are allowed.`), b.value = "";
     }, Bi = (at, pt) => {
       at.orientationLock = pt;
     }, me = (at, pt = !1) => {
-      console.log("setFieldEnabled", at, pt), T6(Gt, "parts", V.stockType, at, pt);
+      T6(Gt, "parts", V.stockType, at, pt);
     }, yi = (at) => at ? $l(at).toLowerCase() : null, ji = (at) => {
       var pt, xt, $t, Ot, pe;
       if (mn(_, ["enable", "machining"]) && at != null && at.machining) {
@@ -26669,7 +26672,7 @@ function Kg(n) {
   });
 }
 typeof Kg == "function" && Kg(Bm);
-const $k = /* @__PURE__ */ Pa(Bm, [["__scopeId", "data-v-c4c508ee"]]);
+const $k = /* @__PURE__ */ Pa(Bm, [["__scopeId", "data-v-4e2d4f92"]]);
 function ju(n) {
   throw new Error('Could not dynamically require "' + n + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
@@ -28992,7 +28995,7 @@ const Wk = /* @__PURE__ */ Oc(Uk), Hk = {
 }, Gk = !1, Vk = /* @__PURE__ */ is({
   __name: "WordPress",
   setup(n) {
-    const t = ["banding", "finish", "cutLength", "perPart", "rollLength", "surcharge", "machining", "stock", "custom"], e = (dt) => t.includes(dt), i = go(() => import("./FormulaPricing-C5PQnWLX.js")), r = go(() => import("./ObjectViewer-BL5zQO-E.js")), s = "production", o = {}, a = {};
+    const t = ["banding", "finish", "cutLength", "perPart", "rollLength", "surcharge", "machining", "stock", "custom"], e = (dt) => t.includes(dt), i = go(() => import("./FormulaPricing-D7cS_NIz.js")), r = go(() => import("./ObjectViewer-BBe4fcs3.js")), s = "production", o = {}, a = {};
     let l;
     const h = {
       banding: null,
@@ -29625,7 +29628,7 @@ const Wk = /* @__PURE__ */ Oc(Uk), Hk = {
     type: { default: "" }
   },
   setup(n) {
-    const t = go(() => import("./Vanilla-dnwPafzT.js")), e = {
+    const t = go(() => import("./Vanilla-CuBavuVj.js")), e = {
       wordpress: Vk,
       vanilla: t
     }, i = n, r = on(() => {
