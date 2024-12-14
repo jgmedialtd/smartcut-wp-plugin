@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SmartCut plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartCut 4.0.6\n"
+"Project-Id-Version: SmartCut 4.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-10T17:30:52+00:00\n"
+"POT-Creation-Date: 2024-12-14T11:35:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: smartcut\n"
@@ -31,117 +31,120 @@ msgstr ""
 msgid "Calculate cut lists & pricing for cut-to-size businesses."
 msgstr ""
 
-#: cutlist/cart.php:242
-#: cutlist/cart.php:249
+#: cart/main.php:255
+#: cart/main.php:262
 msgid "Cut list already in cart."
 msgstr ""
 
-#: cutlist/cart.php:283
+#: cart/main.php:296
 msgid "Yes"
 msgstr ""
 
-#: cutlist/cart.php:284
+#: cart/main.php:297
 msgid "No"
 msgstr ""
 
-#: cutlist/cart.php:554
-msgid "View file"
-msgstr ""
-
-#: cutlist/cart.php:603
-#: cutlist/cart.php:631
+#: cart/main.php:699
+#: cart/main.php:727
 msgid "Include offcuts"
 msgstr ""
 
-#: cutlist/product.php:392
-msgid "Add your cuts below. Units are inches."
-msgstr ""
-
-#: cutlist/product.php:394
-msgid "Add your cuts below. Units are mm."
-msgstr ""
-
-#: cutlist/product.php:401
-msgid "This product is priced by part area, so adding fractions of a sheet to the cart is possible."
-msgstr ""
-
-#: cutlist/product.php:404
-msgid "This product is priced by full sheet plus cut length."
-msgstr ""
-
-#: cutlist/product.php:407
-msgid "This product is priced by full sheet plus number of parts."
-msgstr ""
-
-#: cutlist/product.php:410
-#: cutlist/product.php:416
-msgid "This product is priced by full sheet."
-msgstr ""
-
-#: cutlist/product.php:413
-msgid "This product is priced by cut length."
-msgstr ""
-
-#: cutlist/product.php:435
-msgid "Cut length total"
-msgstr ""
-
-#: cutlist/product.php:442
-msgid "Stock total"
-msgstr ""
-
-#: cutlist/product.php:446
-msgid "Part total"
-msgstr ""
-
-#: cutlist/product.php:454
-msgid "Banding total"
-msgstr ""
-
-#: cutlist/product.php:462
-msgid "Finish total"
-msgstr ""
-
-#: cutlist/product.php:469
-msgid "Machining total"
-msgstr ""
-
-#: cutlist/product.php:477
-msgid "Cutting charge total"
-msgstr ""
-
-#: cutlist/product.php:740
-msgid "Smartcut - product setup error: "
-msgstr ""
-
-#: formula/product-admin.php:19
+#: product-admin/formula.php:21
 msgid "Add formula JSON"
 msgstr ""
 
-#: formula/product-admin.php:22
+#: product-admin/formula.php:24
 msgid "File name"
 msgstr ""
 
-#: formula/product-admin.php:53
+#: product-admin/formula.php:55
 msgid "Select JSON File"
 msgstr ""
 
-#: formula/product-admin.php:55
+#: product-admin/formula.php:57
 msgid "Attach JSON"
 msgstr ""
 
-#: formula/product-admin.php:66
+#: product-admin/formula.php:68
 msgid "Selected file:"
 msgstr ""
 
-#: sc-widgets.php:21
+#: product/main.php:76
+msgid "Add your cuts below. Units are inches."
+msgstr ""
+
+#: product/main.php:78
+msgid "Add your cuts below. Units are mm."
+msgstr ""
+
+#: product/main.php:244
+msgid "Smartcut - product setup error: "
+msgstr ""
+
+#: product/pricing.php:26
+msgid "This product is priced by part area, so adding fractions of a stock to the cart is possible."
+msgstr ""
+
+#: product/pricing.php:27
+msgid "This product is priced by full stock plus cut length."
+msgstr ""
+
+#: product/pricing.php:28
+msgid "This product is priced by full stock plus number of parts."
+msgstr ""
+
+#: product/pricing.php:29
+msgid "This product is priced by full sheet."
+msgstr ""
+
+#: product/pricing.php:30
+msgid "This product is priced by cut length."
+msgstr ""
+
+#: product/pricing.php:31
+msgid "This product is priced by roll length."
+msgstr ""
+
+#: product/pricing.php:47
+msgid "Banding total"
+msgstr ""
+
+#: product/pricing.php:55
+msgid "Finish total"
+msgstr ""
+
+#: product/pricing.php:63
+msgid "Machining total"
+msgstr ""
+
+#: product/pricing.php:97
+msgid "Cut length total"
+msgstr ""
+
+#: product/pricing.php:105
+msgid "Stock total"
+msgstr ""
+
+#: product/pricing.php:110
+msgid "Part total"
+msgstr ""
+
+#: product/pricing.php:118
+msgid "Roll length total"
+msgstr ""
+
+#: product/pricing.php:127
+msgid "Cutting charge total"
+msgstr ""
+
+#: widgets/main.php:23
 msgid "Display all of your cuts in a single list"
 msgstr ""
 
-#: sc-widgets.php:34
+#: widgets/main.php:36
 msgid "WooCommerce must be active"
 msgstr ""
 
-#: sc-widgets.php:64
+#: widgets/main.php:66
 msgid "Your cut list"
 msgstr ""

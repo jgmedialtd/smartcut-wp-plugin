@@ -2,7 +2,9 @@
 
 namespace SmartCut\Settings\Fields;
 
-define('FIELDS', [
+defined('ABSPATH') || exit;
+
+define('SMARTCUT_FIELDS', [
 
 	// BOOLEAN
 	//--------------------------------------------------------
@@ -174,6 +176,15 @@ define('FIELDS', [
 		'label' => 'Corner Banding',
 		'description' => 'Enable banding on machined corners.',
 		'show' => ['global']
+	],
+
+	'enable_image_upload' => [
+		'type' => 'boolean',
+		'default' => '0',
+		'group' => ['files', 'inputs'],
+		'label' => 'Enable Image Uploads',
+		'description' => 'Allow the user to upload images for each part.',
+		'show' => ['global', 'product']
 	],
 
 	// STRING
@@ -571,7 +582,7 @@ define('FIELDS', [
 		'default' => 'efficiency',
 		'group' => ['optimisation', 'stock'],
 		'label' => 'Stock Selection',
-		'description' => 'Method for selecting stock sheets.',
+		'description' => 'How the winning stock items are chosen.',
 		'options' => [
 			'efficiency' => 'Stock will be chosen based on efficiency',
 			'smallest' => 'Smallest stock will be used first',
@@ -595,16 +606,17 @@ define('FIELDS', [
 	'pricing_strategy' => [
 		'type' => 'select',
 		'output' => 'string',
-		'default' => 'full_sheet',
+		'default' => 'full_stock',
 		'group' => ['pricing', 'strategy'],
 		'label' => 'Pricing Strategy',
 		'description' => 'Method for calculating costs.',
 		'options' => [
-			'full_sheet' => 'Full Sheet',
+			'full_stock' => 'Full Stock',
 			'part_area' => 'Part Area',
 			'cut_length' => 'Cut Length',
-			'full_sheet_plus_cut_length' => 'Full Sheet Plus Cut Length',
-			'full_sheet_plus_num_parts' => 'Full Sheet Plus Number of Parts',
+			'full_stock_plus_cut_length' => 'Full Stock Plus Cut Length',
+			'full_stock_plus_num_parts' => 'Full Stock Plus Number of Parts',
+			'roll_length' => 'Roll length',
 		],
 		'show' => ['global', 'product']
 	],
@@ -663,7 +675,7 @@ define('FIELDS', [
 	],
 ]);
 
-define('GROUPS', [
+define('SMARTCUT_GROUPS', [
 	'general' => [
 		'basic' => ['title' => 'Basic Settings', 'description' => 'Configure basic settings'],
 		'optimisation' => ['title' => 'Optimisation Settings', 'description' => 'Configure optimisation options'],
@@ -688,7 +700,8 @@ define('GROUPS', [
 		'general' => ['title' => 'Extra Options', 'description' => 'Configure additional options']
 	],
 	'files' => [
-		'order' => ['title' => 'File handlind', 'description' => 'Configure how files are handled in the cart and order'],
+		'order' => ['title' => 'Cut list files', 'description' => 'Configure how cut list files are handled in the cart and order'],
+		'inputs' => ['title' => 'User file handling', 'description' => 'Configure user managed files'],
 	],
 	'machining' => [
 		'general' => ['title' => 'General Machining', 'description' => 'Basic machining options'],
@@ -711,7 +724,7 @@ function validateFieldsAgainstGroups()
 {
 	$mismatches = [];
 
-	foreach (FIELDS as $fieldId => $fieldConfig) {
+	foreach (SMARTCUT_FIELDS as $fieldId => $fieldConfig) {
 		if (!isset($fieldConfig['group']) || !is_array($fieldConfig['group'])) {
 			$mismatches[] = "{$fieldId}: missing group definition";
 			continue;
@@ -720,9 +733,9 @@ function validateFieldsAgainstGroups()
 		$group = $fieldConfig['group'][0];
 		$section = $fieldConfig['group'][1];
 
-		if (!isset(GROUPS[$group])) {
-			$mismatches[] = "{$fieldId}: group '{$group}' not found in GROUPS";
-		} elseif (!isset(GROUPS[$group][$section])) {
+		if (!isset(SMARTCUT_GROUPS[$group])) {
+			$mismatches[] = "{$fieldId}: group '{$group}' not found in SMARTCUT_GROUPS";
+		} elseif (!isset(SMARTCUT_GROUPS[$group][$section])) {
 			$mismatches[] = "{$fieldId}: section '{$section}' not found in group '{$group}'";
 		}
 	}
@@ -765,7 +778,7 @@ trait FieldGroupBuilder
 	{
 		$groups = [];
 
-		foreach (GROUPS as $groupId => $groupSections) {
+		foreach (SMARTCUT_GROUPS as $groupId => $groupSections) {
 			$groups[$groupId] = [
 				'title' => ucfirst($groupId),
 				'sections' => []
@@ -804,7 +817,7 @@ trait FieldGroupBuilder
 	}
 }
 
-define('SCRIPTS', [
+define('SMARTCUT_SETTINGS_SCRIPTS', [
 	'cut_preference' => [
 		'callback' => 'SmartCut\Settings\Fields\cut_preference_script',
 		'dependencies' => ['stock_type'] // Fields this script interacts with
@@ -827,10 +840,10 @@ trait ScriptHandler
 {
 	private function maybeRenderScript($fieldId, $fieldPrefix = '')
 	{
-		// Remove prefix to match SCRIPTS dependencies
+		// Remove prefix to match SMARTCUT_SETTINGS_SCRIPTS dependencies
 		$baseFieldId = str_replace($fieldPrefix, '', $fieldId);
 
-		foreach (SCRIPTS as $script) {
+		foreach (SMARTCUT_SETTINGS_SCRIPTS as $script) {
 			if (in_array($baseFieldId, $script['dependencies'])) {
 				if (function_exists($script['callback'])) {
 					call_user_func($script['callback']);
@@ -857,9 +870,9 @@ function getSettingFields($type = 'global', $fields = null)
 
 
 	if ($type === 'all') {
-		$filtered = FIELDS;
+		$filtered = SMARTCUT_FIELDS;
 	} else {
-		$filtered = array_filter(FIELDS, function ($field) use ($type) {
+		$filtered = array_filter(SMARTCUT_FIELDS, function ($field) use ($type) {
 			return isset($field['show']) && in_array($type, $field['show']);
 		});
 	}
@@ -960,7 +973,7 @@ function cutLengthPriceScript()
 			var cutLengthPriceField = $('#smartcut_cut_length_price');
 
 			function toggleCutLengthPriceField() {
-				if (pricingStrategyField.val() === 'full_sheet_plus_cut_length') {
+				if (pricingStrategyField.val() === 'full_stock_plus_cut_length') {
 					cutLengthPriceField.prop('disabled', false);
 				} else {
 					cutLengthPriceField.val('');
@@ -987,7 +1000,7 @@ function perPartPriceScript()
 			var pricingField = $('#smartcut_per_part_price');
 
 			function togglePerPartPriceField() {
-				if (pricingStrategyField.val() === 'full_sheet_plus_num_parts') {
+				if (pricingStrategyField.val() === 'full_stock_plus_num_parts') {
 					pricingField.prop('disabled', false);
 				} else {
 					pricingField.val('');

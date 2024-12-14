@@ -2,6 +2,8 @@
 
 namespace SmartCut\Settings\Factory;
 
+defined('ABSPATH') || exit;
+
 /**
  * Field definition value object
  */
