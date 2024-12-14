@@ -8,29 +8,46 @@ include_once 'pricing.php';
 include_once 'extras.php';
 
 use SmartCut\Product\Pricing\PricingStrategy;
+use WC_Product;
+use WC_Variable_Product;
 
 class Product
 {
-	private $product;
-	private $productId;
+	private WC_Product $product;
+	private int $productId;
+	private bool $loaded = false;
 	private $settings;
 	private $pricingStrategy;
 	private $extraManager;
 
-	public function __construct()
+	public function __construct($productId = null)
 	{
-		add_action('wp', [$this, 'init'], 100);
-		add_action('wp_enqueue_scripts', [$this, 'initScripts']);
-		add_action('wp_enqueue_scripts', [$this, 'enqueueStyles']);
+		if ($productId) {
+			$this->productId = $productId;
+			$this->init(true);
+		} else {
+			add_action('wp', [$this, 'init'], 100, 0);
+			add_action('wp_enqueue_scripts', [$this, 'initScripts']);
+			add_action('wp_enqueue_scripts', [$this, 'enqueueStyles']);
+		}
 	}
 
-	public function init(): void
+	public function init(bool $manual = false): void
 	{
-		$this->productId = get_the_ID();
-		$this->product = \wc_get_product($this->productId);
+		if ($this->loaded) return;
+		$productId = get_the_ID();
+		if ($productId === false) return;
 
-		if (!$this->product) return;
-		if (!$this->shouldActivate()) return;
+		$this->productId = $productId;
+
+		$product = \wc_get_product($this->productId);
+		if (!$product) return;
+
+		$this->product = $product;
+
+		if (!$manual) {
+			if (!$this->shouldActivate()) return;
+		}
 
 		$this->settings = \SmartCut\Settings\getProductSettings($this->productId);
 
@@ -43,9 +60,13 @@ class Product
 		$type = $this->product->get_type();
 		$action = $type === 'variable' ? 'woocommerce_after_variations_table' : 'woocommerce_before_add_to_cart_form';
 
-		add_action($action, function () use ($bandingData, $finishData) {
-			$this->addHtml($bandingData, $finishData);
-		}, 10);
+		if (!$manual) {
+			add_action($action, function () use ($bandingData, $finishData) {
+				$this->addHtml($bandingData, $finishData);
+			}, 10);
+		}
+
+		$this->loaded = true;
 	}
 
 	private function initializePricingStrategy(): void
@@ -92,7 +113,7 @@ class Product
 
 	public function initScripts(): void
 	{
-		if (!$this->productId) return;
+		// if (!$this->productId) return;
 		if (!$this->shouldActivate()) return;
 
 		wp_enqueue_script(
@@ -135,7 +156,8 @@ class Product
 	{
 		$attributes = $this->product->get_attributes();
 		$config = [
-			"stock_name" => $this->product->get_title()
+			"stock_name" => $this->product->get_title(),
+			"stock_sku" => $this->product->get_sku(),
 		];
 
 		// Add dimensions
@@ -167,7 +189,6 @@ class Product
 		}
 
 		$inputFields = \SmartCut\Cart\CartManager::getFields(true, $this->productId, true);
-
 
 		return array_merge($config, [
 			'input_fields' => array_values($inputFields),
@@ -229,6 +250,10 @@ class Product
 
 	private function getVariationsConfig(): array
 	{
+		if (!$this->product instanceof \WC_Product_Variable) {
+			return [];
+		}
+
 		return array_map(function ($item) {
 			return [
 				'price' => $item->get_price(),
@@ -293,7 +318,7 @@ class Product
 
 	public function checkProductSetup(): array
 	{
-		if (!$this->productId) return [];
+		if (!isset($this->productId)) return [];
 
 		$messages = [];
 		$productSettings = \SmartCut\Settings\getProductSettings($this->productId);

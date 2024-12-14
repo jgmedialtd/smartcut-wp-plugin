@@ -60,12 +60,12 @@ class SmartCutHealthChecker
 	private function checkSystemRequirements()
 	{
 		$phpVersion = phpversion();
-		$meetsRequirement = version_compare($phpVersion, '7.1', '>=');
+		$meetsRequirement = version_compare($phpVersion, '7.4', '>=');
 
 		if ($meetsRequirement) {
 			$this->addNotice('success', sprintf('PHP version %s', $phpVersion));
 		} else {
-			$this->addNotice('error', sprintf('PHP version %s - SmartCut recommends PHP 7.1 or greater', $phpVersion));
+			$this->addNotice('error', sprintf('PHP version %s - SmartCut recommends PHP 7.4 or greater', $phpVersion));
 		}
 	}
 

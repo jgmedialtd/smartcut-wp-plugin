@@ -6,10 +6,10 @@
  * Description: Calculate cut lists & pricing for cut-to-size businesses.
  * Author: SmartCut
  * Requires at least: 6.0
- * Requires PHP: 7.1
+ * Requires PHP: 7.4
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 4.0.16
+ * Version: 4.1.1
  * Author URI: https://smartcut.dev
  */
 
@@ -31,7 +31,7 @@ $endpoint = getenv('SMARTCUT_ENDPOINT') ? getenv('SMARTCUT_ENDPOINT') : 'https:/
 
 //constants
 define('SMARTCUT_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('SMARTCUT_CURRENT_VERSION', '4.0.16'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '4.1.1'); // This needs to be kept in sync with the version above.
 define('SMARTCUT_CHECKOUT_URL', $checkoutUrl);
 define('SMARTCUT_ENDPOINT', $endpoint);
 define('SMARTCUT_SCRIPTS', ['smartcut-checkout-js', 'smartcut-upload-js']);

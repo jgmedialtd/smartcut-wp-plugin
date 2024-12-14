@@ -1,7 +1,7 @@
 var S2 = Object.defineProperty;
 var k2 = (n, t, e) => t in n ? S2(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var tt = (n, t, e) => k2(n, typeof t != "symbol" ? t + "" : t, e);
-import { i as A2, u as Me, o as Lo, n as Qr, r as Pe, a as N2, w as hr, g as C2, b as P2, c as L2, s as uo, d as fa, e as bp, f as Ar, m as da, h as I2, j as te, k as fe, F as Zn, l as Lr, p as gi, q as Bn, t as we, v as yn, x as Xg, y as Jg, z as E2, A as Le, B as is, C as on, D as Tf, E as Zg, G as Fl, H as Un, I as Wn, J as qu, K as T2, L as go, M as O2, N as F2 } from "./main-DMp66kT2.js";
+import { i as A2, u as Me, o as Lo, n as Qr, r as Pe, a as N2, w as hr, g as C2, b as P2, c as L2, s as uo, d as fa, e as bp, f as Ar, m as da, h as I2, j as te, k as fe, F as Zn, l as Lr, p as gi, q as Bn, t as we, v as yn, x as Xg, y as Jg, z as E2, A as Le, B as is, C as on, D as Tf, E as Zg, G as Fl, H as Un, I as Wn, J as qu, K as T2, L as go, M as O2, N as F2 } from "./main-C87SRwxm.js";
 let xu;
 const M2 = new Uint8Array(16);
 function R2() {
@@ -15385,7 +15385,7 @@ function(n) {
  */
 function(n) {
   function t() {
-    return (Ie.canvg ? Promise.resolve(Ie.canvg) : import("./index.es-DyHIfge4.js")).catch(function(e) {
+    return (Ie.canvg ? Promise.resolve(Ie.canvg) : import("./index.es-C5RwzjFP.js")).catch(function(e) {
       return Promise.reject(new Error("Could not load canvg: " + e));
     }).then(function(e) {
       return e.default ? e.default : e;
@@ -24931,7 +24931,7 @@ const hk = /* @__PURE__ */ Pa(lk, [["render", ck]]), fk = { id: "uploader" }, dk
   },
   emits: ["update", "remove"],
   setup(n, { emit: t }) {
-    const e = go(() => import("./ObjectViewer-DEq194S3.js")), i = Pe(null), r = Pe(!0), s = Pe({
+    const e = go(() => import("./ObjectViewer-rb2rIJZn.js")), i = Pe(null), r = Pe(!0), s = Pe({
       shapeId: "",
       files: [],
       previewUrls: [],
@@ -25107,7 +25107,7 @@ Only JPG and PNG files are allowed.`), b.value = "";
   },
   emits: ["inputs-changed", "calculating", "result", "log", "error"],
   setup(n, { expose: t, emit: e }) {
-    const i = go(() => import("./Machining-DgvMPFNC.js")), r = go(() => import("./ImportCSV-BkswsvH1.js")), s = go(() => import("./ObjectViewer-DEq194S3.js")), o = n, a = e, { t: l, locale: h } = Zg({
+    const i = go(() => import("./Machining-CTlav9T-.js")), r = go(() => import("./ImportCSV-B28dx6oS.js")), s = go(() => import("./ObjectViewer-rb2rIJZn.js")), o = n, a = e, { t: l, locale: h } = Zg({
       locale: "en_US",
       useScope: "global"
     }), u = "production", d = window.location.hostname;
@@ -28998,7 +28998,7 @@ const Wk = /* @__PURE__ */ Tc(Uk), Hk = {
 }, Gk = !1, Vk = /* @__PURE__ */ is({
   __name: "WordPress",
   setup(n) {
-    const t = ["banding", "finish", "cutLength", "perPart", "rollLength", "surcharge", "machining", "stock", "custom"], e = (dt) => t.includes(dt), i = go(() => import("./FormulaPricing-IKWR1EEv.js")), r = go(() => import("./ObjectViewer-DEq194S3.js")), s = "production", o = {}, a = {};
+    const t = ["banding", "finish", "cutLength", "perPart", "rollLength", "surcharge", "machining", "stock", "custom"], e = (dt) => t.includes(dt), i = go(() => import("./FormulaPricing-BBiyPrnB.js")), r = go(() => import("./ObjectViewer-rb2rIJZn.js")), s = "production", o = {}, a = {};
     let l;
     const h = {
       banding: null,
@@ -29194,7 +29194,7 @@ const Wk = /* @__PURE__ */ Tc(Uk), Hk = {
         w: !Ot && (dt != null && dt.w) ? parseFloat(dt.w) : null,
         t: (dt == null ? void 0 : dt.t) ?? null,
         price: parseFloat(dt == null ? void 0 : dt.price) ?? null,
-        stock_name: dt.stock_name
+        stock_name: (dt == null ? void 0 : dt.stock_sku) || dt.stock_name
       }, u.multiple_sizes || (u.l || j("product 'length' attribute not available"), u.w || j("product 'width' attribute not available"));
     }, N = (dt) => {
       b.value = mn(window, ["smartcutConfig", "settings", "enable_formula"]) === !0 ? "formula" : "manual", x.value = mn(window, ["smartcutConfig", "settings", "formula_url"]), M([`Input type: ${b.value}`]), M([`Input type: ${b.value}`]), f = {
@@ -29624,7 +29624,7 @@ const Wk = /* @__PURE__ */ Tc(Uk), Hk = {
     type: { default: "" }
   },
   setup(n) {
-    const t = go(() => import("./Vanilla-CvnRXvcv.js")), e = {
+    const t = go(() => import("./Vanilla-vONIeJmg.js")), e = {
       wordpress: Vk,
       vanilla: t
     }, i = n, r = on(() => {

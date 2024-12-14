@@ -74,7 +74,6 @@
 		"zlib",
 		"wordpress"
 	],
-
 	"intelephense.environment.includePaths": [
 		"/Users/Jon/JG Media/Apps/sc store/"
 	]

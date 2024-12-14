@@ -85,8 +85,8 @@ function checkProductAdminPage()
 		return;
 	}
 
-	$productInstance = new \SmartCut\Product\Product();
-	$messages = $productInstance->checkProductSetup($productId);
+	$productInstance = new \SmartCut\Product\Product($productId);
+	$messages = $productInstance->checkProductSetup();
 
 	if (isset($messages) && count($messages) > 0) {
 
