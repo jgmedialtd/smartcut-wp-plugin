@@ -58,6 +58,7 @@ class Product
 	public function shouldActivate(): bool
 	{
 		if (!is_singular('product')) return false;
+		if (!\SmartCut\Helpers\isCutlist($this->productId)) return false;
 
 		if ($this->product) {
 			if (!$this->product->is_in_stock()) return false;

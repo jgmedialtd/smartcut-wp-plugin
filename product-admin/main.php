@@ -106,7 +106,7 @@ function checkProductAdminPage()
 		if (!\SmartCut\Helpers\checkCategory($productId, $settings)) {
 
 			return \SmartCut\Helpers\adminNotice(
-				'ℹ SmartCut - to set this as a cut-to-size product, add the category with the slug "' . $settings['product_category'] . '"',
+				'SmartCut - to set this as a cut-to-size product, add the category with the slug "' . $settings['product_category'] . '"',
 				'notice notice-info is-dismissible'
 			);
 		}
