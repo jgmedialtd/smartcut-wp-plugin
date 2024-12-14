@@ -1,7 +1,7 @@
 var S2 = Object.defineProperty;
 var k2 = (n, t, e) => t in n ? S2(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var tt = (n, t, e) => k2(n, typeof t != "symbol" ? t + "" : t, e);
-import { i as A2, u as Ie, o as Lo, n as Qr, r as Ce, a as N2, w as hr, g as C2, b as P2, c as L2, s as uo, d as fa, e as bp, f as Ar, m as da, h as I2, j as ee, k as de, F as Zn, l as Lr, p as di, q as jn, t as be, v as mn, x as Xg, y as Jg, z as E2, A as Pe, B as is, C as sn, D as Of, E as Zg, G as Fl, H as Wn, I as Ln, J as qu, K as O2, L as go, M as T2, N as F2 } from "./main-CV9Qcfe-.js";
+import { i as A2, u as Ie, o as Lo, n as Qr, r as Ce, a as N2, w as hr, g as C2, b as P2, c as L2, s as uo, d as fa, e as bp, f as Ar, m as da, h as I2, j as ee, k as de, F as Zn, l as Lr, p as di, q as jn, t as be, v as mn, x as Xg, y as Jg, z as E2, A as Pe, B as is, C as sn, D as Of, E as Zg, G as Fl, H as Wn, I as Ln, J as qu, K as O2, L as go, M as T2, N as F2 } from "./main-CvwYKkoi.js";
 let xu;
 const M2 = new Uint8Array(16);
 function R2() {
@@ -15385,7 +15385,7 @@ function(n) {
  */
 function(n) {
   function t() {
-    return (Le.canvg ? Promise.resolve(Le.canvg) : import("./index.es-Beu_1d5h.js")).catch(function(e) {
+    return (Le.canvg ? Promise.resolve(Le.canvg) : import("./index.es-DxnvCuNb.js")).catch(function(e) {
       return Promise.reject(new Error("Could not load canvg: " + e));
     }).then(function(e) {
       return e.default ? e.default : e;
@@ -24928,7 +24928,7 @@ const hk = /* @__PURE__ */ Pa(lk, [["render", ck]]), fk = { id: "uploader" }, dk
   },
   emits: ["update", "remove"],
   setup(n, { emit: t }) {
-    const e = go(() => import("./ObjectViewer-DknLQB2a.js")), i = Ce(null), r = Ce(!0), s = Ce({
+    const e = go(() => import("./ObjectViewer-CjFIJYjx.js")), i = Ce(null), r = Ce(!0), s = Ce({
       shapeId: "",
       files: [],
       previewUrls: [],
@@ -25104,7 +25104,7 @@ Only JPG and PNG files are allowed.`), b.value = "";
   },
   emits: ["inputs-changed", "calculating", "result", "log", "error"],
   setup(n, { expose: t, emit: e }) {
-    const i = go(() => import("./Machining-80a0IrRg.js")), r = go(() => import("./ImportCSV-CVZXQ6x1.js")), s = go(() => import("./ObjectViewer-DknLQB2a.js")), o = n, a = e, { t: l, locale: h } = Zg({
+    const i = go(() => import("./Machining-F08WWUem.js")), r = go(() => import("./ImportCSV-DcLG7dxv.js")), s = go(() => import("./ObjectViewer-CjFIJYjx.js")), o = n, a = e, { t: l, locale: h } = Zg({
       locale: "en_US",
       useScope: "global"
     }), u = "production", d = window.location.hostname;
@@ -25462,7 +25462,7 @@ Only JPG and PNG files are allowed.`), b.value = "";
       return zt.length ? Gb(zt) : "n";
     }, Bi = (at, pt) => {
       at.orientationLock = pt;
-    }, me = (at, pt = !0) => {
+    }, me = (at, pt = !1) => {
       T6(Ht, "parts", V.stockType, at, pt);
     }, gi = (at) => at ? $l(at).toLowerCase() : null, ji = (at) => {
       var pt, xt, zt, Ot, pe;
@@ -26669,7 +26669,7 @@ function Kg(n) {
   });
 }
 typeof Kg == "function" && Kg(Bm);
-const $k = /* @__PURE__ */ Pa(Bm, [["__scopeId", "data-v-13f74eb9"]]);
+const $k = /* @__PURE__ */ Pa(Bm, [["__scopeId", "data-v-4e2d4f92"]]);
 function ju(n) {
   throw new Error('Could not dynamically require "' + n + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
@@ -28992,7 +28992,7 @@ const Wk = /* @__PURE__ */ Oc(Uk), Hk = {
 }, Gk = !1, Vk = /* @__PURE__ */ is({
   __name: "WordPress",
   setup(n) {
-    const t = ["banding", "finish", "cutLength", "perPart", "rollLength", "surcharge", "machining", "stock", "custom"], e = (ht) => t.includes(ht), i = go(() => import("./FormulaPricing-1Qcpf5mI.js")), r = go(() => import("./ObjectViewer-DknLQB2a.js")), s = "production", o = {}, a = {};
+    const t = ["banding", "finish", "cutLength", "perPart", "rollLength", "surcharge", "machining", "stock", "custom"], e = (ht) => t.includes(ht), i = go(() => import("./FormulaPricing-CNFiat2l.js")), r = go(() => import("./ObjectViewer-CjFIJYjx.js")), s = "production", o = {}, a = {};
     let l;
     const h = {
       banding: null,
@@ -29628,7 +29628,7 @@ const Wk = /* @__PURE__ */ Oc(Uk), Hk = {
     type: { default: "" }
   },
   setup(n) {
-    const t = go(() => import("./Vanilla-j40o9zsz.js")), e = {
+    const t = go(() => import("./Vanilla-ivnDJEY-.js")), e = {
       wordpress: Vk,
       vanilla: t
     }, i = n, r = sn(() => {
