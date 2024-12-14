@@ -81,28 +81,20 @@ define('SMARTCUT_FIELDS', [
 		'description' => 'Allow CSV import functionality.',
 		'show' => ['global', 'product']
 	],
-	'layout_dxf' => [
-		'type' => 'boolean',
-		'default' => '0',
-		'group' => ['files', 'order'],
-		'label' => 'DXF Layout',
-		'description' => 'Enable DXF file export for cutting layouts.',
-		'show' => ['global']
-	],
-	'layout_ptx' => [
-		'type' => 'boolean',
-		'default' => '0',
-		'group' => ['files', 'order'],
-		'label' => 'PTX Layout',
-		'description' => 'Enable PTX file export for beam saws.',
-		'show' => ['global']
-	],
 	'enable_formula' => [
 		'type' => 'boolean',
 		'default' => '0',
 		'group' => ['formula', 'general'],
 		'label' => 'Enable formula pricing',
 		'description' => 'Enable formula pricing for products.',
+		'show' => ['global', 'product']
+	],
+	'enable_image_upload' => [
+		'type' => 'boolean',
+		'default' => '0',
+		'group' => ['files', 'inputs'],
+		'label' => 'Enable Image Uploads',
+		'description' => 'Allow the user to upload images for each part.',
 		'show' => ['global', 'product']
 	],
 	'enable_machining' => [
@@ -178,14 +170,24 @@ define('SMARTCUT_FIELDS', [
 		'show' => ['global']
 	],
 
-	'enable_image_upload' => [
+	'layout_dxf' => [
 		'type' => 'boolean',
 		'default' => '0',
-		'group' => ['files', 'inputs'],
-		'label' => 'Enable Image Uploads',
-		'description' => 'Allow the user to upload images for each part.',
-		'show' => ['global', 'product']
+		'group' => ['files', 'order'],
+		'label' => 'DXF Layout',
+		'description' => 'Enable DXF file export for cutting layouts.',
+		'show' => ['global']
 	],
+	'layout_ptx' => [
+		'type' => 'boolean',
+		'default' => '0',
+		'group' => ['files', 'order'],
+		'label' => 'PTX Layout',
+		'description' => 'Enable PTX file export for beam saws.',
+		'show' => ['global']
+	],
+
+
 
 	// STRING
 	//--------------------------------------------------------
