@@ -747,6 +747,62 @@ function validateFieldsAgainstGroups()
 
 validateFieldsAgainstGroups();
 
+function validateFieldDefaults()
+{
+	$issues = [];
+
+	foreach (SMARTCUT_FIELDS as $fieldId => $fieldConfig) {
+		if (!isset($fieldConfig['default'])) {
+			$issues[] = "{$fieldId}: missing default value";
+			continue;
+		}
+
+		if (!isset($fieldConfig['type'])) {
+			$issues[] = "{$fieldId}: missing type definition";
+			continue;
+		}
+
+		switch ($fieldConfig['type']) {
+			case 'select':
+				if (!isset($fieldConfig['options']) || !array_key_exists($fieldConfig['default'], $fieldConfig['options'])) {
+					$issues[] = "{$fieldId}: default value not found in options list";
+				}
+				break;
+			case 'int':
+				if (!is_int($fieldConfig['default']) && !ctype_digit($fieldConfig['default'])) {
+					$issues[] = "{$fieldId}: default value should be integer, got " . gettype($fieldConfig['default']);
+				}
+				break;
+			case 'float':
+				if (!is_float($fieldConfig['default']) && !is_numeric($fieldConfig['default'])) {
+					$issues[] = "{$fieldId}: default value should be float, got " . gettype($fieldConfig['default']);
+				}
+				break;
+			case 'string':
+				if (!is_string($fieldConfig['default'])) {
+					$issues[] = "{$fieldId}: default value should be string, got " . gettype($fieldConfig['default']);
+				}
+				break;
+			case 'boolean':
+				if (!in_array($fieldConfig['default'], ['0', '1'], true)) {
+					$issues[] = "{$fieldId}: default value should be '0' or '1', got '{$fieldConfig['default']}'";
+				}
+				break;
+			case 'hex':
+				if (!preg_match('/^#[a-fA-F0-9]{6}$/', $fieldConfig['default'])) {
+					$issues[] = "{$fieldId}: default value should be valid hex color (e.g. #FF0000), got '{$fieldConfig['default']}'";
+				}
+				break;
+		}
+	}
+
+	if (!empty($issues)) {
+		throw new \Exception("Invalid default values:\n- " . implode("\n- ", $issues));
+	}
+}
+
+validateFieldDefaults();
+
 trait FieldGroupBuilder
 {
 	private function categorizeField($fieldConfig)
