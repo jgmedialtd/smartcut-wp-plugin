@@ -29,9 +29,17 @@ define('SMARTCUT_FIELDS', [
 		'type' => 'boolean',
 		'default' => '0',
 		'group' => ['pricing', 'offcuts'],
-		'label' => 'Allow Offcuts',
+		'label' => 'Free offcuts option',
 		'description' => 'Allow offcuts to be included in orders for free.',
 		'show' => ['global']
+	],
+	'enable_offcut_pricing' => [
+		'type' => 'boolean',
+		'default' => '0',
+		'group' => ['pricing', 'offcuts'],
+		'label' => 'Offcut pricing',
+		'description' => 'Enable pricing for offcuts (only when Part Area pricing used).',
+		'show' => ['global', 'product']
 	],
 	'customer_cutlist' => [
 		'type' => 'boolean',
@@ -41,36 +49,36 @@ define('SMARTCUT_FIELDS', [
 		'description' => 'Make the cut list PDF available to customers.',
 		'show' => ['global']
 	],
-	'disable_banding' => [
+	'enable_banding' => [
 		'type' => 'boolean',
 		'default' => '0',
 		'group' => ['extras', 'general'],
-		'label' => 'Disable Banding',
-		'description' => 'Turn off banding options.',
+		'label' => 'Enable Banding',
+		'description' => 'Enable banding options.',
 		'show' => ['global', 'product']
 	],
-	'disable_finish' => [
+	'enable_finish' => [
 		'type' => 'boolean',
 		'default' => '0',
 		'group' => ['extras', 'general'],
-		'label' => 'Disable Finish',
-		'description' => 'Turn off finish options.',
+		'label' => 'Enable Finish',
+		'description' => 'Enable finish options.',
 		'show' => ['global', 'product']
 	],
-	'disable_orientation' => [
+	'enable_orientation' => [
 		'type' => 'boolean',
-		'default' => '0',
+		'default' => '1',
 		'group' => ['optimisation', 'inputs'],
-		'label' => 'Disable Orientation',
-		'description' => 'Prevent users from rotating parts. Enabled by default.',
+		'label' => 'Enable Orientation',
+		'description' => 'Allow users to set part rotation.',
 		'show' => ['global', 'product']
 	],
-	'disable_part_name' => [
+	'enable_part_name' => [
 		'type' => 'boolean',
-		'default' => '0',
+		'default' => '1',
 		'group' => ['optimisation', 'inputs'],
-		'label' => 'Disable Part Naming',
-		'description' => 'Prevent users from naming parts. Enabled by default.',
+		'label' => 'Enable Part Naming',
+		'description' => 'Allow users to give each part a name.',
 		'show' => ['global', 'product']
 	],
 	'enable_import' => [
@@ -103,15 +111,7 @@ define('SMARTCUT_FIELDS', [
 		'group' => ['machining', 'general'],
 		'label' => 'Enable Machining',
 		'description' => 'Enable all machining features.',
-		'show' => ['global']
-	],
-	'disable_machining' => [
-		'type' => 'boolean',
-		'default' => '0',
-		'group' => ['machining', 'general'],
-		'label' => 'Disable Machining',
-		'description' => 'Turn off machining options.',
-		'show' => ['product']
+		'show' => ['global', 'product']
 	],
 	'machining_sides' => [
 		'type' => 'boolean',
@@ -253,7 +253,7 @@ define('SMARTCUT_FIELDS', [
 	//--------------------------------------------------------
 
 	'max_parts' => [
-		'type' => 'int',
+		'type' => 'integer',
 		'default' => 100,
 		'group' => ['general', 'basic'],
 		'label' => 'Maximum Parts',
@@ -261,7 +261,7 @@ define('SMARTCUT_FIELDS', [
 		'show' => ['global']
 	],
 	'min_spacing' => [
-		'type' => 'int',
+		'type' => 'integer',
 		'default' => 0,
 		'group' => ['optimisation', 'saw'],
 		'label' => 'Minimum Spacing',
@@ -375,6 +375,22 @@ define('SMARTCUT_FIELDS', [
 		'label' => 'Part Trim',
 		'description' => 'Trim for each part side - negative values increase the part size.',
 		'show' => ['global']
+	],
+	'offcut_min_length' => [
+		'type' => 'float',
+		'default' => 0.0,
+		'group' => ['pricing', 'offcuts'],
+		'label' => 'Minimum Offcut Length',
+		'description' => 'Minimum length for offcuts to be considered usable.',
+		'show' => ['global', 'product']
+	],
+	'offcut_min_width' => [
+		'type' => 'float',
+		'default' => 0.0,
+		'group' => ['pricing', 'offcuts'],
+		'label' => 'Minimum Offcut Width',
+		'description' => 'Minimum width for offcuts to be considered usable.',
+		'show' => ['global', 'product']
 	],
 
 	// MACHINING
@@ -577,7 +593,6 @@ define('SMARTCUT_FIELDS', [
 		],
 		'show' => ['global', 'product']
 	],
-
 	'stock_selection' => [
 		'type' => 'select',
 		'output' => 'string',
@@ -642,16 +657,29 @@ define('SMARTCUT_FIELDS', [
 		'default' => 'decimal',
 		'group' => ['general', 'basic'],
 		'label' => 'Units',
+		'description' => 'Unit system for inputs.',
+		'options' => [
+			'decimal' => 'Decimal',
+			'fraction' => 'Fractions',
+		],
+		'show' => ['global']
+	],
+	'unit_system' => [
+		'type' => 'select',
+		'output' => 'string',
+		'default' => 'metric',
+		'group' => ['general', 'basic'],
+		'label' => 'Unit system',
 		'description' => 'Unit system for measurements.',
 		'options' => [
-			'decimal' => 'Decimal / mm',
-			'fraction' => 'Fractions / inches',
+			'metric' => 'Metric (meters / millimeters)',
+			'imperial' => 'Imperial (feet / inches)'
 		],
 		'show' => ['global']
 	],
 	'orientation_model' => [
 		'type' => 'select',
-		'output' => 'int',
+		'output' => 'integer',
 		'default' => 0,
 		'group' => ['optimisation', 'inputs'],
 		'label' => 'Orientation Model',
@@ -770,7 +798,7 @@ function validateFieldDefaults()
 					$issues[] = "{$fieldId}: default value not found in options list";
 				}
 				break;
-			case 'int':
+			case 'integer':
 				if (!is_int($fieldConfig['default']) && !ctype_digit($fieldConfig['default'])) {
 					$issues[] = "{$fieldId}: default value should be integer, got " . gettype($fieldConfig['default']);
 				}
@@ -813,7 +841,7 @@ trait FieldGroupBuilder
 			return 'select';
 		} elseif ($fieldConfig['type'] === 'boolean') {
 			return 'boolean';
-		} elseif (in_array($fieldConfig['type'], ['int', 'float'])) {
+		} elseif (in_array($fieldConfig['type'], ['integer', 'float'])) {
 			return 'number';
 		} elseif ($fieldConfig['type'] === 'json_upload') {
 			return 'json_upload';
@@ -875,21 +903,54 @@ trait FieldGroupBuilder
 	}
 }
 
+/**
+ * Used site-wide to get global settings
+ * @param string $type
+ * @param array $fields
+ * @return array
+ */
+function getSettingFields($type = 'global', $fields = null)
+{
+
+	$validTypes = ['global', 'product', 'all'];
+
+	if (!in_array($type, $validTypes, true)) {
+		throw new \InvalidArgumentException("Invalid type: $type. Expected one of: " . implode(', ', $validTypes));
+	}
+
+	if ($type === 'all') {
+		$filtered = SMARTCUT_FIELDS;
+	} else {
+		$filtered = array_filter(SMARTCUT_FIELDS, function ($field) use ($type) {
+			return isset($field['show']) && in_array($type, $field['show']);
+		});
+	}
+
+	if ($fields) {
+		return array_map(function ($field) {
+			return $field['type'] ?? null;
+		}, $filtered);
+	}
+
+	return $filtered;
+}
+
+
 define('SMARTCUT_SETTINGS_SCRIPTS', [
 	'cut_preference' => [
-		'callback' => 'SmartCut\Settings\Fields\cut_preference_script',
+		'callback' => 'SmartCut\Settings\Fields\cutPreferenceScript',
 		'dependencies' => ['stock_type'] // Fields this script interacts with
 	],
 	'cut_length_price' => [
-		'callback' => 'SmartCut\Settings\Fields\cut_length_price_script',
+		'callback' => 'SmartCut\Settings\Fields\cutLengthPriceScript',
 		'dependencies' => ['pricing_strategy']
 	],
 	'per_part_price' => [
-		'callback' => 'SmartCut\Settings\Fields\per_part_price_script',
+		'callback' => 'SmartCut\Settings\Fields\perPartPriceScript',
 		'dependencies' => ['pricing_strategy']
 	],
 	'surcharge' => [
-		'callback' => 'SmartCut\Settings\Fields\surcharge_script',
+		'callback' => 'SmartCut\Settings\Fields\surchargeScript',
 		'dependencies' => ['surcharge_type']
 	]
 ]);
@@ -911,39 +972,6 @@ trait ScriptHandler
 	}
 }
 
-/**
- * Used site-wide to get global settings
- * @param string $type
- * @param array $fields
- * @return array
- */
-function getSettingFields($type = 'global', $fields = null)
-{
-
-	$validTypes = ['global', 'product', 'all'];
-
-	if (!in_array($type, $validTypes, true)) {
-		throw new \InvalidArgumentException("Invalid type: $type. Expected one of: " . implode(', ', $validTypes));
-	}
-
-
-	if ($type === 'all') {
-		$filtered = SMARTCUT_FIELDS;
-	} else {
-		$filtered = array_filter(SMARTCUT_FIELDS, function ($field) use ($type) {
-			return isset($field['show']) && in_array($type, $field['show']);
-		});
-	}
-
-	if ($fields) {
-		return array_map(function ($field) {
-			return $field['type'] ?? null;
-		}, $filtered);
-	}
-
-	return $filtered;
-}
-
 function cutPreferenceScript()
 {
 ?>
@@ -963,7 +991,7 @@ function cutPreferenceScript()
 				cutPreferenceField.prop('disabled', true);
 			}
 
-			function enableCutPreferenceOptions(selectValue = false) {
+			function enableCutPreferenceOptions(selectValue = null) {
 				cutPreferenceField.prop('disabled', false);
 				cutPreferenceField.find('option[value=""]').prop('disabled', true);
 				if (selectValue) {
@@ -975,8 +1003,8 @@ function cutPreferenceScript()
 				var stockType = stockTypeField.val();
 
 				switch (stockType) {
-					case 'global':
-						enableCutPreferenceOptions('global');
+					case <?php echo '\'' . \SmartCut\Settings\Factory\Field::GLOBAL_VALUE . '\''; ?>:
+						enableCutPreferenceOptions(<?php echo '\'' . \SmartCut\Settings\Factory\Field::GLOBAL_VALUE . '\''; ?>);
 						break;
 					case 'sheet':
 						enableCutPreferenceOptions('length');

@@ -714,7 +714,6 @@ class TemplateManager
 	private function setupProductSettings(\WC_Product $product, $productData)
 	{
 
-		$prefix = \SmartCut\Settings\getPrefix('cutlist');
 		$fields = \SmartCut\Settings\Fields\getSettingFields('product');
 
 
@@ -730,7 +729,7 @@ class TemplateManager
 			'per_part_price' => $productData['per_part_price'] ?? '0.00',
 			'surcharge_type' => $productData['surcharge_type'] ?? 'none',
 			'surcharge' => $productData['surcharge'] ?? '0.00',
-			'disable_machining' => isset($productData['machining_holes_product']) || isset($productData['machining_corners_product']) ? false : true,
+			'enable_machining' => isset($productData['machining_holes_product']) || isset($productData['machining_corners_product']) ? true : false,
 			'enable_formula' => isset($productData['formula']) ? true : false,
 			'formula_json' => isset($productData['formula']) ? $this->fileIds['SmartCut example formula'] ?? '' : '',
 		];
@@ -743,8 +742,9 @@ class TemplateManager
 
 			$field = FieldFactory::createField(
 				$key,
-				$prefix . $key,
-				$fields[$key]
+				SMARTCUT_PREFIX . $key,
+				$fields[$key],
+				'product'
 			);
 
 			$sanitizedValue = $field->sanitize($value);

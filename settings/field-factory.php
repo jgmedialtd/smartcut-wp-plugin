@@ -86,7 +86,7 @@ class FieldDefinition
 class FieldFactory
 {
 	const TYPE_BOOLEAN = 'boolean';
-	const TYPE_INTEGER = 'int';
+	const TYPE_INTEGER = 'integer';
 	const TYPE_FLOAT = 'float';
 	const TYPE_STRING = 'string';
 	const TYPE_SELECT = 'select';
@@ -106,11 +106,12 @@ class FieldFactory
 	{
 		switch ($definition->getType()) {
 			case self::TYPE_BOOLEAN:
-				return new WCBooleanField(
+				return new WCThreeStateBooleanField(
 					$id,
 					$name,
 					$definition->getLabel(),
-					$definition->getDescription()
+					$definition->getDescription(),
+					'product'
 				);
 			case self::TYPE_INTEGER:
 			case self::TYPE_FLOAT:
@@ -135,10 +136,18 @@ class FieldFactory
 					$definition->getLabel(),
 					$definition->getOptions(),
 					$definition->getDescription(),
-					$definition->getOutput()
+					$definition->getOutput(),
+					'product'
 				);
 			case self::TYPE_HEX:
 				return new WCColorField(
+					$id,
+					$name,
+					$definition->getLabel(),
+					$definition->getDescription()
+				);
+			case 'json_upload':
+				return new JsonUploadField(
 					$id,
 					$name,
 					$definition->getLabel(),
@@ -157,7 +166,16 @@ class FieldFactory
 					$id,
 					$name,
 					$definition->getLabel(),
-					$definition->getDescription()
+					$definition->getDescription(),
+				);
+			case self::TYPE_SELECT:
+				return new SelectField(
+					$id,
+					$name,
+					$definition->getLabel(),
+					$definition->getOptions(),
+					$definition->getDescription(),
+					$definition->getOutput(),
 				);
 			case self::TYPE_INTEGER:
 				return new NumberField(
@@ -186,24 +204,8 @@ class FieldFactory
 					$definition->getLabel(),
 					$definition->getDescription()
 				);
-			case self::TYPE_SELECT:
-				return new SelectField(
-					$id,
-					$name,
-					$definition->getLabel(),
-					$definition->getOptions(),
-					$definition->getDescription(),
-					$definition->getOutput()
-				);
 			case self::TYPE_HEX:
 				return new ColorField(
-					$id,
-					$name,
-					$definition->getLabel(),
-					$definition->getDescription()
-				);
-			case 'json_upload':
-				return new JsonUploadField(
 					$id,
 					$name,
 					$definition->getLabel(),
@@ -222,6 +224,11 @@ trait HandleFieldTypes
 {
 	protected function convertToType($value, string $type)
 	{
+		// Handle global value
+		if ($value === Field::GLOBAL_VALUE) {
+			return Field::GLOBAL_VALUE;
+		}
+
 		// Validate the value first
 		if (!$this->isValidForType($value, $type)) {
 			return $this->getDefaultForType($type);
@@ -240,29 +247,27 @@ trait HandleFieldTypes
 		}
 	}
 
+
 	protected function isValidForType($value, string $type): bool
 	{
-		if ($value === null || $value === '') {
+		// Allow global value for all types
+		if ($value === Field::GLOBAL_VALUE) {
+			return true;
+		}
+
+		if ($value === null) {
 			return false;
 		}
 
 		switch ($type) {
 			case 'integer':
-				// Check if it's a valid integer string or number
 				return is_numeric($value) && (string)(int)$value === (string)$value;
-
 			case 'float':
-				// Check if it's a valid float
 				return is_numeric($value);
-
 			case 'boolean':
-				// Accept various boolean representations
 				return in_array($value, [true, false, 1, 0, '1', '0', 'true', 'false'], true);
-
 			case 'string':
-				// Almost anything can be a string
 				return true;
-
 			default:
 				return false;
 		}
@@ -276,7 +281,7 @@ trait HandleFieldTypes
 			case 'float':
 				return 0.0;
 			case 'boolean':
-				return false;
+				return '0';
 			case 'string':
 				return '';
 			case 'hex':
@@ -292,8 +297,11 @@ trait HandleFieldTypes
  */
 abstract class Field
 {
+
+	public const GLOBAL_VALUE = '';
+
+	public $name;
 	protected $id;
-	protected $name;
 	protected $label;
 	protected $description;
 	protected $value;
@@ -332,38 +340,60 @@ abstract class Field
 }
 
 /**
- * Base Select Field
+ * Generic base select field
  */
 abstract class BaseSelectField extends Field
 {
 	use HandleFieldTypes;
 
+	const CONTEXT_PRODUCT = 'product';
+	const CONTEXT_SETTINGS = 'settings';
+
 	protected $options;
 	protected $output;
+	protected $context;
 	private $stringOptionKeys;
 
-	const VALID_OUTPUT_TYPES = ['string', 'int', 'float', 'boolean'];
+	const VALID_OUTPUT_TYPES = ['string', 'integer', 'float', 'boolean'];
 
-	public function __construct($id, $name, $label, $options, $description = '', $output = 'string')
+	public function __construct($id, $name, $label, $options, $description = '', $output = 'string', $context = self::CONTEXT_SETTINGS)
 	{
 		if (!in_array($output, self::VALID_OUTPUT_TYPES, true)) {
 			throw new \InvalidArgumentException("Invalid output type: $output. Expected one of: " . implode(', ', self::VALID_OUTPUT_TYPES));
 		}
 		parent::__construct($id, $name, $label, $description);
 		$this->output = $output;
+		$this->context = $context;
 		$this->options = $options;
+	}
+
+	protected function shouldAddGlobalOption(): bool
+	{
+		return $this->context === self::CONTEXT_PRODUCT;
 	}
 
 	protected function getStringOptionKeys(): array
 	{
 		if ($this->stringOptionKeys === null) {
-			$this->stringOptionKeys = array_map('strval', array_keys($this->options));
+			$keys = array_keys($this->options);
+			if ($this->shouldAddGlobalOption()) {
+				$keys[] = Field::GLOBAL_VALUE;
+			}
+			$this->stringOptionKeys = array_map('strval', $keys);
 		}
 		return $this->stringOptionKeys;
 	}
 
 	public function sanitize($value)
 	{
+		// First check if this is a product context field
+		if ($this->shouldAddGlobalOption()) {
+			if ($value === '') {
+				return Field::GLOBAL_VALUE;
+			}
+		}
+
+		// For non-global values, validate against options
 		if (!in_array((string)$value, $this->getStringOptionKeys(), true)) {
 			return $this->getDefaultValue();
 		}
@@ -371,9 +401,95 @@ abstract class BaseSelectField extends Field
 		return $this->convertToType($value, $this->output);
 	}
 
+
 	protected function getDefaultValue()
 	{
-		return '';
+		return $this->shouldAddGlobalOption() ? Field::GLOBAL_VALUE : $this->getDefaultForType($this->output);
+	}
+
+	abstract public function render();
+}
+
+/**
+ * Generic three state boolean functionality
+ */
+trait ThreeStateBooleanTrait
+{
+	protected function getThreeStateBooleanOptions($context = BaseSelectField::CONTEXT_SETTINGS): array
+	{
+		$options = [];
+
+		// Add global option first if in product context
+		if ($context === BaseSelectField::CONTEXT_PRODUCT) {
+			$options[Field::GLOBAL_VALUE] = 'Use Global Setting';
+		}
+
+		// Then add Yes/No options
+		$options['1'] = 'Yes';
+		$options['0'] = 'No';
+
+		return $options;
+	}
+}
+
+
+/**
+ * WooCommerce-specific implementation
+ */
+class WCThreeStateBooleanField extends BaseSelectField
+{
+	use ThreeStateBooleanTrait;
+
+	public function __construct($id, $name, $label, $description = '', $context = self::CONTEXT_SETTINGS)
+	{
+		parent::__construct(
+			$id,
+			$name,
+			$label,
+			$this->getThreeStateBooleanOptions($context),
+			$description,
+			'boolean',
+			$context
+		);
+	}
+
+	public function sanitize($value)
+	{
+		// First, check if this is a product field
+		if (!$this->shouldAddGlobalOption()) {
+			return $value === '1' ? '1' : '0';
+		}
+
+		// For product fields, check if the value should be global
+		if ($value === '' || $value === null || $value === Field::GLOBAL_VALUE) {
+			return Field::GLOBAL_VALUE;
+		}
+
+		// For non-global values, convert to boolean string
+		return $value === '1' ? '1' : '0';
+	}
+
+
+	protected function isTruthy($value): bool
+	{
+		return in_array($value, ['1', 1, true, 'true'], true);
+	}
+
+	public function render()
+	{
+		woocommerce_wp_select([
+			'id' => $this->name,
+			'label' => $this->label,
+			'desc_tip' => true,
+			'description' => $this->description,
+			'options' => $this->options,
+			'value' => $this->value ?? $this->getDefaultValue()
+		]);
+	}
+
+	protected function getDefaultValue()
+	{
+		return $this->shouldAddGlobalOption() ? Field::GLOBAL_VALUE : '0';
 	}
 }
 
@@ -382,6 +498,8 @@ abstract class BaseSelectField extends Field
  */
 class SelectField extends BaseSelectField
 {
+	use HandleFieldTypes;
+
 	public function render()
 	{
 		$output = sprintf(
@@ -551,14 +669,14 @@ class WCSelectField extends BaseSelectField
 {
 	protected function getDefaultValue()
 	{
-		return 'global';
+		return Field::GLOBAL_VALUE;
 	}
 
 	public function __construct($id, $name, $label, $options, $description = '', $output = 'string')
 	{
 		parent::__construct($id, $name, $label, $options, $description, $output);
 		$this->options = array_merge(
-			['global' => 'Use Global Setting'],
+			[Field::GLOBAL_VALUE => 'Use Global Setting'],
 			$this->options
 		);
 	}
@@ -568,7 +686,7 @@ class WCSelectField extends BaseSelectField
 		$currentTypedValue = $this->sanitize($this->value);
 
 		$displayValue = $currentTypedValue;
-		if ($currentTypedValue !== 'global' && !is_string($currentTypedValue)) {
+		if ($currentTypedValue !== Field::GLOBAL_VALUE && !is_string($currentTypedValue)) {
 			$displayValue = (string)$currentTypedValue;
 		}
 
@@ -578,7 +696,7 @@ class WCSelectField extends BaseSelectField
 			'desc_tip' => true,
 			'description' => $this->description,
 			'options' => $this->options,
-			'value' => $displayValue ?: 'global'
+			'value' => $displayValue ?: Field::GLOBAL_VALUE
 		]);
 	}
 }

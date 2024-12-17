@@ -94,7 +94,7 @@ class Product
 			$this->initializePricingStrategy();
 		}
 
-		if ($this->settings['units'] === 'fraction') {
+		if (isset($this->settings['units_system']) && $this->settings['units_system'] === 'imperial') {
 			printf('<p id="smartcut-intro-text">%s</p>', __('Add your cuts below. Units are inches.', 'smartcut'));
 		} else {
 			printf('<p id="smartcut-intro-text">%s</p>', __('Add your cuts below. Units are mm.', 'smartcut'));
@@ -183,7 +183,7 @@ class Product
 		}
 
 		// Add rest of configuration
-		$settings = \SmartCut\Settings\getProductSettings($this->productId, 'cutlist');
+		$settings = \SmartCut\Settings\getProductSettings($this->productId);
 		if (isset($settings['enable_formula']) && $settings['enable_formula'] === true) {
 			$settings['formula_url'] = $this->getFormulaUrl($settings['formula_json']);
 		}
@@ -209,15 +209,6 @@ class Product
 			'siteUrl' => get_site_url(),
 
 		]);
-	}
-
-	public function calculatePrice(array $input): array
-	{
-		if (!$this->pricingStrategy) {
-			$this->initializePricingStrategy();
-		}
-
-		return $this->pricingStrategy->calculatePrice($input);
 	}
 
 	private function addDimensionsToConfig(array &$config, array $attributes): void

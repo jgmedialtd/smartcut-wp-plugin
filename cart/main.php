@@ -56,7 +56,7 @@ class CartManager
 	const NONCE_FIELD = 'smartcut_nonce';
 
 	/**
-	 * Cart field definitions
+	 * Product hidden fields / cart fields definitions
 	 */
 	private static $fields = [
 		'job_id' => [
@@ -153,6 +153,10 @@ class CartManager
 			'label' => 'Total cuts',
 			'group' => self::GROUP_INPUT
 		],
+		'part_area' => [
+			'label' => 'Part area',
+			'group' => self::GROUP_INPUT,
+		],
 		'custom_price' => [
 			'label' => 'Custom price',
 			'group' => self::GROUP_INPUT
@@ -171,8 +175,6 @@ class CartManager
 			'group' => self::PART_IMAGES,
 			'private' => true
 		],
-
-
 	];
 
 	/**
@@ -451,7 +453,7 @@ class CartManager
 	 */
 	private static function getFieldKey(string $key): string
 	{
-		return 'smartcut_' . $key;
+		return SMARTCUT_PREFIX . $key;
 	}
 
 	private static function getFileKey(string $type, $fileExtension): string
@@ -461,7 +463,7 @@ class CartManager
 
 	private static function getFileName(string $key): string
 	{
-		$cleanKey = str_replace('smartcut_', '', $key);
+		$cleanKey = str_replace(SMARTCUT_PREFIX, '', $key);
 		foreach (self::$fields as $fieldKey => $field) {
 			if ($field['group'] === self::GROUP_FILES && $fieldKey === $cleanKey) {
 				return $field['label'];

@@ -8,7 +8,7 @@ include_once dirname(__DIR__) . '/product/main.php';
 include_once dirname(__DIR__) . '/settings/main.php';
 include_once dirname(__DIR__) . '/settings/field-factory.php';
 
-define('SMARTCUT_META_PREFIX', 'smartcut_');
+define('SMARTCUT_PREFIX', 'smartcut_');
 
 use SmartCut\Settings\Factory\FieldFactory;
 use SmartCut\Settings\Fields\FieldGroupBuilder;
@@ -54,16 +54,14 @@ function saveOptionFields($postId)
 {
 	if (!\SmartCut\Helpers\isCutlist($postId)) return;
 
-	$prefix = \SmartCut\Settings\getPrefix('cutlist');
-
 	$fields = \SmartCut\Settings\Fields\getSettingFields('product');
 
 	foreach ($fields as $key => $definition) {
-		$name = $prefix . $key;
+		$name = SMARTCUT_PREFIX . $key;
 		$value = isset($_POST[$name]) ? $_POST[$name] : null;
 
 		// Use FieldFactory to create field and handle sanitization
-		$field = FieldFactory::createField($key, $name, $definition);
+		$field = FieldFactory::createField($key, $name, $definition, 'product');
 		$sanitizedValue = $field->sanitize($value);
 
 		update_post_meta($postId, $name, $sanitizedValue);
@@ -168,15 +166,15 @@ class ProductTabContent
 
 		$field = FieldFactory::createField(
 			$fieldId,
-			SMARTCUT_META_PREFIX . $fieldId,
+			SMARTCUT_PREFIX . $fieldId,
 			SMARTCUT_FIELDS[$fieldId],
 			'product'
 		);
 
-		$field->setValue(get_post_meta($this->productId, SMARTCUT_META_PREFIX . $fieldId, true));
+		$field->setValue(get_post_meta($this->productId, SMARTCUT_PREFIX . $fieldId, true));
 		$field->render();
 
-		$this->maybeRenderScript($fieldId, SMARTCUT_META_PREFIX);
+		$this->maybeRenderScript($fieldId, SMARTCUT_PREFIX);
 	}
 
 	public function render()
@@ -196,7 +194,7 @@ class ProductTabContent
 				}
 
 				// Render fields in specific order by category
-				$categories = ['select', 'text', 'number', 'boolean', 'json_upload'];
+				$categories = ['boolean', 'select', 'text', 'number', 'json_upload'];
 				foreach ($categories as $category) {
 					foreach ($section['fields'][$category] as $fieldId) {
 						$this->renderField($fieldId);

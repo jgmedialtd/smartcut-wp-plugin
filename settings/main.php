@@ -40,7 +40,7 @@ function getTypedValue(string $type, $value)
 	switch ($type) {
 		case 'boolean':
 			return $value === '1';
-		case 'int':
+		case 'integer':
 			return (int)$value;
 		case 'float':
 			return (float)$value;
@@ -109,7 +109,7 @@ function validateOptionType($value, $type): bool
 	switch ($type) {
 		case 'boolean':
 			return in_array($value, ['0', '1', true, false], true);
-		case 'int':
+		case 'integer':
 			return is_numeric($value);
 		case 'float':
 			return is_numeric($value);
@@ -125,7 +125,7 @@ function validateOptionType($value, $type): bool
  * @param string $productId
  * @return array
  */
-function getProductSettings($productId = null, string $type = 'cutlist')
+function getProductSettings($productId = null)
 {
 	$productId = $productId ? $productId : get_the_ID();
 
@@ -135,31 +135,20 @@ function getProductSettings($productId = null, string $type = 'cutlist')
 	$settings = getGlobalSettings();
 
 	//product settings
-	$prefix = \SmartCut\Settings\getPrefix($type);
+	foreach ($settingsFields as $key => $field) {
+		$name = SMARTCUT_PREFIX . $key;
 
-	foreach ($settingsFields as $key => $fieldType) {
-		$name = $prefix . $key;
+		if (!in_array('product', $field['show'])) continue;
+		if (!metadata_exists('post', $productId, $name)) continue;
+
 		$productSetting = \get_post_meta($productId, $name, true);
 
-		if (empty($productSetting) || $productSetting === 'global') {
-			continue;
-		}
+		if ($productSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) continue;
+
+		//legacy
+		if ($productSetting === 'global') continue;
 
 		$settings[$key] = $productSetting;
-	}
-
-	// Handle legacy disable options
-	if ($type === 'cutlist') {
-		foreach (['machining'] as $key) {
-			$productSetting = \get_post_meta(
-				$productId,
-				'smartcut_disable_' . $key,
-				true
-			);
-			if ($productSetting === '1') {
-				$settings['enable_' . $key] = '0';
-			}
-		}
 	}
 
 	return getTypedSettings($settings);
@@ -211,20 +200,6 @@ function sanitizeFloat($input, $min = null)
 	}
 
 	return $sanitized;
-}
-
-function getPrefix(string $type)
-{
-	switch ($type) {
-		case 'cutlist':
-			$prefix = 'smartcut_';
-			break;
-		default:
-			$prefix = 'smartcut_';
-			break;
-	}
-
-	return $prefix;
 }
 
 // Usage in your settings page setup:
@@ -303,7 +278,7 @@ class SmartCutSettings
 						foreach ($fieldGroups[$group]['sections'][$sectionId]['fields'][$category] as $fieldId) {
 							if (isset($fields[$fieldId])) {
 								$field = FieldFactory::createField(
-									'smartcut_' . $fieldId,
+									SMARTCUT_PREFIX . $fieldId,
 									SMARTCUT_OPTIONS_KEY . "[$fieldId]",
 									$fields[$fieldId]
 								);
@@ -334,7 +309,51 @@ class SettingsManager
 
 		add_action('admin_menu', [$this, 'registerMenu']);
 		add_action('admin_init', [$this, 'registerSettings']);
+
+		//handle manual resetting of settings
 		add_action('admin_post_smartcut_reset_settings', [$this, 'handleResetSettings']);
+
+		//handle manual triggering of settings updates
+		add_action('admin_post_smartcut_trigger_updates', function () {
+			if (!current_user_can('manage_options')) wp_die('Unauthorized');
+
+			if (
+				!isset($_POST['smartcut_update_nonce']) ||
+				!wp_verify_nonce($_POST['smartcut_update_nonce'], 'smartcut_trigger_updates')
+			) {
+				wp_die('Invalid nonce');
+			}
+
+			// Schedule update using same format
+			if (!as_next_scheduled_action(SMARTCUT_UPDATE_ACTION)) {
+				as_schedule_single_action(
+					time(),
+					SMARTCUT_UPDATE_ACTION,
+					[],
+					SMARTCUT_UPDATE_GROUP
+				);
+
+				// Set initial warning message - use UPDATE_LOCK_TRANSIENT duration
+				set_transient(
+					'smartcut_update_message',
+					'Settings update process has been triggered. Do NOT update global or product settings until this is complete.',
+					5 * MINUTE_IN_SECONDS
+				);
+
+				// Set a flag to show we've just triggered the update
+				set_transient('smartcut_update_triggered', true, 30);
+			}
+
+			// Get the page slug from the referer URL
+			$referer = wp_get_referer();
+			$page = parse_url($referer, PHP_URL_QUERY);
+			parse_str($page, $query_vars);
+			$page_slug = $query_vars['page'] ?? '';
+
+			// Redirect without additional parameters
+			wp_safe_redirect(admin_url('admin.php?page=' . $page_slug));
+			exit;
+		});
 	}
 
 	public function handleResetSettings()
@@ -401,7 +420,7 @@ class SettingsManager
 	}
 
 
-	public function sanitizeOptions($input)
+	public function sanitizeOptions(array $input)
 	{
 		if (!is_array($input)) {
 			return $this->getDefaultOptions();
@@ -410,7 +429,13 @@ class SettingsManager
 		$allOptions = getGlobalSettings();
 		$fields = \SmartCut\Settings\Fields\getSettingFields();
 
-		parse_str(parse_url(wp_get_referer(), PHP_URL_QUERY), $params);
+		$referer = wp_get_referer();
+		if ($referer) {
+			parse_str(parse_url($referer, PHP_URL_QUERY), $params);
+		} else {
+			$params = [];
+		}
+
 		$currentPage = $this->pages[$params['page'] ?? ''] ?? null;
 		$currentPageFields = $currentPage ? array_keys($currentPage->getFields()) : [];
 
@@ -421,7 +446,7 @@ class SettingsManager
 		}
 
 		foreach ($currentPageFields as $fieldId) {
-			$baseId = str_replace('smartcut_', '', $fieldId);
+			$baseId = str_replace(SMARTCUT_PREFIX, '', $fieldId);
 			if (isset($fields[$baseId]) && $fields[$baseId]['type'] === 'boolean' && !isset($input[$baseId])) {
 				$allOptions[$baseId] = '0';
 			}
@@ -437,7 +462,7 @@ class SettingsManager
 				return empty($value) ? '0' : '1';
 			case 'string':
 				return sanitize_text_field($value);
-			case 'int':
+			case 'integer':
 				return intval($value);
 			case 'float':
 				return floatval($value);
@@ -574,7 +599,7 @@ class SettingsPage
 		// Register fields
 		foreach ($this->fields as $id => $data) {
 			$field = $data['field'];
-			$baseId = str_replace('smartcut_', '', $id);
+			$baseId = str_replace(SMARTCUT_PREFIX, '', $id);
 			if (isset($options[$baseId])) {
 				$field->setValue($options[$baseId]);
 			}
@@ -584,7 +609,7 @@ class SettingsPage
 				$field->getLabel(),
 				function () use ($field, $id) { // Added $id to closure
 					echo $field->render();
-					$this->maybeRenderScript($id, 'smartcut_');
+					$this->maybeRenderScript($id, SMARTCUT_PREFIX);
 				},
 				$this->slug,
 				$data['section']
@@ -598,19 +623,21 @@ class SettingsPage
 			return;
 		}
 
-		// Show reset success message if applicable
-		if (isset($_GET['settings-reset']) && $_GET['settings-reset'] === 'true') {
+		// Check and display any stored messages
+		$stored_message = get_transient('smartcut_update_message');
+		if ($stored_message) {
 			add_settings_error(
 				'smartcut_messages',
-				'smartcut_reset_success',
-				'All settings have been reset to defaults.',
+				'smartcut_update_triggered',
+				$stored_message,
 				'updated'
 			);
-		} ?>
+			delete_transient('smartcut_update_message');
+		}
 
+?>
 		<div class="wrap">
 			<h1><?php echo esc_html($this->title); ?></h1>
-
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
@@ -621,175 +648,77 @@ class SettingsPage
 				?>
 			</form>
 
-			<!-- Reset Settings Form -->
-			<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-				onsubmit="return confirm('Are you sure you want to reset all settings to defaults? This cannot be undone.');">
-				<input type="hidden" name="action" value="smartcut_reset_settings">
-				<?php wp_nonce_field('smartcut_reset_settings', 'smartcut_reset_nonce'); ?>
-				<?php
-				submit_button(
-					'Reset All Settings',
-					'delete',
-					'submit',
-					true,
-					['style' => 'margin-top: 20px;']
-				);
-				?>
-			</form>
-		</div><?php
-			}
+			<div style="margin-top: 30px;">
+				<!-- Reset Settings Form -->
+				<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+					onsubmit="return confirm('Are you sure you want to reset all settings to defaults? This cannot be undone.');"
+					style="display: inline-block; margin-right: 10px;">
+					<input type="hidden" name="action" value="smartcut_reset_settings">
+					<?php wp_nonce_field('smartcut_reset_settings', 'smartcut_reset_nonce'); ?>
+					<?php submit_button('Reset All Settings', 'delete', 'submit', false); ?>
+				</form>
+
+				<!-- Update Settings Form -->
+				<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+					style="display: inline-block;">
+					<input type="hidden" name="action" value="smartcut_trigger_updates">
+					<?php wp_nonce_field('smartcut_trigger_updates', 'smartcut_update_nonce'); ?>
+					<?php submit_button('Run Legacy Settings Update', 'secondary', 'submit', false); ?>
+				</form>
+			</div>
+		</div>
+<?php
+	}
+}
+class HealthCheckPage extends SettingsPage
+{
+	private $healthChecker;
+
+	public function __construct()
+	{
+		parent::__construct(
+			'SmartCut Health',      // page title
+			'Health Check',         // menu title
+			'smartcut-health-check' // slug
+		);
+
+		$this->healthChecker = new \SmartCut\HealthCheck\SmartCutHealthChecker();
+	}
+
+	public function render()
+	{
+		if (!current_user_can('manage_options')) {
+			wp_die('Unauthorized');
 		}
 
+		// Render the health check page using our new class
+		$this->healthChecker->renderPage();
+	}
+}
 
-		class HealthCheckPage extends SettingsPage
-		{
-			private $healthChecker;
+class TemplateProductsPage extends SettingsPage
+{
+	private $templateManager;
 
-			public function __construct()
-			{
-				parent::__construct(
-					'SmartCut Health',      // page title
-					'Health Check',         // menu title
-					'smartcut-health-check' // slug
-				);
+	public function __construct()
+	{
+		parent::__construct(
+			'SmartCut - Create Template Products', // page title
+			'Templates',                           // menu title
+			'smartcut-template-products'           // slug
+		);
 
-				$this->healthChecker = new \SmartCut\HealthCheck\SmartCutHealthChecker();
-			}
+		$this->templateManager = new \SmartCut\Template\TemplateManager();
+	}
 
-			public function render()
-			{
-				if (!current_user_can('manage_options')) {
-					wp_die('Unauthorized');
-				}
-
-				// Render the health check page using our new class
-				$this->healthChecker->renderPage();
-			}
+	public function render()
+	{
+		if (!current_user_can('manage_options')) {
+			wp_die('Unauthorized');
 		}
 
-		class TemplateProductsPage extends SettingsPage
-		{
-			private $templateManager;
+		$this->templateManager->renderPage();
+	}
+}
 
-			public function __construct()
-			{
-				parent::__construct(
-					'SmartCut - Create Template Products', // page title
-					'Templates',                           // menu title
-					'smartcut-template-products'           // slug
-				);
-
-				$this->templateManager = new \SmartCut\Template\TemplateManager();
-			}
-
-			public function render()
-			{
-				if (!current_user_can('manage_options')) {
-					wp_die('Unauthorized');
-				}
-
-				$this->templateManager->renderPage();
-			}
-		}
-
-		if (is_admin()) new SmartCutSettings();
-
-
-		function updateLegacyOptions(): array
-		{
-			// Check if update is already running
-			if (get_transient('smartcut_updating_settings')) {
-				return [
-					'success' => false,
-					'global_updated' => false,
-					'products_updated' => 0,
-					'errors' => ['Update already in progress']
-				];
-			}
-
-			// Set flag for 5 minutes
-			set_transient('smartcut_updating_settings', true, 5 * MINUTE_IN_SECONDS);
-
-			$results = [
-				'success' => true,
-				'global_updated' => false,
-				'products_updated' => 0,
-				'errors' => []
-			];
-
-			try {
-				$settingsMap = [
-					'pricing_strategy' => [
-						'full_sheet' => 'full_stock',
-						'full_sheet_plus_num_parts' => 'full_stock_plus_num_parts',
-						'full_sheet_plus_cut_length' => 'full_stock_plus_cut_length'
-					],
-				];
-
-				// Update global options
-				try {
-					$options = get_option(SMARTCUT_OPTIONS_KEY, array());
-
-					foreach ($settingsMap as $setting_key => $value_map) {
-						if (isset($options[$setting_key]) && isset($value_map[$options[$setting_key]])) {
-							$options[$setting_key] = $value_map[$options[$setting_key]];
-						}
-					}
-
-					$updated = update_option(SMARTCUT_OPTIONS_KEY, $options);
-					$results['global_updated'] = $updated;
-				} catch (\Exception $e) {
-					$results['errors'][] = "Global settings update failed: " . $e->getMessage();
-					$results['success'] = false;
-				}
-
-				// Update all products
-				try {
-					$args = array(
-						'post_type'      => 'product',
-						'posts_per_page' => -1,
-						'post_status'    => 'any',
-						'fields'         => 'ids',
-					);
-
-					$product_ids = get_posts($args);
-
-					if (empty($product_ids)) {
-						$results['errors'][] = "No products found to update";
-					}
-
-					foreach ($product_ids as $product_id) {
-						try {
-							foreach ($settingsMap as $setting_key => $value_map) {
-								$product_setting = get_post_meta($product_id, SMARTCUT_META_PREFIX . $setting_key, true);
-
-								if (!empty($product_setting) && isset($value_map[$product_setting])) {
-									$updated = update_post_meta(
-										$product_id,
-										SMARTCUT_META_PREFIX . $setting_key,
-										$value_map[$product_setting]
-									);
-
-									if ($updated) {
-										$results['products_updated']++;
-									}
-								}
-							}
-						} catch (\Exception $e) {
-							$results['errors'][] = "Failed to update product ID {$product_id}: " . $e->getMessage();
-						}
-					}
-				} catch (\Exception $e) {
-					$results['errors'][] = "Product update process failed: " . $e->getMessage();
-					$results['success'] = false;
-				}
-			} catch (\Exception $e) {
-				$results['errors'][] = "Migration failed: " . $e->getMessage();
-				$results['success'] = false;
-			}
-
-			// Clear the update flag
-			delete_transient('smartcut_updating_settings');
-
-			return $results;
-		}
+if (is_admin()) new SmartCutSettings();

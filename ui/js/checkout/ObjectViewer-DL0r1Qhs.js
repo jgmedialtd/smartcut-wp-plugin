@@ -1,5 +1,5 @@
-import { _ as m } from "./Launch-DKG1DxlA.js";
-import { j as n, k as a, F as y, l as _, t as c, v as d, p as h, A as g } from "./main-C87SRwxm.js";
+import { _ as m } from "./Launch-CFZ5pGuw.js";
+import { j as n, k as a, F as y, l as _, t as c, v as d, p as h, A as g } from "./main-DFMVGBIU.js";
 const j = {
   name: "ObjectViewer",
   props: {
@@ -55,8 +55,8 @@ function C(e, p, r, t, l, o) {
           key: f,
           class: "property-item"
         }, [
-          c("span", B, d(f) + ":", 1),
-          c("span", {
+          c("div", B, d(f) + ": ", 1),
+          c("div", {
             class: h(["value", o.getValueType(u)])
           }, d(o.formatValue(u)), 3)
         ]))), 128))

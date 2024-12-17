@@ -1,6 +1,5 @@
 <?php
-
-/**
+/*
  * Plugin Name: SmartCut
  * Plugin URI: https://smartcut.dev
  * Description: Calculate cut lists & pricing for cut-to-size businesses.
@@ -9,7 +8,7 @@
  * Requires PHP: 7.4
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 4.1.1
+ * Version: 4.1.5
  * Author URI: https://smartcut.dev
  */
 
@@ -24,27 +23,40 @@ include_once 'cart/main.php';
 include_once 'order/main.php';
 include_once 'helpers/main.php';
 include_once 'rest/main.php';
+include_once 'updates/main.php';
 
-//environment variables (from .htaccess)
-$checkoutUrl = getenv('SMARTCUT_CHECKOUT_URL') ? getenv('SMARTCUT_CHECKOUT_URL') : 'https://cutlistevo.com/checkout-mini/';
-$endpoint = getenv('SMARTCUT_ENDPOINT') ? getenv('SMARTCUT_ENDPOINT') : 'https://api.smartcut.dev/';
+// Environment variables with validation
+$checkoutUrl = filter_var(
+	getenv('SMARTCUT_CHECKOUT_URL') ?: 'https://cutlistevo.com/checkout-mini/',
+	FILTER_VALIDATE_URL
+) ?: 'https://cutlistevo.com/checkout-mini/';
 
-//constants
+$endpoint = filter_var(
+	getenv('SMARTCUT_ENDPOINT') ?: 'https://api.smartcut.dev/',
+	FILTER_VALIDATE_URL
+) ?: 'https://api.smartcut.dev/';
+
+// Constants
 define('SMARTCUT_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('SMARTCUT_CURRENT_VERSION', '4.1.1'); // This needs to be kept in sync with the version above.
+define('SMARTCUT_CURRENT_VERSION', '4.1.5');
 define('SMARTCUT_CHECKOUT_URL', $checkoutUrl);
 define('SMARTCUT_ENDPOINT', $endpoint);
 define('SMARTCUT_SCRIPTS', ['smartcut-checkout-js', 'smartcut-upload-js']);
+define('SMARTCUT_UPDATE_ACTION', 'smartcut_run_updates');
+define('SMARTCUT_UPDATE_GROUP', 'smartcut-updates');
 
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 class Plugin
 {
+	private const VERSION_OPTION = 'smartcut_version';
+
 	private static $instance = null;
 	private $globalSettings = [];
 	private $productSettings = [];
+	private $updateManager;
 
-	public static function getInstance()
+	public static function getInstance(): self
 	{
 		if (self::$instance === null) {
 			self::$instance = new self();
@@ -54,17 +66,38 @@ class Plugin
 
 	private function __construct()
 	{
+		$this->updateManager = new \SmartCut\Updates\UpdateManager();
 		$this->initHooks();
 		$this->initUpdateChecker();
 		$this->loadSettings();
+	}
 
-		add_action('admin_notices', [$this, 'displayUpdateNotice']);
+	public static function activate(): void
+	{
+		$settingsManager = new \SmartCut\Settings\SettingsManager();
+
+		if (!get_option(SMARTCUT_OPTIONS_KEY)) {
+			add_option(SMARTCUT_OPTIONS_KEY, $settingsManager->getDefaultOptions());
+		}
+
+		$plugin = self::getInstance();
+		$plugin->versionBasedUpdates(null, [], true);
+	}
+
+	public static function deactivate(): void
+	{
+		\SmartCut\Updates\UpdateManager::cleanup();
 	}
 
 	private function loadSettings(): void
 	{
-		$settings = \SmartCut\Settings\getGlobalSettings();
-		$this->globalSettings = is_array($settings) ? $settings : [];
+		try {
+			$settings = \SmartCut\Settings\getGlobalSettings();
+			$this->globalSettings = is_array($settings) ? $settings : [];
+		} catch (\Exception $e) {
+			$this->log('Failed to load settings', $e->getMessage());
+			$this->globalSettings = [];
+		}
 	}
 
 	public function getGlobalSettings(): array
@@ -82,64 +115,69 @@ class Plugin
 
 	public function versionBasedUpdates($upgrader_object, $options, $force = false): void
 	{
+		// Early return checks
 		if (!$force && ($options['action'] !== 'update' || $options['type'] !== 'plugin')) {
 			return;
 		}
 
 		$thisPlugin = plugin_basename(__FILE__);
 
-		// Check if our plugin was updated
 		if (!$force && (!isset($options['plugins']) || !in_array($thisPlugin, $options['plugins']))) {
 			return;
 		}
 
-		$version = get_option('smartcut_version');
+		$version = get_option(self::VERSION_OPTION);
 
-		if ($version === SMARTCUT_CURRENT_VERSION) return;
+		if ($version === SMARTCUT_CURRENT_VERSION && !$force) {
+			return;
+		}
 
-		$result = \SmartCut\Settings\updateLegacyOptions();
-		update_option('smartcut_version', SMARTCUT_CURRENT_VERSION);
+		$this->updateManager->scheduleUpdate();
+	}
 
-		// Store update result for admin notice
-		set_transient('smartcut_update_result', [
-			'success' => $result['success'],
-			'products_updated' => $result['products_updated'],
-			'errors' => $result['errors']
-		], 30);
+	private function initHooks(): void
+	{
+		// Init hooks
+		add_action('init', [$this, 'init']);
+		add_action('wp', [$this, 'initProduct']);
+
+		// Script based
+		add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
+		add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
+
+		// JSON upload
+		add_filter('upload_mimes', [$this, 'allowJsonUploads']);
+		add_filter('wp_check_filetype_and_ext', [$this, 'validateJsonUpload'], 10, 4);
+
+		// Remove cart notices
+		add_filter('woocommerce_cart_item_removed_notice_type', '__return_false', 999);
+		add_action('woocommerce_init', function () {
+			remove_action('woocommerce_cart_item_removed', [WC()->cart, 'removed_from_cart_notice'], 10);
+		}, 999);
+
+		// Version based updates
+		add_action('upgrader_process_complete', [$this, 'versionBasedUpdates'], 10, 2);
+		add_action('admin_notices', [$this, 'displayUpdateNotice']);
+
+		// Image handling
+		add_filter('wp_handle_upload_prefilter', [$this, 'handleImageUpload']);
 	}
 
 	public function displayUpdateNotice(): void
 	{
-		$result = get_transient('smartcut_update_result');
+		if (!current_user_can('manage_options')) {
+			return;
+		}
+
+		$result = get_transient(\SmartCut\Updates\UpdateManager::UPDATE_TRANSIENT);
 		if (!$result) {
 			return;
 		}
 
-		delete_transient('smartcut_update_result');
+		delete_transient(\SmartCut\Updates\UpdateManager::UPDATE_TRANSIENT);
 
 		$type = $result['success'] ? 'success' : 'warning';
-
-		if ($result['success']) {
-			$message = 'SmartCut update completed successfully';
-
-			if ($result['products_updated'] > 0) {
-				$message .= sprintf(
-					'. %d products were updated successfully',
-					intval($result['products_updated'])
-				);
-			}
-
-			$message .= '.';
-		} else {
-			$message = 'SmartCut update completed with some issues:';
-			if (!empty($result['errors'])) {
-				$message .= '<ul class="ul-disc">';
-				foreach ($result['errors'] as $error) {
-					$message .= '<li>' . esc_html($error) . '</li>';
-				}
-				$message .= '</ul>';
-			}
-		}
+		$message = $this->formatUpdateMessage($result);
 
 		printf(
 			'<div class="notice notice-%1$s is-dismissible"><p>%2$s</p></div>',
@@ -148,49 +186,41 @@ class Plugin
 		);
 	}
 
-	private function initHooks(): void
+	private function formatUpdateMessage(array $result): string
 	{
-		add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
-		add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
-		add_action('init', [$this, 'init']);
-		add_action('wp', [$this, 'initProduct']);
-		add_action('upgrader_process_complete', [$this, 'versionBasedUpdates'], 10, 2);
-
-		add_filter('upload_mimes', [$this, 'allowJsonUploads']);
-		add_filter('wp_check_filetype_and_ext', [$this, 'validateJsonUpload'], 10, 4);
-		add_filter('wp_script_attributes', [$this, 'ensureScriptModule'], 99999);
-		add_filter('script_loader_tag', [$this, 'fallbackScriptModule'], 999999, 2);
-
-		add_filter('woocommerce_cart_item_removed_notice_type', '__return_false', 999);
-		add_action('woocommerce_init', function () {
-			remove_action('woocommerce_cart_item_removed', [WC()->cart, 'removed_from_cart_notice'], 10);
-		}, 999);
-
-		//prevent our uploaded images from being resized
-		add_filter('intermediate_image_sizes_advanced', function ($sizes) {
-			if (defined('REST_REQUEST') && REST_REQUEST) {
-				$headers = getallheaders();
-				if (isset($headers['Smartcut-Image-Upload'])) {
-					return array();
-				}
+		if ($result['success']) {
+			$message = 'SmartCut settings update completed successfully';
+			if (!empty($result['products_updated'])) {
+				$message .= sprintf(
+					'. %d products were updated',
+					intval($result['products_updated'])
+				);
 			}
-			return $sizes;
-		});
+			return $message . '.';
+		}
 
-		//resize large uploaded images
-		add_filter('wp_handle_upload_prefilter', function ($file) {
-			// Only for our REST uploads with specific header
-			if (defined('REST_REQUEST') && REST_REQUEST) {
-				$headers = getallheaders();
-				if (isset($headers['Smartcut-Image-Upload'])) {
-					// Set max dimensions
-					add_filter('big_image_size_threshold', function () {
-						return 2000; // Max width/height in pixels
-					});
-				}
+		$message = 'SmartCut update completed with some issues:';
+		if (!empty($result['errors'])) {
+			$message .= '<ul class="ul-disc">';
+			foreach ($result['errors'] as $error) {
+				$message .= '<li>' . esc_html($error) . '</li>';
 			}
-			return $file;
-		});
+			$message .= '</ul>';
+		}
+		return $message;
+	}
+
+	public function handleImageUpload($file): array
+	{
+		if (defined('REST_REQUEST') && REST_REQUEST) {
+			$headers = getallheaders();
+			if (isset($headers['Smartcut-Image-Upload'])) {
+				add_filter('big_image_size_threshold', function () {
+					return 2000;
+				});
+			}
+		}
+		return $file;
 	}
 
 	private function initUpdateChecker(): void
@@ -237,6 +267,7 @@ class Plugin
 		if (is_admin()) {
 			include_once 'product-admin/main.php';
 			include_once 'product-admin/formula.php';
+			include_once 'settings/bulk-edit.php';
 		}
 	}
 
@@ -298,8 +329,8 @@ class Plugin
 
 	public function log(string $message, mixed $data): void
 	{
-		error_log($message);
-		error_log(is_string($data) ? $data : print_r($data, true));
+		error_log('[SmartCut] ' . $message);
+		error_log('[SmartCut] ' . (is_string($data) ? $data : print_r($data, true)));
 	}
 
 	public function ensureScriptModule(array $attr): array
@@ -307,7 +338,6 @@ class Plugin
 		if (in_array($attr['id'], SMARTCUT_SCRIPTS)) {
 			$attr['type'] = 'module';
 		}
-
 		return $attr;
 	}
 
@@ -318,22 +348,16 @@ class Plugin
 				? $tag
 				: str_replace('></script>', ' type="module"></script>', $tag);
 		}
-
 		return $tag;
 	}
 }
 
-// Plugin activation
-register_activation_hook(__FILE__, function () {
-	$settingsManager = new \SmartCut\Settings\SettingsManager();
-
-	if (!get_option(SMARTCUT_OPTIONS_KEY)) {
-		add_option(SMARTCUT_OPTIONS_KEY, $settingsManager->getDefaultOptions());
-	}
-});
-
 // Initialize plugin
 $plugin = Plugin::getInstance();
+
+// Add activation/deactivation hooks
+register_activation_hook(__FILE__, [Plugin::class, 'activate']);
+register_deactivation_hook(__FILE__, [Plugin::class, 'deactivate']);
 
 // Add hooks that need instance methods
 add_filter('wp_script_attributes', [$plugin, 'ensureScriptModule'], 99999);
