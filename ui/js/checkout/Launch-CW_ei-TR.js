@@ -1,7 +1,7 @@
 var k2 = Object.defineProperty;
 var A2 = (n, t, e) => t in n ? k2(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var et = (n, t, e) => A2(n, typeof t != "symbol" ? t + "" : t, e);
-import { i as N2, u as Oe, o as Us, n as dr, r as _e, a as C2, w as Qi, g as P2, b as L2, c as I2, s as lo, d as ga, e as bp, f as es, m as gl, h as E2, j as Qt, k as le, F as Qn, l as Lr, p as di, q as Dn, t as ye, v as hn, x as Xg, y as Jg, z as O2, A as ke, B as Rr, C as Re, D as _c, E as va, G as Zg, H as Ml, I as Un, J as Zn, K as T2, L as po, M as F2, N as M2 } from "./main-8aQ3tJEo.js";
+import { i as N2, u as Oe, o as Us, n as dr, r as _e, a as C2, w as Qi, g as P2, b as L2, c as I2, s as lo, d as ga, e as bp, f as es, m as gl, h as E2, j as Qt, k as le, F as Qn, l as Lr, p as di, q as Dn, t as ye, v as hn, x as Xg, y as Jg, z as O2, A as ke, B as Rr, C as Re, D as _c, E as va, G as Zg, H as Ml, I as Un, J as Zn, K as T2, L as po, M as F2, N as M2 } from "./main-DfsctvzU.js";
 let _u;
 const R2 = new Uint8Array(16);
 function D2() {
@@ -15391,7 +15391,7 @@ function(n) {
  */
 function(n) {
   function t() {
-    return (Ae.canvg ? Promise.resolve(Ae.canvg) : import("./index.es-eVyqwS38.js")).catch(function(e) {
+    return (Ae.canvg ? Promise.resolve(Ae.canvg) : import("./index.es-D4rq2jbL.js")).catch(function(e) {
       return Promise.reject(new Error("Could not load canvg: " + e));
     }).then(function(e) {
       return e.default ? e.default : e;
@@ -24351,13 +24351,14 @@ const D6 = ["id"], B6 = {
       }
     ], () => {
       var u;
-      if (!((u = e.inputShape) != null && u.banding)) return;
+      if (console.log("BANDING CHANGE"), !((u = e.inputShape) != null && u.banding)) return;
       let l = {
         x1: e.inputShape.banding.x1,
         x2: e.inputShape.banding.x2,
         y1: e.inputShape.banding.y1,
         y2: e.inputShape.banding.y2
       };
+      console.log(l);
       const h = Gg(
         e.orientationModel,
         e.stockGrain,
@@ -24417,7 +24418,7 @@ const D6 = ["id"], B6 = {
     focus: { type: Boolean, default: !1 },
     enableLabel: { type: Boolean, default: !0 },
     labelPosition: { default: "first" },
-    output: { default: "string" },
+    output: { default: null },
     options: { default: () => [] },
     selectFirstOptionDisabled: { type: Boolean, default: !0 },
     placeholder: { default: "" },
@@ -24930,7 +24931,7 @@ const hk = /* @__PURE__ */ Ia(lk, [["render", ck]]), fk = { id: "uploader" }, dk
   },
   emits: ["update", "remove"],
   setup(n, { emit: t }) {
-    const e = po(() => import("./ObjectViewer-CW0Ix_lM.js")), i = _e(null), r = _e(!0), s = _e({
+    const e = po(() => import("./ObjectViewer-CiQxWpYL.js")), i = _e(null), r = _e(!0), s = _e({
       shapeId: "",
       files: [],
       previewUrls: [],
@@ -25106,7 +25107,7 @@ Only JPG and PNG files are allowed.`), y.value = "";
   },
   emits: ["inputs-changed", "calculating", "result", "log", "error"],
   setup(n, { expose: t, emit: e }) {
-    const i = po(() => import("./Machining-DPZtOfOQ.js")), r = po(() => import("./ImportCSV-CYhjWvRa.js")), s = po(() => import("./ObjectViewer-CW0Ix_lM.js")), o = n, a = e, { t: l, locale: h } = Zg({
+    const i = po(() => import("./Machining-Cykv_aYt.js")), r = po(() => import("./ImportCSV-CkPJKUQh.js")), s = po(() => import("./ObjectViewer-CiQxWpYL.js")), o = n, a = e, { t: l, locale: h } = Zg({
       locale: "en_US",
       useScope: "global"
     }), u = "production", d = window.location.hostname;
@@ -29182,7 +29183,7 @@ const Gk = /* @__PURE__ */ Tc(Hk), Vk = {
 }, Yk = !0, Kk = /* @__PURE__ */ Rr({
   __name: "WordPress",
   setup(n) {
-    const t = po(() => import("./FormulaPricing--BfBx95c.js")), e = po(() => import("./ObjectViewer-CW0Ix_lM.js")), i = "production", r = {}, s = {};
+    const t = po(() => import("./FormulaPricing-CbUlguqE.js")), e = po(() => import("./ObjectViewer-CiQxWpYL.js")), i = "production", r = {}, s = {};
     let o, a, l;
     const h = {
       banding: null,
@@ -29707,7 +29708,7 @@ const Gk = /* @__PURE__ */ Tc(Hk), Vk = {
     type: { default: "" }
   },
   setup(n, { expose: t }) {
-    const e = po(() => import("./Vanilla-C-2oLcyI.js").catch((o) => {
+    const e = po(() => import("./Vanilla-C1Guiqs0.js").catch((o) => {
       throw console.error("Failed to load Vanilla component:", o), new Error("Failed to load Vanilla component");
     })), i = {
       wordpress: Kk,

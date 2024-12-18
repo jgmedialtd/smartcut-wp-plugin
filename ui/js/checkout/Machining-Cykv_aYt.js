@@ -1,8 +1,8 @@
 var Ze = Object.defineProperty;
 var Ie = (T, a, n) => a in T ? Ze(T, a, { enumerable: !0, configurable: !0, writable: !0, value: n }) : T[a] = n;
 var u = (T, a, n) => Ie(T, typeof a != "symbol" ? a + "" : a, n);
-import { B as et, Q as Ye, C as E, R as tt, r as Y, f as ze, w as M, o as st, n as se, H as at, j as c, k as g, J as ae, u as Te, A as x, t as b, v as P, p as O, I as j, q as Ae, F as q, l as N, x as it, y as nt, L as lt } from "./main-8aQ3tJEo.js";
-import { f as z, h as S, i as Ee, v as V, j as rt, k as ot, l as Be, r as ht, u as dt, n as ut, _ as ie, s as ct, o as pt } from "./Launch-hfjB2kG6.js";
+import { B as et, Q as Ye, C as E, R as tt, r as Y, f as ze, w as M, o as st, n as se, H as at, j as c, k as g, J as ae, u as Te, A as x, t as b, v as P, p as O, I as j, q as Ae, F as q, l as N, x as it, y as nt, L as lt } from "./main-DfsctvzU.js";
+import { f as z, h as S, i as Ee, v as V, j as rt, k as ot, l as Be, r as ht, u as dt, n as ut, _ as ie, s as ct, o as pt } from "./Launch-CW_ei-TR.js";
 class gt {
   constructor({
     HTMLElement: a,
@@ -351,7 +351,7 @@ const vt = { id: "machining" }, mt = {
   emits: /* @__PURE__ */ Ye(["update:shape", "close"], ["update:shape"]),
   setup(T, { emit: a }) {
     var ve, me, fe, be, Se, xe, ye, He, we, Ce, Le, ke, De;
-    const n = lt(() => import("./ObjectViewer-CW0Ix_lM.js")), t = T, v = a, h = E(() => rt(s.value)), L = E(() => ot.call({ options: t.options }, ["units"])), f = E(() => {
+    const n = lt(() => import("./ObjectViewer-CiQxWpYL.js")), t = T, v = a, h = E(() => rt(s.value)), L = E(() => ot.call({ options: t.options }, ["units"])), f = E(() => {
       var i;
       if (!((i = B.value) != null && i.length)) return 0;
       if (l.value === "banding") return 1;
