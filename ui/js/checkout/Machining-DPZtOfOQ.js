@@ -1,15 +1,15 @@
-var Je = Object.defineProperty;
-var Ze = (T, a, n) => a in T ? Je(T, a, { enumerable: !0, configurable: !0, writable: !0, value: n }) : T[a] = n;
-var u = (T, a, n) => Ze(T, typeof a != "symbol" ? a + "" : a, n);
-import { B as et, Q as Ye, C as E, R as tt, r as Y, f as ze, w as M, o as st, n as se, G as at, j as c, k as g, I as ae, u as Te, A as x, t as b, v as P, p as O, H as j, q as Ae, F as q, l as N, x as it, y as nt, L as lt } from "./main-DFMVGBIU.js";
-import { e as z, f as S, h as Ee, v as V, i as rt, j as ht, k as Be, r as ot, u as dt, l as ut, I as ie, s as ct, n as pt } from "./Launch-CFZ5pGuw.js";
+var Ze = Object.defineProperty;
+var Ie = (T, a, n) => a in T ? Ze(T, a, { enumerable: !0, configurable: !0, writable: !0, value: n }) : T[a] = n;
+var u = (T, a, n) => Ie(T, typeof a != "symbol" ? a + "" : a, n);
+import { B as et, Q as Ye, C as E, R as tt, r as Y, f as ze, w as M, o as st, n as se, H as at, j as c, k as g, J as ae, u as Te, A as x, t as b, v as P, p as O, I as j, q as Ae, F as q, l as N, x as it, y as nt, L as lt } from "./main-8aQ3tJEo.js";
+import { f as z, h as S, i as Ee, v as V, j as rt, k as ot, l as Be, r as ht, u as dt, n as ut, _ as ie, s as ct, o as pt } from "./Launch-hfjB2kG6.js";
 class gt {
   constructor({
     HTMLElement: a,
     vueComponent: n,
     shape: t,
     units: v = "decimal",
-    decimalPlaces: o = 2
+    decimalPlaces: h = 2
   }) {
     u(this, "HTMLElement");
     u(this, "HTMLElementWidth");
@@ -41,7 +41,7 @@ class gt {
     u(this, "legendGroup");
     u(this, "pointGroup");
     u(this, "loaded", !1);
-    this.HTMLElement = a, this.units = v, this.decimalPlaces = o, this.HTMLElementWidth = this.HTMLElement.offsetWidth, this.vueComponent = n, this.shape = t, this.w = 0, this.h = 0;
+    this.HTMLElement = a, this.units = v, this.decimalPlaces = h, this.HTMLElementWidth = this.HTMLElement.offsetWidth, this.vueComponent = n, this.shape = t, this.w = 0, this.h = 0;
   }
   init() {
     if (!this.loaded) {
@@ -74,25 +74,25 @@ class gt {
       const f = n[L];
       f && f.type ? (t.push(f.size ? S(f.size) : 0), v.push(f.type)) : (t.push(0), v.push(null));
     });
-    const o = (L, f, k, h, B) => {
+    const h = (L, f, k, o, B) => {
       v[L] === "radius" ? a.arcTo(
         this.xScale(f),
         this.getYScale()(k),
-        this.xScale(h),
+        this.xScale(o),
         this.getYScale()(B),
         this.measurementScale(t[L])
-      ) : v[L] === "bevel" ? a.lineTo(this.xScale(h), this.getYScale()(B)) : (a.lineTo(this.xScale(f), this.getYScale()(k)), a.lineTo(this.xScale(h), this.getYScale()(B)));
+      ) : v[L] === "bevel" ? a.lineTo(this.xScale(o), this.getYScale()(B)) : (a.lineTo(this.xScale(f), this.getYScale()(k)), a.lineTo(this.xScale(o), this.getYScale()(B)));
     };
-    a.moveTo(this.xScale(0), this.getYScale()(t[0])), o(0, 0, 0, t[0], 0), (v[0] === "bevel" || v[1] === "bevel") && a.lineTo(this.xScale(this.shapeL - t[1]), this.getYScale()(0)), o(1, this.shapeL, 0, this.shapeL, t[1]), (v[1] === "bevel" || v[2] === "bevel") && a.lineTo(
+    a.moveTo(this.xScale(0), this.getYScale()(t[0])), h(0, 0, 0, t[0], 0), (v[0] === "bevel" || v[1] === "bevel") && a.lineTo(this.xScale(this.shapeL - t[1]), this.getYScale()(0)), h(1, this.shapeL, 0, this.shapeL, t[1]), (v[1] === "bevel" || v[2] === "bevel") && a.lineTo(
       this.xScale(this.shapeL),
       this.getYScale()(this.shapeW - t[2])
-    ), o(
+    ), h(
       2,
       this.shapeL,
       this.shapeW,
       this.shapeL - t[2],
       this.shapeW
-    ), (v[2] === "bevel" || v[3] === "bevel") && a.lineTo(this.xScale(t[3]), this.getYScale()(this.shapeW)), o(3, 0, this.shapeW, 0, this.shapeW - t[3]), a.closePath(), this.shapeGroup.append("path").attr("id", "shape").attr("d", a.toString());
+    ), (v[2] === "bevel" || v[3] === "bevel") && a.lineTo(this.xScale(t[3]), this.getYScale()(this.shapeW)), h(3, 0, this.shapeW, 0, this.shapeW - t[3]), a.closePath(), this.shapeGroup.append("path").attr("id", "shape").attr("d", a.toString());
   }
   createLegend() {
     this.legendGroup.selectAll("*").remove();
@@ -133,9 +133,9 @@ class gt {
   createBanding() {
     this.svgCanvas.selectAll(".banding-group > *").remove();
     const a = this.shape.banding, n = -1, t = [];
-    for (const o of Ee)
-      if (a[o])
-        switch (o) {
+    for (const h of Ee)
+      if (a[h])
+        switch (h) {
           case "x1":
             t.push({
               x1: this.padding - n,
@@ -173,85 +173,85 @@ class gt {
             });
             break;
         }
-    this.bandingGroup.selectAll("g").data(t).join("line").attr("class", "banding").attr("x1", (o) => o.x1).attr("x2", (o) => o.x2).attr("y1", (o) => o.y1).attr("y2", (o) => o.y2).attr("stroke-width", this.bandingStrokeWidth);
+    this.bandingGroup.selectAll("g").data(t).join("line").attr("class", "banding").attr("x1", (h) => h.x1).attr("x2", (h) => h.x2).attr("y1", (h) => h.y1).attr("y2", (h) => h.y2).attr("stroke-width", this.bandingStrokeWidth);
     const v = z.path();
-    this.shape.machining.corners.forEach((o, L) => {
-      if (!o.type) return;
-      let f, k, h;
+    this.shape.machining.corners.forEach((h, L) => {
+      if (!h.type) return;
+      let f, k, o;
       switch (L) {
         case 0:
           if (!V(a.a) || a.a === !1) return;
           f = {
             x: this.xScale(0) - n,
-            y: this.getYScale()(S(o.size ?? 0))
+            y: this.getYScale()(S(h.size ?? 0))
           }, k = {
             x: this.xScale(0),
             y: this.getYScale()(0)
-          }, h = {
-            x: this.xScale(S(o.size ?? 0)),
+          }, o = {
+            x: this.xScale(S(h.size ?? 0)),
             y: this.getYScale()(0) + (this.currentSide === 0 ? n : -n)
           };
           break;
         case 1:
           if (!V(a.b) || a.b === !1) return;
           f = {
-            x: this.xScale(this.shapeL - S(o.size ?? 0)),
+            x: this.xScale(this.shapeL - S(h.size ?? 0)),
             y: this.getYScale()(0) + (this.currentSide === 0 ? n : -n)
           }, k = {
             x: this.xScale(this.shapeL) - n,
             y: this.getYScale()(0)
-          }, h = {
+          }, o = {
             x: this.xScale(this.shapeL) + n,
-            y: this.getYScale()(S(o.size ?? 0))
+            y: this.getYScale()(S(h.size ?? 0))
           };
           break;
         case 2:
           if (!V(a.c) || a.c === !1) return;
           f = {
             x: this.xScale(this.shapeL) + n,
-            y: this.getYScale()(this.shapeW - S(o.size ?? 0))
+            y: this.getYScale()(this.shapeW - S(h.size ?? 0))
           }, k = {
             x: this.xScale(this.shapeL),
             y: this.getYScale()(this.shapeW)
-          }, h = {
-            x: this.xScale(this.shapeL - S(o.size ?? 0)) - n,
+          }, o = {
+            x: this.xScale(this.shapeL - S(h.size ?? 0)) - n,
             y: this.getYScale()(this.shapeW) + (this.currentSide === 1 ? n : -n)
           };
           break;
         case 3:
           if (!V(a.d) || a.d === !1) return;
           f = {
-            x: this.xScale(S(o.size ?? 0)),
+            x: this.xScale(S(h.size ?? 0)),
             y: this.getYScale()(this.shapeW) + (this.currentSide === 1 ? n : -n)
           }, k = {
             x: this.xScale(0),
             y: this.getYScale()(this.shapeW)
-          }, h = {
+          }, o = {
             x: this.xScale(0) - n,
-            y: this.getYScale()(this.shapeW - S(o.size ?? 0)) + n
+            y: this.getYScale()(this.shapeW - S(h.size ?? 0)) + n
           };
           break;
         default:
           return;
       }
-      if (v.moveTo(f.x, f.y), o.type === "radius")
+      if (v.moveTo(f.x, f.y), h.type === "radius")
         switch (v.arcTo(
           k.x,
           k.y,
-          h.x,
-          h.y,
-          this.measurementScale(o.size ?? 0)
+          o.x,
+          o.y,
+          this.measurementScale(h.size ?? 0)
         ), L) {
           case 0:
           case 2:
-            v.lineTo(h.x + n, h.y);
+            v.lineTo(o.x + n, o.y);
             break;
           case 1:
           case 3:
-            v.lineTo(h.x, h.y - (this.currentSide === 0 ? n : -1));
+            v.lineTo(o.x, o.y - (this.currentSide === 0 ? n : -1));
             break;
         }
-      else o.type === "bevel" && v.lineTo(h.x, h.y);
+      else h.type === "bevel" && v.lineTo(o.x, o.y);
       this.bandingGroup.append("path").attr("class", () => `banding corner ${["a", "b", "c", "d"][L]}`).attr("stroke-width", this.bandingStrokeWidth).attr("d", v.toString());
     });
   }
@@ -351,11 +351,11 @@ const vt = { id: "machining" }, mt = {
   emits: /* @__PURE__ */ Ye(["update:shape", "close"], ["update:shape"]),
   setup(T, { emit: a }) {
     var ve, me, fe, be, Se, xe, ye, He, we, Ce, Le, ke, De;
-    const n = lt(() => import("./ObjectViewer-DL0r1Qhs.js")), t = T, v = a, o = E(() => rt(s.value)), L = E(() => ht.call({ options: t.options }, ["units"])), f = E(() => {
+    const n = lt(() => import("./ObjectViewer-CW0Ix_lM.js")), t = T, v = a, h = E(() => rt(s.value)), L = E(() => ot.call({ options: t.options }, ["units"])), f = E(() => {
       var i;
       if (!((i = B.value) != null && i.length)) return 0;
       if (l.value === "banding") return 1;
-      let e = Object.values(h.value).filter((r) => r.enabled).length;
+      let e = Object.values(o.value).filter((r) => r.enabled).length;
       return e += 2, e;
     }), k = E(() => {
       if (!B.value.length || l.value === "banding") return;
@@ -364,20 +364,20 @@ const vt = { id: "machining" }, mt = {
         del: "30px"
       }, i = [];
       return B.value.forEach((r) => {
-        const p = h.value[r];
+        const p = o.value[r];
         p.enabled && i.push(p.w ?? "1fr");
       }), i.unshift(e.id), i.push(e.del), i.join(" ");
-    }), h = E(() => !l.value || l.value === "banding" ? null : te[l.value]), B = E(() => !l.value || l.value === "banding" ? [] : Object.keys(te[l.value]).filter((e) => te[l.value][e].enabled)), ne = E(() => l.value ? Oe() : []), Ge = E(() => {
+    }), o = E(() => !l.value || l.value === "banding" ? null : te[l.value]), B = E(() => !l.value || l.value === "banding" ? [] : Object.keys(te[l.value]).filter((e) => te[l.value][e].enabled)), ne = E(() => l.value ? Oe() : []), Ge = E(() => {
       var i, r, p, W;
       const e = ((W = (p = (r = (i = s.value) == null ? void 0 : i.machining) == null ? void 0 : r.corners) == null ? void 0 : p.map((H) => {
-        var _;
-        return (_ = H == null ? void 0 : H.isPresent) != null && _.call(H) ? H.getCorner() : null;
+        var R;
+        return (R = H == null ? void 0 : H.isPresent) != null && R.call(H) ? H.getCorner() : null;
       })) == null ? void 0 : W.filter((H) => H)) ?? [];
       return [...Ee, ...e];
     }), C = (e = !0) => {
-      e ? Z.value = e : se(() => Z.value = !1);
+      e ? I.value = e : se(() => I.value = !1);
     }, Me = () => {
-      re(), he(), oe(), Ue();
+      re(), oe(), he(), Ue();
     }, K = (e, i, r) => {
       se(() => {
         e[i] = r;
@@ -397,7 +397,7 @@ const vt = { id: "machining" }, mt = {
             return e;
         }
       return e + 1;
-    }, le = () => l.value !== "banding", R = (e, i = null) => {
+    }, le = () => l.value !== "banding", $ = (e, i = null) => {
       if (!(e != null && e.length)) return [];
       let r = "None";
       i === "depth" && (r = "Through");
@@ -413,7 +413,7 @@ const vt = { id: "machining" }, mt = {
       return Array.isArray(e) ? e : [e];
     };
     let y = null;
-    const I = () => {
+    const J = () => {
       s.value && (y = new gt({
         HTMLElement: document.querySelector("#machining-diagram"),
         shape: s.value,
@@ -424,16 +424,16 @@ const vt = { id: "machining" }, mt = {
       }, 100));
     }, Fe = () => {
       F.value = F.value === 0 ? 1 : 0, y.flip();
-    }, $e = () => {
+    }, _e = () => {
       switch (l.value) {
         case "holes":
-          Re();
+          $e();
           break;
         case "hingeHoles":
-          _e();
+          Re();
           break;
       }
-    }, Re = () => {
+    }, $e = () => {
       s.value.machining.createHole(
         S(s.value.getLongSide()) / 2,
         S(s.value.getShortSide()) / 2,
@@ -441,7 +441,7 @@ const vt = { id: "machining" }, mt = {
         t.options.holes.defaultDepth ?? 0,
         F.value
       ), y.createHoles();
-    }, _e = () => {
+    }, Re = () => {
       s.value.machining.createHingeHoles({
         numHoles: 3,
         position: 0,
@@ -456,9 +456,9 @@ const vt = { id: "machining" }, mt = {
       }), y.createHingeHoles();
     }, re = () => {
       s.value.machining.holes.length = 0;
-    }, he = () => {
-      s.value.machining.hingeHoles.length = 0;
     }, oe = () => {
+      s.value.machining.hingeHoles.length = 0;
+    }, he = () => {
       s.value.machining.corners.forEach((e) => {
         e.size = null, e.type = null;
       }), s.value.banding.a = !1, s.value.banding.b = !1, s.value.banding.c = !1, s.value.banding.d = !1;
@@ -488,9 +488,9 @@ const vt = { id: "machining" }, mt = {
         case "holes":
           return re();
         case "hingeHoles":
-          return he();
-        case "corners":
           return oe();
+        case "corners":
+          return he();
       }
     }, de = () => {
       var e;
@@ -514,7 +514,7 @@ const vt = { id: "machining" }, mt = {
       return r != null && r.length ? r.includes(i) : !1;
     }, Ke = () => {
       v("close");
-    }, X = (e) => typeof e.disabled == "function" ? e.disabled() : !1, Ie = (e, i, r, p, W) => {
+    }, X = (e) => typeof e.disabled == "function" ? e.disabled() : !1, Je = (e, i, r, p, W) => {
       ct(e, i, r, p, W, t.findExtrasPrice);
     }, Qe = (e, i, r, p) => {
       pt(
@@ -528,7 +528,7 @@ const vt = { id: "machining" }, mt = {
     }, s = tt(T, "shape");
     if (!((ve = s.value) != null && ve.machining))
       throw new Error("Machining component requires a shape with machining initialized");
-    const J = Y(null), ue = Y(null), Xe = Y(!1), ce = Y(!1), pe = Y(!1), Z = Y(!1), ge = Y(!1), F = Y(0), l = Y(null), ee = Y(0), D = Y([]), te = ze({
+    const Z = Y(null), ue = Y(null), Xe = Y(!1), ce = Y(!1), pe = Y(!1), I = Y(!1), ge = Y(!1), F = Y(0), l = Y(null), ee = Y(0), D = Y([]), te = ze({
       holes: {
         x: {
           enabled: !0,
@@ -545,7 +545,7 @@ const vt = { id: "machining" }, mt = {
           type: (me = t.options.holes.diameters) != null && me.length ? "select" : "unitDependent",
           label: "Diameter",
           output: (fe = t.options.holes.diameters) != null && fe.length ? "float" : void 0,
-          options: (be = t.options.holes.diameters) != null && be.length ? R(t.options.holes.diameters) : void 0
+          options: (be = t.options.holes.diameters) != null && be.length ? $(t.options.holes.diameters) : void 0
         },
         depth: {
           enabled: t.options.holes.enableDepth && typeof s.value.t < "u" && S(s.value.t) > 0,
@@ -553,7 +553,7 @@ const vt = { id: "machining" }, mt = {
           allowBlank: !0,
           type: (Se = t.options.holes.depths) != null && Se.length ? "select" : "unitDependent",
           output: (xe = t.options.holes.depths) != null && xe.length ? "float" : void 0,
-          options: (ye = t.options.holes.depths) != null && ye.length ? R(t.options.holes.depths) : void 0
+          options: (ye = t.options.holes.depths) != null && ye.length ? $(t.options.holes.depths) : void 0
         },
         face: {
           enabled: t.options.faces.enabled,
@@ -601,7 +601,7 @@ const vt = { id: "machining" }, mt = {
           allowBlank: !0,
           type: (He = t.options.holes.depths) != null && He.length ? "select" : "unitDependent",
           output: (we = t.options.holes.depths) != null && we.length ? "float" : void 0,
-          options: (Ce = t.options.holes.depths) != null && Ce.length ? R(t.options.holes.depths) : void 0
+          options: (Ce = t.options.holes.depths) != null && Ce.length ? $(t.options.holes.depths) : void 0
         },
         //[] separate option for hinges
         diameter: {
@@ -609,7 +609,7 @@ const vt = { id: "machining" }, mt = {
           type: (Le = t.options.holes.diameters) != null && Le.length ? "select" : "unitDependent",
           label: "Diameter",
           output: (ke = t.options.holes.diameters) != null && ke.length ? "float" : void 0,
-          options: (De = t.options.holes.diameters) != null && De.length ? R(t.options.holes.diameters) : void 0
+          options: (De = t.options.holes.diameters) != null && De.length ? $(t.options.holes.diameters) : void 0
         },
         numHoles: {
           enabled: !0,
@@ -677,7 +677,7 @@ const vt = { id: "machining" }, mt = {
           label: "Type",
           type: "select",
           output: "string",
-          options: R(t.options.corners.types)
+          options: $(t.options.corners.types)
         },
         size: {
           enabled: !0,
@@ -711,18 +711,18 @@ const vt = { id: "machining" }, mt = {
       }
     }), G = () => {
       var e;
-      return !(!((e = s == null ? void 0 : s.value) != null && e.machining) || !ce.value || Z.value);
+      return !(!((e = s == null ? void 0 : s.value) != null && e.machining) || !ce.value || I.value);
     };
     return M(() => {
       var e;
       return (e = s.value) == null ? void 0 : e.listId;
     }, () => {
-      G() && I();
+      G() && J();
     }), M(() => {
       var e;
       return (e = s.value) == null ? void 0 : e.id;
     }, () => {
-      G() && I();
+      G() && J();
     }), M(l, (e) => {
       if (G()) {
         if (e === "banding") {
@@ -772,7 +772,7 @@ const vt = { id: "machining" }, mt = {
           m == null ? void 0 : m.corners
         ), s.value.machining.validate(s.value, "holes"), s.value.machining.validate(s.value, "hingeHoles"), y.createShape(), y.createHoles(), y.createHingeHoles();
         for (const e of s.value.machining.corners)
-          e.isPresent() || ot(s.value, "banding", e.getCorner(), !0);
+          e.isPresent() || ht(s.value, "banding", e.getCorner(), !0);
         y.createBanding(), C(!1);
       }
     }, { deep: !0, immediate: !0 }), M(() => {
@@ -786,9 +786,9 @@ const vt = { id: "machining" }, mt = {
         console.warn("no part provided to machining");
         return;
       }
-      se(() => I());
+      se(() => J());
       const e = document.querySelector("#smartcut-app #machining .diagram");
-      J.value || (J.value = new ResizeObserver((r) => {
+      Z.value || (Z.value = new ResizeObserver((r) => {
         clearTimeout(ue.value ?? void 0), pe.value && (ue.value = window.setTimeout(() => {
           if (ge.value) {
             ge.value = !1;
@@ -796,9 +796,9 @@ const vt = { id: "machining" }, mt = {
           }
           r[0].contentRect.width !== ee.value && (ee.value = r[0].contentRect.width, ee.value && y.updateSize());
         }, 10));
-      }), J.value.observe(e)), ce.value = !0;
+      }), Z.value.observe(e)), ce.value = !0;
     }), (e, i) => {
-      var p, W, H, _, We;
+      var p, W, H, R, We;
       const r = at("font-awesome-icon");
       return c(), g("div", vt, [
         e.env === "development" && Xe.value ? (c(), g("div", mt, [
@@ -817,7 +817,7 @@ const vt = { id: "machining" }, mt = {
               ae(r, { icon: ["fass", "xmark"] })
             ]),
             (p = s.value) != null && p.name ? (c(), g("div", bt, P(s.value.name), 1)) : x("", !0),
-            b("div", St, P((W = s.value) == null ? void 0 : W.l) + " x " + P((H = s.value) == null ? void 0 : H.w) + " " + P((_ = s.value) != null && _.t ? "x " + ((We = s.value) == null ? void 0 : We.t) : null), 1),
+            b("div", St, P((W = s.value) == null ? void 0 : W.l) + " x " + P((H = s.value) == null ? void 0 : H.w) + " " + P((R = s.value) != null && R.t ? "x " + ((We = s.value) == null ? void 0 : We.t) : null), 1),
             e.options.faces.enabled ? (c(), g("div", xt, [
               b("div", {
                 ref: "sides",
@@ -829,7 +829,7 @@ const vt = { id: "machining" }, mt = {
               ]), 2),
               i[5] || (i[5] = b("div", { class: "text" }, " [Click to flip] ", -1))
             ])) : x("", !0),
-            o.value ? (c(), g("button", {
+            h.value ? (c(), g("button", {
               key: 2,
               onClick: Me
             }, " Delete all machining ")) : x("", !0),
@@ -859,7 +859,7 @@ const vt = { id: "machining" }, mt = {
               l.value === "holes" || l.value === "hingeHoles" ? (c(), g("button", {
                 key: 0,
                 type: "button",
-                onClick: $e
+                onClick: _e
               }, " Create ")) : x("", !0),
               l.value && l.value !== "banding" ? (c(), g("button", {
                 key: 1,
@@ -884,7 +884,7 @@ const vt = { id: "machining" }, mt = {
               "get-price": e.getExtrasPrice,
               "format-price": e.formatPrice,
               "get-available-pricing-options": e.getAvailablePricingOptions,
-              onSet: Ie,
+              onSet: Je,
               onUpdateAll: Qe
             }, null, 8, ["shape", "env", "extra-keys", "labels", "all-options", "pricing", "user-friendly-field-map", "translate", "get-price", "format-price", "get-available-pricing-options"])) : x("", !0),
             l.value !== "banding" && ne.value.length ? (c(), g("div", {
@@ -894,7 +894,7 @@ const vt = { id: "machining" }, mt = {
             }, [
               b("div", wt, [
                 le() ? (c(), g("div", Ct)) : x("", !0),
-                (c(!0), g(q, null, N(h.value, (w, A, d) => it((c(), g("div", {
+                (c(!0), g(q, null, N(o.value, (w, A, d) => it((c(), g("div", {
                   key: d,
                   class: "cell"
                 }, P(w.label ?? A), 1)), [
@@ -909,42 +909,42 @@ const vt = { id: "machining" }, mt = {
                 le() ? (c(), g("div", Lt, [
                   b("div", kt, P(Pe(A)), 1)
                 ])) : x("", !0),
-                (c(!0), g(q, null, N(B.value, (d, $) => (c(), g("div", {
-                  key: $,
+                (c(!0), g(q, null, N(B.value, (d, _) => (c(), g("div", {
+                  key: _,
                   class: "cell"
                 }, [
-                  h.value[d].type !== "select" && h.value[d].type !== "checkbox" ? (c(), j(ie, {
+                  o.value[d].type !== "select" && o.value[d].type !== "checkbox" ? (c(), j(ie, {
                     key: 0,
-                    id: d + "-" + $,
+                    id: d + "-" + _,
                     warning: Q(A, d),
-                    type: h.value[d].output ?? "unitDependent",
+                    type: o.value[d].output ?? "unitDependent",
                     "enable-label": !1,
-                    placeholder: h.value[d].label ?? d,
-                    disabled: X(h.value[d]),
+                    placeholder: o.value[d].label ?? d,
+                    disabled: X(o.value[d]),
                     value: w[d],
                     units: L.value,
-                    output: h.value[d].output,
+                    output: o.value[d].output,
                     onUpdate: (U) => K(w, d, U)
-                  }, null, 8, ["id", "warning", "type", "placeholder", "disabled", "value", "units", "output", "onUpdate"])) : h.value[d].type === "checkbox" ? (c(), j(ie, {
+                  }, null, 8, ["id", "warning", "type", "placeholder", "disabled", "value", "units", "output", "onUpdate"])) : o.value[d].type === "checkbox" ? (c(), j(ie, {
                     key: 1,
-                    id: d + "-" + $,
+                    id: d + "-" + _,
                     type: "checkbox",
                     warning: Q(A, d),
                     "enable-label": !1,
-                    disabled: X(h.value[d]),
+                    disabled: X(o.value[d]),
                     value: w[d],
-                    output: h.value[d].output,
+                    output: o.value[d].output,
                     onUpdate: (U) => K(w, d, U)
-                  }, null, 8, ["id", "warning", "disabled", "value", "output", "onUpdate"])) : h.value[d].type === "select" ? (c(), j(ie, {
+                  }, null, 8, ["id", "warning", "disabled", "value", "output", "onUpdate"])) : o.value[d].type === "select" ? (c(), j(ie, {
                     key: 2,
-                    id: d + "-" + $,
+                    id: d + "-" + _,
                     type: "select",
                     "enable-label": !1,
                     warning: Q(A, d),
-                    disabled: X(h.value[d]),
+                    disabled: X(o.value[d]),
                     value: w[d],
-                    options: h.value[d].options,
-                    output: h.value[d].output,
+                    options: o.value[d].options,
+                    output: o.value[d].output,
                     onUpdate: (U) => K(w, d, U)
                   }, null, 8, ["id", "warning", "disabled", "value", "options", "output", "onUpdate"])) : x("", !0)
                 ]))), 128)),
@@ -956,8 +956,8 @@ const vt = { id: "machining" }, mt = {
                     ae(r, { icon: ["fass", "trash"] })
                   ])
                 ], 8, Dt),
-                (c(!0), g(q, null, N(Ne(A), (d, $) => (c(), g("div", {
-                  key: $,
+                (c(!0), g(q, null, N(Ne(A), (d, _) => (c(), g("div", {
+                  key: _,
                   class: "group validation",
                   style: Ae({ "grid-column-end": "span " + f.value })
                 }, P(d), 5))), 128))

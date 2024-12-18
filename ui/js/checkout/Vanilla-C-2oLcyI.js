@@ -1,9 +1,9 @@
-import { C as R, g as c, m as j, c as m } from "./Launch-CFZ5pGuw.js";
-import { B as x, r, s as A, M as U, O as D, o as H, j as C, k as M, H as T, u as $, A as F, F as J, L as I, n as W } from "./main-DFMVGBIU.js";
+import { C as R, g as c, m as j, c as m } from "./Launch-hfjB2kG6.js";
+import { B as x, r, s as A, M as U, O as D, o as M, j as C, k as $, I as T, u as H, A as F, F as I, L as J, n as W } from "./main-8aQ3tJEo.js";
 const K = /* @__PURE__ */ x({
   __name: "Vanilla",
   setup(q, { expose: N }) {
-    const O = I(() => import("./FormulaPricing-DVQyavY6.js")), l = r(!1), h = r([]), o = r({
+    const O = J(() => import("./FormulaPricing--BfBx95c.js")), l = r(!1), h = r([]), o = r({
       banding: null,
       finish: null,
       machining: null
@@ -77,7 +77,7 @@ const K = /* @__PURE__ */ x({
       console.log("💥 Powered by https://smartcut.dev");
       const e = new URLSearchParams(window.location.search);
       l.value = !!e.get("debug"), l.value && console.log("Smartcut - debug enabled");
-    }), H(() => {
+    }), M(() => {
       window.smartcutCheckout = {
         init: _
       };
@@ -101,8 +101,8 @@ const K = /* @__PURE__ */ x({
       formatPrice: b,
       findExtrasPrice: L,
       setHardwareResult: E
-    }), (e, n) => (C(), M(J, null, [
-      s.value === "formula" && (v.value || p.value) ? (C(), T($(O), {
+    }), (e, n) => (C(), $(I, null, [
+      s.value === "formula" && (v.value || p.value) ? (C(), T(H(O), {
         key: 0,
         ref: "formulapricing",
         "format-price": b,

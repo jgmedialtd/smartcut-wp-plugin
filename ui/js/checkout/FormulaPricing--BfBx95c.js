@@ -1,19 +1,19 @@
 var Q = Object.defineProperty;
 var X = (h, e, t) => e in h ? Q(h, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : h[e] = t;
-var _ = (h, e, t) => X(h, typeof e != "symbol" ? e + "" : e, t);
-import { I as ee } from "./Launch-CFZ5pGuw.js";
-import { B as te, E as re, P as se, C as A, r as I, n as V, w as ne, o as ae, j as y, k as E, t as x, H, u as k, A as U, I as ie, F as D, l as B, v as b, L as oe } from "./main-DFMVGBIU.js";
+var N = (h, e, t) => X(h, typeof e != "symbol" ? e + "" : e, t);
+import { _ as ee } from "./Launch-hfjB2kG6.js";
+import { B as te, G as re, P as se, C as A, r as x, n as V, w as ne, o as ae, j as y, k as E, t as I, I as H, u as k, A as U, J as ie, F as D, l as B, v as b, L as oe } from "./main-8aQ3tJEo.js";
 class F extends Error {
   constructor(e, t) {
     super(e), this.code = t, this.name = "FormulaError";
   }
 }
-class z {
+class G {
   constructor({ url: e = null, spec: t = null }) {
-    _(this, "url");
-    _(this, "spec");
+    N(this, "url");
+    N(this, "spec");
     // Update the operations object to use the FormulaOperation type
-    _(this, "operations", {
+    N(this, "operations", {
       add: (e, t) => e + t,
       subtract: (e, t) => e - t,
       multiply: (e, t) => e * t,
@@ -27,7 +27,7 @@ class z {
       "<=": (e, t) => e <= t,
       "==": (e, t) => e === t
     });
-    _(this, "precedence", {
+    N(this, "precedence", {
       "+": 4,
       "-": 4,
       "*": 5,
@@ -481,20 +481,20 @@ const le = {
   },
   emits: ["hardware-result", "panel-result"],
   setup(h, { emit: e }) {
-    const t = oe(() => import("./ObjectViewer-DL0r1Qhs.js")), r = h, { t: n } = re({
+    const t = oe(() => import("./ObjectViewer-CW0Ix_lM.js")), r = h, { t: n } = re({
       locale: "en_US",
       useScope: "global"
-    }), s = e, i = se("calculator"), a = A(() => i()), o = I("production");
+    }), s = e, i = se("calculator"), a = A(() => i()), o = x("production");
     let w = null;
-    const M = I(!0), m = I(null), d = I([]), g = I(!1), O = A(() => {
+    const M = x(!0), m = x(null), d = x([]), g = x(!1), O = A(() => {
       if (!g.value || !d.value.length || d.value.every((p) => p.value === null)) return;
-      const l = R();
+      const l = K();
       return V(() => {
         s("panel-result", l);
       }), l;
     }), c = A(() => {
       if (!a.value || !g.value || !d.value.length || d.value.every((p) => p.value === null)) return;
-      const l = J();
+      const l = R();
       return V(() => {
         s("hardware-result", l, P.value);
       }), l;
@@ -503,7 +503,7 @@ const le = {
         return Object.values(c.value).reduce((l, p) => l + p.totalCost, 0);
     });
     ne(O, (l) => {
-      var $, S, N, j;
+      var $, S, _, j;
       if (!g.value || !l || !a.value || !(($ = a.value) != null && $.inputShapes) || !((S = a.value.inputShapes) != null && S.length)) return;
       const p = (u) => u != null && u.name ? u.name.toLowerCase() : "", C = new Map(
         a.value.inputShapes.map((u) => [p(u), u])
@@ -513,7 +513,7 @@ const le = {
         const q = p(u), v = C.get(q), T = {
           ...u,
           name: u.name.toUpperCase() || (v == null ? void 0 : v.name.toUpperCase()),
-          material: ((N = u.material) == null ? void 0 : N.toUpperCase()) || ((j = v == null ? void 0 : v.material) == null ? void 0 : j.toUpperCase()),
+          material: ((_ = u.material) == null ? void 0 : _.toUpperCase()) || ((j = v == null ? void 0 : v.material) == null ? void 0 : j.toUpperCase()),
           bandingOptions: u.bandingOptions || {},
           finishOptions: u.finishOptions || {},
           orientationLock: u.orientationLock || null,
@@ -533,20 +533,20 @@ const le = {
     }, { immediate: !1 }), ae(() => W());
     const L = (l) => {
       r.debug && console.log(l);
-    }, G = () => {
+    }, z = () => {
       d.value = Object.values(m.value.inputs).map(() => ({
         value: null
       }));
-    }, K = (l, p) => {
+    }, J = (l, p) => {
       d.value[l] && (d.value[l].value = p);
-    }, R = () => {
+    }, K = () => {
       try {
         return w.calculatePanelsFromFields(d.value);
       } catch (l) {
         console.warn("Smartcut formula error:", l.message.split(`
 `)[0]);
       }
-    }, J = () => {
+    }, R = () => {
       try {
         return w.calculateHardwareFromFields(d.value);
       } catch (l) {
@@ -558,13 +558,13 @@ const le = {
         console.warn("SmartCut - No formula URL or JSON provided");
         return;
       }
-      r.url ? (L(`SmartCut - Formula calculator init from url: ${r.url}`), w = new z({ url: r.url }), m.value = await w.getSpec()) : r.spec && (L("SmartCut - Formula calculator init with JSON"), w = new z({ spec: r.spec }), m.value = await w.getSpec()), G(), g.value = !0;
+      r.url ? (L(`SmartCut - Formula calculator init from url: ${r.url}`), w = new G({ url: r.url }), m.value = await w.getSpec()) : r.spec && (L("SmartCut - Formula calculator init with JSON"), w = new G({ spec: r.spec }), m.value = await w.getSpec()), z(), g.value = !0;
     };
     return (l, p) => {
       var C;
       return y(), E(D, null, [
         o.value === "development" && M.value ? (y(), E("div", le, [
-          p[0] || (p[0] = x("div", null, "Developer information", -1)),
+          p[0] || (p[0] = I("div", null, "Developer information", -1)),
           m.value ? (y(), H(k(t), {
             key: 0,
             data: [m.value],
@@ -575,9 +575,9 @@ const le = {
             paths: ["this.fields"]
           }, null, 8, ["data"])
         ])) : U("", !0),
-        x("div", ue, [
+        I("div", ue, [
           (y(!0), E(D, null, B((C = m.value) == null ? void 0 : C.inputs, (f, $, S) => {
-            var N;
+            var _;
             return y(), H(ee, {
               id: "formula-field-" + S,
               key: S,
@@ -587,16 +587,16 @@ const le = {
               min: f.min ?? null,
               max: f.max ?? null,
               default: f.default ?? null,
-              value: (N = d.value[S]) == null ? void 0 : N.value,
-              onUpdate: (j) => K(S, j)
+              value: (_ = d.value[S]) == null ? void 0 : _.value,
+              onUpdate: (j) => J(S, j)
             }, null, 8, ["id", "type", "label", "placeholder", "min", "max", "default", "value", "onUpdate"]);
           }), 128)),
           c.value ? (y(), E("div", ce, [
-            x("div", pe, b(k(n)("Hardware")), 1),
+            I("div", pe, b(k(n)("Hardware")), 1),
             (y(!0), E(D, null, B(c.value, (f, $) => (y(), E("div", { key: $ }, b(f.name) + " x" + b(f.q) + " = " + b(h.formatPrice(f.totalCost)), 1))), 128)),
-            x("div", he, b(k(n)("Hardware total")) + " = " + b(h.formatPrice(P.value)), 1)
+            I("div", he, b(k(n)("Hardware total")) + " = " + b(h.formatPrice(P.value)), 1)
           ])) : U("", !0),
-          x("div", de, b(k(n)("Panels")), 1)
+          I("div", de, b(k(n)("Panels")), 1)
         ])
       ], 64);
     };
