@@ -1,9 +1,9 @@
-import { C as R, g as c, m as j, c as m } from "./Launch-CW_ei-TR.js";
-import { B as x, r, s as A, M as U, O as D, o as M, j as C, k as $, I as T, u as H, A as F, F as I, L as J, n as W } from "./main-DfsctvzU.js";
+import { C as R, g as c, m as j, c as m } from "./Launch-CrTgMtK3.js";
+import { B as x, r, s as A, M as U, O as D, o as M, j as C, k as $, I as T, u as H, A as F, F as I, L as J, n as W } from "./main-DgeV7rRL.js";
 const K = /* @__PURE__ */ x({
   __name: "Vanilla",
   setup(q, { expose: N }) {
-    const O = J(() => import("./FormulaPricing-CbUlguqE.js")), l = r(!1), h = r([]), o = r({
+    const O = J(() => import("./FormulaPricing-LLMrpPAH.js")), l = r(!1), h = r([]), o = r({
       banding: null,
       finish: null,
       machining: null
