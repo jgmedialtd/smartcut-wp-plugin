@@ -280,7 +280,7 @@ class Product
 
 		wp_enqueue_style(
 			'smartcut-checkout-style',
-			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'ui/css/checkout/style.css',
+			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'ui/css/checkout/checkout.css',
 			array(),
 			SMARTCUT_CURRENT_VERSION
 		);

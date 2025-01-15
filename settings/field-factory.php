@@ -562,7 +562,7 @@ class NumberField extends Field
 	protected $max;
 	protected $step;
 
-	public function __construct($id, $name, $label, $description = '', $min = 0, $max = null, $step = 'any')
+	public function __construct($id, $name, $label, $description = '', $min = null, $max = null, $step = 'any')
 	{
 		parent::__construct($id, $name, $label, $description);
 		$this->min = $min;
@@ -578,12 +578,12 @@ class NumberField extends Field
 	public function render()
 	{
 		return sprintf(
-			'<input type="number" name="%s" id="%s" value="%s" min="%s" %s step="%s">
+			'<input type="number" name="%s" id="%s" value="%s" %s %s step="%s">
              <p class="description">%s</p>',
 			esc_attr($this->name),
 			esc_attr($this->id),
 			esc_attr($this->value),
-			esc_attr($this->min),
+			$this->min ? sprintf('min="%s"', esc_attr($this->min)) : '',
 			$this->max ? sprintf('max="%s"', esc_attr($this->max)) : '',
 			esc_attr($this->step),
 			esc_html($this->description)

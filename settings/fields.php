@@ -275,6 +275,7 @@ define('SMARTCUT_FIELDS', [
 	'blade_width' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['optimisation', 'saw'],
 		'label' => 'Blade Width',
 		'description' => 'Width of the cutting blade in mm/inches.',
@@ -283,6 +284,7 @@ define('SMARTCUT_FIELDS', [
 	'stack_height' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['optimisation', 'saw'],
 		'label' => 'Stack Height',
 		'description' => 'Maximum height for stacked cutting with beam saws.',
@@ -291,6 +293,7 @@ define('SMARTCUT_FIELDS', [
 	'surcharge' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['pricing', 'surcharge'],
 		'label' => 'Surcharge Amount',
 		'description' => 'Additional fee amount.',
@@ -299,6 +302,7 @@ define('SMARTCUT_FIELDS', [
 	'min_dimension' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['optimisation', 'inputs'],
 		'label' => 'Minimum dimension',
 		'description' => 'The minimum permitted dimension.',
@@ -307,6 +311,7 @@ define('SMARTCUT_FIELDS', [
 	'min_banding_charge' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['pricing', 'extras'],
 		'label' => 'Minimum Banding Charge',
 		'description' => 'Minimum fee for any banding.',
@@ -315,6 +320,7 @@ define('SMARTCUT_FIELDS', [
 	'min_finish_charge' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['pricing', 'extras'],
 		'label' => 'Minimum Finish Charge',
 		'description' => 'Minimum fee for any finishing.',
@@ -323,6 +329,7 @@ define('SMARTCUT_FIELDS', [
 	'cut_length_price' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['pricing', 'strategy'],
 		'label' => 'Cut Length Price',
 		'description' => 'Price per unit length of cuts.',
@@ -331,6 +338,7 @@ define('SMARTCUT_FIELDS', [
 	'per_part_price' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['pricing', 'strategy'],
 		'label' => 'Price Per Part',
 		'description' => 'Additional fee per individual part.',
@@ -339,6 +347,7 @@ define('SMARTCUT_FIELDS', [
 	'stock_trim_x1' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['optimisation', 'stock'],
 		'label' => 'L1 Side Trim',
 		'description' => 'Trim on the longer side.',
@@ -347,6 +356,7 @@ define('SMARTCUT_FIELDS', [
 	'stock_trim_x2' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['optimisation', 'stock'],
 		'label' => 'L2 Side Trim',
 		'description' => 'Trim on the longer side.',
@@ -355,6 +365,7 @@ define('SMARTCUT_FIELDS', [
 	'stock_trim_y1' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['optimisation', 'stock'],
 		'label' => 'W1 Side Trim',
 		'description' => 'Trim on the shorter side.',
@@ -363,6 +374,7 @@ define('SMARTCUT_FIELDS', [
 	'stock_trim_y2' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['optimisation', 'stock'],
 		'label' => 'W2 Side Trim',
 		'description' => 'Trim on the shorter side.',
@@ -379,6 +391,7 @@ define('SMARTCUT_FIELDS', [
 	'offcut_min_length' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['pricing', 'offcuts'],
 		'label' => 'Minimum Offcut Length',
 		'description' => 'Minimum length for offcuts to be considered usable.',
@@ -387,6 +400,7 @@ define('SMARTCUT_FIELDS', [
 	'offcut_min_width' => [
 		'type' => 'float',
 		'default' => 0.0,
+		'min' => 0.0,
 		'group' => ['pricing', 'offcuts'],
 		'label' => 'Minimum Offcut Width',
 		'description' => 'Minimum width for offcuts to be considered usable.',
@@ -395,6 +409,7 @@ define('SMARTCUT_FIELDS', [
 
 	// MACHINING
 	//--------------------------------------------------------
+
 	'machining_holes_default_diameter' => [
 		'type' => 'float',
 		'default' => 0.0,
@@ -651,13 +666,13 @@ define('SMARTCUT_FIELDS', [
 		],
 		'show' => ['global', 'product']
 	],
-	'units' => [
+	'number_format' => [
 		'type' => 'select',
 		'output' => 'string',
 		'default' => 'decimal',
 		'group' => ['general', 'basic'],
 		'label' => 'Units',
-		'description' => 'Unit system for inputs.',
+		'description' => 'Decimal or fractions.',
 		'options' => [
 			'decimal' => 'Decimal',
 			'fraction' => 'Fractions',

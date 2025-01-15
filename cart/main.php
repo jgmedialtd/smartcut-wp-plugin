@@ -220,18 +220,47 @@ class CartManager
 			strtolower($info['extension'])
 		);
 
-		$uploadsDir = wp_get_upload_dir();
-		if (!empty($uploadsDir['error'])) {
-			throw new FileUploadException("Upload directory error: " . $uploadsDir['error']);
-		}
-
+		// Upload the file
 		$upload = wp_upload_bits($filename, null, $content);
 		if (!empty($upload['error'])) {
 			throw new FileUploadException("Upload failed: " . $upload['error']);
 		}
 
+		// Create attachment post
+		$wp_filetype = wp_check_filetype($filename, null);
+		$attachment = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+			'post_content' => '',
+			'post_status' => 'private',
+			'post_parent' => 0  // We can optionally link this to a post/page if needed
+		);
+
+		// Insert the attachment
+		$attach_id = wp_insert_attachment($attachment, $upload['file']);
+
+		if (is_wp_error($attach_id)) {
+			throw new FileUploadException("Failed to create attachment: " . $attach_id->get_error_message());
+		}
+
+		// Generate attachment metadata (especially important for images)
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+		$attach_data = wp_generate_attachment_metadata($attach_id, $upload['file']);
+		wp_update_attachment_metadata($attach_id, $attach_data);
+
 		$fileKey = self::getFileKey($type, $info['extension']);
 		$cartItemData[$fileKey] = $upload['url'];
+		// Store the attachment ID for proper management
+		$cartItemData[$fileKey . '_attach_id'] = $attach_id;
+
+		// Log successful upload
+		error_log(sprintf(
+			'SmartCut file uploaded - Job: %s, Type: %s, Path: %s, Attachment ID: %d',
+			$jobId,
+			$type,
+			$upload['file'],
+			$attach_id
+		));
 
 		return $cartItemData;
 	}
@@ -677,14 +706,47 @@ class CartManager
 			$value = $values[$fullKey];
 			$isFile = $group === self::GROUP_FILES;
 			$isLink = ($field['type'] ?? '') === self::TYPE_LINK;
+			$isPartImages = $group === self::PART_IMAGES;
 
-			$metaValue = $isFile || $isLink
-				? sprintf('<a href="%s" target="_blank">Download</a>', esc_url($value))
-				: stripslashes($value);
+			// Handle files and links
+			if ($isFile || $isLink || $isPartImages) {
+				// Keep the original URL display format
+				if ($isPartImages && !empty($value)) {
+					$imageUrls = explode(',', $value);
+					$metaValue = '';
+					foreach ($imageUrls as $url) {
+						$metaValue .= sprintf('<a href="%s" target="_blank">View</a>, ', esc_url(trim($url)));
+					}
+					$metaValue = rtrim($metaValue, ', ');
+
+					// Update attachment parent IDs
+					$attachIdKey = $fullKey . '_attach_id';
+					if (isset($values[$attachIdKey])) {
+						$attachmentIds = is_array($values[$attachIdKey]) ? $values[$attachIdKey] : [$values[$attachIdKey]];
+						foreach ($attachmentIds as $attachId) {
+							wp_update_post([
+								'ID' => $attachId,
+								'post_parent' => $order->get_id()
+							]);
+						}
+					}
+				} else {
+					$metaValue = sprintf('<a href="%s" target="_blank">Download</a>', esc_url($value));
+
+					// Update attachment parent ID
+					$attachIdKey = $fullKey . '_attach_id';
+					if (isset($values[$attachIdKey])) {
+						wp_update_post([
+							'ID' => $values[$attachIdKey],
+							'post_parent' => $order->get_id()
+						]);
+					}
+				}
+			} else {
+				$metaValue = stripslashes($value);
+			}
 
 			$metaKey = $isFile ? self::getFileName($fullKey) : $field['label'];
-
-			//the _ prefix prevents being shown to user https://stackoverflow.com/questions/62364016/woocommerce_add_custom_meta_as_hidden_order_item_meta_for_internal_use
 			if ($isPrivate) $metaKey = '_' . $metaKey;
 
 			$displayOrder = $field['display_order'] ?? 999;
@@ -696,6 +758,7 @@ class CartManager
 			];
 		}
 
+		// Handle include_offcuts separately since it's a special case
 		if (isset($values['include_offcuts'])) {
 			$metaData[] = [
 				'key' => __('Include offcuts', 'smartcut'),
@@ -704,10 +767,12 @@ class CartManager
 			];
 		}
 
+		// Sort meta data by display order
 		usort($metaData, function ($a, $b) {
 			return $a['order'] <=> $b['order'];
 		});
 
+		// Add all meta data to the order line item
 		foreach ($metaData as $meta) {
 			$item->add_meta_data($meta['key'], $meta['value'], true);
 		}
@@ -866,16 +931,37 @@ class CartManager
 		}
 
 		$pdfContent = base64_decode($base64_data);
-		$fileName = 'order-summary-' . uniqid();
-		$upload = wp_upload_bits("$fileName.pdf", null, $pdfContent);
+		$fileName = 'order-summary-' . uniqid() . '.pdf';
+		$upload = wp_upload_bits($fileName, null, $pdfContent);
 
-		if ($upload && empty($upload['error'])) {
-			$cartItemData['smartcut_order_summary'] = $upload['url'];
-		} else {
+		if (!$upload || !empty($upload['error'])) {
 			throw new \Exception(
 				'Failed to upload order summary PDF: ' . ($upload['error'] ?? 'Unknown error')
 			);
 		}
+
+		// Create attachment post
+		$attachment = array(
+			'post_mime_type' => 'application/pdf',
+			'post_title' => preg_replace('/\.[^.]+$/', '', $fileName),
+			'post_content' => '',
+			'post_status' => 'private'
+		);
+
+		// Insert the attachment
+		$attach_id = wp_insert_attachment($attachment, $upload['file']);
+
+		if (is_wp_error($attach_id)) {
+			throw new \Exception("Failed to create attachment: " . $attach_id->get_error_message());
+		}
+
+		// Generate attachment metadata
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+		$attach_data = wp_generate_attachment_metadata($attach_id, $upload['file']);
+		wp_update_attachment_metadata($attach_id, $attach_data);
+
+		$cartItemData['smartcut_order_summary'] = $upload['url'];
+		$cartItemData['smartcut_order_summary_attach_id'] = $attach_id;
 
 		return $cartItemData;
 	}
@@ -896,77 +982,84 @@ class CartManager
 	}
 
 	/**
-	 * Common file cleanup method that can be used by both cart and order cleanup
+	 * Common cleanup method that deletes attachments
 	 */
-	private static function cleanupFiles(array $filesToClean, array $uploadDir, int $batchSize = 100): array
+	private static function cleanupAttachments(array $attachmentIds): array
 	{
-		$filesDeleted = 0;
+		$deletedCount = 0;
 		$deletedFiles = [];
 
-		foreach (array_chunk($filesToClean, $batchSize) as $batch) {
-			foreach ($batch as $fileUrl) {
-				if (!self::fileExistsInUrl($fileUrl)) {
-					continue;
-				}
+		foreach ($attachmentIds as $attachId) {
+			$file = get_attached_file($attachId);
+			if ($file) {
+				$deletedFiles[] = basename($file);
+			}
 
-				$filePath = self::getLocalFilePath($fileUrl, $uploadDir);
-				if (!file_exists($filePath)) {
-					continue;
-				}
-
-				if (wp_delete_file($filePath)) {
-					$filesDeleted++;
-					$deletedFiles[] = basename($filePath);
-				}
+			if (wp_delete_attachment($attachId, true)) {
+				$deletedCount++;
 			}
 		}
 
 		return [
-			'count' => $filesDeleted,
+			'count' => $deletedCount,
 			'files' => $deletedFiles
 		];
 	}
 
+	/**
+	 * Modified cleanupCartItemFiles method to include order summary cleanup
+	 */
 	public static function cleanupCartItemFiles(array $removedItem): void
 	{
 		if (empty($removedItem)) return;
 
 		try {
+			// Clear the transient if it exists
 			if (!empty($removedItem['smartcut_job_id'])) {
 				delete_transient('smartcut_job_' . md5($removedItem['smartcut_job_id']));
 			}
 
-			$uploadsDir = wp_get_upload_dir();
-			if (!empty($uploadsDir['error'])) {
-				throw new \Exception("Unable to get upload directory: " . $uploadsDir['error']);
-			}
+			$attachmentIds = [];
 
-			$filesToClean = [];
-
-			// Add order summary PDF
-			$orderSummaryKey = self::getFieldKey('order_summary');
-			if (!empty($removedItem[$orderSummaryKey])) {
-				$filesToClean[] = $removedItem[$orderSummaryKey];
-			}
-
-			// Add part images
-			if (!empty($removedItem['smartcut_part_images'])) {
-				$partImages = explode(',', $removedItem['smartcut_part_images']);
-				$filesToClean = array_merge($filesToClean, $partImages);
-			}
-
-			// Add file group fields
+			// Collect attachment IDs from file fields
 			foreach (self::$fields as $fieldKey => $field) {
-				if (isset($field['group']) && $field['group'] === self::GROUP_FILES) {
+				if (
+					isset($field['group']) &&
+					($field['group'] === self::GROUP_FILES ||
+						$field['group'] === self::PART_IMAGES)
+				) {
 					$cartKey = self::getFieldKey($fieldKey);
-					if (!empty($removedItem[$cartKey])) {
-						$filesToClean[] = $removedItem[$cartKey];
+					$attachIdKey = $cartKey . '_attach_id';
+
+					if (!empty($removedItem[$attachIdKey])) {
+						// Handle both single IDs and arrays
+						$ids = is_array($removedItem[$attachIdKey])
+							? $removedItem[$attachIdKey]
+							: [$removedItem[$attachIdKey]];
+						$attachmentIds = array_merge($attachmentIds, $ids);
 					}
 				}
 			}
 
-			self::cleanupFiles($filesToClean, $uploadsDir);
+			// Add order summary attachment ID if it exists
+			if (!empty($removedItem['smartcut_order_summary_attach_id'])) {
+				$orderSummaryId = $removedItem['smartcut_order_summary_attach_id'];
+				$attachmentIds[] = is_array($orderSummaryId) ? $orderSummaryId[0] : $orderSummaryId;
+			}
+
+			// Clean up any found attachments
+			if (!empty($attachmentIds)) {
+				$result = self::cleanupAttachments($attachmentIds);
+				if ($result['count'] > 0) {
+					error_log(sprintf(
+						'SmartCut: Cleaned up %d cart files: %s',
+						$result['count'],
+						implode(', ', $result['files'])
+					));
+				}
+			}
 		} catch (\Exception $e) {
+			error_log('Failed to cleanup cart item files: ' . $e->getMessage());
 			throw new \WP_Error(
 				'smartcut_cart_file_deletion_failed',
 				sprintf('Could not delete cart files: %s', $e->getMessage())
@@ -974,46 +1067,79 @@ class CartManager
 		}
 	}
 
+	/**
+	 * Modified cleanupOrderFiles method to include order summary cleanup
+	 */
 	public static function cleanupOrderFiles(int $orderId): void
 	{
-		$order = new WC_Order($orderId);
-
+		$order = wc_get_order($orderId);
 		if (!$order) {
 			return;
 		}
 
 		try {
-			$uploadDir = wp_upload_dir();
-			if (!empty($uploadDir['error'])) {
-				throw new \Exception("Unable to get upload directory: {$uploadDir['error']}");
+			$attachmentIds = [];
+
+			// Get all attachments that have this order as their parent
+			$orderAttachments = get_posts([
+				'post_type' => 'attachment',
+				'posts_per_page' => -1,
+				'post_parent' => $orderId,
+				'fields' => 'ids'
+			]);
+
+			if (!empty($orderAttachments)) {
+				$attachmentIds = array_merge($attachmentIds, $orderAttachments);
 			}
 
-			$filesToClean = [];
-
-			// Extract file URLs from order item meta
+			// Check order items for any attachment IDs stored in meta
 			foreach ($order->get_items() as $item) {
-				foreach ($item->get_meta_data() as $meta) {
-					$data = $meta->get_data();
+				// Check for order summary attachment ID
+				$orderSummaryId = $item->get_meta('smartcut_order_summary_attach_id');
+				if (!empty($orderSummaryId)) {
+					$attachmentIds[] = is_array($orderSummaryId) ? $orderSummaryId[0] : $orderSummaryId;
+				}
 
-					// Handle part images stored as comma-separated URLs
-					if ($data['key'] === 'smartcut_part_images' && is_string($data['value'])) {
-						$partImages = explode(',', $data['value']);
-						$filesToClean = array_merge($filesToClean, $partImages);
-						continue;
-					}
+				// Check other file fields
+				foreach (self::$fields as $fieldKey => $field) {
+					if (
+						isset($field['group']) &&
+						($field['group'] === self::GROUP_FILES ||
+							$field['group'] === self::PART_IMAGES)
+					) {
+						$attachIdKey = self::getFieldKey($fieldKey) . '_attach_id';
+						$storedIds = $item->get_meta($attachIdKey);
 
-					// Handle other file URLs in HTML
-					if (is_string($data['value'])) {
-						preg_match('/href="([^"]+)"/', $data['value'], $matches);
-						if (!empty($matches[1])) {
-							$filesToClean[] = $matches[1];
+						if (!empty($storedIds)) {
+							// Handle both single IDs and arrays
+							$ids = is_array($storedIds) ? $storedIds : [$storedIds];
+							$attachmentIds = array_merge($attachmentIds, $ids);
 						}
 					}
 				}
 			}
 
-			self::cleanupFiles($filesToClean, $uploadDir);
+			// Remove duplicates
+			$attachmentIds = array_unique($attachmentIds);
+
+			// Clean up any found attachments
+			if (!empty($attachmentIds)) {
+				$result = self::cleanupAttachments($attachmentIds);
+				if ($result['count'] > 0) {
+					error_log(sprintf(
+						'SmartCut: Cleaned up %d files for order #%d: %s',
+						$result['count'],
+						$orderId,
+						implode(', ', $result['files'])
+					));
+				}
+			}
 		} catch (\Exception $e) {
+			error_log(sprintf(
+				'Failed to cleanup files for order #%d: %s',
+				$orderId,
+				$e->getMessage()
+			));
 			throw new \WP_Error(
 				'smartcut_order_file_deletion_failed',
 				sprintf('Could not delete order files: %s', $e->getMessage())
@@ -1050,36 +1176,122 @@ add_action('woocommerce_before_add_to_cart_button', [CartManager::class, 'addHid
 
 // Handle order deletion
 add_action('before_delete_post', function (int $postId): void {
-	if (get_post_type($postId) === 'shop_order') {
+	// Verify this is actually a shop order
+	if (get_post_type($postId) !== 'shop_order') {
+		return;
+	}
+
+	// Ensure we're in admin context
+	if (!is_admin()) {
+		return;
+	}
+
+	// Verify user has permission to delete orders
+	if (!current_user_can('delete_shop_orders')) {
+		return;
+	}
+
+	// Get the order object to verify it exists and is valid
+	$order = wc_get_order($postId);
+	if (!$order || !($order instanceof WC_Order)) {
+		return;
+	}
+
+	// Verify nonce if available
+	if (
+		isset($_REQUEST['_wpnonce']) &&
+		!wp_verify_nonce($_REQUEST['_wpnonce'], 'delete-post_' . $postId)
+	) {
+		return;
+	}
+	try {
 		CartManager::cleanupOrderFiles($postId);
+	} catch (\Exception $e) {
+		error_log('Failed to cleanup order item files: ' . $e->getMessage());
+		// Optionally notify admin or handle error
 	}
 }, 1, 1);
 
-// Handle individual item removal
+
+// Handle individual cart item removal
 add_action('woocommerce_cart_item_removed', function (string $cartItemKey, WC_Cart $cart): void {
-	$removedItem = $cart->removed_cart_contents[$cartItemKey] ?? null;
-
-	if ($removedItem) {
-		CartManager::cleanupCartItemFiles($removedItem);
-	}
-}, 10, 2);
-
-// Handle full cart emptied
-add_action('woocommerce_before_cart_emptied', function (): void {
-
+	// Prevent execution during checkout process
 	if (
 		is_checkout() ||
-		wp_doing_ajax() && !empty($_POST['wc-ajax']) && $_POST['wc-ajax'] === 'checkout' ||
+		(wp_doing_ajax() && isset($_POST['wc-ajax']) && $_POST['wc-ajax'] === 'checkout') ||
 		defined('DOING_WCAPI') ||
 		did_action('woocommerce_checkout_order_processed')
 	) {
 		return;
 	}
 
-	$cart = WC()->cart;
-	if (!$cart) return;
-
-	foreach ($cart->get_cart() as $cartKey => $cartItem) {
-		CartManager::cleanupCartItemFiles($cartItem);
+	// Verify we're not in admin context
+	if (is_admin() && !wp_doing_ajax()) {
+		return;
 	}
-});
+
+	// Ensure we have valid cart contents
+	$removedItem = $cart->removed_cart_contents[$cartItemKey] ?? null;
+	if (!$removedItem || empty($removedItem)) {
+		return;
+	}
+
+	// Verify nonce if available
+	if (
+		wp_doing_ajax() &&
+		(!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'woocommerce-cart'))
+	) {
+		return;
+	}
+
+	try {
+		CartManager::cleanupCartItemFiles($removedItem);
+	} catch (\Exception $e) {
+		error_log('Failed to cleanup cart item files: ' . $e->getMessage());
+	}
+}, 10, 2);
+
+// Handle full cart emptied
+add_action('woocommerce_before_cart_emptied', function (): void {
+	// Prevent execution during checkout process
+	if (
+		is_checkout() ||
+		(wp_doing_ajax() && isset($_POST['wc-ajax']) && $_POST['wc-ajax'] === 'checkout') ||
+		defined('DOING_WCAPI') ||
+		did_action('woocommerce_checkout_order_processed')
+	) {
+		return;
+	}
+
+	// Verify we're not in admin context
+	if (is_admin() && !wp_doing_ajax()) {
+		return;
+	}
+
+	// Get cart instance safely
+	$cart = WC()->cart;
+	if (!$cart || !($cart instanceof WC_Cart)) {
+		return;
+	}
+
+	// Verify nonce if available
+	if (
+		wp_doing_ajax() &&
+		(!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'woocommerce-cart'))
+	) {
+		return;
+	}
+
+	try {
+		$cartItems = $cart->get_cart();
+		if (!empty($cartItems)) {
+			foreach ($cartItems as $cartKey => $cartItem) {
+				if (!empty($cartItem)) {
+					CartManager::cleanupCartItemFiles($cartItem);
+				}
+			}
+		}
+	} catch (\Exception $e) {
+		error_log('Failed to cleanup cart files: ' . $e->getMessage());
+	}
+}, 10);

@@ -19,6 +19,10 @@ class UpdateManager
 				'full_sheet_plus_cut_length' => 'full_stock_plus_cut_length'
 			]
 		],
+		'units' => [
+			'map_type' => ['setting_key'],
+			'new_key' => 'number_format',
+		],
 		'disable_banding' => [
 			'map_type' => ['setting_key', 'value'],
 			'new_key' => 'enable_banding',
