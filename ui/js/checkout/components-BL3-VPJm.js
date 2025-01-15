@@ -2,7 +2,7 @@ var Un = Object.defineProperty;
 var jn = (i, t, e) => t in i ? Un(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
 var c = (i, t, e) => jn(i, typeof t != "symbol" ? t + "" : t, e);
 import { d as Oe, o as y, c as P, F as we, r as Te, n as xe, a as ke, b as O, t as te, w as Ji, v as Qi, e as zn, f as H, g as G, h as Z, i as $e, j as ut, k as tt, l as es, m as ni, u as x, p as Vt, q as pe, s as ts, x as Vn, y as Bi, z as qt, A as ve, B as Yn, C as ht, D as Xn, E as Kn, G as Zn, H as Jn, I as ct, T as Qn, J as Ks, K as er, L as tr, M as ir, N as xs, O as sr, P as nr, Q as rr, R as or } from "./vendor-vue-3xcI29J2.js";
-import { u as Zs, a as is, b as Js, c as lr, d as ar, e as ur } from "./composables-SvIqviDe.js";
+import { u as Zs, a as is, b as Js, c as lr, d as ar, e as ur } from "./composables-R1b4Bekd.js";
 import { l as et, a as Ti, b as Oi, c as Qs, d as en, s as Ee, e as ri, r as Rt, f as tn, p as cr, g as hr, S as dr, h as fr, i as pr, j as gr, k as mr } from "./vendor-d3-BrvhDTRC.js";
 import { c as yr, a as sn, b as Ze, F as Ai, g as Yt, v as ss, i as ci, t as Di, d as si, e as $i, h as vr, s as br, f as wr, o as Sr, j as kr, k as xr, P as Cr } from "./vendor-UJdh33XB.js";
 import { i as Cs } from "./vendor-i18n-D9hV6ZJH.js";
@@ -4114,57 +4114,72 @@ async function Zo(i) {
   var s, n;
   const t = yn(i), e = t.t;
   try {
-    if (Ko(t), t.maxShapes !== 1 / 0 && t.maxShapes && !t.isAdmin && !t.shared && (No.value > t.maxShapes || Wo.value > t.maxStock) && t.onLimit(), t.useInventory) {
+    if (!Ko(t))
+      return { valid: !1 };
+    if (t.maxShapes !== 1 / 0 && t.maxShapes && !t.isAdmin && !t.shared && (No.value > t.maxShapes || Wo.value > t.maxStock))
+      return t.onLimit(), { valid: !1 };
+    if (t.useInventory) {
       const d = Xo(t.materialStore, !0), g = Et(d);
-      g.length > 0 && lt({
-        type: "error",
-        message: e("inputs_issue", { x: "material" }),
-        additional: g.map((w) => e(w.message))
-      });
+      if (g.length > 0)
+        return lt({
+          type: "error",
+          message: e("inputs_issue", { x: "material" }),
+          additional: g.map((w) => e(w.message))
+        }), { valid: !1 };
     } else {
       const d = mn(), g = Et(d);
-      g.length > 0 && lt({
-        type: "error",
-        message: e("inputs_issue", { x: "stock" }),
-        additional: g.map((w) => e(w.message))
-      });
+      if (g.length > 0)
+        return lt({
+          type: "error",
+          message: e("inputs_issue", { x: "stock" }),
+          additional: g.map((w) => e(w.message))
+        }), { valid: !1 };
     }
     const r = t.useInventory ? new Pt(t.selectedSaw) : new Pt(t.sawData), o = Et(r.issues);
-    o.length > 0 && lt({
-      type: "error",
-      message: e("inputs_issue", { x: "saw" }),
-      additional: o.map((d) => e(d.message))
-    });
+    if (o.length > 0)
+      return lt({
+        type: "error",
+        message: e("inputs_issue", { x: "saw" }),
+        additional: o.map((d) => e(d.message))
+      }), { valid: !1 };
     const { stockList: l, issues: a } = await Uo(r), u = Et(a);
-    u.length > 0 && lt({
-      type: "error",
-      message: e("inputs_issue", { x: "stock" }),
-      additional: u.map((d) => e(d.message))
-    }), l != null && l.length || lt({
-      type: "error",
-      message: e("no_stock")
-    });
+    if (u.length > 0)
+      return lt({
+        type: "error",
+        message: e("inputs_issue", { x: "stock" }),
+        additional: u.map((d) => e(d.message))
+      }), { valid: !1 };
+    if (!(l != null && l.length))
+      return lt({
+        type: "error",
+        message: e("no_stock")
+      }), { valid: !1 };
     const { shapeList: h, issues: m } = await jo({
       orientationModel: t.orientationModel
     }), S = Et(m);
-    if (S.length > 0 && lt({
-      type: "error",
-      message: e("inputs_issue", { x: "part" }),
-      additional: S.map((d) => e(d.message))
-    }), h != null && h.length || lt({
-      type: "error",
-      message: e("no_parts_list")
-    }), ((n = (s = Pe.userGroups) == null ? void 0 : s.value) == null ? void 0 : n.length) > 0) {
+    if (S.length > 0)
+      return lt({
+        type: "error",
+        message: e("inputs_issue", { x: "part" }),
+        additional: S.map((d) => e(d.message))
+      }), { valid: !1 };
+    if (!(h != null && h.length))
+      return lt({
+        type: "error",
+        message: e("no_parts_list")
+      }), { valid: !1 };
+    if (((n = (s = Pe.userGroups) == null ? void 0 : s.value) == null ? void 0 : n.length) > 0) {
       Pe.userGroups.value.forEach((w) => w.populateParentID(Pe.inputShapes.value));
       const d = Oo(
         Pe.userGroups.value,
         Pe.inputShapes.value
       ), g = Et(d);
-      g.length > 0 && lt({
-        type: "error",
-        message: e("inputs_issue", { x: "group" }),
-        additional: g.map((w) => e(w.message))
-      });
+      if (g.length > 0)
+        return lt({
+          type: "error",
+          message: e("inputs_issue", { x: "group" }),
+          additional: g.map((w) => e(w.message))
+        }), { valid: !1 };
     }
     return {
       valid: !0,
@@ -4173,10 +4188,10 @@ async function Zo(i) {
       shapeList: h
     };
   } catch (r) {
-    console.error("Validation error:", r), lt({
+    return console.error("Validation error:", r), lt({
       type: "error",
       message: e("unexpected_error")
-    });
+    }), { valid: !1 };
   }
 }
 function Jo(i) {
