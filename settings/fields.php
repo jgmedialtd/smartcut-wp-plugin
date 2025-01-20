@@ -1016,13 +1016,13 @@ function cutPreferenceScript()
 
 			function updateCutPreference(preselect = false) {
 				var stockType = stockTypeField.val();
-
+				debugger;
 				switch (stockType) {
 					case <?php echo '\'' . \SmartCut\Settings\Factory\Field::GLOBAL_VALUE . '\''; ?>:
 						enableCutPreferenceOptions(<?php echo '\'' . \SmartCut\Settings\Factory\Field::GLOBAL_VALUE . '\''; ?>);
 						break;
 					case 'sheet':
-						enableCutPreferenceOptions('length');
+						enableCutPreferenceOptions();
 						break;
 					case 'linear':
 					case 'roll':

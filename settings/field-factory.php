@@ -508,11 +508,11 @@ class SelectField extends BaseSelectField
 			esc_attr($this->id)
 		);
 
-		$currentTypedValue = $this->sanitize($this->value);
+		$currentValue = $this->value;
 
 		foreach ($this->options as $value => $label) {
-			$typedValue = $this->sanitize($value);
-			$selected = $currentTypedValue === $typedValue ? 'selected' : '';
+
+			$selected = (string)$currentValue === (string)$value ? 'selected' : '';
 
 			$output .= sprintf(
 				'<option value="%s" %s>%s</option>',

@@ -8,6 +8,8 @@ use WC_Cart;
 use WC_Order;
 use WC_Order_Item_Product;
 
+use function SmartCut\Helpers\isCutlist;
+
 /**
  * Custom exception classes for better error handling
  */
@@ -783,11 +785,18 @@ class CartManager
 	 */
 	public static function addUserFields(): void
 	{
+
+		global $product;
+		if (!$product) return;
+		$id = $product->get_id();
+		if (!isCutlist($id)) return;
+
 		// Add nonce field before other fields
 		wp_nonce_field(self::NONCE_ACTION, self::NONCE_FIELD);
 
 		// Original user fields code
 		$options = \SmartCut\Settings\getGlobalSettings();
+
 		if (isset($options['allow_offcuts']) && $options['allow_offcuts'] === '1') {
 			\woocommerce_form_field('include_offcuts', [
 				'type' => 'checkbox',

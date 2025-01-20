@@ -1,10 +1,12 @@
 const e = {
   en: {
+    unknown_error: "unknown error",
     issue: "issue",
     issue_one: "issue",
     issue_other: "issues",
     cannot_connect: "cannot connect to server",
     error_occurred: "an error occurred",
+    issues_found: "issues found",
     part_issue: "part issue",
     stock_issue: "stock issue",
     no_saw: "no saw selected",
@@ -42,6 +44,8 @@ const e = {
     greater_than_or_equal: "{{x}} should be greater than or equal {{y}}",
     less_than: "{{x}} should be less than {{y}}",
     less_than_or_equal: "{{x}} should be less than or equal {{y}}",
+    exceeded_limit: "The {{type}} count of {{x}} exceeds you {{type}} limit of {{y}}",
+    option_not_available: "Option {{x}} in {{y}} is no longer available",
     fieldValidation: {
       valid: "Valid",
       zero_not_allowed: "0 is not allowed",
@@ -61,6 +65,7 @@ const e = {
     issue_other: "temes",
     cannot_connect: "no es pot connectar al servidor",
     error_occurred: "s'ha produït un error",
+    issues_found: "problemes trobats",
     part_issue: "problema amb la peça",
     stock_issue: "problema d'estoc",
     no_saw: "no s'ha seleccionat serra",
@@ -98,6 +103,7 @@ const e = {
     greater_than_or_equal: "{{x}} hauria de ser més gran o igual que {{y}}",
     less_than: "{{x}} hauria de ser menor que {{y}}",
     less_than_or_equal: "{{x}} hauria de ser menor o igual que {{y}}",
+    option_not_available: "L'opció {{x}} a {{y}} ja no està disponible",
     fieldValidation: {
       valid: "Vàlid",
       zero_not_allowed: "0 no està permès",
@@ -117,6 +123,7 @@ const e = {
     issue_other: "temas",
     cannot_connect: "no se puede conectar al servidor",
     error_occurred: "ha ocurrido un error",
+    issues_found: "problemas encontrados",
     part_issue: "problema con la pieza",
     stock_issue: "problema de stock",
     no_saw: "no hay sierra seleccionada",
@@ -154,6 +161,7 @@ const e = {
     greater_than_or_equal: "{{x}} debería ser mayor o igual que {{y}}",
     less_than: "{{x}} debería ser menor que {{y}}",
     less_than_or_equal: "{{x}} debería ser menor o igual que {{y}}",
+    option_not_available: "La opción {{x}} en {{y}} ya no está disponible",
     fieldValidation: {
       valid: "Válido",
       zero_not_allowed: "0 no está permitido",
@@ -173,6 +181,7 @@ const e = {
     issue_other: "erreurs",
     cannot_connect: "impossible de se connecter au serveur",
     error_occurred: "une erreur s'est produite",
+    issues_found: "erreurs trouvées",
     part_issue: "pièce erreur",
     stock_issue: "problème de stock",
     no_saw: "aucune scie sélectionnée",
@@ -210,6 +219,7 @@ const e = {
     greater_than_or_equal: "{{x}} doit être supérieur ou égal à {{y}}",
     less_than: "{{x}} doit être inférieur à {{y}}",
     less_than_or_equal: "{{x}} doit être inférieur ou égal à {{y}}",
+    option_not_available: "L'option {{x}} dans {{y}} n'est plus disponible",
     fieldValidation: {
       valid: "Valide",
       zero_not_allowed: "0 n'est pas autorisé",
