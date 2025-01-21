@@ -600,20 +600,34 @@ class SettingsPage
 		foreach ($this->fields as $id => $data) {
 			$field = $data['field'];
 			$baseId = str_replace(SMARTCUT_PREFIX, '', $id);
-			if (isset($options[$baseId])) {
-				$field->setValue($options[$baseId]);
-			}
 
-			add_settings_field(
-				$id,
-				$field->getLabel(),
-				function () use ($field, $id) { // Added $id to closure
-					echo $field->render();
-					$this->maybeRenderScript($id, SMARTCUT_PREFIX);
-				},
-				$this->slug,
-				$data['section']
-			);
+			// If it's a boolean field, add a hidden input to ensure the field is always submitted
+			if (isset(SMARTCUT_FIELDS[$baseId]) && SMARTCUT_FIELDS[$baseId]['type'] === 'boolean') {
+				add_settings_field(
+					$id,
+					$field->getLabel(),
+					function () use ($field, $id) {
+						// Add hidden field to ensure the option exists in POST data
+						echo '<input type="hidden" name="' . esc_attr($field->getName()) . '" value="0" />';
+						echo $field->render();
+						$this->maybeRenderScript($id, SMARTCUT_PREFIX);
+					},
+					$this->slug,
+					$data['section']
+				);
+			} else {
+				// Original code for non-boolean fields
+				add_settings_field(
+					$id,
+					$field->getLabel(),
+					function () use ($field, $id) {
+						echo $field->render();
+						$this->maybeRenderScript($id, SMARTCUT_PREFIX);
+					},
+					$this->slug,
+					$data['section']
+				);
+			}
 		}
 	}
 
