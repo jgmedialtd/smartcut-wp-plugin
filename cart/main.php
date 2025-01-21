@@ -406,50 +406,12 @@ class CartManager
 			return;
 		}
 
-		static $priceFields = null;
-		static $addedCosts = null;
-
-		// Initialize both static variables if they haven't been set
-		if ($priceFields === null) {
-			$priceFields = array_keys(array_filter(
-				self::$fields,
-				function ($field) {
-					return ($field['type'] ?? '') === self::TYPE_PRICE;
-				}
-			));
-
-			// Ensure $priceFields is not empty before creating $addedCosts
-			if (!empty($priceFields)) {
-				$addedCosts = array_map([self::class, 'getFieldKey'], $priceFields);
-			} else {
-				$addedCosts = []; // Provide a default empty array if no price fields exist
-			}
-		}
-
-		// Ensure $addedCosts is an array before proceeding
-		if (!is_array($addedCosts)) {
-			$addedCosts = [];
-		}
-
 		foreach ($cart->get_cart() as $cartItem) {
 			$product = $cartItem['data'];
-			$quantity = $cartItem['quantity'];
 
-			$basePrice = self::hasCustomPrice($cartItem)
-				? floatval($cartItem['smartcut_custom_price'])
-				: floatval($product->get_price());
-
-			$surcharges = array_reduce(
-				$addedCosts,
-				function ($total, $key) use ($cartItem, $quantity) {
-					return empty($cartItem[$key])
-						? $total
-						: $total + (floatval($cartItem[$key]) / $quantity);
-				},
-				0
-			);
-
-			$product->set_price($basePrice + $surcharges);
+			if (self::hasCustomPrice($cartItem)) {
+				$product->set_price(floatval($cartItem['smartcut_custom_price']));
+			}
 		}
 	}
 

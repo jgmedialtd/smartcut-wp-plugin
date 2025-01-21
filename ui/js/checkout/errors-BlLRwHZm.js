@@ -1,5 +1,6 @@
 const e = {
   en: {
+    unexpected_error: "unexpected error",
     unknown_error: "unknown error",
     issue: "issue",
     issue_one: "issue",

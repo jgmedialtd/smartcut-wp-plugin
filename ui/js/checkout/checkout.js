@@ -1,14 +1,14 @@
 import { d as ke, y as st, g as w, U as Ie, j as Le, o as B, c as de, A as ve, u as Q, b as lt, f as ee, q as ie, F as $e, k as De, O as Ae, C as re, G as ct, V as ut, h as je, W as pt, t as dt, X as ft, Y as mt, Z as _t } from "./vendor-vue-B39CQo2S.js";
 import { i as we, B as ht } from "./vendor-i18n-D9hV6ZJH.js";
-import { p as yt, s as _, q as gt, v as qe, w as Oe, x as k, C as Be, y as U, z as bt, A as vt, B as wt, D as kt, _ as St } from "./components-C8CoR0-9.js";
+import { p as yt, s as _, q as gt, v as qe, w as Oe, x as k, C as Be, y as U, z as bt, A as vt, B as wt, D as kt, _ as St } from "./components-37Vlxoqk.js";
 import { J as xt, H as Ft, I as Pt, K as Et, L as zt, M as Tt, N as jt, O as qt, Q as Ot, S as It, T as Lt, U as $t, V as Dt } from "./vendor-UJdh33XB.js";
 import { E as At, a as K } from "./vendor-pdf-13rSvHGI.js";
-import { f as Bt } from "./composables-C2YFngV_.js";
+import { f as Bt } from "./composables-BVLk9NTK.js";
 const Rt = Vt();
 async function Vt() {
   const l = {
     main: import("./main-CMlXbzPm.js").then((c) => c.resources),
-    errors: import("./errors-BfU8rIgh.js").then((c) => c.resources)
+    errors: import("./errors-BlLRwHZm.js").then((c) => c.resources)
   }, [b, q] = await Promise.all([
     l.main,
     l.errors
@@ -178,10 +178,10 @@ const Ht = (l, b, q, h = (u) => u.toString()) => {
 }, Ut = {
   key: 0,
   class: "debug"
-}, Mt = !0, Yt = /* @__PURE__ */ ke({
+}, Mt = !1, Yt = /* @__PURE__ */ ke({
   __name: "WordPress",
   setup(l) {
-    const { t: b } = st(["main", "errors"]), q = re(() => import("./components-C8CoR0-9.js").then((e) => e.F)), h = re(() => import("./components-C8CoR0-9.js").then((e) => e.O)), u = re(() => import("./components-C8CoR0-9.js").then((e) => e.N)), c = "production", p = {}, x = {}, P = w(null);
+    const { t: b } = st(["main", "errors"]), q = re(() => import("./components-37Vlxoqk.js").then((e) => e.F)), h = re(() => import("./components-37Vlxoqk.js").then((e) => e.O)), u = re(() => import("./components-37Vlxoqk.js").then((e) => e.N)), c = "production", p = {}, x = {}, P = w(null);
     let T, d, t;
     const S = {
       banding: null,
@@ -256,6 +256,7 @@ const Ht = (l, b, q, h = (u) => u.toString()) => {
         orientationModel: t.orientation_model,
         minDimension: t.min_dimension,
         partTrim: t.part_trim,
+        invertL: !1,
         enable: {
           banding: t.enable_banding,
           finish: t.enable_finish,
@@ -714,7 +715,7 @@ const Ht = (l, b, q, h = (u) => u.toString()) => {
   __name: "Vanilla",
   emits: ["ready"],
   setup(l, { expose: b, emit: q }) {
-    const h = re(() => import("./components-C8CoR0-9.js").then((a) => a.F)), u = re(() => import("./components-C8CoR0-9.js").then((a) => a.N)), c = q, p = w(!1), x = w([]), P = w({
+    const h = re(() => import("./components-37Vlxoqk.js").then((a) => a.F)), u = re(() => import("./components-37Vlxoqk.js").then((a) => a.N)), c = q, p = w(!1), x = w([]), P = w({
       banding: null,
       finish: null,
       machining: null

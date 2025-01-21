@@ -1,5 +1,5 @@
-import { g as G, H as ae, h as b, G as Y, S as Z, i as Te } from "./vendor-vue-B39CQo2S.js";
-import { r as de, I as fe, a as re, m as _e, S as Pe, b as Ce, t as he, c as ne, g as xe, u as pe, s as se, d as Ae, e as qe, f as Ee, h as ve, i as me, j as ge, k as Se, l as ke, n as ye, o as Ne } from "./components-C8CoR0-9.js";
+import { g as G, H as ae, h as I, G as Y, S as Z, i as Te } from "./vendor-vue-B39CQo2S.js";
+import { r as de, I as fe, a as re, m as _e, S as Pe, b as Ce, t as he, c as ne, g as xe, u as pe, s as se, d as Ae, e as qe, f as Ee, h as ve, i as me, j as ge, k as Se, l as ke, n as ye, o as Ne } from "./components-37Vlxoqk.js";
 import { p as we, l as $e } from "./vendor-UJdh33XB.js";
 let le = null;
 function Fe(r = { numberFormat: "decimal" }) {
@@ -54,9 +54,9 @@ function Fe(r = { numberFormat: "decimal" }) {
       write: (t) => JSON.stringify(t)
     },
     listenToStorageChanges: !1
-  }), v = G(null), k = b(() => u.value.reduce((t, a) => a != null && a.q && a.q > 0 && !(a != null && a.multiEdit) ? t + a.q : t, 0)), s = b(() => o.value.reduce((t, a) => a != null && a.q && a.q > 0 && !(a != null && a.multiEdit) ? t + a.q : t, 0)), y = (t, a = "decimal") => {
+  }), v = G(null), y = I(() => u.value.reduce((t, a) => a != null && a.q && a.q > 0 && !(a != null && a.multiEdit) ? t + a.q : t, 0)), s = I(() => o.value.reduce((t, a) => a != null && a.q && a.q > 0 && !(a != null && a.multiEdit) ? t + a.q : t, 0)), k = (t, a = "decimal") => {
     const c = (t == null ? void 0 : t.parts) || (t == null ? void 0 : t.shapeList), S = (t == null ? void 0 : t.stock) || (t == null ? void 0 : t.stockList), h = (t == null ? void 0 : t.groups) || (t == null ? void 0 : t.userGroups);
-    if (c && _(c, a), S && I(S, a), h)
+    if (c && _(c, a), S && L(S, a), h)
       try {
         d.value = de(h, u.value);
       } catch (e) {
@@ -68,7 +68,7 @@ function Fe(r = { numberFormat: "decimal" }) {
     } catch (c) {
       console.error("Error updating input shapes:", c);
     }
-  }, I = (t, a = "decimal") => {
+  }, L = (t, a = "decimal") => {
     try {
       o.value = w(t, a);
     } catch (c) {
@@ -94,7 +94,7 @@ function Fe(r = { numberFormat: "decimal" }) {
     userGroups: d,
     currentInputShape: v,
     selectedSaw: p,
-    totalInputShapes: k,
+    totalInputShapes: y,
     totalInputStock: s,
     reset: () => {
       v.value = null;
@@ -105,9 +105,9 @@ function Fe(r = { numberFormat: "decimal" }) {
     clearIssues: () => {
       u.value.forEach((t) => t.issues = []), o.value.forEach((t) => t.issues = []);
     },
-    updateInputs: y,
+    updateInputs: k,
     updateInputShapes: _,
-    updateInputStock: I,
+    updateInputStock: L,
     getShapeGrainSummary: (t) => {
       if (!o.value.length)
         return "n";
@@ -254,16 +254,16 @@ function Ve() {
     const d = {
       id: crypto.randomUUID(),
       message: se(i),
-      additional: T.length > 5 ? T.slice(0, 5).map((k) => se(k)).join("<br>") + "<br>..." : T.slice(0, 5).map((k) => se(k)).join("<br>"),
+      additional: T.length > 5 ? T.slice(0, 5).map((y) => se(y)).join("<br>") + "<br>..." : T.slice(0, 5).map((y) => se(y)).join("<br>"),
       type: x,
       persistent: o.persistent || !1,
       timestamp: /* @__PURE__ */ new Date(),
       action: u
     }, v = o.maxNotices ?? Ge;
     if (R.value.length >= v) {
-      const k = R.value.findIndex((s) => !s.persistent);
-      if (k !== -1)
-        R.value.splice(k, 1);
+      const y = R.value.findIndex((s) => !s.persistent);
+      if (y !== -1)
+        R.value.splice(y, 1);
       else if (!d.persistent)
         return console.warn("Cannot add new notice: maximum limit reached and all existing notices are persistent"), d.id;
     }
@@ -293,54 +293,54 @@ const B = G(null), U = G(null), Oe = G(null), C = Y([]), g = Y([]), O = Y([]), M
   currentCutIndex: ee
 };
 function je() {
-  const r = b(() => U.value ? j(U.value) : []), p = b(() => {
+  const r = I(() => U.value ? j(U.value) : []), p = I(() => {
     var e;
     return !U.value || !((e = g.value) != null && e.length) ? null : J(U.value);
-  }), i = b(() => {
+  }), i = I(() => {
     var l;
     if (!p.value || !((l = O.value) != null && l.length)) return [];
     const e = a(p.value.id);
     return ee.value = 0, e;
-  }), x = b(() => {
+  }), x = I(() => {
     var e;
     return !p.value || !((e = M.value) != null && e.length) ? [] : t(U.value);
-  }), T = b(() => {
+  }), T = I(() => {
     var e;
     return (e = g.value) != null && e.length ? c(g.value) : [];
-  }), o = b(() => C.value.filter((e) => e.added)), u = b(() => {
+  }), o = I(() => C.value.filter((e) => e.added)), u = I(() => {
     var e;
     return (e = C.value) != null && e.length ? C.value.filter((l) => !l.added) : [];
-  }), d = b(() => {
+  }), d = I(() => {
     var e;
     return (e = C.value) != null && e.length ? Ae(C.value) : [];
-  }), v = b(() => {
+  }), v = I(() => {
     var e;
     return (e = C.value) != null && e.length ? C.value.filter((l) => !l.duplicate) : [];
-  }), k = b(() => v.value.filter((e) => e.added)), s = b(() => {
+  }), y = I(() => v.value.filter((e) => e.added)), s = I(() => {
     var e;
     return (e = g.value) != null && e.length ? g.value.filter((l) => l.used && !l.duplicate) : [];
-  }), y = b(() => s.value.filter((e) => e.used)), _ = b(() => {
+  }), k = I(() => s.value.filter((e) => e.used)), _ = I(() => {
     var e;
     return (e = O.value) != null && e.length ? i.value.reduce((l, n) => l + n.getArea(), 0) : 0;
-  }), I = b(() => {
+  }), L = I(() => {
     var e;
     return !((e = g.value) != null && e.length) || !p.value ? 0 : p.value ? p.value.getArea() : 0;
-  }), w = b(() => {
+  }), w = I(() => {
     var e;
     return !((e = C.value) != null && e.length) || !r.value ? 0 : r.value ? r.value.reduce((l, n) => l + n.getArea(), 0) : 0;
-  }), m = b(() => {
+  }), m = I(() => {
     var e;
     return !((e = O.value) != null && e.length) || !p.value ? null : p.value.cutType;
-  }), N = b(() => {
+  }), N = I(() => {
     var l;
     return (l = g.value) != null && l.length ? g.value.filter((n) => n.used && (n.stack === !1 || typeof n.stack == "number")) : [];
-  }), L = b(() => {
+  }), b = I(() => {
     var e;
     return (e = g.value) != null && e.length ? qe(p.value, g.value) : 0;
-  }), W = b(() => {
+  }), W = I(() => {
     var l;
     if (!((l = g.value) != null && l.length)) return 0;
-    let e = I.value ? (_.value + w.value) / I.value : null;
+    let e = L.value ? (_.value + w.value) / L.value : null;
     return e > 1 && (e = 1), e;
   }), V = () => {
     B.value = null, C.value.length = 0, g.value.length = 0, O.value.length = 0, M.value.length = 0, z.value.length = 0, K.value.length = 0;
@@ -433,19 +433,19 @@ function je() {
     activeShapes: r,
     unplacedShapes: u,
     uniqueShapes: v,
-    uniqueAddedShapes: k,
+    uniqueAddedShapes: y,
     unplacedShapeTally: d,
     uniqueStock: s,
-    uniqueUsedStock: y,
+    uniqueUsedStock: k,
     activeStock: p,
     activeCuts: i,
     activeCutsArea: _,
     activeCutType: m,
     usedStock: T,
     stackedStock: N,
-    activeStockArea: I,
+    activeStockArea: L,
     activeShapeArea: w,
-    activeStockStackCount: L,
+    activeStockStackCount: b,
     activeTotalArea: W,
     activeSegments: x,
     //methods
@@ -577,11 +577,11 @@ function He(r) {
       var u, d, v;
       (u = r.refs) != null && u.connected && (r.refs.connected.value = !0), (v = (d = r.callbacks) == null ? void 0 : d.onConnect) == null || v.call(d);
     }), i.on("connect_error", (u) => {
-      var d, v, k, s;
-      (d = r.refs) != null && d.connected && (r.refs.connected.value = !1), (v = r.refs) != null && v.thinking && (r.refs.thinking.value = !1), (s = (k = r.callbacks) == null ? void 0 : k.onConnectError) == null || s.call(k, u);
+      var d, v, y, s;
+      (d = r.refs) != null && d.connected && (r.refs.connected.value = !1), (v = r.refs) != null && v.thinking && (r.refs.thinking.value = !1), (s = (y = r.callbacks) == null ? void 0 : y.onConnectError) == null || s.call(y, u);
     }), i.on("connect_timeout", (u) => {
-      var d, v, k, s;
-      (d = r.refs) != null && d.connected && (r.refs.connected.value = !1), (v = r.refs) != null && v.thinking && (r.refs.thinking.value = !1), (s = (k = r.callbacks) == null ? void 0 : k.onConnectError) == null || s.call(k, u);
+      var d, v, y, s;
+      (d = r.refs) != null && d.connected && (r.refs.connected.value = !1), (v = r.refs) != null && v.thinking && (r.refs.thinking.value = !1), (s = (y = r.callbacks) == null ? void 0 : y.onConnectError) == null || s.call(y, u);
     }), i.on("result", (u) => {
       var d, v;
       H.value.complete = !0, (v = (d = r.callbacks) == null ? void 0 : d.onResult) == null || v.call(d, u), i.disconnect();
@@ -596,8 +596,8 @@ function He(r) {
       var d, v;
       (v = (d = r.callbacks) == null ? void 0 : d.onUser) == null || v.call(d, u);
     }), i.on("error", (u) => {
-      var d, v, k;
-      (d = r.refs) != null && d.thinking && (r.refs.thinking.value = !1), Ie(), (k = (v = r.callbacks) == null ? void 0 : v.onError) == null || k.call(v, u);
+      var d, v, y;
+      (d = r.refs) != null && d.thinking && (r.refs.thinking.value = !1), Ie(), (y = (v = r.callbacks) == null ? void 0 : v.onError) == null || y.call(v, u);
     });
   }, T = () => i == null ? void 0 : i.disconnect(), o = () => i == null ? void 0 : i.connect();
   return x(), {
@@ -628,18 +628,19 @@ function We() {
 const Le = ["banding", "finish", "cutLength", "perPart", "partArea", "offcutArea", "rollLength", "surcharge", "machining", "stock", "custom"], Re = (r) => Le.includes(r);
 function Xe(r, p) {
   const i = (s) => {
-    var y;
-    (y = p.log) == null || y.call(p, s);
+    var k;
+    (k = p.log) == null || k.call(p, s);
   }, x = (s) => {
-    var y;
-    return (y = p.error) == null || y.call(p, s), { success: !1, error: s };
+    var k;
+    return (k = p.error) == null || k.call(p, s), { success: !1, error: s };
   }, T = () => {
     for (const s of Le) o(s, 0);
-  }, o = (s, y) => {
-    const { inputs: _, elements: I, setInputValue: w, formatPrice: m } = p;
-    if (isNaN(y)) throw new Error("Price must be a number");
+  }, o = (s, k) => {
+    const { inputs: _, elements: L, setInputValue: w, formatPrice: m } = p;
+    if (isNaN(k)) throw new Error("Price must be a number");
     if (!Re(s)) return;
-    const L = {
+    const b = {
+      //this should not include any extra costs
       custom: {
         visible: null,
         hidden: "smartcut-custom-price"
@@ -685,17 +686,17 @@ function Xe(r, p) {
         visible: "stock_total_price"
       }
     }[s];
-    L != null && L.hidden && _[L.hidden] && w(L.hidden, y), L != null && L.visible && I[L.visible] && (I[L.visible].innerText = m(y));
+    b != null && b.hidden && _[b.hidden] && (console.log("setting hidden price", b.hidden, k), w(b.hidden, k)), b != null && b.visible && L[b.visible] && (L[b.visible].innerText = m(k));
   }, u = (s) => {
-    const { product: y, getCurrentVariationPrice: _, isQuantityPricing: I, enableAddToCart: w, setCartQuantity: m } = p;
-    let N = (y == null ? void 0 : y.price) || _() || 0;
+    const { product: k, getCurrentVariationPrice: _, isQuantityPricing: L, enableAddToCart: w, setCartQuantity: m } = p;
+    let N = (k == null ? void 0 : k.price) || _() || 0;
     typeof N == "string" && (N = parseFloat(N));
-    const L = r.unit_system === "imperial" ? "feet" : "meters", V = {
-      full_stock: (f) => (i(["calculating cost by full sheet"]), I() ? (m(f.metadata.totalUsedStock), 0) : f.metadata.totalStockCost),
+    const b = r.unit_system === "imperial" ? "feet" : "meters", V = {
+      full_stock: (f) => (i(["calculating cost by full sheet"]), L() ? (m(f.metadata.totalUsedStock), 0) : f.metadata.totalStockCost),
       part_area: (f) => {
-        i([`calculating cost by part area in square ${L}`]);
+        i([`calculating cost by part area in square ${b}`]);
         const A = r.unit_system === "imperial" ? 144 : 1e6, P = f.metadata.totalPartArea / A, F = P * N;
-        o("partArea", F), i([`part area in square ${L} is ${P} with price ${F}`]);
+        o("partArea", F), i([`part area in square ${b} is ${P} with price ${F}`]);
         let E = P;
         if (r != null && r.enable_offcut_pricing && (f != null && f.offcuts)) {
           const J = f == null ? void 0 : f.offcuts.reduce((t, a) => {
@@ -705,28 +706,28 @@ function Xe(r, p) {
           o("offcutArea", j), i([`calculated sellable offcut area as ${J}, with price ${j}`]), E += J / A;
         }
         const X = E * N;
-        if (i([`calculated total price as ${X}, `]), I())
+        if (i([`calculated total price as ${X}, `]), L())
           i([`setting cart quantity to ${E}`]), m(E, 2);
         else
           return X;
         return 0;
       },
       cut_length: (f) => {
-        i([`calculating cost by cut length in  ${L}`]);
+        i([`calculating cost by cut length in  ${b}`]);
         const A = r.unit_system === "imperial" ? 12 : 1e3, P = f.metadata.totalCutLength / A;
         return m(P, 2), 0;
       },
       full_stock_plus_cut_length: (f) => {
         i(["calculating cost by full sheet plus cut length"]);
         let A = 0;
-        I() ? m(f.metadata.totalUsedStock) : A = f.metadata.totalStockCost;
+        L() ? m(f.metadata.totalUsedStock) : A = f.metadata.totalStockCost;
         const P = r.unit_system === "imperial" ? 12 : 1e3, E = f.metadata.totalCutLength / P * r.cut_length_price;
         return o("cutLength", E), A + E;
       },
       full_stock_plus_num_parts: (f) => {
         i(["calculating cost by full sheet plus number of parts"]);
         let A = 0;
-        if (I())
+        if (L())
           m(f.metadata.totalUsedStock);
         else {
           const F = f.metadata.totalStockCost;
@@ -736,37 +737,37 @@ function Xe(r, p) {
         return console.log("partPrice", P), o("perPart", P), A + P;
       },
       roll_length: (f) => {
-        i([`calculating cost by roll length in ${L}`]);
+        i([`calculating cost by roll length in ${b}`]);
         const A = r.unit_system === "imperial" ? 12 : 1e3, P = f.stock.reduce((F, E) => F + E.analysis.rollLength / A * Ne({ v: E.cost }), 0);
         return o("rollLength", P), P;
       }
     }[r.pricing_strategy], $ = V(s);
     return w(), $;
-  }, d = (s, y) => {
+  }, d = (s, k) => {
     const {
       isExtraEnabled: _,
-      isMachiningEnabled: I,
+      isMachiningEnabled: L,
       isSurchargeEnabled: w,
       inputType: m,
       getTotalBandingPrice: N,
-      getTotalFinishPrice: L,
+      getTotalFinishPrice: b,
       getTotalMachiningPrice: W,
       getInputValue: V
     } = p;
-    let $ = y;
+    let $ = k;
     if (_("banding") && s.metadata.bandingLengthByType) {
       const f = N(s.metadata.bandingLengthByType);
       o("banding", f), $ += f;
     }
     if (_("finish") && s.metadata.finishAreaByType) {
-      const f = L(s.metadata.finishAreaByType);
+      const f = b(s.metadata.finishAreaByType);
       o("finish", f), $ += f;
     }
     if (m.value === "formula") {
       const f = parseFloat(V("smartcut-hardware-price"));
       isNaN(f) || ($ += f);
     }
-    if (I()) {
+    if (L()) {
       const f = W(s);
       o("machining", f), $ += f;
     }
@@ -776,7 +777,7 @@ function Xe(r, p) {
     }
     return $;
   }, v = (s) => {
-    const { getInputValue: y, setInputValue: _ } = p, I = {
+    const { getInputValue: k, setInputValue: _ } = p, L = {
       "smartcut-job-id": s.jobId,
       "smartcut-dimensions": s.parts.map((w) => `${w.l}x${w.w} [${w.q}]`).join(", "),
       "smartcut-total-cut-length": s.metadata.totalCutLength,
@@ -785,9 +786,9 @@ function Xe(r, p) {
       "smartcut-total-parts": s.metadata.totalPartsProduced,
       "smartcut-machining": s.metadata.hasMachining
     };
-    if (Object.entries(I).forEach(([w, m]) => {
+    if (Object.entries(L).forEach(([w, m]) => {
       _(w, m);
-    }), y("smartcut-stock-summary") !== void 0) {
+    }), k("smartcut-stock-summary") !== void 0) {
       const w = s.stock.map((m) => `${m.l}x${m.w}${m.t ? "x" + m.t : ""} [${m.q}]`).join(", ");
       _("smartcut-stock-summary", w);
     }
@@ -795,17 +796,17 @@ function Xe(r, p) {
   return {
     calculatePrice: async (s) => {
       T();
-      const { isQuantityPricing: y, selectedVariation: _, setVariationPrice: I, setCartQuantity: w } = p;
+      const { isQuantityPricing: k, selectedVariation: _, setVariationPrice: L, setCartQuantity: w } = p;
       if (!(s != null && s.jobId))
         return x("No job ID provided");
-      y() || w(1);
+      k() || w(1);
       let m = u(s);
-      if (!y()) {
+      if (m = d(s, m), !k()) {
         if (!s.metadata.totalStockCost)
           return x("Total stock cost not returned for a multiple size product");
         i([`total cost is ${m}`]), o("custom", m);
       }
-      return m = d(s, m), _.value && I(m), v(s), { success: !0, totalPrice: m };
+      return _.value && L(m), v(s), { success: !0, totalPrice: m };
     },
     resetPricing: T
   };

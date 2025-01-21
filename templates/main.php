@@ -749,7 +749,7 @@ class TemplateManager
 
 			$sanitizedValue = $field->sanitize($value);
 
-			$product->update_meta_data($prefix . $key, $sanitizedValue);
+			$product->update_meta_data(SMARTCUT_PREFIX . $key, $sanitizedValue);
 		}
 
 		$product->save();
