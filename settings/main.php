@@ -420,7 +420,7 @@ class SettingsManager
 	}
 
 
-	public function sanitizeOptions(array $input)
+	public function sanitizeOptions(array $input = null)
 	{
 		if (!is_array($input)) {
 			return $this->getDefaultOptions();

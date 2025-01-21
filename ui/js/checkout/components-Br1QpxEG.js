@@ -2,7 +2,7 @@ var jn = Object.defineProperty;
 var zn = (i, t, e) => t in i ? jn(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
 var c = (i, t, e) => zn(i, typeof t != "symbol" ? t + "" : t, e);
 import { d as Ie, o as v, c as $, F as be, r as Le, n as Se, a as we, b as E, t as te, w as es, v as ts, e as Vn, f as N, g as G, h as Z, i as xe, j as ot, k as Ve, l as is, m as oi, u as x, p as zt, q as fe, s as ss, x as Yn, y as Gi, z as qt, A as me, B as Xn, C as $t, D as Kn, E as Zn, G as Jn, H as Qn, I as ct, J as er, T as tr, K as Ks, L as ir, M as Cs, N as sr, O as nr, P as rr, Q as or, R as lr } from "./vendor-vue-B39CQo2S.js";
-import { u as Zs, a as Hi, b as Js, c as ar, d as ur, e as cr } from "./composables-BVLk9NTK.js";
+import { u as Zs, a as Hi, b as Js, c as ar, d as ur, e as cr } from "./composables-B8_Kyate.js";
 import { l as Je, a as Ai, b as Di, c as Qs, d as en, s as Ee, e as li, r as Rt, f as tn, p as hr, g as dr, S as fr, h as pr, i as gr, j as mr, k as yr } from "./vendor-d3-BrvhDTRC.js";
 import { c as vr, a as sn, b as Xe, F as ui, g as Vt, v as ns, i as fi, t as Ei, d as ri, e as Ii, h as br, s as wr, f as Sr, o as kr, j as xr, k as Cr, P as $r } from "./vendor-UJdh33XB.js";
 import { i as Pr } from "./vendor-i18n-D9hV6ZJH.js";
@@ -7153,7 +7153,7 @@ const Za = ["id"], Ja = /* @__PURE__ */ Ie({
 }, yu = { class: "content" }, vu = {
   key: 4,
   id: "progress"
-}, bu = !0, wu = /* @__PURE__ */ Ie({
+}, bu = !1, wu = /* @__PURE__ */ Ie({
   __name: "CheckoutCalculator",
   props: {
     debug: {
@@ -8038,11 +8038,7 @@ const Za = ["id"], Ja = /* @__PURE__ */ Ie({
       });
     }, { deep: !0 }), xe(() => F.numberFormat, (f) => {
       S(f);
-    });
-    const Un = () => {
-      at && at.disconnect();
-    };
-    return ot(async () => {
+    }), ot(async () => {
       if (Ue.value) return;
       const f = new URL(window.location.href), p = f.searchParams.toString(), w = f.origin + f.pathname + (p ? `?${p}` : "");
       se.value !== w && (u.inputShapes.value.length = 0, wi(1)), se.value = w, he.value = F.locale, await at.connect(), at.emit("getUserFromDomain"), window.addEventListener("smartcut/load", xs), Ue.value = !0, R.debug && M("log", [
@@ -8050,7 +8046,11 @@ const Za = ["id"], Ja = /* @__PURE__ */ Ie({
         "fields:",
         bt.value.map((I) => I.id)
       ]);
-    }), is(() => {
+    });
+    const Un = () => {
+      at && at.disconnect();
+    };
+    return is(() => {
       window.removeEventListener("smartcut/load", xs), Un(), delete window.smartcutCheckout;
     }), t({
       init: He,
@@ -8391,7 +8391,7 @@ const Za = ["id"], Ja = /* @__PURE__ */ Ie({
       ], 64);
     };
   }
-}), Gc = /* @__PURE__ */ Zt(wu, [["__scopeId", "data-v-76724c75"]]), Su = {
+}), Gc = /* @__PURE__ */ Zt(wu, [["__scopeId", "data-v-54d2ebe6"]]), Su = {
   name: "ObjectViewer",
   props: {
     data: {

@@ -93,7 +93,7 @@ define('SMARTCUT_FIELDS', [
 		'type' => 'boolean',
 		'default' => '0',
 		'group' => ['formula', 'general'],
-		'label' => 'Enable formula pricing',
+		'label' => 'Enable formula pricing [BETA]',
 		'description' => 'Enable formula pricing for products.',
 		'show' => ['global', 'product']
 	],
@@ -1016,7 +1016,6 @@ function cutPreferenceScript()
 
 			function updateCutPreference(preselect = false) {
 				var stockType = stockTypeField.val();
-				debugger;
 				switch (stockType) {
 					case <?php echo '\'' . \SmartCut\Settings\Factory\Field::GLOBAL_VALUE . '\''; ?>:
 						enableCutPreferenceOptions(<?php echo '\'' . \SmartCut\Settings\Factory\Field::GLOBAL_VALUE . '\''; ?>);
