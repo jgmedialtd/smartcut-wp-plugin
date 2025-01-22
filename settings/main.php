@@ -402,10 +402,8 @@ class SettingsManager
 
 	public function registerSettings()
 	{
-
-		// Register the setting with proper sanitization
 		register_setting(
-			'smartcut_group',  // Match the settings_fields() in the form
+			'smartcut_group',
 			SMARTCUT_OPTIONS_KEY,
 			[
 				'sanitize_callback' => [$this, 'sanitizeOptions'],
@@ -413,20 +411,20 @@ class SettingsManager
 			]
 		);
 
-		// Initialize all pages with the current options
+		// Initialize pages with current options
 		foreach ($this->pages as $page) {
-			$page->initialize($this->options);
+			$page->initialize($this->options);  // Pass the current options to each page
 		}
 	}
 
 
-	public function sanitizeOptions(array $input = null)
+	public function sanitizeOptions($input)
 	{
 		if (!is_array($input)) {
 			return $this->getDefaultOptions();
 		}
 
-		$allOptions = getGlobalSettings();
+		$allOptions = getGlobalSettings();  // Get existing options
 		$fields = \SmartCut\Settings\Fields\getSettingFields();
 
 		$referer = wp_get_referer();
@@ -439,12 +437,19 @@ class SettingsManager
 		$currentPage = $this->pages[$params['page'] ?? ''] ?? null;
 		$currentPageFields = $currentPage ? array_keys($currentPage->getFields()) : [];
 
+		// First process all submitted values
 		foreach ($input as $key => $value) {
 			if (isset($fields[$key])) {
-				$allOptions[$key] = $this->sanitizeValue($value, $fields[$key]);
+				$field = FieldFactory::createField(
+					SMARTCUT_PREFIX . $key,
+					SMARTCUT_OPTIONS_KEY . "[$key]",
+					$fields[$key]
+				);
+				$allOptions[$key] = $field->sanitize($value);
 			}
 		}
 
+		// Then handle unchecked boolean fields
 		foreach ($currentPageFields as $fieldId) {
 			$baseId = str_replace(SMARTCUT_PREFIX, '', $fieldId);
 			if (isset($fields[$baseId]) && $fields[$baseId]['type'] === 'boolean' && !isset($input[$baseId])) {
@@ -601,7 +606,17 @@ class SettingsPage
 			$field = $data['field'];
 			$baseId = str_replace(SMARTCUT_PREFIX, '', $id);
 
-			// If it's a boolean field, add a hidden input to ensure the field is always submitted
+			// Important: Set the current value from options
+			if (isset($options[$baseId])) {
+				$field->setValue($options[$baseId]);
+			} else {
+				// If no value in options, check if there's a default in SMARTCUT_FIELDS
+				if (isset(SMARTCUT_FIELDS[$baseId]['default'])) {
+					$field->setValue(SMARTCUT_FIELDS[$baseId]['default']);
+				}
+			}
+
+			// If it's a boolean field, add a hidden input
 			if (isset(SMARTCUT_FIELDS[$baseId]) && SMARTCUT_FIELDS[$baseId]['type'] === 'boolean') {
 				add_settings_field(
 					$id,
@@ -616,7 +631,6 @@ class SettingsPage
 					$data['section']
 				);
 			} else {
-				// Original code for non-boolean fields
 				add_settings_field(
 					$id,
 					$field->getLabel(),
@@ -669,7 +683,7 @@ class SettingsPage
 					style="display: inline-block; margin-right: 10px;">
 					<input type="hidden" name="action" value="smartcut_reset_settings">
 					<?php wp_nonce_field('smartcut_reset_settings', 'smartcut_reset_nonce'); ?>
-					<?php submit_button('Reset All Settings', 'delete', 'submit', false); ?>
+					<?php submit_button('Reset All Settings', 'delete', 'smartcut-reset-submit', false); ?>
 				</form>
 
 				<!-- Update Settings Form -->
@@ -677,7 +691,7 @@ class SettingsPage
 					style="display: inline-block;">
 					<input type="hidden" name="action" value="smartcut_trigger_updates">
 					<?php wp_nonce_field('smartcut_trigger_updates', 'smartcut_update_nonce'); ?>
-					<?php submit_button('Run Legacy Settings Update', 'secondary', 'submit', false); ?>
+					<?php submit_button('Run Legacy Settings Update', 'secondary', 'smartcut-update-submit', false); ?>
 				</form>
 			</div>
 		</div>

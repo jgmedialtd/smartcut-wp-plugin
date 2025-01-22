@@ -273,13 +273,14 @@ class CartManager
 	 */
 	public static function validateCart(bool $passed, $productId = null, $quantity = null)
 	{
+
+		$jobId = isset($_POST['smartcut_job_id']) ? sanitize_text_field($_POST['smartcut_job_id']) : '';
+		if (!$jobId) return $passed;
+
 		if (!isset($_POST[self::NONCE_FIELD]) || !wp_verify_nonce($_POST[self::NONCE_FIELD], self::NONCE_ACTION)) {
 			wc_add_notice('Security check failed.', 'error');
 			return false;
 		}
-
-		$jobId = isset($_POST['smartcut_job_id']) ? sanitize_text_field($_POST['smartcut_job_id']) : '';
-		if (!$jobId) return $passed;
 
 		$transientKey = 'smartcut_job_' . md5($jobId);
 		$exists = get_transient($transientKey);

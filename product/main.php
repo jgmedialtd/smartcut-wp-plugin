@@ -40,7 +40,13 @@ class Product
 
 		$this->productId = $productId;
 
-		$product = \wc_get_product($this->productId);
+		try {
+			$product = \wc_get_product($this->productId);
+		} catch (\Throwable $th) {
+			return;
+		}
+
+
 		if (!$product) return;
 
 		$this->product = $product;
@@ -94,7 +100,7 @@ class Product
 			$this->initializePricingStrategy();
 		}
 
-		if (isset($this->settings['units_system']) && $this->settings['units_system'] === 'imperial') {
+		if (isset($this->settings['number_format']) && $this->settings['number_format'] === 'imperial') {
 			printf('<p id="smartcut-intro-text">%s</p>', __('Add your cuts below. Units are inches.', 'smartcut'));
 		} else {
 			printf('<p id="smartcut-intro-text">%s</p>', __('Add your cuts below. Units are mm.', 'smartcut'));

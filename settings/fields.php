@@ -671,7 +671,7 @@ define('SMARTCUT_FIELDS', [
 		'output' => 'string',
 		'default' => 'decimal',
 		'group' => ['general', 'basic'],
-		'label' => 'Units',
+		'label' => 'Number format',
 		'description' => 'Decimal or fractions.',
 		'options' => [
 			'decimal' => 'Decimal',
