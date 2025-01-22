@@ -2,7 +2,7 @@ var Un = Object.defineProperty;
 var jn = (i, t, e) => t in i ? Un(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
 var c = (i, t, e) => jn(i, typeof t != "symbol" ? t + "" : t, e);
 import { d as Oe, o as y, c as C, F as we, r as Te, n as ke, a as Se, b as D, t as se, w as es, v as ts, e as zn, f as H, g as N, h as J, i as $e, j as at, k as Ye, l as is, m as ri, u as k, p as Vt, q as pe, s as ss, x as Vn, y as Gi, z as qt, A as be, B as Yn, C as Lt, D as Xn, E as Kn, G as Zn, H as Jn, I as ct, J as Qn, T as er, K as Xs, L as tr, M as xs, N as ir, O as sr, P as nr, Q as rr, R as or } from "./vendor-vue-B39CQo2S.js";
-import { u as Ks, a as Hi, b as Zs, c as lr, d as ar, e as ur } from "./composables-BF1kTmk8.js";
+import { u as Ks, a as Hi, b as Zs, c as lr, d as ar, e as ur } from "./composables-BtQ3XTQG.js";
 import { l as Qe, a as Ai, b as Di, c as Js, d as Qs, s as Ee, e as oi, r as Rt, f as en, p as cr, g as hr, S as dr, h as fr, i as pr, j as gr, k as mr } from "./vendor-d3-BrvhDTRC.js";
 import { c as yr, a as tn, b as Ke, F as ai, g as Yt, v as ns, i as di, t as Ei, d as ni, e as Ii, h as vr, s as br, f as wr, o as Sr, j as kr, k as xr, P as Cr } from "./vendor-UJdh33XB.js";
 import { i as $r } from "./vendor-i18n-D9hV6ZJH.js";
@@ -5889,9 +5889,9 @@ Only JPG and PNG files are allowed.`), g.value = "";
   }
 }), ua = /* @__PURE__ */ Jt(aa, [["__scopeId", "data-v-bb77aee9"]]);
 function ca(i) {
-  var l;
+  var l, a;
   const t = i.x, e = i.x + i.l, s = Qe().domain([t, e]).range([this.scales.xPositionScale(t), this.scales.xPositionScale(e)]), n = i.y, r = i.y + i.w, o = Qe().domain([n, r]).range([this.scales.yPositionScale(n), this.scales.yPositionScale(r)]);
-  this.axes.shapeXAxis ? this.axes.shapeXAxis.call(Ai(s).tickValues(s.domain()).tickSize(4).tickFormat(this.formatNumber)) : this.axes.shapeXAxis = this.selections.axisGroup.append("g").attr("transform", `translate(0, ${this.state.h - this.state.padding + this.state.axisSpacing})`).attr("class", "axis shape x").call(Ai(s).tickValues(s.domain()).tickSize(4).tickFormat(this.formatNumber)), ((l = i == null ? void 0 : i.stock) == null ? void 0 : l.type) !== "linear" ? this.axes.shapeYAxis ? this.axes.shapeYAxis.call(Di(o).tickValues(o.domain()).tickSize(4).tickFormat(this.formatNumber)) : this.axes.shapeYAxis = this.selections.axisGroup.append("g").attr("transform", `translate(${this.state.padding - this.state.axisSpacing}, 0)`).attr("class", "axis shape y").call(Di(o).tickValues(o.domain()).tickSize(4).tickFormat(this.formatNumber)) : this.axes.shapeYAxis && (this.axes.shapeYAxis.remove(), this.axes.shapeYAxis = null);
+  this.axes.shapeXAxis ? this.axes.shapeXAxis.call(Ai(s).tickValues(s.domain()).tickSize(4).tickFormat(this.formatNumber)) : this.axes.shapeXAxis = this.selections.axisGroup.append("g").attr("transform", `translate(0, ${this.state.h - this.state.padding + this.state.axisSpacing})`).attr("class", "axis shape x").call(Ai(s).tickValues(s.domain()).tickSize(4).tickFormat(this.formatNumber)), ((a = (l = i == null ? void 0 : i.stock) == null ? void 0 : l.saw) == null ? void 0 : a.stockType) !== "linear" ? this.axes.shapeYAxis ? this.axes.shapeYAxis.call(Di(o).tickValues(o.domain()).tickSize(4).tickFormat(this.formatNumber)) : this.axes.shapeYAxis = this.selections.axisGroup.append("g").attr("transform", `translate(${this.state.padding - this.state.axisSpacing}, 0)`).attr("class", "axis shape y").call(Di(o).tickValues(o.domain()).tickSize(4).tickFormat(this.formatNumber)) : this.axes.shapeYAxis && (this.axes.shapeYAxis.remove(), this.axes.shapeYAxis = null);
 }
 function ha() {
   if (this.state.device !== "desktop" || !this.settings.main) return;
@@ -6895,12 +6895,12 @@ class Xa {
     return r.width >= o || l < 40;
   }
   isLengthHidden(t, e, s) {
-    var a;
+    var a, u;
     if (this.settings.app) {
-      const u = this.scales.measurementScale(t.l), h = this.scales.measurementScale(t.w);
-      return u < 50 || h < 50;
+      const h = this.scales.measurementScale(t.l), v = this.scales.measurementScale(t.w);
+      return h < 50 || v < 50;
     }
-    if (((a = t == null ? void 0 : t.stock) == null ? void 0 : a.type) === "linear") return !1;
+    if (((u = (a = t == null ? void 0 : t.stock) == null ? void 0 : a.saw) == null ? void 0 : u.stockType) === "linear") return !1;
     const n = s[e];
     if (!n) return !0;
     const r = n.getBBox(), o = this.scales.measurementScale(t.l), l = this.scales.measurementScale(t.w);
