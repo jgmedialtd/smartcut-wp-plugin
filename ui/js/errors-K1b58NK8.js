@@ -1,4 +1,4 @@
-const e = {
+const resources = {
   en: {
     unexpected_error: "unexpected error",
     unknown_error: "unknown error",
@@ -49,6 +49,25 @@ const e = {
     less_than_or_equal: "{{x}} should be less than or equal {{y}}",
     exceeded_limit: "The {{type}} count of {{x}} exceeds you {{type}} limit of {{y}}",
     option_not_available: "Option {{x}} in {{y}} is no longer available",
+    saw: {
+      validation: {
+        stockType: {
+          invalid: "Saw stock type: {{stockType}} not valid"
+        },
+        cutType: {
+          invalid: "Saw cut type: {{cutType}} not valid for stock type: {{stockType}}"
+        },
+        cutPreference: {
+          invalid: "Saw cut preference: {{preference}} not valid for cut type: {{cutType}} and stock type: {{stockType}}"
+        },
+        bladeWidth: {
+          invalid: "Saw blade width: {{width}} is not valid"
+        },
+        required: {
+          stackHeight: "{{cutType}} saws require stack height to be set"
+        }
+      }
+    },
     fieldValidation: {
       valid: "Valid",
       zero_not_allowed: "0 is not allowed",
@@ -109,6 +128,25 @@ const e = {
     less_than: "{{x}} hauria de ser menor que {{y}}",
     less_than_or_equal: "{{x}} hauria de ser menor o igual que {{y}}",
     option_not_available: "L'opció {{x}} a {{y}} ja no està disponible",
+    saw: {
+      validation: {
+        stockType: {
+          invalid: "Tipus de material de serra: {{stockType}} no vàlid"
+        },
+        cutType: {
+          invalid: "Tipus de tall de serra: {{cutType}} no vàlid per al tipus de material: {{stockType}}"
+        },
+        cutPreference: {
+          invalid: "Preferència de tall de serra: {{preference}} no vàlida per al tipus de tall: {{cutType}} i tipus de material: {{stockType}}"
+        },
+        bladeWidth: {
+          invalid: "Amplada de la fulla de serra: {{width}} no és vàlida"
+        },
+        required: {
+          stackHeight: "Les serres {{cutType}} requereixen establir una alçada de pila"
+        }
+      }
+    },
     fieldValidation: {
       valid: "Vàlid",
       zero_not_allowed: "0 no està permès",
@@ -169,6 +207,25 @@ const e = {
     less_than: "{{x}} debería ser menor que {{y}}",
     less_than_or_equal: "{{x}} debería ser menor o igual que {{y}}",
     option_not_available: "La opción {{x}} en {{y}} ya no está disponible",
+    saw: {
+      validation: {
+        stockType: {
+          invalid: "Tipo de material de sierra: {{stockType}} no válido"
+        },
+        cutType: {
+          invalid: "Tipo de corte de sierra: {{cutType}} no válido para el tipo de material: {{stockType}}"
+        },
+        cutPreference: {
+          invalid: "Preferencia de corte de sierra: {{preference}} no válida para el tipo de corte: {{cutType}} y tipo de material: {{stockType}}"
+        },
+        bladeWidth: {
+          invalid: "Ancho de la hoja de sierra: {{width}} no es válido"
+        },
+        required: {
+          stackHeight: "Las sierras {{cutType}} requieren establecer una altura de pila"
+        }
+      }
+    },
     fieldValidation: {
       valid: "Válido",
       zero_not_allowed: "0 no está permitido",
@@ -229,6 +286,25 @@ const e = {
     less_than: "{{x}} doit être inférieur à {{y}}",
     less_than_or_equal: "{{x}} doit être inférieur ou égal à {{y}}",
     option_not_available: "L'option {{x}} dans {{y}} n'est plus disponible",
+    saw: {
+      validation: {
+        stockType: {
+          invalid: "Type de matériau de scie : {{stockType}} non valide"
+        },
+        cutType: {
+          invalid: "Type de coupe de scie : {{cutType}} non valide pour le type de matériau : {{stockType}}"
+        },
+        cutPreference: {
+          invalid: "Préférence de coupe de scie : {{preference}} non valide pour le type de coupe : {{cutType}} et le type de matériau : {{stockType}}"
+        },
+        bladeWidth: {
+          invalid: "Largeur de lame de scie : {{width}} non valide"
+        },
+        required: {
+          stackHeight: "Les scies {{cutType}} nécessitent une hauteur de pile définie"
+        }
+      }
+    },
     fieldValidation: {
       valid: "Valide",
       zero_not_allowed: "0 n'est pas autorisé",
@@ -244,5 +320,6 @@ const e = {
   }
 };
 export {
-  e as resources
+  resources
 };
+//# sourceMappingURL=errors-K1b58NK8.js.map

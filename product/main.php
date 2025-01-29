@@ -124,7 +124,7 @@ class Product
 
 		wp_enqueue_script(
 			'smartcut-checkout',
-			plugin_dir_url(dirname(__DIR__) . '/main-plugin-file.php') . 'ui/js/checkout/checkout.js',
+			plugin_dir_url(dirname(__DIR__) . '/main-plugin-file.php') . 'ui/js/checkout.js',
 			['jquery'],
 			SMARTCUT_CURRENT_VERSION,
 			true
@@ -286,7 +286,7 @@ class Product
 
 		wp_enqueue_style(
 			'smartcut-checkout-style',
-			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'ui/css/checkout/checkout.css',
+			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'ui/css/checkout.css',
 			array(),
 			SMARTCUT_CURRENT_VERSION
 		);
