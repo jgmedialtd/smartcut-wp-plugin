@@ -8,7 +8,7 @@
  * Requires PHP: 7.4
  * WC requires at least: 8.0
  * Text Domain: smartcut
- * Version: 4.2.17
+ * Version: 4.2.18
  * Author URI: https://smartcut.dev
  */
 
@@ -38,7 +38,7 @@ $endpoint = filter_var(
 
 // Constants
 define('SMARTCUT_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('SMARTCUT_CURRENT_VERSION', '4.2.17');
+define('SMARTCUT_CURRENT_VERSION', '4.2.18');
 define('SMARTCUT_CHECKOUT_URL', $checkoutUrl);
 define('SMARTCUT_ENDPOINT', $endpoint);
 define('SMARTCUT_SCRIPTS', ['smartcut-checkout-js', 'smartcut-upload-js']);
