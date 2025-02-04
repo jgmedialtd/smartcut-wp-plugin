@@ -89,6 +89,7 @@ class PricingStrategy
 			return;
 		}
 
+		//draw the table
 		echo '<table id="smartcut-pricing-table">';
 
 		foreach ($components as $component) {
@@ -110,6 +111,17 @@ class PricingStrategy
 	{
 		$components = array();
 
+		$is_variable = $this->product->is_type('variable');
+
+		if (($is_variable && !in_array($this->strategy, ['part_area'], true)) || (!$is_variable && !in_array($this->strategy, ['full_stock_plus_cut_length', 'full_stock_plus_num_parts', 'full_stock', 'part_area'], true))) {
+
+			$components[] = array(
+				'id' => 'smartcut-stock-total',
+				'label' => __('Stock total', 'smartcut'),
+				'initial_price' => 0
+			);
+		}
+
 		switch ($this->strategy) {
 			case 'full_stock_plus_cut_length':
 				$components[] = array(
@@ -120,11 +132,6 @@ class PricingStrategy
 				break;
 
 			case 'full_stock_plus_num_parts':
-				$components[] = array(
-					'id' => 'smartcut-stock-total',
-					'label' => __('Stock total', 'smartcut'),
-					'initial_price' => 0
-				);
 				$components[] = array(
 					'id' => 'smartcut-per-part-total',
 					'label' => __('Part total', 'smartcut'),
