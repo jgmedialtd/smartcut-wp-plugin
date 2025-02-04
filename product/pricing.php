@@ -41,7 +41,7 @@ class PricingStrategy
 	{
 		$components = $this->getPricingComponents();
 
-		if ($bandingData) {
+		if (isset($this->settings['enable_banding']) && $this->settings['enable_banding'] && $bandingData) {
 			$components[] = [
 				'id' => 'smartcut-banding-total',
 				'label' => __('Banding total', 'smartcut'),
@@ -49,7 +49,7 @@ class PricingStrategy
 			];
 		}
 
-		if ($finishData) {
+		if (isset($this->settings['enable_finish']) && $this->settings['enable_finish'] && $finishData) {
 			$components[] = [
 				'id' => 'smartcut-finish-total',
 				'label' => __('Finish total', 'smartcut'),
