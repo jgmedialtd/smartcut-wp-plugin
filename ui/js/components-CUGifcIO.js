@@ -3,7 +3,7 @@ var ur = (i, t, e) => t in i ? ar(i, t, { enumerable: !0, configurable: !0, writ
 var c = (i, t, e) => ur(i, typeof t != "symbol" ? t + "" : t, e);
 import { F as ui, c as cr, a as ln, b as Xe, g as Kt, d as Di, i as pi, v as ls, t as Mi, e as Ai, h as hr, s as dr, f as fr, o as pr, j as gr, k as mr, P as yr } from "./vendor-CtQQhE4g.js";
 import { d as De, o as v, c as k, F as we, r as Oe, n as ke, a as xe, b as R, t as te, w as as, v as us, e as vr, f as G, g as H, h as Z, i as Pe, j as ht, k as Ze, l as cs, m as li, u as x, p as Xt, q as pe, s as hs, x as br, y as Ui, z as Bt, A as be, B as wr, C as Lt, D as Sr, E as xr, G as kr, H as Cr, I as ft, J as Ir, T as Pr, K as an, L as Lr, M as As, N as $r, O as Tr, P as Or, Q as Dr, R as Ar } from "./vendor-vue-CrziaopC.js";
-import { u as un, a as ds, b as cn, c as Er, d as Rr, e as Mr } from "./composables-Bf8uMwXG.js";
+import { u as un, a as ds, b as cn, c as Er, d as Rr, e as Mr } from "./composables-BrOnQ6hR.js";
 import { l as et, a as Fi, b as _i, c as hn, d as dn, s as Re, e as ai, r as Mt, f as fn, p as Fr, g as _r, S as qr, h as Br, i as Hr, j as Gr, k as Nr } from "./vendor-d3-BrvhDTRC.js";
 import { i as Wr } from "./vendor-i18n-D9hV6ZJH.js";
 function gi(i) {
@@ -5082,7 +5082,7 @@ function sa({
     }
   };
 }
-const na = ["id", "name", "value", "inputmode", "type", "placeholder", "disabled", "default", "readonly", "required", "min", "max", "aria-label", "aria-invalid", "aria-describedby"], ra = /* @__PURE__ */ De({
+const na = ["id", "name", "value", "inputmode", "type", "placeholder", "disabled", "default", "readonly", "min", "max", "aria-label", "aria-invalid", "aria-describedby"], ra = /* @__PURE__ */ De({
   __name: "TextInput",
   props: {
     type: {},
@@ -5140,7 +5140,6 @@ const na = ["id", "name", "value", "inputmode", "type", "placeholder", "disabled
       disabled: e.disabled,
       default: e.default,
       readonly: e.readonly,
-      required: e.required,
       min: e.min,
       max: e.max,
       "aria-label": e.ariaLabel,
