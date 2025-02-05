@@ -34,6 +34,7 @@ class SmartCut_Bulk_Meta_Editor
 			if ($field_id === 'formula_json') {
 				continue;
 			}
+
 			$field_name = SMARTCUT_PREFIX . $field_id;
 			try {
 				$this->field_instances[$field_id] = FieldFactory::createField(

@@ -1,1 +1,59 @@
-window.addEventListener("smartcut/ready",()=>{jQuery(function(t){t(".single_add_to_cart_button").on("click",async function(i){if(t(this).data("smartcut-upload-complete")){t(this).removeData("smartcut-upload-complete");return}const s=window.smartcutImages||[];if(console.log("Current images:",s),s.length>0){i.preventDefault(),i.stopPropagation();const a=t(this);a.addClass("loading");try{const r=new FormData;s.forEach(n=>{n.files.forEach((e,l)=>{const d=new File([e],n.metadata[l].newName,{type:e.type});r.append("files[]",d)})});const c=await fetch(`${window.smartcutConfig.siteUrl}/wp-json/smartcut/v1/file-upload`,{method:"POST",headers:{"X-WP-Nonce":window.smartcutConfig.nonce},body:r}),o=await c.json();if(c.ok){console.log(o);const n=o.filter(e=>["image/jpeg","image/jpg","image/png"].includes(e.fileType)).map(e=>e.sourceUrl).filter(Boolean);n.length&&t("#smartcut-part-images").val(n.join(","))}else{alert("There was an error uploading images - cannot add to cart"),console.error(o==null?void 0:o.message),a.removeClass("loading");return}a.data("smartcut-upload-complete",!0),a.trigger("click")}catch(r){console.error("Error uploading files:",r),alert("There was an error uploading images - cannot add to cart"),a.removeClass("loading")}}})})});
+window.addEventListener("smartcut/ready", () => {
+  jQuery(function($) {
+    $(".single_add_to_cart_button").on("click", async function(e) {
+      if ($(this).data("smartcut-upload-complete")) {
+        $(this).removeData("smartcut-upload-complete");
+        return;
+      }
+      const images = window.smartcutImages || [];
+      console.log("Current images:", images);
+      if (images.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        const $button = $(this);
+        $button.addClass("loading");
+        try {
+          const formData = new FormData();
+          images.forEach((imageData) => {
+            imageData.files.forEach((file, index) => {
+              const renamedFile = new File(
+                [file],
+                imageData.metadata[index].newName,
+                { type: file.type }
+              );
+              formData.append("files[]", renamedFile);
+            });
+          });
+          const endpoint = "/wp-json/smartcut/v1/file-upload";
+          const response = await fetch(`${window.smartcutConfig.siteUrl}${endpoint}`, {
+            method: "POST",
+            headers: {
+              "X-WP-Nonce": window.smartcutConfig.nonce
+            },
+            body: formData
+          });
+          const responseData = await response.json();
+          if (response.ok) {
+            console.log(responseData);
+            const imageUrls = responseData.filter((data) => ["image/jpeg", "image/jpg", "image/png"].includes(data.fileType)).map((data) => data.sourceUrl).filter(Boolean);
+            if (imageUrls.length) {
+              $("#smartcut-part-images").val(imageUrls.join(","));
+            }
+          } else {
+            alert("There was an error uploading images - cannot add to cart");
+            console.error(responseData == null ? void 0 : responseData.message);
+            $button.removeClass("loading");
+            return;
+          }
+          $button.data("smartcut-upload-complete", true);
+          $button.trigger("click");
+        } catch (error) {
+          console.error("Error uploading files:", error);
+          alert("There was an error uploading images - cannot add to cart");
+          $button.removeClass("loading");
+        }
+      }
+    });
+  });
+});
+//# sourceMappingURL=upload.js.map

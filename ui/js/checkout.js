@@ -1,395 +1,537 @@
-import { d as Fe, y as ut, g as k, U as De, j as Ae, o as R, c as me, A as fe, u as V, b as we, t as Se, f as te, q as oe, F as Be, k as Ve, O as Re, C as ie, G as pt, V as dt, h as Ie, W as ft, X as mt, Y as _t, Z as ht } from "./vendor-vue-CrziaopC.js";
-import { i as xe, B as yt } from "./vendor-i18n-D9hV6ZJH.js";
-import { q as gt, d as y, v as bt, w as $e, x as Le, y as S, C as He, z as Y, A as vt, p as wt, B as kt, D as St, E as xt, _ as Ft } from "./components-CHLKqL_7.js";
-import { J as Et, H as Pt, I as zt, K as Tt, L as jt, M as qt, N as Ot, O as It, Q as $t, S as Lt, T as Dt, U as At, V as Bt } from "./vendor-CtQQhE4g.js";
-import { E as Vt, a as J } from "./vendor-pdf-BmcHVhVw.js";
-import { u as Rt, f as Ht } from "./composables-ldBk7_sv.js";
-const Ut = Mt();
-async function Mt() {
-  const c = {
-    main: import("./main-CMlXbzPm.js").then((l) => l.resources),
-    errors: import("./errors-DqT4G1Wk.js").then((l) => l.resources)
-  }, [v, O] = await Promise.all([
-    c.main,
-    c.errors
-  ]), m = Object.keys(v), u = m.reduce((l, E) => ({
-    ...l,
-    [E]: {
-      main: v[E],
-      errors: O[E]
+import { d as defineComponent, y as useTranslation, g as ref, U as provide, j as onMounted, o as openBlock, c as createElementBlock, A as createVNode, u as unref, b as createBaseVNode, f as createCommentVNode, q as createBlock, F as Fragment, k as nextTick, O as markRaw, C as defineAsyncComponent, G as shallowRef, V as onBeforeMount, h as computed, W as resolveDynamicComponent, t as toDisplayString, X as createApp, Y as install, Z as FontAwesomeIcon } from "./vendor-vue-DYb4rgTA.js";
+import { i as instance, B as Browser } from "./vendor-i18n-CwRLCSuJ.js";
+import { q as capitalise, d as sentenceCase, v as setI18nInstance, w as mainSides, x as faces, y as getNestedProperty, C as CheckoutCalculator, z as checkObjectHasPropery, A as objectValuesPresent, p as convertNumberFormat, B as truncateString, D as sanitiseString, E as mapLegacyInitData, _ as _export_sfc } from "./components-U0NxhUnB.js";
+import { J as JSZip, H as library$1, I as faXmark, K as faExpand, L as faArrowsLeftRight, M as faArrowsUpDown, N as faHammer, O as faSprayCan, Q as faImage, S as faFiles, T as faTrash, U as faPlusLarge, V as faCalculator } from "./vendor-CklyHjfV.js";
+import { E, a as autoTable } from "./vendor-pdf-ClPw2zlg.js";
+import { u as useInputs, f as useProductPricing } from "./composables-BjUmpIuP.js";
+const i18nextReady = initializeI18n();
+async function initializeI18n() {
+  const messageFiles = {
+    main: import("./main-QyDB-v6h.js").then((module) => module.resources),
+    errors: import("./errors-K1b58NK8.js").then((module) => module.resources)
+  };
+  const [main, errors] = await Promise.all([
+    messageFiles.main,
+    messageFiles.errors
+  ]);
+  const availableLocales = Object.keys(main);
+  const resources = availableLocales.reduce((acc, locale) => ({
+    ...acc,
+    [locale]: {
+      main: main[locale],
+      errors: errors[locale]
     }
   }), {});
-  return bt(xe), xe.use(yt).init({
-    debug: !1,
+  setI18nInstance(instance);
+  return instance.use(Browser).init({
+    debug: false,
     // lng: 'fr',
     fallbackLng: "en",
     ns: ["main", "errors"],
     defaultNS: "errors",
-    resources: u,
+    resources,
     load: "languageOnly",
-    supportedLngs: m,
+    supportedLngs: availableLocales,
     interpolation: {
-      format: function(l, E) {
-        return E === "capitalise" ? gt(l) : E === "sentenceCase" ? y(l) : l;
+      format: function(value, format) {
+        if (format === "capitalise") return capitalise(value);
+        if (format === "sentenceCase") return sentenceCase(value);
+        return value;
       }
     }
   });
 }
-const C = 5, re = 10, pe = ",", G = {
+const headingSpacing = 5;
+const sectionSpacing = 10;
+const extrasSeparator = ",";
+const headStyles = {
   fillColor: [7, 59, 76],
   fontStyle: "normal"
-}, X = {
+};
+const styles = {
   fontSize: 9
-}, Z = { left: 10 };
-let ee = [];
-const Yt = (c, v, O, m = (u) => u.toString()) => {
-  var F;
-  const u = new Vt({ orientation: "landscape" });
-  let l = 10;
-  u.setFontSize(20), u.text(y(c("pdf.order_summary")), 10, l), l += 15, u.setFontSize(14), u.text(c("description_item_plural", { a: "Your", i: "part" }), 10, l), l += C, ee = [
-    y(c("length")),
-    y(c("width")),
-    y(c("thickness")),
-    y(c("material")),
-    y(c("quantity")),
-    y(c("name")),
-    `Banding (${$e.join(pe)})`,
-    `Finish (${Le.join(pe)})`
+};
+const margin = { left: 10 };
+let headings = [];
+const generateOrderSummaryPDF = (t, resultData, hardware, formatNumber = (number) => number.toString()) => {
+  var _a;
+  const doc = new E({ orientation: "landscape" });
+  let yOffset = 10;
+  doc.setFontSize(20);
+  doc.text(sentenceCase(t("pdf.order_summary")), 10, yOffset);
+  yOffset += 15;
+  doc.setFontSize(14);
+  doc.text(t("description_item_plural", { a: "Your", i: "part" }), 10, yOffset);
+  yOffset += headingSpacing;
+  headings = [
+    sentenceCase(t("length")),
+    sentenceCase(t("width")),
+    sentenceCase(t("thickness")),
+    sentenceCase(t("material")),
+    sentenceCase(t("quantity")),
+    sentenceCase(t("name")),
+    `Banding (${mainSides.join(extrasSeparator)})`,
+    `Finish (${faces.join(extrasSeparator)})`
   ];
-  const E = v.parts.map((p) => {
-    var x;
-    const _ = $e.map((s) => p.banding[s] || "-").join(pe), t = Le.map((s) => p.banding[s] || "-").join(pe);
+  const partsData = resultData.parts.map((part) => {
+    var _a2;
+    const banding = mainSides.map((side) => part.banding[side] || "-").join(extrasSeparator);
+    const finish = faces.map((face) => part.banding[face] || "-").join(extrasSeparator);
     return [
-      m(p.l),
-      m(p.w),
-      m(p.t) || "-",
-      ((x = p == null ? void 0 : p.material) == null ? void 0 : x.toUpperCase()) || "-",
-      m(p.q),
-      p.name || "-",
-      _,
-      t
+      formatNumber(part.l),
+      formatNumber(part.w),
+      formatNumber(part.t) || "-",
+      ((_a2 = part == null ? void 0 : part.material) == null ? void 0 : _a2.toUpperCase()) || "-",
+      formatNumber(part.q),
+      part.name || "-",
+      banding,
+      finish
     ];
   });
-  J(u, {
-    startY: l,
-    head: [ee],
-    body: E,
-    margin: Z,
-    headStyles: G,
-    styles: X
-  }), l = u.autoTable.previous.finalY + re, u.setFontSize(14), u.text(y(c("pdf.stock_requirements")), 10, l), l += C, ee = [
-    y(c("length")),
-    y(c("width")),
-    y(c("thickness")),
-    y(c("material")),
-    y(c("quantity"))
+  autoTable(doc, {
+    startY: yOffset,
+    head: [headings],
+    body: partsData,
+    margin,
+    headStyles,
+    styles
+  });
+  yOffset = doc.autoTable.previous.finalY + sectionSpacing;
+  doc.setFontSize(14);
+  doc.text(sentenceCase(t("pdf.stock_requirements")), 10, yOffset);
+  yOffset += headingSpacing;
+  headings = [
+    sentenceCase(t("length")),
+    sentenceCase(t("width")),
+    sentenceCase(t("thickness")),
+    sentenceCase(t("material")),
+    sentenceCase(t("quantity"))
     // 'Cost'
   ];
-  const d = v.stock.map((p) => {
-    var _;
+  const stockData = resultData.stock.map((stock) => {
+    var _a2;
     return [
-      m(p.l),
-      m(p.w),
-      m(p.t) || "-",
-      ((_ = p == null ? void 0 : p.material) == null ? void 0 : _.toUpperCase()) || "-",
-      m(p.q)
+      formatNumber(stock.l),
+      formatNumber(stock.w),
+      formatNumber(stock.t) || "-",
+      ((_a2 = stock == null ? void 0 : stock.material) == null ? void 0 : _a2.toUpperCase()) || "-",
+      formatNumber(stock.q)
       // stock.cost
     ];
   });
-  if (J(u, {
-    startY: l,
-    head: [ee],
-    body: d,
-    margin: Z,
-    headStyles: G,
-    styles: X
-  }), l = u.autoTable.previous.finalY + re, v.metadata.totalRollLength > 0) {
-    u.setFontSize(14), u.text(y(c("pdf.roll_requirements")), 10, l), l += C, ee = [
-      c("name"),
-      c("material"),
-      c("length")
+  autoTable(doc, {
+    startY: yOffset,
+    head: [headings],
+    body: stockData,
+    margin,
+    headStyles,
+    styles
+  });
+  yOffset = doc.autoTable.previous.finalY + sectionSpacing;
+  if (resultData.metadata.totalRollLength > 0) {
+    doc.setFontSize(14);
+    doc.text(sentenceCase(t("pdf.roll_requirements")), 10, yOffset);
+    yOffset += headingSpacing;
+    headings = [
+      t("name"),
+      t("material"),
+      t("length")
     ];
-    const p = v.stock.map((_) => {
-      var t, x;
+    const rollData = resultData.stock.map((stock) => {
+      var _a2, _b;
       return [
-        ((t = _ == null ? void 0 : _.name) == null ? void 0 : t.toUpperCase()) || "-",
-        ((x = _ == null ? void 0 : _.material) == null ? void 0 : x.toUpperCase()) || "-",
-        m(_.analysis.rollLength)
+        ((_a2 = stock == null ? void 0 : stock.name) == null ? void 0 : _a2.toUpperCase()) || "-",
+        ((_b = stock == null ? void 0 : stock.material) == null ? void 0 : _b.toUpperCase()) || "-",
+        formatNumber(stock.analysis.rollLength)
       ];
     });
-    J(u, {
-      startY: l,
-      head: [ee],
-      body: p,
-      margin: Z,
-      headStyles: G,
-      styles: X
-    }), l = u.autoTable.previous.finalY + re;
+    autoTable(doc, {
+      startY: yOffset,
+      head: [headings],
+      body: rollData,
+      margin,
+      headStyles,
+      styles
+    });
+    yOffset = doc.autoTable.previous.finalY + sectionSpacing;
   }
-  if (O && Object.values(O)) {
-    u.setFontSize(14), u.text("Hardware", 10, l), l += C;
-    const p = Object.values(O).map((_) => [
-      _.name.toUpperCase(),
-      m(_.q)
-      // item.totalCost.toFixed( 2 )
-    ]);
-    J(u, {
-      startY: l,
-      head: [[y(c("pdf.item")), y(c("quantity"))]],
-      body: p,
-      margin: Z,
-      headStyles: G,
-      styles: X
-    }), l = u.autoTable.previous.finalY + re;
+  if (hardware) {
+    if (Object.values(hardware)) {
+      doc.setFontSize(14);
+      doc.text("Hardware", 10, yOffset);
+      yOffset += headingSpacing;
+      const hardwareData = Object.values(hardware).map((item) => [
+        item.name.toUpperCase(),
+        formatNumber(item.q)
+        // item.totalCost.toFixed( 2 )
+      ]);
+      autoTable(doc, {
+        startY: yOffset,
+        head: [[sentenceCase(t("pdf.item")), sentenceCase(t("quantity"))]],
+        body: hardwareData,
+        margin,
+        headStyles,
+        styles
+      });
+      yOffset = doc.autoTable.previous.finalY + sectionSpacing;
+    }
   }
-  u.setFontSize(14), u.text(y(c("pdf.totals")), 10, l), l += C;
-  const P = [
-    [y(c("pdf.total_parts")), m(v.metadata.totalPartsProduced)],
-    [y(c("pdf.part_area")), m(v.metadata.totalPartArea)],
-    [y(c("pdf.total_stock_required")), m(v.metadata.totalUsedStock)],
-    [y(c("pdf.total_banding_length")), m(v.metadata.totalBandingLength)],
-    [y(c("pdf.total_finish_area")), m(v.metadata.totalFinishArea)],
-    [y(c("pdf.total_roll_length")), m(v.metadata.totalRollLength)]
+  doc.setFontSize(14);
+  doc.text(sentenceCase(t("pdf.totals")), 10, yOffset);
+  yOffset += headingSpacing;
+  const totalsData = [
+    [sentenceCase(t("pdf.total_parts")), formatNumber(resultData.metadata.totalPartsProduced)],
+    [sentenceCase(t("pdf.part_area")), formatNumber(resultData.metadata.totalPartArea)],
+    [sentenceCase(t("pdf.total_stock_required")), formatNumber(resultData.metadata.totalUsedStock)],
+    [sentenceCase(t("pdf.total_banding_length")), formatNumber(resultData.metadata.totalBandingLength)],
+    [sentenceCase(t("pdf.total_finish_area")), formatNumber(resultData.metadata.totalFinishArea)],
+    [sentenceCase(t("pdf.total_roll_length")), formatNumber(resultData.metadata.totalRollLength)]
   ];
-  if (J(u, {
-    startY: l,
-    body: P,
-    margin: Z,
-    headStyles: G,
-    styles: X
-  }), l = u.autoTable.previous.finalY + re, (F = window == null ? void 0 : window.smartcutImages) != null && F.length) {
-    u.addPage();
-    let p = 10;
-    u.setFontSize(14), u.text(y(c("pdf.images")), 10, p), p += C;
-    const _ = window.smartcutImages.flatMap((t, x) => t.metadata.map((s) => [
-      x + 1,
-      s.newName
+  autoTable(doc, {
+    startY: yOffset,
+    body: totalsData,
+    margin,
+    headStyles,
+    styles
+  });
+  yOffset = doc.autoTable.previous.finalY + sectionSpacing;
+  if ((_a = window == null ? void 0 : window.smartcutImages) == null ? void 0 : _a.length) {
+    doc.addPage();
+    let yOffset2 = 10;
+    doc.setFontSize(14);
+    doc.text(sentenceCase(t("pdf.images")), 10, yOffset2);
+    yOffset2 += headingSpacing;
+    const imageNames = window.smartcutImages.flatMap((imageData, index) => imageData.metadata.map((meta) => [
+      index + 1,
+      meta.newName
     ]));
-    J(u, {
-      startY: p,
-      body: _,
-      head: [[y(c("pdf.part_index")), y(c("pdf.file_name"))]],
-      margin: Z,
-      headStyles: G,
-      styles: X
+    autoTable(doc, {
+      startY: yOffset2,
+      body: imageNames,
+      head: [[sentenceCase(t("pdf.part_index")), sentenceCase(t("pdf.file_name"))]],
+      margin,
+      headStyles,
+      styles
     });
   }
-  return u.output("datauristring");
-}, Nt = {
+  return doc.output("datauristring");
+};
+const _hoisted_1$1 = {
   key: 0,
   class: "debug"
-}, Qt = !0, Wt = /* @__PURE__ */ Fe({
+};
+const showDevInfo = true;
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "WordPress",
-  setup(c) {
-    const { t: v } = ut(["main", "errors"]), O = ie(() => import("./components-CHLKqL_7.js").then((e) => e.F)), m = ie(() => import("./components-CHLKqL_7.js").then((e) => e.O)), u = ie(() => import("./components-CHLKqL_7.js").then((e) => e.N)), { inputShapes: l } = Rt(), E = "production", d = {}, P = {}, F = k(null);
-    let p, _, t;
-    const x = {
+  setup(__props) {
+    const { t } = useTranslation(["main", "errors"]);
+    const FormulaPricing = defineAsyncComponent(() => import("./components-U0NxhUnB.js").then((n) => n.F));
+    const ObjectViewer = defineAsyncComponent(() => import("./components-U0NxhUnB.js").then((n) => n.O));
+    const Notices = defineAsyncComponent(() => import("./components-U0NxhUnB.js").then((n) => n.N));
+    const { inputShapes } = useInputs();
+    const env = "development";
+    const elements = {};
+    const inputEls = {};
+    const calculatedVariationPrice = ref(null);
+    let calculatePrice;
+    let resetPricing;
+    let settings;
+    const extrasData = {
       banding: null,
       finish: null
     };
-    let s = null, L = [], H = null, T = {};
-    const A = k(!1), I = k("manual"), N = k(""), j = k([]), Q = k(null), B = k(!0), ne = k(null), U = k(!1), a = k(null);
-    De("calculator", () => a.value);
-    const g = (e) => {
-      A.value && console.log("SmartCut -", ...e);
-    }, f = (e) => {
-      console.error(`SmartCut - ${e}`);
-    }, $ = (e = !0) => {
-      U.value = !0, ["checkout", "intro_text", "offcuts", "banding_key"].forEach((r) => ae(r, "block")), nt() && ae("pricing_table", "table"), e ? W(!0) : q(), M();
-    }, D = (e = !0, n = !0) => {
-      U.value = !1, ["checkout", "intro_text", "offcuts", "banding_key", "pricing_table"].forEach((o) => ae(o, "none")), n === !0 ? K() : n === !1 && M(), W();
-    }, W = (e = !1) => {
-      ae("quantity", "inline-block"), d.quantity.readOnly = e;
-    }, q = () => {
-      U.value !== !1 && (_e(1), ae("quantity", "none"), d.quantity.readOnly = !0);
-    }, K = () => {
-      if (!d.cart_button) {
-        f("Cart button not found");
+    let product = null;
+    let variations = [];
+    let machiningPricing = null;
+    let formatting = {};
+    const debug = ref(false);
+    const inputType = ref("manual");
+    const formulaURL = ref("");
+    const stock = ref([]);
+    const selectedVariation = ref(null);
+    const quantityPricing = ref(true);
+    const hardwareResult = ref(null);
+    const checkoutEnabled = ref(false);
+    const calculator = ref(null);
+    provide("calculator", () => calculator.value);
+    const log = (messages) => {
+      if (debug.value) {
+        console.log("SmartCut -", ...messages);
+      }
+    };
+    const error = (message) => {
+      console.error(`SmartCut - ${message}`);
+    };
+    const enableCutToSize = (setQuantityEnabled = true) => {
+      checkoutEnabled.value = true;
+      const relevantElements = ["checkout", "intro_text", "offcuts", "banding_key"];
+      relevantElements.forEach((e) => setElementDisplay(e, "block"));
+      if (isPricingTableNeeded()) {
+        setElementDisplay("pricing_table", "table");
+      }
+      if (setQuantityEnabled) {
+        enableQuantity(true);
+      } else {
+        disableQuantity();
+      }
+      disableAddToCart();
+    };
+    const disableCutToSize = (setQuantityEnabled = true, enableCartButton = true) => {
+      checkoutEnabled.value = false;
+      const relevantElements = ["checkout", "intro_text", "offcuts", "banding_key", "pricing_table"];
+      relevantElements.forEach((e) => setElementDisplay(e, "none"));
+      if (enableCartButton === true) {
+        enableAddToCart();
+      } else if (enableCartButton === false) {
+        disableAddToCart();
+      }
+      {
+        enableQuantity();
+      }
+    };
+    const enableQuantity = (readonly = false) => {
+      setElementDisplay("quantity", "inline-block");
+      elements.quantity.readOnly = readonly;
+    };
+    const disableQuantity = () => {
+      if (checkoutEnabled.value === false) return;
+      setCartQuantity(1);
+      setElementDisplay("quantity", "none");
+      elements.quantity.readOnly = true;
+    };
+    const enableAddToCart = () => {
+      if (!elements.cart_button) {
+        error("Cart button not found");
         return;
       }
-      d.cart_button.disabled = !1;
-    }, M = () => {
-      if (U.value !== !1) {
-        if (!d.cart_button) {
-          f("Cart button not found");
-          return;
-        }
-        d.cart_button.disabled = !0;
-      }
-    }, Ue = () => {
-      f("Validation error"), M();
-    }, _e = (e, n = 0) => {
-      if (g(["setting cart quantity", e]), !d.quantity) {
-        f("Quantity field not found when trying to set");
+      elements.cart_button.disabled = false;
+    };
+    const disableAddToCart = () => {
+      if (checkoutEnabled.value === false) return;
+      if (!elements.cart_button) {
+        error("Cart button not found");
         return;
       }
-      d.quantity.value = e.toFixed(n), console.assert(d.quantity.value === e.toFixed(n), "Quantity field value not set correctly");
-    }, Me = (e) => {
-      g(["setting variation price", e]);
-      const n = document.querySelector(".woocommerce-variation-price .smartcut-price-selector");
-      n && (n.innerText = le(e)), F.value = e;
-    }, Ye = () => {
-      var n;
-      const e = F.value ?? ((n = Q.value) == null ? void 0 : n.display_price) ?? 0;
-      return typeof e == "string" ? parseFloat(e) : e;
-    }, Ne = () => {
-      if (!(window != null && window.smartcutConfig)) {
-        f("SmartCut config not found");
+      elements.cart_button.disabled = true;
+    };
+    const handleValidationError = () => {
+      error("Validation error");
+      disableAddToCart();
+    };
+    const setCartQuantity = (quantity, decimalPlaces = 0) => {
+      log(["setting cart quantity", quantity]);
+      if (!elements.quantity) {
+        error("Quantity field not found when trying to set");
         return;
       }
-      const e = window.smartcutConfig;
-      t = e.settings;
-      const n = ze(S(window, ["smartcutConfig", "banding_data"])), r = ze(S(window, ["smartcutConfig", "finish_data"])), o = {
-        debug: t.debug,
-        numberFormat: t.numberFormat,
-        locale: e.locale,
+      elements.quantity.value = quantity.toFixed(decimalPlaces);
+      console.assert(elements.quantity.value === quantity.toFixed(decimalPlaces), "Quantity field value not set correctly");
+    };
+    const setVariationPrice = (price) => {
+      log(["setting variation price", price]);
+      const variationPriceEl = document.querySelector(".woocommerce-variation-price .smartcut-price-selector");
+      if (variationPriceEl) {
+        variationPriceEl.innerText = formatPrice(price);
+      }
+      calculatedVariationPrice.value = price;
+    };
+    const getCurrentVariationPrice = () => {
+      var _a;
+      const price = calculatedVariationPrice.value ?? ((_a = selectedVariation.value) == null ? void 0 : _a.display_price) ?? 0;
+      if (typeof price === "string") return parseFloat(price);
+      return price;
+    };
+    const initCheckout = () => {
+      if (!(window == null ? void 0 : window.smartcutConfig)) {
+        error("SmartCut config not found");
+        return;
+      }
+      const config = window.smartcutConfig;
+      settings = config.settings;
+      const banding = getExtrasData(getNestedProperty(window, ["smartcutConfig", "banding_data"]));
+      const finish = getExtrasData(getNestedProperty(window, ["smartcutConfig", "finish_data"]));
+      const options = {
+        debug: settings.debug,
+        numberFormat: settings.numberFormat,
+        locale: config.locale,
         decimalPlaces: 2,
         //saw
-        stockType: t.stock_type,
-        bladeWidth: t.blade_width,
-        cutPreference: t.cut_preference,
-        stackHeight: t.stack_height,
-        stockSelection: t.stock_selection,
-        stockGrain: t.stock_grain,
-        minSpacing: t.min_spacing,
-        maxParts: t.max_parts ?? null,
-        orientationModel: t.orientation_model,
-        minDimension: t.min_dimension,
-        partTrim: t.part_trim,
+        stockType: settings.stock_type,
+        bladeWidth: settings.blade_width,
+        cutPreference: settings.cut_preference,
+        stackHeight: settings.stack_height,
+        stockSelection: settings.stock_selection,
+        stockGrain: settings.stock_grain,
+        minSpacing: settings.min_spacing,
+        maxParts: settings.max_parts ?? null,
+        orientationModel: settings.orientation_model,
+        minDimension: settings.min_dimension,
+        partTrim: settings.part_trim,
         enable: {
-          banding: t.enable_banding,
-          finish: t.enable_finish,
-          orientation: t.enable_orientation,
-          diagram: !t.hide_diagram,
-          machining: t.enable_machining,
-          csvImport: t.enable_import,
-          partName: t.enable_part_name,
-          imageUpload: t.enable_image_upload,
-          focus: !0,
-          click: !0,
-          progressNumber: t.pricing_strategy !== "part_area"
+          banding: settings.enable_banding,
+          finish: settings.enable_finish,
+          orientation: settings.enable_orientation,
+          diagram: !settings.hide_diagram,
+          machining: settings.enable_machining,
+          csvImport: settings.enable_import,
+          partName: settings.enable_part_name,
+          imageUpload: settings.enable_image_upload,
+          focus: true,
+          click: true,
+          progressNumber: settings.pricing_strategy === "part_area" ? false : true
         },
         colors: {
-          partA: (t == null ? void 0 : t.part_a_color) ?? "#1d9bc4",
-          partB: (t == null ? void 0 : t.part_b_color) ?? "#065d7a",
-          partHover: (t == null ? void 0 : t.part_hover_color) ?? "#f8b029",
-          partSelected: (t == null ? void 0 : t.part_selected_color) ?? "#5bc85b",
-          stock: (t == null ? void 0 : t.stock_color) ?? "#ffd166",
-          button: (t == null ? void 0 : t.button_color) ?? "#118ab2",
-          buttonText: (t == null ? void 0 : t.button_text_color) ?? "#ffffff",
-          text: (t == null ? void 0 : t.text_color) ?? "#ffffff"
+          partA: (settings == null ? void 0 : settings.part_a_color) ?? "#1d9bc4",
+          partB: (settings == null ? void 0 : settings.part_b_color) ?? "#065d7a",
+          partHover: (settings == null ? void 0 : settings.part_hover_color) ?? "#f8b029",
+          partSelected: (settings == null ? void 0 : settings.part_selected_color) ?? "#5bc85b",
+          stock: (settings == null ? void 0 : settings.stock_color) ?? "#ffd166",
+          button: (settings == null ? void 0 : settings.button_color) ?? "#118ab2",
+          buttonText: (settings == null ? void 0 : settings.button_text_color) ?? "#ffffff",
+          text: (settings == null ? void 0 : settings.text_color) ?? "#ffffff"
         }
       };
-      A.value = o.debug;
-      const h = {
-        numberFormat: t.number_format,
+      debug.value = options.debug;
+      const machining = {
+        numberFormat: settings.number_format,
         decimalPlaces: 2,
         fractionRoundTo: 0,
         faces: {
-          enabled: t.machining_sides
+          enabled: settings.machining_sides
         },
         holes: {
-          enabled: t.machining_holes,
-          defaultDiameter: t.machining_holes_default_diameter,
-          diameters: t.machining_holes_diameters.split(",").map((z) => z.trim()).filter(Boolean),
-          minDiameter: t.machining_holes_min_diameter,
-          maxDiameter: t.machining_holes_max_diameter,
-          enableDepth: t.machining_holes_depth,
-          depths: t.machining_holes_depths.split(",").map((z) => z.trim()).filter(Boolean),
-          defaultDepth: t.machining_holes_default_depth,
-          minDepth: t.machining_holes_min_depth,
-          maxDepth: t.machining_holes_max_depth
+          enabled: settings.machining_holes,
+          defaultDiameter: settings.machining_holes_default_diameter,
+          diameters: settings.machining_holes_diameters.split(",").map((v) => v.trim()).filter(Boolean),
+          minDiameter: settings.machining_holes_min_diameter,
+          maxDiameter: settings.machining_holes_max_diameter,
+          enableDepth: settings.machining_holes_depth,
+          depths: settings.machining_holes_depths.split(",").map((v) => v.trim()).filter(Boolean),
+          defaultDepth: settings.machining_holes_default_depth,
+          minDepth: settings.machining_holes_min_depth,
+          maxDepth: settings.machining_holes_max_depth
         },
         hingeHoles: {
-          enabled: t.machining_hinge_holes,
-          minimumHoleDistance: t.machining_hinge_holes_minimum_hole_distance,
-          defaultDistanceFromEdge: t.machining_hinge_holes_default_distance_from_edge,
-          defaultOuterSpacing: t.machining_hinge_holes_default_outer_spacing,
-          defaultHingeLength: t.machining_hinge_holes_default_hinge_length
+          enabled: settings.machining_hinge_holes,
+          minimumHoleDistance: settings.machining_hinge_holes_minimum_hole_distance,
+          defaultDistanceFromEdge: settings.machining_hinge_holes_default_distance_from_edge,
+          defaultOuterSpacing: settings.machining_hinge_holes_default_outer_spacing,
+          defaultHingeLength: settings.machining_hinge_holes_default_hinge_length
         },
         corners: {
-          enabled: t.machining_radius_corners || t.machining_bevel_corners,
+          enabled: settings.machining_radius_corners || settings.machining_bevel_corners,
           types: [
-            t.machining_radius_corners ? "radius" : null,
-            t.machining_bevel_corners ? "bevel" : null
+            settings.machining_radius_corners ? "radius" : null,
+            settings.machining_bevel_corners ? "bevel" : null
           ].filter(Boolean),
-          minValue: t.machining_corners_min_value,
-          maxValue: t.machining_corners_max_value,
-          enableBanding: t.machining_corners_enable_banding
+          minValue: settings.machining_corners_min_value,
+          maxValue: settings.machining_corners_max_value,
+          enableBanding: settings.machining_corners_enable_banding
         }
       };
-      B.value = je(), B.value ? W(!0) : q(), s.type === "variable" ? D(!1, !1) : $(B.value);
-      const i = {
-        type: s.type,
-        stock: j.value,
-        variations: L ?? null,
-        options: o,
-        banding: n,
-        finish: r,
-        machining: h
+      quantityPricing.value = isQuantityPricing();
+      if (quantityPricing.value) {
+        enableQuantity(true);
+      } else {
+        disableQuantity();
+      }
+      if (product.type === "variable") {
+        disableCutToSize(false, false);
+      } else {
+        enableCutToSize(quantityPricing.value);
+      }
+      const initData = {
+        type: product.type,
+        stock: stock.value,
+        variations: variations ?? null,
+        options,
+        banding,
+        finish,
+        machining
       };
-      i.type === "variable" && (g(["setting variable product form listeners"]), jQuery(function(z) {
-        z(".variations_form").on("reset_data", () => D(!1, !1)).on("found_variation", (ue, ct) => it(ue, ct));
-      }));
-      const b = {
-        product: s,
-        selectedVariation: Q,
-        inputs: P,
-        elements: d,
-        inputType: I,
-        formatPrice: le,
-        getCurrentVariationPrice: Ye,
-        setInputValue: ye,
-        setCartQuantity: _e,
-        setVariationPrice: Me,
-        isExtraEnabled: be,
-        isQuantityPricing: je,
-        isMachiningEnabled: qe,
-        isSurchargeEnabled: Oe,
-        getTotalBandingPrice: Ze,
-        getTotalFinishPrice: Xe,
-        getTotalMachiningPrice: et,
-        getInputValue: tt,
-        enableAddToCart: K,
-        log: g,
-        error: f
-      }, w = Ht({
-        pricing_strategy: t.pricing_strategy,
-        number_format: t.number_format,
-        unit_system: t.unit_system,
-        cut_length_price: t.cut_length_price,
-        per_part_price: t.per_part_price,
-        surcharge: t.surcharge,
-        surcharge_type: t.surcharge_type,
-        enable_offcut_pricing: t.enable_offcut_pricing,
-        offcut_min_length: t.offcut_min_length,
-        offcut_min_width: t.offcut_min_width
-      }, b);
-      p = w.calculatePrice, _ = w.resetPricing, Ve(() => {
-        a.value && a.value.init(i);
+      if (initData.type === "variable") {
+        log(["setting variable product form listeners"]);
+        jQuery(function($) {
+          $(".variations_form").on("reset_data", () => disableCutToSize(false, false)).on("found_variation", (event, variation) => handleVariationFound(event, variation));
+        });
+      }
+      const dependencies = {
+        product,
+        selectedVariation,
+        inputs: inputEls,
+        elements,
+        inputType,
+        formatPrice,
+        getCurrentVariationPrice,
+        setInputValue,
+        setCartQuantity,
+        setVariationPrice,
+        isExtraEnabled,
+        isQuantityPricing,
+        isMachiningEnabled,
+        isSurchargeEnabled,
+        getTotalBandingPrice,
+        getTotalFinishPrice,
+        getTotalMachiningPrice,
+        getInputValue,
+        enableAddToCart,
+        log,
+        error
+      };
+      const pricing = useProductPricing({
+        pricing_strategy: settings.pricing_strategy,
+        number_format: settings.number_format,
+        unit_system: settings.unit_system,
+        cut_length_price: settings.cut_length_price,
+        per_part_price: settings.per_part_price,
+        surcharge: settings.surcharge,
+        surcharge_type: settings.surcharge_type,
+        enable_offcut_pricing: settings.enable_offcut_pricing,
+        offcut_min_length: settings.offcut_min_length,
+        offcut_min_width: settings.offcut_min_width
+      }, dependencies);
+      calculatePrice = pricing.calculatePrice;
+      resetPricing = pricing.resetPricing;
+      nextTick(() => {
+        if (calculator.value) calculator.value.init(initData);
       });
-    }, Qe = (e) => {
-      const n = (e == null ? void 0 : e.multiple_sizes) === !0;
-      s = {
-        type: e == null ? void 0 : e.product_type,
-        multiple_sizes: n,
-        size: e != null && e.size ? e.size.split(" | ") : [],
-        l: !n && (e != null && e.l) ? parseFloat(e.l) : null,
-        w: !n && (e != null && e.w) ? parseFloat(e.w) : null,
-        t: (e == null ? void 0 : e.t) ?? null,
-        price: e != null && e.price ? parseFloat(e.price) : null,
-        stock_name: (e == null ? void 0 : e.stock_sku) || e.stock_name
-      }, s.multiple_sizes || (s.l || f("product 'length' attribute not available"), s.w || f("product 'width' attribute not available"));
-    }, We = (e) => {
-      I.value = S(window, ["smartcutConfig", "settings", "enable_formula"]) === !0 ? "formula" : "manual", N.value = S(window, ["smartcutConfig", "settings", "formula_url"]), g([`Input type: ${I.value}`]), g([`Input type: ${I.value}`]), T = {
-        thousands_separator: e == null ? void 0 : e.thousands_separator,
-        decimal_separator: e == null ? void 0 : e.decimal_separator,
-        number_of_decimals: e == null ? void 0 : e.number_of_decimals,
-        currency_symbol: e == null ? void 0 : e.currency_symbol,
-        currency_position: e == null ? void 0 : e.currency_position
+    };
+    const configureProduct = (smartcutConfig) => {
+      const multiple_sizes = (smartcutConfig == null ? void 0 : smartcutConfig.multiple_sizes) === true;
+      product = {
+        type: smartcutConfig == null ? void 0 : smartcutConfig.product_type,
+        multiple_sizes,
+        size: (smartcutConfig == null ? void 0 : smartcutConfig.size) ? smartcutConfig.size.split(" | ") : [],
+        l: !multiple_sizes && (smartcutConfig == null ? void 0 : smartcutConfig.l) ? parseFloat(smartcutConfig.l) : null,
+        w: !multiple_sizes && (smartcutConfig == null ? void 0 : smartcutConfig.w) ? parseFloat(smartcutConfig.w) : null,
+        t: (smartcutConfig == null ? void 0 : smartcutConfig.t) ?? null,
+        price: (smartcutConfig == null ? void 0 : smartcutConfig.price) ? parseFloat(smartcutConfig.price) : null,
+        stock_name: (smartcutConfig == null ? void 0 : smartcutConfig.stock_sku) || smartcutConfig.stock_name
       };
-    }, Ke = () => {
-      const e = {
+      if (!product.multiple_sizes) {
+        if (!product.l) {
+          error("product 'length' attribute not available");
+        }
+        if (!product.w) {
+          error("product 'width' attribute not available");
+        }
+      }
+    };
+    const configurePricing = (smartcutConfig) => {
+      inputType.value = getNestedProperty(window, ["smartcutConfig", "settings", "enable_formula"]) === true ? "formula" : "manual";
+      formulaURL.value = getNestedProperty(window, ["smartcutConfig", "settings", "formula_url"]);
+      log([`Input type: ${inputType.value}`]);
+      log([`Input type: ${inputType.value}`]);
+      formatting = {
+        thousands_separator: smartcutConfig == null ? void 0 : smartcutConfig.thousands_separator,
+        decimal_separator: smartcutConfig == null ? void 0 : smartcutConfig.decimal_separator,
+        number_of_decimals: smartcutConfig == null ? void 0 : smartcutConfig.number_of_decimals,
+        currency_symbol: smartcutConfig == null ? void 0 : smartcutConfig.currency_symbol,
+        currency_position: smartcutConfig == null ? void 0 : smartcutConfig.currency_position
+      };
+    };
+    const cacheElements = () => {
+      const elementIds = {
         checkout: "#smartcut-app",
         intro_text: "#smartcut-intro-text",
         pricing_table: "#smartcut-pricing-table",
@@ -410,508 +552,763 @@ const Yt = (c, v, O, m = (u) => u.toString()) => {
         //this is the add to cart quantity element(s)
         cart_button: ".single_add_to_cart_button"
       };
-      for (const [n, r] of Object.entries(e))
-        d[n] = document.querySelector(r);
-      if (!d.checkout)
-        return f("checkout iframe not found");
-      if (!d.quantity)
-        return f("quantity field not found");
-      if (!d.cart_button)
-        return f("cart button not found");
-      d.quantity.readOnly = !0, M();
-    }, Je = () => ({
-      x1: t.stock_trim_x1 ?? 0,
-      x2: t.stock_trim_x2 ?? 0,
-      y1: t.stock_type === "linear" ? 0 : t.stock_trim_y1 ?? 0,
-      y2: t.stock_type === "linear" ? 0 : t.stock_trim_y2 ?? 0
-    }), se = (e = null, n = null, r = null, o = null, h = null) => {
-      let i;
-      if (h && typeof h == "object") {
-        i = [];
-        for (const [w, z] of Object.entries(h))
-          w !== "attribute_size" && w !== "attribute_thickness" && i.push(`${w.replace("attribute_", "")}: ${z}`);
-        i = i.join(" - ");
+      for (const [key, selector] of Object.entries(elementIds)) {
+        elements[key] = document.querySelector(selector);
       }
+      if (!elements.checkout) {
+        return error("checkout iframe not found");
+      }
+      if (!elements.quantity) {
+        return error("quantity field not found");
+      }
+      if (!elements.cart_button) {
+        return error("cart button not found");
+      }
+      elements.quantity.readOnly = true;
+      disableAddToCart();
+    };
+    const getStockTrim = () => {
       return {
-        name: s.stock_name,
-        l: e,
-        w: n,
-        t: r,
-        grain: t.stock_grain,
-        cost: parseFloat((o == null ? void 0 : o.toString()) || "0"),
-        trim: Je(),
-        allowExactFitShapes: !0,
-        notes: i
+        x1: settings.stock_trim_x1 ?? 0,
+        x2: settings.stock_trim_x2 ?? 0,
+        y1: settings.stock_type === "linear" ? 0 : settings.stock_trim_y1 ?? 0,
+        y2: settings.stock_type === "linear" ? 0 : settings.stock_trim_y2 ?? 0
       };
-    }, Ce = () => {
-      if (s != null && s.stock_name || f("product name not specified"), j.value = [], s.multiple_sizes)
-        for (const e of s.size) {
-          if (!ve(e)) continue;
-          const [n, r] = e.split("x"), o = se(
-            parseFloat(n),
-            parseFloat(r),
-            s == null ? void 0 : s.t,
-            s.price
-          );
-          j.value.push(o);
+    };
+    const createStock = (l = null, w = null, t2 = null, cost = null, attributes = null) => {
+      let notes;
+      if (attributes && typeof attributes === "object") {
+        notes = [];
+        for (const [key, value] of Object.entries(attributes)) {
+          if (key === "attribute_size") continue;
+          if (key === "attribute_thickness") continue;
+          notes.push(`${key.replace("attribute_", "")}: ${value}`);
         }
-      else
-        j.value.push(se(
-          s.l,
-          s.w,
-          s == null ? void 0 : s.t,
-          s == null ? void 0 : s.price
-        ));
-    }, Ee = (e, n) => {
-      const r = e.split(".");
-      return r[0] = r[0].replace(/\B(?=(\d{3})+(?!\d))/g, n), r.join(".");
-    }, le = (e = 0, n = "") => {
-      if (!e)
-        return n ? Pe("0.00") : "0.00";
-      typeof e == "string" && (e = parseFloat(e));
-      const r = e.toFixed(T.number_of_decimals).replace(".", T.decimal_separator), o = Ee(r, T.thousands_separator);
-      return n ? Pe(o) : o;
-    }, Ge = (e) => {
-      if (e == null) return "";
-      typeof e == "string" && (e = parseFloat(e));
-      const r = e % 1 !== 0 ? T.number_of_decimals : 0, o = e.toFixed(r).replace(".", T.decimal_separator);
-      return Ee(o, T.thousands_separator);
-    }, Pe = (e) => {
-      switch (T.currency_position) {
-        case "left":
-          return `${T.currency_symbol}${e}`;
-        case "right":
-          return `${e}${T.currency_symbol}`;
-        default:
-          return `${T.currency_symbol}${e}`;
+        notes = notes.join(" - ");
       }
-    }, ce = (e) => {
-      const n = (r) => kt(St(r), 100).replace("|", "_");
-      return Array.isArray(e) ? e.map(n).join(",") : n(e);
-    }, ze = (e) => {
-      if (!e) return null;
-      const n = {
+      const inputStockData = {
+        name: product.stock_name,
+        l,
+        w,
+        t: t2,
+        grain: settings.stock_grain,
+        cost: parseFloat((cost == null ? void 0 : cost.toString()) || "0"),
+        trim: getStockTrim(),
+        allowExactFitShapes: true,
+        notes
+      };
+      return inputStockData;
+    };
+    const configureStock = () => {
+      if (!(product == null ? void 0 : product.stock_name)) {
+        error("product name not specified");
+      }
+      stock.value = [];
+      if (product.multiple_sizes) {
+        for (const size of product.size) {
+          if (!isStockSize(size)) continue;
+          const [l, w] = size.split("x");
+          const newStock = createStock(
+            parseFloat(l),
+            parseFloat(w),
+            product == null ? void 0 : product.t,
+            product.price
+          );
+          stock.value.push(newStock);
+        }
+      } else {
+        stock.value.push(createStock(
+          product.l,
+          product.w,
+          product == null ? void 0 : product.t,
+          product == null ? void 0 : product.price
+        ));
+      }
+    };
+    const addThousandsSeparators = (numStr, separator) => {
+      const parts = numStr.split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+      return parts.join(".");
+    };
+    const formatPrice = (price = 0, locale = "") => {
+      if (!price) {
+        if (!locale) return "0.00";
+        return addCurrencySymbol("0.00");
+      }
+      if (typeof price === "string") price = parseFloat(price);
+      const formattedPrice = price.toFixed(formatting.number_of_decimals).replace(".", formatting.decimal_separator);
+      const withSeparators = addThousandsSeparators(formattedPrice, formatting.thousands_separator);
+      if (!locale) return withSeparators;
+      return addCurrencySymbol(withSeparators);
+    };
+    const formatNumber = (number) => {
+      if (number === null || number === void 0) return "";
+      if (typeof number === "string") number = parseFloat(number);
+      const hasDecimals = number % 1 !== 0;
+      const decimals = hasDecimals ? formatting.number_of_decimals : 0;
+      const formatted = number.toFixed(decimals).replace(".", formatting.decimal_separator);
+      return addThousandsSeparators(formatted, formatting.thousands_separator);
+    };
+    const addCurrencySymbol = (price) => {
+      switch (formatting.currency_position) {
+        case "left":
+          return `${formatting.currency_symbol}${price}`;
+        case "right":
+          return `${price}${formatting.currency_symbol}`;
+        default:
+          return `${formatting.currency_symbol}${price}`;
+      }
+    };
+    const formatExtrasKey = (key) => {
+      const processString = (str) => {
+        return truncateString(sanitiseString(str), 100).replace("|", "_");
+      };
+      if (Array.isArray(key)) {
+        return key.map(processString).join(",");
+      } else {
+        return processString(key);
+      }
+    };
+    const getExtrasData = (wcExtrasData) => {
+      if (!wcExtrasData) return null;
+      const extrasData2 = {
         labels: [],
         pricing: {}
-      }, r = Object.values(e);
-      for (const o of r)
-        o != null && o.variations ? (n.labels.push(...Object.keys(o.options)), Object.values(o.variations).forEach((h) => {
-          const { options: i } = h, b = Object.values(i).map((w) => ce(w)).join("|");
-          n.pricing[b] = parseInt(h.price);
-        })) : o != null && o.options && Object.keys(o.options).forEach((h) => {
-          n.pricing[ce(h)] = parseInt(o.price);
-        });
-      return n.labels.length || n.labels.push("type"), n;
-    }, he = (e, n) => {
-      if (!n.length || !Y(x, [e])) return null;
-      const r = S(x, [e]);
-      if (!vt(r)) return null;
-      const h = Object.values(r).map((i) => i != null && i.variations ? Object.values(i.variations).map((b) => (b.type = "variable", b)) : (i.type = "simple", i)).flat().find((i) => {
-        let b;
-        return i.type === "simple" ? b = Object.keys(i.options) : b = Object.values(i.options), b ? b.every((w, z) => ce(w) === ce(n[z])) : !1;
+      };
+      const items = Object.values(wcExtrasData);
+      for (const item of items) {
+        if (item == null ? void 0 : item.variations) {
+          extrasData2.labels.push(...Object.keys(item.options));
+          Object.values(item.variations).forEach((variation) => {
+            const { options } = variation;
+            const key = Object.values(options).map((o) => formatExtrasKey(o)).join("|");
+            extrasData2.pricing[key] = parseInt(variation.price);
+          });
+        } else if (item == null ? void 0 : item.options) {
+          Object.keys(item.options).forEach((option) => {
+            extrasData2.pricing[formatExtrasKey(option)] = parseInt(item.price);
+          });
+        }
+      }
+      if (!extrasData2.labels.length) extrasData2.labels.push("type");
+      return extrasData2;
+    };
+    const findExtrasPrice = (extraType, selectedExtrasOptions) => {
+      if (!selectedExtrasOptions.length) return null;
+      if (!checkObjectHasPropery(extrasData, [extraType])) return null;
+      const extraData = getNestedProperty(extrasData, [extraType]);
+      if (!objectValuesPresent(extraData)) return null;
+      const allVariations = Object.values(extraData).map((i) => {
+        if (i == null ? void 0 : i.variations) {
+          return Object.values(i.variations).map((i2) => {
+            i2.type = "variable";
+            return i2;
+          });
+        } else {
+          i.type = "simple";
+          return i;
+        }
+      }).flat();
+      const foundVariation = allVariations.find((variation) => {
+        let variationOptions;
+        if (variation.type === "simple") {
+          variationOptions = Object.keys(variation.options);
+        } else {
+          variationOptions = Object.values(variation.options);
+        }
+        if (!variationOptions) return false;
+        return variationOptions.every((option, index) => formatExtrasKey(option) === formatExtrasKey(selectedExtrasOptions[index]));
       });
-      return h != null && h.price ? parseFloat(h.price) : null;
-    }, Xe = (e) => {
-      let n = 0;
-      if (typeof e == "object") {
-        for (let [r, o] of Object.entries(e)) {
-          typeof o == "string" && (o = parseFloat(o));
-          const h = r.split("|"), i = he("finish", h);
-          if (i === null) continue;
-          const w = Number(o) / 1e6 * parseFloat(i.toString());
-          n += w;
+      return (foundVariation == null ? void 0 : foundVariation.price) ? parseFloat(foundVariation.price) : null;
+    };
+    const getTotalFinishPrice = (totalFinish) => {
+      let total = 0;
+      if (typeof totalFinish === "object") {
+        for (let [finishKey, area] of Object.entries(totalFinish)) {
+          if (typeof area === "string") {
+            area = parseFloat(area);
+          }
+          const finishOptions = finishKey.split("|");
+          const price = findExtrasPrice("finish", finishOptions);
+          if (price === null) continue;
+          const areaInSquareMeters = Number(area) / 1e6;
+          const cost = areaInSquareMeters * parseFloat(price.toString());
+          total += cost;
         }
-        if ("min_finish_charge" in t) {
-          const r = parseFloat(t == null ? void 0 : t.min_finish_charge);
-          if (r > 0 && n > 0 && n < r)
-            return r;
-        }
-      }
-      return n;
-    }, Ze = (e) => {
-      let n = 0;
-      if (typeof e == "object") {
-        for (let [r, o] of Object.entries(e)) {
-          typeof o == "string" && (o = parseFloat(o));
-          const h = r.split("|"), i = he("banding", h);
-          if (i === null) continue;
-          const b = o / (t.unit_system === "imperial" ? 12 : 1e3) * parseFloat(i.toString());
-          n += b;
-        }
-        if ("min_banding_charge" in t) {
-          const r = parseFloat(t == null ? void 0 : t.min_banding_charge);
-          if (r > 0 && n > 0 && n < r)
-            return r;
+        if ("min_finish_charge" in settings) {
+          const minFinishCharge = parseFloat(settings == null ? void 0 : settings.min_finish_charge);
+          if (minFinishCharge > 0 && total > 0 && total < minFinishCharge) {
+            return minFinishCharge;
+          }
         }
       }
-      return n;
-    }, et = (e) => (H.holes ?? 0) * (e.metadata.numHoles ?? 0) + (H.corners ?? 0) * (e.metadata.numCorners ?? 0), ae = (e, n) => {
-      var r;
-      e in d && ((r = d[e]) != null && r.style) && (d[e].style.display = n);
-    }, ye = (e, n) => {
-      ge(e) ? P[e].value = n : f(`Attempting to set input but key '${e}' does not exist`);
-    }, tt = (e) => {
-      if (ge(e))
-        return P[e].value;
-      f(`Attempting to get input but key '${e}' does not exist`);
-    }, ge = (e) => e in P && P[e] instanceof HTMLInputElement, Te = () => {
-      _e(1), M(), _();
-      for (const e in P)
-        e !== "smartcut-hardware-price" && ye(e, null);
-    }, je = () => {
-      var e;
-      if (((e = window.smartcutConfig) == null ? void 0 : e.product_type) === "variable")
-        return !1;
-      switch (t.pricing_strategy) {
+      return total;
+    };
+    const getTotalBandingPrice = (totalBanding) => {
+      let total = 0;
+      if (typeof totalBanding === "object") {
+        for (let [bandingKey, length] of Object.entries(totalBanding)) {
+          if (typeof length === "string") length = parseFloat(length);
+          const bandingOptions = bandingKey.split("|");
+          const price = findExtrasPrice("banding", bandingOptions);
+          if (price === null) continue;
+          const cost = length / (settings.unit_system === "imperial" ? 12 : 1e3) * parseFloat(price.toString());
+          total += cost;
+        }
+        if ("min_banding_charge" in settings) {
+          const minBandingCharge = parseFloat(settings == null ? void 0 : settings.min_banding_charge);
+          if (minBandingCharge > 0 && total > 0 && total < minBandingCharge) {
+            return minBandingCharge;
+          }
+        }
+      }
+      return total;
+    };
+    const getTotalMachiningPrice = (data) => {
+      return (machiningPricing.holes ?? 0) * (data.metadata.numHoles ?? 0) + (machiningPricing.corners ?? 0) * (data.metadata.numCorners ?? 0);
+    };
+    const setElementDisplay = (element, display) => {
+      var _a;
+      if (element in elements && ((_a = elements[element]) == null ? void 0 : _a.style)) elements[element].style.display = display;
+    };
+    const setInputValue = (key, value) => {
+      if (doesInputExist(key)) {
+        inputEls[key].value = value;
+      } else {
+        error(`Attempting to set input but key '${key}' does not exist`);
+      }
+    };
+    const getInputValue = (key) => {
+      if (doesInputExist(key)) {
+        return inputEls[key].value;
+      } else {
+        error(`Attempting to get input but key '${key}' does not exist`);
+      }
+    };
+    const doesInputExist = (key) => {
+      return key in inputEls && inputEls[key] instanceof HTMLInputElement;
+    };
+    const reset = () => {
+      setCartQuantity(1);
+      disableAddToCart();
+      resetPricing();
+      for (const key in inputEls) {
+        if (key === "smartcut-hardware-price") continue;
+        setInputValue(key, null);
+      }
+    };
+    const isQuantityPricing = () => {
+      var _a;
+      if (((_a = window.smartcutConfig) == null ? void 0 : _a.product_type) === "variable") {
+        return false;
+      }
+      switch (settings.pricing_strategy) {
         case "full_stock":
         case "part_area":
         case "full_stock_plus_cut_length":
         case "full_stock_plus_num_parts":
-          return !0;
+          return true;
         case "roll_length":
         case "cut_length":
-          return !1;
+          return false;
         default:
-          return !1;
+          return false;
       }
-    }, be = (e) => {
-      if (Y(t, ["enable", e]) && S(t, ["enable", e]) === !1)
-        return !1;
-      const n = S(x, [e]);
-      return !!(n && Object.values(n).length);
-    }, qe = () => t.enable_machining === !0, Oe = () => !((t == null ? void 0 : t.surcharge_type) === "none" || !(t != null && t.surcharge) || t.surcharge === "0.00"), nt = () => !!(t.pricing_strategy === "full_stock_plus_cut_length" || t.pricing_strategy === "full_stock_plus_num_parts" || t.pricing_strategy === "part_area" || t.pricing_strategy === "roll_length" || Oe() || be("banding") || be("finish") || qe()), at = (e) => {
-      var r;
-      let n = (r = e == null ? void 0 : e.attributes) == null ? void 0 : r.attribute_size;
-      return n || (n = s == null ? void 0 : s.size), n;
-    }, ve = (e) => /\d+x\d+/.test(e), rt = () => {
-      window.smartcutConfig.input_fields.forEach((e) => {
-        const n = e.replaceAll("_", "-");
-        P[n] = document.getElementById(n);
+    };
+    const isExtraEnabled = (extraType) => {
+      if (checkObjectHasPropery(settings, ["enable", extraType]) && getNestedProperty(settings, ["enable", extraType]) === false) {
+        return false;
+      }
+      const extraData = getNestedProperty(extrasData, [extraType]);
+      return !!(extraData && Object.values(extraData).length);
+    };
+    const isMachiningEnabled = () => {
+      return settings.enable_machining === true;
+    };
+    const isSurchargeEnabled = () => {
+      if ((settings == null ? void 0 : settings.surcharge_type) === "none") return false;
+      if (!(settings == null ? void 0 : settings.surcharge) || settings.surcharge === "0.00") return false;
+      return true;
+    };
+    const isPricingTableNeeded = () => {
+      if (settings.pricing_strategy === "full_stock_plus_cut_length") return true;
+      if (settings.pricing_strategy === "full_stock_plus_num_parts") return true;
+      if (settings.pricing_strategy === "part_area") return true;
+      if (settings.pricing_strategy === "roll_length") return true;
+      if (isSurchargeEnabled()) return true;
+      if (isExtraEnabled("banding")) return true;
+      if (isExtraEnabled("finish")) return true;
+      if (isMachiningEnabled()) return true;
+      return false;
+    };
+    const getSizes = (variation) => {
+      var _a;
+      let sizes = (_a = variation == null ? void 0 : variation.attributes) == null ? void 0 : _a.attribute_size;
+      if (!sizes) sizes = product == null ? void 0 : product.size;
+      return sizes;
+    };
+    const isStockSize = (size) => {
+      return /\d+x\d+/.test(size);
+    };
+    const cacheInputFields = () => {
+      window.smartcutConfig.input_fields.forEach((f) => {
+        const fieldId = f.replaceAll("_", "-");
+        inputEls[fieldId] = document.getElementById(fieldId);
       });
-    }, it = (e, n) => {
-      Te(), Q.value = n, g(["variation selected", n.attributes]), j.value = [];
-      const r = S(n, ["attributes", "attribute_thickness"]);
-      if (s.selected_thickness = r, l.value.forEach((o) => {
-        o.t = wt({ v: r });
-      }), s.multiple_sizes) {
-        const o = at(n);
-        if (g([`variation found with size: ${o} & thickness: ${r}`]), !o)
-          return D(!1), f("The size of this multiple size product could not be found");
-        if (Array.isArray(o) ? $(B.value) : ve(o) ? D(!0, !0) : $(B.value), L != null && L.length && r) {
-          let h;
-          Array.isArray(o) ? h = o.map((i) => ({
-            size: i,
-            l: i.split("x")[0],
-            w: i.split("x")[1],
-            t: r,
-            price: n.display_price
-          })) : h = L.filter((i) => {
-            var b, w;
-            return ve((b = i == null ? void 0 : i.attributes) == null ? void 0 : b.size) ? r === ((w = i == null ? void 0 : i.attributes) == null ? void 0 : w.thickness) : !1;
-          }).map((i) => {
-            var b, w, z, ue;
-            return g([
-              `size attribute: '${(b = i == null ? void 0 : i.attributes) == null ? void 0 : b.size}'`,
-              `price for 'thickness ${r}, size: ${o}' is ${n.display_price}`
-            ]), {
-              size: (w = i == null ? void 0 : i.attributes) == null ? void 0 : w.size,
-              l: (z = i == null ? void 0 : i.attributes) == null ? void 0 : z.size.split("x")[0],
-              w: (ue = i == null ? void 0 : i.attributes) == null ? void 0 : ue.size.split("x")[1],
-              t: s.selected_thickness,
-              price: n.display_price
-            };
-          }), U.value === !0 && h.forEach((i) => {
-            const b = se(
-              i.l,
-              i.w,
-              i.t,
-              i.price,
-              n == null ? void 0 : n.attributes
-            );
-            j.value.push(b);
-          });
+    };
+    const handleVariationFound = (e, variation) => {
+      reset();
+      selectedVariation.value = variation;
+      log(["variation selected", variation.attributes]);
+      stock.value = [];
+      const thickness = getNestedProperty(variation, ["attributes", "attribute_thickness"]);
+      product.selected_thickness = thickness;
+      inputShapes.value.forEach((shape) => {
+        shape.t = convertNumberFormat({ v: thickness });
+      });
+      if (product.multiple_sizes) {
+        const size = getSizes(variation);
+        log([`variation found with size: ${size} & thickness: ${thickness}`]);
+        if (!size) {
+          disableCutToSize(false);
+          return error("The size of this multiple size product could not be found");
+        }
+        if (!Array.isArray(size)) {
+          if (isStockSize(size)) disableCutToSize(true, true);
+          else enableCutToSize(quantityPricing.value);
+        } else {
+          enableCutToSize(quantityPricing.value);
+        }
+        if ((variations == null ? void 0 : variations.length) && thickness) {
+          let stockSizes;
+          if (Array.isArray(size)) {
+            stockSizes = size.map((size2) => ({
+              size: size2,
+              l: size2.split("x")[0],
+              w: size2.split("x")[1],
+              t: thickness,
+              price: variation.display_price
+            }));
+          } else {
+            stockSizes = variations.filter((v) => {
+              var _a, _b;
+              if (isStockSize((_a = v == null ? void 0 : v.attributes) == null ? void 0 : _a.size)) {
+                return thickness === ((_b = v == null ? void 0 : v.attributes) == null ? void 0 : _b.thickness);
+              }
+              return false;
+            }).map((v) => {
+              var _a, _b, _c, _d;
+              log([
+                `size attribute: '${(_a = v == null ? void 0 : v.attributes) == null ? void 0 : _a.size}'`,
+                `price for 'thickness ${thickness}, size: ${size}' is ${variation.display_price}`
+              ]);
+              return {
+                size: (_b = v == null ? void 0 : v.attributes) == null ? void 0 : _b.size,
+                l: (_c = v == null ? void 0 : v.attributes) == null ? void 0 : _c.size.split("x")[0],
+                w: (_d = v == null ? void 0 : v.attributes) == null ? void 0 : _d.size.split("x")[1],
+                t: product.selected_thickness,
+                price: variation.display_price
+              };
+            });
+          }
+          if (checkoutEnabled.value === true) {
+            stockSizes.forEach((size2) => {
+              const newStock = createStock(
+                size2.l,
+                size2.w,
+                size2.t,
+                size2.price,
+                variation == null ? void 0 : variation.attributes
+              );
+              stock.value.push(newStock);
+            });
+          }
         }
       } else {
-        const o = L.find((h) => h.attributes.thickness === r);
-        if (!o) return f(`variation not found for thickness ${r}`);
-        j.value.push(se(
-          s.l,
-          s.w,
-          r,
-          o.price,
-          n == null ? void 0 : n.attributes
-        )), $(B.value);
+        const v = variations.find((v2) => v2.attributes.thickness === thickness);
+        if (!v) return error(`variation not found for thickness ${thickness}`);
+        stock.value.push(createStock(
+          product.l,
+          product.w,
+          thickness,
+          v.price,
+          variation == null ? void 0 : variation.attributes
+        ));
+        enableCutToSize(quantityPricing.value);
       }
-    }, ot = async (e) => {
-      Te(), g(["result event received", e]);
-      const n = await p(e);
-      if (!n.success) {
-        console.error(n.error);
+    };
+    const result = async (resultData) => {
+      reset();
+      log(["result event received", resultData]);
+      const calculationResult = await calculatePrice(resultData);
+      if (!calculationResult.success) {
+        console.error(calculationResult.error);
         return;
       }
-      await st(e);
-    }, st = async (e) => {
-      const r = Yt(v, e, ne.value, Ge).split(",")[1], o = new Et();
-      o.file("order-summary.pdf", r);
-      const h = await o.generateAsync({ type: "blob" }), i = new File([h], "order-summary.zip", { type: "application/zip" });
-      if (!ge("smartcut-order-summary")) return;
-      const b = P["smartcut-order-summary"].closest("form");
-      if (!b) return;
-      const w = new DataTransfer();
-      w.items.add(i);
-      const z = b.querySelector('[name="smartcut_order_summary"]');
-      z instanceof HTMLInputElement && (z.files = w.files);
-    }, lt = (e, n) => {
-      M(), e && (ne.value = Re(e)), ye("smartcut-hardware-price", n ?? 0);
+      await createPDFSummary(resultData);
     };
-    return Ae(() => {
-      console.log("💥 Powered by https://smartcut.dev", window.smartcutConfig.version), g(["Launching WordPress checkout..."]), x.banding = S(window, ["smartcutConfig", "banding_data"]), x.finish = S(window, ["smartcutConfig", "finish_data"]), H = S(window, ["smartcutConfig", "machining_pricing"]), L = S(window, ["smartcutConfig", "variations"]), Ke(), rt(), Qe(window.smartcutConfig), We(window.smartcutConfig), Ne(), Ce(), [
+    const createPDFSummary = async (resultData) => {
+      const pdfDataUri = generateOrderSummaryPDF(t, resultData, hardwareResult.value, formatNumber);
+      const base64PDF = pdfDataUri.split(",")[1];
+      const zip = new JSZip();
+      zip.file("order-summary.pdf", base64PDF);
+      const compressedBlob = await zip.generateAsync({ type: "blob" });
+      const zipFile = new File([compressedBlob], "order-summary.zip", { type: "application/zip" });
+      if (!doesInputExist("smartcut-order-summary")) return;
+      const form = inputEls["smartcut-order-summary"].closest("form");
+      if (!form) return;
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(zipFile);
+      const fileInput = form.querySelector('[name="smartcut_order_summary"]');
+      if (fileInput instanceof HTMLInputElement) {
+        fileInput.files = dataTransfer.files;
+      }
+    };
+    const setHardwareResult = (result2, total) => {
+      disableAddToCart();
+      if (result2) {
+        hardwareResult.value = markRaw(result2);
+      }
+      setInputValue("smartcut-hardware-price", total ?? 0);
+    };
+    onMounted(() => {
+      console.log("💥 Powered by https://smartcut.dev", window.smartcutConfig.version);
+      log(["Launching WordPress checkout..."]);
+      extrasData.banding = getNestedProperty(window, ["smartcutConfig", "banding_data"]);
+      extrasData.finish = getNestedProperty(window, ["smartcutConfig", "finish_data"]);
+      machiningPricing = getNestedProperty(window, ["smartcutConfig", "machining_pricing"]);
+      variations = getNestedProperty(window, ["smartcutConfig", "variations"]);
+      cacheElements();
+      cacheInputFields();
+      configureProduct(window.smartcutConfig);
+      configurePricing(window.smartcutConfig);
+      initCheckout();
+      configureStock();
+      const elementsToHide = [
         "div.quantity > input.plus",
         "div.quantity > input.minus",
         "div.quantity .qty-plus",
         "div.quantity .qty-minus"
-      ].forEach((r) => {
-        const o = document.querySelector(r);
-        o && (o.style.display = "none");
+      ];
+      elementsToHide.forEach((e) => {
+        const element = document.querySelector(e);
+        if (element) element.style.display = "none";
       });
-      const n = new CustomEvent("smartcut/ready");
-      window.dispatchEvent(n), g(["Wordpress checkout ready"]);
-    }), (e, n) => (R(), me(Be, null, [
-      fe(V(u), { position: "top-left" }),
-      V(E) === "development" && Qt ? (R(), me("div", Nt, [
-        n[0] || (n[0] = we("div", null, "WP - developer information", -1)),
-        fe(V(m), {
-          data: [V(s)],
-          paths: ["product"]
-        }, null, 8, ["data"]),
-        fe(V(m), {
-          data: [j.value],
-          paths: ["stock"]
-        }, null, 8, ["data"]),
-        we("div", null, "Stock thickness: " + Se(j.value[0].t), 1),
-        we("div", null, "Shape thickness: " + Se(V(l)[0].t), 1)
-      ])) : te("", !0),
-      I.value === "formula" && N.value ? (R(), oe(V(O), {
-        key: 1,
-        ref: "formulapricing",
-        "format-price": le,
-        url: N.value,
-        debug: A.value,
-        onHardwareResult: lt,
-        onPanelResult: M
-      }, null, 8, ["url", "debug"])) : te("", !0),
-      I.value === "manual" || I.value === "formula" && N.value ? (R(), oe(He, {
-        key: 2,
-        ref_key: "calculator",
-        ref: a,
-        readonly: I.value === "formula",
-        debug: A.value,
-        stock: j.value,
-        "find-extras-price": he,
-        "format-price": le,
-        "input-type": I.value,
-        onLog: g,
-        onError: f,
-        onInputsChanged: M,
-        onValidationError: Ue,
-        onResult: ot
-      }, null, 8, ["readonly", "debug", "stock", "input-type"])) : te("", !0)
-    ], 64));
+      const event = new CustomEvent("smartcut/ready");
+      window.dispatchEvent(event);
+      log(["Wordpress checkout ready"]);
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [
+        createVNode(unref(Notices), { position: "top-left" }),
+        unref(env) === "development" && showDevInfo ? (openBlock(), createElementBlock("div", _hoisted_1$1, [
+          _cache[0] || (_cache[0] = createBaseVNode("div", null, "WP - developer information", -1)),
+          createVNode(unref(ObjectViewer), {
+            data: [unref(product)],
+            paths: ["product"]
+          }, null, 8, ["data"]),
+          createVNode(unref(ObjectViewer), {
+            data: [stock.value],
+            paths: ["stock"]
+          }, null, 8, ["data"])
+        ])) : createCommentVNode("", true),
+        inputType.value === "formula" && formulaURL.value ? (openBlock(), createBlock(unref(FormulaPricing), {
+          key: 1,
+          ref: "formulapricing",
+          "format-price": formatPrice,
+          url: formulaURL.value,
+          debug: debug.value,
+          onHardwareResult: setHardwareResult,
+          onPanelResult: disableAddToCart
+        }, null, 8, ["url", "debug"])) : createCommentVNode("", true),
+        inputType.value === "manual" || inputType.value === "formula" && formulaURL.value ? (openBlock(), createBlock(CheckoutCalculator, {
+          key: 2,
+          ref_key: "calculator",
+          ref: calculator,
+          readonly: inputType.value === "formula",
+          debug: debug.value,
+          stock: stock.value,
+          "find-extras-price": findExtrasPrice,
+          "format-price": formatPrice,
+          "input-type": inputType.value,
+          onLog: log,
+          onError: error,
+          onInputsChanged: disableAddToCart,
+          onValidationError: handleValidationError,
+          onResult: result
+        }, null, 8, ["readonly", "debug", "stock", "input-type"])) : createCommentVNode("", true)
+      ], 64);
+    };
   }
-}), Kt = /* @__PURE__ */ Fe({
+});
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "Vanilla",
   emits: ["ready"],
-  setup(c, { expose: v, emit: O }) {
-    const m = ie(() => import("./components-CHLKqL_7.js").then((a) => a.F)), u = ie(() => import("./components-CHLKqL_7.js").then((a) => a.N)), l = O, E = "", d = k(!1), P = k([]), F = k({
+  setup(__props, { expose: __expose, emit: __emit }) {
+    const FormulaPricing = defineAsyncComponent(() => import("./components-U0NxhUnB.js").then((n) => n.F));
+    const Notices = defineAsyncComponent(() => import("./components-U0NxhUnB.js").then((n) => n.N));
+    const emit = __emit;
+    const currentVersion = "";
+    const debug = ref(false);
+    const stock = ref([]);
+    const pricing = ref({
       banding: null,
       finish: null,
       machining: null
-    }), p = k("USD"), _ = k("en-US"), t = k("manual"), x = k(""), s = pt(null), L = k(null), H = k();
-    De("calculator", () => H.value);
-    const T = (a) => {
-      d.value && console.log("SmartCut -", ...a);
-    }, A = (a) => {
-      console.error(`SmartCut - ${a}`);
-    }, I = () => {
-      const a = new CustomEvent("smartcut/validationError");
-      window.dispatchEvent(a);
-    }, N = () => {
-      const a = new CustomEvent("smartcut/calculating");
-      window.dispatchEvent(a);
-    }, j = (a) => {
-      L.value = a;
-    }, Q = (a = 0, g = _.value) => {
-      if (a === !0) return "";
-      try {
-        g = g.replace("_", "-");
-        const f = Number(a);
-        return !f && f !== 0 ? "" : isNaN(f) ? (console.error("formatPrice - invalid price:", a), "") : f.toLocaleString(g, {
-          style: "currency",
-          currency: p.value
-        });
-      } catch (f) {
-        return console.error("Error formatting price:", f), "";
+    });
+    const currency = ref("USD");
+    const locale = ref("en-US");
+    const inputType = ref("manual");
+    const formulaURL = ref("");
+    const formulaSpec = shallowRef(null);
+    const hardWareResult = ref(null);
+    const calculator = ref();
+    provide("calculator", () => calculator.value);
+    const log = (messages) => {
+      if (debug.value) {
+        console.log("SmartCut -", ...messages);
       }
-    }, B = (a, g) => {
-      var D;
-      if (!((D = F.value) != null && D[a])) return null;
-      const f = g.join("|"), $ = S(F.value, [a, f]);
-      return typeof $ == "number" ? $ : parseFloat($);
-    }, ne = (a) => {
-      xt(a), P.value = a.stock, F.value.banding = S(a, ["banding", "pricing"]), F.value.finish = S(a, ["finish", "pricing"]), F.value.machining = S(a, ["machining", "pricing"]), Y(a, ["options", "currency"]) && (p.value = S(a, ["options", "currency"])), Y(a, ["options", "locale"]) && (_.value = S(a, ["options", "locale"]).replace("_", "-")), (Y(a, ["options", "formula", "url"]) || Y(a, ["options", "formula", "spec"])) && (t.value = "formula", x.value = S(a, ["options", "formula", "url"]) ?? null, s.value = S(a, ["options", "formula", "spec"]) ?? null), Ve(() => {
-        H.value && H.value.init(a);
+    };
+    const error = (message) => {
+      console.error(`SmartCut - ${message}`);
+    };
+    const handleValidationError = () => {
+      const event = new CustomEvent("smartcut/validationError");
+      window.dispatchEvent(event);
+    };
+    const handleCalculating = () => {
+      const event = new CustomEvent("smartcut/calculating");
+      window.dispatchEvent(event);
+    };
+    const setHardwareResult = (result2) => {
+      hardWareResult.value = result2;
+    };
+    const formatPrice = (price = 0, localeValue = locale.value) => {
+      if (price === true) return "";
+      try {
+        localeValue = localeValue.replace("_", "-");
+        const numericPrice = Number(price);
+        if (!numericPrice && numericPrice !== 0) return "";
+        if (isNaN(numericPrice)) {
+          console.error("formatPrice - invalid price:", price);
+          return "";
+        }
+        return numericPrice.toLocaleString(localeValue, {
+          style: "currency",
+          currency: currency.value
+        });
+      } catch (error2) {
+        console.error("Error formatting price:", error2);
+        return "";
+      }
+    };
+    const findExtrasPrice = (extraType, selectedOptions) => {
+      var _a;
+      if (!((_a = pricing.value) == null ? void 0 : _a[extraType])) return null;
+      const key = selectedOptions.join("|");
+      const price = getNestedProperty(pricing.value, [extraType, key]);
+      return typeof price === "number" ? price : parseFloat(price);
+    };
+    const init = (data) => {
+      mapLegacyInitData(data);
+      stock.value = data.stock;
+      pricing.value.banding = getNestedProperty(data, ["banding", "pricing"]);
+      pricing.value.finish = getNestedProperty(data, ["finish", "pricing"]);
+      pricing.value.machining = getNestedProperty(data, ["machining", "pricing"]);
+      if (checkObjectHasPropery(data, ["options", "currency"])) {
+        currency.value = getNestedProperty(data, ["options", "currency"]);
+      }
+      if (checkObjectHasPropery(data, ["options", "locale"])) {
+        locale.value = getNestedProperty(data, ["options", "locale"]).replace("_", "-");
+      }
+      if (checkObjectHasPropery(data, ["options", "formula", "url"]) || checkObjectHasPropery(data, ["options", "formula", "spec"])) {
+        inputType.value = "formula";
+        formulaURL.value = getNestedProperty(data, ["options", "formula", "url"]) ?? null;
+        formulaSpec.value = getNestedProperty(data, ["options", "formula", "spec"]) ?? null;
+      }
+      nextTick(() => {
+        if (calculator.value) calculator.value.init(data);
       });
-    }, U = (a) => {
-      var $, D, W;
-      const g = a;
-      if (g.checkout = {
+    };
+    const result = (result2) => {
+      var _a, _b, _c;
+      const response = result2;
+      response.checkout = {
         formattedTotalStockCost: "",
         formattedBandingCost: {},
         formattedFinishCost: {}
-      }, ($ = a == null ? void 0 : a.metadata) != null && $.totalStockCost && (g.checkout.formattedTotalStockCost = a.metadata.totalStockCost.toLocaleString(
-        _.value,
-        {
-          style: "currency",
-          currency: p.value
-        }
-      )), (D = a == null ? void 0 : a.metadata) != null && D.bandingLengthByType)
-        for (const [q, K] of Object.entries(a.metadata.bandingLengthByType)) {
-          if (!Y(F.value, ["banding", q])) {
-            A(`Banding price ${q} not found`);
+      };
+      if ((_a = result2 == null ? void 0 : result2.metadata) == null ? void 0 : _a.totalStockCost) {
+        response.checkout.formattedTotalStockCost = result2.metadata.totalStockCost.toLocaleString(
+          locale.value,
+          {
+            style: "currency",
+            currency: currency.value
+          }
+        );
+      }
+      if ((_b = result2 == null ? void 0 : result2.metadata) == null ? void 0 : _b.bandingLengthByType) {
+        for (const [bandingType, length] of Object.entries(result2.metadata.bandingLengthByType)) {
+          if (!checkObjectHasPropery(pricing.value, ["banding", bandingType])) {
+            error(`Banding price ${bandingType} not found`);
             continue;
           }
-          g.checkout.formattedBandingCost[q] = (K / 1e3 * F.value.banding[q]).toLocaleString(_.value, { style: "currency", currency: p.value });
+          response.checkout.formattedBandingCost[bandingType] = (length / 1e3 * pricing.value.banding[bandingType]).toLocaleString(locale.value, { style: "currency", currency: currency.value });
         }
-      if ((W = a == null ? void 0 : a.metadata) != null && W.finishAreaByType)
-        for (const [q, K] of Object.entries(a.metadata.finishAreaByType)) {
-          if (!Y(F.value, ["finish", q])) {
-            A(`Finish price ${q} not found`);
+      }
+      if ((_c = result2 == null ? void 0 : result2.metadata) == null ? void 0 : _c.finishAreaByType) {
+        for (const [finishType, area] of Object.entries(result2.metadata.finishAreaByType)) {
+          if (!checkObjectHasPropery(pricing.value, ["finish", finishType])) {
+            error(`Finish price ${finishType} not found`);
             continue;
           }
-          g.checkout.formattedFinishCost[q] = (K / 1e6 * F.value.finish[q]).toLocaleString(_.value, { style: "currency", currency: p.value });
+          response.checkout.formattedFinishCost[finishType] = (area / 1e6 * pricing.value.finish[finishType]).toLocaleString(locale.value, { style: "currency", currency: currency.value });
         }
-      const f = new CustomEvent("smartcut/result", {
-        detail: JSON.parse(JSON.stringify(g))
+      }
+      const event = new CustomEvent("smartcut/result", {
+        detail: JSON.parse(JSON.stringify(response))
       });
-      window.dispatchEvent(f);
+      window.dispatchEvent(event);
     };
-    return dt(() => {
-      console.log(`💥 Powered by https://smartcut.dev V${E}`);
-      const a = new URLSearchParams(window.location.search);
-      d.value = !!a.has("debug"), d.value && console.log("Smartcut - debug enabled");
-    }), Ae(() => {
-      window.smartcutCheckout = { init: ne }, l("ready");
-      const a = new CustomEvent("smartcut/ready");
-      window.dispatchEvent(a);
-    }), v({
-      init: ne,
-      debug: d,
-      stock: P,
-      pricing: F,
-      currency: p,
-      locale: _,
-      inputType: t,
-      formulaURL: x,
-      formulaSpec: s,
-      hardWareResult: L,
-      log: T,
-      error: A,
-      calculating: N,
-      result: U,
-      formatPrice: Q,
-      findExtrasPrice: B,
-      setHardwareResult: j
-    }), (a, g) => (R(), me(Be, null, [
-      fe(V(u), { position: "top-left" }),
-      t.value === "formula" && (x.value || s.value) ? (R(), oe(V(m), {
-        key: 0,
-        ref: "formulapricing",
-        "format-price": Q,
-        url: x.value,
-        spec: s.value,
-        debug: d.value,
-        onHardwareResult: j
-      }, null, 8, ["url", "spec", "debug"])) : te("", !0),
-      t.value === "manual" || t.value === "formula" && (x.value || s.value) ? (R(), oe(He, {
-        key: 1,
-        ref_key: "calculator",
-        ref: H,
-        readonly: t.value === "formula",
-        debug: d.value,
-        stock: P.value,
-        "input-type": t.value,
-        "find-extras-price": B,
-        "format-price": Q,
-        onLog: T,
-        onError: A,
-        onCalculating: N,
-        onValidationError: I,
-        onResult: U
-      }, null, 8, ["readonly", "debug", "stock", "input-type"])) : te("", !0)
-    ], 64));
+    onBeforeMount(() => {
+      console.log(`💥 Powered by https://smartcut.dev V${currentVersion}`);
+      const urlParams = new URLSearchParams(window.location.search);
+      debug.value = urlParams.has("debug") ? true : false;
+      if (debug.value) console.log("Smartcut - debug enabled");
+    });
+    onMounted(() => {
+      window.smartcutCheckout = { init };
+      emit("ready");
+      const event = new CustomEvent("smartcut/ready");
+      window.dispatchEvent(event);
+    });
+    __expose({
+      init,
+      debug,
+      stock,
+      pricing,
+      currency,
+      locale,
+      inputType,
+      formulaURL,
+      formulaSpec,
+      hardWareResult,
+      log,
+      error,
+      calculating: handleCalculating,
+      result,
+      formatPrice,
+      findExtrasPrice,
+      setHardwareResult
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [
+        createVNode(unref(Notices), { position: "top-left" }),
+        inputType.value === "formula" && (formulaURL.value || formulaSpec.value) ? (openBlock(), createBlock(unref(FormulaPricing), {
+          key: 0,
+          ref: "formulapricing",
+          "format-price": formatPrice,
+          url: formulaURL.value,
+          spec: formulaSpec.value,
+          debug: debug.value,
+          onHardwareResult: setHardwareResult
+        }, null, 8, ["url", "spec", "debug"])) : createCommentVNode("", true),
+        inputType.value === "manual" || inputType.value === "formula" && (formulaURL.value || formulaSpec.value) ? (openBlock(), createBlock(CheckoutCalculator, {
+          key: 1,
+          ref_key: "calculator",
+          ref: calculator,
+          readonly: inputType.value === "formula",
+          debug: debug.value,
+          stock: stock.value,
+          "input-type": inputType.value,
+          "find-extras-price": findExtrasPrice,
+          "format-price": formatPrice,
+          onLog: log,
+          onError: error,
+          onCalculating: handleCalculating,
+          onValidationError: handleValidationError,
+          onResult: result
+        }, null, 8, ["readonly", "debug", "stock", "input-type"])) : createCommentVNode("", true)
+      ], 64);
+    };
   }
-}), Jt = {
+});
+const _hoisted_1 = {
   key: 1,
   class: "error-message"
-}, Ct = /* @__PURE__ */ Fe({
+};
+const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "Launch",
   props: {
     type: { default: "vanilla" }
   },
-  setup(c, { expose: v }) {
-    const O = k(!1), m = k(null), u = Re({
-      wordpress: Wt,
-      vanilla: Kt
-    }), l = c, E = Ie(() => {
-      if (!l.type) return null;
-      const d = l.type.toLowerCase();
-      return u[d] || null;
+  setup(__props, { expose: __expose }) {
+    const isComponentMounted = ref(false);
+    const checkoutRef = ref(null);
+    const components = markRaw({
+      wordpress: _sfc_main$2,
+      vanilla: _sfc_main$1
     });
-    return v({
-      componentType: Ie(() => l.type),
-      isComponentMounted: O,
-      checkout: m
-    }), (d, P) => E.value ? (R(), oe(ft(E.value), {
-      key: 0,
-      ref_key: "checkoutRef",
-      ref: m
-    }, null, 512)) : l.type ? (R(), me("div", Jt, " Invalid component type: " + Se(l.type), 1)) : te("", !0);
+    const props = __props;
+    const currentComponent = computed(() => {
+      if (!props.type) return null;
+      const componentKey = props.type.toLowerCase();
+      return components[componentKey] || null;
+    });
+    __expose({
+      componentType: computed(() => props.type),
+      isComponentMounted,
+      checkout: checkoutRef
+    });
+    return (_ctx, _cache) => {
+      return currentComponent.value ? (openBlock(), createBlock(resolveDynamicComponent(currentComponent.value), {
+        key: 0,
+        ref_key: "checkoutRef",
+        ref: checkoutRef
+      }, null, 512)) : props.type ? (openBlock(), createElementBlock("div", _hoisted_1, " Invalid component type: " + toDisplayString(props.type), 1)) : createCommentVNode("", true);
+    };
   }
-}), Gt = /* @__PURE__ */ Ft(Ct, [["__scopeId", "data-v-6d642def"]]);
-Pt.add(
-  zt,
-  Tt,
-  jt,
-  qt,
-  Ot,
-  It,
-  $t,
-  Lt,
-  Dt,
-  At,
-  Bt
+});
+const Launch = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6d642def"]]);
+library$1.add(
+  faXmark,
+  faExpand,
+  faArrowsLeftRight,
+  faArrowsUpDown,
+  faHammer,
+  faSprayCan,
+  faImage,
+  faFiles,
+  faTrash,
+  faPlusLarge,
+  faCalculator
 );
-let de = null, ke = !1;
-const Xt = async () => {
-  if (!ke) {
-    ke = !0;
-    try {
-      const c = document.querySelector("#smartcut-app");
-      if (!c) {
-        console.warn("No #smartcut-app element found");
-        return;
-      }
-      const v = c.getAttribute("data-type") || "";
-      de = mt(Gt, { type: v }), await Ut, de.use(_t, { i18next: xe }), de.component("FontAwesomeIcon", ht), de.mount("#smartcut-app");
-    } catch (c) {
-      console.error("SmartCut mount error:", c);
-    } finally {
-      ke = !1;
+let app = null;
+let isMounting = false;
+const mount = async () => {
+  if (isMounting) return;
+  isMounting = true;
+  try {
+    const mountPoint = document.querySelector("#smartcut-app");
+    if (!mountPoint) {
+      console.warn("No #smartcut-app element found");
+      return;
     }
+    const type = mountPoint.getAttribute("data-type") || "";
+    app = createApp(Launch, { type });
+    await i18nextReady;
+    app.use(install, { i18next: instance });
+    app.component("FontAwesomeIcon", FontAwesomeIcon);
+    app.mount("#smartcut-app");
+  } catch (error) {
+    console.error("SmartCut mount error:", error);
+  } finally {
+    isMounting = false;
   }
 };
-Xt();
+mount();
 export {
-  de as app,
-  Xt as mount
+  app,
+  mount
 };
+//# sourceMappingURL=checkout.js.map
