@@ -317,6 +317,88 @@ const e = {
       no_thickness: "Aucune épaisseur sélectionnée",
       invalid_thickness: "Épaisseur invalide"
     }
+  },
+  nl: {
+    unexpected_error: "onverwachte fout",
+    unknown_error: "onbekende fout",
+    issue: "probleem",
+    issue_one: "probleem",
+    issue_other: "problemen",
+    cannot_connect: "kan geen verbinding maken met server",
+    error_occurred: "er is een fout opgetreden",
+    issues_found: "problemen gevonden",
+    part_issue: "onderdeel probleem",
+    stock_issue: "voorraad probleem",
+    no_saw: "geen zaag geselecteerd",
+    thickness_required_for_beam_saw: "dikte is vereist voor balkzaag",
+    no_blade_width: "geen zaagbladbreedte ingesteld",
+    saw_selected_no_blade_width: "je hebt een zaag geselecteerd, maar er is geen zaagbladbreedte ingesteld",
+    no_parts: "geen onderdelen gevonden",
+    no_parts_list: "geen onderdelen in lijst",
+    no_parts_added: "er zijn geen onderdelen toegevoegd - controleer je lijst.",
+    parts_not_fit: "het volgende onderdeel paste niet",
+    parts_not_fit_one: "het volgende onderdeel paste niet",
+    parts_not_fit_other: "de volgende onderdelen pasten niet",
+    no_stock: "geen voorraad gevonden",
+    max_parts: "het maximale aantal onderdelen is",
+    no_valid_parts: "geen geldige onderdelen gevonden",
+    unable_to_match_parts: "kan onderdeel niet matchen met voorraad",
+    unable_to_match_parts_one: "kan onderdeel niet matchen met voorraad",
+    unable_to_match_parts_other: "kan onderdelen niet matchen met voorraad",
+    no_matching_stock_material: "geen passend voorraadmateriaal gevonden",
+    no_matching_stock_thickness: "geen passende voorraaddikte gevonden",
+    no_matching_stock_material_thickness: "geen voorraad met passend materiaal & dikte gevonden",
+    no_matching_stock_width: "geen passende voorraadbreedte gevonden",
+    will_not_fit: "past op geen enkele voorraad",
+    reason_for_mismatch: "vanwege een verschil in dikte, materiaal of afmetingen",
+    max_projects: "het maximale aantal projecten is {{x}}",
+    server_offline: "server is offline",
+    inputs_issue: "probleem met je {{x}} invoer",
+    no_result: "geen resultaat gevonden",
+    check_inputs: "controleer je invoer",
+    too_much_trim: "het trimmen van {{x}} met {{y}} resulteerde in {{z}}",
+    must_be_string_number_boolean: "{{x}} moet een string, getal of boolean zijn",
+    must_be_values: "{{x}} moet een van de volgende waarden zijn: {{y}}",
+    must_be_object: "{{x}} moet een object zijn",
+    not_understood: "{{x}} wordt niet begrepen, kreeg {{y}}",
+    not_set: "{{x}} is niet ingesteld",
+    greater_than: "{{x}} moet groter zijn dan {{y}}",
+    greater_than_or_equal: "{{x}} moet groter zijn dan of gelijk aan {{y}}",
+    less_than: "{{x}} moet kleiner zijn dan {{y}}",
+    less_than_or_equal: "{{x}} moet kleiner zijn dan of gelijk aan {{y}}",
+    exceeded_limit: "Het {{type}} aantal van {{x}} overschrijdt je {{type}} limiet van {{y}}",
+    option_not_available: "Optie {{x}} in {{y}} is niet meer beschikbaar",
+    saw: {
+      validation: {
+        stockType: {
+          invalid: "Zaag voorraadtype: {{stockType}} niet geldig"
+        },
+        cutType: {
+          invalid: "Zaag snijtype: {{cutType}} niet geldig voor voorraadtype: {{stockType}}"
+        },
+        cutPreference: {
+          invalid: "Zaag snijvoorkeur: {{preference}} niet geldig voor snijtype: {{cutType}} en voorraadtype: {{stockType}}"
+        },
+        bladeWidth: {
+          invalid: "Zaagbladbreedte: {{width}} is niet geldig"
+        },
+        required: {
+          stackHeight: "{{cutType}} zagen vereisen dat de stapelhoogte wordt ingesteld"
+        }
+      }
+    },
+    fieldValidation: {
+      valid: "Geldig",
+      zero_not_allowed: "0 is niet toegestaan",
+      field_required: "Verplicht",
+      invalid_number: "Ongeldig decimaal getal",
+      invalid_format: "Ongeldig formaat",
+      invalid_fraction: "Ongeldige breuk",
+      invalid_fraction_chars: "Ongeldige tekens in breuk",
+      no_material: "Geen materiaal geselecteerd",
+      no_thickness: "Geen dikte geselecteerd",
+      invalid_thickness: "Ongeldige dikte"
+    }
   }
 };
 export {

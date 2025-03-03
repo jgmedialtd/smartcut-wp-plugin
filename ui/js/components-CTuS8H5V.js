@@ -4,7 +4,7 @@ var c = (i, t, e) => dr(i, typeof t != "symbol" ? t + "" : t, e);
 import { F as ai, g as Kt, d as Di, i as fi, c as fr, a as un, b as Xe, v as ls, t as Ri, e as Ai, h as pr, s as gr, f as mr, o as vr, j as yr, k as br, P as wr } from "./vendor-CcpD1l-V.js";
 import { i as Sr } from "./vendor-i18n-DgDRNGQo.js";
 import { d as De, c as k, o as y, F as Se, r as Oe, n as ke, a as Ce, b as M, w as as, t as te, v as us, e as G, f as xr, g as H, h as J, i as Pe, j as ft, k as Ze, l as cs, m as oi, u as S, p as Xt, q as ge, s as kr, x as hs, y as Ui, z as Bt, A as pe, B as Cr, C as $t, D as Ir, E as Pr, G as Lr, H as $r, I as gt, J as Tr, T as Or, K as cn, L as Dr, M as Es, N as Ar, O as Er, P as Mr, Q as Rr, R as Fr } from "./vendor-vue-BGhkUe2l.js";
-import { u as hn, a as ds, b as dn, c as _r, d as qr, e as Br } from "./composables-C-LWtlS9.js";
+import { u as hn, a as ds, b as dn, c as _r, d as qr, e as Br } from "./composables-DiJ4VC4S.js";
 import { a as fn, b as pn, l as tt, c as Fi, d as _i, s as Me, r as Ft, e as li, f as gn, g as Hr, h as Gr, i as Nr, p as Wr, S as Ur, j as jr, k as zr } from "./vendor-d3-B-JATA3m.js";
 function pi(i) {
   return !(!i || typeof i != "string");
@@ -909,7 +909,7 @@ class Ot {
     c(this, "guillotineOptions");
     c(this, "efficiencyOptions");
     c(this, "issues");
-    t = qt(t), this.issues = [], e = e ?? (t == null ? void 0 : t.stockType) ?? Ye.stockTypes[0], Bo(this, t, e), !this.issues.length && (this.bladeWidth = x({ v: t == null ? void 0 : t.bladeWidth }) ?? Ye.defaults.bladeWidth, this.stockType = e ?? (t == null ? void 0 : t.stockType) ?? Ye.stockTypes[0], vn(this.stockType) || (this.stockType = Ye.stockTypes[0]), this.cutType = t == null ? void 0 : t.cutType, yn(this.stockType, this.cutType) || (this.cutType = _o(this.stockType)[0]), this.cutPreference = t == null ? void 0 : t.cutPreference, bn(this.stockType, this.cutType, this.cutPreference) || (this.cutPreference = qo(this.stockType, this.cutType)[0]), this.stackHeight = (t == null ? void 0 : t.stackHeight) ?? Ye.defaults.stackHeight, this.guillotineOptions = Di({}, t == null ? void 0 : t.guillotineOptions, Ye.defaults.guillotine), this.efficiencyOptions = Di({}, t == null ? void 0 : t.efficiencyOptions, Ye.defaults.efficiency), this.options = Di({}, t == null ? void 0 : t.options, Ye.defaults.options));
+    t = qt(t), this.issues = [], e = e ?? (t == null ? void 0 : t.stockType) ?? Ye.stockTypes[0], Bo(this, t, e), !this.issues.length && (this.bladeWidth = x({ v: t == null ? void 0 : t.bladeWidth }) ?? Ye.defaults.bladeWidth, this.stockType = e ?? (t == null ? void 0 : t.stockType) ?? Ye.stockTypes[0], vn(this.stockType) || (this.stockType = Ye.stockTypes[0]), this.cutType = t == null ? void 0 : t.cutType, yn(this.stockType, this.cutType) || (this.cutType = _o(this.stockType)[0]), this.cutPreference = t == null ? void 0 : t.cutPreference, bn(this.stockType, this.cutType, this.cutPreference) || (this.cutPreference = qo(this.stockType, this.cutType)[0]), this.stackHeight = (t == null ? void 0 : t.stackHeight) ?? Ye.defaults.stackHeight, this.guillotineOptions = Di({}, t == null ? void 0 : t.guillotineOptions, Ye.defaults.guillotine), this.efficiencyOptions = Di({}, t == null ? void 0 : t.efficiencyOptions, Ye.defaults.efficiency), this.options = Di({}, t == null ? void 0 : t.options, Ye.defaults.options), this.options.minSpacing = x({ v: this.options.minSpacing }) ?? 0, this.options.minSpacingDimension.dimension = x({ v: this.options.minSpacingDimension.dimension }) ?? 0, this.options.minSpacingDimension.minSpacing = x({ v: this.options.minSpacingDimension.minSpacing }) ?? 0);
   }
   clone() {
     const t = structuredClone(this);
@@ -1059,9 +1059,6 @@ function jo(i) {
 function ui(i) {
   return i ? i === "l" ? "w" : "l" : null;
 }
-const zo = {
-  runTests: !1
-};
 class Yt {
   constructor(t) {
     c(this, "x1");
@@ -1073,7 +1070,7 @@ class Yt {
     c(this, "shapeCollisions");
     c(this, "origin");
     c(this, "type");
-    this.x1 = t.x1, this.x2 = t.x2, this.y1 = t.y1, this.y2 = t.y2, this.dimension = Vo(this), this.direction = Yo(this), this.type = t != null && t.type ? t.type : null, this.origin = t != null && t.origin ? t.origin : null;
+    this.x1 = t.x1, this.x2 = t.x2, this.y1 = t.y1, this.y2 = t.y2, this.dimension = zo(this), this.direction = Vo(this), this.type = t != null && t.type ? t.type : null, this.origin = t != null && t.origin ? t.origin : null;
   }
   getCoordinates() {
     return {
@@ -1087,13 +1084,13 @@ class Yt {
 function It(i, t, e, s, n = null, r = null) {
   return new Yt({ x1: i, y1: t, x2: e, y2: s, origin: n, type: r });
 }
-function Vo(i) {
+function zo(i) {
   return typeof i > "u" || !ce.isNumber(i.x1) || !ce.isNumber(i.x2) || !ce.isNumber(i.y1) || !ce.isNumber(i.y2) ? null : i.x1 === i.x2 && i.y1 !== i.y2 ? "w" : i.y1 === i.y2 && i.x1 !== i.x2 ? "l" : null;
 }
-function Yo(i) {
+function Vo(i) {
   return typeof i > "u" || !ce.isNumber(i.x1) || !ce.isNumber(i.x2) || !ce.isNumber(i.y1) || !ce.isNumber(i.y2) ? null : i.x1 < i.x2 ? "lr" : i.x1 > i.x2 ? "rl" : i.y1 < i.y2 ? "bt" : i.y1 > i.y2 ? "tb" : null;
 }
-function Xo(i, t) {
+function Yo(i, t) {
   const e = i.getCorners(), s = {};
   return e.bottomLeft.x > 0 && e.bottomLeft.y > 0 && (s.bottomLeftDown = It(
     e.bottomLeft.x,
@@ -1153,6 +1150,9 @@ function Xo(i, t) {
     "bottomRightDown"
   )), s;
 }
+const Xo = {
+  runTests: !1
+};
 fr.showDiff = !0;
 un("tests");
 un("timers");
@@ -1160,7 +1160,7 @@ function kn() {
   return typeof process < "u" && (process != null && process.env), !1;
 }
 function Cn(i = [], t = null) {
-  i != null && i.length && kn() && zo.runTests;
+  i != null && i.length && kn() && Xo.runTests;
 }
 Xe.colors = [
   2,
@@ -1693,7 +1693,7 @@ function nl(i, t) {
 }
 function Ln(i, t) {
   return i.map((e) => {
-    const s = Xo(e, t);
+    const s = Yo(e, t);
     return {
       shape: e,
       rays: s
@@ -5999,7 +5999,7 @@ function Ka(i) {
         {
           const s = i.guillotineData.myStripDirection, n = i.addedAsGroup;
           let r = "";
-          if (s === "l" ? r = `→ ${i.placementOrder}` : s === "w" && (r = `↑ ${i.placementOrder}`), (e = i == null ? void 0 : i.priority) != null && e[(t = i == null ? void 0 : i.stock) == null ? void 0 : t.parentID] && (r += "P"), n && (r += "G"), r.length) return r;
+          if (s === "l" ? r = `→ ${i.id}` : s === "w" && (r = `↑ ${i.id}`), (e = i == null ? void 0 : i.priority) != null && e[(t = i == null ? void 0 : i.stock) == null ? void 0 : t.parentID] && (r += "P"), n && (r += "G"), r.length) return r;
         }
         break;
       case "groups":
