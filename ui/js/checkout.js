@@ -1,13 +1,13 @@
-import { d as Se, y as ct, g as k, j as Le, c as fe, o as V, A as we, e as te, q as se, u as ee, C as oe, b as ut, F as De, k as Ae, O as Be, U as Ve, G as pt, V as dt, h as qe, W as ft, t as mt, X as _t, Y as ht, Z as yt } from "./vendor-vue-BGhkUe2l.js";
-import { i as ke, B as gt } from "./vendor-i18n-DgDRNGQo.js";
-import { q as bt, d as h, v as vt, w as Oe, x as Ie, y as S, C as Re, p as wt, z as M, A as kt, B as St, D as xt, E as Ft, _ as Pt } from "./components-CTuS8H5V.js";
-import { J as Et, H as zt, I as Tt, K as jt, L as qt, M as $e, N as Ot, O as It, Q as $t, S as Lt, T as Dt, U as At, V as Bt, W as Vt, X as Rt } from "./vendor-CcpD1l-V.js";
-import { E as Ht, a as K } from "./vendor-pdf-DG23QRVH.js";
-import { u as Ut, f as Mt } from "./composables-DiJ4VC4S.js";
+import { d as Se, y as ct, g as k, j as Le, c as fe, o as V, A as we, e as te, q as se, u as ee, C as oe, b as ut, F as De, k as Ae, O as Be, U as Ve, G as pt, V as dt, h as qe, W as ft, t as mt, X as _t, Y as ht, Z as yt } from "./vendor-vue-Kgm6Js1o.js";
+import { i as ke, B as gt } from "./vendor-i18n-J0oHP3sq.js";
+import { q as bt, d as h, v as vt, w as Oe, x as Ie, y as S, C as Re, p as wt, z as M, A as kt, B as St, D as xt, E as Ft, _ as Pt } from "./components-11af1Tpe.js";
+import { J as Et, H as zt, I as Tt, K as jt, L as qt, M as $e, N as Ot, O as It, Q as $t, S as Lt, T as Dt, U as At, V as Bt, W as Vt, X as Rt } from "./vendor-DdDY4qXh.js";
+import { E as Ht, a as K } from "./vendor-pdf-rsnubR_c.js";
+import { u as Ut, f as Mt } from "./composables-BCw0-juQ.js";
 const Yt = Nt();
 async function Nt() {
   const l = {
-    main: import("./main-B7BlHHG9.js").then((c) => c.resources),
+    main: import("./main-DQj1MkcK.js").then((c) => c.resources),
     errors: import("./errors-CV_r96yH.js").then((c) => c.resources)
   }, [v, O] = await Promise.all([
     l.main,
@@ -178,23 +178,23 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
 }, Wt = {
   key: 0,
   class: "debug"
-}, Kt = !0, Jt = /* @__PURE__ */ Se({
+}, Kt = !1, Jt = /* @__PURE__ */ Se({
   __name: "WordPress",
   setup(l) {
-    const { t: v } = ct(["main", "errors"]), O = oe(() => import("./components-CTuS8H5V.js").then((e) => e.F)), y = oe(() => import("./components-CTuS8H5V.js").then((e) => e.O)), u = oe(() => import("./components-CTuS8H5V.js").then((e) => e.N)), { inputShapes: c } = Ut(), P = "production", d = {}, E = {}, F = k(null);
+    const { t: v } = ct(["main", "errors"]), O = oe(() => import("./components-11af1Tpe.js").then((e) => e.F)), y = oe(() => import("./components-11af1Tpe.js").then((e) => e.O)), u = oe(() => import("./components-11af1Tpe.js").then((e) => e.N)), { inputShapes: c } = Ut(), P = "production", d = {}, E = {}, F = k(null);
     let p, m, t;
     const x = {
       banding: null,
       finish: null
     };
     let s = null, I = [], R = null, T = {};
-    const A = k(!1), $ = k("manual"), Y = k(""), j = k([]), N = k(null), B = k(!0), ne = k(null), H = k(!1), r = k(null);
+    const A = k(!1), L = k("manual"), Y = k(""), j = k([]), N = k(null), B = k(!0), ne = k(null), H = k(!1), r = k(null);
     Ve("calculator", () => r.value);
-    const g = (e) => {
+    const b = (e) => {
       A.value && console.log("SmartCut -", ...e);
     }, f = (e) => {
       console.error(`SmartCut - ${e}`);
-    }, L = (e = !0) => {
+    }, $ = (e = !0) => {
       H.value = !0, ["checkout", "intro_text", "offcuts", "banding_key"].forEach((i) => re(i, "block")), tt() && re("pricing_table", "table"), e ? Q(!0) : q(), U();
     }, D = (e = !0, n = !0) => {
       H.value = !1, ["checkout", "intro_text", "offcuts", "banding_key", "pricing_table"].forEach((o) => re(o, "none")), n === !0 ? W() : n === !1 && U(), Q ? Q() : e === !1 && q();
@@ -219,13 +219,13 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
     }, He = () => {
       f("Validation error"), U();
     }, me = (e, n = 0) => {
-      if (g(["setting cart quantity", e]), !d.quantity) {
+      if (b(["setting cart quantity", e]), !d.quantity) {
         f("Quantity field not found when trying to set");
         return;
       }
       d.quantity.value = e.toFixed(n), console.assert(d.quantity.value === e.toFixed(n), "Quantity field value not set correctly");
     }, Ue = (e) => {
-      g(["setting variation price", e]);
+      b(["setting variation price", e]);
       const n = document.querySelector(".woocommerce-variation-price .smartcut-price-selector");
       n && (n.innerText = le(e)), F.value = e;
     }, Me = () => {
@@ -318,7 +318,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
           enableBanding: t.machining_corners_enable_banding
         }
       };
-      B.value = ze(), B.value ? Q(!0) : q(), s.type === "variable" ? D(!1, !1) : L(B.value);
+      B.value = ze(), B.value ? Q(!0) : q(), s.type === "variable" ? D(!1, !1) : $(B.value);
       const a = {
         type: s.type,
         stock: j.value,
@@ -328,15 +328,15 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         finish: i,
         machining: _
       };
-      a.type === "variable" && (g(["setting variable product form listeners"]), jQuery(function(z) {
+      a.type === "variable" && (b(["setting variable product form listeners"]), jQuery(function(z) {
         z(".variations_form").on("reset_data", () => D(!1, !1)).on("found_variation", (ue, lt) => rt(ue, lt));
       }));
-      const b = {
+      const g = {
         product: s,
         selectedVariation: N,
         inputs: E,
         elements: d,
-        inputType: $,
+        inputType: L,
         formatPrice: le,
         getCurrentVariationPrice: Me,
         setInputValue: he,
@@ -351,7 +351,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         getTotalMachiningPrice: Ze,
         getInputValue: et,
         enableAddToCart: W,
-        log: g,
+        log: b,
         error: f
       }, w = Mt({
         pricing_strategy: t.pricing_strategy,
@@ -364,7 +364,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         enable_offcut_pricing: t.enable_offcut_pricing,
         offcut_min_length: t.offcut_min_length,
         offcut_min_width: t.offcut_min_width
-      }, b);
+      }, g);
       p = w.calculatePrice, m = w.resetPricing, Ae(() => {
         r.value && r.value.init(a);
       });
@@ -381,7 +381,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         stock_name: (e == null ? void 0 : e.stock_sku) || e.stock_name
       }, s.multiple_sizes || (s.l || f("product 'length' attribute not available"), s.w || f("product 'width' attribute not available"));
     }, Qe = (e) => {
-      $.value = S(window, ["smartcutConfig", "settings", "enable_formula"]) === !0 ? "formula" : "manual", Y.value = S(window, ["smartcutConfig", "settings", "formula_url"]), g([`Input type: ${$.value}`]), g([`Input type: ${$.value}`]), T = {
+      L.value = S(window, ["smartcutConfig", "settings", "enable_formula"]) === !0 ? "formula" : "manual", Y.value = S(window, ["smartcutConfig", "settings", "formula_url"]), b([`Input type: ${L.value}`]), T = {
         thousands_separator: e == null ? void 0 : e.thousands_separator,
         decimal_separator: e == null ? void 0 : e.decimal_separator,
         number_of_decimals: e == null ? void 0 : e.number_of_decimals,
@@ -496,8 +496,8 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
       }, i = Object.values(e);
       for (const o of i)
         o != null && o.variations ? (n.labels.push(...Object.keys(o.options)), Object.values(o.variations).forEach((_) => {
-          const { options: a } = _, b = Object.values(a).map((w) => ce(w)).join("|");
-          n.pricing[b] = parseInt(_.price);
+          const { options: a } = _, g = Object.values(a).map((w) => ce(w)).join("|");
+          n.pricing[g] = parseInt(_.price);
         })) : o != null && o.options && Object.keys(o.options).forEach((_) => {
           n.pricing[ce(_)] = parseInt(o.price);
         });
@@ -506,9 +506,9 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
       if (!n.length || !M(x, [e])) return null;
       const i = S(x, [e]);
       if (!kt(i)) return null;
-      const _ = Object.values(i).map((a) => a != null && a.variations ? Object.values(a.variations).map((b) => (b.type = "variable", b)) : (a.type = "simple", a)).flat().find((a) => {
-        let b;
-        return a.type === "simple" ? b = Object.keys(a.options) : b = Object.values(a.options), b ? b.every((w, z) => ce(w) === ce(n[z])) : !1;
+      const _ = Object.values(i).map((a) => a != null && a.variations ? Object.values(a.variations).map((g) => (g.type = "variable", g)) : (a.type = "simple", a)).flat().find((a) => {
+        let g;
+        return a.type === "simple" ? g = Object.keys(a.options) : g = Object.values(a.options), g ? g.every((w, z) => ce(w) === ce(n[z])) : !1;
       });
       return _ != null && _.price ? parseFloat(_.price) : null;
     }, Xe = (e) => {
@@ -535,8 +535,8 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
           typeof o == "string" && (o = parseFloat(o));
           const _ = i.split("|"), a = _e("banding", _);
           if (a === null) continue;
-          const b = o / (t.unit_system === "imperial" ? 12 : 1e3) * parseFloat(a.toString());
-          n += b;
+          const g = o / (t.unit_system === "imperial" ? 12 : 1e3) * parseFloat(a.toString());
+          n += g;
         }
         if ("min_banding_charge" in t) {
           const i = parseFloat(t == null ? void 0 : t.min_banding_charge);
@@ -589,15 +589,15 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         E[n] = document.getElementById(n);
       });
     }, rt = (e, n) => {
-      Ee(), N.value = n, g(["variation selected", n.attributes]), j.value = [];
+      Ee(), N.value = n, b(["variation selected", n.attributes]), j.value = [];
       const i = S(n, ["attributes", "attribute_thickness"]) ?? null;
       if (s.selected_thickness = i, c.value.forEach((o) => {
         o.t = wt({ v: i });
       }), s.multiple_sizes) {
         const o = nt(n);
-        if (g([`variation found with size: ${o} & thickness: ${i}`]), !o)
+        if (b([`variation found with size: ${o} & thickness: ${i}`]), !o)
           return D(!1), f("The size of this multiple size product could not be found");
-        if (Array.isArray(o) ? L(B.value) : be(o) ? D(!0, !0) : L(B.value), I != null && I.length) {
+        if (Array.isArray(o) ? $(B.value) : be(o) ? D(!0, !0) : $(B.value), I != null && I.length) {
           let _;
           Array.isArray(o) ? _ = o.map((a) => ({
             size: a,
@@ -606,12 +606,12 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
             t: i,
             price: n.display_price
           })) : _ = I.filter((a) => {
-            var b, w;
-            return be((b = a == null ? void 0 : a.attributes) == null ? void 0 : b.size) ? i === (((w = a == null ? void 0 : a.attributes) == null ? void 0 : w.thickness) ?? null) : !1;
+            var g, w;
+            return be((g = a == null ? void 0 : a.attributes) == null ? void 0 : g.size) ? i === (((w = a == null ? void 0 : a.attributes) == null ? void 0 : w.thickness) ?? null) : !1;
           }).map((a) => {
-            var b, w, z, ue;
-            return g([
-              `size attribute: '${(b = a == null ? void 0 : a.attributes) == null ? void 0 : b.size}'`,
+            var g, w, z, ue;
+            return b([
+              `size attribute: '${(g = a == null ? void 0 : a.attributes) == null ? void 0 : g.size}'`,
               `price for 'thickness ${i}, size: ${o}' is ${n.display_price}`
             ]), {
               size: (w = a == null ? void 0 : a.attributes) == null ? void 0 : w.size,
@@ -621,14 +621,14 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
               price: n.display_price
             };
           }), H.value === !0 && _.forEach((a) => {
-            const b = ae(
+            const g = ae(
               a.l,
               a.w,
               a.t,
               a.price,
               n == null ? void 0 : n.attributes
             );
-            j.value.push(b);
+            j.value.push(g);
           });
         }
       } else {
@@ -654,10 +654,10 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
             n == null ? void 0 : n.attributes
           ));
         }
-        L(B.value);
+        $(B.value);
       }
     }, it = async (e) => {
-      Ee(), g(["result event received", e]);
+      Ee(), b(["result event received", e]);
       const n = await p(e);
       if (!n.success) {
         console.error(n.error);
@@ -669,17 +669,17 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
       o.file("order-summary.pdf", i);
       const _ = await o.generateAsync({ type: "blob" }), a = new File([_], "order-summary.zip", { type: "application/zip" });
       if (!ye("smartcut-order-summary")) return;
-      const b = E["smartcut-order-summary"].closest("form");
-      if (!b) return;
+      const g = E["smartcut-order-summary"].closest("form");
+      if (!g) return;
       const w = new DataTransfer();
       w.items.add(a);
-      const z = b.querySelector('[name="smartcut_order_summary"]');
+      const z = g.querySelector('[name="smartcut_order_summary"]');
       z instanceof HTMLInputElement && (z.files = w.files);
     }, st = (e, n) => {
       U(), e && (ne.value = Be(e)), he("smartcut-hardware-price", n ?? 0);
     };
     return Le(() => {
-      console.log("💥 Powered by https://smartcut.dev", window.smartcutConfig.version), g(["Launching WordPress checkout..."]), x.banding = S(window, ["smartcutConfig", "banding_data"]), x.finish = S(window, ["smartcutConfig", "finish_data"]), R = S(window, ["smartcutConfig", "machining_pricing"]), I = S(window, ["smartcutConfig", "variations"]), We(), at(), Ne(window.smartcutConfig), Qe(window.smartcutConfig), Ye(), Je(), [
+      console.log("💥 Powered by https://smartcut.dev", window.smartcutConfig.version), b(["Launching WordPress checkout..."]), x.banding = S(window, ["smartcutConfig", "banding_data"]), x.finish = S(window, ["smartcutConfig", "finish_data"]), R = S(window, ["smartcutConfig", "machining_pricing"]), I = S(window, ["smartcutConfig", "variations"]), We(), at(), Ne(window.smartcutConfig), Qe(window.smartcutConfig), Ye(), Je(), [
         "div.quantity > input.plus",
         "div.quantity > input.minus",
         "div.quantity .qty-plus",
@@ -689,7 +689,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         o && (o.style.display = "none");
       });
       const n = new CustomEvent("smartcut/ready");
-      window.dispatchEvent(n), g(["Wordpress checkout ready"]);
+      window.dispatchEvent(n), b(["Wordpress checkout ready"]);
     }), (e, n) => (V(), fe(De, null, [
       we(ee(u), { position: "top-left" }),
       ee(P) === "development" && Kt ? (V(), fe("div", Wt, [
@@ -699,7 +699,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
           paths: ["stock"]
         }, null, 8, ["data"])
       ])) : te("", !0),
-      $.value === "formula" && Y.value ? (V(), se(ee(O), {
+      L.value === "formula" && Y.value ? (V(), se(ee(O), {
         key: 1,
         ref: "formulapricing",
         "format-price": le,
@@ -708,17 +708,17 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         onHardwareResult: st,
         onPanelResult: U
       }, null, 8, ["url", "debug"])) : te("", !0),
-      $.value === "manual" || $.value === "formula" && Y.value ? (V(), se(Re, {
+      L.value === "manual" || L.value === "formula" && Y.value ? (V(), se(Re, {
         key: 2,
         ref_key: "calculator",
         ref: r,
-        readonly: $.value === "formula",
+        readonly: L.value === "formula",
         debug: A.value,
         stock: j.value,
         "find-extras-price": _e,
         "format-price": le,
-        "input-type": $.value,
-        onLog: g,
+        "input-type": L.value,
+        onLog: b,
         onError: f,
         onInputsChanged: U,
         onValidationError: He,
@@ -730,7 +730,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
   __name: "Vanilla",
   emits: ["ready"],
   setup(l, { expose: v, emit: O }) {
-    const y = oe(() => import("./components-CTuS8H5V.js").then((r) => r.F)), u = oe(() => import("./components-CTuS8H5V.js").then((r) => r.N)), c = O, P = "", d = k(!1), E = k([]), F = k({
+    const y = oe(() => import("./components-11af1Tpe.js").then((r) => r.F)), u = oe(() => import("./components-11af1Tpe.js").then((r) => r.N)), c = O, P = "", d = k(!1), E = k([]), F = k({
       banding: null,
       finish: null,
       machining: null
@@ -740,7 +740,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
       d.value && console.log("SmartCut -", ...r);
     }, A = (r) => {
       console.error(`SmartCut - ${r}`);
-    }, $ = () => {
+    }, L = () => {
       const r = new CustomEvent("smartcut/validationError");
       window.dispatchEvent(r);
     }, Y = () => {
@@ -748,35 +748,35 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
       window.dispatchEvent(r);
     }, j = (r) => {
       I.value = r;
-    }, N = (r = 0, g = m.value) => {
+    }, N = (r = 0, b = m.value) => {
       if (r === !0) return "";
       try {
-        g = g.replace("_", "-");
+        b = b.replace("_", "-");
         const f = Number(r);
-        return !f && f !== 0 ? "" : isNaN(f) ? (console.error("formatPrice - invalid price:", r), "") : f.toLocaleString(g, {
+        return !f && f !== 0 ? "" : isNaN(f) ? (console.error("formatPrice - invalid price:", r), "") : f.toLocaleString(b, {
           style: "currency",
           currency: p.value
         });
       } catch (f) {
         return console.error("Error formatting price:", f), "";
       }
-    }, B = (r, g) => {
+    }, B = (r, b) => {
       var D;
       if (!((D = F.value) != null && D[r])) return null;
-      const f = g.join("|"), L = S(F.value, [r, f]);
-      return typeof L == "number" ? L : parseFloat(L);
+      const f = b.join("|"), $ = S(F.value, [r, f]);
+      return typeof $ == "number" ? $ : parseFloat($);
     }, ne = (r) => {
       Ft(r), E.value = r.stock, F.value.banding = S(r, ["banding", "pricing"]), F.value.finish = S(r, ["finish", "pricing"]), F.value.machining = S(r, ["machining", "pricing"]), M(r, ["options", "currency"]) && (p.value = S(r, ["options", "currency"])), M(r, ["options", "locale"]) && (m.value = S(r, ["options", "locale"]).replace("_", "-")), (M(r, ["options", "formula", "url"]) || M(r, ["options", "formula", "spec"])) && (t.value = "formula", x.value = S(r, ["options", "formula", "url"]) ?? null, s.value = S(r, ["options", "formula", "spec"]) ?? null), Ae(() => {
         R.value && R.value.init(r);
       });
     }, H = (r) => {
-      var L, D, Q;
-      const g = r;
-      if (g.checkout = {
+      var $, D, Q;
+      const b = r;
+      if (b.checkout = {
         formattedTotalStockCost: "",
         formattedBandingCost: {},
         formattedFinishCost: {}
-      }, (L = r == null ? void 0 : r.metadata) != null && L.totalStockCost && (g.checkout.formattedTotalStockCost = r.metadata.totalStockCost.toLocaleString(
+      }, ($ = r == null ? void 0 : r.metadata) != null && $.totalStockCost && (b.checkout.formattedTotalStockCost = r.metadata.totalStockCost.toLocaleString(
         m.value,
         {
           style: "currency",
@@ -788,7 +788,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
             A(`Banding price ${q} not found`);
             continue;
           }
-          g.checkout.formattedBandingCost[q] = (W / 1e3 * F.value.banding[q]).toLocaleString(m.value, { style: "currency", currency: p.value });
+          b.checkout.formattedBandingCost[q] = (W / 1e3 * F.value.banding[q]).toLocaleString(m.value, { style: "currency", currency: p.value });
         }
       if ((Q = r == null ? void 0 : r.metadata) != null && Q.finishAreaByType)
         for (const [q, W] of Object.entries(r.metadata.finishAreaByType)) {
@@ -796,10 +796,10 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
             A(`Finish price ${q} not found`);
             continue;
           }
-          g.checkout.formattedFinishCost[q] = (W / 1e6 * F.value.finish[q]).toLocaleString(m.value, { style: "currency", currency: p.value });
+          b.checkout.formattedFinishCost[q] = (W / 1e6 * F.value.finish[q]).toLocaleString(m.value, { style: "currency", currency: p.value });
         }
       const f = new CustomEvent("smartcut/result", {
-        detail: JSON.parse(JSON.stringify(g))
+        detail: JSON.parse(JSON.stringify(b))
       });
       window.dispatchEvent(f);
     };
@@ -829,7 +829,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
       formatPrice: N,
       findExtrasPrice: B,
       setHardwareResult: j
-    }), (r, g) => (V(), fe(De, null, [
+    }), (r, b) => (V(), fe(De, null, [
       we(ee(u), { position: "top-left" }),
       t.value === "formula" && (x.value || s.value) ? (V(), se(ee(y), {
         key: 0,
@@ -853,7 +853,7 @@ const Qt = (l, v, O, y = (u) => u.toString()) => {
         onLog: T,
         onError: A,
         onCalculating: Y,
-        onValidationError: $,
+        onValidationError: L,
         onResult: H
       }, null, 8, ["readonly", "debug", "stock", "input-type"])) : te("", !0)
     ], 64));

@@ -1,4 +1,4 @@
-import { q as xe, z as ws, u as Pl, w as kl, x as Cl, y as Fl } from "./vendor-CcpD1l-V.js";
+import { q as xe, z as ws, u as Pl, w as kl, x as Cl, y as Fl } from "./vendor-DdDY4qXh.js";
 /** @license
 *
 * jsPDF - PDF Document creation from JavaScript
@@ -1601,7 +1601,7 @@ var Fr = function(i, e) {
   return i &= ~(1 << e);
 }, Ml = De.__acroform__.getBit = function(i, e) {
   if (isNaN(i) || isNaN(e)) throw new Error("Invalid arguments passed to jsPDF.API.__acroform__.getBit");
-  return i & 1 << e ? 1 : 0;
+  return (i & 1 << e) == 0 ? 0 : 1;
 }, He = De.__acroform__.getBitForPdf = function(i, e) {
   if (isNaN(i) || isNaN(e)) throw new Error("Invalid arguments passed to jsPDF.API.__acroform__.getBitForPdf");
   return Ml(i, e - 1);
@@ -3704,7 +3704,7 @@ function(i) {
   }, i.loadImageFile = i.loadFile;
 }(Yt.API), function(i) {
   function e() {
-    return (Xt.html2canvas ? Promise.resolve(Xt.html2canvas) : import("./vendor-canvas-B1H7M-Ap.js").then((f) => f.h)).catch(function(f) {
+    return (Xt.html2canvas ? Promise.resolve(Xt.html2canvas) : import("./vendor-canvas-CSGhXUsJ.js").then((f) => f.h)).catch(function(f) {
       return Promise.reject(new Error("Could not load html2canvas: " + f));
     }).then(function(f) {
       return f.default ? f.default : f;
@@ -4352,7 +4352,7 @@ function Zl(i) {
         case 249:
           if (i[e++] !== 4 || i[e + 4] !== 0) throw new Error("Invalid graphics extension block.");
           var F = i[e++];
-          A = i[e++] | i[e++] << 8, L = i[e++], !(1 & F) && (L = null), d = F >> 2 & 7, e++;
+          A = i[e++] | i[e++] << 8, L = i[e++], (1 & F) == 0 && (L = null), d = F >> 2 & 7, e++;
           break;
         case 254:
           for (; ; ) {
@@ -6826,7 +6826,7 @@ function(i) {
  */
 function(i) {
   function e() {
-    return (Xt.canvg ? Promise.resolve(Xt.canvg) : import("./vendor-canvas-B1H7M-Ap.js").then((r) => r.i)).catch(function(r) {
+    return (Xt.canvg ? Promise.resolve(Xt.canvg) : import("./vendor-canvas-CSGhXUsJ.js").then((r) => r.i)).catch(function(r) {
       return Promise.reject(new Error("Could not load canvg: " + r));
     }).then(function(r) {
       return r.default ? r.default : r;
@@ -7205,7 +7205,7 @@ function(i) {
       var f, h, c, g;
       for (g = [], f = 0, h = (c = this.bbox).length; f < h; f++) e = c[f], g.push(Math.round(e * this.scaleFactor));
       return g;
-    }).call(this), this.stemV = 0, this.post.exists ? (a = 255 & (u = this.post.italic_angle), 32768 & (r = u >> 16) && (r = -(1 + (65535 ^ r))), this.italicAngle = +(r + "." + a)) : this.italicAngle = 0, this.ascender = Math.round(this.ascender * this.scaleFactor), this.decender = Math.round(this.decender * this.scaleFactor), this.lineGap = Math.round(this.lineGap * this.scaleFactor), this.capHeight = this.os2.exists && this.os2.capHeight || this.ascender, this.xHeight = this.os2.exists && this.os2.xHeight || 0, this.familyClass = (this.os2.exists && this.os2.familyClass || 0) >> 8, this.isSerif = (o = this.familyClass) === 1 || o === 2 || o === 3 || o === 4 || o === 5 || o === 7, this.isScript = this.familyClass === 10, this.flags = 0, this.post.isFixedPitch && (this.flags |= 1), this.isSerif && (this.flags |= 2), this.isScript && (this.flags |= 8), this.italicAngle !== 0 && (this.flags |= 64), this.flags |= 32, !this.cmap.unicode) throw new Error("No unicode cmap for font");
+    }).call(this), this.stemV = 0, this.post.exists ? (a = 255 & (u = this.post.italic_angle), (32768 & (r = u >> 16)) != 0 && (r = -(1 + (65535 ^ r))), this.italicAngle = +(r + "." + a)) : this.italicAngle = 0, this.ascender = Math.round(this.ascender * this.scaleFactor), this.decender = Math.round(this.decender * this.scaleFactor), this.lineGap = Math.round(this.lineGap * this.scaleFactor), this.capHeight = this.os2.exists && this.os2.capHeight || this.ascender, this.xHeight = this.os2.exists && this.os2.xHeight || 0, this.familyClass = (this.os2.exists && this.os2.familyClass || 0) >> 8, this.isSerif = (o = this.familyClass) === 1 || o === 2 || o === 3 || o === 4 || o === 5 || o === 7, this.isScript = this.familyClass === 10, this.flags = 0, this.post.isFixedPitch && (this.flags |= 1), this.isSerif && (this.flags |= 2), this.isScript && (this.flags |= 8), this.italicAngle !== 0 && (this.flags |= 64), this.flags |= 32, !this.cmap.unicode) throw new Error("No unicode cmap for font");
   }, i.prototype.characterToGlyph = function(e) {
     var r;
     return ((r = this.cmap.unicode) != null ? r.codeMap[e] : void 0) || 0;

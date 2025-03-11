@@ -1,6 +1,6 @@
-import { g as G, H as ne, h as I, G as ee, S as j, i as Te } from "./vendor-vue-BGhkUe2l.js";
-import { I as ue, a as le, u as de, b as te, t as fe, s as _e, S as Le, m as Ce, c as Pe, g as xe, r as he, d as se, e as Ae, f as qe, h as ve, i as me, j as pe, k as ge, l as Se, n as ke, o as Ee, p as Ne } from "./components-CTuS8H5V.js";
-import { p as ye, l as $e } from "./vendor-CcpD1l-V.js";
+import { g as G, H as ne, h as I, G as te, S as j, i as Te } from "./vendor-vue-Kgm6Js1o.js";
+import { I as ue, a as le, u as de, b as ae, t as fe, s as _e, S as Le, m as Ce, c as Pe, g as xe, r as he, d as se, e as Ae, f as qe, h as ve, i as me, j as pe, k as ge, l as Se, n as ke, o as Ee, p as Ne } from "./components-11af1Tpe.js";
+import { p as ye, l as $e } from "./vendor-DdDY4qXh.js";
 let ce = null;
 function Fe(r = { numberFormat: "decimal" }) {
   const h = G(null), c = () => {
@@ -127,7 +127,7 @@ function Fe(r = { numberFormat: "decimal" }) {
     var g;
     const a = [], u = fe(s.value);
     if (!s.value.some((e) => e.autoAdd) && (!((g = s.value) != null && g.length) || !u))
-      return new te({
+      return new ae({
         message: "no_stock",
         listId: s.value.map((e) => e.listId),
         field: [["q"]],
@@ -144,15 +144,15 @@ function Fe(r = { numberFormat: "decimal" }) {
       useInventory: g = !1
     } = t || {}, e = [];
     if (!i.value.length)
-      return new te({
+      return new ae({
         message: "no_parts",
         issues: e
       }), e;
     if (!fe(i.value))
-      return new te({
+      return new ae({
         message: "no_parts",
         issues: e
-      }), i.value.forEach((Z) => new te({
+      }), i.value.forEach((Z) => new ae({
         message: "no_parts",
         field: [["q"]],
         item: Z
@@ -282,7 +282,7 @@ function Ve() {
     dismissNotice: h
   };
 }
-const Ge = G(null), z = G(null), O = G(null), C = ee([]), m = ee([]), M = ee([]), R = ee([]), Y = G([]), ae = G(null), D = ee([]), re = G(0), oe = G(null), Ue = {
+const Ge = G(null), z = G(null), O = G(null), C = te([]), m = te([]), M = te([]), R = te([]), Y = G([]), re = G(null), D = te([]), ee = G(null), oe = G(null), Ue = {
   saw: z,
   activeStockId: O,
   jobId: Ge,
@@ -292,8 +292,8 @@ const Ge = G(null), z = G(null), O = G(null), C = ee([]), m = ee([]), M = ee([])
   segmentList: R,
   offcuts: Y,
   unusableShapes: D,
-  metadata: ae,
-  currentCutIndex: re
+  metadata: re,
+  currentCutIndex: ee
 };
 function je() {
   const r = I(() => O.value ? J(O.value) : []), h = I(() => {
@@ -303,7 +303,7 @@ function je() {
     var l;
     if (!h.value || !((l = M.value) != null && l.length)) return [];
     const e = t(h.value.id);
-    return re.value = 0, e;
+    return ee.value = null, e;
   }), A = I(() => {
     var e;
     return !h.value || !((e = R.value) != null && e.length) ? [] : q(O.value);
@@ -346,9 +346,9 @@ function je() {
     let e = T.value ? (P.value + b.value) / T.value : null;
     return e > 1 && (e = 1), e;
   }), V = () => {
-    z.value = null, C.value.length = 0, m.value.length = 0, M.value.length = 0, R.value.length = 0, Y.value.length = 0, D.value.length = 0;
+    z.value = null, C.value.length = 0, m.value.length = 0, M.value.length = 0, R.value.length = 0, Y.value.length = 0, D.value.length = 0, ee.value = null;
   }, $ = () => {
-    z.value = null, O.value = null, oe.value = null, ae.value = null, C.value = [], m.value = [], M.value = [], R.value = [], Y.value = [], re.value = 0, D.value = [];
+    z.value = null, O.value = null, oe.value = null, re.value = null, C.value = [], m.value = [], M.value = [], R.value = [], Y.value = [], ee.value = null, D.value = [];
   }, f = (e, l) => {
     var o;
     e in this && ((o = this[e]) == null || o.sort(Ee[l]));
@@ -364,7 +364,7 @@ function je() {
       $();
       return;
     }
-    ae.value = e.metadata, D.value = e.unusableShapes || [];
+    re.value = e.metadata, D.value = e.unusableShapes || [];
     try {
       e != null && e.saw && (z.value = new ve(
         e == null ? void 0 : e.saw,
@@ -427,7 +427,7 @@ function je() {
     segmentList: R,
     offcuts: Y,
     unusableShapes: D,
-    currentCutIndex: re,
+    currentCutIndex: ee,
     activeShape: oe,
     //computed
     addedShapes: s,
@@ -511,7 +511,7 @@ function je() {
         ],
         stockList: m.value,
         preventAutoRotation: !0
-      }), ae.value = {
+      }), re.value = {
         totalBandingLength: 0,
         bandingLengthByType: {},
         totalFinishArea: 0,

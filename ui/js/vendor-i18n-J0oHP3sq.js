@@ -1,4 +1,4 @@
-const c = (r) => typeof r == "string", K = () => {
+const c = (r) => typeof r == "string", H = () => {
   let r, e;
   const t = new Promise((n, s) => {
     r = n, e = s;
@@ -357,9 +357,9 @@ class G extends Z {
     }
     const h = this.resolve(e, t);
     let f = h == null ? void 0 : h.res;
-    const m = (h == null ? void 0 : h.usedKey) || a, g = (h == null ? void 0 : h.exactUsedKey) || a, p = ["[object Number]", "[object Function]", "[object RegExp]"], x = t.joinArrays !== void 0 ? t.joinArrays : this.options.joinArrays, b = !this.i18nFormat || this.i18nFormat.handleAsObject, w = t.count !== void 0 && !c(t.count), $ = G.hasDefaultValue(t), C = w ? this.pluralResolver.getSuffix(u, t.count, t) : "", I = t.ordinal && w ? this.pluralResolver.getSuffix(u, t.count, {
+    const m = (h == null ? void 0 : h.usedKey) || a, g = (h == null ? void 0 : h.exactUsedKey) || a, p = ["[object Number]", "[object Function]", "[object RegExp]"], x = t.joinArrays !== void 0 ? t.joinArrays : this.options.joinArrays, b = !this.i18nFormat || this.i18nFormat.handleAsObject, w = t.count !== void 0 && !c(t.count), $ = G.hasDefaultValue(t), C = w ? this.pluralResolver.getSuffix(u, t.count, t) : "", V = t.ordinal && w ? this.pluralResolver.getSuffix(u, t.count, {
       ordinal: !1
-    }) : "", T = w && !t.ordinal && t.count === 0, y = T && t[`defaultValue${this.options.pluralSeparator}zero`] || t[`defaultValue${C}`] || t[`defaultValue${I}`] || t.defaultValue;
+    }) : "", U = w && !t.ordinal && t.count === 0, y = U && t[`defaultValue${this.options.pluralSeparator}zero`] || t[`defaultValue${C}`] || t[`defaultValue${V}`] || t.defaultValue;
     let O = f;
     b && !f && $ && (O = y);
     const F = fe(O), D = Object.prototype.toString.apply(O);
@@ -404,23 +404,23 @@ class G extends Z {
           });
           v && v.res && this.logger.warn("Seems the loaded translations were in flat JSON format instead of nested. Either set keySeparator: false on init or make sure your translations are published in nested format.");
         }
-        let V = [];
+        let K = [];
         const J = this.languageUtils.getFallbackCodes(this.options.fallbackLng, t.lng || this.language);
         if (this.options.saveMissingTo === "fallback" && J && J[0])
           for (let v = 0; v < J.length; v++)
-            V.push(J[v]);
-        else this.options.saveMissingTo === "all" ? V = this.languageUtils.toResolveHierarchy(t.lng || this.language) : V.push(t.lng || this.language);
-        const te = (v, E, U) => {
+            K.push(J[v]);
+        else this.options.saveMissingTo === "all" ? K = this.languageUtils.toResolveHierarchy(t.lng || this.language) : K.push(t.lng || this.language);
+        const te = (v, E, M) => {
           var se;
-          const ne = $ && U !== f ? U : R;
+          const ne = $ && M !== f ? M : R;
           this.options.missingKeyHandler ? this.options.missingKeyHandler(v, o, E, ne, N, t) : (se = this.backendConnector) != null && se.saveMissing && this.backendConnector.saveMissing(v, o, E, ne, N, t), this.emit("missingKey", v, o, E, f);
         };
-        this.options.saveMissing && (this.options.saveMissingPlurals && w ? V.forEach((v) => {
+        this.options.saveMissing && (this.options.saveMissingPlurals && w ? K.forEach((v) => {
           const E = this.pluralResolver.getSuffixes(v, t);
-          T && t[`defaultValue${this.options.pluralSeparator}zero`] && E.indexOf(`${this.options.pluralSeparator}zero`) < 0 && E.push(`${this.options.pluralSeparator}zero`), E.forEach((U) => {
-            te([v], a + U, t[`defaultValue${U}`] || y);
+          U && t[`defaultValue${this.options.pluralSeparator}zero`] && E.indexOf(`${this.options.pluralSeparator}zero`) < 0 && E.push(`${this.options.pluralSeparator}zero`), E.forEach((M) => {
+            te([v], a + M, t[`defaultValue${M}`] || y);
           });
-        }) : te(V, a, y));
+        }) : te(K, a, y));
       }
       f = this.extendTranslation(f, e, t, h, n), k && f === a && this.options.appendNamespaceToMissingKey && (f = `${o}:${a}`), (k || L) && this.options.parseMissingKeyHandler && (f = this.options.parseMissingKeyHandler(this.options.appendNamespaceToMissingKey ? `${o}:${a}` : a, L ? f : void 0));
     }
@@ -485,11 +485,11 @@ class G extends Z {
       h.forEach((x) => {
         var b, w;
         this.isValidLookup(n) || (l = x, !ue[`${p[0]}-${x}`] && ((b = this.utils) != null && b.hasLoadedNamespace) && !((w = this.utils) != null && w.hasLoadedNamespace(l)) && (ue[`${p[0]}-${x}`] = !0, this.logger.warn(`key "${s}" for languages "${p.join(", ")}" won't get resolved as namespace "${l}" was not yet loaded`, "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!")), p.forEach(($) => {
-          var T;
+          var U;
           if (this.isValidLookup(n)) return;
           a = $;
           const C = [d];
-          if ((T = this.i18nFormat) != null && T.addLookupKeys)
+          if ((U = this.i18nFormat) != null && U.addLookupKeys)
             this.i18nFormat.addLookupKeys(C, d, $, x, t);
           else {
             let y;
@@ -500,9 +500,9 @@ class G extends Z {
               C.push(D), f && (C.push(D + y), t.ordinal && y.indexOf(F) === 0 && C.push(D + y.replace(F, this.options.pluralSeparator)), m && C.push(D + O));
             }
           }
-          let I;
-          for (; I = C.pop(); )
-            this.isValidLookup(n) || (i = I, n = this.getResource($, x, I, t));
+          let V;
+          for (; V = C.pop(); )
+            this.isValidLookup(n) || (i = V, n = this.getResource($, x, V, t));
         }));
       });
     }), {
@@ -1182,7 +1182,7 @@ class B extends Z {
         return e.store[d](...arguments), e;
       };
     });
-    const o = K(), u = () => {
+    const o = H(), u = () => {
       const d = (h, f) => {
         this.isInitializing = !1, this.isInitialized && !this.initializedStoreOnce && this.logger.warn("init: i18next is already initialized. You should call init just once!"), this.isInitialized = !0, this.options.isClone || this.logger.log("initialized", this.options), this.emit("initialized", this.options), o.resolve(f), n(h, f);
       };
@@ -1210,7 +1210,7 @@ class B extends Z {
       n(null);
   }
   reloadResources(e, t, n) {
-    const s = K();
+    const s = H();
     return typeof e == "function" && (n = e, e = void 0), typeof t == "function" && (n = t, t = void 0), e || (e = this.languages), t || (t = this.options.ns), n || (n = W), this.services.backendConnector.reload(e, t, (i) => {
       s.resolve(), n(i);
     }), s;
@@ -1233,7 +1233,7 @@ class B extends Z {
   changeLanguage(e, t) {
     var n = this;
     this.isLanguageChangingTo = e;
-    const s = K();
+    const s = H();
     this.emit("languageChanging", e);
     const i = (o) => {
       this.language = o, this.languages = this.services.languageUtils.toResolveHierarchy(o), this.resolvedLanguage = void 0, this.setResolvedLanguage(o);
@@ -1306,7 +1306,7 @@ class B extends Z {
     return !!(this.hasResourceBundle(n, e) || !this.services.backendConnector.backend || this.options.resources && !this.options.partialBundledLanguages || a(n, e) && (!s || a(i, e)));
   }
   loadNamespaces(e, t) {
-    const n = K();
+    const n = H();
     return this.options.ns ? (c(e) && (e = [e]), e.forEach((s) => {
       this.options.ns.indexOf(s) < 0 && this.options.ns.push(s);
     }), this.loadResources((s) => {
@@ -1314,7 +1314,7 @@ class B extends Z {
     }), n) : (t && t(), Promise.resolve());
   }
   loadLanguages(e, t) {
-    const n = K();
+    const n = H();
     c(e) && (e = [e]);
     const s = this.options.preload || [], i = e.filter((a) => s.indexOf(a) < 0 && this.services.languageUtils.isSupportedCode(a));
     return i.length ? (this.options.preload = s.concat(i), this.loadResources((a) => {
@@ -1505,17 +1505,18 @@ var Qe = {
     return t;
   }
 };
-let M = null;
+let I = null;
 const Se = () => {
-  if (M !== null) return M;
+  if (I !== null) return I;
   try {
-    M = window !== "undefined" && window.localStorage !== null;
+    if (I = typeof window < "u" && window.localStorage !== null, !I)
+      return !1;
     const r = "i18next.translate.boo";
     window.localStorage.setItem(r, "foo"), window.localStorage.removeItem(r);
   } catch {
-    M = !1;
+    I = !1;
   }
-  return M;
+  return I;
 };
 var qe = {
   name: "localStorage",
@@ -1535,17 +1536,18 @@ var qe = {
     t && Se() && window.localStorage.setItem(t, r);
   }
 };
-let H = null;
+let T = null;
 const be = () => {
-  if (H !== null) return H;
+  if (T !== null) return T;
   try {
-    H = window !== "undefined" && window.sessionStorage !== null;
+    if (T = typeof window < "u" && window.sessionStorage !== null, !T)
+      return !1;
     const r = "i18next.translate.boo";
     window.sessionStorage.setItem(r, "foo"), window.sessionStorage.removeItem(r);
   } catch {
-    H = !1;
+    T = !1;
   }
-  return H;
+  return T;
 };
 var Ge = {
   name: "sessionStorage",
