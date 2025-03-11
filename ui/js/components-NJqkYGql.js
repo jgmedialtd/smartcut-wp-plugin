@@ -4,7 +4,7 @@ var c = (i, t, e) => hr(i, typeof t != "symbol" ? t + "" : t, e);
 import { F as ai, g as Kt, d as Di, i as fi, c as dr, a as un, b as Xe, v as as, t as Mi, e as Oi, h as fr, s as pr, f as gr, o as mr, j as vr, k as yr, P as br } from "./vendor-DdDY4qXh.js";
 import { i as wr } from "./vendor-i18n-J0oHP3sq.js";
 import { d as Oe, c as C, o as y, F as Se, r as De, n as ke, a as Ce, b as M, w as us, t as te, v as cs, e as G, f as Sr, g as H, h as Z, i as Le, j as ft, k as Ze, l as hs, m as oi, u as S, p as Xt, q as ge, s as xr, x as ds, y as Ni, z as Bt, A as pe, B as kr, C as $t, D as Cr, E as Ir, G as Lr, H as Pr, I as gt, J as $r, T as Tr, K as cn, L as Dr, M as Ms, N as Or, O as Ar, P as Er, Q as Mr, R as Rr } from "./vendor-vue-Kgm6Js1o.js";
-import { u as hn, a as fs, b as dn, c as Fr, d as _r, e as qr } from "./composables-BCw0-juQ.js";
+import { u as hn, a as fs, b as dn, c as Fr, d as _r, e as qr } from "./composables-Bi3Z4E2Z.js";
 import { a as fn, b as pn, l as tt, c as Ri, d as Fi, s as Me, r as Ft, e as li, f as gn, g as Br, h as Hr, i as Gr, p as Wr, S as Nr, j as Ur, k as jr } from "./vendor-d3-B-JATA3m.js";
 function pi(i) {
   return !(!i || typeof i != "string");
@@ -7765,7 +7765,7 @@ const Tu = ["id"], Du = /* @__PURE__ */ Oe({
       if (h != null && h[L])
         for (const B in h[L]) {
           const O = Wi(h, g, B, P.findExtrasPrice);
-          !O && B && h[g][B] && new re({
+          O === !1 && B && h[g][B] && new re({
             item: h,
             field: [[g, B]],
             type: "error",
@@ -8406,7 +8406,7 @@ const Tu = ["id"], Du = /* @__PURE__ */ Oe({
       ], 64);
     };
   }
-}), yh = /* @__PURE__ */ ti(Ju, [["__scopeId", "data-v-6e8462dc"]]), Qu = {
+}), yh = /* @__PURE__ */ ti(Ju, [["__scopeId", "data-v-abd3c316"]]), Qu = {
   name: "ObjectViewer",
   props: {
     data: {
