@@ -4,7 +4,7 @@ var c = (i, t, e) => mr(i, typeof t != "symbol" ? t + "" : t, e);
 import { F as ai, g as Kt, d as Oi, i as pi, c as vr, a as fn, b as Xe, v as us, t as Ri, e as Ai, h as yr, s as br, f as wr, o as Sr, j as xr, k as kr, P as Cr } from "./vendor-DdDY4qXh.js";
 import { i as Ir } from "./vendor-i18n-J0oHP3sq.js";
 import { d as Oe, c as C, o as y, F as Se, r as De, n as ke, a as Ce, b as M, w as cs, t as te, v as hs, e as W, f as Lr, g as H, h as Z, i as Le, j as ft, k as Ze, l as ds, m as oi, u as x, p as Xt, q as pe, s as Pr, x as fs, y as Ui, z as Bt, A as ve, B as $r, C as $t, D as Tr, E as Dr, G as Or, H as Ar, I as gt, J as Er, T as Mr, K as pn, L as Rr, M as Fs, N as Fr, O as _r, P as qr, Q as Br, R as Hr } from "./vendor-vue-Kgm6Js1o.js";
-import { u as gn, a as ps, b as gs, c as Gr, d as Wr, e as Nr } from "./composables-BluGf2Tl.js";
+import { u as gn, a as ps, b as gs, c as Gr, d as Wr, e as Nr } from "./composables-BjMPv4Ze.js";
 import { a as mn, b as vn, l as tt, c as Fi, d as _i, s as Me, r as Ft, e as li, f as yn, g as Ur, h as jr, i as zr, p as Vr, S as Yr, j as Xr, k as Kr } from "./vendor-d3-B-JATA3m.js";
 function gi(i) {
   return !(!i || typeof i != "string");
@@ -4059,7 +4059,7 @@ const { addNotice: ut } = ps(), {
   useInventory: !1,
   selectedSaw: void 0,
   materialStore: void 0,
-  inputShapes: [],
+  inputShapes: null,
   onLimit: null
 }, Ml = () => {
   var i, t;
