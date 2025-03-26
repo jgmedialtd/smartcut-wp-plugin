@@ -2,7 +2,7 @@
 
 namespace SmartCut\Template;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 include_once dirname(__DIR__) . '/settings/field-factory.php';
 
