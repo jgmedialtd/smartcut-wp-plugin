@@ -78,7 +78,9 @@ const e = {
       invalid_fraction_chars: "Invalid characters in fraction",
       no_material: "No material selected",
       no_thickness: "No thickness selected",
-      invalid_thickness: "Invalid thickness"
+      invalid_thickness: "Invalid thickness",
+      below_min: "Below minimum",
+      above_max: "Above maximum"
     }
   },
   ca: {
@@ -157,7 +159,9 @@ const e = {
       invalid_fraction_chars: "Caràcters no vàlids a la fracció",
       no_material: "No s'ha seleccionat material",
       no_thickness: "No s'ha seleccionat gruix",
-      invalid_thickness: "Gruix no vàlid"
+      invalid_thickness: "Gruix no vàlid",
+      below_min: "Per sota del mínim",
+      above_max: "Per sobre del màxim"
     }
   },
   es: {
@@ -236,7 +240,9 @@ const e = {
       invalid_fraction_chars: "Caracteres no válidos en la fracción",
       no_material: "No se ha seleccionado material",
       no_thickness: "No se ha seleccionado grosor",
-      invalid_thickness: "Grosor no válido"
+      invalid_thickness: "Grosor no válido",
+      below_min: "Por debajo del mínimo",
+      above_max: "Por encima del máximo"
     }
   },
   fr: {
@@ -315,7 +321,9 @@ const e = {
       invalid_fraction_chars: "Caractères invalides dans la fraction",
       no_material: "Aucun matériau sélectionné",
       no_thickness: "Aucune épaisseur sélectionnée",
-      invalid_thickness: "Épaisseur invalide"
+      invalid_thickness: "Épaisseur invalide",
+      below_min: "En dessous du minimum",
+      above_max: "Au-dessus du maximum"
     }
   },
   nl: {
@@ -397,7 +405,9 @@ const e = {
       invalid_fraction_chars: "Ongeldige tekens in breuk",
       no_material: "Geen materiaal geselecteerd",
       no_thickness: "Geen dikte geselecteerd",
-      invalid_thickness: "Ongeldige dikte"
+      invalid_thickness: "Ongeldige dikte",
+      below_min: "Onder het minimum",
+      above_max: "Boven het maximum"
     }
   }
 };
