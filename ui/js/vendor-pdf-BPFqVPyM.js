@@ -1,4 +1,4 @@
-import { q as xe, z as ws, u as Pl, w as kl, x as Cl, y as Fl } from "./vendor-DdDY4qXh.js";
+import { q as xe, z as ws, u as Pl, w as kl, x as Cl, y as Fl } from "./vendor-D6Dp0Tf9.js";
 /** @license
 *
 * jsPDF - PDF Document creation from JavaScript
@@ -3704,7 +3704,7 @@ function(i) {
   }, i.loadImageFile = i.loadFile;
 }(Yt.API), function(i) {
   function e() {
-    return (Xt.html2canvas ? Promise.resolve(Xt.html2canvas) : import("./vendor-canvas-CSGhXUsJ.js").then((f) => f.h)).catch(function(f) {
+    return (Xt.html2canvas ? Promise.resolve(Xt.html2canvas) : import("./vendor-canvas-DaiiFIwT.js").then((f) => f.h)).catch(function(f) {
       return Promise.reject(new Error("Could not load html2canvas: " + f));
     }).then(function(f) {
       return f.default ? f.default : f;
@@ -6826,7 +6826,7 @@ function(i) {
  */
 function(i) {
   function e() {
-    return (Xt.canvg ? Promise.resolve(Xt.canvg) : import("./vendor-canvas-CSGhXUsJ.js").then((r) => r.i)).catch(function(r) {
+    return (Xt.canvg ? Promise.resolve(Xt.canvg) : import("./vendor-canvas-DaiiFIwT.js").then((r) => r.i)).catch(function(r) {
       return Promise.reject(new Error("Could not load canvg: " + r));
     }).then(function(r) {
       return r.default ? r.default : r;

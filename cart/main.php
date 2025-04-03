@@ -413,6 +413,10 @@ class CartManager
 			if (self::hasCustomPrice($cartItem)) {
 				$product->set_price(floatval($cartItem['smartcut_custom_price']));
 			}
+			else {
+				//add the
+
+			}
 		}
 	}
 

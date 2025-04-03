@@ -3332,7 +3332,7 @@ const Ye = function(e, t) {
       throw or();
     if (e < 0 && (i = -Se, e = -e), e % 1 === 0)
       r = BigInt(e);
-    else if (e > 0) {
+    else {
       let a = 1, o = 0, s = 1, u = 1, c = 1, f = 1e7;
       for (e >= 1 && (a = 10 ** Math.floor(1 + Math.log10(e)), e /= a); s <= f && c <= f; ) {
         let l = (o + u) / (s + c);
@@ -7071,7 +7071,7 @@ function nn(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
 function GO(e) {
-  if (e.__esModule) return e;
+  if (Object.prototype.hasOwnProperty.call(e, "__esModule")) return e;
   var t = e.default;
   if (typeof t == "function") {
     var r = function n() {
