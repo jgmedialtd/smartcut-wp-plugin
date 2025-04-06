@@ -123,6 +123,7 @@ class PricingStrategy
 		}
 
 		switch ($this->strategy) {
+
 			case 'full_stock_plus_cut_length':
 				$components[] = array(
 					'id' => 'smartcut-cut-length-total',

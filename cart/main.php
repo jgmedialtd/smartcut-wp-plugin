@@ -96,54 +96,60 @@ class CartManager
 		'include_offcuts' => ['label' => 'Include offcuts', 'display_order' => 7],
 
 		// Pricing fields
+		'stock_total_price' => [
+			'label' => 'Stock price',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_PRICE,
+			'display_order' => 8
+		],
 		'banding_price' => [
 			'label' => 'Banding price',
 			'group' => self::GROUP_COMMON,
 			'type' => self::TYPE_PRICE,
-			'display_order' => 8
+			'display_order' => 9
 		],
 		'finish_price' => [
 			'label' => 'Finish price',
 			'group' => self::GROUP_COMMON,
 			'type' => self::TYPE_PRICE,
-			'display_order' => 9
+			'display_order' => 10
 		],
 		'hardware_price' => [
 			'label' => 'Hardware price',
 			'group' => self::GROUP_INPUT,
 			'type' => self::TYPE_PRICE,
-			'display_order' => 10
+			'display_order' => 11
 		],
 		'cut_length_price' => [
 			'label' => 'Cut length price',
 			'group' => self::GROUP_COMMON,
 			'type' => self::TYPE_PRICE,
-			'display_order' => 11
+			'display_order' => 12
 		],
 		'per_part_price' => [
 			'label' => 'Price per part',
 			'group' => self::GROUP_COMMON,
 			'type' => self::TYPE_PRICE,
-			'display_order' => 12
+			'display_order' => 13
 		],
 		'cut_to_size_surcharge' => [
 			'label' => 'Cut to size surcharge',
 			'group' => self::GROUP_COMMON,
 			'type' => self::TYPE_PRICE,
-			'display_order' => 13
+			'display_order' => 14
 		],
 
 		// Machining fields
 		'machining' => [
 			'label' => 'Machining',
 			'group' => self::GROUP_MACHINING,
-			'display_order' => 14
+			'display_order' => 15
 		],
 		'machining_price' => [
 			'label' => 'Machining price',
 			'group' => self::GROUP_MACHINING,
 			'type' => self::TYPE_PRICE,
-			'display_order' => 15
+			'display_order' => 16
 		],
 
 		// Input only fields
@@ -410,12 +416,9 @@ class CartManager
 		foreach ($cart->get_cart() as $cartItem) {
 			$product = $cartItem['data'];
 
+			//if a custom price is used - all costs and charges should be included in this price
 			if (self::hasCustomPrice($cartItem)) {
 				$product->set_price(floatval($cartItem['smartcut_custom_price']));
-			}
-			else {
-				//add the
-
 			}
 		}
 	}
