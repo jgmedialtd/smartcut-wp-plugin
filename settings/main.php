@@ -153,18 +153,18 @@ function getProductSettings($productId = null)
 			switch ($key) {
 				case 'cut_length_price':
 				case 'per_part_price': {
-						$parentSetting = \get_post_meta($productId, 'pricing_strategy', true);
+						$parentSetting = \get_post_meta($productId, SMARTCUT_PREFIX . 'pricing_strategy', true);
 						if ($parentSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) $shouldContinue = true;
 					}
 					break;
 				case 'surcharge': {
-						$parentSetting = \get_post_meta($productId, 'surcharge_type', true);
+						$parentSetting = \get_post_meta($productId, SMARTCUT_PREFIX. 'surcharge_type', true);
 						if ($parentSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) $shouldContinue = true;
 					}
 					break;
 				case 'offcut_min_length':
 				case 'offcut_min_width': { {
-							$parentSetting = \get_post_meta($productId, 'enable_offcut_pricing', true);
+							$parentSetting = \get_post_meta($productId, SMARTCUT_PREFIX. 'enable_offcut_pricing', true);
 							if ($parentSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) $shouldContinue = true;
 						}
 					}
