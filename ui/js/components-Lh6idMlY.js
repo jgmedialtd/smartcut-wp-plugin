@@ -4,7 +4,7 @@ var c = (i, t, e) => br(i, typeof t != "symbol" ? t + "" : t, e);
 import { F as ci, g as Qt, d as Ai, i as mi, c as wr, a as gn, b as Je, v as us, t as Fi, e as Ei, h as Sr, s as xr, f as kr, o as Cr, j as Ir, k as Lr, P as Pr } from "./vendor-D6Dp0Tf9.js";
 import { i as $r } from "./vendor-i18n-J0oHP3sq.js";
 import { d as Me, c as C, o as y, F as xe, r as Ee, n as ke, a as Ce, b as T, w as cs, t as te, v as hs, e as G, f as Tr, g as H, h as Q, i as Pe, j as ft, k as st, l as ds, m as ai, u as k, p as Jt, q as ge, s as Dr, x as fs, y as ji, z as Wt, A as ye, B as Or, C as Tt, D as Ar, E as Er, G as Mr, H as Rr, I as vt, J as Fr, T as _r, K as mn, L as qr, M as qs, N as Br, O as Hr, P as Gr, Q as Wr, R as Nr } from "./vendor-vue-pers8-Kp.js";
-import { u as vn, a as ps, b as gs, c as Ur, d as jr, e as zr } from "./composables-Cu2Rb3Rk.js";
+import { u as vn, a as ps, b as gs, c as Ur, d as jr, e as zr } from "./composables-BkLRlGln.js";
 import { a as yn, b as bn, l as it, c as _i, d as qi, s as _e, r as Bt, e as ui, f as wn, g as Vr, h as Yr, i as Xr, p as Kr, S as Zr, j as Jr, k as Qr } from "./vendor-d3-B-JATA3m.js";
 function vi(i) {
   return !(!i || typeof i != "string");
@@ -3651,8 +3651,8 @@ class At extends Ut {
    * will this shape fit in a container
    */
   willItFit(e, s = null) {
-    var n, r;
-    return rt(e) ? ((r = (n = this.fitsStock) == null ? void 0 : n[e.parentID]) == null ? void 0 : r[s ?? "any"]) === !0 : Vi(this, e, s);
+    var n, r, o;
+    return rt(e) && typeof ((n = this.fitsStock) == null ? void 0 : n[e.parentID]) < "u" ? ((o = (r = this.fitsStock) == null ? void 0 : r[e.parentID]) == null ? void 0 : o[s ?? "any"]) === !0 : Vi(this, e, s);
   }
   clone(e = null) {
     const s = this.id.split(".");

@@ -190,6 +190,7 @@ class Product
 
 		// Add rest of configuration
 		$settings = \SmartCut\Settings\getProductSettings($this->productId);
+
 		if (isset($settings['enable_formula']) && $settings['enable_formula'] === true) {
 			$settings['formula_url'] = $this->getFormulaUrl($settings['formula_json']);
 		}
@@ -251,13 +252,15 @@ class Product
 			return [];
 		}
 
-		return array_map(function ($item) {
+		$variations_config = array_map(function ($item) {
 			return [
 				'price' => $item->get_price(),
 				'display_price' => \wc_get_price_to_display($item),
 				'attributes' => $item->get_attributes()
 			];
 		}, $this->product->get_available_variations('objects'));
+
+		return $variations_config;
 	}
 
 	private function handleSetupErrors(array $errorMessages): void
