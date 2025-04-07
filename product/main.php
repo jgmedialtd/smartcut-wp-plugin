@@ -320,6 +320,12 @@ class Product
 		$messages = [];
 		$productSettings = \SmartCut\Settings\getProductSettings($this->productId);
 
+		// Ensure product type is either 'simple' or 'variable'
+		if (!$this->product->is_type(['simple', 'variable'])) {
+			$messages[] = __('The product must be of type "simple" or "variable".', 'smartcut');
+			return $messages;
+		}
+
 		// Product category
 		if (!\SmartCut\Helpers\checkCategory($this->productId, $productSettings)) {
 			return [];
