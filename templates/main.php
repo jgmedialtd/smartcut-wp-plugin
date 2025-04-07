@@ -78,6 +78,16 @@ define('SMARTCUT_TEMPLATES', [
 		'price' => 1,
 	],
 
+	'SC - Simple sheet, price by full sheet plus cut length' => [
+		'length' => '2440',
+		'width' => '1220',
+		'stock_type' => 'sheet',
+		'cut_preference' => 'length',
+		'pricing_strategy' => 'full_stock_plus_cut_length',
+		'cut_length_price' => 1,
+		'price' => 100,
+	],
+
 	//simple sheet - single simple banding option
 	'SC - Simple sheet, simple banding option, price by full sheet' => [
 		'length' => '2440',

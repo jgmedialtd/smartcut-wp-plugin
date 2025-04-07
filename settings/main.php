@@ -145,6 +145,36 @@ function getProductSettings($productId = null)
 
 		if ($productSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) continue;
 
+		//special cases - these are numeric fields which cannot have the value '' - so we need to check if the user has set them to use global settings
+		if (in_array($key, ['cut_length_price', 'per_part_price', 'surcharge', 'offcut_min_length', 'offcut_min_width'])) {
+
+			$shouldContinue = false;
+
+			switch ($key) {
+				case 'cut_length_price':
+				case 'per_part_price': {
+						$parentSetting = \get_post_meta($productId, 'pricing_strategy', true);
+						if ($parentSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) $shouldContinue = true;
+					}
+					break;
+				case 'surcharge': {
+						$parentSetting = \get_post_meta($productId, 'surcharge_type', true);
+						if ($parentSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) $shouldContinue = true;
+					}
+					break;
+				case 'offcut_min_length':
+				case 'offcut_min_width': { {
+							$parentSetting = \get_post_meta($productId, 'enable_offcut_pricing', true);
+							if ($parentSetting === \SmartCut\Settings\Factory\Field::GLOBAL_VALUE) $shouldContinue = true;
+						}
+					}
+					break;
+			}
+
+
+			if ($shouldContinue) continue;
+		}
+
 		//legacy
 		if ($productSetting === 'global') continue;
 
