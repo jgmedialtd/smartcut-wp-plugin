@@ -53,17 +53,17 @@ namespace {
         /**
          * Return stored actions for given params.
          *
-         * @param string                   $status The action's status in the data store.
-         * @param string                   $hook The hook to trigger when this action runs.
-         * @param array                    $args Args to pass to callbacks when the hook is triggered.
-         * @param ActionScheduler_Schedule $schedule The action's schedule.
-         * @param string                   $group A group to put the action in.
+         * @param string                        $status The action's status in the data store.
+         * @param string                        $hook The hook to trigger when this action runs.
+         * @param array                         $args Args to pass to callbacks when the hook is triggered.
+         * @param ActionScheduler_Schedule|null $schedule The action's schedule.
+         * @param string                        $group A group to put the action in.
          * phpcs:ignore Squiz.Commenting.FunctionComment.ExtraParamComment
-         * @param int                      $priority The action priority.
+         * @param int                           $priority The action priority.
          *
          * @return ActionScheduler_Action An instance of the stored action.
          */
-        public function get_stored_action($status, $hook, array $args = array(), \ActionScheduler_Schedule $schedule = \null, $group = '')
+        public function get_stored_action($status, $hook, array $args = array(), ?\ActionScheduler_Schedule $schedule = \null, $group = '')
         {
         }
         /**
@@ -2225,6 +2225,50 @@ namespace {
         }
     }
     /**
+     * Provides information about active and registered instances of Action Scheduler.
+     */
+    class ActionScheduler_SystemInformation
+    {
+        /**
+         * Returns information about the plugin or theme which contains the current active version
+         * of Action Scheduler.
+         *
+         * If this cannot be determined, or if Action Scheduler is being loaded via some other
+         * method, then it will return an empty array. Otherwise, if populated, the array will
+         * look like the following:
+         *
+         *     [
+         *         'type' => 'plugin', # or 'theme'
+         *         'name' => 'Name',
+         *     ]
+         *
+         * @return array
+         */
+        public static function active_source() : array
+        {
+        }
+        /**
+         * Returns the directory path for the currently active installation of Action Scheduler.
+         *
+         * @return string
+         */
+        public static function active_source_path() : string
+        {
+        }
+        /**
+         * Get registered sources.
+         *
+         * It is not always possible to obtain this information. For instance, if earlier versions (<=3.9.0) of
+         * Action Scheduler register themselves first, then the necessary data about registered sources will
+         * not be available.
+         *
+         * @return array<string, string>
+         */
+        public static function get_sources()
+        {
+        }
+    }
+    /**
      * Class ActionScheduler_Versions
      */
     class ActionScheduler_Versions
@@ -2242,6 +2286,12 @@ namespace {
          */
         private $versions = array();
         /**
+         * Registered sources.
+         *
+         * @var array<string, string>
+         */
+        private $sources = array();
+        /**
          * Register version's callback.
          *
          * @param string   $version_string          Action Scheduler version.
@@ -2254,6 +2304,20 @@ namespace {
          * Get all versions.
          */
         public function get_versions()
+        {
+        }
+        /**
+         * Get registered sources.
+         *
+         * Use with caution: this method is only available as of Action Scheduler's 3.9.1
+         * release and, owing to the way Action Scheduler is loaded, it's possible that the
+         * class definition used at runtime will belong to an earlier version.
+         *
+         * @since 3.9.1
+         *
+         * @return array<string, string>
+         */
+        public function get_sources()
         {
         }
         /**
@@ -2283,6 +2347,36 @@ namespace {
          * @codeCoverageIgnore
          */
         public static function initialize_latest_version()
+        {
+        }
+        /**
+         * Returns information about the plugin or theme which contains the current active version
+         * of Action Scheduler.
+         *
+         * If this cannot be determined, or if Action Scheduler is being loaded via some other
+         * method, then it will return an empty array. Otherwise, if populated, the array will
+         * look like the following:
+         *
+         *     [
+         *         'type' => 'plugin', # or 'theme'
+         *         'name' => 'Name',
+         *     ]
+         *
+         * @deprecated 3.9.2 Use ActionScheduler_SystemInformation::active_source().
+         *
+         * @return array
+         */
+        public function active_source() : array
+        {
+        }
+        /**
+         * Returns the directory path for the currently active installation of Action Scheduler.
+         *
+         * @deprecated 3.9.2 Use ActionScheduler_SystemInformation::active_source_path().
+         *
+         * @return string
+         */
+        public function active_source_path() : string
         {
         }
     }
@@ -2640,7 +2734,7 @@ namespace {
          *
          * @return DateTime|null
          */
-        public function next(\DateTime $after = \null)
+        public function next(?\DateTime $after = \null)
         {
         }
     }

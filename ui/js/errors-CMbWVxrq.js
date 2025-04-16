@@ -30,7 +30,7 @@ const e = {
     no_matching_stock_thickness: "no matching stock thickness found",
     no_matching_stock_material_thickness: "no stock with matching material & thickness found",
     no_matching_stock_width: "no matching stock width found",
-    will_not_fit: "will not fit on any stock",
+    will_not_fit: "will not fit on any matching stock",
     reason_for_mismatch: "due to a thickness, material or dimensions mismatch",
     max_projects: "the maximum number of projects is {{x}}",
     server_offline: "server is offline",
@@ -47,8 +47,8 @@ const e = {
     greater_than_or_equal: "{{x}} should be greater than or equal {{y}}",
     less_than: "{{x}} should be less than {{y}}",
     less_than_or_equal: "{{x}} should be less than or equal {{y}}",
-    exceeded_limit: "The {{type}} count of {{x}} exceeds you {{type}} limit of {{y}}",
-    option_not_available: "Option {{x}} in {{y}} is no longer available",
+    exceeded_limit: "the {{type}} count of {{x}} exceeds you {{type}} limit of {{y}}",
+    option_not_available: "option {{x}} in {{y}} is no longer available",
     saw: {
       validation: {
         stockType: {
@@ -64,7 +64,16 @@ const e = {
           invalid: "Saw blade width: {{width}} is not valid"
         },
         required: {
+          stockType: "Stock type is required",
+          bladeWidth: "Saw blade width is required",
+          bladeWidthMinSpacing: "Saw blade width is required if min spacing is set",
           stackHeight: "{{cutType}} saws require stack height to be set"
+        },
+        minSpacing: {
+          invalid: "Saw min spacing: {{spacing}} is not valid",
+          dimension: {
+            invalid: "Saw min spacing dimension: {{dimension}} is not valid"
+          }
         }
       }
     },
@@ -145,7 +154,16 @@ const e = {
           invalid: "Amplada de la fulla de serra: {{width}} no és vàlida"
         },
         required: {
-          stackHeight: "Les serres {{cutType}} requereixen establir una alçada de pila"
+          stockType: "Es requereix el tipus d'estoc",
+          bladeWidth: "Es requereix l'amplada de la fulla de serra",
+          bladeWidthMinSpacing: "Es requereix l'amplada de la fulla de serra si s'estableix l'espai mínim",
+          stackHeight: "Les serres {{cutType}} requereixen que s'estableixi l'alçada de la pila"
+        },
+        minSpacing: {
+          invalid: "L'espai mínim de serra: {{spacing}} no és vàlid",
+          dimension: {
+            invalid: "La dimensió de l'espai mínim de serra: {{dimension}} no és vàlida"
+          }
         }
       }
     },
@@ -226,7 +244,16 @@ const e = {
           invalid: "Ancho de la hoja de sierra: {{width}} no es válido"
         },
         required: {
-          stackHeight: "Las sierras {{cutType}} requieren establecer una altura de pila"
+          stockType: "Se requiere el tipo de material",
+          bladeWidth: "Se requiere el ancho de la hoja de sierra",
+          bladeWidthMinSpacing: "Se requiere el ancho de la hoja de sierra si se establece el espaciado mínimo",
+          stackHeight: "Las sierras de {{cutType}} requieren que se establezca la altura de la pila"
+        },
+        minSpacing: {
+          invalid: "El espaciado mínimo de la sierra: {{spacing}} no es válido",
+          dimension: {
+            invalid: "La dimensión del espaciado mínimo de la sierra: {{dimension}} no es válida"
+          }
         }
       }
     },
@@ -307,7 +334,16 @@ const e = {
           invalid: "Largeur de lame de scie : {{width}} non valide"
         },
         required: {
-          stackHeight: "Les scies {{cutType}} nécessitent une hauteur de pile définie"
+          stockType: "Le type de stock est requis",
+          bladeWidth: "La largeur de la lame de scie est requise",
+          bladeWidthMinSpacing: "La largeur de la lame de scie est requise si l'espacement minimal est défini",
+          stackHeight: "Les scies {{cutType}} nécessitent que la hauteur de pile soit définie"
+        },
+        minSpacing: {
+          invalid: "L'espacement minimal de la scie: {{spacing}} n'est pas valide",
+          dimension: {
+            invalid: "La dimension de l'espacement minimal de la scie: {{dimension}} n'est pas valide"
+          }
         }
       }
     },
@@ -391,7 +427,16 @@ const e = {
           invalid: "Zaagbladbreedte: {{width}} is niet geldig"
         },
         required: {
+          stockType: "Voorraadtype is vereist",
+          bladeWidth: "Zaagbladbreedte is vereist",
+          bladeWidthMinSpacing: "Zaagbladbreedte is vereist als minimale tussenruimte is ingesteld",
           stackHeight: "{{cutType}} zagen vereisen dat de stapelhoogte wordt ingesteld"
+        },
+        minSpacing: {
+          invalid: "Minimale tussenruimte zaag: {{spacing}} is niet geldig",
+          dimension: {
+            invalid: "Dimensie minimale tussenruimte zaag: {{dimension}} is niet geldig"
+          }
         }
       }
     },
