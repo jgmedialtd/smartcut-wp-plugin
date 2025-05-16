@@ -18,12 +18,12 @@
 		},
 		{
 			"type": "shell",
-			"command": "wp i18n make-pot --skip-js '/Users/Jon/JG Media/Apps/sc store/wp-content/plugins/smartcut'",
+			"command": "wp i18n make-pot --skip-js '/Users/Jon/JGMedia/Apps/sc store/wp-content/plugins/smartcut'",
 			"label": "Create POT translation file"
 		},
 		{
 			"type": "shell",
-			"command": "cd '/Users/Jon/JG Media/Apps/sc store/wp-content/plugins' && zip -r 'smartcut.zip' 'smartcut' --exclude '*/.git/*'",
+			"command": "cd '/Users/Jon/JGMedia/Apps/sc store/wp-content/plugins' && zip -r 'smartcut.zip' 'smartcut' --exclude '*/.git/*'",
 			"label": "Create zip"
 		},
 		{
