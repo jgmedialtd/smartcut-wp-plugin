@@ -4,7 +4,7 @@ var u = (i, t, e) => Or(i, typeof t != "symbol" ? t + "" : t, e);
 import { F as ns, i as Ar, g as Te, d as Mi, a as Lt, c as ts, b as kn, e as Ws, f as Je, v as fs, t as qi, h as Er, s as Rr, j as Mr, o as Fr, k as _r, l as qr, P as Br } from "./vendor-BJAM8w7x.js";
 import { i as Cn, B as jr } from "./vendor-i18n-BWRGKi6w.js";
 import { d as Re, c as I, o as y, F as xe, r as Ee, n as Ie, a as ke, b as A, w as ps, t as ne, v as gs, e as W, f as Hr, g as H, h as te, i as De, j as gt, k as tt, l as ms, m as fi, u as P, p as ti, q as ve, s as Gr, x as vs, y as jt, z as we, A as Wr, B as Dt, C as Nr, D as Ur, E as zr, G as Vr, H as yt, I as Yr, T as Xr, J as In, K as Kr, L as Ns, M as Zr, N as Jr, O as Qr, P as eo, Q as to } from "./vendor-vue-DNQwzAyf.js";
-import { u as Tn, a as ys, b as bs, c as io, d as so, e as no } from "./composables-CNwweB13.js";
+import { u as Tn, a as ys, b as bs, c as io, d as so, e as no } from "./composables-C-GTTJx4.js";
 import { a as Pn, b as Dn, l as lt, c as Bi, d as ji, s as qe, r as dt, e as pi, f as Ln, g as ro, h as oo, i as lo, p as ao, S as uo, j as co, k as ho } from "./vendor-d3-B-JATA3m.js";
 const fo = (i, t, e) => {
   const s = i[t];
@@ -316,7 +316,7 @@ function On(i, t = !1) {
       const c = e.split(".");
       c.length > 2 && (e = c[0] + "." + c.slice(1).join(""));
       const f = t ? _i(e) : parseFloat(e);
-      return f === null || isNaN(f) || !isFinite(f) ? null : f.toLocaleString("fullwide", { useGrouping: !1, maximumFractionDigits: 20 });
+      return f === null || isNaN(f) || !isFinite(f) ? null : f.toString();
     }
   } catch (n) {
     throw new Wi(
