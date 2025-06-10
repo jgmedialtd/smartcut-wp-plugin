@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'php-stubs/woocommerce-stubs' => array(
-            'pretty_version' => 'v9.8.2',
-            'version' => '9.8.2.0',
-            'reference' => '3e8464d5471332cd56d595fde61ce8821236674f',
+            'pretty_version' => 'v9.9.3',
+            'version' => '9.9.3.0',
+            'reference' => 'c2c98aaf7b02d81ab7792a33259c22bf55eb2006',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-stubs/woocommerce-stubs',
             'aliases' => array(),
