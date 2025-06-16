@@ -4,7 +4,7 @@ var c = (i, t, e) => Or(i, typeof t != "symbol" ? t + "" : t, e);
 import { F as is, i as Mr, g as Pe, d as Oi, a as Tt, c as Qi, b as kn, e as Ws, f as Qe, v as ds, t as Fi, h as Rr, s as Fr, j as _r, o as Br, k as qr, l as jr, P as Hr } from "./vendor-BJAM8w7x.js";
 import { i as Cn, B as Gr } from "./vendor-i18n-BWRGKi6w.js";
 import { d as Ae, c as L, o as b, F as we, r as $e, n as xe, a as Se, b as O, w as fs, t as re, v as ps, e as V, f as Wr, g as Y, h as se, i as Te, j as rt, k as nt, l as vi, m as ci, u as P, p as Kt, q as ye, s as Nr, x as gs, y as Bt, z as ve, A as Ur, B as Pt, C as In, D as zr, E as Vr, G as Yr, H as vt, I as Xr, T as Kr, J as ms, K as Zr, L as Ns, M as Jr, N as Qr, O as eo, P as to, Q as io, R as so } from "./vendor-vue-BJVDXAuG.js";
-import { u as Pn, a as vs, b as ys, c as no, d as ro, e as oo } from "./composables-CNs5Bon1.js";
+import { u as Pn, a as vs, b as ys, c as no, d as ro, e as oo } from "./composables-CdqJP0tb.js";
 import { a as Tn, b as Ln, l as it, c as _i, d as Bi, s as _e, r as dt, e as ui, f as Dn, g as lo, h as ao, i as co, p as uo, S as ho, j as fo, k as po } from "./vendor-d3-B-JATA3m.js";
 const go = (i, t, e) => {
   const s = i[t];
@@ -49,7 +49,7 @@ function bo(i) {
 }
 function De(i, t) {
   var s;
-  if ((s = process == null ? void 0 : process.env) != null && s.VITEST)
+  if (typeof process < "u" && ((s = process == null ? void 0 : process.env) != null && s.VITEST))
     return i;
   const e = $n.t(i, { ...t });
   return !e || e === i ? i : Jt(e);
@@ -62,7 +62,7 @@ qi.length === 0 ? console.warn("[i18n] No language files found in ../translation
 const Us = "en", Yt = Cn.createInstance();
 function N(i, t) {
   var n, r;
-  if (((n = process == null ? void 0 : process.env) == null ? void 0 : n.NODE_ENV) === "test" || (r = process == null ? void 0 : process.env) != null && r.VITEST)
+  if (typeof process < "u" && (((n = process == null ? void 0 : process.env) == null ? void 0 : n.NODE_ENV) === "test" || (r = process == null ? void 0 : process.env) != null && r.VITEST))
     return i;
   if (!Yt.isInitialized) {
     const o = Array.isArray(i) ? i.join(", ") : String(i);
