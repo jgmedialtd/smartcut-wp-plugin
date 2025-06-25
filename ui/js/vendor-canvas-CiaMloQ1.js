@@ -1,4 +1,4 @@
-import { R as Or, _ as SA, n as ve, r as fr, q as Qs } from "./vendor-BJAM8w7x.js";
+import { R as Or, _ as SA, n as ve, r as fr, q as Qs } from "./vendor-ov4OC3aS.js";
 /*!
 * html2canvas 1.4.1 <https://html2canvas.hertzen.com>
 * Copyright (c) 2022 Niklas von Hertzen <https://hertzen.com>

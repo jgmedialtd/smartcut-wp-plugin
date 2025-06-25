@@ -1,4 +1,4 @@
-import { u as ve, z as ls, w as Pl } from "./vendor-BJAM8w7x.js";
+import { t as ve, z as ls, u as Pl } from "./vendor-ov4OC3aS.js";
 /** @license
 *
 * jsPDF - PDF Document creation from JavaScript
@@ -3705,14 +3705,14 @@ function(n) {
   }, n.loadImageFile = n.loadFile;
 }(zt.API), function(n) {
   function t() {
-    return (Ut.html2canvas ? Promise.resolve(Ut.html2canvas) : import("./vendor-canvas-C4XKnVHj.js").then((u) => u.h)).catch(function(u) {
+    return (Ut.html2canvas ? Promise.resolve(Ut.html2canvas) : import("./vendor-canvas-CiaMloQ1.js").then((u) => u.h)).catch(function(u) {
       return Promise.reject(new Error("Could not load html2canvas: " + u));
     }).then(function(u) {
       return u.default ? u.default : u;
     });
   }
   function e() {
-    return (Ut.DOMPurify ? Promise.resolve(Ut.DOMPurify) : import("./vendor-BJAM8w7x.js").then((u) => u.W)).catch(function(u) {
+    return (Ut.DOMPurify ? Promise.resolve(Ut.DOMPurify) : import("./vendor-ov4OC3aS.js").then((u) => u.V)).catch(function(u) {
       return Promise.reject(new Error("Could not load dompurify: " + u));
     }).then(function(u) {
       return u.default ? u.default : u;
@@ -6827,7 +6827,7 @@ function(n) {
  */
 function(n) {
   function t() {
-    return (Ut.canvg ? Promise.resolve(Ut.canvg) : import("./vendor-canvas-C4XKnVHj.js").then((e) => e.i)).catch(function(e) {
+    return (Ut.canvg ? Promise.resolve(Ut.canvg) : import("./vendor-canvas-CiaMloQ1.js").then((e) => e.i)).catch(function(e) {
       return Promise.reject(new Error("Could not load canvg: " + e));
     }).then(function(e) {
       return e.default ? e.default : e;

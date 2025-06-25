@@ -1,9 +1,9 @@
-import { g as O, G as Y, h as L, E as W, S as V, i as mt } from "./vendor-vue-BEddmBnE.js";
-import { I as at, a as Z, u as rt, b as X, t as st, s as gt, S as kt, m as St, c as Lt, g as yt, r as nt, d as D, e as It, f as wt, h as ct, i as it, j as ot, k as lt, l as ut, n as dt, o as bt, p as _t } from "./components-D1717sAW.js";
-import { p as ft, m as Ct } from "./vendor-BJAM8w7x.js";
+import { g as O, G as Y, h as L, E as W, S as J, i as mt } from "./vendor-vue-Cm6Mf_s4.js";
+import { I as at, a as Z, u as rt, b as X, t as st, s as gt, S as kt, m as St, c as Lt, g as yt, r as nt, d as D, e as It, f as wt, h as it, i as ct, j as ot, k as lt, l as ut, n as dt, o as bt, p as _t } from "./components-Dv1AmdBM.js";
+import { p as ft, m as Ct } from "./vendor-ov4OC3aS.js";
 let tt = null;
 function Tt(t = { numberFormat: "decimal" }) {
-  const m = O(null), c = () => {
+  const m = O(null), i = () => {
     const a = localStorage.getItem("GlobalStore/inputStock"), r = localStorage.getItem("GlobalStore/inputShapes");
     let d = [], e = [];
     if (a)
@@ -21,7 +21,7 @@ function Tt(t = { numberFormat: "decimal" }) {
         console.error("Error migrating shapes data:", s);
       }
     return { migratedStock: d, migratedShapes: e };
-  }, { migratedStock: b, migratedShapes: I } = c(), o = Y("inputs/inputStock", b, {
+  }, { migratedStock: b, migratedShapes: I } = i(), o = Y("inputs/inputStock", b, {
     serializer: {
       read: (a) => {
         const r = a ? JSON.parse(a) : [];
@@ -54,7 +54,7 @@ function Tt(t = { numberFormat: "decimal" }) {
       write: (a) => JSON.stringify(a)
     },
     listenToStorageChanges: !1
-  }), h = O(null), g = L(() => u.value.reduce((a, r) => r != null && r.q && r.q > 0 && !(r != null && r.multiEdit) ? a + r.q : a, 0)), i = L(() => u.value.reduce((a, r) => r != null && r.multiEdit ? a : a + 1, 0)), p = L(() => o.value.reduce((a, r) => r != null && r.q && r.q > 0 && !(r != null && r.multiEdit) ? a + r.q : a, 0)), E = L(() => o.value.reduce((a, r) => r != null && r.multiEdit ? a : a + 1, 0)), C = (a, r = "decimal") => {
+  }), h = O(null), g = L(() => u.value.reduce((a, r) => r != null && r.q && r.q > 0 && !(r != null && r.multiEdit) ? a + r.q : a, 0)), c = L(() => u.value.reduce((a, r) => r != null && r.multiEdit ? a : a + 1, 0)), p = L(() => o.value.reduce((a, r) => r != null && r.q && r.q > 0 && !(r != null && r.multiEdit) ? a + r.q : a, 0)), E = L(() => o.value.reduce((a, r) => r != null && r.multiEdit ? a : a + 1, 0)), C = (a, r = "decimal") => {
     const d = (a == null ? void 0 : a.parts) || (a == null ? void 0 : a.shapeList), e = (a == null ? void 0 : a.stock) || (a == null ? void 0 : a.stockList), s = (a == null ? void 0 : a.groups) || (a == null ? void 0 : a.userGroups);
     if (d && y(d, r), e && v(e, r), s)
       try {
@@ -101,8 +101,8 @@ function Tt(t = { numberFormat: "decimal" }) {
       const n = r[s];
       if (!(n != null && n.q)) continue;
       const f = ["name", "material", "notes"];
-      for (const J of f)
-        J in n && (n[J] = ft.sanitize(n[J]));
+      for (const Q of f)
+        Q in n && (n[Q] = ft.sanitize(n[Q]));
       n.createId(s), n.applyPartTrim(a.trim, a.stockType);
       const _ = { ...n };
       St(_, a.orientationModel);
@@ -187,7 +187,7 @@ function Tt(t = { numberFormat: "decimal" }) {
       rt(r, a);
   }, F = () => {
     u.value.forEach((a) => a.issues = []), o.value.forEach((a) => a.issues = []);
-  }, B = ({
+  }, V = ({
     stock: a = !0,
     shapes: r = !0
   }) => {
@@ -213,7 +213,7 @@ function Tt(t = { numberFormat: "decimal" }) {
     if (o.value.length === 1) return;
     const r = o.value.findIndex((d) => d.listId === a);
     r !== -1 && o.value.splice(r, 1);
-  }, Q = (a) => {
+  }, B = (a) => {
     if (u.value.length === 1) return;
     const r = u.value.findIndex((d) => d.listId === a);
     r !== -1 && u.value.splice(r, 1);
@@ -233,7 +233,7 @@ function Tt(t = { numberFormat: "decimal" }) {
     selectedSaw: m,
     totalInputShapes: g,
     totalInputStock: p,
-    totalInputShapeLines: i,
+    totalInputShapeLines: c,
     totalInputStockLines: E,
     reset: M,
     clear: $,
@@ -247,9 +247,9 @@ function Tt(t = { numberFormat: "decimal" }) {
     validateInputStock: T,
     validateInputShapes: P,
     updateNumberFormat: G,
-    createTestData: B,
+    createTestData: V,
     removeStock: U,
-    removeShape: Q
+    removeShape: B
   };
 }
 function Gt(t = { numberFormat: "decimal" }) {
@@ -258,7 +258,7 @@ function Gt(t = { numberFormat: "decimal" }) {
 const R = O([]), xt = 6;
 function Ot() {
   const t = ({
-    message: c,
+    message: i,
     type: b = "info",
     additional: I = [],
     options: o = {},
@@ -268,7 +268,7 @@ function Ot() {
     Array.isArray(I) || (console.warn("addNotice - additional must be an array"), I = []);
     const l = {
       id: crypto.randomUUID(),
-      message: D(c),
+      message: D(i),
       additional: I.length > 5 ? I.slice(0, 5).map((g) => D(g)).join("<br>") + "<br>..." : I.slice(0, 5).map((g) => D(g)).join("<br>"),
       type: b,
       persistent: o.persistent || !1,
@@ -276,15 +276,15 @@ function Ot() {
       action: u
     }, h = o.maxNotices ?? xt;
     if (R.value.length >= h) {
-      const g = R.value.findIndex((i) => !i.persistent);
+      const g = R.value.findIndex((c) => !c.persistent);
       if (g !== -1)
         R.value.splice(g, 1);
       else if (!l.persistent)
         return console.warn("Cannot add new notice: maximum limit reached and all existing notices are persistent"), l.id;
     }
     return R.value.push(l), !l.persistent && o.timeout !== 0 && setTimeout(() => m(l.id), o.timeout || 6e3), l.id;
-  }, m = (c) => {
-    R.value.findIndex((I) => I.id === c) !== -1 && (R.value = R.value.filter((I) => I.id !== c));
+  }, m = (i) => {
+    R.value.findIndex((I) => I.id === i) !== -1 && (R.value = R.value.filter((I) => I.id !== i));
   };
   return {
     notices: R,
@@ -294,12 +294,12 @@ function Ot() {
 }
 let K = null;
 function Pt() {
-  const t = O(null), m = O(null), c = O(null), b = W([]), I = W([]), o = W([]), u = W([]), l = O([]), h = O(null), g = W([]), i = O(null), p = O(null);
+  const t = O(null), m = O(null), i = O(null), b = W([]), I = W([]), o = W([]), u = W([]), l = O([]), h = O(null), g = W([]), c = O(null), p = O(null);
   return {
     // All state
     jobId: t,
     saw: m,
-    activeStockId: c,
+    activeStockId: i,
     shapeList: b,
     stockList: I,
     cutList: o,
@@ -307,11 +307,11 @@ function Pt() {
     offcuts: l,
     metadata: h,
     unusableShapes: g,
-    currentCutIndex: i,
+    currentCutIndex: c,
     activeShape: p,
     r: {
       saw: m,
-      activeStockId: c,
+      activeStockId: i,
       jobId: t,
       shapeList: b,
       stockList: I,
@@ -320,21 +320,21 @@ function Pt() {
       offcuts: l,
       unusableShapes: g,
       metadata: h,
-      currentCutIndex: i
+      currentCutIndex: c
     }
   };
 }
 function Ft() {
   if (K) return K;
-  const t = Pt(), m = L(() => t.activeStockId.value ? U(t.activeStockId.value) : []), c = L(() => {
+  const t = Pt(), m = L(() => t.activeStockId.value ? U(t.activeStockId.value) : []), i = L(() => {
     var e;
-    return !t.activeStockId.value || !((e = t.stockList.value) != null && e.length) ? null : B(t.activeStockId.value);
+    return !t.activeStockId.value || !((e = t.stockList.value) != null && e.length) ? null : V(t.activeStockId.value);
   }), b = L(() => {
     var s;
-    return !c.value || !((s = t.cutList.value) != null && s.length) ? [] : A(c.value.id);
+    return !i.value || !((s = t.cutList.value) != null && s.length) ? [] : A(i.value.id);
   }), I = L(() => {
     var e;
-    return !c.value || !((e = t.segmentList.value) != null && e.length) ? [] : Q(t.activeStockId.value);
+    return !i.value || !((e = t.segmentList.value) != null && e.length) ? [] : B(t.activeStockId.value);
   }), o = L(() => {
     var e;
     return (e = t.stockList.value) != null && e.length ? a(t.stockList.value) : [];
@@ -347,7 +347,7 @@ function Ft() {
   }), g = L(() => {
     var e;
     return (e = t.shapeList.value) != null && e.length ? t.shapeList.value.filter((s) => !s.duplicate) : [];
-  }), i = L(() => g.value.filter((e) => e.added)), p = L(() => {
+  }), c = L(() => g.value.filter((e) => e.added)), p = L(() => {
     var e;
     return (e = t.stockList.value) != null && e.length ? t.stockList.value.filter((s) => s.used && !s.duplicate) : [];
   }), E = L(() => p.value.filter((e) => e.used)), C = L(() => {
@@ -355,19 +355,19 @@ function Ft() {
     return (e = t.cutList.value) != null && e.length ? b.value.reduce((s, n) => s + n.getArea(), 0) : 0;
   }), y = L(() => {
     var e;
-    return !((e = t.stockList.value) != null && e.length) || !c.value ? 0 : c.value ? c.value.getArea() : 0;
+    return !((e = t.stockList.value) != null && e.length) || !i.value ? 0 : i.value ? i.value.getArea() : 0;
   }), v = L(() => {
     var e;
     return !((e = t.shapeList.value) != null && e.length) || !m.value ? 0 : m.value ? m.value.reduce((s, n) => s + n.getArea(), 0) : 0;
   }), x = L(() => {
     var e;
-    return !((e = t.cutList.value) != null && e.length) || !c.value ? null : c.value.cutType;
+    return !((e = t.cutList.value) != null && e.length) || !i.value ? null : i.value.cutType;
   }), S = L(() => {
     var s;
     return (s = t.stockList.value) != null && s.length ? t.stockList.value.filter((n) => n.used && (n.stack === !1 || typeof n.stack == "number")) : [];
   }), M = L(() => {
     var e;
-    return (e = t.stockList.value) != null && e.length ? wt(c.value, t.stockList.value) : 0;
+    return (e = t.stockList.value) != null && e.length ? wt(i.value, t.stockList.value) : 0;
   }), $ = L(() => {
     var s;
     if (!((s = t.stockList.value) != null && s.length)) return 0;
@@ -381,11 +381,11 @@ function Ft() {
     var n;
     e in this && ((n = this[e]) == null || n.sort(bt[s]));
   }, P = (e) => {
-    V(e);
+    J(e);
   }, N = () => {
-    V(t.shapeList);
+    J(t.shapeList);
   }, G = () => {
-    V(t.stockList);
+    J(t.stockList);
   }, F = (e) => {
     var s, n, f, _;
     if (!((s = e == null ? void 0 : e.shapeList) != null && s.some((q) => q.added))) {
@@ -394,18 +394,20 @@ function Ft() {
     }
     t.metadata.value = e.metadata, t.unusableShapes.value = e.unusableShapes || [];
     try {
-      e != null && e.saw && (t.saw.value = new ct(
+      e != null && e.saw && (t.saw.value = new it(
         e == null ? void 0 : e.saw,
         (n = e == null ? void 0 : e.saw) == null ? void 0 : n.stockType
-      )), t.stockList.value = it({
+      )), t.stockList.value = ct({
         saw: t.saw.value,
         stockList: e.stockList,
         removeScores: !0,
-        preventAutoRotation: !0
+        preventAutoRotation: !0,
+        skipValidation: !0
       }), t.shapeList.value = ot({
         shapeList: e.shapeList,
         stockList: t.stockList.value,
-        preventAutoRotation: !0
+        preventAutoRotation: !0,
+        skipValidation: !0
       }), t.cutList.value = ut({
         cutList: e.cutList,
         stockList: t.stockList.value
@@ -416,11 +418,11 @@ function Ft() {
         offcuts: e.offcuts,
         stockList: t.stockList.value,
         preventAutoRotation: !0
-      }), V(t.stockList), V(t.shapeList), V(t.cutList), V(t.segmentList), t.activeStockId.value = ((_ = (f = a(t.stockList.value)) == null ? void 0 : f[0]) == null ? void 0 : _.id) || null;
+      }), J(t.stockList), J(t.shapeList), J(t.cutList), J(t.segmentList), t.activeStockId.value = ((_ = (f = a(t.stockList.value)) == null ? void 0 : f[0]) == null ? void 0 : _.id) || null;
     } catch (q) {
       console.error("Error updating from result", q);
     }
-  }, B = (e) => {
+  }, V = (e) => {
     var s;
     return (s = t.stockList.value) != null && s.length ? t.stockList.value.find((n) => n.id === e) : null;
   }, U = (e) => {
@@ -429,7 +431,7 @@ function Ft() {
       var f;
       return (((f = n == null ? void 0 : n.stock) == null ? void 0 : f.id) ?? (n == null ? void 0 : n.stockId)) === e;
     }) : [];
-  }, Q = (e) => {
+  }, B = (e) => {
     var n;
     return (n = t.segmentList.value) != null && n.length ? t.segmentList.value.filter((f) => {
       var _;
@@ -442,18 +444,18 @@ function Ft() {
       var _;
       return (((_ = f == null ? void 0 : f.stock) == null ? void 0 : _.id) ?? (f == null ? void 0 : f.stockId)) === e;
     }).sort((f, _) => {
-      var q, J;
-      return ((q = f == null ? void 0 : f.guillotineData) == null ? void 0 : q.order) - ((J = _ == null ? void 0 : _.guillotineData) == null ? void 0 : J.order);
+      var q, Q;
+      return ((q = f == null ? void 0 : f.guillotineData) == null ? void 0 : q.order) - ((Q = _ == null ? void 0 : _.guillotineData) == null ? void 0 : Q.order);
     });
   }, a = (e) => e != null && e.length ? e.filter((s) => s.used === !0) : [], r = (e) => {
     t.activeStockId.value !== e && (t.activeShape.value = null, t.activeStockId.value = e);
   }, d = () => {
-    t.saw.value = new ct({
+    t.saw.value = new it({
       bladeWidth: 1,
       stockType: "sheet",
       cutType: "guillotine",
       cutPreference: "l"
-    }), t.stockList.value = it({
+    }), t.stockList.value = ct({
       saw: t.saw.value,
       stockList: [
         { id: "1.0", used: !0, l: 2440, w: 1220, q: 1 }
@@ -538,11 +540,11 @@ function Ft() {
     activeShapes: m,
     unplacedShapes: l,
     uniqueShapes: g,
-    uniqueAddedShapes: i,
+    uniqueAddedShapes: c,
     unplacedShapeTally: h,
     uniqueStock: p,
     uniqueUsedStock: E,
-    activeStock: c,
+    activeStock: i,
     activeCuts: b,
     activeCutsArea: C,
     activeCutType: x,
@@ -561,9 +563,9 @@ function Ft() {
     updateShapes: N,
     updateStock: G,
     updateFromResult: F,
-    getStock: B,
+    getStock: V,
     getShapes: U,
-    getSegments: Q,
+    getSegments: B,
     getCuts: A,
     setActiveStockId: r,
     // testing
@@ -596,43 +598,43 @@ function At() {
 const { progress: j, reset: pt } = At();
 function Mt(t) {
   const m = "https://api.cutlistevo.com/";
-  let c;
+  let i;
   const b = () => {
-    c = Ct(m, {
+    i = Ct(m, {
       withCredentials: !0,
       autoConnect: !1,
       perMessageDeflate: {
         threshold: 1024
       }
-    }), c.on("connect", () => {
+    }), i.on("connect", () => {
       var u, l, h;
       (u = t.refs) != null && u.connected && (t.refs.connected.value = !0), (h = (l = t.callbacks) == null ? void 0 : l.onConnect) == null || h.call(l);
-    }), c.on("connect_error", (u) => {
-      var l, h, g, i;
-      (l = t.refs) != null && l.connected && (t.refs.connected.value = !1), (h = t.refs) != null && h.thinking && (t.refs.thinking.value = !1), (i = (g = t.callbacks) == null ? void 0 : g.onConnectError) == null || i.call(g, u);
-    }), c.on("connect_timeout", (u) => {
-      var l, h, g, i;
-      (l = t.refs) != null && l.connected && (t.refs.connected.value = !1), (h = t.refs) != null && h.thinking && (t.refs.thinking.value = !1), (i = (g = t.callbacks) == null ? void 0 : g.onConnectError) == null || i.call(g, u);
-    }), c.on("result", (u) => {
+    }), i.on("connect_error", (u) => {
+      var l, h, g, c;
+      (l = t.refs) != null && l.connected && (t.refs.connected.value = !1), (h = t.refs) != null && h.thinking && (t.refs.thinking.value = !1), (c = (g = t.callbacks) == null ? void 0 : g.onConnectError) == null || c.call(g, u);
+    }), i.on("connect_timeout", (u) => {
+      var l, h, g, c;
+      (l = t.refs) != null && l.connected && (t.refs.connected.value = !1), (h = t.refs) != null && h.thinking && (t.refs.thinking.value = !1), (c = (g = t.callbacks) == null ? void 0 : g.onConnectError) == null || c.call(g, u);
+    }), i.on("result", (u) => {
       var l, h;
-      j.value.complete = !0, (h = (l = t.callbacks) == null ? void 0 : l.onResult) == null || h.call(l, u), c.disconnect();
-    }), c.on("queued", () => {
+      j.value.complete = !0, (h = (l = t.callbacks) == null ? void 0 : l.onResult) == null || h.call(l, u), i.disconnect();
+    }), i.on("queued", () => {
       pt(), j.value.queued = !0;
-    }), c.on("started", () => {
+    }), i.on("started", () => {
       j.value.started = !0;
-    }), c.on("progress", (u) => {
+    }), i.on("progress", (u) => {
       var l;
       ((l = u == null ? void 0 : u.data) == null ? void 0 : l.message) === "result" ? j.value.resultCount++ : (j.value.stockCount = u.data.stockCount, j.value.shapeCount = u.data.shapeCount);
-    }), c.on("user", (u) => {
+    }), i.on("user", (u) => {
       var l, h;
       (h = (l = t.callbacks) == null ? void 0 : l.onUser) == null || h.call(l, u);
-    }), c.on("error", (u) => {
+    }), i.on("error", (u) => {
       var l, h, g;
       (l = t.refs) != null && l.thinking && (t.refs.thinking.value = !1), pt(), (g = (h = t.callbacks) == null ? void 0 : h.onError) == null || g.call(h, u);
     });
-  }, I = () => c == null ? void 0 : c.disconnect(), o = () => c == null ? void 0 : c.connect();
+  }, I = () => i == null ? void 0 : i.disconnect(), o = () => i == null ? void 0 : i.connect();
   return b(), {
-    socket: c,
+    socket: i,
     connect: o,
     disconnect: I
   };
@@ -647,30 +649,30 @@ function Ut() {
   let t = null;
   const m = () => {
     z.value.show = !1;
-  }, c = (b) => {
+  }, i = (b) => {
     t && (clearTimeout(t), t = null), z.value = { ...z.value, ...b }, b.show && (t = setTimeout(() => {
       z.value.show = !1, t = null;
     }, 3e3));
   };
   return mt(() => z.value.referenceEl, (b) => {
     b || (z.value.show = !1);
-  }), { tip: z, hide: m, update: c };
+  }), { tip: z, hide: m, update: i };
 }
 const vt = ["banding", "finish", "cutLength", "perPart", "partArea", "offcutArea", "rollLength", "surcharge", "machining", "stock", "custom"], qt = (t) => vt.includes(t);
 function Rt(t, m) {
-  const c = (i) => {
+  const i = (c) => {
     var p;
-    (p = m.log) == null || p.call(m, i);
-  }, b = (i) => {
+    (p = m.log) == null || p.call(m, c);
+  }, b = (c) => {
     var p;
-    return (p = m.error) == null || p.call(m, i), { success: !1, error: i };
+    return (p = m.error) == null || p.call(m, c), { success: !1, error: c };
   }, I = () => {
-    for (const i of vt) o(i, 0);
-  }, o = (i, p) => {
-    c(["setting price", i, p]);
+    for (const c of vt) o(c, 0);
+  }, o = (c, p) => {
+    i(["setting price", c, p]);
     const { inputs: E, elements: C, setInputValue: y, formatPrice: v } = m;
     if (isNaN(p)) throw new Error("Price must be a number");
-    if (!qt(i)) return;
+    if (!qt(c)) return;
     const S = {
       //this should not include any extra costs
       custom: {
@@ -717,45 +719,45 @@ function Rt(t, m) {
         hidden: "smartcut-stock-total-price",
         visible: "stock_total_price"
       }
-    }[i];
-    S != null && S.hidden && E[S.hidden] && (c(["setting hidden price", S.hidden, p]), y(S.hidden, p)), S != null && S.visible && C[S.visible] && (C[S.visible].innerText = v(p));
-  }, u = (i) => {
+    }[c];
+    S != null && S.hidden && E[S.hidden] && (i(["setting hidden price", S.hidden, p]), y(S.hidden, p)), S != null && S.visible && C[S.visible] && (C[S.visible].innerText = v(p));
+  }, u = (c) => {
     const { product: p, getCurrentVariationPrice: E, isQuantityPricing: C, enableAddToCart: y, setCartQuantity: v } = m;
     let x = (p == null ? void 0 : p.price) || E(!0) || 0;
     typeof x == "string" && (x = parseFloat(x));
     const S = t.unit_system === "imperial" ? "feet" : "meters", $ = {
       full_stock: (k) => {
-        if (c(["calculating cost by full sheet"]), !C()) {
+        if (i(["calculating cost by full sheet"]), !C()) {
           const T = k.metadata.totalStockCost;
           return o("stock", T), T;
         }
         return C() && v(k.metadata.totalUsedStock), 0;
       },
       part_area: (k) => {
-        c([`calculating cost by part area in square ${S}`]);
+        i([`calculating cost by part area in square ${S}`]);
         const T = t.unit_system === "imperial" ? 144 : 1e6, P = k.metadata.totalPartArea / T, N = P * x;
-        o("partArea", N), c([`part area price in square ${S} is ${P} (part area) * ${x} (product price) = ${N}`]);
+        o("partArea", N), i([`part area price in square ${S} is ${P} (part area) * ${x} (product price) = ${N}`]);
         let G = N;
         if (t != null && t.enable_offcut_pricing && (k != null && k.offcuts)) {
-          const B = (k == null ? void 0 : k.offcuts.reduce((Q, A) => {
+          const V = (k == null ? void 0 : k.offcuts.reduce((B, A) => {
             const a = A.l >= A.w ? A.l : A.w, r = A.l >= A.w ? A.w : A.l;
-            return a < t.offcut_min_length || r < t.offcut_min_width ? Q + a * r : Q;
-          }, 0)) / T, U = B * x;
-          o("offcutArea", U), c([`calculated sellable offcut area as ${B} square ${S}, with price ${U}`]), G += U;
+            return a < t.offcut_min_length || r < t.offcut_min_width ? B + a * r : B;
+          }, 0)) / T, U = V * x;
+          o("offcutArea", U), i([`calculated sellable offcut area as ${V} square ${S}, with price ${U}`]), G += U;
         }
-        if (c([`calculated total price as ${G}`]), C()) {
+        if (i([`calculated total price as ${G}`]), C()) {
           const F = G / x;
-          return c([`setting cart quantity to ${F}`]), v(F, 2), 0;
+          return i([`setting cart quantity to ${F}`]), v(F, 2), 0;
         } else
           return G;
       },
       cut_length: (k) => {
-        c([`calculating cost by cut length in  ${S}`]);
+        i([`calculating cost by cut length in  ${S}`]);
         const T = t.unit_system === "imperial" ? 12 : 1e3, P = k.metadata.totalCutLength / T;
         return v(P, 2), 0;
       },
       full_stock_plus_cut_length: (k) => {
-        c(["calculating cost by full sheet plus cut length"]);
+        i(["calculating cost by full sheet plus cut length"]);
         let T = 0;
         const P = k.metadata.totalStockCost;
         o("stock", P), T = P, C() && v(k.metadata.totalUsedStock);
@@ -763,7 +765,7 @@ function Rt(t, m) {
         return o("cutLength", F), T + F;
       },
       full_stock_plus_num_parts: (k) => {
-        c(["calculating cost by full sheet plus number of parts"]);
+        i(["calculating cost by full sheet plus number of parts"]);
         let T = 0;
         const P = k.metadata.totalStockCost;
         o("stock", P), T = P, C() && v(k.metadata.totalUsedStock);
@@ -771,13 +773,13 @@ function Rt(t, m) {
         return o("perPart", N), T + N;
       },
       roll_length: (k) => {
-        c([`calculating cost by roll length in ${S}`]);
+        i([`calculating cost by roll length in ${S}`]);
         const T = t.unit_system === "imperial" ? 12 : 1e3, P = k.stock.reduce((N, G) => N + G.analysis.rollLength / T * _t({ v: G.cost }), 0);
         return o("rollLength", P), P;
       }
-    }[t.pricing_strategy], w = $(i);
+    }[t.pricing_strategy], w = $(c);
     return y(), w;
-  }, l = (i) => {
+  }, l = (c) => {
     const {
       isExtraEnabled: p,
       isMachiningEnabled: E,
@@ -789,12 +791,12 @@ function Rt(t, m) {
       getInputValue: M
     } = m;
     let $ = 0;
-    if (p("banding") && i.metadata.bandingLengthByType) {
-      const w = v(i.metadata.bandingLengthByType);
+    if (p("banding") && c.metadata.bandingLengthByType) {
+      const w = v(c.metadata.bandingLengthByType);
       o("banding", w), $ += w;
     }
-    if (p("finish") && i.metadata.finishAreaByType) {
-      const w = x(i.metadata.finishAreaByType);
+    if (p("finish") && c.metadata.finishAreaByType) {
+      const w = x(c.metadata.finishAreaByType);
       o("finish", w), $ += w;
     }
     if (y.value === "formula") {
@@ -802,49 +804,49 @@ function Rt(t, m) {
       isNaN(w) || ($ += w);
     }
     if (E()) {
-      const w = S(i);
+      const w = S(c);
       o("machining", w), $ += w;
     }
     if (C() && t.surcharge) {
-      const w = t.surcharge_type === "per_sheet" ? parseFloat(t.surcharge.toString()) * i.metadata.totalUsedStock : parseFloat(t.surcharge.toString());
-      o("surcharge", w), c(["added surcharge", w]), $ += w;
+      const w = t.surcharge_type === "per_sheet" ? parseFloat(t.surcharge.toString()) * c.metadata.totalUsedStock : parseFloat(t.surcharge.toString());
+      o("surcharge", w), i(["added surcharge", w]), $ += w;
     }
     return $;
-  }, h = (i) => {
+  }, h = (c) => {
     const { getInputValue: p, setInputValue: E } = m, C = {
-      "smartcut-job-id": i.jobId,
-      "smartcut-dimensions": i.parts.map((y) => `${y.l}x${y.w} [${y.q}]`).join(", "),
-      "smartcut-total-cut-length": i.metadata.totalCutLength,
-      "smartcut-part-area": i.metadata.totalPartArea,
-      "smartcut-total-cuts": i.metadata.totalCuts,
-      "smartcut-total-parts": i.metadata.totalPartsProduced,
-      "smartcut-machining": i.metadata.hasMachining
+      "smartcut-job-id": c.jobId,
+      "smartcut-dimensions": c.parts.map((y) => `${y.l}x${y.w} [${y.q}]`).join(", "),
+      "smartcut-total-cut-length": c.metadata.totalCutLength,
+      "smartcut-part-area": c.metadata.totalPartArea,
+      "smartcut-total-cuts": c.metadata.totalCuts,
+      "smartcut-total-parts": c.metadata.totalPartsProduced,
+      "smartcut-machining": c.metadata.hasMachining
     };
     if (Object.entries(C).forEach(([y, v]) => {
       E(y, v);
     }), p("smartcut-stock-summary") !== void 0) {
-      const y = i.stock.map((v) => `${v.l}x${v.w}${v.t ? "x" + v.t : ""} [${v.q}]`).join(", ");
+      const y = c.stock.map((v) => `${v.l}x${v.w}${v.t ? "x" + v.t : ""} [${v.q}]`).join(", ");
       E("smartcut-stock-summary", y);
     }
   };
   return {
-    calculatePrice: async (i) => {
+    calculatePrice: async (c) => {
       I();
       const { isQuantityPricing: p, selectedVariation: E, setVariationPrice: C, setCartQuantity: y } = m;
-      if (!(i != null && i.jobId))
+      if (!(c != null && c.jobId))
         return b("No job ID provided");
       p() || y(1);
-      let v = u(i);
-      const x = l(i);
+      let v = u(c);
+      const x = l(c);
       if (v += x, p()) {
-        const S = i.metadata.totalUsedStock, M = v / S;
+        const S = c.metadata.totalUsedStock, M = v / S;
         o("custom", M);
       } else {
-        if (!i.metadata.totalStockCost)
+        if (!c.metadata.totalStockCost)
           return b("Total stock cost not returned for a multiple size product");
-        c([`total cost is ${v}`]), o("custom", v);
+        i([`total cost is ${v}`]), o("custom", v);
       }
-      return E.value && C(v), h(i), { success: !0, totalPrice: v };
+      return E.value && C(v), h(c), { success: !0, totalPrice: v };
     },
     resetPricing: I
   };
