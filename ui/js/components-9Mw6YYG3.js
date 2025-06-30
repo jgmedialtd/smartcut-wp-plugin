@@ -4,7 +4,7 @@ var u = (i, e, t) => qr(i, typeof e != "symbol" ? e + "" : e, t);
 import { F as hi, i as Br, g as Ie, d as es, a as zt, c as ts, b as In, e as Ns, f as tt, v as fs, h as jr, s as Hr, j as Gr, o as Nr, k as Wr, l as Vr, P as Ur } from "./vendor-ov4OC3aS.js";
 import { i as Pn, B as zr } from "./vendor-i18n-BWRGKi6w.js";
 import { d as $e, c as P, o as b, F as be, r as Te, n as ke, a as Se, b as A, w as gs, t as re, v as ms, e as U, f as Yr, g as X, h as se, i as Pe, j as ut, k as lt, l as yi, m as ai, u as I, p as _t, q as Xr, s as ye, x as ys, y as Bt, z as ve, A as Kr, B as Dt, C as Ln, D as Zr, E as Jr, G as Qr, H as bt, I as eo, T as to, J as vs, K as io, L as Ws, M as so, N as no, O as ro, P as oo, Q as lo, R as ao } from "./vendor-vue-Cm6Mf_s4.js";
-import { u as Dn, a as bs, b as ws, c as uo, d as co, e as ho } from "./composables-FhedYSre.js";
+import { u as Dn, a as bs, b as ws, c as uo, d as co, e as ho } from "./composables-rnWhbdl7.js";
 import { a as Tn, b as $n, l as rt, c as _i, d as qi, s as Me, r as pt, e as ui, f as An, g as po, h as fo, i as go, p as mo, S as yo, j as vo, k as bo } from "./vendor-d3-B-JATA3m.js";
 const wo = (i, e, t) => {
   const s = i[e];
@@ -8157,7 +8157,7 @@ const nc = ["id"], rc = /* @__PURE__ */ $e({
       height: "auto",
       position: "absolute",
       top: "0",
-      right: "var(--container-padding)",
+      right: "0",
       display: "flex",
       visibility: "visible",
       opacity: "1",
@@ -9068,7 +9068,7 @@ const nc = ["id"], rc = /* @__PURE__ */ $e({
       ], 64);
     };
   }
-}), Yh = /* @__PURE__ */ ei(Dc, [["__scopeId", "data-v-542a5119"]]), Tc = {
+}), Yh = /* @__PURE__ */ ei(Dc, [["__scopeId", "data-v-35c9eded"]]), Tc = {
   name: "ObjectViewer",
   props: {
     data: {
