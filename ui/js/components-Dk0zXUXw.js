@@ -4,7 +4,7 @@ var u = (i, e, t) => _r(i, typeof e != "symbol" ? e + "" : e, t);
 import { F as hi, i as qr, g as Ce, d as es, a as Yt, c as ts, b as In, e as Ns, f as et, v as ps, h as Br, s as Hr, j as jr, o as Gr, k as Nr, l as Wr, P as Vr } from "./vendor-ov4OC3aS.js";
 import { i as Pn, B as Ur } from "./vendor-i18n-BWRGKi6w.js";
 import { d as Ae, c as P, o as w, F as ve, r as $e, n as Pe, a as Se, b as A, w as gs, t as re, v as ms, e as U, f as zr, g as Y, h as ne, i as Ie, j as at, k as ot, l as yi, m as ai, u as I, p as qt, q as Yr, s as ge, x as ys, y as Ht, z as we, A as Xr, B as Dt, C as Ln, D as Kr, E as Zr, G as Jr, H as vt, I as Qr, T as eo, J as vs, K as to, L as Ws, M as io, N as so, O as no, P as ro, Q as oo, R as lo } from "./vendor-vue-Cm6Mf_s4.js";
-import { u as Dn, a as bs, b as ws, c as ao, d as uo, e as co } from "./composables-B8DKv6Vl.js";
+import { u as Dn, a as bs, b as ws, c as ao, d as uo, e as co } from "./composables-BTcydhdJ.js";
 import { a as Tn, b as $n, l as nt, c as Mi, d as _i, s as _e, r as dt, e as ui, f as An, g as ho, h as fo, i as po, p as go, S as mo, j as yo, k as vo } from "./vendor-d3-B-JATA3m.js";
 const bo = (i, e, t) => {
   const s = i[e];
@@ -11189,7 +11189,7 @@ const fh = {
   }
 }), zh = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({ __proto__: null, default: wh }, Symbol.toStringTag, { value: "Module" })), Sh = {
   id: "smartcut-notices",
-  "data-app": "smartcut"
+  class: "smartcut-content"
 }, xh = { class: "content" }, kh = ["onClick"], Ch = ["innerHTML"], Ih = /* @__PURE__ */ Ae({
   __name: "Notices",
   props: {
