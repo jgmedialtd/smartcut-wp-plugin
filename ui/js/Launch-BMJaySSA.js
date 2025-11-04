@@ -1,8 +1,8 @@
-import { F as vt, G as Oe, bp as He, bq as We, br as w, bs as kt, bt as H, bu as Ye, bv as Qe, Q as wt, bw as St, bx as xt, by as Pt, t as Ft, bz as Et } from "./components-B2uCyg45.js";
+import { F as vt, G as Oe, bp as He, bq as We, br as w, bs as kt, bt as H, bu as Ye, bv as Qe, Q as wt, bw as St, bx as xt, by as Pt, t as Ft, bz as Et } from "./components-CrBxvcev.js";
 import "./vendor-i18n-BuJwRgtG.js";
 import { o as xe, r as R, s as v, a as Pe, _ as Ne, u as Ct, c as qe, b as je, ah as Z, ai as Tt } from "./vendor-pIOdV8fk.js";
 import { d as Ie, e as b, h as Fe, K as Ge, Z as zt, g as Je, c as Ee, o as M, G as we, p as ce, s as X, q as Q, M as ue, F as Ze, k as Se, _ as Xe, b as $t, Q as et, z as Dt, t as qt } from "./vendor-vue-U4l9SdFr.js";
-import { f as jt, k as Ot } from "./composables-B1MJud6F.js";
+import { f as jt, k as Ot } from "./composables-ChY8cvfG.js";
 import { E as It, a as ae } from "./vendor-pdf-Gw7VWVMD.js";
 const At = xe({
   name: v().trim(),
@@ -52,7 +52,7 @@ const Rt = /* @__PURE__ */ Ie({
   __name: "Vanilla",
   emits: ["ready"],
   setup(s, { expose: T, emit: B }) {
-    const h = ue(() => import("./components-B2uCyg45.js").then((a) => a.bC)), l = ue(() => import("./components-B2uCyg45.js").then((a) => a.bD)), f = ue(() => import("./components-B2uCyg45.js").then((a) => a.bE)), m = B, z = "4.0.5", j = b(!1), o = b([]), _ = b({
+    const h = ue(() => import("./components-CrBxvcev.js").then((a) => a.bC)), l = ue(() => import("./components-CrBxvcev.js").then((a) => a.bD)), f = ue(() => import("./components-CrBxvcev.js").then((a) => a.bE)), m = B, z = "4.0.6", j = b(!1), o = b([]), _ = b({
       banding: null,
       finish: null,
       planing: null,
@@ -353,7 +353,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
 }, Ut = !1, Ht = /* @__PURE__ */ Ie({
   __name: "WordPress",
   setup(s) {
-    const T = ue(() => import("./components-B2uCyg45.js").then((e) => e.bD)), B = ue(() => import("./components-B2uCyg45.js").then((e) => e.bB)), h = ue(() => import("./components-B2uCyg45.js").then((e) => e.bE)), { inputShapes: l } = jt(), f = "production", m = {}, z = {}, j = b(null);
+    const T = ue(() => import("./components-CrBxvcev.js").then((e) => e.bD)), B = ue(() => import("./components-CrBxvcev.js").then((e) => e.bB)), h = ue(() => import("./components-CrBxvcev.js").then((e) => e.bE)), { inputShapes: l } = jt(), f = "production", m = {}, z = {}, j = b(null);
     let o, _, t;
     const P = {
       banding: null,

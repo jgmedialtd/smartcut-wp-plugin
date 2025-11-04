@@ -1,6 +1,6 @@
 import { i as sr, B as cc } from "./vendor-i18n-BuJwRgtG.js";
 import { d as De, c as T, o as w, F as Te, r as je, n as Je, a as Ie, b as O, w as ls, t as J, v as ln, e as te, f as mt, g as Wt, h as Q, u as nr, i as uc, j as Me, k as yt, l as dc, m as cs, p as ve, q as k, s as U, x as Ns, T as La, y as ar, z as fc, A as wi, B as Ii, C as Gs, D as ai, E as pi, G as Fe, H as hc, I as or, J as ts, K as pc, L as fo, M as Ri, N as ho, O as gc, P as mc, Q as yc, R as bc, S as vc, U as Ln, V as wc, W as Sc } from "./vendor-vue-U4l9SdFr.js";
-import { u as Ea, a as xc, b as kc, c as Ic, d as Cc, e as Da, f as rr, g as Pc, h as Tc, i as Ac, j as Oc } from "./composables-B1MJud6F.js";
+import { u as Ea, a as xc, b as kc, c as Ic, d as Cc, e as Da, f as rr, g as Pc, h as Tc, i as Ac, j as Oc } from "./composables-ChY8cvfG.js";
 import { a as lr, b as cr, l as Ft, c as qs, d as zs, s as st, r as jt, e as is, f as ur, g as $c, h as Fc, i as Lc, p as Ec, S as Dc, j as Rc, k as Mc } from "./vendor-d3-DUCHe88K.js";
 import { _ as ue, o as B, a as ee, s as m, n as d, b as D, c as xe, r as we, u as he, d as St, e as aa, z as _c, Z as En, f as Bc, l as me, p as qi, g as _e, h as jc, i as Vc, F as ns, j as dr, k as Nc, m as Gc, q as qc, t as zc, v as Wc, w as Hc, x as fr, y as Uc, A as Dn, B as hr, C as po, D as Yc, E as Kc, G as ft, H as Ws, I as Ke, J as Si, K as go, L as Zc, M as Ct, N as Hs, O as it, P as Xc, Q as Jc, R as Qc, S as eu, T as tu, U as iu } from "./vendor-pIOdV8fk.js";
 function vt() {
@@ -15810,9 +15810,9 @@ B({
   q: d().min(1).nullable().optional(),
   name: m().nullable().optional(),
   // Import existing schemas for extras
-  banding: jr.optional(),
-  finish: Vr.optional(),
-  planing: Nr.optional(),
+  banding: jr.nullable().optional(),
+  finish: Vr.nullable().optional(),
+  planing: Nr.nullable().optional(),
   // Custom data as record
   customData: we(m(), xe()).nullable().optional(),
   stockId: m().nullable().optional()
@@ -15825,9 +15825,9 @@ const Mm = B({
   type: m().optional(),
   // variable | simple
   materials: ee(Dm).optional(),
-  banding: sa.optional(),
-  finish: sa.optional(),
-  planing: sa.optional(),
+  banding: sa.nullable().optional(),
+  finish: sa.nullable().optional(),
+  planing: sa.nullable().optional(),
   machining: xe().optional(),
   bandingPricing: es.optional(),
   finishPricing: es.optional(),
@@ -17406,7 +17406,7 @@ const Km = /* @__PURE__ */ Tt(Hm, [["render", Ym]]), Zm = ["id"], Xm = {
         domain: Oe,
         extrasOptions: $(),
         source: "checkout",
-        sourceVersion: "4.0.5"
+        sourceVersion: "4.0.6"
       };
       await ce.connect(), ce.emit("calculate", S);
     }, $n = (b, v) => {
@@ -17584,7 +17584,7 @@ const Km = /* @__PURE__ */ Tt(Hm, [["render", Ym]]), Zm = ["id"], Xm = {
       r.inputSaw.value = new el(b);
     }, { deep: !0 }), Wt(async () => {
       if (X.value) return;
-      const b = "4.0.5", v = "4.0.0";
+      const b = "4.0.6", v = "4.0.0";
       vo(b, v) && !vo(Ut.value, v) && (console.log(`[CheckoutCalculator] Clearing parts for migration from ${Ut.value} to ${b}`), ws(), Ut.value = b);
       const S = new URL(window.location.href), y = S.searchParams.toString(), W = S.origin + S.pathname + (y ? `?${y}` : "");
       ii.value !== W && ws(), ii.value = W, de.value = re.locale, await ce.connect(), ce.emit("getUserFromDomain"), window.addEventListener("smartcut/load", uo), X.value = !0, N.debug && G("log", [
