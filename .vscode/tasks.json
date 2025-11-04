@@ -6,7 +6,7 @@
 			"type": "shell",
 			"command": "php",
 			"args": [
-				"${workspaceFolder}/scripts/convert-case.php",
+				"${workspaceFolder}/deployment/convert-case.php",
 				"${file}"
 			],
 			"presentation": {
@@ -38,7 +38,7 @@
 		},
 		{
 			"type": "shell",
-			"command": "scripts/build.sh",
+			"command": "deployment/build.sh",
 			"label": "Build plugin in prod mode",
 			"args": [
 				"production"
@@ -46,7 +46,7 @@
 		},
 		{
 			"type": "shell",
-			"command": "scripts/build.sh",
+			"command": "deployment/build.sh",
 			"label": "Build plugin in dev mode",
 			"args": [
 				"development"
@@ -54,7 +54,7 @@
 		},
 		{
 			"type": "shell",
-			"command": "scripts/deploy.sh",
+			"command": "deployment/deploy.sh",
 			"label": "Deploy & publish plugin"
 		},
 	]
