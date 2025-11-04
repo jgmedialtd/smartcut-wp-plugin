@@ -1,4 +1,4 @@
-import { a5 as _e, a6 as Dl, a7 as Ys, a8 as es } from "./vendor-pIOdV8fk.js";
+import { a6 as _e, a7 as Dl, a8 as Ys, a9 as es } from "./vendor-4AnxBRif.js";
 /** @license
 *
 * jsPDF - PDF Document creation from JavaScript
@@ -5873,14 +5873,14 @@ function vu(e) {
   }, e.loadImageFile = e.loadFile;
 })(Dt.API), (function(e) {
   function t() {
-    return (Gt.html2canvas ? Promise.resolve(Gt.html2canvas) : import("./vendor-canvas-DlPGOTiq.js").then((u) => u.h)).catch(function(u) {
+    return (Gt.html2canvas ? Promise.resolve(Gt.html2canvas) : import("./vendor-canvas-By4b3sxG.js").then((u) => u.h)).catch(function(u) {
       return Promise.reject(new Error("Could not load html2canvas: " + u));
     }).then(function(u) {
       return u.default ? u.default : u;
     });
   }
   function r() {
-    return (Gt.DOMPurify ? Promise.resolve(Gt.DOMPurify) : import("./vendor-pIOdV8fk.js").then((u) => u.am)).catch(function(u) {
+    return (Gt.DOMPurify ? Promise.resolve(Gt.DOMPurify) : import("./vendor-4AnxBRif.js").then((u) => u.an)).catch(function(u) {
       return Promise.reject(new Error("Could not load dompurify: " + u));
     }).then(function(u) {
       return u.default ? u.default : u;
@@ -6578,7 +6578,7 @@ endobj\r
   var d = h.getContext("2d");
   d.fillStyle = "#fff", d.fillRect(0, 0, h.width, h.height);
   var v = { ignoreMouse: !0, ignoreAnimation: !0, ignoreDimensions: !0 }, L = this;
-  return (Gt.canvg ? Promise.resolve(Gt.canvg) : import("./vendor-canvas-DlPGOTiq.js").then((S) => S.i)).catch(function(S) {
+  return (Gt.canvg ? Promise.resolve(Gt.canvg) : import("./vendor-canvas-By4b3sxG.js").then((S) => S.i)).catch(function(S) {
     return Promise.reject(new Error("Could not load canvg: " + S));
   }).then(function(S) {
     return S.default ? S.default : S;

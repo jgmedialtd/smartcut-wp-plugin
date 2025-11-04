@@ -1,19 +1,19 @@
-const { initializeZodTranslations: i } = await import("./zod-error-map-BoOlmhg_.js");
+const { initializeZodTranslations: i } = await import("./zod-error-map-S481k7Cw.js");
 i();
-const { initializeStaticRegistry: l } = await import("./static-class-registry-Vhg_tGWa.js");
+const { initializeStaticRegistry: l } = await import("./static-class-registry-CCe5FsUX.js");
 l();
-const { shouldClearStorage: u } = await import("./version-utils-Ds2b9_6L.js"), n = "checkout-app-version", o = "4.0.6";
+const { shouldClearStorage: m } = await import("./version-utils-Ds2b9_6L.js"), n = "checkout-app-version", o = "4.0.8";
 {
   const t = localStorage.getItem(n);
-  if (u(o, t)) {
+  if (m(o, t)) {
     console.log(`[Checkout] Major version update detected (${t} → ${o}), clearing localStorage`);
     const r = o;
     localStorage.clear(), localStorage.setItem(n, r), console.log("[Checkout] localStorage cleared successfully");
   } else
     localStorage.setItem(n, o), t && console.log(`[Checkout] Version ${o} (from ${t || "first run"})`);
 }
-const { library: m } = await import("./vendor-pIOdV8fk.js").then((t) => t.aj), e = await import("./vendor-pIOdV8fk.js").then((t) => t.ak), a = await import("./vendor-pIOdV8fk.js").then((t) => t.al), { FontAwesomeIcon: p } = await import("./vendor-vue-U4l9SdFr.js").then((t) => t.a0), { createApp: f } = await import("./vendor-vue-U4l9SdFr.js").then((t) => t.$), { i18nextReady: g } = await import("./components-CrBxvcev.js").then((t) => t.bA);
-m.add(
+const { library: u } = await import("./vendor-4AnxBRif.js").then((t) => t.ak), e = await import("./vendor-4AnxBRif.js").then((t) => t.al), a = await import("./vendor-4AnxBRif.js").then((t) => t.am), { FontAwesomeIcon: p } = await import("./vendor-vue-V1I1Po2P.js").then((t) => t.a0), { createApp: f } = await import("./vendor-vue-V1I1Po2P.js").then((t) => t.$), { i18nextReady: g } = await import("./components-B3kNUlzO.js").then((t) => t.bA);
+u.add(
   a.faXmark,
   a.faExpand,
   e.faExpand,
@@ -29,7 +29,7 @@ m.add(
   a.faTrash,
   a.faCalculator
 );
-const w = await import("./Launch-BMJaySSA.js"), d = w.default;
+const w = await import("./Launch-DaNSRfpc.js"), d = w.default;
 let s = null, c = !1;
 const h = async () => {
   if (!c) {

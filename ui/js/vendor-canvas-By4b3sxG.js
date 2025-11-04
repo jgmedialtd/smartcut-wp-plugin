@@ -1,4 +1,4 @@
-import { a0 as Or, a1 as SA, a2 as ve, a3 as fr, a4 as Qs } from "./vendor-pIOdV8fk.js";
+import { a1 as Or, a2 as SA, a3 as ve, a4 as fr, a5 as Qs } from "./vendor-4AnxBRif.js";
 /*!
 * html2canvas 1.4.1 <https://html2canvas.hertzen.com>
 * Copyright (c) 2022 Niklas von Hertzen <https://hertzen.com>
