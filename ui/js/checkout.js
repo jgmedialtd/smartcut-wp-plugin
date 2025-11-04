@@ -1,8 +1,8 @@
-const { initializeZodTranslations: i } = await import("./zod-error-map-cywlK3TR.js");
+const { initializeZodTranslations: i } = await import("./zod-error-map-CdfJcjxb.js");
 i();
-const { initializeStaticRegistry: l } = await import("./static-class-registry-DBsbwc4F.js");
+const { initializeStaticRegistry: l } = await import("./static-class-registry-BcOlyTcE.js");
 l();
-const { shouldClearStorage: u } = await import("./version-utils-Ds2b9_6L.js"), n = "checkout-app-version", o = "4.0.1";
+const { shouldClearStorage: u } = await import("./version-utils-Ds2b9_6L.js"), n = "checkout-app-version", o = "4.0.3";
 {
   const t = localStorage.getItem(n);
   if (u(o, t)) {
@@ -12,7 +12,7 @@ const { shouldClearStorage: u } = await import("./version-utils-Ds2b9_6L.js"), n
   } else
     localStorage.setItem(n, o), t && console.log(`[Checkout] Version ${o} (from ${t || "first run"})`);
 }
-const { library: m } = await import("./vendor-pIOdV8fk.js").then((t) => t.aj), e = await import("./vendor-pIOdV8fk.js").then((t) => t.ak), a = await import("./vendor-pIOdV8fk.js").then((t) => t.al), { FontAwesomeIcon: p } = await import("./vendor-vue-U4l9SdFr.js").then((t) => t.a0), { createApp: f } = await import("./vendor-vue-U4l9SdFr.js").then((t) => t.$), { i18nextReady: g } = await import("./components-zZfwvaG2.js").then((t) => t.bA);
+const { library: m } = await import("./vendor-pIOdV8fk.js").then((t) => t.aj), e = await import("./vendor-pIOdV8fk.js").then((t) => t.ak), a = await import("./vendor-pIOdV8fk.js").then((t) => t.al), { FontAwesomeIcon: p } = await import("./vendor-vue-U4l9SdFr.js").then((t) => t.a0), { createApp: f } = await import("./vendor-vue-U4l9SdFr.js").then((t) => t.$), { i18nextReady: g } = await import("./components-CXGpk6F4.js").then((t) => t.bA);
 m.add(
   a.faXmark,
   a.faExpand,
@@ -29,7 +29,7 @@ m.add(
   a.faTrash,
   a.faCalculator
 );
-const w = await import("./Launch-C0tEu_Z-.js"), d = w.default;
+const w = await import("./Launch-BmK9WeFX.js"), d = w.default;
 let s = null, c = !1;
 const h = async () => {
   if (!c) {
