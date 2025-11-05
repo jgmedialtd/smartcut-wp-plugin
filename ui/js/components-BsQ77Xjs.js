@@ -1,6 +1,6 @@
 import { i as ar, B as fc } from "./vendor-i18n-BuJwRgtG.js";
 import { d as Re, c as T, o as w, F as Ae, r as Ne, n as et, a as Ie, b as O, w as ds, t as X, v as un, e as se, f as gt, g as Yt, h as J, u as rr, i as hc, j as Be, k as mt, l as pc, m as fs, p as ve, q as k, s as Y, x as zs, T as _o, y as lr, z as gc, A as xi, B as Pi, C as qs, D as ai, E as gi, G as _e, H as mc, I as cr, J as ns, K as yc, L as ga, M as Bi, N as ma, O as bc, P as vc, Q as wc, R as Sc, S as xc, U as Rn, V as kc, W as Ic } from "./vendor-vue-V1I1Po2P.js";
-import { u as Mo, a as Cc, b as Pc, c as Tc, d as Ac, e as Bo, f as ur, g as Oc, h as $c, i as Fc, j as Lc } from "./composables-B5AhhMMT.js";
+import { u as Mo, a as Cc, b as Pc, c as Tc, d as Ac, e as Bo, f as ur, g as Oc, h as $c, i as Fc, j as Lc } from "./composables-CFLwu-TC.js";
 import { a as dr, b as fr, l as Lt, c as Ws, d as Hs, s as at, r as Gt, e as os, f as hr, g as Ec, h as Dc, i as Rc, p as _c, S as Mc, j as Bc, k as jc } from "./vendor-d3-DUCHe88K.js";
 import { _ as fe, o as B, a as ee, s as y, n as d, b as D, c as xe, r as Se, u as pe, d as Rt, e as lo, z as Vc, Z as _n, f as Nc, l as me, p as Ti, g as je, h as Gc, i as zc, F as rs, j as pr, k as qc, m as Wc, q as Hc, t as Uc, v as Yc, w as Kc, x as gr, y as Zc, A as Mn, B as mr, C as ya, D as Xc, E as Jc, G as Qc, H as ht, I as Us, J as Xe, K as ki, L as ba, M as eu, N as kt, O as Ys, P as ot, Q as tu, R as iu, S as su, T as nu, U as ou, V as au } from "./vendor-4AnxBRif.js";
 function It() {
@@ -17578,9 +17578,9 @@ const Jm = /* @__PURE__ */ Pt(Km, [["render", Xm]]), Qm = ["id"], ey = {
         domain: ct,
         extrasOptions: $(),
         source: "checkout",
-        sourceVersion: "4.0.21"
+        sourceVersion: "4.0.22"
       };
-      await Te.connect(), console.log(I), Te.emit("calculationData", I);
+      await Te.connect(), Te.emit("calculate", I);
     }, En = (b, v) => {
       if (console.log(`[initExtra] Starting init for ${b}`), console.log(`[initExtra] initData[${b}]:`, v?.[b]), console.log(`[initExtra] options.enable[${b}]:`, ue.enable?.[b]), Vt(b, !1), !b || !v || !v?.[b]) {
         console.log(`[initExtra] Early return: missing extraType or initData[${b}]`);
@@ -17756,7 +17756,7 @@ const Jm = /* @__PURE__ */ Pt(Km, [["render", Xm]]), Qm = ["id"], ey = {
       r.inputSaw.value = new nl(b);
     }, { deep: !0 }), Yt(async () => {
       if (Bt.value) return;
-      const b = "4.0.21", v = "4.0.0";
+      const b = "4.0.22", v = "4.0.0";
       xa(b, v) && !xa(Z.value, v) && (console.log(`[CheckoutCalculator] Clearing parts for migration from ${Z.value} to ${b}`), xs(), Z.value = b);
       const I = new URL(window.location.href), p = I.searchParams.toString(), N = I.origin + I.pathname + (p ? `?${p}` : "");
       Tt.value !== N && xs(), Tt.value = N, Oe.value = ue.locale, await Te.connect(), Te.emit("getUserFromDomain"), window.addEventListener("smartcut/load", pa), Bt.value = !0, ie.debug && te("log", [
@@ -18066,7 +18066,7 @@ const Jm = /* @__PURE__ */ Pt(Km, [["render", Xm]]), Qm = ["id"], ey = {
       ], 64);
     };
   }
-}), kS = /* @__PURE__ */ Pt(Fy, [["__scopeId", "data-v-df74d468"]]), _l = fe(["select", "multiselect", "range", "boolean", "search"]), Ml = fe(["asc", "desc"]), Bl = fe(["grid", "list"]), Ly = B({
+}), kS = /* @__PURE__ */ Pt(Fy, [["__scopeId", "data-v-60e4cda3"]]), _l = fe(["select", "multiselect", "range", "boolean", "search"]), Ml = fe(["asc", "desc"]), Bl = fe(["grid", "list"]), Ly = B({
   // Visual (Note: color, weight, imageUrl, tags, available are now in InputStock base schema)
   name: y().optional().describe("User-friendly display name"),
   description: y().optional().describe("Detailed description"),
