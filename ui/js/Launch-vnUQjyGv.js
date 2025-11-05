@@ -1,37 +1,37 @@
-import { F as bt, G as Oe, bp as He, bq as Ke, br as w, bs as vt, bt as H, bu as kt, bv as Ye, Q as wt, bw as St, bx as xt, by as Pt, t as Ft, bz as Et } from "./components-ChmrVdkS.js";
+import { F as bt, G as Oe, bp as He, bq as Ke, br as w, bs as vt, bt as H, bu as kt, bv as Ye, Q as wt, bw as St, bx as xt, by as Pt, t as Ft, bz as Et } from "./components-DISrbVSn.js";
 import "./vendor-i18n-BuJwRgtG.js";
-import { o as xe, r as R, s as v, a as Pe, _ as We, u as Ct, c as qe, b as je, ai as Z, aj as Tt } from "./vendor-4AnxBRif.js";
+import { o as xe, r as L, s as v, a as Pe, _ as We, u as Ct, c as qe, b as je, ai as Z, aj as Tt } from "./vendor-4AnxBRif.js";
 import { d as Ie, e as b, h as Fe, K as Ne, Z as zt, g as Ge, c as Ee, o as M, G as we, p as ce, s as X, q as Q, M as ue, F as Je, k as Se, _ as Ze, b as $t, Q as Xe, z as Dt, t as qt } from "./vendor-vue-V1I1Po2P.js";
-import { f as jt, k as Ot } from "./composables-Db3BGJOY.js";
+import { f as jt, k as Ot } from "./composables-B5AhhMMT.js";
 import { E as It, a as ae } from "./vendor-pdf-4rRPwXuv.js";
 const At = xe({
   name: v().trim(),
   price: v().trim().default("0"),
-  options: R(v(), Pe(v()))
-}), Vt = R(v(), At), Lt = xe({
+  options: L(v(), Pe(v()))
+}), Vt = L(v(), At), Rt = xe({
   name: v().trim(),
-  options: R(
+  options: L(
     v(),
     Ct([v(), Pe(v())])
   ).optional(),
   variations: Vt.optional(),
   price: v().trim().default("0"),
   type: We(["simple", "variable"]).optional()
-}), Qe = R(v(), Lt);
+}), Qe = L(v(), Rt);
 xe({
   env: v().default("production"),
   showDevInfo: je().default(!1),
   debug: je().default(!1),
-  el: R(v(), Z()).default({}),
+  el: L(v(), Z()).default({}),
   inputType: We(["manual", "formula"]).default("manual"),
-  settings: R(v(), Z()).default({}),
+  settings: L(v(), Z()).default({}),
   // Note: HTMLInputElement cannot be validated with Zod, using unknown
-  inputs: R(v(), Z()).default({}),
-  formatting: R(v(), Z()).default({}),
-  product: R(v(), Z()).default({}),
+  inputs: L(v(), Z()).default({}),
+  formatting: L(v(), Z()).default({}),
+  product: L(v(), Z()).default({}),
   stock: Pe(bt).default([]),
   variations: Pe(Z()).default([]),
-  selectedVariation: R(v(), Z()).default({}),
+  selectedVariation: L(v(), Z()).default({}),
   machiningPricing: qe().optional(),
   quantityPricing: je().default(!1),
   extrasData: xe({
@@ -43,16 +43,16 @@ xe({
   }),
   formulaURL: v().url().optional().or(v().default("")),
   formulaSpec: v().default(""),
-  hardwareResult: R(v(), qe()).default({}),
+  hardwareResult: L(v(), qe()).default({}),
   // HardwareResult type from formula.ts
   metadata: qe().optional()
   // Metadata from optimize/main
 });
-const Rt = /* @__PURE__ */ Ie({
+const Lt = /* @__PURE__ */ Ie({
   __name: "Vanilla",
   emits: ["ready"],
   setup(s, { expose: T, emit: B }) {
-    const h = ue(() => import("./components-ChmrVdkS.js").then((a) => a.bC)), l = ue(() => import("./components-ChmrVdkS.js").then((a) => a.bD)), f = ue(() => import("./components-ChmrVdkS.js").then((a) => a.bE)), m = B, z = "4.0.20", j = b(!1), o = b([]), _ = b({
+    const h = ue(() => import("./components-DISrbVSn.js").then((a) => a.bC)), l = ue(() => import("./components-DISrbVSn.js").then((a) => a.bD)), f = ue(() => import("./components-DISrbVSn.js").then((a) => a.bE)), m = B, z = "4.0.21", j = b(!1), o = b([]), _ = b({
       banding: null,
       finish: null,
       planing: null,
@@ -65,7 +65,7 @@ const Rt = /* @__PURE__ */ Ie({
     Ze("calculator", () => E.value);
     const V = (a) => {
       j.value && console.log("SmartCut -", ...a);
-    }, L = (a) => {
+    }, R = (a) => {
       console.error(`SmartCut - ${a}`);
     }, ge = () => {
       const a = new CustomEvent("smartcut/validationError");
@@ -131,7 +131,7 @@ const Rt = /* @__PURE__ */ Ie({
       )), a?.metadata?.bandingLengthByType)
         for (const [k, I] of Object.entries(a.metadata.bandingLengthByType)) {
           if (!H(_.value, ["banding", k])) {
-            L(`Banding price ${k} not found`);
+            R(`Banding price ${k} not found`);
             continue;
           }
           p.checkout.formattedBandingCost[k] = (I / 1e3 * _.value.banding[k]).toLocaleString(c.value, { style: "currency", currency: P.value });
@@ -139,7 +139,7 @@ const Rt = /* @__PURE__ */ Ie({
       if (a?.metadata?.finishAreaByType)
         for (const [k, I] of Object.entries(a.metadata.finishAreaByType)) {
           if (!H(_.value, ["finish", k])) {
-            L(`Finish price ${k} not found`);
+            R(`Finish price ${k} not found`);
             continue;
           }
           p.checkout.formattedFinishCost[k] = (I / 1e6 * _.value.finish[k]).toLocaleString(c.value, { style: "currency", currency: P.value });
@@ -169,7 +169,7 @@ const Rt = /* @__PURE__ */ Ie({
       formulaSpec: F,
       hardWareResult: K,
       log: V,
-      error: L,
+      error: R,
       calculating: Y,
       result: ne,
       formatPrice: C,
@@ -208,7 +208,7 @@ const Rt = /* @__PURE__ */ Ie({
         "find-extras-price": x,
         "format-price": C,
         onLog: V,
-        onError: L,
+        onError: R,
         onCalculating: Y,
         onValidationError: ge,
         onResult: ne
@@ -353,14 +353,14 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
 }, Ut = !1, Ht = /* @__PURE__ */ Ie({
   __name: "WordPress",
   setup(s) {
-    const T = ue(() => import("./components-ChmrVdkS.js").then((e) => e.bD)), B = ue(() => import("./components-ChmrVdkS.js").then((e) => e.bB)), h = ue(() => import("./components-ChmrVdkS.js").then((e) => e.bE)), { inputShapes: l } = jt(), f = "production", m = {}, z = {}, j = b(null);
+    const T = ue(() => import("./components-DISrbVSn.js").then((e) => e.bD)), B = ue(() => import("./components-DISrbVSn.js").then((e) => e.bB)), h = ue(() => import("./components-DISrbVSn.js").then((e) => e.bE)), { inputShapes: l } = jt(), f = "production", m = {}, z = {}, j = b(null);
     let o, _, t;
     const P = {
       banding: null,
       finish: null
     };
     let c = null, $ = [], U = null, F = {};
-    const K = b(!1), E = b("manual"), W = b(""), D = Ne([]), _e = Fe(() => D.value), V = b(null), L = b(!0), ge = b(null), Y = b(!1), N = b(null);
+    const K = b(!1), E = b("manual"), W = b(""), D = Ne([]), _e = Fe(() => D.value), V = b(null), R = b(!0), ge = b(null), Y = b(!1), N = b(null);
     Ze("calculator", () => N.value);
     const C = (e) => {
       K.value && console.log("SmartCut -", ...e);
@@ -410,7 +410,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
       }
       const e = window.smartcutConfig;
       t = e.settings;
-      const n = Le(w(window, ["smartcutConfig", "banding_data"])), r = Le(w(window, ["smartcutConfig", "finish_data"])), i = (q) => {
+      const n = Re(w(window, ["smartcutConfig", "banding_data"])), r = Re(w(window, ["smartcutConfig", "finish_data"])), i = (q) => {
         switch (q) {
           case "length":
             return { cutType: "guillotine", cutPreference: "l" };
@@ -441,6 +441,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
         numberFormat: t.numberFormat || "decimal",
         locale: e.locale,
         decimalPlaces: 2,
+        fractionRoundTo: 0,
         currency: t.currency || "USD",
         stockSelection: t.stock_selection,
         stockGrain: t.stock_grain,
@@ -511,7 +512,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
           enableBanding: t.machining_corners_enable_banding
         }
       };
-      L.value = Be(), L.value ? G(!0) : ne(), c.type === "variable" ? te(!1, !1) : ee(L.value);
+      R.value = Be(), R.value ? G(!0) : ne(), c.type === "variable" ? te(!1, !1) : ee(R.value);
       const de = {
         type: c.type,
         stock: D.value.map((q) => q.toData()),
@@ -683,7 +684,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
     }, ye = (e) => {
       const n = (r) => St(xt(r), 100).replace("|", "_");
       return Array.isArray(e) ? e.map(n).join(",") : n(e);
-    }, Le = (e) => {
+    }, Re = (e) => {
       if (!e) return null;
       const n = {
         labels: [],
@@ -747,7 +748,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
     }, ct = (e) => {
       if (ze(e))
         return z[e].value;
-    }, ze = (e) => e in z && z[e] instanceof HTMLInputElement, Re = () => {
+    }, ze = (e) => e in z && z[e] instanceof HTMLInputElement, Le = () => {
       k(1), p(), _();
       for (const e in z)
         e !== "smartcut-hardware-price" && Te(e, null);
@@ -780,7 +781,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
         z[n] = document.getElementById(n);
       });
     }, dt = (e, n) => {
-      Re(), V.value = n, C(["variation selected", n.attributes]), D.value = [];
+      Le(), V.value = n, C(["variation selected", n.attributes]), D.value = [];
       const r = w(n, ["attributes", "attribute_thickness"]) ?? null;
       if (c.selected_thickness = r, l.value.forEach((i) => {
         i.t = wt({ v: r });
@@ -788,7 +789,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
         const i = ft(n);
         if (C([`variation found with size: ${i} & thickness: ${r}`]), !i)
           return te(!1), x("The size of this multiple size product could not be found");
-        if (Array.isArray(i) ? ee(L.value) : be(i) ? te(!0, !0) : ee(L.value), $?.length) {
+        if (Array.isArray(i) ? ee(R.value) : be(i) ? te(!0, !0) : ee(R.value), $?.length) {
           let g;
           const d = r;
           let y = n.display_price;
@@ -842,10 +843,10 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
             n?.attributes
           ));
         }
-        ee(L.value);
+        ee(R.value);
       }
     }, mt = async (e) => {
-      Re(), C(["result event received", e]);
+      Le(), C(["result event received", e]);
       const n = await o(e);
       if (!n.success) {
         console.error(n.error);
@@ -853,7 +854,6 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
       }
       await _t(e);
     }, _t = async (e) => {
-      debugger;
       const r = Bt(Ft, e, ge.value, it).split(",")[1], i = new Tt();
       i.file("order-summary.pdf", r);
       const g = await i.generateAsync({ type: "blob" }), d = new File([g], "order-summary.zip", { type: "application/zip" });
@@ -930,7 +930,7 @@ const Bt = (s, T, B, h = (l) => l.toString()) => {
   setup(s, { expose: T }) {
     const B = b(!1), h = b(null), l = Xe({
       wordpress: Ht,
-      vanilla: Rt
+      vanilla: Lt
     }), f = s, m = Fe(() => {
       if (!f.type) return null;
       const z = f?.type?.toLowerCase();
