@@ -1,4 +1,4 @@
-import { u as ps, g as ds, S as gs, r as hs, s as vs, a as ms, b as _t, C as Je, c as Bt, d as it, e as Gt, f as Zt, h as Ut, i as zt, j as Kt, k as ys, l as Ss, t as ve, m as pe, n as Nt, o as ws, p as bs, q as ks, v as ot, w as Ls, x as We, y as Is, z as wt, I as Ie, A as Tt, B as lt, D as Qe, E as xs, F as ut, G as st, H as ct, J as ft, K as Os, L as Cs, M as pt, N as me, O as As, P as Pt, Q as Fs } from "./components-D1mzaAGH.js";
+import { u as ps, g as ds, S as gs, r as hs, s as vs, a as ms, b as _t, C as Je, c as Bt, d as it, e as Gt, f as Zt, h as Ut, i as zt, j as Kt, k as ys, l as Ss, t as ve, m as pe, n as Nt, o as ws, p as bs, q as ks, v as ot, w as Ls, x as We, y as Is, z as wt, I as Ie, A as Tt, B as lt, D as Qe, E as xs, F as ut, G as st, H as ct, J as ft, K as Os, L as Cs, M as pt, N as me, O as As, P as Pt, Q as Fs } from "./components-DT95ezWO.js";
 import "./vendor-i18n-BuJwRgtG.js";
 import { h as A, e as U, K as je, X as we, Y as oe, j as nt, k as _s } from "./vendor-vue-V1I1Po2P.js";
 import { j as He, p as Ns, W as Ts, o as dt, b as Ye, a as Ps, c as Es, n as gt, s as ht, _ as $s, u as Vs, k as Et, m as Xe, q as js, X as Ms, Y as $t, $ as Ds, f as et, t as vt, v as mt, w as yt, a0 as qs } from "./vendor-4AnxBRif.js";
@@ -1026,8 +1026,7 @@ function Js(a = {}) {
         return console.log("[useInputs] Writing inputShapes to storage, first shape data:", n[0] ? {
           l: n[0].l,
           w: n[0].w,
-          t: n[0].t,
-          autoId: n[0].autoId
+          t: n[0].t
         } : "none"), JSON.stringify(n);
       }
     }
@@ -1056,8 +1055,7 @@ function Js(a = {}) {
           l: n[0].l,
           w: n[0].w,
           t: n[0].t,
-          trim: n[0].trim,
-          autoId: n[0].autoId
+          trim: n[0].trim
         } : "none"), JSON.stringify(n);
       }
     }
@@ -1373,7 +1371,7 @@ function Js(a = {}) {
         });
         o.push(...h);
       }
-      e.value.some((n) => n.q > 0) || new Qe({
+      e.value.some((n) => Number(n.q) > 0) || new Qe({
         category: ["part"],
         message: "errors.validation.no_parts",
         issues: o
@@ -1392,7 +1390,7 @@ function Js(a = {}) {
         const h = l.value[n].validate({ saw: i }, n);
         o.push(...h);
       }
-      l.value.some((n) => n.q > 0 || n.autoAdd) || new Qe({
+      l.value.some((n) => Number(n.q) > 0 || n.autoAdd) || new Qe({
         category: ["stock"],
         message: "errors.validation.no_stock",
         issues: o
