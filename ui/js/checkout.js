@@ -1,11 +1,11 @@
-const { initializeZodTranslations: y } = await import("./zod-error-map-DloV0mEK.js");
+const { initializeZodTranslations: y } = await import("./zod-error-map-S5Jf9-a7.js");
 y();
-const { initializeStaticRegistry: A } = await import("./static-class-registry-Cx4uPFFH.js");
+const { initializeStaticRegistry: A } = await import("./static-class-registry-DWjeh5HX.js");
 A();
-const { clearStorageOnceAboveThreshold: E, createLocalStorageAdapter: S } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.41", P = "4.0.54";
+const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.41", P = "4.0.56";
 {
-  const a = S();
-  E(
+  const a = E();
+  S(
     P,
     I,
     L,
@@ -70,11 +70,11 @@ const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a)
   }
 }, b = async () => {
   try {
-    return await (await import("./components-PAE6FBP6.js").then((o) => o.bE)).i18nextReady;
+    return await (await import("./components-CILyqcuP.js").then((o) => o.bG)).i18nextReady;
   } catch (a) {
     return console.warn("Failed to load i18n:", a.message), Promise.resolve();
   }
-}, F = await import("./Launch-BKtly7-B.js"), O = F.default;
+}, F = await import("./Launch-DLWKdr-5.js"), O = F.default;
 let r = null, n = !1;
 const k = async () => {
   if (!n) {
