@@ -1,6 +1,6 @@
-import { d as ce, r as l, c as U, L as ue, _ as fe, k as pe, a as me, o as _, H as M, q, x as J, h as de, s as x, N as D, v as ve, F as ge, n as B, Z as he } from "./vendor-vue-WkZl1F8L.js";
-import { T as ke, I as K, bD as W, by as ye, bx as f, bE as be, bB as v } from "./components-DaaD3Nlt.js";
-import { o as $, r as i, s as a, a as F, _ as z, u as we, c as L, b as R, P as g } from "./vendor-zod-DtqKDYvi.js";
+import { d as ce, r as l, c as U, L as ue, _ as fe, k as pe, a as me, o as _, H as M, q, x as J, h as de, s as x, N as D, v as ve, F as ge, n as L, Z as he } from "./vendor-vue-WkZl1F8L.js";
+import { T as ke, I as K, bC as G, bx as ye, bw as f, bD as be, bA as v } from "./components-PAE6FBP6.js";
+import { o as $, r as i, s as a, a as F, _ as Z, u as we, c as B, b as R, P as g } from "./vendor-zod-DtqKDYvi.js";
 const Se = $({
   name: a().trim(),
   price: a().trim().default("0"),
@@ -13,14 +13,14 @@ const Se = $({
   ).optional(),
   variations: Ce.optional(),
   price: a().trim().default("0"),
-  type: z(["simple", "variable"]).optional()
-}), Z = i(a(), Ee);
+  type: Z(["simple", "variable"]).optional()
+}), W = i(a(), Ee);
 $({
   env: a().default("production"),
   showDevInfo: R().default(!1),
   debug: R().default(!1),
   el: i(a(), g()).default({}),
-  inputType: z(["manual", "formula"]).default("manual"),
+  inputType: Z(["manual", "formula"]).default("manual"),
   settings: i(a(), g()).default({}),
   // Note: HTMLInputElement cannot be validated with Zod, using unknown
   inputs: i(a(), g()).default({}),
@@ -29,27 +29,27 @@ $({
   stock: F(ke).default([]),
   variations: F(g()).default([]),
   selectedVariation: i(a(), g()).default({}),
-  machiningPricing: L().optional(),
+  machiningPricing: B().optional(),
   quantityPricing: R().default(!1),
   extrasData: $({
-    banding: Z,
-    finish: Z
+    banding: W,
+    finish: W
   }).default({
     banding: {},
     finish: {}
   }),
   formulaURL: a().url().optional().or(a().default("")),
   formulaSpec: a().default(""),
-  hardwareResult: i(a(), L()).default({}),
+  hardwareResult: i(a(), B()).default({}),
   // HardwareResult type from formula.ts
-  metadata: L().optional()
+  metadata: B().optional()
   // Metadata from optimize/main
 });
 const _e = /* @__PURE__ */ ce({
   __name: "Vanilla",
   emits: ["ready"],
-  setup(Te, { expose: G, emit: Q }) {
-    const X = D(() => import("./components-DaaD3Nlt.js").then((e) => e.bJ)), Y = D(() => import("./components-DaaD3Nlt.js").then((e) => e.bH)), ee = D(() => import("./components-DaaD3Nlt.js").then((e) => e.bI)), te = Q, ae = "production", ne = "4.0.48", h = l(!1), r = l([]), s = l({
+  setup(Te, { expose: z, emit: Q }) {
+    const X = D(() => import("./components-PAE6FBP6.js").then((e) => e.bI)), Y = D(() => import("./components-PAE6FBP6.js").then((e) => e.bG)), ee = D(() => import("./components-PAE6FBP6.js").then((e) => e.bH)), te = Q, ae = "production", ne = "4.0.54", h = l(!1), r = l([]), s = l({
       banding: null,
       finish: null,
       planing: null,
@@ -58,7 +58,7 @@ const _e = /* @__PURE__ */ ce({
       if (e instanceof K) return e;
       const { issues: t, ...n } = e, o = Array.isArray(t) ? t : [];
       return new K({ ...n, issues: o });
-    })), k = l("USD"), m = l("en-US"), d = l("manual"), y = l(""), b = ue(null), N = l(null), p = l(), w = l(!1), P = l([]), V = l(W()), re = U(() => d.value === "manual" || d.value === "formula" && (y.value || b.value) ? w.value ? r.value.length > 0 : !0 : !1);
+    })), k = l("USD"), m = l("en-US"), d = l("manual"), y = l(""), b = ue(null), A = l(null), p = l(), w = l(!1), P = l([]), N = l(G()), re = U(() => d.value === "manual" || d.value === "formula" && (y.value || b.value) ? w.value ? r.value.length > 0 : !0 : !1);
     he("calculator", () => p.value);
     const S = (e) => {
       h.value && console.log("SmartCut -", ...e);
@@ -67,11 +67,11 @@ const _e = /* @__PURE__ */ ce({
     }, le = () => {
       const e = new CustomEvent("smartcut/validationError");
       window.dispatchEvent(e);
-    }, A = () => {
+    }, V = () => {
       const e = new CustomEvent("smartcut/calculating");
       window.dispatchEvent(e);
     }, I = (e) => {
-      N.value = e;
+      A.value = e;
     }, T = (e = 0, t = m.value) => {
       if (e === !0) return "";
       try {
@@ -98,16 +98,16 @@ const _e = /* @__PURE__ */ ce({
         const C = `${u.material}-${u.l}-${u.w}-${u.t}`;
         c.has(C) || (c.add(C), o.push(u));
       }
-      r.value = o, S(["Stock added. Total stocks:", r.value.length]), p.value && B(() => {
+      r.value = o, S(["Stock added. Total stocks:", r.value.length]), p.value && L(() => {
         p.value.initMaterialsThicknesses({ stock: r.value });
       });
     }, ie = (e) => {
       const t = `${e.material}-${e.l}-${e.w}-${e.t}`;
-      r.value = r.value.filter((n) => `${n.material}-${n.l}-${n.w}-${n.t}` !== t), S(["Stock removed. Total stocks:", r.value.length]), p.value && B(() => {
+      r.value = r.value.filter((n) => `${n.material}-${n.l}-${n.w}-${n.t}` !== t), S(["Stock removed. Total stocks:", r.value.length]), p.value && L(() => {
         p.value.initMaterialsThicknesses({ stock: r.value });
       });
     }, j = (e) => {
-      be(e), v(e, ["stockFilter", "enabled"]) && e.stockFilter?.enabled ? (w.value = !0, P.value = (e.stock || []).map((t) => ({ ...t })), V.value = e.stockFilter.config || W(), r.value = [], S(["Stock filter enabled with", P.value.length, "available options"])) : (w.value = !1, r.value = e.stock), s.value.banding = f(e, ["banding", "pricing"]), s.value.finish = f(e, ["finish", "pricing"]), s.value.planing = f(e, ["planing", "pricing"]), s.value.machining = f(e, ["machining", "pricing"]), v(e, ["options", "currency"]) && (k.value = f(e, ["options", "currency"])), v(e, ["options", "locale"]) && (m.value = f(e, ["options", "locale"]).replace("_", "-")), (v(e, ["options", "formula", "url"]) || v(e, ["options", "formula", "spec"])) && (d.value = "formula", y.value = f(e, ["options", "formula", "url"]) ?? null, b.value = f(e, ["options", "formula", "spec"]) ?? null), B(() => {
+      be(e), v(e, ["stockFilter", "enabled"]) && e.stockFilter?.enabled ? (w.value = !0, P.value = (e.stock || []).map((t) => ({ ...t })), N.value = e.stockFilter.config || G(), r.value = [], S(["Stock filter enabled with", P.value.length, "available options"])) : (w.value = !1, r.value = e.stock), s.value.banding = f(e, ["banding", "pricing"]), s.value.finish = f(e, ["finish", "pricing"]), s.value.planing = f(e, ["planing", "pricing"]), s.value.machining = f(e, ["machining", "pricing"]), v(e, ["options", "currency"]) && (k.value = f(e, ["options", "currency"])), v(e, ["options", "locale"]) && (m.value = f(e, ["options", "locale"]).replace("_", "-")), (v(e, ["options", "formula", "url"]) || v(e, ["options", "formula", "spec"])) && (d.value = "formula", y.value = f(e, ["options", "formula", "url"]) ?? null, b.value = f(e, ["options", "formula", "spec"]) ?? null), L(() => {
         if (p.value) {
           const t = {
             ...e,
@@ -159,7 +159,7 @@ const _e = /* @__PURE__ */ ce({
       window.smartcutCheckout = { init: j }, te("ready");
       const e = new CustomEvent("smartcut/ready");
       window.dispatchEvent(e);
-    }), G({
+    }), z({
       init: j,
       debug: h,
       stock: r,
@@ -169,10 +169,10 @@ const _e = /* @__PURE__ */ ce({
       inputType: d,
       formulaURL: y,
       formulaSpec: b,
-      hardWareResult: N,
+      hardWareResult: A,
       log: S,
       error: E,
-      calculating: A,
+      calculating: V,
       result: H,
       formatPrice: T,
       findExtrasPrice: O,
@@ -182,7 +182,7 @@ const _e = /* @__PURE__ */ ce({
       w.value ? (_(), q(x(X), {
         key: 0,
         "stock-options": P.value,
-        config: V.value,
+        config: N.value,
         "format-price": T,
         colors: { button: "#118ab2", buttonText: "#ffffff" },
         "number-format": "decimal",
@@ -210,7 +210,7 @@ const _e = /* @__PURE__ */ ce({
         "format-price": T,
         onLog: S,
         onError: E,
-        onCalculating: A,
+        onCalculating: V,
         onValidationError: le,
         onResult: H
       }, null, 8, ["readonly", "debug", "input-stock", "input-type"]), [
