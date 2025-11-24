@@ -1,4 +1,4 @@
-import { D as Ss, E as ys, F as ws, G as We, H as ce, J as Ri, K as bs, L as $s, M as xs, N as Is, O as ot, P as ks, Q as Ts, R as Cs, T as Ps, U as vs, V as pt, W, X as Re, Y as we, _ as Es, $ as Me, a0 as Ds, a1 as D, a2 as V, a3 as Ie, a4 as at, a5 as k, a6 as me, a7 as B, a8 as Y, a9 as A, aa as ge, ab as F, ac as E, ad as $, ae as Rs, af as dt, ag as Nt, ah as Ai, ai as Z, aj as Li, ak as se, al as ze, am as gt, x as be, an as ee, ao as Se, ap as lt, aq as mt, ar as Q, as as Ae, at as Oe, au as Jt, av as As, aw as Mi, ax as Ls, ay as Ms, az as de, aA as Ue, aB as ke, aC as ve, aD as Os, aE as Oi, aF as qi, aG as Fi, aH as qe, aI as qs, aJ as Gi, aK as Fs, aL as Bi, aM as Gs, aN as St, aO as Bs, aP as he, aQ as st, aR as Ni, aS as Ns, aT as Qt, aU as Hs, aV as Ws, aW as zs, aX as Zt, aY as Us, aZ as yt, a_ as wt, a$ as js, b0 as Ys, b1 as Xs, C as Ne, S as je, b2 as _s, b3 as bt, b4 as $t, b5 as Vs, b6 as Hi, b7 as Ks, b8 as Le, b9 as Js, ba as Qs, bb as ct, bc as ut, bd as Zs, be as R, bf as ei, bg as ti, bh as ii, bi as si, bj as ni, bk as ri, bl as oi, bm as ai, bn as li, bo as ci, I as ui, bp as fi, bq as hi, br as pi } from "./components-zSEuX2uD.js";
+import { D as Ss, E as ys, F as ws, G as We, H as ce, J as Ri, K as bs, L as $s, M as xs, N as Is, O as ot, P as ks, Q as Ts, R as Cs, T as Ps, U as vs, V as pt, W, X as Re, Y as we, _ as Es, $ as Me, a0 as Ds, a1 as D, a2 as V, a3 as Ie, a4 as at, a5 as k, a6 as me, a7 as B, a8 as Y, a9 as A, aa as ge, ab as F, ac as E, ad as $, ae as Rs, af as dt, ag as Nt, ah as Ai, ai as Z, aj as Li, ak as se, al as ze, am as gt, x as be, an as ee, ao as Se, ap as lt, aq as mt, ar as Q, as as Ae, at as Oe, au as Jt, av as As, aw as Mi, ax as Ls, ay as Ms, az as de, aA as Ue, aB as ke, aC as ve, aD as Os, aE as Oi, aF as qi, aG as Fi, aH as qe, aI as qs, aJ as Gi, aK as Fs, aL as Bi, aM as Gs, aN as St, aO as Bs, aP as he, aQ as st, aR as Ni, aS as Ns, aT as Qt, aU as Hs, aV as Ws, aW as zs, aX as Zt, aY as Us, aZ as yt, a_ as wt, a$ as js, b0 as Ys, b1 as Xs, C as Ne, S as je, b2 as _s, b3 as bt, b4 as $t, b5 as Vs, b6 as Hi, b7 as Ks, b8 as Le, b9 as Js, ba as Qs, bb as ct, bc as ut, bd as Zs, be as R, bf as ei, bg as ti, bh as ii, bi as si, bj as ni, bk as ri, bl as oi, bm as ai, bn as li, bo as ci, I as ui, bp as fi, bq as hi, br as pi } from "./components-x75S9daT.js";
 import { n as te, _ as Fe, b as ue, s as $e, o as Wi, c as di, a as ft, G as ne, H as j, I as re, J as Ee, K as en, L as z, M as Ye, N as _, O as tn } from "./vendor-zod-DtqKDYvi.js";
 import { m as zi, a as sn } from "./vendor-lodash-CYGhmG8H.js";
 import { k as J } from "./vendor-tCV_BFOF.js";
@@ -5424,7 +5424,7 @@ function mo(e, t, i) {
 function gs(e, t, i, n) {
   if (!this.config.stack || !i.length) return !1;
   const a = e.saw;
-  if (a.stackingMode === "none") return !1;
+  if (!a?.options?.stackingMode || a.options.stackingMode === "none") return !1;
   if (T("stack", `looking for stack for ${e.id}, comparing to ${t.id}`), a.cutType === "beam" && t.stack) {
     let s = t, r = 1;
     if (t.stack.stock ? (s = t.stack.stock, r = s.stack?.number || 1) : t.stack.number && (r = t.stack.number), s.t * r + e.t > a.stackHeight)
@@ -5435,7 +5435,7 @@ function gs(e, t, i, n) {
       return !1;
     const s = Hi(n, t);
     if (!s.length) return !1;
-    const r = ms.call(this, [t], s, e, i, !0, !0, a.stackingMode === "identical");
+    const r = ms.call(this, [t], s, e, i, !0, !0, a.options.stackingMode === "identical");
     if (r)
       return e.stack = { stock: r }, r.stack.number === 1 ? r.stack.number = 2 : r.incrementStack(), r;
   }
