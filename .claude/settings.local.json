@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rsync:*)",
+      "Bash(if rsync -avn --exclude=\".git*\" ./ /tmp/test/)",
+      "Bash(then echo \"WARNING: Git files found in output!\")",
+      "Bash(else echo \"✓ Git files (.git, .gitignore, etc.) will be excluded\")",
+      "Bash(fi)",
+      "Bash(if [ -e \"/tmp/smartcut-test/.git\" ])",
+      "Bash(then echo \"❌ ERROR: .git directory was copied!\")",
+      "Bash(else echo \"✓ .git directory excluded\")",
+      "Bash(if [ -e \"/tmp/smartcut-test/.gitignore\" ])",
+      "Bash(then echo \"❌ ERROR: .gitignore was copied!\")",
+      "Bash(else echo \"✓ .gitignore excluded\")",
+      "Bash(then echo \"❌ WARNING: Found .git files in zip!\")",
+      "Bash(unzip:*)",
+      "Bash(else echo \"✓ No .git files found in zip\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

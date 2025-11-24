@@ -53,7 +53,7 @@ echo "Moving files to ${release_path}..."
 # Delete all files in the release path
 rm -rf "${release_path:?}/"*
 
-exclude=("*.ts" "*.hs" "*.scss" "*.js.map" ".eslintrc.json" "package.json" "package-lock.json" "tsconfig.json" ".git" "scripts" "composer.json" "composer.lock" ".gitignore")
+exclude=("*.ts" "*.hs" "*.scss" "*.js.map" ".eslintrc.json" "package.json" "package-lock.json" "tsconfig.json" ".git*" "scripts" "composer.json" "composer.lock")
 
 # Create rsync command with excludes
 rsync_cmd="rsync -av \"${dir_path}/\" \"${release_path}\""
