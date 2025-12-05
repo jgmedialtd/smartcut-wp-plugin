@@ -1,64 +1,64 @@
-import { d as ce, r as l, c as U, L as ue, _ as fe, k as pe, a as me, o as _, H as M, q, x as J, h as de, s as x, N as D, v as ve, F as ge, n as B, Z as he } from "./vendor-vue-WkZl1F8L.js";
-import { T as ke, I as K, bD as W, by as ye, bx as f, bE as be, bB as v } from "./components-Vhq2TcqZ.js";
-import { o as $, r as i, s as a, a as F, _ as z, u as we, c as L, b as R, P as g } from "./vendor-zod-DtqKDYvi.js";
-const Se = $({
+import { d as ce, r as l, c as H, L as ue, _ as fe, k as pe, a as me, o as x, H as M, q, x as J, h as de, s as D, N as L, v as ve, F as ge, n as P, Z as he } from "./vendor-vue-WkZl1F8L.js";
+import { U as ke, I as K, bF as z, bA as ye, bz as f, bG as be, bD as v } from "./components-By5q8-Op.js";
+import { o as T, r as i, s as a, a as $, _ as W, u as we, c as B, b as R, x as g } from "./vendor-zod-PVURV34D.js";
+const Se = T({
   name: a().trim(),
   price: a().trim().default("0"),
-  options: i(a(), F(a()))
-}), Ce = i(a(), Se), Ee = $({
+  options: i(a(), $(a()))
+}), Ce = i(a(), Se), Ee = T({
   name: a().trim(),
   options: i(
     a(),
-    we([a(), F(a())])
+    we([a(), $(a())])
   ).optional(),
   variations: Ce.optional(),
   price: a().trim().default("0"),
-  type: z(["simple", "variable"]).optional()
-}), Z = i(a(), Ee);
-$({
+  type: W(["simple", "variable"]).optional()
+}), G = i(a(), Ee);
+T({
   env: a().default("production"),
   showDevInfo: R().default(!1),
   debug: R().default(!1),
   el: i(a(), g()).default({}),
-  inputType: z(["manual", "formula"]).default("manual"),
+  inputType: W(["manual", "formula"]).default("manual"),
   settings: i(a(), g()).default({}),
   // Note: HTMLInputElement cannot be validated with Zod, using unknown
   inputs: i(a(), g()).default({}),
   formatting: i(a(), g()).default({}),
   product: i(a(), g()).default({}),
-  stock: F(ke).default([]),
-  variations: F(g()).default([]),
+  stock: $(ke).default([]),
+  variations: $(g()).default([]),
   selectedVariation: i(a(), g()).default({}),
-  machiningPricing: L().optional(),
+  machiningPricing: B().optional(),
   quantityPricing: R().default(!1),
-  extrasData: $({
-    banding: Z,
-    finish: Z
+  extrasData: T({
+    banding: G,
+    finish: G
   }).default({
     banding: {},
     finish: {}
   }),
   formulaURL: a().url().optional().or(a().default("")),
   formulaSpec: a().default(""),
-  hardwareResult: i(a(), L()).default({}),
+  hardwareResult: i(a(), B()).default({}),
   // HardwareResult type from formula.ts
-  metadata: L().optional()
+  metadata: B().optional()
   // Metadata from optimize/main
 });
-const _e = /* @__PURE__ */ ce({
+const xe = /* @__PURE__ */ ce({
   __name: "Vanilla",
   emits: ["ready"],
-  setup(Te, { expose: G, emit: Q }) {
-    const X = D(() => import("./components-Vhq2TcqZ.js").then((e) => e.bJ)), Y = D(() => import("./components-Vhq2TcqZ.js").then((e) => e.bH)), ee = D(() => import("./components-Vhq2TcqZ.js").then((e) => e.bI)), te = Q, ae = "production", ne = "4.0.72", h = l(!1), r = l([]), s = l({
+  setup(Fe, { expose: Z, emit: Q }) {
+    const X = L(() => import("./components-By5q8-Op.js").then((e) => e.bL)), Y = L(() => import("./components-By5q8-Op.js").then((e) => e.bJ)), ee = L(() => import("./components-By5q8-Op.js").then((e) => e.bK)), te = Q, ae = "production", ne = "4.0.84", h = l(!1), r = l([]), s = l({
       banding: null,
       finish: null,
       planing: null,
       machining: null
-    }), oe = U(() => r.value.map((e) => {
+    }), oe = H(() => r.value.map((e) => {
       if (e instanceof K) return e;
       const { issues: t, ...n } = e, o = Array.isArray(t) ? t : [];
       return new K({ ...n, issues: o });
-    })), k = l("USD"), m = l("en-US"), d = l("manual"), y = l(""), b = ue(null), N = l(null), p = l(), w = l(!1), P = l([]), V = l(W()), re = U(() => d.value === "manual" || d.value === "formula" && (y.value || b.value) ? w.value ? r.value.length > 0 : !0 : !1);
+    })), k = l("USD"), m = l("en-US"), d = l("manual"), y = l(""), b = ue(null), A = l(null), p = l(), w = l(!1), _ = l([]), N = l(z()), re = H(() => d.value === "manual" || d.value === "formula" && (y.value || b.value) ? w.value ? r.value.length > 0 : !0 : !1);
     he("calculator", () => p.value);
     const S = (e) => {
       h.value && console.log("SmartCut -", ...e);
@@ -67,12 +67,12 @@ const _e = /* @__PURE__ */ ce({
     }, le = () => {
       const e = new CustomEvent("smartcut/validationError");
       window.dispatchEvent(e);
-    }, A = () => {
+    }, V = () => {
       const e = new CustomEvent("smartcut/calculating");
       window.dispatchEvent(e);
     }, I = (e) => {
-      N.value = e;
-    }, T = (e = 0, t = m.value) => {
+      A.value = e;
+    }, F = (e = 0, t = m.value) => {
       if (e === !0) return "";
       try {
         t = t.replace("_", "-");
@@ -98,16 +98,16 @@ const _e = /* @__PURE__ */ ce({
         const C = `${u.material}-${u.l}-${u.w}-${u.t}`;
         c.has(C) || (c.add(C), o.push(u));
       }
-      r.value = o, S(["Stock added. Total stocks:", r.value.length]), p.value && B(() => {
+      r.value = o, S(["Stock added. Total stocks:", r.value.length]), p.value && P(() => {
         p.value.initMaterialsThicknesses({ stock: r.value });
       });
     }, ie = (e) => {
       const t = `${e.material}-${e.l}-${e.w}-${e.t}`;
-      r.value = r.value.filter((n) => `${n.material}-${n.l}-${n.w}-${n.t}` !== t), S(["Stock removed. Total stocks:", r.value.length]), p.value && B(() => {
+      r.value = r.value.filter((n) => `${n.material}-${n.l}-${n.w}-${n.t}` !== t), S(["Stock removed. Total stocks:", r.value.length]), p.value && P(() => {
         p.value.initMaterialsThicknesses({ stock: r.value });
       });
-    }, j = (e) => {
-      be(e), v(e, ["stockFilter", "enabled"]) && e.stockFilter?.enabled ? (w.value = !0, P.value = (e.stock || []).map((t) => ({ ...t })), V.value = e.stockFilter.config || W(), r.value = [], S(["Stock filter enabled with", P.value.length, "available options"])) : (w.value = !1, r.value = e.stock), s.value.banding = f(e, ["banding", "pricing"]), s.value.finish = f(e, ["finish", "pricing"]), s.value.planing = f(e, ["planing", "pricing"]), s.value.machining = f(e, ["machining", "pricing"]), v(e, ["options", "currency"]) && (k.value = f(e, ["options", "currency"])), v(e, ["options", "locale"]) && (m.value = f(e, ["options", "locale"]).replace("_", "-")), (v(e, ["options", "formula", "url"]) || v(e, ["options", "formula", "spec"])) && (d.value = "formula", y.value = f(e, ["options", "formula", "url"]) ?? null, b.value = f(e, ["options", "formula", "spec"]) ?? null), B(() => {
+    }, U = (e) => {
+      be(e), v(e, ["stockFilter", "enabled"]) && e.stockFilter?.enabled ? (w.value = !0, _.value = (e.stock || []).map((t) => ({ ...t })), N.value = e.stockFilter.config || z(), r.value = [], S(["Stock filter enabled with", _.value.length, "available options"])) : (w.value = !1, r.value = e.stock), s.value.banding = f(e, ["banding", "pricing"]), s.value.finish = f(e, ["finish", "pricing"]), s.value.planing = f(e, ["planing", "pricing"]), s.value.machining = f(e, ["machining", "pricing"]), v(e, ["options", "currency"]) && (k.value = f(e, ["options", "currency"])), v(e, ["options", "locale"]) && (m.value = f(e, ["options", "locale"]).replace("_", "-")), (v(e, ["options", "formula", "url"]) || v(e, ["options", "formula", "spec"])) && (d.value = "formula", y.value = f(e, ["options", "formula", "url"]) ?? null, b.value = f(e, ["options", "formula", "spec"]) ?? null), P(() => {
         if (p.value) {
           const t = {
             ...e,
@@ -118,7 +118,7 @@ const _e = /* @__PURE__ */ ce({
           p.value.init(t);
         }
       });
-    }, H = (e) => {
+    }, j = (e) => {
       const t = e;
       if (t.checkout = {
         formattedTotalStockCost: "",
@@ -156,11 +156,11 @@ const _e = /* @__PURE__ */ ce({
       const e = new URLSearchParams(window.location.search);
       h.value = !!e.has("debug"), h.value && console.log("Smartcut - debug enabled");
     }), pe(() => {
-      window.smartcutCheckout = { init: j }, te("ready");
+      window.smartcutCheckout = { init: U }, te("ready");
       const e = new CustomEvent("smartcut/ready");
       window.dispatchEvent(e);
-    }), G({
-      init: j,
+    }), Z({
+      init: U,
       debug: h,
       stock: r,
       pricing: s,
@@ -169,31 +169,31 @@ const _e = /* @__PURE__ */ ce({
       inputType: d,
       formulaURL: y,
       formulaSpec: b,
-      hardWareResult: N,
+      hardWareResult: A,
       log: S,
       error: E,
-      calculating: A,
-      result: H,
-      formatPrice: T,
+      calculating: V,
+      result: j,
+      formatPrice: F,
       findExtrasPrice: O,
       setHardwareResult: I
-    }), (e, t) => (_(), me(ge, null, [
-      M(x(ee), { position: "top-left" }),
-      w.value ? (_(), q(x(X), {
+    }), (e, t) => (x(), me(ge, null, [
+      M(D(ee), { position: "top-left" }),
+      w.value ? (x(), q(D(X), {
         key: 0,
-        "stock-options": P.value,
-        config: V.value,
-        "format-price": T,
+        "stock-options": _.value,
+        config: N.value,
+        "format-price": F,
         colors: { button: "#118ab2", buttonText: "#ffffff" },
         "number-format": "decimal",
         locale: m.value,
         onStockAdded: se,
         onStockRemoved: ie
       }, null, 8, ["stock-options", "config", "locale"])) : J("", !0),
-      d.value === "formula" && (y.value || b.value) ? (_(), q(x(Y), {
+      d.value === "formula" && (y.value || b.value) ? (x(), q(D(Y), {
         key: 1,
         ref: "formulapricing",
-        "format-price": T,
+        "format-price": F,
         url: y.value,
         spec: b.value,
         debug: h.value,
@@ -207,12 +207,12 @@ const _e = /* @__PURE__ */ ce({
         "input-stock": oe.value,
         "input-type": d.value,
         "find-extras-price": O,
-        "format-price": T,
+        "format-price": F,
         onLog: S,
         onError: E,
-        onCalculating: A,
+        onCalculating: V,
         onValidationError: le,
-        onResult: H
+        onResult: j
       }, null, 8, ["readonly", "debug", "input-stock", "input-type"]), [
         [ve, re.value]
       ])
@@ -220,5 +220,5 @@ const _e = /* @__PURE__ */ ce({
   }
 });
 export {
-  _e as default
+  xe as default
 };

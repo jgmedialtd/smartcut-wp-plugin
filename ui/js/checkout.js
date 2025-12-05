@@ -1,8 +1,8 @@
-const { initializeZodTranslations: y } = await import("./zod-error-map-B10ZTJi2.js");
+const { initializeZodTranslations: y } = await import("./zod-error-map-C1ZJlBZi.js");
 y();
-const { initializeStaticRegistry: A } = await import("./static-class-registry-BW111ilP.js");
+const { initializeStaticRegistry: A } = await import("./static-class-registry-CqDelKcI.js");
 A();
-const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.58", P = "4.0.72";
+const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.58", P = "4.0.84";
 {
   const a = E();
   S(
@@ -13,7 +13,7 @@ const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = awai
     a
   );
 }
-const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a) => a.r), { FontAwesomeIcon: C } = await import("./vendor-vue-WkZl1F8L.js").then((a) => a.a0), { createApp: F } = await import("./vendor-vue-WkZl1F8L.js").then((a) => a.$), T = async () => {
+const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a) => a.r), { FontAwesomeIcon: C } = await import("./vendor-vue-WkZl1F8L.js").then((a) => a.a0), { createApp: T } = await import("./vendor-vue-WkZl1F8L.js").then((a) => a.$), _ = async () => {
   try {
     const [
       { faArrowsLeftRight: a },
@@ -68,15 +68,15 @@ const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a)
   } catch (a) {
     console.warn("Failed to load icons:", a.message);
   }
-}, _ = async () => {
+}, b = async () => {
   try {
-    return await (await import("./components-Vhq2TcqZ.js").then((o) => o.bF)).i18nextReady;
+    return await (await import("./components-By5q8-Op.js").then((o) => o.bH)).i18nextReady;
   } catch (a) {
     return console.warn("Failed to load i18n:", a.message), Promise.resolve();
   }
-}, b = await import("./Launch-TT6Yzuq3.js"), O = b.default;
+}, F = await import("./Launch-ywu1cLnW.js"), H = F.default;
 let r = null, n = !1;
-const k = async () => {
+const O = async () => {
   if (!n) {
     n = !0;
     try {
@@ -86,10 +86,10 @@ const k = async () => {
         return;
       }
       const o = a.getAttribute("data-type") || "";
-      r = F(O, { type: o });
+      r = T(H, { type: o });
       const [, e] = await Promise.all([
-        T(),
-        _()
+        _(),
+        b()
       ]);
       e && await e, r.component("FontAwesomeIcon", C), r.mount("#smartcut-app");
     } catch (a) {
@@ -99,8 +99,8 @@ const k = async () => {
     }
   }
 };
-k();
+O();
 export {
   r as app,
-  k as mount
+  O as mount
 };

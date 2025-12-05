@@ -29,9 +29,9 @@
             'dev_requirement' => true,
         ),
         'php-stubs/wordpress-stubs' => array(
-            'pretty_version' => 'v6.8.3',
-            'version' => '6.8.3.0',
-            'reference' => 'abeb5a8b58fda7ac21f15ee596f302f2959a7114',
+            'pretty_version' => 'v6.9.0',
+            'version' => '6.9.0.0',
+            'reference' => '5171cb6650e6c583a96943fd6ea0dfa3e1089a8a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-stubs/wordpress-stubs',
             'aliases' => array(),
