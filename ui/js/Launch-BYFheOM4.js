@@ -1,5 +1,5 @@
 import { d as i, r as s, R as f, c as a, q as y, a as d, x as _, A as k, i as v, N as c, o as r } from "./vendor-vue-WkZl1F8L.js";
-import { bu as h } from "./components-CpbaDCxE.js";
+import { bu as h } from "./components-DAYRnUab.js";
 const C = {
   key: 1,
   class: "error-message"
@@ -10,8 +10,8 @@ const C = {
   },
   setup(p, { expose: l }) {
     const m = s(!1), o = s(null), u = f({
-      wordpress: c(() => import("./WordPress-CagMqocw.js")),
-      vanilla: c(() => import("./Vanilla-g3J6ULM4.js"))
+      wordpress: c(() => import("./WordPress-DWMktg83.js")),
+      vanilla: c(() => import("./Vanilla-CRrR7m-p.js"))
     }), e = p, t = a(() => {
       if (!e.type) return null;
       const n = e?.type?.toLowerCase();

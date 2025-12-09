@@ -1,8 +1,8 @@
-const { initializeZodTranslations: y } = await import("./zod-error-map-DavwgZeE.js");
+const { initializeZodTranslations: y } = await import("./zod-error-map-KcGkZN-l.js");
 y();
-const { initializeStaticRegistry: A } = await import("./static-class-registry-CNznsDvS.js");
+const { initializeStaticRegistry: A } = await import("./static-class-registry-BReGCsUH.js");
 A();
-const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.58", P = "4.0.86";
+const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.58", P = "4.0.87";
 {
   const a = E();
   S(
@@ -70,11 +70,11 @@ const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a)
   }
 }, b = async () => {
   try {
-    return await (await import("./components-CpbaDCxE.js").then((o) => o.bH)).i18nextReady;
+    return await (await import("./components-DAYRnUab.js").then((o) => o.bH)).i18nextReady;
   } catch (a) {
     return console.warn("Failed to load i18n:", a.message), Promise.resolve();
   }
-}, F = await import("./Launch-MW8ISOgU.js"), H = F.default;
+}, F = await import("./Launch-BYFheOM4.js"), H = F.default;
 let r = null, n = !1;
 const O = async () => {
   if (!n) {
