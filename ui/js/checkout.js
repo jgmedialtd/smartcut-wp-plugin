@@ -1,8 +1,8 @@
-const { initializeZodTranslations: y } = await import("./zod-error-map-KcGkZN-l.js");
+const { initializeZodTranslations: y } = await import("./zod-error-map-ya4UvbUP.js");
 y();
-const { initializeStaticRegistry: A } = await import("./static-class-registry-BReGCsUH.js");
+const { initializeStaticRegistry: A } = await import("./static-class-registry-DGIcli98.js");
 A();
-const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.58", P = "4.0.87";
+const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", R = "version/checkout/last-clear", I = "4.0.58", P = "4.0.98";
 {
   const a = E();
   S(
@@ -13,7 +13,7 @@ const { clearStorageOnceAboveThreshold: S, createLocalStorageAdapter: E } = awai
     a
   );
 }
-const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a) => a.r), { FontAwesomeIcon: C } = await import("./vendor-vue-WkZl1F8L.js").then((a) => a.a0), { createApp: T } = await import("./vendor-vue-WkZl1F8L.js").then((a) => a.$), _ = async () => {
+const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a) => a.r), { FontAwesomeIcon: C } = await import("./vendor-vue-ChIbPezZ.js").then((a) => a.a1), { createApp: T } = await import("./vendor-vue-ChIbPezZ.js").then((a) => a.a0), _ = async () => {
   try {
     const [
       { faArrowsLeftRight: a },
@@ -70,11 +70,11 @@ const { library: x } = await import("./vendor-fortawesome-DNIDlNf7.js").then((a)
   }
 }, b = async () => {
   try {
-    return await (await import("./components-DAYRnUab.js").then((o) => o.bH)).i18nextReady;
+    return await (await import("./components-Bf39GJww.js").then((o) => o.bH)).i18nextReady;
   } catch (a) {
     return console.warn("Failed to load i18n:", a.message), Promise.resolve();
   }
-}, F = await import("./Launch-BYFheOM4.js"), H = F.default;
+}, F = await import("./Launch-CwhIDcq2.js"), H = F.default;
 let r = null, n = !1;
 const O = async () => {
   if (!n) {

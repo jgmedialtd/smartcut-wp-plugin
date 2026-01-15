@@ -51,3 +51,12 @@ add_filter('wc_price', function ($a) {
 
 	return $a;
 });
+
+//remove smartcut-price-selector class from the 'before' price on sale items
+add_filter('woocommerce_format_sale_price', function ($price) {
+	//match content inside <del> tags and remove the smartcut-price-selector class
+	return preg_replace_callback('/<del[^>]*>(.*?)<\/del>/s', function ($matches) {
+		$cleaned = str_replace("class='smartcut-price-selector'", '', $matches[1]);
+		return '<del>' . $cleaned . '</del>';
+	}, $price);
+}, 20);
