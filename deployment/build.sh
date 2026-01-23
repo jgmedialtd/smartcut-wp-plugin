@@ -9,7 +9,7 @@ mode=${1:-production}
 echo "Building plugin in $mode mode..."
 
 # Run checkout build to get the latest files
-cd /Users/Jon/JGMedia/Apps/smartcut/checkout
+cd /Users/Jon/JGMedia/Apps/smartcut/ecommerce
 ./deployment/build.sh $mode
 
 # Compile SCSS files
@@ -25,13 +25,13 @@ rm -rf /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
 mkdir -p /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
 rm -rf /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/css
 mkdir -p /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/css
-cp /Users/Jon/JGMedia/Apps/smartcut/checkout/dist/*.js /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
-cp /Users/Jon/JGMedia/Apps/smartcut/checkout/dist/*.css /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/css
-cp -r /Users/Jon/JGMedia/Apps/smartcut/checkout/dist-upload/ /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
+cp /Users/Jon/JGMedia/Apps/smartcut/ecommerce/dist/*.js /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
+cp /Users/Jon/JGMedia/Apps/smartcut/ecommerce/dist/*.css /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/css
+cp -r /Users/Jon/JGMedia/Apps/smartcut/ecommerce/dist-upload/ /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
 
 # If mode is 'development', also copy the js source maps
 if [ "$mode" = "development" ]; then
-	cp /Users/Jon/JGMedia/Apps/smartcut/checkout/dist/*.js.map /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
+	cp /Users/Jon/JGMedia/Apps/smartcut/ecommerce/dist/*.js.map /Users/Jon/JGMedia/Apps/sc\ store/wp-content/plugins/smartcut/ui/js
 fi
 
 echo "✨ Plugin build completed successfully!"
