@@ -14,7 +14,8 @@
       "Bash(else echo \"✓ .gitignore excluded\")",
       "Bash(then echo \"❌ WARNING: Found .git files in zip!\")",
       "Bash(unzip:*)",
-      "Bash(else echo \"✓ No .git files found in zip\")"
+      "Bash(else echo \"✓ No .git files found in zip\")",
+      "WebFetch(domain:support.servbay.com)"
     ],
     "deny": [],
     "ask": []

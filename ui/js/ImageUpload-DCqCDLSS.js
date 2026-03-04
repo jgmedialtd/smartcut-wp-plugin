@@ -1,12 +1,12 @@
-import { d as x, Y as $, r as U, h as D, L as O, b as o, o as d, e as _, j as u, i as f, u as R, g as A, F as B, q as V } from "./vendor-vue-h1I-4LEU.js";
-import { _ as M } from "./Launch-C8DaHa5j.js";
+import { d as L, v as $, r as U, o as D, m as O, a as o, b as d, e as _, f as u, g as f, u as R, h as A, F as B, k as V } from "./vendor-vue-9U543O5d.js";
+import { _ as M } from "./Launch-f21ynuad.js";
 const P = { id: "uploader" }, S = {
   key: 0,
   class: "debug"
 }, E = {
   key: 1,
   class: "selected-files"
-}, T = ["src"], G = ["onClick"], J = !0, Y = /* @__PURE__ */ x({
+}, T = ["src"], G = ["onClick"], J = !0, z = /* @__PURE__ */ L({
   __name: "ImageUpload",
   props: {
     shapeId: {
@@ -38,14 +38,14 @@ const P = { id: "uploader" }, S = {
   },
   emits: ["update", "remove"],
   setup(g, { emit: w }) {
-    const F = A(() => import("./ObjectViewer-CjruzqzE.js")), h = U(null), t = U({
+    const F = A(() => import("./ObjectViewer-D6Hbg9id.js")), h = U(null), t = U({
       shapeId: "",
       files: [],
       previewUrls: [],
       metadata: []
     }), s = g, p = w, b = (e) => ["image/jpeg", "image/jpg", "image/png"].includes(e.type), k = () => {
       h.value?.click();
-    }, j = (e) => {
+    }, C = (e) => {
       const a = e.target, n = a.files;
       if (!n) return;
       const r = Array.from(n), l = r.filter((i) => !b(i));
@@ -60,17 +60,17 @@ Only JPG and PNG files are allowed.`), a.value = "";
         alert(`Maximum ${s.maxImages} images allowed per shape.`), a.value = "";
         return;
       }
-      const m = [...c, ...r], L = I(m), N = m.map((i, v) => ({
+      const m = [...c, ...r], N = I(m), x = m.map((i, v) => ({
         originalName: i.name,
-        newName: `${s.prefix}-${v + 1}-${s.uniqueId}${C(i.name)}`
+        newName: `${s.prefix}-${v + 1}-${s.uniqueId}${j(i.name)}`
       })), y = {
         shapeId: s.shapeId,
         files: m,
-        previewUrls: L,
-        metadata: N
+        previewUrls: N,
+        metadata: x
       };
       t.value = y, p("update", y), a.value = "";
-    }, I = (e) => e.map((a) => URL.createObjectURL(a)), C = (e) => e.substring(e.lastIndexOf(".")), q = (e) => {
+    }, I = (e) => e.map((a) => URL.createObjectURL(a)), j = (e) => e.substring(e.lastIndexOf(".")), q = (e) => {
       URL.revokeObjectURL(t.value.previewUrls[e]);
       const a = [...t.value.files], n = [...t.value.previewUrls], r = [...t.value.metadata];
       if (a.splice(e, 1), n.splice(e, 1), r.splice(e, 1), a.length === 0)
@@ -118,7 +118,7 @@ Only JPG and PNG files are allowed.`), a.value = "";
           accept: ".jpg,.jpeg,.png",
           class: "hidden",
           multiple: "",
-          onChange: j
+          onChange: C
         }, null, 544),
         u("button", {
           type: "button",
@@ -148,7 +148,7 @@ Only JPG and PNG files are allowed.`), a.value = "";
       ]);
     };
   }
-}), Q = /* @__PURE__ */ M(Y, [["__scopeId", "data-v-bcaad5a2"]]);
+}), W = /* @__PURE__ */ M(z, [["__scopeId", "data-v-bcaad5a2"]]);
 export {
-  Q as default
+  W as default
 };

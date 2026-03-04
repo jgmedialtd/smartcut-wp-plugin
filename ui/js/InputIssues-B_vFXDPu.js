@@ -1,5 +1,5 @@
-import { a as r } from "./i18n-OYLNrgjA.js";
-import { d as p, b as t, o as n, e as a, v as i, j as u, t as o, u as l, F as c } from "./vendor-vue-h1I-4LEU.js";
+import { s as r } from "./i18n-DT7wACvc.js";
+import { d as p, a as t, b as n, e as a, l as i, f as u, t as l, u as m, F as c } from "./vendor-vue-9U543O5d.js";
 const C = /* @__PURE__ */ p({
   __name: "InputIssues",
   props: {
@@ -12,9 +12,9 @@ const C = /* @__PURE__ */ p({
       required: !0
     }
   },
-  setup(m) {
-    const s = m;
-    return (d, g) => (n(), t(c, null, [
+  setup(o) {
+    const s = o;
+    return (d, f) => (n(), t(c, null, [
       !s.item.isNew && s.item.issues?.filter((e) => e.type === "error")?.length ? (n(), t("div", {
         key: 0,
         class: "group issues",
@@ -22,7 +22,7 @@ const C = /* @__PURE__ */ p({
           "grid-column-end": "span " + s.numColumns
         })
       }, [
-        u("pre", null, o(s.item.issues.filter((e) => e.type === "error").flatMap((e) => l(r)(e.message)).join(`
+        u("pre", null, l(s.item.issues.filter((e) => e.type === "error").flatMap((e) => m(r)(e.message)).join(`
 `)), 1)
       ], 4)) : a("", !0),
       !s.item.isNew && s.item.issues?.filter((e) => e.type === "warning")?.length ? (n(), t("div", {
@@ -32,7 +32,7 @@ const C = /* @__PURE__ */ p({
           "grid-column-end": "span " + s.numColumns
         })
       }, [
-        u("pre", null, o(s.item.issues.filter((e) => e.type === "warning").flatMap((e) => l(r)(e.message)).join(`
+        u("pre", null, l(s.item.issues.filter((e) => e.type === "warning").flatMap((e) => m(r)(e.message)).join(`
 `)), 1)
       ], 4)) : a("", !0)
     ], 64));

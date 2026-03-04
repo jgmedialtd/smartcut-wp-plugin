@@ -1,5 +1,5 @@
-import { d as A, b as c, o as n, e as I, j as v, K as u, M as q, x as D, H as O, r as m, t as S, c as T, v as ne, F as G, q as H, u as M, i as J, w as ce, a as ie, a0 as ue, J as B, a1 as j, a2 as z } from "./vendor-vue-h1I-4LEU.js";
-import { _ as K } from "./Launch-C8DaHa5j.js";
+import { d as Q, a as c, b as n, e as I, f as v, N as u, O as V, p as D, x as q, r as m, t as S, c as T, l as ne, F as G, k as H, u as N, g as J, w as ce, j as ie, P as ue, q as B, Q as j, R as z } from "./vendor-vue-9U543O5d.js";
+import { _ as R } from "./Launch-f21ynuad.js";
 const de = ["onKeydown"], ge = {
   key: 0,
   class: "catalog-card__image"
@@ -12,7 +12,7 @@ const de = ["onKeydown"], ge = {
 }, he = {
   key: 0,
   class: "catalog-card__badges"
-}, we = { class: "catalog-card__footer" }, $e = { class: "catalog-card__meta" }, Ce = { class: "catalog-card__actions" }, ke = ["disabled"], Pe = /* @__PURE__ */ A({
+}, we = { class: "catalog-card__footer" }, $e = { class: "catalog-card__meta" }, Ce = { class: "catalog-card__actions" }, ke = ["disabled"], Pe = /* @__PURE__ */ Q({
   __name: "CatalogCard",
   props: {
     title: { default: "" },
@@ -57,8 +57,8 @@ const de = ["onKeydown"], ge = {
       tabindex: "0",
       onClick: o,
       onKeydown: [
-        q(o, ["enter"]),
-        q(O(o, ["prevent"]), ["space"])
+        V(o, ["enter"]),
+        V(q(o, ["prevent"]), ["space"])
       ]
     }, [
       e.showImage ? (n(), c("div", ge, [
@@ -95,7 +95,7 @@ const de = ["onKeydown"], ge = {
                 class: D(["c-btn c-btn--sm c-btn--no-effects no-margin", { "c-btn--delete": e.selected }]),
                 style: ne(l.value),
                 disabled: e.disabled,
-                onClick: O(y, ["stop"])
+                onClick: q(y, ["stop"])
               }, S(e.actionLabel), 15, ke)
             ], !0)
           ])
@@ -103,7 +103,7 @@ const de = ["onKeydown"], ge = {
       ])
     ], 42, de));
   }
-}), W = /* @__PURE__ */ K(Pe, [["__scopeId", "data-v-e4c7de2c"]]), Ie = { class: "catalog-browser" }, Se = {
+}), W = /* @__PURE__ */ R(Pe, [["__scopeId", "data-v-e4c7de2c"]]), Ie = { class: "catalog-browser" }, Se = {
   key: 0,
   class: "catalog-browser__categories"
 }, pe = ["onClick"], Be = {
@@ -115,10 +115,10 @@ const de = ["onKeydown"], ge = {
 }, Ue = {
   key: 3,
   class: "catalog-browser__empty"
-}, Me = {
+}, Ne = {
   key: 5,
   class: "catalog-browser__pagination"
-}, De = ["disabled"], Le = { class: "pagination-info" }, Ne = ["disabled"], Ee = /* @__PURE__ */ A({
+}, De = ["disabled"], Le = { class: "pagination-info" }, Me = ["disabled"], Ee = /* @__PURE__ */ Q({
   __name: "CatalogBrowser",
   props: {
     browser: {},
@@ -190,15 +190,15 @@ const de = ["onKeydown"], ge = {
           isSelected: e.browser.isSelected
         }, () => [
           (n(!0), c(G, null, H(e.browser.items.value, (o) => u(l.$slots, "item", {
-            key: M(b)(o),
+            key: N(b)(o),
             item: o,
             select: () => e.browser.selectItem(o),
             selected: e.browser.isSelected(o)
           }, () => [
             J(W, {
-              title: M(C)(o),
-              description: M(k)(o),
-              "image-url": M(f)(o),
+              title: N(C)(o),
+              description: N(k)(o),
+              "image-url": N(f)(o),
               selected: e.browser.isSelected(o),
               "display-mode": e.browser.displayMode.value,
               "action-label": e.browser.isSelected(o) ? "Selected" : "Select",
@@ -208,7 +208,7 @@ const de = ["onKeydown"], ge = {
           ], !0)), 128))
         ], !0)
       ], 2)),
-      e.browser.totalPages.value > 1 ? (n(), c("div", Me, [
+      e.browser.totalPages.value > 1 ? (n(), c("div", Ne, [
         u(l.$slots, "pagination", {
           currentPage: e.browser.currentPage.value,
           totalPages: e.browser.totalPages.value,
@@ -226,12 +226,12 @@ const de = ["onKeydown"], ge = {
             class: "pagination-btn",
             disabled: e.browser.currentPage.value >= e.browser.totalPages.value,
             onClick: r[4] || (r[4] = (o) => e.browser.goToPage(e.browser.currentPage.value + 1))
-          }, " Next ", 8, Ne)
+          }, " Next ", 8, Me)
         ], !0)
       ])) : I("", !0)
     ]));
   }
-}), je = /* @__PURE__ */ K(Ee, [["__scopeId", "data-v-b6f71d9e"]]);
+}), je = /* @__PURE__ */ R(Ee, [["__scopeId", "data-v-b6f71d9e"]]);
 function ze(e) {
   const {
     config: d,
@@ -239,7 +239,7 @@ function ze(e) {
     transformItem: C = (t) => t,
     getItemId: k = (t) => t._id || t.id
   } = e, f = m([]), l = m(null), r = m([]), o = m(null), y = m(""), s = m("name"), w = m("asc"), a = m("grid"), h = m(1), $ = m(1), p = m(0), P = m(!1), F = m(null);
-  let N = null;
+  let M = null;
   function E(t) {
     if (!d.value) return "";
     const { apiUrl: i, orgSlug: g, isCustomDomain: L } = d.value;
@@ -265,7 +265,7 @@ function ze(e) {
       }
     }
   }
-  async function Q() {
+  async function A() {
     if (d.value)
       try {
         const t = E("product-categories"), i = await fetch(t, {
@@ -295,8 +295,8 @@ function ze(e) {
       return console.error("[useCatalogBrowser] Fetch by slug error:", i), null;
     }
   }
-  function R() {
-    f.value = [], P.value = !0, N && clearTimeout(N), N = setTimeout(() => {
+  function K() {
+    f.value = [], P.value = !0, M && clearTimeout(M), M = setTimeout(() => {
       U();
     }, d.value?.debounceMs || 300);
   }
@@ -307,10 +307,10 @@ function ze(e) {
     return l.value ? k(t) === k(l.value) : !1;
   }
   function x(t) {
-    o.value = t, h.value = 1, R();
+    o.value = t, h.value = 1, K();
   }
   function _(t) {
-    y.value = t, h.value = 1, R();
+    y.value = t, h.value = 1, K();
   }
   function ee(t, i) {
     s.value = t, i ? w.value = i : w.value = w.value === "asc" ? "desc" : "asc", h.value = 1, U();
@@ -321,14 +321,14 @@ function ze(e) {
   function ae() {
     y.value = "", o.value = null, h.value = 1, U();
   }
-  async function V() {
+  async function O() {
     await Promise.all([
-      Q(),
+      A(),
       U()
     ]);
   }
   ce(() => d.value, (t) => {
-    t && V();
+    t && O();
   }, { immediate: !0 });
   const oe = T(() => f.value.length > 0), se = T(() => r.value.length > 0), re = T(() => !P.value && f.value.length === 0), le = T(() => o.value && r.value.find((i) => i._id === o.value)?.name || null);
   return {
@@ -353,7 +353,7 @@ function ze(e) {
     activeCategoryName: le,
     // Methods
     fetchItems: U,
-    fetchCategories: Q,
+    fetchCategories: A,
     fetchItemBySlug: X,
     selectItem: Y,
     isSelected: Z,
@@ -362,10 +362,10 @@ function ze(e) {
     updateSort: ee,
     goToPage: te,
     clearFilters: ae,
-    initialize: V
+    initialize: O
   };
 }
-function Ae(e) {
+function Qe(e) {
   return ze({
     config: e,
     endpoint: "products",
@@ -373,16 +373,16 @@ function Ae(e) {
     getItemId: (d) => d._id || ""
   });
 }
-const Ke = {
+const Re = {
   key: 0,
   class: "catalog-badge catalog-badge--featured"
-}, Qe = {
+}, Ae = {
   key: 1,
   class: "catalog-badge catalog-badge--category"
-}, Re = {
+}, Ke = {
   key: 0,
   class: "product-price"
-}, Ve = /* @__PURE__ */ A({
+}, Oe = /* @__PURE__ */ Q({
   __name: "ProductBrowser",
   props: {
     config: {},
@@ -395,7 +395,7 @@ const Ke = {
   },
   emits: ["product-selected", "product-click"],
   setup(e, { expose: d, emit: b }) {
-    const C = e, k = b, f = T(() => C.config), l = Ae(f), r = {
+    const C = e, k = b, f = T(() => C.config), l = Qe(f), r = {
       formula: "Formula",
       simple: "Product",
       bundle: "Bundle"
@@ -417,7 +417,7 @@ const Ke = {
       selectProduct: l.selectItem,
       selectedProduct: l.selectedItem
     }), (s, w) => (n(), ie(je, {
-      browser: M(l),
+      browser: N(l),
       "show-categories": e.showCategories,
       "show-search": e.showSearch,
       "get-item-id": (a) => a._id || "",
@@ -431,7 +431,7 @@ const Ke = {
           description: a.shortDescription || a.description,
           "image-url": a.imageUrl,
           selected: $,
-          "display-mode": M(l).displayMode.value,
+          "display-mode": N(l).displayMode.value,
           "action-label": $ ? "Selected" : "Configure",
           "button-color": e.buttonColor,
           "button-text-color": e.buttonTextColor,
@@ -442,12 +442,12 @@ const Ke = {
             v("span", {
               class: D(["catalog-badge", `catalog-badge--${a.type}`])
             }, S(r[a.type] || a.type), 3),
-            a.featured ? (n(), c("span", Ke, " Featured ")) : I("", !0),
-            a.category && typeof a.category == "object" ? (n(), c("span", Qe, S(a.category.name), 1)) : I("", !0)
+            a.featured ? (n(), c("span", Re, " Featured ")) : I("", !0),
+            a.category && typeof a.category == "object" ? (n(), c("span", Ae, S(a.category.name), 1)) : I("", !0)
           ]),
           meta: B(() => [
             u(s.$slots, "product-meta", { product: a }, () => [
-              a.type === "simple" && a.simpleConfig?.price ? (n(), c("span", Re, S(o(a.simpleConfig.price)), 1)) : I("", !0)
+              a.type === "simple" && a.simpleConfig?.price ? (n(), c("span", Ke, S(o(a.simpleConfig.price)), 1)) : I("", !0)
             ], !0)
           ]),
           _: 2
@@ -492,7 +492,7 @@ const Ke = {
       } : void 0
     ]), 1032, ["browser", "show-categories", "show-search", "get-item-id", "get-item-name", "get-item-description", "get-item-image"]));
   }
-}), Ge = /* @__PURE__ */ K(Ve, [["__scopeId", "data-v-c43f8733"]]);
+}), Ge = /* @__PURE__ */ R(Oe, [["__scopeId", "data-v-c43f8733"]]);
 export {
   Ge as default
 };

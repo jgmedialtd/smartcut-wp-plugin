@@ -1,3 +1,119 @@
+/* ============================================================
+ * Storefront Theme Override
+ * checkout.css is wrapped in @layer smartcut-checkout (via the
+ * Vue component import), so ALL its rules — including the CSS
+ * isolation section — lose to Storefront's unlayered styles.
+ * These unlayered overrides use the same CSS custom properties
+ * from checkout.css to re-assert SmartCut styles at a specificity
+ * that beats Storefront.
+ * ============================================================ */
+
+#smartcut-app .smartcut-content {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .c-btn,
+  a.c-btn {
+    align-items: center;
+    appearance: none;
+    background: none;
+    background-color: var(--btn-bg);
+    border: none;
+    border-radius: var(--btn-border-radius);
+    color: var(--btn-color);
+    cursor: pointer;
+    display: flex;
+    font-family: var(--btn-font-family);
+    font-size: var(--btn-font-size);
+    font-weight: var(--btn-font-weight);
+    gap: var(--btn-gap);
+    justify-content: center;
+    letter-spacing: normal;
+    line-height: var(--btn-line-height);
+    outline: none;
+    overflow: hidden;
+    padding: var(--btn-padding);
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]),
+  textarea {
+    background-color: white;
+    border: none;
+    border-radius: var(--field-border-radius);
+    box-shadow: none;
+    color: var(--font-color-black);
+    font-family: inherit;
+    font-size: var(--field-font-size);
+    font-weight: 300;
+    height: var(--field-height);
+    letter-spacing: normal;
+    max-width: var(--field-max-width);
+    outline: none;
+    padding: 0 var(--field-padding);
+    text-transform: none;
+    width: 100%;
+  }
+
+  select {
+    appearance: none;
+    background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 448 512'%3E%3Cpath d='M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+    background-position: right var(--field-padding) center;
+    background-size: 12px;
+    border: var(--border-width) solid var(--border-dark-1);
+    border-radius: var(--field-border-radius);
+    box-shadow: none;
+    color: var(--font-color-black);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--field-font-size);
+    font-weight: 300;
+    height: var(--field-height);
+    letter-spacing: normal;
+    max-width: var(--field-max-width);
+    outline: none;
+    padding: 0 var(--field-padding);
+    padding-right: calc(var(--field-padding) + 20px);
+    text-transform: none;
+    width: 100%;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    appearance: none;
+    background: var(--background-light-4);
+    border: var(--border-width) solid var(--border-dark-1);
+    cursor: pointer;
+    display: inline-flex;
+    height: var(--checkbox-size);
+    margin: 0;
+    width: var(--checkbox-size);
+  }
+
+  label {
+    color: inherit;
+    display: block;
+    font-size: var(--label-font-size);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: normal;
+    margin: 0 0 var(--label-margin-bottom);
+    text-transform: none;
+  }
+}
+
 table.variations .label {
   text-transform: capitalize;
 }

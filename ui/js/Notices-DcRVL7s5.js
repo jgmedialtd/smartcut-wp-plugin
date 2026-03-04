@@ -1,6 +1,6 @@
-import { d as _, L as v, a, o as t, j as o, i as h, J as k, b as i, F as C, q as g, u as c, x as r, r as N, e as y, t as T, c as x, U as B, T as F } from "./vendor-vue-h1I-4LEU.js";
-import { a as L } from "./EcommerceCalculator-ROHa1p5B.js";
-const w = {
+import { d as _, m as v, j as a, b as t, f as o, g as k, q as h, a as i, F as C, k as g, u as c, p as r, r as N, e as y, t as T, c as B, T as F, s as w } from "./vendor-vue-9U543O5d.js";
+import { u as x } from "./EcommerceCalculator-CNt9J5Wx.js";
+const L = {
   id: "smartcut-notices",
   class: "smartcut-content"
 }, V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], j = /* @__PURE__ */ _({
@@ -9,18 +9,18 @@ const w = {
     position: { default: "top-left" }
   },
   setup(l) {
-    const n = l, { notices: d, dismissNotice: m } = L(), u = N({}), p = x(() => n.position.includes("right") ? "notice-right" : "notice-left");
+    const n = l, { notices: d, dismissNotice: m } = x(), u = N({}), p = B(() => n.position.includes("right") ? "notice-right" : "notice-left");
     return (A, H) => {
       const f = v("FontAwesomeIcon");
-      return t(), a(F, { to: "body" }, [
-        o("div", w, [
-          h(B, {
+      return t(), a(w, { to: "body" }, [
+        o("div", L, [
+          k(F, {
             name: p.value,
             "move-class": "notice-move",
             tag: "div",
             class: r(["notices-container", n.position])
           }, {
-            default: k(() => [
+            default: h(() => [
               (t(!0), i(C, null, g(c(d), (s) => (t(), i("div", {
                 key: s.id,
                 ref_for: !0,

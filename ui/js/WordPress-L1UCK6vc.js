@@ -1,22 +1,22 @@
-import { ay as ut, a_ as Ct, a$ as bt, b0 as ot, b1 as L, aW as re, b2 as zt, b3 as ie } from "./result.zod-B50712hY.js";
-import { J as se } from "./vendor-jszip-D_TwkzU-.js";
-import { d as oe, e as ce } from "./i18n-OYLNrgjA.js";
-import { u as le, E as ue } from "./EcommerceCalculator-ROHa1p5B.js";
-import { t as fe } from "./i18n-b56ZOQhn.js";
-import { E as de, a as H } from "./vendor-jspdf-OKBhB5DD.js";
-import { d as pe, h as me, b as At, o as ct, i as yt, e as kt, a as jt, u as X, g as wt, j as _e, s as ge, r as M, c as he, F as be, n as ye, p as ke, m as we } from "./vendor-vue-h1I-4LEU.js";
+import { c as ut, M as Ct, F as bt, g as ot, a as L, I as re, b as zt, o as ie } from "./result.zod-CDxo7LoF.js";
+import { J as se } from "./vendor-jszip-BunSI5We.js";
+import { t as oe, b as ce } from "./i18n-DT7wACvc.js";
+import { a as le, E as ue } from "./EcommerceCalculator-CNt9J5Wx.js";
+import { t as fe } from "./i18n-BcF5TYdp.js";
+import { E as de, a as H } from "./vendor-jspdf-BVlDd7Ff.js";
+import { d as pe, o as me, a as At, b as ct, g as yt, e as kt, j as It, u as X, h as wt, f as _e, D as ge, r as M, c as he, F as be, n as ye, E as ke, B as we } from "./vendor-vue-9U543O5d.js";
 function lt(a, F) {
   return F === "area" ? a === "imperial" ? 144 : 1e6 : a === "imperial" ? 12 : 1e3;
 }
-const It = ["banding", "finish", "cutLength", "perPart", "partArea", "offcutArea", "rollLength", "surcharge", "machining", "stock", "custom"], ve = (a) => It.includes(a);
+const jt = ["banding", "finish", "cutLength", "perPart", "partArea", "offcutArea", "rollLength", "surcharge", "machining", "stock", "custom"], ve = (a) => jt.includes(a);
 function Pe(a, F) {
   const v = (t) => {
     F.log?.(t);
   }, E = (t) => (F.error?.(t), { success: !1, error: t }), l = () => {
-    for (const t of It) c(t, 0);
+    for (const t of jt) c(t, 0);
   }, c = (t, h) => {
     v(["setting price", t, h]);
-    const { inputs: s, elements: p, setInputValue: T, formatPrice: o } = F;
+    const { inputs: s, elements: m, setInputValue: T, formatPrice: o } = F;
     if (isNaN(h)) throw new Error("Price must be a number");
     if (!ve(t)) return;
     const d = {
@@ -66,14 +66,14 @@ function Pe(a, F) {
         visible: "stock_total_price"
       }
     }[t];
-    d?.hidden && s[d.hidden] && (v(["setting hidden price", d.hidden, h]), T(d.hidden, h)), d?.visible && p[d.visible] && (p[d.visible].innerText = o(h));
+    d?.hidden && s[d.hidden] && (v(["setting hidden price", d.hidden, h]), T(d.hidden, h)), d?.visible && m[d.visible] && (m[d.visible].innerText = o(h));
   }, $ = (t, h, s) => {
     if (!t?.offcuts?.length) return 0;
-    const p = t.offcuts.filter((y) => {
-      const d = Math.max(y.l, y.w), j = Math.min(y.l, y.w);
-      return d >= (a.offcut_min_length || 0) && j >= (a.offcut_min_width || 0);
+    const m = t.offcuts.filter((y) => {
+      const d = Math.max(y.l, y.w), I = Math.min(y.l, y.w);
+      return d >= (a.offcut_min_length || 0) && I >= (a.offcut_min_width || 0);
     });
-    if (p.length === 0) return 0;
+    if (m.length === 0) return 0;
     const T = a.offcut_pricing_mode || "percentage";
     let o = 0;
     switch (T) {
@@ -85,34 +85,34 @@ function Pe(a, F) {
         break;
       default: {
         const y = (a.offcut_pricing_percentage ?? 100) / 100, d = /* @__PURE__ */ new Map();
-        for (const j of p) {
-          const g = j.stockId;
-          g && (d.has(g) || d.set(g, []), d.get(g).push(j));
+        for (const I of m) {
+          const g = I.stockId;
+          g && (d.has(g) || d.set(g, []), d.get(g).push(I));
         }
-        for (const [j, g] of d) {
-          const b = t.stock?.find((P) => P.id === j);
+        for (const [I, g] of d) {
+          const b = t.stock?.find((P) => P.id === I);
           if (!b || !b.cost) continue;
           const u = b.l * b.w;
           if (u === 0) continue;
           const k = g.reduce((P, z) => P + z.l * z.w * (z.q || 1), 0);
           o += k / u * ut({ v: b.cost }) * y;
         }
-        o === 0 && p.length > 0 && (o = p.reduce((b, u) => b + u.l * u.w * (u.q || 1), 0) / h * s * y), v([`offcut pricing mode: percentage (${y * 100}%), price = ${o}`]);
+        o === 0 && m.length > 0 && (o = m.reduce((b, u) => b + u.l * u.w * (u.q || 1), 0) / h * s * y), v([`offcut pricing mode: percentage (${y * 100}%), price = ${o}`]);
         break;
       }
     }
     return o;
   }, V = (t) => {
-    const { product: h, getCurrentVariationPrice: s, isQuantityPricing: p, enableAddToCart: T, setCartQuantity: o } = F;
+    const { product: h, getCurrentVariationPrice: s, isQuantityPricing: m, enableAddToCart: T, setCartQuantity: o } = F;
     let y = h?.price || s(!0) || 0;
     typeof y == "string" && (y = parseFloat(y));
     const d = a.unit_system === "imperial" ? "feet" : "meters", g = {
       full_stock: (u) => {
-        if (v(["calculating cost by full sheet"]), !p()) {
+        if (v(["calculating cost by full sheet"]), !m()) {
           const k = u.metadata.totalStockCost;
           return c("stock", k), k;
         }
-        return p() && o(u.metadata.totalUsedStock), 0;
+        return m() && o(u.metadata.totalUsedStock), 0;
       },
       part_area: (u) => {
         v([`calculating cost by part area in square ${d}`]);
@@ -136,7 +136,7 @@ function Pe(a, F) {
           const S = $(u, k, y);
           c("offcutArea", S), z += S;
         }
-        if (v([`calculated total price as ${z}`]), p()) {
+        if (v([`calculated total price as ${z}`]), m()) {
           const S = u.metadata.totalPartArea / k;
           return v([`setting cart quantity to ${S}`]), o(S, 2), 0;
         } else
@@ -151,7 +151,7 @@ function Pe(a, F) {
         v(["calculating cost by full sheet plus cut length"]);
         let k = 0;
         const P = u.metadata.totalStockCost;
-        c("stock", P), k = P, p() && o(u.metadata.totalUsedStock);
+        c("stock", P), k = P, m() && o(u.metadata.totalUsedStock);
         const z = lt(a.unit_system, "length"), A = u.metadata.totalCutLength / z * a.cut_length_price;
         return c("cutLength", A), k + A;
       },
@@ -159,7 +159,7 @@ function Pe(a, F) {
         v(["calculating cost by full sheet plus number of parts"]);
         let k = 0;
         const P = u.metadata.totalStockCost;
-        c("stock", P), k = P, p() && o(u.metadata.totalUsedStock);
+        c("stock", P), k = P, m() && o(u.metadata.totalUsedStock);
         const z = u.metadata.totalPartsProduced * a.per_part_price;
         return c("perPart", z), k + z;
       },
@@ -174,12 +174,12 @@ function Pe(a, F) {
     const {
       isExtraEnabled: h,
       isMachiningEnabled: s,
-      isSurchargeEnabled: p,
+      isSurchargeEnabled: m,
       inputType: T,
       getTotalBandingPrice: o,
       getTotalFinishPrice: y,
       getTotalMachiningPrice: d,
-      getInputValue: j
+      getInputValue: I
     } = F;
     let g = 0;
     if (h("banding") && t.metadata.bandingLengthByType) {
@@ -191,20 +191,20 @@ function Pe(a, F) {
       c("finish", b), g += b;
     }
     if (T.value === "formula") {
-      const b = parseFloat(j("smartcut-hardware-price"));
+      const b = parseFloat(I("smartcut-hardware-price"));
       isNaN(b) || (g += b);
     }
     if (s()) {
       const b = d(t);
       c("machining", b), g += b;
     }
-    if (p() && a.surcharge) {
+    if (m() && a.surcharge) {
       const b = a.surcharge_type === "per_sheet" ? parseFloat(a.surcharge.toString()) * t.metadata.totalUsedStock : parseFloat(a.surcharge.toString());
       c("surcharge", b), v(["added surcharge", b]), g += b;
     }
     return g;
-  }, m = (t) => {
-    const { getInputValue: h, setInputValue: s } = F, p = {
+  }, _ = (t) => {
+    const { getInputValue: h, setInputValue: s } = F, m = {
       "smartcut-job-id": t.jobId,
       "smartcut-dimensions": t.parts.map((T) => `${T.l}x${T.w} [${T.q}]`).join(", "),
       "smartcut-total-cut-length": t.metadata.totalCutLength,
@@ -213,7 +213,7 @@ function Pe(a, F) {
       "smartcut-total-parts": t.metadata.totalPartsProduced,
       "smartcut-machining": t.metadata.hasMachining
     };
-    if (Object.entries(p).forEach(([T, o]) => {
+    if (Object.entries(m).forEach(([T, o]) => {
       h(T) !== void 0 && s(T, o);
     }), h("smartcut-stock-summary") !== void 0) {
       const T = t.stock.map((o) => `${o.l}x${o.w}${o.t ? "x" + o.t : ""} [${o.q}]`).join(", ");
@@ -223,21 +223,21 @@ function Pe(a, F) {
   return {
     calculatePrice: async (t) => {
       l();
-      const { isQuantityPricing: h, selectedVariation: s, setVariationPrice: p, setCartQuantity: T } = F;
+      const { isQuantityPricing: h, selectedVariation: s, setVariationPrice: m, setCartQuantity: T } = F;
       if (!t?.jobId)
         return E("No job ID provided");
       h() || T(1);
       let o = V(t);
       const y = R(t);
       if (o += y, h()) {
-        const d = t.metadata.totalUsedStock, j = o / d;
-        c("custom", j);
+        const d = t.metadata.totalUsedStock, I = o / d;
+        c("custom", I);
       } else {
         if (!t.metadata.totalStockCost)
           return E("Total stock cost not returned for a multiple size product");
         v([`total cost is ${o}`]), c("custom", o);
       }
-      return s.value && p(o), m(t), { success: !0, totalPrice: o };
+      return s.value && m(o), _(t), { success: !0, totalPrice: o };
     },
     resetPricing: l
   };
@@ -245,9 +245,9 @@ function Pe(a, F) {
 const Q = 5, tt = 10, Y = ",", D = {
   fillColor: [7, 59, 76],
   fontStyle: "normal"
-}, W = {
+}, N = {
   fontSize: 9
-}, N = { left: 10 };
+}, W = { left: 10 };
 let K = [];
 const Se = (a, F, v, E = (l) => l.toString()) => {
   const l = new de({ orientation: "landscape" });
@@ -262,22 +262,22 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
     `${a("woodwork.banding")} (${Ct.join(Y)})`,
     `${a("woodwork.finish")} (${bt.join(Y)})`
   ];
-  const $ = F.parts.map((m) => {
-    let I, t;
-    if ("extras" in m && m.extras)
-      I = Ct.map((s) => ot(m.extras?.banding?.sides?.[s], "-")).join(Y), t = bt.map((s) => ot(m.extras?.finish?.faces?.[s], "-")).join(Y);
+  const $ = F.parts.map((_) => {
+    let j, t;
+    if ("extras" in _ && _.extras)
+      j = Ct.map((s) => ot(_.extras?.banding?.sides?.[s], "-")).join(Y), t = bt.map((s) => ot(_.extras?.finish?.faces?.[s], "-")).join(Y);
     else {
-      const s = m;
-      I = ["y1", "y2", "x1", "x2"].map((p) => ot(s.banding?.[p], "-")).join(Y), t = bt.map((p) => ot(s.finish?.faces?.[p], "-")).join(Y);
+      const s = _;
+      j = ["y1", "y2", "x1", "x2"].map((m) => ot(s.banding?.[m], "-")).join(Y), t = bt.map((m) => ot(s.finish?.faces?.[m], "-")).join(Y);
     }
     return [
-      E(m.l),
-      E(m.w),
-      E(m.t) || "-",
-      m?.material?.toUpperCase() || "-",
-      E(m.q),
-      m.name || "-",
-      I,
+      E(_.l),
+      E(_.w),
+      E(_.t) || "-",
+      _?.material?.toUpperCase() || "-",
+      E(_.q),
+      _.name || "-",
+      j,
       t
     ];
   });
@@ -285,9 +285,9 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
     startY: c,
     head: [K],
     body: $,
-    margin: N,
+    margin: W,
     headStyles: D,
-    styles: W
+    styles: N
   }), c = l.lastAutoTable.finalY + tt, l.setFontSize(14), l.text(a("pdf.stock_requirements"), 10, c), c += Q, K = [
     a("woodwork.length"),
     a("woodwork.width"),
@@ -296,55 +296,55 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
     a("woodwork.quantity")
     // 'Cost'
   ];
-  const V = F.stock.map((m) => [
-    E(m.l),
-    E(m.w),
-    E(m.t) || "-",
-    m?.material?.toUpperCase() || "-",
-    E(m.q)
+  const V = F.stock.map((_) => [
+    E(_.l),
+    E(_.w),
+    E(_.t) || "-",
+    _?.material?.toUpperCase() || "-",
+    E(_.q)
     // stock.cost
   ]);
   if (H(l, {
     startY: c,
     head: [K],
     body: V,
-    margin: N,
+    margin: W,
     headStyles: D,
-    styles: W
+    styles: N
   }), c = l.lastAutoTable.finalY + tt, F.metadata.totalRollLength > 0) {
     l.setFontSize(14), l.text(a("pdf.roll_requirements"), 10, c), c += Q, K = [
       a("woodwork.name"),
       a("woodwork.material"),
       a("woodwork.length")
     ];
-    const m = F.stock.map((I) => [
-      I?.name?.toUpperCase() || "-",
-      I?.material?.toUpperCase() || "-",
-      E(I.analysis.rollLength)
+    const _ = F.stock.map((j) => [
+      j?.name?.toUpperCase() || "-",
+      j?.material?.toUpperCase() || "-",
+      E(j.analysis.rollLength)
     ]);
     H(l, {
       startY: c,
       head: [K],
-      body: m,
-      margin: N,
+      body: _,
+      margin: W,
       headStyles: D,
-      styles: W
+      styles: N
     }), c = l.lastAutoTable.finalY + tt;
   }
   if (v && Object.values(v)) {
     l.setFontSize(14), l.text(a("pdf.hardware"), 10, c), c += Q;
-    const m = Object.values(v).map((I) => [
-      I.name.toUpperCase(),
-      E(I.q)
+    const _ = Object.values(v).map((j) => [
+      j.name.toUpperCase(),
+      E(j.q)
       // item.totalCost.toFixed( 2 )
     ]);
     H(l, {
       startY: c,
       head: [[a("pdf.item"), a("woodwork.quantity")]],
-      body: m,
-      margin: N,
+      body: _,
+      margin: W,
       headStyles: D,
-      styles: W
+      styles: N
     }), c = l.lastAutoTable.finalY + tt;
   }
   l.setFontSize(14), l.text(a("pdf.totals"), 10, c), c += Q;
@@ -359,41 +359,41 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
   if (H(l, {
     startY: c,
     body: R,
-    margin: N,
+    margin: W,
     headStyles: D,
-    styles: W
+    styles: N
   }), c = l.lastAutoTable.finalY + tt, window?.smartcutImages?.length) {
     l.addPage();
-    let m = 10;
-    l.setFontSize(14), l.text(a("pdf.images"), 10, m), m += Q;
-    const I = window.smartcutImages.flatMap((t, h) => t.metadata.map((s) => [
+    let _ = 10;
+    l.setFontSize(14), l.text(a("pdf.images"), 10, _), _ += Q;
+    const j = window.smartcutImages.flatMap((t, h) => t.metadata.map((s) => [
       h + 1,
       s.newName
     ]));
     H(l, {
-      startY: m,
-      body: I,
+      startY: _,
+      body: j,
       head: [[a("pdf.part_index"), a("pdf.file_name")]],
-      margin: N,
+      margin: W,
       headStyles: D,
-      styles: W
+      styles: N
     });
   }
   return l.output("datauristring");
 }, xe = {
   key: 0,
   class: "debug"
-}, Fe = !1, Ie = /* @__PURE__ */ pe({
+}, Fe = !1, je = /* @__PURE__ */ pe({
   __name: "WordPress",
   setup(a) {
-    const F = wt(() => import("./FormulaPricing-Bgz-iARr.js")), v = wt(() => import("./ObjectViewer-CjruzqzE.js")), E = wt(() => import("./Notices-CWXopAGb.js")), { inputShapes: l } = le(), c = "production", $ = {}, V = {}, R = M(null);
-    let m, I, t;
+    const F = wt(() => import("./FormulaPricing-C8rwB74x.js")), v = wt(() => import("./ObjectViewer-D6Hbg9id.js")), E = wt(() => import("./Notices-DcRVL7s5.js")), { inputShapes: l } = le(), c = "production", $ = {}, V = {}, R = M(null);
+    let _, j, t;
     const h = {
       banding: null,
       finish: null
     };
-    let s = null, p = [], T = null, o = {};
-    const y = M(!1), d = M("manual"), j = M(""), g = ge([]), b = he(() => g.value), u = M(null), k = M(!0), P = M(null), z = M(!1), S = M(null);
+    let s = null, m = [], T = null, o = {};
+    const y = M(!1), d = M("manual"), I = M(""), g = ge([]), b = he(() => g.value), u = M(null), k = M(!0), P = M(null), z = M(!1), S = M(null);
     ke("calculator", () => S.value);
     const A = (e) => {
       y.value && console.log("SmartCut -", ...e);
@@ -458,16 +458,17 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
           default:
             return { cutType: "guillotine", cutPreference: "l" };
         }
-      }, { cutType: w, cutPreference: _ } = i(t.cut_preference), x = {
+      }, { cutType: w, cutPreference: p } = i(t.cut_preference), x = {
         stockType: t.stock_type,
         bladeWidth: t.blade_width,
         cutType: w,
-        cutPreference: _,
+        cutPreference: p,
         stackHeight: t.stack_height || 100,
         guillotineOptions: {
           strategy: "efficiency",
           maxPhase: 0,
-          headCuts: !1
+          headCuts: !1,
+          limitStripDimensions: !1
         }
       }, f = {
         apiVersion: 3,
@@ -552,7 +553,7 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
       const Z = {
         type: s.type,
         stock: g.value.map((q) => q.toData()),
-        variations: p ?? null,
+        variations: m ?? null,
         saw: x,
         options: f,
         banding: n,
@@ -579,8 +580,8 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
         isSurchargeEnabled: Et,
         getTotalBandingPrice: Dt,
         getTotalFinishPrice: Yt,
-        getTotalMachiningPrice: Wt,
-        getInputValue: Nt,
+        getTotalMachiningPrice: Nt,
+        getInputValue: Wt,
         enableAddToCart: vt,
         log: A,
         error: C
@@ -596,7 +597,7 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
         offcut_min_length: t.offcut_min_length,
         offcut_min_width: t.offcut_min_width
       }, st);
-      m = ht.calculatePrice, I = ht.resetPricing, ye(() => {
+      _ = ht.calculatePrice, j = ht.resetPricing, ye(() => {
         S.value && S.value.init(Z);
       });
     }, Bt = (e) => {
@@ -612,7 +613,7 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
         stock_name: e?.stock_sku || e.stock_name
       }, s.multiple_sizes || (s.l || C("product 'length' attribute not available"), s.w || C("product 'width' attribute not available"));
     }, Mt = (e) => {
-      d.value = L(window, ["smartcutConfig", "settings", "enable_formula"]) === !0 ? "formula" : "manual", j.value = L(window, ["smartcutConfig", "settings", "formula_url"]), A([`Input type: ${d.value}`]), o = {
+      d.value = L(window, ["smartcutConfig", "settings", "enable_formula"]) === !0 ? "formula" : "manual", I.value = L(window, ["smartcutConfig", "settings", "formula_url"]), A([`Input type: ${d.value}`]), o = {
         thousands_separator: e?.thousands_separator,
         decimal_separator: e?.decimal_separator,
         number_of_decimals: e?.number_of_decimals,
@@ -656,12 +657,12 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
       l1: t.stock_type === "linear" ? 0 : t.stock_trim_y1 ?? 0,
       l2: t.stock_type === "linear" ? 0 : t.stock_trim_y2 ?? 0
     }), J = (e = null, n = null, r = null, i = null, w = null) => {
-      let _;
+      let p;
       if (w && typeof w == "object") {
-        _ = [];
+        p = [];
         for (const [f, O] of Object.entries(w))
-          f !== "attribute_size" && f !== "attribute_thickness" && _.push(`${f.replace("attribute_", "")}: ${O}`);
-        _ = _.join(" - ");
+          f !== "attribute_size" && f !== "attribute_thickness" && p.push(`${f.replace("attribute_", "")}: ${O}`);
+        p = p.join(" - ");
       }
       const x = {
         name: s.stock_name,
@@ -672,7 +673,7 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
         cost: parseFloat(i?.toString() || "0"),
         trim: Rt(),
         allowExactFitShapes: !0,
-        notes: _
+        notes: p
       };
       return new re(x, t.numberFormat || "decimal");
     }, Ht = () => {
@@ -724,23 +725,25 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
       if (!e) return null;
       const n = {
         labels: [],
-        pricing: {}
+        pricing: {},
+        displayNames: {}
       }, r = Object.values(e);
       for (const i of r)
         i?.variations ? (n.labels.push(...Object.keys(i.options)), Object.values(i.variations).forEach((w) => {
-          const { options: _ } = w, x = Object.values(_).map((f) => rt(f)).join("|");
+          const { options: p } = w, x = Object.values(p).map((f) => rt(f)).join("|");
           n.pricing[x] = parseInt(w.price);
         })) : i?.options && Object.keys(i.options).forEach((w) => {
-          n.pricing[rt(w)] = parseInt(i.price);
+          const p = rt(w);
+          n.pricing[p] = parseInt(i.price), i.name && (n.displayNames[p] = i.name);
         });
       return n.labels.length || n.labels.push("type"), n;
     }, pt = (e, n) => {
       if (!n.length || !zt(h, [e])) return null;
       const r = L(h, [e]);
       if (!ie(r)) return null;
-      const w = Object.values(r).map((_) => _?.variations ? Object.values(_.variations).map((x) => (x.type = "variable", x)) : (_.type = "simple", _)).flat().find((_) => {
+      const w = Object.values(r).map((p) => p?.variations ? Object.values(p.variations).map((x) => (x.type = "variable", x)) : (p.type = "simple", p)).flat().find((p) => {
         let x;
-        return _.type === "simple" ? x = Object.keys(_.options) : x = Object.values(_.options), x ? x.every((f, O) => rt(f) === rt(n[O])) : !1;
+        return p.type === "simple" ? x = Object.keys(p.options) : x = Object.values(p.options), x ? x.every((f, O) => rt(f) === rt(n[O])) : !1;
       });
       return w?.price ? parseFloat(w.price) : null;
     }, Yt = (e) => {
@@ -748,9 +751,9 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
       if (typeof e == "object") {
         for (let [r, i] of Object.entries(e)) {
           typeof i == "string" && (i = parseFloat(i));
-          const w = r.split("|"), _ = pt("finish", w);
-          if (_ === null) continue;
-          const f = Number(i) / 1e6 * parseFloat(_.toString());
+          const w = r.split("|"), p = pt("finish", w);
+          if (p === null) continue;
+          const f = Number(i) / 1e6 * parseFloat(p.toString());
           n += f;
         }
         if ("min_finish_charge" in t) {
@@ -765,9 +768,9 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
       if (typeof e == "object") {
         for (let [r, i] of Object.entries(e)) {
           typeof i == "string" && (i = parseFloat(i));
-          const w = r.split("|"), _ = pt("banding", w);
-          if (_ === null) continue;
-          const x = i / (t.unit_system === "imperial" ? 12 : 1e3) * parseFloat(_.toString());
+          const w = r.split("|"), p = pt("banding", w);
+          if (p === null) continue;
+          const x = i / (t.unit_system === "imperial" ? 12 : 1e3) * parseFloat(p.toString());
           n += x;
         }
         if ("min_banding_charge" in t) {
@@ -777,15 +780,15 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
         }
       }
       return n;
-    }, Wt = (e) => (T.holes ?? 0) * (e.metadata.numHoles ?? 0) + (T.corners ?? 0) * (e.metadata.numCorners ?? 0), G = (e, n) => {
+    }, Nt = (e) => (T.holes ?? 0) * (e.metadata.numHoles ?? 0) + (T.corners ?? 0) * (e.metadata.numCorners ?? 0), G = (e, n) => {
       e in $ && $[e]?.style && ($[e].style.display = n);
     }, mt = (e, n) => {
       _t(e) ? V[e].value = n : C(`Attempting to set input but key '${e}' does not exist`);
-    }, Nt = (e) => {
+    }, Wt = (e) => {
       if (_t(e))
         return V[e].value;
     }, _t = (e) => e in V && V[e] instanceof HTMLInputElement, Ft = () => {
-      dt(1), U(), I();
+      dt(1), U(), j();
       for (const e in V)
         e !== "smartcut-hardware-price" && mt(e, null);
     }, $t = () => {
@@ -825,27 +828,27 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
         const i = Jt(n);
         if (A([`variation found with size: ${i} & thickness: ${r}`]), !i)
           return et(!1), C("The size of this multiple size product could not be found");
-        if (Array.isArray(i) ? B(k.value) : it(i) ? et(!0, !0) : B(k.value), p?.length) {
+        if (Array.isArray(i) ? B(k.value) : it(i) ? et(!0, !0) : B(k.value), m?.length) {
           let w;
-          const _ = r;
+          const p = r;
           let x = n.display_price;
           Array.isArray(i) ? w = i.map((f) => ({
             size: f,
             l: f.split("x")[0],
             w: f.split("x")[1],
-            t: _,
+            t: p,
             price: x
-          })) : w = p.filter((f) => it(f?.attributes?.size) ? r === (f?.attributes?.thickness ?? null) : !1).map((f) => {
+          })) : w = m.filter((f) => it(f?.attributes?.size) ? r === (f?.attributes?.thickness ?? null) : !1).map((f) => {
             const O = f?.attributes?.size.split("x")[0] ?? null, Z = f?.attributes?.size.split("x")[1] ?? null;
             let st = 0;
-            return n.display_price || (st = p.find((q) => it(q.attributes?.size) && q.attributes?.thickness === f?.attributes?.thickness && q.attributes?.size === f?.attributes?.size && q.display_price > 0).display_price), A([
+            return n.display_price || (st = m.find((q) => it(q.attributes?.size) && q.attributes?.thickness === f?.attributes?.thickness && q.attributes?.size === f?.attributes?.size && q.display_price > 0).display_price), A([
               `size attribute: '${f?.attributes?.size}'`,
               `price for thickness ${r}, dimensions: ${O}x${Z} is ${x}`
             ]), {
               size: f?.attributes?.size,
               l: O,
               w: Z,
-              t: _,
+              t: p,
               price: x || st
             };
           }), z.value === !0 && w.forEach((f) => {
@@ -860,7 +863,7 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
           });
         }
       } else {
-        if (!p.some((i) => "thickness" in i.attributes))
+        if (!m.some((i) => "thickness" in i.attributes))
           g.value.push(J(
             s.l,
             s.w,
@@ -869,7 +872,7 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
             n?.attributes
           ));
         else {
-          const i = p.find((w) => w.attributes?.thickness === r);
+          const i = m.find((w) => w.attributes?.thickness === r);
           if (!i) return C(`variation not found for thickness ${r}`);
           g.value.push(J(
             s.l,
@@ -883,7 +886,7 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
       }
     }, Xt = async (e) => {
       Ft(), A(["result event received", e]);
-      const n = await m(e);
+      const n = await _(e);
       if (!n.success) {
         console.error(n.error);
         return;
@@ -892,19 +895,19 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
     }, te = async (e) => {
       const r = Se(fe, e, P.value, Qt).split(",")[1], i = new se();
       i.file("order-summary.pdf", r);
-      const w = await i.generateAsync({ type: "blob" }), _ = new File([w], "order-summary.zip", { type: "application/zip" });
+      const w = await i.generateAsync({ type: "blob" }), p = new File([w], "order-summary.zip", { type: "application/zip" });
       if (!_t("smartcut-order-summary")) return;
       const x = V["smartcut-order-summary"].closest("form");
       if (!x) return;
       const f = new DataTransfer();
-      f.items.add(_);
+      f.items.add(p);
       const O = x.querySelector('[name="smartcut_order_summary"]');
       O instanceof HTMLInputElement && (O.files = f.files);
     }, ee = (e, n) => {
       U(), e && (P.value = we(e)), mt("smartcut-hardware-price", n ?? 0);
     };
     return me(() => {
-      console.log("💥 Powered by https://smartcut.dev", window?.smartcutConfig?.version), A(["Launching WordPress checkout..."]), h.banding = L(window, ["smartcutConfig", "banding_data"]), h.finish = L(window, ["smartcutConfig", "finish_data"]), T = L(window, ["smartcutConfig", "machining_pricing"]), p = L(window, ["smartcutConfig", "variations"]), Ut(), Gt(), Bt(window.smartcutConfig), Mt(window.smartcutConfig), Lt(), Ht(), [
+      console.log("💥 Powered by https://smartcut.dev", window?.smartcutConfig?.version), A(["Launching WordPress checkout..."]), h.banding = L(window, ["smartcutConfig", "banding_data"]), h.finish = L(window, ["smartcutConfig", "finish_data"]), T = L(window, ["smartcutConfig", "machining_pricing"]), m = L(window, ["smartcutConfig", "variations"]), Ut(), Gt(), Bt(window.smartcutConfig), Mt(window.smartcutConfig), Lt(), Ht(), [
         "div.quantity > input.plus",
         "div.quantity > input.minus",
         "div.quantity .qty-plus",
@@ -928,16 +931,16 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
           paths: ["stock trim"]
         }, null, 8, ["data"])
       ])) : kt("", !0),
-      d.value === "formula" && j.value ? (ct(), jt(X(F), {
+      d.value === "formula" && I.value ? (ct(), It(X(F), {
         key: 1,
         ref: "formulapricing",
         "format-price": at,
-        url: j.value,
+        url: I.value,
         debug: y.value,
         onHardwareResult: ee,
         onPanelResult: U
       }, null, 8, ["url", "debug"])) : kt("", !0),
-      d.value === "manual" || d.value === "formula" && j.value ? (ct(), jt(ue, {
+      d.value === "manual" || d.value === "formula" && I.value ? (ct(), It(ue, {
         key: 2,
         ref_key: "calculator",
         ref: S,
@@ -957,5 +960,5 @@ const Se = (a, F, v, E = (l) => l.toString()) => {
   }
 });
 export {
-  Ie as default
+  je as default
 };

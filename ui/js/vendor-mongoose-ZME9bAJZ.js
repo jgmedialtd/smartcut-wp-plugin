@@ -1,4 +1,4 @@
-import { g as ue } from "./vendor-C048ug3t.js";
+import { g as ue } from "./vendor-BwVe8GCL.js";
 var $ = { exports: {} }, Y, ae;
 function le() {
   if (ae) return Y;

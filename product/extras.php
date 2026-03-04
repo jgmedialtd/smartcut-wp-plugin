@@ -171,6 +171,7 @@ class ExtraProductsManager
 
 		return [
 			'name' => $product->get_name(),
+			'slug' => $product->get_slug(),
 			'options' => $options,
 			'variations' => $variationsData
 		];
@@ -184,12 +185,15 @@ class ExtraProductsManager
 
 		$productName = $product->get_name();
 		$productSlug = $product->get_slug();
+		$productSku = $product->get_sku();
+		$optionKey = !empty($productSku) ? $productSku : $productSlug;
 		$optionName = strtolower($productName);
 
 		return [
 			'name' => $productName,
+			'slug' => $productSlug,
 			'price' => $price,
-			'options' => [$productSlug => $optionName]
+			'options' => [$optionKey => $optionName]
 		];
 	}
 

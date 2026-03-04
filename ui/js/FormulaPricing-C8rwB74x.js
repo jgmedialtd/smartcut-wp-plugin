@@ -1,6 +1,6 @@
-import { F as U, _ as B } from "./EcommerceCalculator-ROHa1p5B.js";
-import { t as O } from "./i18n-b56ZOQhn.js";
-import { d as G, S as z, w as Q, r as m, c as w, h as W, b as p, o, e as _, j as h, i as X, u as b, g as Y, a as D, F as j, q as L, t as s, n as V } from "./vendor-vue-h1I-4LEU.js";
+import { F as U, _ as B } from "./EcommerceCalculator-CNt9J5Wx.js";
+import { t as O } from "./i18n-BcF5TYdp.js";
+import { d as G, i as z, w as Q, r as m, c as w, o as W, a as p, b as o, e as _, f as h, g as X, u as b, h as Y, j as D, F as j, k as L, t as s, n as V } from "./vendor-vue-9U543O5d.js";
 const Z = {
   key: 0,
   class: "debug"
@@ -37,15 +37,15 @@ const Z = {
   },
   emits: ["hardware-result", "panel-result"],
   setup(d, { emit: H }) {
-    const R = Y(() => import("./ObjectViewer-CjruzqzE.js")), u = d, k = H, K = z("calculator"), n = w(() => K()), q = m("production");
+    const R = Y(() => import("./ObjectViewer-D6Hbg9id.js")), u = d, k = H, K = z("calculator"), n = w(() => K()), A = m("production");
     let i = null;
     const v = m(null), r = m([]), g = m(!1), F = m(""), C = w(() => {
       if (!g.value || !r.value.length || r.value.every((t) => t.value === null)) return null;
-      const e = I();
+      const e = J();
       return V(() => k("panel-result", e)), e;
     }), y = w(() => {
       if (!n.value || !g.value || !r.value.length || r.value.every((t) => t.value === null)) return;
-      const e = J();
+      const e = M();
       return V(() => k("hardware-result", e, x.value)), e;
     }), x = w(() => {
       if (y.value)
@@ -67,48 +67,48 @@ const Z = {
           orientationLock: a.orientationLock || null,
           notes: F.value,
           readonly: !0
-        }, T = c || n.value.createInputShape(P);
+        }, $ = c || n.value.createInputShape(P);
         if (c) {
           Object.assign(c, P);
-          for (const $ of ["banding", "finish"])
-            n.value.initExtrasOptions(c, $);
+          for (const q of ["banding", "finish"])
+            n.value.initExtrasOptions(c, q);
         } else
-          n.value.inputShapes.push(T);
+          n.value.inputShapes.push($);
         f.add(S);
       }
       n.value.inputShapes = n.value.inputShapes.filter(
         (a) => f.has(t(a))
       );
-    }, { immediate: !1 }), W(() => M());
+    }, { immediate: !1 }), W(() => T());
     const N = (e) => {
       u.debug && console.log(e);
-    }, A = () => {
+    }, E = () => {
       r.value = Object.values(v.value.inputs).map((e) => ({
         value: e.default ?? null
       })), console.log(r.value);
-    }, E = (e, t) => {
+    }, I = (e, t) => {
       r.value[e] && (r.value[e].value = t);
-    }, I = () => {
+    }, J = () => {
       try {
         return i.calculatePanelsFromFields(r.value);
       } catch (e) {
         return n.value.inputShapes.length = 0, console.error(e), null;
       }
-    }, J = () => {
+    }, M = () => {
       try {
         return i.calculateHardwareFromFields(r.value);
       } catch (e) {
         return console.error(e), null;
       }
-    }, M = async () => {
+    }, T = async () => {
       if (!u.url && !u.spec) {
         console.warn("SmartCut - No formula URL or JSON provided");
         return;
       }
-      u.url ? (N(`SmartCut - Formula calculator init from url: ${u.url}`), i = new U({ url: u.url }), v.value = await i.getSpec()) : u.spec && (N("SmartCut - Formula calculator init with JSON"), i = new U({ spec: u.spec }), v.value = await i.getSpec()), A(), g.value = !0;
+      u.url ? (N(`SmartCut - Formula calculator init from url: ${u.url}`), i = new U({ url: u.url }), v.value = await i.getSpec()) : u.spec && (N("SmartCut - Formula calculator init with JSON"), i = new U({ spec: u.spec }), v.value = await i.getSpec()), E(), g.value = !0;
     };
     return (e, t) => (o(), p(j, null, [
-      q.value === "development" && ne ? (o(), p("div", Z, [
+      A.value === "development" && ne ? (o(), p("div", Z, [
         t[1] || (t[1] = h("div", null, "Developer information", -1)),
         X(b(R), {
           data: [C.value],
@@ -135,7 +135,7 @@ const Z = {
           max: l.max ?? null,
           default: l.default ?? 0,
           value: r.value[a]?.value,
-          "onUpdate:value": (S) => E(a, S)
+          "onUpdate:value": (S) => I(a, S)
         }, null, 8, ["id", "type", "label", "placeholder", "min", "max", "default", "value", "onUpdate:value"]))), 128)),
         y.value ? (o(), p("div", ae, [
           h("div", te, s(b(O)("Hardware")), 1),

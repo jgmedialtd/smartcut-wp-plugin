@@ -1,8 +1,8 @@
-import { d as ze, V as ne, A as Te, W as Pe, C as le, w as W, r as P, h as Be, n as re, L as We, b as g, o as u, j as C, e as k, u as R, i as J, g as Ee, t as E, x as M, c as T, a as Me, v as oe, F as O, q as j, H as Ge, X as Fe, y as Ve, z as qe } from "./vendor-vue-h1I-4LEU.js";
-import { ay as y, a_ as he, ai as I, c9 as Re, ca as $e, b1 as Ne } from "./result.zod-B50712hY.js";
-import { b as Oe, h as je, _ as Ie } from "./EcommerceCalculator-ROHa1p5B.js";
-import { t as S } from "./i18n-b56ZOQhn.js";
-import { l as _e, g as Ue, h as Xe, i as Ke, p as Je, S as Qe, d as Ze, b as et, c as tt, a as st, e as it, f as at, s as nt, j as lt, k as rt } from "./vendor-d3-DMTsxX1U.js";
+import { d as Te, G as ne, H as ze, I as Pe, J as le, w as W, r as P, o as Be, n as re, m as We, a as g, b as u, f as C, e as k, u as R, g as J, h as Ee, t as E, p as M, c as z, j as Me, l as oe, F as O, k as j, x as Ge, K as Fe, y as Ve, L as qe } from "./vendor-vue-9U543O5d.js";
+import { c as y, M as he, v as I, u as Re, s as $e, a as Ne } from "./result.zod-CDxo7LoF.js";
+import { b as Oe, h as je, _ as Ie } from "./EcommerceCalculator-CNt9J5Wx.js";
+import { t as S } from "./i18n-BcF5TYdp.js";
+import { l as _e, s as Ue, a as Ke, b as Xe, p as Je, S as Qe, c as Ze, d as et, e as tt, f as st, g as it, h as at, i as nt, j as lt, k as rt } from "./vendor-d3-DNaL3zcO.js";
 const L = {
   precisionFixed: rt,
   format: lt,
@@ -16,8 +16,8 @@ const L = {
   axisLeft: Ze,
   symbol: Qe,
   path: Je,
-  arc: Ke,
-  symbolTriangle: Xe,
+  arc: Xe,
+  symbolTriangle: Ke,
   symbolSquare: Ue
 };
 class ot {
@@ -348,7 +348,7 @@ const ht = { class: "inputs" }, dt = {
 }, St = { class: "id" }, yt = { class: "cell" }, wt = ["onClick"], Ht = {
   key: 6,
   class: "menu-prompt"
-}, Ct = !1, zt = /* @__PURE__ */ ze({
+}, Ct = !1, Tt = /* @__PURE__ */ Te({
   __name: "Machining",
   props: /* @__PURE__ */ ne({
     env: { default: "production" },
@@ -408,12 +408,12 @@ const ht = { class: "inputs" }, dt = {
   }),
   emits: /* @__PURE__ */ ne(["update:shape", "close"], ["update:inputShape"]),
   setup(A, { emit: s }) {
-    const n = Ee(() => import("./ObjectViewer-CjruzqzE.js")), e = A, m = s, v = "production", h = P(), r = P(), d = T(() => je(i.value)), x = T(() => {
+    const n = Ee(() => import("./ObjectViewer-D6Hbg9id.js")), e = A, m = s, v = "production", h = P(), r = P(), d = z(() => je(i.value)), x = z(() => {
       if (!f.value?.length) return 0;
       if (l.value === "banding") return 1;
       let t = Object.values(p.value).filter((a) => a.enabled).length;
       return t += 2, t;
-    }), D = T(() => {
+    }), D = z(() => {
       if (!f.value.length || l.value === "banding") return;
       const t = {
         id: "34px",
@@ -423,13 +423,13 @@ const ht = { class: "inputs" }, dt = {
         const c = p.value[o];
         c.enabled && a.push(c.w ?? "1fr");
       }), a.unshift(t.id), a.push(t.del), a.join(" ");
-    }), p = T(() => !l.value || l.value === "banding" ? null : K[l.value]), f = T(() => !l.value || l.value === "banding" ? [] : Object.keys(K[l.value]).filter((t) => K[l.value][t].enabled)), G = T(() => l.value ? ge() : []), V = T(() => {
+    }), p = z(() => !l.value || l.value === "banding" ? null : X[l.value]), f = z(() => !l.value || l.value === "banding" ? [] : Object.keys(X[l.value]).filter((t) => X[l.value][t].enabled)), G = z(() => l.value ? ge() : []), V = z(() => {
       const t = i.value?.machining?.corners?.map((a) => a?.isPresent?.() ? a.getCorner() : null)?.filter((a) => a) ?? [];
       return [...he, ...t];
-    }), de = T(() => {
+    }), de = z(() => {
       const t = e.options.banding?.options?.[0];
       return !t || !Array.isArray(t) ? [] : t.filter((a) => typeof a == "string");
-    }), ce = T(() => {
+    }), ce = z(() => {
       const t = i.value?.extras?.banding;
       if (!t) return [];
       const a = [], o = (c) => {
@@ -441,7 +441,7 @@ const ht = { class: "inputs" }, dt = {
       };
       return t.faces && o(t.faces), t.sides && o(t.sides), a;
     }), Y = (t = !0) => {
-      t ? X.value = t : re(() => X.value = !1);
+      t ? K.value = t : re(() => K.value = !1);
     }, ue = () => {
       Z(), ee(), te(), ye();
     }, pe = (t) => {
@@ -488,7 +488,7 @@ const ht = { class: "inputs" }, dt = {
     }, ve = Fe(() => {
       ae.value && w && w.updateSize();
     }, 10);
-    Te(r, () => {
+    ze(r, () => {
       ve();
     });
     const me = () => {
@@ -576,20 +576,20 @@ const ht = { class: "inputs" }, dt = {
           return te();
       }
     }, se = () => {
-      if (z.value = [], !!e.options.banding.enabled) {
+      if (T.value = [], !!e.options.banding.enabled) {
         Y();
         for (const t in i.value.banding.sides)
-          i.value.banding.sides[t] ? e.options.banding.enableTypes && e.options.banding.types?.length && (i.value.banding.sides[t] || z.value.push({
+          i.value.banding.sides[t] ? e.options.banding.enableTypes && e.options.banding.types?.length && (i.value.banding.sides[t] || T.value.push({
             index: t,
             message: "Please select a type"
           })) : i.value.banding.sides[t] = "";
         Y(!1);
       }
     }, Ce = (t) => {
-      const a = z.value.filter((o) => o.index === t);
+      const a = T.value.filter((o) => o.index === t);
       return a.length ? a.map((o) => o.message) : [];
     }, ke = (t) => {
-      const a = z.value.filter((c) => c.index === t && c?.fields), o = a.flatMap((c) => c.fields);
+      const a = T.value.filter((c) => c.index === t && c?.fields), o = a.flatMap((c) => c.fields);
       return a.length ? o : [];
     }, Le = (t, a) => {
       const o = ke(t);
@@ -599,7 +599,7 @@ const ht = { class: "inputs" }, dt = {
     }, Ae = (t) => t && typeof t.disabled == "function" ? t.disabled : !1, i = Pe(A, "inputShape");
     if (!i.value?.machining)
       throw new Error("Machining component requires a shape with machining initialized");
-    const ie = P(!1), ae = P(!1), X = P(!1), F = P(0), l = P(null), z = P([]), K = le({
+    const ie = P(!1), ae = P(!1), K = P(!1), F = P(0), l = P(null), T = P([]), X = le({
       holes: {
         x: {
           enabled: !0,
@@ -800,7 +800,7 @@ const ht = { class: "inputs" }, dt = {
       if (!a) return;
       const o = a.getBoundingClientRect();
       t.clientX >= o.left && t.clientX <= o.right && t.clientY >= o.top && t.clientY <= o.bottom || U();
-    }, B = () => !(!i?.value?.machining || !ie.value || X.value);
+    }, B = () => !(!i?.value?.machining || !ie.value || K.value);
     return W(() => i.value?.autoId, () => {
       B() && _();
     }), W(() => i.value?.id, () => {
@@ -812,7 +812,7 @@ const ht = { class: "inputs" }, dt = {
         return;
       }
       if (!t) {
-        z.value = [];
+        T.value = [];
         return;
       }
       Y();
@@ -821,7 +821,7 @@ const ht = { class: "inputs" }, dt = {
         t,
         $?.[t]
       );
-      z.value = a?.map((o, c) => ({
+      T.value = a?.map((o, c) => ({
         index: c,
         message: o.message || "Validation error",
         fields: o.field || []
@@ -834,7 +834,7 @@ const ht = { class: "inputs" }, dt = {
         "holes",
         $?.holes
       );
-      z.value = t?.map((a, o) => ({
+      T.value = t?.map((a, o) => ({
         index: o,
         message: a.message || "Validation error",
         fields: a.field || []
@@ -847,7 +847,7 @@ const ht = { class: "inputs" }, dt = {
         "hingeHoles",
         $?.hingeHoles
       );
-      z.value = t?.map((a, o) => ({
+      T.value = t?.map((a, o) => ({
         index: o,
         message: a.message || "Validation error",
         fields: a.field || []
@@ -860,7 +860,7 @@ const ht = { class: "inputs" }, dt = {
         "corners",
         $?.corners
       );
-      z.value = t?.map((a, o) => ({
+      T.value = t?.map((a, o) => ({
         index: o,
         message: a.message || "Validation error",
         fields: a.field || []
@@ -1041,5 +1041,5 @@ const ht = { class: "inputs" }, dt = {
   }
 });
 export {
-  zt as default
+  Tt as default
 };

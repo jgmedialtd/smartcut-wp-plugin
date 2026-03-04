@@ -1,4 +1,4 @@
-import { c as oa } from "./vendor-C048ug3t.js";
+import { c as oa } from "./vendor-BwVe8GCL.js";
 var ua = {}, va = {}, wr, sa;
 function $() {
   if (sa) return wr;

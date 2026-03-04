@@ -1,5 +1,5 @@
-import { _ as g } from "./Launch-C8DaHa5j.js";
-import { L as A, b as s, o as r, F as _, q as u, j as c, e as f, t as i, a as b, x as j } from "./vendor-vue-h1I-4LEU.js";
+import { _ as g } from "./Launch-f21ynuad.js";
+import { m as A, a as s, b as r, F as _, k as u, f as c, e as f, t as i, j as b, p as j } from "./vendor-vue-9U543O5d.js";
 const k = {
   name: "ObjectViewer",
   props: {
@@ -22,8 +22,8 @@ const k = {
     };
   },
   created() {
-    this.data.forEach((e, n) => {
-      this.expanded[n] = this.root;
+    this.data.forEach((e, o) => {
+      this.expanded[o] = this.root;
     });
   },
   methods: {
@@ -36,8 +36,8 @@ const k = {
     isObjectOrArray(e) {
       return e && typeof e == "object";
     },
-    getArrayPaths(e, n) {
-      return Array.isArray(e) ? e.map((d, y) => y) : [n];
+    getArrayPaths(e, o) {
+      return Array.isArray(e) ? e.map((d, y) => y) : [o];
     },
     formatValue(e) {
       return e === null ? "null" : e === void 0 ? "undefined" : typeof e == "boolean" ? e.toString() : typeof e != "object" ? typeof e == "string" ? `'${e}'` : String(e) : "";
@@ -49,25 +49,25 @@ const k = {
 }, x = {
   key: 0,
   class: "key"
-}, q = {
+}, S = {
   key: 1,
   class: "null-value"
-}, S = { key: 2 };
-function E(e, n, d, y, p, a) {
+}, q = { key: 2 };
+function E(e, o, d, y, p, a) {
   const h = A("ObjectViewer", !0);
   return r(), s("div", O, [
-    (r(!0), s(_, null, u(d.data, (m, o) => (r(), s("div", {
-      key: o,
+    (r(!0), s(_, null, u(d.data, (m, n) => (r(), s("div", {
+      key: n,
       class: "array-item"
     }, [
       c("div", {
         class: "item-header",
-        onClick: (t) => a.toggle(o)
+        onClick: (t) => a.toggle(n)
       }, [
-        c("div", w, i(p.expanded[o] ? "▼" : "▶"), 1),
-        c("div", B, i(d.paths[o] || o), 1)
+        c("div", w, i(p.expanded[n] ? "▼" : "▶"), 1),
+        c("div", B, i(d.paths[n] || n), 1)
       ], 8, V),
-      p.expanded[o] ? (r(), s("div", C, [
+      p.expanded[n] ? (r(), s("div", C, [
         (r(!0), s(_, null, u(m, (t, l) => (r(), s("div", {
           key: l,
           class: "property-item"
@@ -81,14 +81,14 @@ function E(e, n, d, y, p, a) {
               data: Array.isArray(t) ? t : [t],
               paths: a.getArrayPaths(t, l),
               root: !1
-            }, null, 8, ["data", "paths"])) : t === null ? (r(), s("span", q, "null")) : (r(), s("span", S, i(a.formatValue(t)), 1))
+            }, null, 8, ["data", "paths"])) : t === null ? (r(), s("span", S, "null")) : (r(), s("span", q, i(a.formatValue(t)), 1))
           ], 2)
         ]))), 128))
       ])) : f("", !0)
     ]))), 128))
   ]);
 }
-const N = /* @__PURE__ */ g(k, [["render", E]]);
+const P = /* @__PURE__ */ g(k, [["render", E]]);
 export {
-  N as default
+  P as default
 };

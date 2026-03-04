@@ -281,16 +281,16 @@ class Product
 		if (!$this->shouldActivate()) return;
 
 		wp_enqueue_style(
-			'smartcut-style',
-			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'css/product.css',
-			array(),
+			'smartcut-checkout-style',
+			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'ui/css/checkout.css',
+			array('storefront-style', 'storefront-woocommerce-style'),
 			SMARTCUT_CURRENT_VERSION
 		);
 
 		wp_enqueue_style(
-			'smartcut-checkout-style',
-			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'ui/css/checkout.css',
-			array(),
+			'smartcut-style',
+			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'css/product.css',
+			array('smartcut-checkout-style'),
 			SMARTCUT_CURRENT_VERSION
 		);
 	}

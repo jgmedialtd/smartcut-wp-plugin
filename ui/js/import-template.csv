@@ -1,0 +1,4 @@
+length,width,thickness,quantity,name,material,orientation,banding,finish
+1200,600,18,2,Shelf,Plywood,,,
+800,400,18,4,Side Panel,MDF,l,,,
+2400,600,25,1,Countertop,Hardwood,,,

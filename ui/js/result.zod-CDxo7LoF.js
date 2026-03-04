@@ -1,57 +1,57 @@
-import { i as R, o as S, h as b, l as L, k as p, C as U, D as j, j as Z, n as u, E as ze, F as Us, Z as Qt, G as Hs, H as z, I as De, J as Fi, K as Ks, L as Ys, M as Zs, N as Yi, O as Xs, P as Qs, Q as Js, S as en, T as tn, U as sn, V as Zi } from "./vendor-C048ug3t.js";
-import { a as Y, h as nn, s as rn } from "./vendor-lodash-B8VQpKjD.js";
+import { k as F, o as x, m as w, j as C, i as p, h as W, u as B, l as H, q as u, X as je, Y as Zs, $ as Jt, Q as Xs, H as j, G as Le, a0 as _i, a1 as Qs, a2 as Js, a3 as en, Z as Qi, J as tn, K as sn, L as nn, S as rn, T as on, U as an, a4 as Ji } from "./vendor-BwVe8GCL.js";
+import { a as Z, h as ln, s as cn } from "./vendor-lodash-B8VQpKjD.js";
 import "./vendor-i18next-2OYl82kj.js";
-import { t as Te, s as on } from "./i18n-OYLNrgjA.js";
-import { i as Ue } from "./environment-BeBZzWz6.js";
-import { m as an } from "./validation-keys-CsEDW3Vc.js";
+import { d as Ie, e as un } from "./i18n-DT7wACvc.js";
+import { i as Ye } from "./environment-BeBZzWz6.js";
+import { m as fn } from "./validation-keys-CsEDW3Vc.js";
 import { F as mt } from "./vendor-fraction-3H9P8ENz.js";
-const Xi = R(["error", "warning"]), Qi = R(["saw", "stock", "part", "group", "machining", "extras"]);
-S({
+const es = F(["error", "warning"]), ts = F(["saw", "stock", "part", "group", "machining", "extras"]);
+x({
   message: p(),
   identifier: p(),
-  field: L(L(p())),
-  index: L(u()),
+  field: C(C(p())),
+  index: C(u()),
   id: p(),
   // Source object's autoId for linking back
-  type: Xi,
-  category: L(Qi)
+  type: es,
+  category: C(ts)
 });
-const ln = S({
-  item: Z().nullable().default(null),
+const dn = x({
+  item: H().nullable().default(null),
   message: p().default(""),
-  params: U(p(), j([p(), u(), b(), ze()])).optional(),
+  params: W(p(), B([p(), u(), w(), je()])).optional(),
   // Translation parameters
-  field: L(L(p())).default([]),
-  index: L(u()).nullable().default(null),
+  field: C(C(p())).default([]),
+  index: C(u()).nullable().default(null),
   id: p().nullable().default(null),
   // Source object's autoId
-  issues: L(Z()).nullable().default(null),
+  issues: C(H()).nullable().default(null),
   // Will be Issue[] at runtime
-  type: Xi.default("error"),
-  category: L(Qi).nullable().default(null),
-  throwError: b().default(!1),
-  shouldTranslate: b().default(!0)
-}), cn = ["lr", "rl", "bt", "tb"];
-S({
+  type: es.default("error"),
+  category: C(ts).nullable().default(null),
+  throwError: w().default(!1),
+  shouldTranslate: w().default(!0)
+}), hn = ["lr", "rl", "bt", "tb"];
+x({
   x1: u(),
   x2: u(),
   y1: u(),
   y2: u(),
-  dimension: R(["l", "w"]).optional(),
-  shapeCollisions: L(Z()).optional()
+  dimension: F(["l", "w"]).optional(),
+  shapeCollisions: C(H()).optional()
 });
-S({
+x({
   id: p().nullable().optional(),
   x1: u(),
   x2: u(),
   y1: u(),
   y2: u(),
   origin: p().optional(),
-  dimension: R(["l", "w"]).optional(),
-  direction: R(cn).nullable().optional(),
+  dimension: F(["l", "w"]).optional(),
+  direction: F(hn).nullable().optional(),
   type: p().nullable().optional()
 });
-const un = S({
+const pn = x({
   // ========== Identification ==========
   // Unique identifier for this line
   id: p(),
@@ -67,11 +67,11 @@ const un = S({
   origin: p().optional(),
   // ========== Collision Tracking ==========
   // Shapes that collide with this line
-  shapeCollisions: L(Z()).default([]),
+  shapeCollisions: C(H()).default([]),
   // ========== Validation ==========
   // Validation issues found with this line
-  issues: L(Z()).default([])
-}), fn = {
+  issues: C(H()).default([])
+}), gn = {
   // Line dimension (horizontal or vertical)
   dimension: {
     compute: (t) => {
@@ -111,14 +111,14 @@ const un = S({
   coords: {
     compute: (t) => ({ x1: t.x1, x2: t.x2, y1: t.y1, y2: t.y2 })
   }
-}, Ji = /* @__PURE__ */ new Map();
+}, is = /* @__PURE__ */ new Map();
 function bt() {
-  return Ji;
+  return is;
 }
-function Al(t, e) {
-  Ji.set(t, e);
+function $l(t, e) {
+  is.set(t, e);
 }
-function qt(t, e) {
+function Ut(t, e) {
   const i = t, s = i._fieldBehavior?.fieldBehavior || {};
   return i._fieldBehavior = {
     fieldBehavior: {
@@ -127,7 +127,7 @@ function qt(t, e) {
     }
   }, i;
 }
-function ii(t) {
+function ni(t) {
   let e = t, i = 0;
   for (; e && i < 10; ) {
     i++;
@@ -152,32 +152,33 @@ function ii(t) {
 }
 function ht(t) {
   const e = {};
-  if (t instanceof Hs) {
+  if (t instanceof Xs) {
     const i = t.shape;
     for (const [s, n] of Object.entries(i)) {
-      const o = ii(n);
+      const o = ni(n);
       o && (e[s] = o);
     }
   }
   if (t._def && t._def.shape) {
     const i = t._def.shape;
     for (const [s, n] of Object.entries(i)) {
-      const o = ii(n);
+      const o = ni(n);
       o && (e[s] = o);
     }
   }
   return e;
 }
-typeof Us < "u" && Qt && Qt.prototype && (Qt.prototype.behavior = function(t) {
-  return qt(this, t);
+typeof Zs < "u" && Jt && Jt.prototype && (Jt.prototype.behavior = function(t) {
+  return Ut(this, t);
 });
-function E(t, e = {}) {
-  let s = Z().refine((r) => r == null ? !0 : typeof r == "object" && r !== null ? ("autoId" in r || "id" in r, !0) : !1, {
+function $(t, e = {}) {
+  let s = H().refine((r) => r == null ? !0 : typeof r == "object" && r !== null ? ("autoId" in r || "id" in r, !0) : !1, {
     message: `Invalid reference to ${t}`
   }).transform((r) => {
     if (r == null || typeof r == "object" && r !== null && typeof r.getType == "function" || typeof r == "object" && r !== null && r.__ref === !0)
       return r;
-    if (typeof r == "object" && r !== null && !r.__ref)
+    if (typeof r == "object" && r !== null && !r.__ref) {
+      if (r._type !== void 0) return r;
       try {
         const a = bt(), l = r.__entityType || t, c = a.get(l);
         if (c && typeof c == "function")
@@ -185,6 +186,7 @@ function E(t, e = {}) {
       } catch (a) {
         console.warn(`Failed to recreate ${t} instance:`, a);
       }
+    }
     return r;
   });
   e.nullable && (s = s.nullable());
@@ -198,15 +200,15 @@ function E(t, e = {}) {
     // Default clone behavior
     description: `Reference to ${t}`
   };
-  return n = qt(n, o), Object.defineProperty(n, "__zRefClassName", {
+  return n = Ut(n, o), Object.defineProperty(n, "__zRefClassName", {
     value: t,
     enumerable: !1,
     writable: !1,
     configurable: !1
   }), n;
 }
-function ee(t, e = {}) {
-  let i = L(E(t)).default([]).describe(
+function re(t, e = {}) {
+  let i = C($(t)).default([]).describe(
     e.description || `Array of ${t} references`
   );
   const s = e.fieldBehavior || {
@@ -218,11 +220,11 @@ function ee(t, e = {}) {
     // Default clone behavior
     description: `Array of ${t} references`
   };
-  return i = qt(i, s), i;
+  return i = Ut(i, s), i;
 }
-function dn(t, e = {}) {
-  const i = t.map((o) => E(o));
-  let s = L(j(i)).default([]).describe(
+function mn(t, e = {}) {
+  const i = t.map((o) => $(o));
+  let s = C(B(i)).default([]).describe(
     e.description || `Array of ${t.join(" or ")} references`
   );
   const n = e.fieldBehavior || {
@@ -234,9 +236,9 @@ function dn(t, e = {}) {
     // Default clone behavior
     description: `Array of ${t.join(" or ")} references`
   };
-  return s = qt(s, n), s;
+  return s = Ut(s, n), s;
 }
-const _i = ["topLeft", "topRight", "bottomLeft", "bottomRight"], hn = [
+const $i = ["topLeft", "topRight", "bottomLeft", "bottomRight"], yn = [
   "left",
   "centre",
   "right",
@@ -246,7 +248,7 @@ const _i = ["topLeft", "topRight", "bottomLeft", "bottomRight"], hn = [
   "topRight",
   "bottomLeft",
   "bottomRight"
-], pn = ["lr", "rl", "bt", "tb"], gn = S({
+], bn = ["lr", "rl", "bt", "tb"], wn = x({
   // ========== Coordinates ==========
   x: u().default(0),
   y: u().default(0),
@@ -254,19 +256,19 @@ const _i = ["topLeft", "topRight", "bottomLeft", "bottomRight"], hn = [
   // ========== Shape References ==========
   a: p().optional(),
   b: p().optional(),
-  stock: E("Stock", { nullable: !0 }).optional(),
+  stock: $("Stock", { nullable: !0 }).optional(),
   // ========== Direction and Positioning ==========
-  direction: R(pn).nullable().optional(),
+  direction: F(bn).nullable().optional(),
   type: p().optional(),
-  corner: R(_i).optional(),
-  shapePosition: R(_i).optional(),
-  grid: R(hn).optional(),
+  corner: F($i).optional(),
+  shapePosition: F($i).optional(),
+  grid: F(yn).optional(),
   // ========== Collision and Raycast Flags ==========
-  raycast: b().default(!1),
-  collision: b().default(!1),
-  tooClose: b().default(!1),
-  adjustedForMinSpacing: b().default(!1)
-}), mn = {
+  raycast: w().default(!1),
+  collision: w().default(!1),
+  tooClose: w().default(!1),
+  adjustedForMinSpacing: w().default(!1)
+}), Sn = {
   // Get coordinates as object
   coords: {
     compute: (t) => ({
@@ -279,76 +281,76 @@ const _i = ["topLeft", "topRight", "bottomLeft", "bottomRight"], hn = [
       returnType: "{ x: number; y: number }"
     }
   }
-}, es = p().default("").describe('Unique identifier (e.g., "1.0" for shapes/stock, "g1" for groups, "ss-1_a2b3" for segments, "1.0-proximity" for proximity rectangles)'), yn = p().max(200).default("").describe("User input name"), bn = p().default("").describe("Parent identifier for tracking copies and relationships"), wn = b().default(!1).describe("Prevent automatic rotation optimization"), Sn = b().default(!1).describe("Whether this is an offcut piece"), ts = L(p()).default([]).describe("IDs of identical items").behavior({ clone: "copy" }), yt = j([
-  z(""),
-  z("l"),
-  z("w"),
-  z(" ").transform(() => ""),
-  ze().transform(() => "")
-]).default("").describe("Grain direction of the material"), is = j([
+}, ss = p().default("").describe('Unique identifier (e.g., "1.0" for shapes/stock, "g1" for groups, "ss-1_a2b3" for segments, "1.0-proximity" for proximity rectangles)'), xn = p().max(200).default("").describe("User input name"), kn = p().default("").describe("Parent identifier for tracking copies and relationships"), vn = w().default(!1).describe("Prevent automatic rotation optimization"), In = w().default(!1).describe("Whether this is an offcut piece"), ns = C(p()).default([]).describe("IDs of identical items").behavior({ clone: "copy" }), yt = B([
+  j(""),
+  j("l"),
+  j("w"),
+  j(" ").transform(() => ""),
+  je().transform(() => "")
+]).default("").describe("Grain direction of the material"), rs = B([
   // String format (legacy support - color name or hex)
   p(),
   // Object format with hex and name
-  S({
+  x({
     hex: p().regex(/^#[0-9A-Fa-f]{6}$/, "Must be valid hex color (#RRGGBB)"),
     name: p().min(1)
   })
-]).optional().describe("Material color (hex code + name or legacy string)"), ss = De(
+]).optional().describe("Material color (hex code + name or legacy string)"), os = Le(
   (t) => t === null || t === " " || t === "n" || t === "none" || !["", "l", "w"].includes(t) ? "" : t,
-  R(["", "l", "w"]).default("").describe("Orientation lock for rotation constraints")
-), xn = S({
+  F(["", "l", "w"]).default("").describe("Orientation lock for rotation constraints")
+), Pn = x({
   l1: u().default(0).describe("Long side 1 trim value"),
   l2: u().default(0).describe("Long side 2 trim value"),
   w1: u().default(0).describe("Short side 1 trim value"),
   w2: u().default(0).describe("Short side 2 trim value")
 }).default({ l1: 0, l2: 0, w1: 0, w2: 0 });
-S({
-  material: b(),
-  thickness: b(),
-  fit: b(),
-  width: b()
+x({
+  material: w(),
+  thickness: w(),
+  fit: w(),
+  width: w()
 }).nullable().default(null);
-j([
-  z(""),
-  z("l"),
-  z("w"),
-  ze()
+B([
+  j(""),
+  j("l"),
+  j("w"),
+  je()
 ]).default(null);
-U(p(), u()).nullable().default(null);
-U(p(), u()).nullable().default(null);
-const pi = j([
-  z(0),
-  z(1)
-]), kn = S({
+W(p(), u()).nullable().default(null);
+W(p(), u()).nullable().default(null);
+const mi = B([
+  j(0),
+  j(1)
+]), Tn = x({
   dimension: u().describe("Dimension of the strip shape batch"),
-  rot: pi.describe("Rotation: 0 (no rotation) or 1 (90 degrees)"),
+  rot: mi.describe("Rotation: 0 (no rotation) or 1 (90 degrees)"),
   order: u().optional().describe("Order of the batch"),
   id: p().optional().describe("Batch ID"),
   stockId: p().optional().describe("Associated stock ID"),
-  rerunning: b().optional().describe("Whether the batch is being rerun"),
+  rerunning: w().optional().describe("Whether the batch is being rerun"),
   priorityShape: p().nullable().describe("Priority shape identifier (null if none specified)")
 });
-S({
-  subsetUsed: b().optional().describe("Whether a subset was used for strip shape batches"),
-  groups: U(p(), kn).describe("Groups of strip shape batches keyed by ID")
+x({
+  subsetUsed: w().optional().describe("Whether a subset was used for strip shape batches"),
+  groups: W(p(), Tn).describe("Groups of strip shape batches keyed by ID")
 });
-const vn = R(["none", "schema", "business", "full"]), Pe = S({
+const An = F(["none", "schema", "business", "full"]), De = x({
   // Validation issues (errors) - uses zRefArray to avoid type duplication across modules
-  issues: ee("Issue", {
+  issues: re("Issue", {
     description: "Validation issues (errors)"
   }).behavior({ compress: "exclude", serialize: "full" }),
   // Validation warnings (non-critical issues) - uses zRefArray to avoid type duplication
-  warnings: ee("Issue", {
+  warnings: re("Issue", {
     description: "Validation warnings (non-critical)"
   }).behavior({ compress: "exclude", serialize: "full" }),
   // Legacy flag to skip validation (backward compatibility)
-  skipValidation: b().optional(),
+  skipValidation: w().optional(),
   // New validation control properties
-  skipSchemaValidation: b().optional(),
-  skipBusinessValidation: b().optional(),
-  validationMode: vn.optional(),
-  enableStrictMode: b().optional()
-}), je = {
+  skipSchemaValidation: w().optional(),
+  skipBusinessValidation: w().optional(),
+  validationMode: An.optional(),
+  enableStrictMode: w().optional()
+}), Be = {
   // Check if valid (no errors)
   isValid: {
     compute: (t) => (t.issues || []).filter((i) => i.type === "error").length === 0,
@@ -357,19 +359,19 @@ const vn = R(["none", "schema", "business", "full"]), Pe = S({
     returnType: "boolean"
   }
 };
-function In(t) {
+function Dn(t) {
   if (!t) return "";
   const e = t.indexOf(".");
   return e === -1 ? t : t.substring(0, e);
 }
-const gi = Pe.extend({
+const yi = De.extend({
   // Identity
-  id: es,
+  id: ss,
   // Description
-  name: yn,
+  name: xn,
   // Dimensions
-  l: De((t) => typeof t == "number" && !isFinite(t) ? 1 : t ?? 1, u().positive()).describe("Length (long side dimension)"),
-  w: De((t) => typeof t == "number" && !isFinite(t) ? 1 : t ?? 1, u().positive()).describe("Width (short side dimension)"),
+  l: Le((t) => typeof t == "number" && !isFinite(t) ? 1 : t ?? 1, u().positive()).describe("Length (long side dimension)"),
+  w: Le((t) => typeof t == "number" && !isFinite(t) ? 1 : t ?? 1, u().positive()).describe("Width (short side dimension)"),
   t: u().positive().nullable().optional().describe("Thickness (z-axis dimension)"),
   q: u().positive().int().default(1).describe("Quantity"),
   // Calculated dimensions (computed once on init for performance)
@@ -378,35 +380,35 @@ const gi = Pe.extend({
   shortSide: u().positive().default(1).describe("Calculated short side Math.min(l, w)"),
   parentId: p().default("").describe("Parent ID extracted from id (integer part before decimal)"),
   // Flags
-  duplicate: b().default(!1).describe("Whether this is a duplicate"),
-  offcut: Sn,
+  duplicate: w().default(!1).describe("Whether this is a duplicate"),
+  offcut: In,
   // Grain
   grain: yt,
-  preventGrainRotation: b().default(!1).describe("Prevent rotation that would change grain direction"),
+  preventGrainRotation: w().default(!1).describe("Prevent rotation that would change grain direction"),
   // Orientation
-  preventAutoRotation: wn,
-  orientationLock: ss,
+  preventAutoRotation: vn,
+  orientationLock: os,
   // Position (reset during cloning - cloned shapes should not have preset positions)
   x: u().nullable().default(null).describe("X coordinate position").behavior({ clone: "reset" }),
   y: u().nullable().default(null).describe("Y coordinate position").behavior({ clone: "reset" }),
   // Stock matching
   material: p().max(200).default("").transform((t) => t ? t.trim().toLowerCase() : "").describe("Material name"),
   // Trim
-  trim: xn.describe("Reduce the dimensions by specified trim values"),
-  trimmed: b().default(!1).describe("Whether trim has been applied to dimensions"),
+  trim: Pn.describe("Reduce the dimensions by specified trim values"),
+  trimmed: w().default(!1).describe("Whether trim has been applied to dimensions"),
   // Proximity data (excluded from compression)
-  proximity: S({
-    rectangle: E("Rectangle").nullable().default(null),
+  proximity: x({
+    rectangle: $("Rectangle").nullable().default(null),
     // Using 'any' to avoid circular import
     distance: u().nullable().default(null)
   }).default({ rectangle: null, distance: null }).behavior({ compress: "exclude" }),
   // Other properties
   cost: u().min(0).nullable().default(0).describe("Cost per unit"),
   discount: u().min(0).max(100).nullable().default(0).describe("Percentage discount (0-100)"),
-  customData: U(p(), Z()).default({}).describe("Custom user-defined data"),
-  identicalTo: ts,
+  customData: W(p(), H()).default({}).describe("Custom user-defined data"),
+  identicalTo: ns,
   notes: p().max(500).default("").transform((t) => typeof t == "string" && t.length ? t.replace(/,/g, "").substring(0, 200) : "").describe("Description")
-}), mi = {
+}), bi = {
   // Calculated Dimensions
   isSquare: {
     compute: (t) => t.l === t.w
@@ -486,62 +488,62 @@ const gi = Pe.extend({
   isValid: {
     compute: (t) => !t.issues || t.issues.length === 0
   }
-}, Tn = ["x", "y"];
-R(Tn);
-const Pn = ["l", "w"];
-R(Pn);
-const An = ["l", "w"], He = R(An);
-j([
-  z(0),
-  z(1),
-  z(2)
+}, On = ["x", "y"];
+F(On);
+const Cn = ["l", "w"];
+F(Cn);
+const Ln = ["l", "w"], Ze = F(Ln);
+B([
+  j(0),
+  j(1),
+  j(2)
 ]);
-j([
-  z(0),
-  z(1),
-  ze()
+B([
+  j(0),
+  j(1),
+  je()
 ]);
-const On = ["sheet", "linear", "roll"], yi = De(
+const Rn = ["sheet", "linear", "roll"], wi = Le(
   // Normalize to lowercase before validation
   (t) => typeof t == "string" ? t.toLowerCase() : t,
-  j([
-    R(On),
-    ze()
+  B([
+    F(Rn),
+    je()
   ]).nullable().default(null)
-).describe("Type of stock material"), ns = S({
+).describe("Type of stock material"), as = x({
   // Infinite length flag for rolls and other continuous stock
-  infiniteLength: b().default(!1).describe("Whether stock has infinite length (e.g., for rolls)"),
+  infiniteLength: w().default(!1).describe("Whether stock has infinite length (e.g., for rolls)"),
   // Allow shapes that exactly fit the stock dimensions
-  allowExactFitShapes: b().default(!1).describe("Allow shapes that exactly fit"),
+  allowExactFitShapes: w().default(!1).describe("Allow shapes that exactly fit"),
   // Automatically add stock as needed
-  autoAdd: b().default(!1).describe("Automatically add stock as needed"),
+  autoAdd: w().default(!1).describe("Automatically add stock as needed"),
   // Unlimited quantity flag - stock never runs out
-  unlimitedQuantity: b().default(!1).describe("Stock has unlimited quantity (never decremented)"),
+  unlimitedQuantity: w().default(!1).describe("Stock has unlimited quantity (never decremented)"),
   // Product variant name from supplier catalogue
   variant: p().optional().describe("Product variant name from supplier")
-}), bi = gi.extend({
+}), Si = yi.extend({
   // Identity - override id to be required for containers
   id: p().default("").describe("Unique identifier for containers (required for Stock and Segment)"),
   // Parent identifier for tracking copies
-  parentId: bn,
+  parentId: kn,
   // Container-specific fields
-  stockType: yi,
+  stockType: wi,
   // Array of shapes or groups (excluded from compression - runtime only)
-  shapes: dn(["Shape", "Group"], {
+  shapes: mn(["Shape", "Group"], {
     description: "Array of Shape or Group objects contained within this container"
   }).behavior({ clone: "reset", compress: "exclude" }),
   // Saw reference - using zRef for define.ref<Saw>('Saw') (share exact instance during cloning, serialize as reference)
-  saw: E("Saw", {
+  saw: $("Saw", {
     nullable: !0,
     description: "Reference to Saw class"
   }).behavior({ clone: "share", compress: "reference" }),
   // Algorithm benchmark results (reset during cloning)
-  algoBenchmark: Z().optional().describe("Benchmark results from optimization algorithms").behavior({ clone: "reset" }),
+  algoBenchmark: H().optional().describe("Benchmark results from optimization algorithms").behavior({ clone: "reset" }),
   // Container flag
-  isContainer: b().default(!0).describe("Flag indicating this is a container")
-}), wi = {
+  isContainer: w().default(!0).describe("Flag indicating this is a container")
+}), xi = {
   // Include all Rectangle computed properties
-  ...mi,
+  ...bi,
   // Check if container has shapes
   hasShapes: {
     compute: (t) => (t.shapes?.length || 0) > 0,
@@ -644,30 +646,30 @@ const On = ["sheet", "linear", "roll"], yi = De(
   // Stock reference removed from computed properties to avoid circular type reference
   // Defined manually in Container.ts as a getter method instead
 };
-bi.describe(JSON.stringify({
+Si.describe(JSON.stringify({
   name: "Container",
   version: "1.0.0",
   extends: "Rectangle",
-  computedProperties: Object.keys(wi)
+  computedProperties: Object.keys(xi)
 }));
-const Dn = S({
+const En = x({
   dimension: u().describe("Dimension of the strip shape batch"),
-  rot: j([
-    z(0),
-    z(1)
+  rot: B([
+    j(0),
+    j(1)
   ]).describe("Rotation"),
   order: u().optional().describe("Order of the batch"),
   id: p().optional().describe("Batch ID"),
   stockId: p().optional().describe("Associated stock ID"),
-  rerunning: b().optional().describe("Whether the batch is being rerun"),
+  rerunning: w().optional().describe("Whether the batch is being rerun"),
   priorityShape: p().nullable().describe("Priority shape identifier (null if none specified)")
-}), rs = S({
+}), ls = x({
   // Strip direction
-  myStripDirection: He.optional(),
+  myStripDirection: Ze.optional(),
   // Strip parent (can be shape or group)
-  myStripParent: j([
-    E("Shape", { nullable: !0 }),
-    E("Group", { nullable: !0 })
+  myStripParent: B([
+    $("Shape", { nullable: !0 }),
+    $("Group", { nullable: !0 })
   ]).default(null).describe("Parent strip shape or group for guillotine optimization").behavior({
     serialize: "reference",
     compress: "reference",
@@ -676,16 +678,16 @@ const Dn = S({
   // Phase number
   myPhase: u().int().min(0).optional().describe("Phase of the strip this shape belongs to"),
   // Strip shape batches optimization data
-  stripShapeBatches: S({
-    subsetUsed: b().optional().describe("Whether a subset was used for strip shape batches"),
-    groups: U(p(), Dn).default({}).describe("Groups of strip shape batches keyed by ID")
+  stripShapeBatches: x({
+    subsetUsed: w().optional().describe("Whether a subset was used for strip shape batches"),
+    groups: W(p(), En).default({}).describe("Groups of strip shape batches keyed by ID")
   }).default({ groups: {} }).describe("Strip shape batch optimization data")
 });
-rs.describe(JSON.stringify({
+ls.describe(JSON.stringify({
   name: "GuillotineState",
   version: "1.0.0"
 }));
-const Cn = {}, Ln = S({
+const Fn = {}, Mn = x({
   fill: u().default(0),
   similarDimensions: u().default(0),
   compression: u().default(0),
@@ -695,13 +697,13 @@ const Cn = {}, Ln = S({
   alignment: u().default(0),
   exactFit: u().default(0),
   total: u().default(0),
-  shapes: j([
-    E("Shape", { nullable: !0 }),
-    E("Group", { nullable: !0 })
+  shapes: B([
+    $("Shape", { nullable: !0 }),
+    $("Group", { nullable: !0 })
   ]).optional(),
-  group: E("Group", { nullable: !0 }).optional().describe("Associated group when shape is scored as part of a group"),
-  cutDirection: He.optional()
-}).behavior({ clone: "reset" }), Rn = S({
+  group: $("Group", { nullable: !0 }).optional().describe("Associated group when shape is scored as part of a group"),
+  cutDirection: Ze.optional()
+}).behavior({ clone: "reset" }), _n = x({
   exactStripFill: u().default(0),
   fill: u().default(0),
   cohesion: u().default(0),
@@ -711,103 +713,103 @@ const Cn = {}, Ln = S({
   sameStripBonus: u().default(0),
   aspectRatio: u().optional(),
   total: u().default(0),
-  cutDirection: He,
-  myStripDirection: He.optional(),
-  myStripParent: j([
-    E("Shape", { nullable: !0 }),
-    E("Group", { nullable: !0 })
+  cutDirection: Ze,
+  myStripDirection: Ze.optional(),
+  myStripParent: B([
+    $("Shape", { nullable: !0 }),
+    $("Group", { nullable: !0 })
   ]).optional().describe("Parent strip shape or group for guillotine optimization"),
   myPhase: u().optional()
-}).behavior({ clone: "reset" }), Mi = j([
-  Ln,
-  Rn,
+}).behavior({ clone: "reset" }), Gi = B([
+  Mn,
+  _n,
   // Also support the generic object with catchall for backward compatibility
-  S({
-    cutDirection: He.optional(),
-    myStripParent: j([
-      E("Shape", { nullable: !0 }),
-      E("Group", { nullable: !0 })
+  x({
+    cutDirection: Ze.optional(),
+    myStripParent: B([
+      $("Shape", { nullable: !0 }),
+      $("Group", { nullable: !0 })
     ]).optional().describe("Parent strip shape or group"),
-    myStripDirection: He.optional()
+    myStripDirection: Ze.optional()
   }).catchall(u())
-]).behavior({ clone: "reset" }), wt = gi.extend({
+]).behavior({ clone: "reset" }), wt = yi.extend({
   // Stock lock (shared schema) - original was stockLock: define.array(define.string())
-  stockLock: L(p()).default([]).describe("Stock lock configuration"),
+  stockLock: C(p()).default([]).describe("Stock lock configuration"),
   // Stock matching - original object structure
-  stockMatch: S({
-    material: b(),
-    thickness: b(),
-    fit: b(),
-    width: b()
+  stockMatch: x({
+    material: w(),
+    thickness: w(),
+    fit: w(),
+    width: w()
   }).nullish().describe("Matching stock information"),
   // Guillotine state - reference that will be initialized in constructor (reset during cloning)
   // This ensures guillotineState is always a proper GuillotineState instance with methods
-  guillotineState: E("GuillotineState", {
+  guillotineState: $("GuillotineState", {
     nullable: !0,
     // Nullable in schema but always initialized in constructor
     description: "Data for guillotine cutting optimization (always initialized as instance)"
   }).nullable().default(null).behavior({
     clone: "unique",
-    serialize: Ue() ? "full" : "exclude",
-    compress: Ue() ? "full" : "exclude"
+    serialize: Ye() ? "full" : "exclude",
+    compress: Ye() ? "full" : "exclude"
     // Consistent with serialize behavior
   }),
   // Priority and weighting (records) - exact match from original
-  priority: U(p(), u()).default({}).describe("Priority levels for optimization"),
-  weighting: U(p(), u()).optional().describe("Shape weighting for optimization"),
+  priority: W(p(), u()).default({}).describe("Priority levels for optimization"),
+  weighting: W(p(), u()).optional().describe("Shape weighting for optimization"),
   // Pattern matching for stack detection (reset during cloning)
-  patternMatch: b().default(!1).describe("Used for stack detection").behavior({ clone: "reset" }),
-  firstShape: S({
-    sampleRotations: L(u().int().min(0).max(1)).default([]).describe("Sample rotations (0 or 1) for first shape optimization").behavior({ clone: "reset" }),
-    isFirstShape: b().default(!1).describe("Whether this is the first shape in optimization").behavior({ clone: "reset" })
+  patternMatch: w().default(!1).describe("Used for stack detection").behavior({ clone: "reset" }),
+  firstShape: x({
+    sampleRotations: C(u().int().min(0).max(1)).default([]).describe("Sample rotations (0 or 1) for first shape optimization").behavior({ clone: "reset" }),
+    isFirstShape: w().default(!1).describe("Whether this is the first shape in optimization").behavior({ clone: "reset" })
   }).default({ sampleRotations: [], isFirstShape: !1 }),
   // Placement properties (reset during cloning)
-  added: b().default(!1).describe("Whether shape has been added to a stock").behavior({ clone: "reset" }),
+  added: w().default(!1).describe("Whether shape has been added to a stock").behavior({ clone: "reset" }),
   placementOrder: u().int().min(0).optional().describe("Order in which shape was placed").behavior({ clone: "reset" }),
   // Stock reference (reset during cloning - cloned shapes should not be pre-placed)
-  stock: E("Stock", {
+  stock: $("Stock", {
     nullable: !0,
     description: "Reference to the stock this item is placed on"
   }).behavior({ clone: "reset" }),
   // Stock fitting data
-  fitsStock: U(
+  fitsStock: W(
     p(),
-    U(p(), b())
+    W(p(), w())
   ).nullable().default(null).describe("Information about which stocks this shape fits"),
   // Scoring properties
-  bestScore: S({
+  bestScore: x({
     x: u().nullable().default(null),
     y: u().nullable().default(null),
-    rot: j([z(0), z(1)]).nullable().default(null),
+    rot: B([j(0), j(1)]).nullable().default(null),
     total: u().nullable().default(null),
-    weighting: U(p(), u()).optional(),
-    group: E("Group", { nullable: !0 }).optional().describe("Associated group when shape is scored as part of a group"),
-    score: Mi.optional(),
-    point: Z().optional().describe("Associated point for placement"),
-    myStripParent: j([
-      E("Shape", { nullable: !0 }),
-      E("Group", { nullable: !0 })
+    weighting: W(p(), u()).optional(),
+    group: $("Group", { nullable: !0 }).optional().describe("Associated group when shape is scored as part of a group"),
+    score: Gi.optional(),
+    point: H().optional().describe("Associated point for placement"),
+    myStripParent: B([
+      $("Shape", { nullable: !0 }),
+      $("Group", { nullable: !0 })
     ]).optional().describe("Parent strip shape or group for this score"),
-    cutDirection: He.optional(),
-    myStripDirection: He.optional(),
-    stock: E("Stock", {
+    cutDirection: Ze.optional(),
+    myStripDirection: Ze.optional(),
+    stock: $("Stock", {
       nullable: !0,
       description: "Stock reference for this score"
     })
   }).nullable().default(null).optional().describe("Best optimization score achieved").behavior({
     clone: "reset",
-    serialize: Ue() ? "full" : "exclude"
+    serialize: Ye() ? "full" : "exclude"
     // Retain in development mode for debugging
   }),
   // Current optimization score (can be efficiency or guillotine type, reset during cloning)
-  score: Mi.nullable().optional().describe("Current optimization score").behavior({
+  score: Gi.nullable().optional().describe("Current optimization score").behavior({
     clone: "reset",
     serialize: "exclude"
     // Always exclude - transient optimization data
   })
 }), St = {
   // Include all Rectangle computed properties
-  ...mi
+  ...bi
   // Placeable doesn't define additional computed properties
 };
 wt.describe(JSON.stringify({
@@ -816,33 +818,35 @@ wt.describe(JSON.stringify({
   extends: "Rectangle",
   computedProperties: Object.keys(St)
 }));
-const os = ["horizontal", "vertical"], as = ["position", "user", "strip", "firstShape"], Si = R(os).optional(), En = S({
+const cs = ["horizontal", "vertical"], us = ["position", "user", "strip", "firstShape"], $n = F(cs).optional(), zi = x({
   x: u(),
   y: u(),
   autoId: p().optional(),
-  rot: pi
-}), Fn = wt.extend({
+  rot: mi
+}), Gn = wt.extend({
   // Override quantity - always 1 for groups
   q: u().min(1).max(1).int().default(1),
   // Groups have fixed orientation
-  preventAutoRotation: b().default(!0),
+  preventAutoRotation: w().default(!0),
   // Group-specific fields
-  shapes: ee("Shape").default([]),
-  direction: Si,
-  container: j([
-    E("Segment"),
-    E("Stock")
+  shapes: re("Shape").default([]),
+  direction: $n,
+  container: B([
+    $("Segment"),
+    $("Stock")
   ]).behavior({ compress: "exclude" }),
-  positions: L(En).default([]),
-  type: R(as).default("position"),
+  positions: C(zi).default([]),
+  // User-defined positions for free-placement user groups (from InputUserGroup)
+  userPositions: C(zi).optional(),
+  type: F(us).default("position"),
   efficiency: u().min(0).max(100).default(0),
   groupLength: u().min(0).default(0),
   groupWidth: u().min(0).default(0),
-  outOfBounds: b().default(!1),
-  collision: b().default(!1),
+  outOfBounds: w().default(!1),
+  collision: w().default(!1),
   counter: u().int().min(0).default(0),
   inputId: p().optional()
-}), _n = {
+}), zn = {
   ...St,
   // Include parent computed properties
   // Count of shapes in the group
@@ -912,29 +916,29 @@ const os = ["horizontal", "vertical"], as = ["position", "user", "strip", "first
     }
   }
 };
-S({
+x({
   id: p(),
   x: u(),
   y: u(),
-  shapes: ee("Shape"),
-  direction: R(os),
-  type: R(as),
-  container: j([
-    E("Segment"),
-    E("Stock")
+  shapes: re("Shape"),
+  direction: F(cs),
+  type: F(us),
+  container: B([
+    $("Segment"),
+    $("Stock")
   ]).optional()
 });
-const Mn = ["l", "w"], Ol = wt.extend({
+const Nn = ["l", "w"], Gl = wt.extend({
   // Identity - offcuts need IDs for tracking and export
   id: p().default(""),
   // Note: offcut property is inherited from Rectangle schema (boolean default false)
   // The Offcut constructor ensures it's always true
   // Offcut-specific fields
-  addToInventory: b().default(!1),
-  flex: R(Mn).optional(),
+  addToInventory: w().default(!1),
+  flex: F(Nn).optional(),
   // Cost is calculated, not set
   cost: u().min(0).nullable().default(0)
-}), Dl = {
+}), zl = {
   ...St,
   // Include parent computed properties
   // Check if offcut has been added
@@ -966,38 +970,38 @@ const Mn = ["l", "w"], Ol = wt.extend({
       returnType: "number"
     }
   }
-}, ls = L(p()).default([]).describe("Parent IDs of stock(s) this shape is locked to"), $n = R(["l", "w"]).nullable().default(null), cs = j([
-  z("l"),
-  z("w"),
-  ze()
-]).default(null), Gn = S({
+}, fs = C(p()).default([]).describe("Parent IDs of stock(s) this shape is locked to"), jn = F(["l", "w"]).nullable().default(null), ds = B([
+  j("l"),
+  j("w"),
+  je()
+]).default(null), Bn = x({
   stockId: p().optional(),
   material: p().optional(),
   thickness: u().optional(),
   grain: yt.optional()
-}).describe("Which stock(s) this shape is a match for "), us = U(p(), Z()).default({});
-ls.describe("IDs of stocks this shape is locked to");
-const zn = cs.describe("Direction that should face up");
-S({
+}).describe("Which stock(s) this shape is a match for "), hs = W(p(), H()).default({});
+fs.describe("IDs of stocks this shape is locked to");
+const Vn = ds.describe("Direction that should face up");
+x({
   /**
    * Up direction - Direction that should face up during optimization
    */
-  upDirection: zn
+  upDirection: Vn
 });
-const jn = S({
+const Wn = x({
   // Whether shape is in a user-defined group
-  inUserGroup: b().default(!1).describe("Whether shape is in a user-defined group"),
+  inUserGroup: w().default(!1).describe("Whether shape is in a user-defined group"),
   // Whether shape is in any group
-  inGroup: b().default(!1).describe("Whether shape is currently in a group"),
+  inGroup: w().default(!1).describe("Whether shape is currently in a group"),
   // Placement order within group
   placementOrder: u().int().min(0).optional().describe("Placement order within group"),
   // Group reference (the actual Group class instance)
-  reference: E("Group", {
+  reference: $("Group", {
     nullable: !0,
     description: "Group this shape belongs to"
   }).optional().behavior({ clone: "reset", compress: "reference" }),
   // Group this was added as part of (preserved during serialization as reference)
-  addedAsGroup: E("Group", {
+  addedAsGroup: $("Group", {
     nullable: !0,
     description: "Group this was added as part of"
   }).optional().behavior({ clone: "reset", compress: "reference" })
@@ -1007,24 +1011,24 @@ const jn = S({
   placementOrder: void 0,
   reference: null,
   addedAsGroup: null
-}).describe("Group metadata and reference"), si = wt.extend({
+}).describe("Group metadata and reference"), ri = wt.extend({
   // ========== Group Metadata ==========
   // Nested object containing all group-related properties
-  group: jn,
+  group: Wn,
   // ========== Identity ==========
   // Unique identifier for referencing items (required for shapes)
   id: p().default("").describe("Unique identifier for referencing items"),
   // Array of IDs this shape is identical to
-  identicalTo: ts,
+  identicalTo: ns,
   // Whether this is a duplicate
-  duplicate: b().default(!1).describe("Whether this is a duplicate shape"),
+  duplicate: w().default(!1).describe("Whether this is a duplicate shape"),
   // ========== Orientation ==========
   // Direction that should face up during optimization
-  upDirection: $n.describe("Direction that should face up"),
+  upDirection: jn.describe("Direction that should face up"),
   // ========== Extras ==========
   // Extras container for banding, finish, planing, etc.
   // Override default reference behavior to preserve full data in compressed mode
-  extras: E("Extras", {
+  extras: $("Extras", {
     nullable: !0,
     description: "Extras for this shape",
     fieldBehavior: {
@@ -1038,7 +1042,7 @@ const jn = S({
   // ========== Machining ==========
   // Machining operations for this shape (copy value during cloning)
   // Override default reference behavior to preserve full data in compressed mode
-  machining: E("Machining", {
+  machining: $("Machining", {
     nullable: !0,
     description: "Machining operations for this shape",
     fieldBehavior: {
@@ -1051,11 +1055,11 @@ const jn = S({
   }).optional(),
   // ========== Status ==========
   // Status for tracking cut progress (used in order optimization workflow)
-  status: R(["pending", "cut"]).optional().describe("Cut status for order optimization workflow"),
+  status: F(["pending", "cut"]).optional().describe("Cut status for order optimization workflow"),
   // ========== Order Tracking ==========
   // Order ID this shape belongs to (for order optimization workflow)
   order_id: p().nullable().optional().describe("Order ID this shape belongs to")
-}), fs = {
+}), ps = {
   // Include all Placeable computed properties
   ...St,
   // Check if shape is stacked
@@ -1125,14 +1129,14 @@ const jn = S({
     }
   }
 };
-si.describe(JSON.stringify({
+ri.describe(JSON.stringify({
   name: "Shape",
   description: "Shape to be cut from stock material",
   version: "1.0.0",
   extends: "Placeable",
-  computedProperties: Object.keys(fs)
+  computedProperties: Object.keys(ps)
 }));
-const Cl = S({
+const Nl = x({
   areaEfficiency: u(),
   finishArea: u(),
   bandingLength: u(),
@@ -1143,12 +1147,12 @@ const Cl = S({
   stackedCutLength: u(),
   cutLength: u(),
   rollLength: u()
-}), Nn = S({
+}), qn = x({
   // Internal-only fields (not exposed in API)
-  fitsAll: b().default(!1),
-  fitsAny: b().default(!1),
-  largestShape: Z().nullable(),
-  smallestShape: Z().nullable(),
+  fitsAll: w().default(!1),
+  fitsAny: w().default(!1),
+  largestShape: H().nullable(),
+  smallestShape: H().nullable(),
   // API-exposed fields (with defaults for internal use)
   areaEfficiency: u().default(0),
   finishArea: u().default(0),
@@ -1160,54 +1164,54 @@ const Cl = S({
   stackedCutLength: u().default(0),
   cutLength: u().default(0),
   rollLength: u().default(0)
-}), Vn = S({
-  stock: E("Stock", { nullable: !0 }).optional(),
+}), Un = x({
+  stock: $("Stock", { nullable: !0 }).optional(),
   number: u().int().min(1).optional()
-}), ni = S({
-  ...bi.shape,
-  ...ns.shape,
+}), oi = x({
+  ...Si.shape,
+  ...as.shape,
   // Override x and y to default to 0 for Stock (containers are positioned at origin)
   x: u().nullable().default(0).describe("X coordinate position (always 0 for stock)").behavior({ clone: "reset" }),
   y: u().nullable().default(0).describe("Y coordinate position (always 0 for stock)").behavior({ clone: "reset" }),
   // Stock analysis results
-  analysis: Nn.optional().behavior({ clone: "reset" }),
+  analysis: qn.optional().behavior({ clone: "reset" }),
   // Automatically add stock as needed during optimization
-  autoAdd: b().optional().describe("Automatically add stock as needed during optimization"),
+  autoAdd: w().optional().describe("Automatically add stock as needed during optimization"),
   // Pattern for identifying duplicate stock sheets
   duplicatePattern: p().default("").describe("Pattern for identifying duplicate stock sheets"),
   // Root segment for guillotine cutting (excluded from compression, reset during cloning)
-  rootSegment: E("Segment", {
+  rootSegment: $("Segment", {
     nullable: !0
   }).optional().behavior({ clone: "reset", compress: "exclude" }),
   // Optimization score (excluded from compression, reset during cloning)
-  score: Z().nullable().default(null).behavior({ compress: "exclude" }).behavior({ clone: "reset" }),
+  score: H().nullable().default(null).behavior({ compress: "exclude" }).behavior({ clone: "reset" }),
   // Stack information (reset during cloning - cloned stocks start fresh)
-  stack: Vn.optional().describe("Stack information").behavior({ clone: "reset" }),
+  stack: Un.optional().describe("Stack information").behavior({ clone: "reset" }),
   // Whether the stock layout has been tidied (excluded from compression, reset during cloning)
-  tidy: b().default(!1).behavior({ compress: "exclude" }).behavior({ clone: "reset" }),
+  tidy: w().default(!1).behavior({ compress: "exclude" }).behavior({ clone: "reset" }),
   // Stock type (sheet, linear, roll) - inherited from shared stockType
-  type: R(["sheet", "linear", "roll"]).optional().describe("Type of stock material"),
+  type: F(["sheet", "linear", "roll"]).optional().describe("Type of stock material"),
   // Original length before cropping (for rolls)
   originalLength: u().positive().optional().describe("Original length before cropping (for rolls)"),
   // Whether this stock is unusable for optimization
-  unusable: b().default(!1).describe("Whether this stock is unusable for optimization"),
+  unusable: w().default(!1).describe("Whether this stock is unusable for optimization"),
   // Whether this stock has been used in the optimization (reset during cloning)
-  used: b().default(!1).describe("Whether this stock has been used in the optimization").behavior({ clone: "reset" }),
+  used: w().default(!1).describe("Whether this stock has been used in the optimization").behavior({ clone: "reset" }),
   // The optimization strategy that selected this stock (reset during cloning)
   winningStrategy: p().optional().describe("The optimization strategy that selected this stock").behavior({ clone: "reset" }),
   // Display and filtering properties
-  color: is.describe('Material color ({ hex: "#FF5733", name: "Red" } or legacy string)'),
+  color: rs.describe('Material color ({ hex: "#FF5733", name: "Red" } or legacy string)'),
   weight: u().positive().optional().describe("Weight"),
   imageUrl: p().url().optional().describe("Image URL for stock display"),
-  tags: L(p()).optional().describe("Tags for categorizing stock"),
-  available: b().default(!0).describe("Whether the stock is available"),
+  tags: C(p()).optional().describe("Tags for categorizing stock"),
+  available: w().default(!0).describe("Whether the stock is available"),
   // Database ID (MongoDB ObjectId as string)
   db_id: p().optional().describe("MongoDB ObjectId for this document"),
   // Status for tracking cut progress (used in order optimization workflow)
-  status: R(["pending", "cut"]).optional().describe("Cut status for order optimization workflow")
-}), ds = {
+  status: F(["pending", "cut"]).optional().describe("Cut status for order optimization workflow")
+}), gs = {
   // Include all Container computed properties
-  ...wi,
+  ...xi,
   // Check if stock is stacked (is a child) - these get filtered from API
   isStacked: {
     compute: (t) => !!t.stack?.stock,
@@ -1227,41 +1231,43 @@ const Cl = S({
     }
   }
 };
-ni.describe(JSON.stringify({
+oi.describe(JSON.stringify({
   name: "Stock",
   description: "Stock material for cutting optimization",
   version: "1.0.0",
   extends: "Container",
-  computedProperties: Object.keys(ds)
+  computedProperties: Object.keys(gs)
 }));
-var m = /* @__PURE__ */ ((t) => (t.InputRectangle = "inputRectangle", t.InputShape = "inputShape", t.InputStock = "inputStock", t.InputUserGroup = "inputUserGroup", t.InputSaw = "inputSaw", t.Rectangle = "rectangle", t.Container = "container", t.Saw = "saw", t.Shape = "shape", t.Stock = "stock", t.Group = "group", t.UserGroup = "userGroup", t.StripGroup = "stripGroup", t.FirstShapeGroup = "firstShapeGroup", t.Segment = "segment", t.Offcut = "offcut", t.Cut = "cut", t.Line = "line", t.Placeable = "placeable", t.GuillotineState = "guillotineState", t.Point = "point", t.PointCollection = "pointCollection", t.Optimiser = "optimiser", t.Machining = "machining", t.Extras = "extras", t.Issue = "issue", t))(m || {}), Bn = /* @__PURE__ */ ((t) => (t.Full = "full", t.Compressed = "compressed", t))(Bn || {});
-const Wn = /* @__PURE__ */ new Set([
-  m.Container,
-  m.Stock,
-  m.Segment
-]), qn = /* @__PURE__ */ new Set([
-  m.Rectangle,
-  m.Container,
-  m.Stock,
-  m.Segment,
-  m.Placeable,
-  m.Shape,
-  m.Group,
-  m.UserGroup,
-  m.StripGroup,
-  m.FirstShapeGroup,
-  m.Offcut
-]), Un = /* @__PURE__ */ new Set([
-  m.Placeable,
-  m.Shape,
-  m.Group,
-  m.UserGroup,
-  m.StripGroup,
-  m.FirstShapeGroup,
-  m.Offcut
+var y = /* @__PURE__ */ ((t) => (t.InputRectangle = "inputRectangle", t.InputShape = "inputShape", t.InputStock = "inputStock", t.InputUserGroup = "inputUserGroup", t.InputSaw = "inputSaw", t.Rectangle = "rectangle", t.Container = "container", t.Saw = "saw", t.Shape = "shape", t.NestingShape = "nestingShape", t.Stock = "stock", t.Group = "group", t.UserGroup = "userGroup", t.StripGroup = "stripGroup", t.FirstShapeGroup = "firstShapeGroup", t.Segment = "segment", t.Offcut = "offcut", t.Cut = "cut", t.Line = "line", t.Placeable = "placeable", t.GuillotineState = "guillotineState", t.Point = "point", t.PointCollection = "pointCollection", t.Optimiser = "optimiser", t.Machining = "machining", t.Extras = "extras", t.Issue = "issue", t))(y || {}), Hn = /* @__PURE__ */ ((t) => (t.Full = "full", t.Compressed = "compressed", t))(Hn || {});
+const Yn = /* @__PURE__ */ new Set([
+  y.Container,
+  y.Stock,
+  y.Segment
+]), Kn = /* @__PURE__ */ new Set([
+  y.Rectangle,
+  y.Container,
+  y.Stock,
+  y.Segment,
+  y.Placeable,
+  y.Shape,
+  y.NestingShape,
+  y.Group,
+  y.UserGroup,
+  y.StripGroup,
+  y.FirstShapeGroup,
+  y.Offcut
+]), Zn = /* @__PURE__ */ new Set([
+  y.Placeable,
+  y.Shape,
+  y.NestingShape,
+  y.Group,
+  y.UserGroup,
+  y.StripGroup,
+  y.FirstShapeGroup,
+  y.Offcut
 ]);
-m.InputRectangle, m.InputShape, m.InputStock;
-class te {
+y.InputRectangle, y.InputShape, y.InputStock;
+class se {
   static guardCache = /* @__PURE__ */ new Map();
   /**
    * Create a type guard function for a specific entity type
@@ -1274,8 +1280,8 @@ class te {
       if (!r || typeof r != "object") return !1;
       if (r._type === e)
         return s ? s(r) : !0;
-      const l = r.constructor?.name === i, f = "getType" in r && typeof r.getType == "function" && r.getType() === e, h = l || f, d = s ? s(r) : !0;
-      return h && d;
+      const l = r.constructor?.name === i, f = "getType" in r && typeof r.getType == "function" && r.getType() === e, d = l || f, h = s ? s(r) : !0;
+      return d && h;
     };
     return this.guardCache.set(n, o), o;
   }
@@ -1295,37 +1301,41 @@ class te {
     };
   }
 }
-const Hn = te.create(m.Cut, "Cut"), oe = te.create(
-  m.Shape,
+const Xn = se.create(y.Cut, "Cut"), fe = se.create(
+  y.Shape,
   "Shape",
   (t) => !("shapes" in t)
-), Ie = te.create(m.Stock, "Stock"), hs = te.create(
-  m.Group,
+), ms = se.create(
+  y.NestingShape,
+  "NestingShape",
+  (t) => !("shapes" in t) && "outline" in t
+), Ae = se.create(y.Stock, "Stock"), ys = se.create(
+  y.Group,
   "Group",
   (t) => "shapes" in t && Array.isArray(t.shapes) && t.type !== "user" && t.type !== "strip"
-), xt = te.create(
-  m.UserGroup,
+), xt = se.create(
+  y.UserGroup,
   "Group",
   (t) => "shapes" in t && t.type === "user"
-), ps = te.create(
-  m.StripGroup,
+), bs = se.create(
+  y.StripGroup,
   "Group",
   (t) => "shapes" in t && t.type === "strip"
-), gs = te.create(
-  m.FirstShapeGroup,
+), ws = se.create(
+  y.FirstShapeGroup,
   "Group",
   (t) => "shapes" in t && t.type === "firstShape"
-), X = (t) => {
+), Q = (t) => {
   if (!t || typeof t != "object") return !1;
   const e = t._type;
-  return e !== void 0 ? e === m.Group || e === m.UserGroup || e === m.StripGroup || e === m.FirstShapeGroup : hs(t) || xt(t) || ps(t) || gs(t);
-}, ms = te.create(
-  m.InputUserGroup,
+  return e !== void 0 ? e === y.Group || e === y.UserGroup || e === y.StripGroup || e === y.FirstShapeGroup : ys(t) || xt(t) || bs(t) || ws(t);
+}, Ss = se.create(
+  y.InputUserGroup,
   "InputUserGroup"
-), ot = te.create(m.Segment, "Segment"), Kn = te.create(m.Offcut, "Offcut"), Yn = (t) => !t || typeof t != "object" ? !1 : Kn(t) ? !0 : t.offcut === !0, Zn = (t) => {
+), lt = se.create(y.Segment, "Segment"), Qn = se.create(y.Offcut, "Offcut"), Jn = (t) => !t || typeof t != "object" ? !1 : Qn(t) ? !0 : t.offcut === !0, er = (t) => {
   if (!t || typeof t != "object") return !1;
   const e = t._type;
-  if (e && Wn.has(e)) return !0;
+  if (e && Yn.has(e)) return !0;
   let i = Object.getPrototypeOf(t);
   for (; i; ) {
     if (i.constructor?.name === "Container")
@@ -1333,10 +1343,10 @@ const Hn = te.create(m.Cut, "Cut"), oe = te.create(
     i = Object.getPrototypeOf(i);
   }
   return !1;
-}, Ll = te.create(m.Saw, "Saw"), ys = (t) => {
+}, jl = se.create(y.Saw, "Saw"), xs = (t) => {
   if (!t || typeof t != "object") return !1;
   const e = t._type;
-  if (e && qn.has(e)) return !0;
+  if (e && Kn.has(e)) return !0;
   let i = Object.getPrototypeOf(t);
   for (; i; ) {
     if (i.constructor?.name === "Rectangle")
@@ -1344,10 +1354,10 @@ const Hn = te.create(m.Cut, "Cut"), oe = te.create(
     i = Object.getPrototypeOf(i);
   }
   return t.constructor?.name === "Rectangle";
-}, Xn = (t) => {
+}, tr = (t) => {
   if (!t || typeof t != "object") return !1;
   const e = t._type;
-  if (e && Un.has(e)) return !0;
+  if (e && Zn.has(e)) return !0;
   let i = Object.getPrototypeOf(t);
   for (; i; ) {
     if (i.constructor?.name === "Placeable")
@@ -1355,121 +1365,122 @@ const Hn = te.create(m.Cut, "Cut"), oe = te.create(
     i = Object.getPrototypeOf(i);
   }
   return t.constructor?.name === "Placeable";
-}, ye = te.create(
-  m.InputShape,
+}, Se = se.create(
+  y.InputShape,
   "InputShape"
-), xi = te.create(
-  m.InputStock,
+), ki = se.create(
+  y.InputStock,
   "InputStock"
 );
-te.create(
-  m.InputSaw,
+se.create(
+  y.InputSaw,
   "InputSaw"
 );
-te.create(
-  m.GuillotineState,
+se.create(
+  y.GuillotineState,
   "GuillotineState"
 );
-te.create(m.Line, "Line");
-te.create(m.Point, "Point");
-te.create(
-  m.PointCollection,
+se.create(y.Line, "Line");
+se.create(y.Point, "Point");
+se.create(
+  y.PointCollection,
   "PointCollection"
 );
-function Qn(t) {
+function ir(t) {
   if (!t || typeof t != "object") return !1;
   const e = t;
   return "__ref" in e && "autoId" in e && typeof e.__ref == "string" && typeof e.autoId == "string";
 }
-function bs(t) {
+function ks(t) {
   if (!t || typeof t != "object") return !1;
   const e = t;
   return "trimmed" in e && e.trimmed === !0;
 }
-function Jn(t) {
+const vi = (t) => fe(t) || ms(t);
+function sr(t) {
   if (!t || typeof t != "object") return null;
   const e = t.__entityType;
-  if (e && Object.values(m).includes(e))
+  if (e && Object.values(y).includes(e))
     return e;
   if ("getType" in t && typeof t.getType == "function")
     try {
       const i = t.getType();
-      if (Object.values(m).includes(i))
+      if (Object.values(y).includes(i))
         return i;
     } catch {
     }
-  return Hn(t) ? m.Cut : ye(t) ? m.InputShape : xi(t) ? m.InputStock : ms(t) ? m.InputUserGroup : xt(t) ? m.UserGroup : ps(t) ? m.StripGroup : gs(t) ? m.FirstShapeGroup : hs(t) ? m.Group : oe(t) ? m.Shape : Ie(t) ? m.Stock : Zn(t) ? m.Container : ot(t) ? m.Segment : Yn(t) ? m.Offcut : ys(t) ? m.Rectangle : Xn(t) ? m.Placeable : null;
+  return Xn(t) ? y.Cut : Se(t) ? y.InputShape : ki(t) ? y.InputStock : Ss(t) ? y.InputUserGroup : xt(t) ? y.UserGroup : bs(t) ? y.StripGroup : ws(t) ? y.FirstShapeGroup : ys(t) ? y.Group : ms(t) ? y.NestingShape : fe(t) ? y.Shape : Ae(t) ? y.Stock : er(t) ? y.Container : lt(t) ? y.Segment : Jn(t) ? y.Offcut : xs(t) ? y.Rectangle : tr(t) ? y.Placeable : null;
 }
-const Ne = (t) => {
+const Ve = (t) => {
   if (!t || typeof t != "object") return !1;
   const e = t;
   return "sides" in e && (!("type" in e) || e.type === "banding") && (!("validate" in e) || typeof e.validate == "function");
-}, Ee = (t) => {
-  if (!t || typeof t != "object") return !1;
-  const e = t;
-  return "faces" in e && (!("type" in e) || e.type === "finish") && (!("validate" in e) || typeof e.validate == "function");
 }, Fe = (t) => {
   if (!t || typeof t != "object") return !1;
   const e = t;
+  return "faces" in e && (!("type" in e) || e.type === "finish") && (!("validate" in e) || typeof e.validate == "function");
+}, Me = (t) => {
+  if (!t || typeof t != "object") return !1;
+  const e = t;
   return "faces" in e && "sides" in e && (!("type" in e) || e.type === "planing") && (!("validate" in e) || typeof e.validate == "function");
-}, er = (t) => {
+}, nr = (t) => {
   if (!t || typeof t != "object") return !1;
   const e = t;
   return "images" in e && (!("type" in e) || e.type === "imageUpload") && (!("validate" in e) || typeof e.validate == "function");
 };
-te.create(
-  m.Machining,
+se.create(
+  y.Machining,
   "Machining",
   (t) => ("holes" in t || "corners" in t || "hingeHoles" in t) && "enabled" in t
 );
-te.create(
-  m.Extras,
+se.create(
+  y.Extras,
   "Extras",
   (t) => "banding" in t || "finish" in t || "planing" in t
 );
-te.create(
-  m.Issue,
+se.create(
+  y.Issue,
   "Issue",
   (t) => "type" in t && "message" in t && (t.type === "error" || t.type === "warning")
 );
-function tr(t) {
-  return t?.__entityType === m.Shape;
+function rr(t) {
+  return t?.__entityType === y.Shape || t?.__entityType === y.NestingShape;
 }
-function Rl(t) {
-  return t?.__entityType === m.Group || t?.__entityType === m.StripGroup || t?.__entityType === m.FirstShapeGroup;
+function Bl(t) {
+  return t?.__entityType === y.Group || t?.__entityType === y.StripGroup || t?.__entityType === y.FirstShapeGroup;
 }
-function El(t) {
-  return t?.__entityType === m.Group || t?.__entityType === m.StripGroup || t?.__entityType === m.UserGroup || t?.__entityType === m.FirstShapeGroup;
+function Vl(t) {
+  return t?.__entityType === y.Group || t?.__entityType === y.StripGroup || t?.__entityType === y.UserGroup || t?.__entityType === y.FirstShapeGroup;
 }
-function Fl(t) {
-  return t?.__entityType === m.UserGroup;
+function Wl(t) {
+  return t?.__entityType === y.UserGroup;
 }
-function ir(t) {
+function or(t) {
   return typeof t == "string" && (t.startsWith("fields.") || t.startsWith("extras.") || t.startsWith("woodwork.") || t.startsWith("errors."));
 }
-function sr(t) {
+function ar(t) {
   if (!t) return;
   const e = {};
   for (const [i, s] of Object.entries(t))
-    if (ir(s)) {
-      const n = Te(s);
+    if (or(s)) {
+      const n = Ie(s);
       e[i] = n;
     } else
       e[i] = s;
   return e;
 }
-function nr(t, e) {
-  const i = an(t), s = t.startsWith("errors.validation.") ? t : i, n = sr(e);
+function lr(t, e) {
+  const i = fn(t), s = t.startsWith("errors.validation.") ? t : i, n = ar(e);
   return {
-    message: Te(s, n),
+    message: Ie(s, n),
     translationKey: s,
     params: n
   };
 }
-function rr(t, e) {
-  return nr(t, e).message;
+function cr(t, e) {
+  return lr(t, e).message;
 }
-class T {
+class I {
   /**
    * Issue properties - direct properties without schema inheritance
    */
@@ -1485,13 +1496,13 @@ class T {
    */
   item = null;
   constructor(e = {}) {
-    const i = ln.parse(e), s = T.determineIdentifier(i.item, i.index || []);
-    let n = i.id || "";
-    !n && i.item && "autoId" in i.item && i.item.autoId && (n = i.item.autoId);
-    const o = i.shouldTranslate !== !1 ? rr(i.message, i.params) : i.message;
-    if (this.message = o, this.identifier = s, this.field = i.field.map((r) => [...r]), this.index = i.index ? [...i.index] : [], this.id = n, this.type = i.type, this.category = i.category || [], this.item = i.item, this.addToItemIssues(i.item), Array.isArray(i.issues) && i.issues.push(this), i.throwError) {
-      const r = `Issue created for ${Jn(i.item)}: ${this.identifier || "N/A"} - ${this.field.map((a) => a.join(".")).join(", ")}`;
-      throw new Error(r);
+    const i = Array.isArray(e.issues) ? e.issues : null, s = dn.parse(e), n = I.determineIdentifier(s.item, s.index || []);
+    let o = s.id || "";
+    !o && s.item && "autoId" in s.item && s.item.autoId && (o = s.item.autoId);
+    const r = s.shouldTranslate !== !1 ? cr(s.message, s.params) : s.message;
+    if (this.message = r, this.identifier = n, this.field = s.field.map((a) => [...a]), this.index = s.index ? [...s.index] : [], this.id = o, this.type = s.type, this.category = s.category || [], this.item = s.item, this.addToItemIssues(s.item), i && i.push(this), s.throwError) {
+      const a = `Issue created for ${sr(s.item)}: ${this.identifier || "N/A"} - ${this.field.map((l) => l.join(".")).join(", ")}`;
+      throw new Error(a);
     }
   }
   /**
@@ -1552,7 +1563,7 @@ class T {
    * Create Issue from plain data
    */
   static fromData(e, i) {
-    return new T({
+    return new I({
       ...e,
       item: i,
       shouldTranslate: !1
@@ -1566,7 +1577,7 @@ class T {
     return "Issue";
   }
 }
-const Jt = 10, $i = 0;
+const ei = 10, Ni = 0;
 class _t extends Error {
   constructor(e) {
     super(e), this.name = "NumberFormatError";
@@ -1589,7 +1600,7 @@ const gt = {
   "⅝": "5/8",
   "⅞": "7/8"
 };
-function or(t, e) {
+function ur(t, e) {
   let i;
   if (typeof t == "number" ? i = t : i = new mt(t).valueOf(), typeof e == "number") {
     const s = Math.pow(10, e);
@@ -1597,7 +1608,7 @@ function or(t, e) {
   }
   return i;
 }
-function ar(t, e) {
+function fr(t, e) {
   const i = new mt(t);
   if (e > 0) {
     const s = i.mul(e), n = Math.round(s.valueOf());
@@ -1605,7 +1616,7 @@ function ar(t, e) {
   }
   return i.simplify().toFraction(!0);
 }
-function _l(t, e, i = !1) {
+function ql(t, e, i = !1) {
   const s = t == null || String(t).trim() === "";
   if (i && s)
     return { value: null, valid: !1, message: "errors.validation.field.required" };
@@ -1613,7 +1624,7 @@ function _l(t, e, i = !1) {
     return { value: null, valid: !0 };
   const n = String(t);
   try {
-    const o = ws(n, !0), r = parseFloat(o ?? ""), a = o !== null && o !== "" && !isNaN(r) && isFinite(r);
+    const o = vs(n, !0), r = parseFloat(o ?? ""), a = o !== null && o !== "" && !isNaN(r) && isFinite(r);
     return {
       value: a ? r : t,
       valid: a,
@@ -1635,7 +1646,7 @@ function _l(t, e, i = !1) {
     messageData: e
   };
 }
-function lr(t = "en-US") {
+function dr(t = "en-US") {
   try {
     const e = Intl.NumberFormat(t).formatToParts(123456789e-2);
     return {
@@ -1646,18 +1657,18 @@ function lr(t = "en-US") {
     return console.warn("Failed to detect number separators. Using defaults."), { thousandsSeparator: ",", decimalSeparator: "." };
   }
 }
-function cr(t) {
+function hr(t) {
   if (t == null || t === "") return null;
   const e = String(t).trim();
   if (!e) return null;
   try {
-    const { thousandsSeparator: i, decimalSeparator: s } = lr(), n = e.replace(new RegExp(`\\${i}`, "g"), "").replace(new RegExp(`\\${s}`, "g"), "."), o = Number(n);
+    const { thousandsSeparator: i, decimalSeparator: s } = dr(), n = e.replace(new RegExp(`\\${i}`, "g"), "").replace(new RegExp(`\\${s}`, "g"), "."), o = Number(n);
     return isFinite(o) ? o : null;
   } catch (i) {
     throw new _t(`Failed to parse locale number: "${t}". ${i.message || "Parsing error"}`);
   }
 }
-function ur(t) {
+function pr(t) {
   if (!t) return !1;
   const e = t.toString().trim();
   if (!e) return !1;
@@ -1666,7 +1677,7 @@ function ur(t) {
     `^-?((\\d+\\s+)?\\d+\\/\\d+|\\d+|\\d+[${i}]|[${i}]|\\d+'(?:\\s*\\d+(?:\\/\\d+)?"?)?|(\\d+\\s+)?\\d+\\/\\d+"|\\d+")$`
   ).test(e);
 }
-function ws(t, e = !1) {
+function vs(t, e = !1) {
   if (t == null || t === "") return null;
   let i = String(t).trim();
   if (!i) return null;
@@ -1675,16 +1686,16 @@ function ws(t, e = !1) {
   try {
     const n = Object.keys(gt).join(""), o = new RegExp(`^(-?)(\\d+)([${n}])$`), r = new RegExp(`^(-?)([${n}])$`), a = i.match(o), l = i.match(r);
     if (a) {
-      const c = a[1], f = a[2], h = a[3], d = gt[h];
-      if (d)
-        return `${c}${f} ${d}`;
-      throw new Error(`Unknown vulgar fraction character: ${h}`);
-    } else if (l) {
-      const c = l[1] || "", f = l[2], h = gt[f];
+      const c = a[1], f = a[2], d = a[3], h = gt[d];
       if (h)
-        return `${c}${h}`;
+        return `${c}${f} ${h}`;
+      throw new Error(`Unknown vulgar fraction character: ${d}`);
+    } else if (l) {
+      const c = l[1] || "", f = l[2], d = gt[f];
+      if (d)
+        return `${c}${d}`;
       throw new Error(`Unknown vulgar fraction character: ${f}`);
-    } else if (ur(i)) {
+    } else if (pr(i)) {
       let c = "";
       i.startsWith("-") && (c = "-", i = i.substring(1).trim());
       const f = i.replace(/[^0-9\s/]/g, "").replace(/\s+/g, " ").trim();
@@ -1695,7 +1706,7 @@ function ws(t, e = !1) {
       e ? (i = i.replace(/[^0-9,. -]/g, ""), i = i.replace(/\s/g, "")) : (i = i.replace(/[^0-9.-]/g, ""), i = i.replace(/,/g, "")), i.startsWith(".") && (i = "0" + i), i.startsWith("-.") && (i = "-0." + i.substring(2));
       const c = i.split(".");
       c.length > 2 && (i = c[0] + "." + c.slice(1).join(""));
-      const f = e ? cr(i) : parseFloat(i);
+      const f = e ? hr(i) : parseFloat(i);
       return f === null || isNaN(f) || !isFinite(f) ? null : f.toString();
     }
   } catch (n) {
@@ -1704,8 +1715,8 @@ function ws(t, e = !1) {
     );
   }
 }
-function Ml(t, e, i = null, s = null) {
-  if (t && !(!ye(t) && !xi(t))) {
+function Ul(t, e, i = null, s = null) {
+  if (t && !(!Se(t) && !ki(t))) {
     if (!["decimal", "fraction"].includes(e)) {
       console.warn("Attempting to update to an invalid number format:", e);
       return;
@@ -1713,24 +1724,24 @@ function Ml(t, e, i = null, s = null) {
     for (const n of t.numberFormatKeys)
       if (typeof t[n] == "object" && t[n] !== null)
         for (const o in t[n])
-          Object.prototype.hasOwnProperty.call(t[n], o) && (t[n][o] = P({ v: t[n][o], nf: e, dp: i, pl: !1, fr: s }));
+          Object.prototype.hasOwnProperty.call(t[n], o) && (t[n][o] = D({ v: t[n][o], nf: e, dp: i, pl: !1, fr: s }));
       else
-        t[n] = P({ v: t[n], nf: e, dp: i, pl: !1, fr: s });
+        t[n] = D({ v: t[n], nf: e, dp: i, pl: !1, fr: s });
   }
 }
-function fr(t) {
+function gr(t) {
   return /^-?\d*\.?\d+$/.test(t);
 }
-function dr(t) {
+function mr(t) {
   return /^-?(\d+\s+)?\d+\/\d+$/.test(t) || /^-?\d+$/.test(t);
 }
-function P(t) {
+function D(t) {
   if (t.v == null || t.v === "")
     return t.nf === "decimal" || !t.nf && t.o?.numberFormat !== "fraction" ? null : "";
-  const e = t.o ?? {}, i = t.nf ?? e?.numberFormat ?? "decimal", s = t.dp ?? e?.decimalPlaces ?? Jt, n = t.pl ?? e?.parseLocale ?? !1, o = t.fr ?? e?.fractionRoundTo ?? $i;
+  const e = t.o ?? {}, i = t.nf ?? e?.numberFormat ?? "decimal", s = t.dp ?? e?.decimalPlaces ?? ei, n = t.pl ?? e?.parseLocale ?? !1, o = t.fr ?? e?.fractionRoundTo ?? Ni;
   if (i === "decimal") {
     if (typeof t.v == "number") {
-      if (typeof s == "number" && s !== Jt) {
+      if (typeof s == "number" && s !== ei) {
         const r = Math.pow(10, s);
         return Math.round(t.v * r) / r;
       }
@@ -1738,10 +1749,10 @@ function P(t) {
     }
     if (typeof t.v == "string") {
       const r = t.v.trim();
-      if (fr(r) && !n) {
+      if (gr(r) && !n) {
         const a = parseFloat(r);
         if (isFinite(a)) {
-          if (typeof s == "number" && s !== Jt) {
+          if (typeof s == "number" && s !== ei) {
             const l = Math.pow(10, s);
             return Math.round(a * l) / l;
           }
@@ -1751,11 +1762,11 @@ function P(t) {
     }
   } else if (i === "fraction" && typeof t.v == "string") {
     const r = t.v.trim();
-    if (dr(r))
+    if (mr(r))
       try {
         const a = new mt(r);
         if (isFinite(a.valueOf())) {
-          if (o === 0 || o === $i)
+          if (o === 0 || o === Ni)
             return a.toFraction(!0);
           const l = a.mul(o), c = Math.round(l.valueOf());
           return new mt(c, o).toFraction(!0);
@@ -1764,15 +1775,15 @@ function P(t) {
       }
   }
   try {
-    const r = ws(t.v, n);
-    return r === null || r === "" ? i === "decimal" ? null : "" : i === "decimal" ? or(r, s) : ar(r, o);
+    const r = vs(t.v, n);
+    return r === null || r === "" ? i === "decimal" ? null : "" : i === "decimal" ? ur(r, s) : fr(r, o);
   } catch (r) {
     throw r instanceof _t ? r : new _t(
       `Failed to convert number format: "${t.v}" to ${i}. ${r.message}`
     );
   }
 }
-const ut = {
+const ft = {
   x: "X",
   y: "Y",
   l: "Length",
@@ -1812,24 +1823,24 @@ const ut = {
   "side.w1": "side W1",
   "side.w2": "side W2"
 };
-function ne(t, e) {
+function le(t, e) {
   if (e?.returnKey)
     return `fields.${t}`;
-  const i = `fields.${t}`, s = Te(i);
+  const i = `fields.${t}`, s = Ie(i);
   if (s === i) {
-    const n = ut[t] || t;
-    return Ue() && !ut[t] && console.warn(`[field-mappings] No translation or fallback for field: "${t}"`), n;
+    const n = ft[t] || t;
+    return Ye() && !ft[t] && console.warn(`[field-mappings] No translation or fallback for field: "${t}"`), n;
   }
-  return Ue() && console.log(`[field-mappings] Translated "${t}" -> "${s}"`), s;
+  return Ye() && console.log(`[field-mappings] Translated "${t}" -> "${s}"`), s;
 }
-const Ss = (t, e, i, s, n, o) => {
-  const r = Y(t, e);
+const Is = (t, e, i, s, n, o) => {
+  const r = Z(t, e);
   if (r == null || r === "") return;
   if (typeof r != "string") {
-    new T({
+    new I({
       item: t,
-      message: Te("errors.validation.must_be_string", {
-        0: ut[e]
+      message: Ie("errors.validation.must_be_string", {
+        0: ft[e]
       }),
       shouldTranslate: !1,
       field: [[e]],
@@ -1840,10 +1851,10 @@ const Ss = (t, e, i, s, n, o) => {
     return;
   }
   const a = r?.toLowerCase();
-  i.includes(a) || new T({
+  i.includes(a) || new I({
     item: t,
-    message: Te("errors.validation.must_be_values", {
-      0: ut[e],
+    message: Ie("errors.validation.must_be_values", {
+      0: ft[e],
       1: i.join(", ")
     }),
     shouldTranslate: !1,
@@ -1853,100 +1864,100 @@ const Ss = (t, e, i, s, n, o) => {
     issues: o
   });
 };
-function $l(t) {
+function Hl(t) {
   return t.filter((e) => e.type === "error");
 }
-function hr(t, e) {
+function yr(t, e) {
   return typeof t == "object" && t !== null && e in t;
 }
-function pr(t) {
-  return hr(t, "issues") && Array.isArray(t.issues);
+function br(t) {
+  return yr(t, "issues") && Array.isArray(t.issues);
 }
-function Gl(t, e, i = !1) {
-  if (!pr(t) || !t.issues?.length)
+function Yl(t, e, i = !1) {
+  if (!br(t) || !t.issues?.length)
     return !1;
   const s = i ? "warning" : "error";
-  return t.issues.filter((r) => r.type === s).some((r) => r.field?.length ? r.field.some((a) => a.every((l, c) => l === mr(e[c]))) : !1);
+  return t.issues.filter((r) => r.type === s).some((r) => r.field?.length ? r.field.some((a) => a.every((l, c) => l === Sr(e[c]))) : !1);
 }
-const gr = {
+const wr = {
   partMaterial: "material",
   stockMaterial: "material"
 };
-function mr(t) {
-  return gr[t] ?? t;
+function Sr(t) {
+  return wr[t] ?? t;
 }
-const yr = ["banding", "finish", "planing", "info"], zl = p().refine(
+const xr = ["banding", "finish", "planing", "info"], Kl = p().refine(
   (t) => t.startsWith("side.") || t.startsWith("face."),
   { message: 'Location must start with "side." or "face."' }
-).transform((t) => t), xe = j([
-  b(),
+).transform((t) => t), ve = B([
+  w(),
   p(),
-  U(p(), j([b(), p()]))
+  W(p(), B([w(), p()]))
   // Object-based values: { type: 'oak', thickness: '1mm', test: true }
-]), Ut = Pe.extend({
+]), Ht = De.extend({
   // ========== Identity ==========
-  type: R(yr).optional().describe("Type of extra"),
-  enabled: b().default(!0).describe("Whether extra is enabled"),
+  type: F(xr).optional().describe("Type of extra"),
+  enabled: w().default(!0).describe("Whether extra is enabled"),
   // ========== Face/Side mappings (superset - each extra uses what it needs) ==========
   // Face values (front/back) - partial record to allow any subset of faces
-  faces: S({
-    a: xe.optional(),
-    b: xe.optional()
+  faces: x({
+    a: ve.optional(),
+    b: ve.optional()
   }).optional().describe("Partial mapping of face keys to extra values"),
   // Side values (edges) - partial record to allow any subset of sides
-  sides: S({
-    a: xe.optional(),
-    b: xe.optional(),
-    c: xe.optional(),
-    d: xe.optional(),
-    l1: xe.optional(),
-    l2: xe.optional(),
-    w1: xe.optional(),
-    w2: xe.optional()
+  sides: x({
+    a: ve.optional(),
+    b: ve.optional(),
+    c: ve.optional(),
+    d: ve.optional(),
+    l1: ve.optional(),
+    l2: ve.optional(),
+    w1: ve.optional(),
+    w2: ve.optional()
   }).optional().describe("Partial mapping of side keys to extra values")
   // NOTE: Options are now centralized in CalculationData.extrasOptions
   // No per-shape options are stored - all extras use centralized configuration
-}), ki = {
+}), Ii = {
   // Inherit computed properties from validation base
-  ...je
+  ...Be
   // Add any extra-specific computed properties here
 };
-U(
-  R(["a", "b"]),
-  xe
+W(
+  F(["a", "b"]),
+  ve
 );
-U(
-  R(["l1", "l2", "w1", "w2", "a", "b", "c", "d"]),
-  xe
+W(
+  F(["l1", "l2", "w1", "w2", "a", "b", "c", "d"]),
+  ve
 );
-const xs = S({
+const Ps = x({
   min: u().optional().describe("Minimum value"),
   max: u().optional().describe("Maximum value"),
   message: p().optional().describe("Custom error message")
 });
-S({
-  scope: R(["face", "side"]),
+x({
+  scope: F(["face", "side"]),
   key: p(),
   // Face or Side key
   original: p()
   // Original ExtraLocation string
 });
-const br = S({
+const kr = x({
   location: p().describe("Location identifier (e.g., face.a, side.l1)"),
-  properties: U(p(), xs).optional(),
+  properties: W(p(), Ps).optional(),
   disabledMessage: p().optional().describe("Message when location is disabled")
-}), wr = S({
-  global: U(p(), xs).optional(),
-  locations: L(br).optional().describe("Location-specific constraints"),
+}), vr = x({
+  global: W(p(), Ps).optional(),
+  locations: C(kr).optional().describe("Location-specific constraints"),
   defaultMessage: p().optional().describe("Default message when constraints not met")
 });
-S({
-  scope: L(R(["faces", "sides"])).describe("Scopes this extra type supports"),
-  faces: L(Fi()).optional().describe("Available face locations"),
-  sides: L(Fi()).optional().describe("Available side locations"),
-  constraints: wr.optional()
+x({
+  scope: C(F(["faces", "sides"])).describe("Scopes this extra type supports"),
+  faces: C(_i()).optional().describe("Available face locations"),
+  sides: C(_i()).optional().describe("Available side locations"),
+  constraints: vr.optional()
 });
-const Sr = Ut, xr = {
+const Ir = Ht, Pr = {
   // Check if any banding is applied
   hasAnyBanding: {
     compute: (t) => t.sides ? Object.keys(t.sides).some((e) => {
@@ -1971,16 +1982,16 @@ const Sr = Ut, xr = {
       returnType: "string[]"
     }
   }
-}, kr = ["radius", "bevel"], vr = Pe.extend({
+}, Tr = ["radius", "bevel"], Ar = De.extend({
   // Corner type
-  type: R(kr).nullable().optional().describe("Type of corner modification"),
+  type: F(Tr).nullable().optional().describe("Type of corner modification"),
   // Size of the corner modification
   size: u().nonnegative().nullable().default(0).describe("Size of the corner modification in mm"),
   // Corner index
   index: u().min(0).max(3).default(0).describe("Corner index (0=BL, 1=BR, 2=TR, 3=TL)")
-}), Ir = {
+}), Dr = {
   // Inherit computed properties from validation base
-  ...je,
+  ...Be,
   // Check if corner has any operation
   hasOperation: {
     compute: (t) => t.type !== void 0 && t.size > 0,
@@ -1990,20 +2001,20 @@ const Sr = Ut, xr = {
       returnType: "boolean"
     }
   }
-}, Tr = ["l", "w"], Pr = ["top", "bottom", "left", "right", "merged"], Ar = S({
+}, Or = ["l", "w"], Cr = ["top", "bottom", "left", "right", "merged"], Lr = x({
   // Coordinates
   x1: u().default(0),
   x2: u().default(0),
   y1: u().default(0),
   y2: u().default(0),
   // Dimension and position
-  dimension: R(Tr).optional(),
-  position: R(Pr).optional(),
+  dimension: F(Or).optional(),
+  position: F(Cr).optional(),
   // Stock reference - required as cuts cannot exist without a stock
-  stock: E("Stock"),
+  stock: $("Stock"),
   // Guillotine properties
-  isGuillotine: b().default(!1),
-  guillotineState: S({
+  isGuillotine: w().default(!1),
+  guillotineState: x({
     order: u().nullable().optional(),
     parentSegmentID: p().nullable().optional(),
     phase: u().nullable().optional(),
@@ -2011,21 +2022,21 @@ const Sr = Ut, xr = {
     partProduced: p().nullable().optional()
   }).nullable().default({}),
   // PTX properties
-  ptxData: S({
+  ptxData: x({
     order: u().nullable().optional(),
     function: u().nullable().optional(),
-    isDummy: b().nullable().optional(),
-    headCutStrip: b().nullable().optional()
+    isDummy: w().nullable().optional(),
+    headCutStrip: w().nullable().optional()
   }).nullable().optional(),
   // Cut properties
-  isHead: b().default(!1),
-  isTrim: b().default(!1),
-  beamTrimL1: b().default(!1),
-  beamTrimL2: b().default(!1),
-  beamTrimW1: b().default(!1),
-  beamTrimW2: b().default(!1),
+  isHead: w().default(!1),
+  isTrim: w().default(!1),
+  beamTrimL1: w().default(!1),
+  beamTrimL2: w().default(!1),
+  beamTrimW1: w().default(!1),
+  beamTrimW2: w().default(!1),
   // Distances
-  distances: S({
+  distances: x({
     bottom: u().nullable().optional(),
     left: u().nullable().optional(),
     right: u().nullable().optional(),
@@ -2033,8 +2044,8 @@ const Sr = Ut, xr = {
     partSize: u().nullable().optional()
   }).nullable().optional(),
   // Runtime flags
-  remove: b().optional().behavior({ compress: "exclude" })
-}), Or = {
+  remove: w().optional().behavior({ compress: "exclude" })
+}), Rr = {
   // Check if cut is inside stock boundaries
   isInsideStock: {
     compute: (t) => {
@@ -2168,12 +2179,12 @@ const Sr = Ut, xr = {
       returnType: "number"
     }
   }
-}, Dr = Pe.extend({
+}, Er = De.extend({
   // Identity
   id: p().optional().describe("Unique identifier for the extras container"),
   // Individual extras - using ref for proper typing
   // Override default reference behavior to serialize full data for proper __entityType markers
-  banding: E("Banding", {
+  banding: $("Banding", {
     nullable: !0,
     fieldBehavior: {
       serialize: "full",
@@ -2182,7 +2193,7 @@ const Sr = Ut, xr = {
       clone: "copy"
     }
   }).describe("Edge banding configuration"),
-  finish: E("Finish", {
+  finish: $("Finish", {
     nullable: !0,
     fieldBehavior: {
       serialize: "full",
@@ -2191,7 +2202,7 @@ const Sr = Ut, xr = {
       clone: "copy"
     }
   }).describe("Surface finish configuration"),
-  planing: E("Planing", {
+  planing: $("Planing", {
     nullable: !0,
     fieldBehavior: {
       serialize: "full",
@@ -2202,7 +2213,7 @@ const Sr = Ut, xr = {
   }).describe("Planing configuration")
   // imageUpload: zRef<ImageUpload>( 'ImageUpload', { nullable: true } ).describe( 'Uploaded images' )
   // issues and warnings are now properly inherited from validationBasePropertiesSchema
-}), Cr = {
+}), Fr = {
   // Calculate total cost of all extras
   totalCost: {
     compute: (t) => {
@@ -2233,9 +2244,9 @@ const Sr = Ut, xr = {
       returnType: "boolean"
     }
   }
-}, Lr = Ut, Rr = {
+}, Mr = Ht, _r = {
   // Inherit computed properties from Extra base (includes validation base)
-  ...ki,
+  ...Ii,
   // Check if any finish is applied
   hasAnyFinish: {
     compute: (t) => t.faces ? Object.keys(t.faces).some((e) => {
@@ -2260,10 +2271,10 @@ const Sr = Ut, xr = {
       returnType: "string[]"
     }
   }
-}, Er = ["l1", "l2", "w1", "w2"], Fr = Pe.extend({
+}, $r = ["l1", "l2", "w1", "w2"], Gr = De.extend({
   // Position
   position: u().min(0).default(0).describe("Position along the side"),
-  side: R(Er).describe("Side where hinge is placed"),
+  side: F($r).describe("Side where hinge is placed"),
   face: u().min(0).max(1).default(0).describe("Face side (0 = front, 1 = back)"),
   // Hole configuration
   numHoles: u().min(1).default(2).describe("Number of holes"),
@@ -2276,9 +2287,9 @@ const Sr = Ut, xr = {
   // Constraints
   minimumHoleDistance: u().min(0).optional().describe("Minimum distance between holes"),
   positionLimit: u().min(0).optional().describe("Maximum position along side")
-}), _r = {
+}), zr = {
   // Inherit computed properties from validation base
-  ...je,
+  ...Be,
   // Calculate individual hole positions
   holePositions: {
     compute: (t) => {
@@ -2300,7 +2311,7 @@ const Sr = Ut, xr = {
       returnType: "number[]"
     }
   }
-}, Mr = ["regular", "hinge", "shelf"], $r = Pe.extend({
+}, Nr = ["regular", "hinge", "shelf"], jr = De.extend({
   // Position
   x: u().min(0).default(0).describe("X position from left edge"),
   y: u().min(0).default(0).describe("Y position from bottom edge"),
@@ -2309,10 +2320,10 @@ const Sr = Ut, xr = {
   depth: u().min(0).optional().describe("Hole depth (undefined for through hole)"),
   // Configuration
   face: u().default(0).describe("Face index (0=front, 1=back)"),
-  type: R(Mr).default("regular").describe("Type of hole")
-}), Gr = {
+  type: F(Nr).default("regular").describe("Type of hole")
+}), Br = {
   // Inherit computed properties from validation base
-  ...je,
+  ...Be,
   // Check if it's a through hole
   isThrough: {
     compute: (t) => t.depth === void 0 || t.depth === 0,
@@ -2323,67 +2334,67 @@ const Sr = Ut, xr = {
     }
   }
 };
-function C(t, e) {
+function E(t, e) {
   return t._metadata = e, e.description ? t.describe(e.description) : t;
 }
-const zr = (t, e) => C(t, e), jr = ["efficiency", "guillotine", "beam", "none"], Nr = ["l", "w", "none"], ks = ["efficiency", "time"], Vr = ["l", "w"], Br = ["efficiency", "smallest"], Wr = ["dimensions", "identical", "none"], qr = ["sheet", "linear", "roll"], vi = j([
+const Vr = (t, e) => E(t, e), Wr = ["efficiency", "guillotine", "beam", "nesting", "none"], qr = ["l", "w", "none"], Ts = ["efficiency", "time"], Ur = ["l", "w"], Hr = ["efficiency", "smallest"], Yr = ["dimensions", "identical", "none"], Kr = ["sheet", "linear", "roll"], Pi = B([
   u().int().positive(),
-  ze(),
-  Ks()
-]).transform((t) => t ?? 100).describe("Maximum stack height for beam saw stacking"), Ii = R(jr).nullable().optional().transform((t) => t === null ? void 0 : t), Ti = R(Nr).nullable().optional().transform((t) => t === null ? void 0 : t), Pi = R(Br).default("efficiency").describe("Method for selecting stocks"), Ai = R(Wr).default("identical").describe("How to stack identical parts"), vs = S({
-  strategy: R(ks).default("efficiency"),
+  je(),
+  Qs()
+]).transform((t) => t ?? 100).describe("Maximum stack height for beam saw stacking"), Ti = F(Wr).nullable().optional().transform((t) => t === null ? void 0 : t), Ai = F(qr).nullable().optional().transform((t) => t === null ? void 0 : t), Di = F(Hr).default("efficiency").describe("Method for selecting stocks"), Oi = F(Yr).default("identical").describe("How to stack identical parts"), As = x({
+  strategy: F(Ts).default("efficiency"),
   maxPhase: u().int().min(0).max(10).default(0),
-  headCuts: b().default(!1),
-  firstPhaseCutGrouping: b().default(!0)
+  headCuts: w().default(!1),
+  limitStripDimensions: w().default(!1)
 }).default({
   strategy: "efficiency",
   maxPhase: 0,
   headCuts: !1,
-  firstPhaseCutGrouping: !0
-}), Oi = S({
-  primaryCompression: R(Vr).default("w")
+  limitStripDimensions: !1
+}), Ci = x({
+  primaryCompression: F(Ur).default("w")
 }).default({
   primaryCompression: "w"
 });
-S({
-  stockType: yi,
+x({
+  stockType: wi,
   /**
    * Stack height - Maximum stack height
    */
-  stackHeight: vi,
+  stackHeight: Pi,
   /**
    * Cut type - Type of cutting algorithm
    */
-  cutType: Ii,
+  cutType: Ti,
   /**
    * Cut preference - Preferred cutting direction
    */
-  cutPreference: Ti,
+  cutPreference: Ai,
   /**
    * Guillotine options - Configuration for guillotine cutting
    */
-  guillotineOptions: vs,
+  guillotineOptions: As,
   /**
    * Efficiency options - Configuration for efficiency optimization
    */
-  efficiencyOptions: Oi,
+  efficiencyOptions: Ci,
   /**
    * Stock selection - Method for selecting stocks
    */
-  stockSelection: Pi,
+  stockSelection: Di,
   /**
    * Stacking mode - How to stack identical parts
    */
-  stackingMode: Ai
+  stackingMode: Oi
 });
-const Ur = u().min(0).default(0), Hr = u().min(0).default(0), Is = u().min(0).default(0), Kr = S({
-  dimension: Hr,
-  minSpacing: Is
+const Zr = u().min(0).default(0), Xr = u().min(0).default(0), Ds = u().min(0).default(0), Qr = x({
+  dimension: Xr,
+  minSpacing: Ds
 });
-function ri(t) {
+function ai(t) {
   switch (t) {
     case "sheet":
-      return ["guillotine", "efficiency", "beam"];
+      return ["guillotine", "efficiency", "beam", "nesting"];
     case "roll":
       return ["guillotine", "efficiency"];
     case "linear":
@@ -2393,7 +2404,7 @@ function ri(t) {
       return ["guillotine"];
   }
 }
-function oi(t, e) {
+function li(t, e) {
   if (t === "sheet") {
     if (e === "guillotine") return ["l", "w"];
     if (e === "beam") return ["l"];
@@ -2405,8 +2416,8 @@ function oi(t, e) {
     return [];
   return [];
 }
-const Yr = C(
-  Ii,
+const Jr = E(
+  Ti,
   {
     label: "fields.cutType",
     group: "cutting",
@@ -2416,11 +2427,12 @@ const Yr = C(
     options: [
       { value: "efficiency", label: "options.efficiency_title", info: "options.efficiency_description" },
       { value: "guillotine", label: "options.guillotine_title", info: "options.guillotine_description" },
-      { value: "beam", label: "options.beam", info: "options.beam_description" }
+      { value: "beam", label: "options.beam", info: "options.beam_description" },
+      { value: "nesting", label: "options.nesting_title", info: "options.nesting_description" }
     ]
   }
-), Zr = C(
-  Ti,
+), eo = E(
+  Ai,
   {
     label: "fields.cutPreference",
     group: "cutting",
@@ -2435,8 +2447,8 @@ const Yr = C(
       { value: "none", label: "options.none" }
     ]
   }
-), Xr = C(
-  Pi,
+), to = E(
+  Di,
   {
     label: "fields.stockSelection",
     group: "general",
@@ -2448,8 +2460,8 @@ const Yr = C(
       { value: "smallest", label: "options.smallest_first", info: "options.smallest_first_description" }
     ]
   }
-), Qr = C(
-  Ai,
+), io = E(
+  Oi,
   {
     label: "fields.stackingMode",
     group: "stacking",
@@ -2462,10 +2474,10 @@ const Yr = C(
       { value: "none", label: "options.no_stacking", info: "options.no_stacking_description" }
     ]
   }
-), Jr = C(
-  S({
-    strategy: C(
-      R(ks).default("efficiency"),
+), so = E(
+  x({
+    strategy: E(
+      F(Ts).default("efficiency"),
       {
         label: "fields.guillotineStrategy",
         group: "guillotine",
@@ -2477,7 +2489,7 @@ const Yr = C(
         ]
       }
     ),
-    maxPhase: C(
+    maxPhase: E(
       u().int().min(0).max(10).default(0),
       {
         label: "fields.maxPhase",
@@ -2487,8 +2499,8 @@ const Yr = C(
         info: "options.maxPhase_description"
       }
     ),
-    headCuts: C(
-      b().default(!1),
+    headCuts: E(
+      w().default(!1),
       {
         label: "fields.headCuts",
         group: "guillotine",
@@ -2497,21 +2509,21 @@ const Yr = C(
         info: "options.headCuts_description"
       }
     ),
-    firstPhaseCutGrouping: C(
-      b().default(!0),
+    limitStripDimensions: E(
+      w().default(!1),
       {
-        label: "fields.firstPhaseCutGrouping",
+        label: "fields.limitStripDimensions",
         group: "guillotine",
         order: 4,
         type: "boolean",
-        info: "options.stripShapeGroup_description"
+        info: "options.limitStripDimensions_description"
       }
     )
   }).default({
     strategy: "efficiency",
     maxPhase: 0,
     headCuts: !1,
-    firstPhaseCutGrouping: !0
+    limitStripDimensions: !1
   }),
   {
     label: "fields.guillotineOptions",
@@ -2519,26 +2531,26 @@ const Yr = C(
     order: 1,
     type: "object"
   }
-), eo = C(
-  Oi,
+), no = E(
+  Ci,
   {
     label: "fields.efficiencyOptions",
     group: "efficiency",
     order: 1,
     type: "object"
   }
-), nt = (t) => {
+), ot = (t) => {
   const { min: e, allowZero: i = !1, nullable: s = !0 } = t || {};
   let n;
-  return e !== void 0 ? n = i ? u().min(e) : u().min(e) : n = i ? u().min(0) : u().gt(0), s ? j([
+  return e !== void 0 ? n = i ? u().min(e) : u().min(e) : n = i ? u().min(0) : u().gt(0), s ? B([
     n,
     p(),
-    ze()
-  ]).transform((o) => o == null || o === "" ? null : typeof o == "string" ? P({ v: o }) ?? null : o) : j([
+    je()
+  ]).transform((o) => o == null || o === "" ? null : typeof o == "string" ? D({ v: o }) ?? null : o) : B([
     n,
     p()
-  ]).transform((o) => o === "" ? 0 : typeof o == "string" ? P({ v: o }) ?? 0 : o);
-}, Ts = () => C(
+  ]).transform((o) => o === "" ? 0 : typeof o == "string" ? D({ v: o }) ?? 0 : o);
+}, Os = () => E(
   yt,
   {
     label: "fields.grain",
@@ -2550,8 +2562,8 @@ const Yr = C(
       { value: "y", label: "fields.grain.either" }
     ]
   }
-), to = () => C(
-  ss,
+), ro = () => E(
+  os,
   {
     label: "fields.orientationLock",
     group: "properties",
@@ -2561,8 +2573,8 @@ const Yr = C(
       { value: "w", label: "fields.orientationLock.width" }
     ]
   }
-), Dt = (t) => C(
-  nt({ allowZero: t.allowZero, nullable: !0 }).default(null),
+), Ct = (t) => E(
+  ot({ allowZero: t.allowZero, nullable: !0 }).default(null),
   {
     label: t.label,
     placeholder: t.placeholder || "",
@@ -2570,8 +2582,8 @@ const Yr = C(
     allowZero: t.allowZero || !1,
     output: "number"
   }
-), io = () => C(
-  De(
+), oo = () => E(
+  Le(
     (t) => {
       if (t === "" || t === null || t === void 0) return 1;
       if (typeof t == "string") {
@@ -2589,22 +2601,22 @@ const Yr = C(
     step: 1,
     output: "number"
   }
-), so = (t) => C(
+), ao = (t) => E(
   p().max(200).optional().transform((e) => e ? e.trim().toUpperCase() : ""),
   {
     label: "fields.name",
     placeholder: t?.placeholder || "",
     group: "general"
   }
-), no = () => C(
+), lo = () => E(
   p().max(200).optional().transform((t) => t ? t.trim().toUpperCase() : ""),
   {
     label: "fields.material",
     placeholder: "fields.material",
     group: "properties"
   }
-), ro = () => C(
-  nt({ allowZero: !0, nullable: !0 }).optional().transform((t) => {
+), co = () => E(
+  ot({ allowZero: !0, nullable: !0 }).optional().transform((t) => {
     if (t != null)
       return t;
   }),
@@ -2615,7 +2627,7 @@ const Yr = C(
     step: 0.01,
     output: "number"
   }
-), oo = () => C(
+), uo = () => E(
   u().min(0).max(100).optional().default(0),
   {
     label: "fields.discount",
@@ -2624,29 +2636,29 @@ const Yr = C(
     step: 1,
     output: "number"
   }
-), ao = () => C(
-  Ys().max(500).transform((t) => t.replace(/,/g, " ")).optional(),
+), fo = () => E(
+  Js().max(500).transform((t) => t.replace(/,/g, " ")).optional(),
   {
     label: "fields.notes",
     placeholder: "fields.notes",
     group: "general"
   }
-), lo = (t) => C(
-  b().default(!1),
+), ho = (t) => E(
+  w().default(!1),
   t
-), co = (t, e) => C(
-  R(t),
+), po = (t, e) => E(
+  F(t),
   e
-), Me = {
-  field: C,
-  boolean: lo,
-  enum: co,
-  custom: zr
-}, ai = S({
-  ...Pe.shape,
+), $e = {
+  field: E,
+  boolean: ho,
+  enum: po,
+  custom: Vr
+}, ci = x({
+  ...De.shape,
   // ========== Stock Type ==========
-  stockType: C(
-    R([...qr]).default("sheet"),
+  stockType: E(
+    F([...Kr]).default("sheet"),
     {
       label: "fields.stockType",
       group: "general",
@@ -2660,8 +2672,8 @@ const Yr = C(
     }
   ),
   // ========== Blade Configuration ==========
-  bladeWidth: C(
-    nt({ allowZero: !0, nullable: !1 }).default(0),
+  bladeWidth: E(
+    ot({ allowZero: !0, nullable: !1 }).default(0),
     {
       label: "fields.bladeWidth",
       placeholder: "fields.bladeWidth",
@@ -2672,8 +2684,8 @@ const Yr = C(
     }
   ),
   // ========== Cutting Configuration ==========
-  stackHeight: C(
-    vi,
+  stackHeight: E(
+    Pi,
     {
       label: "fields.stackHeight",
       group: "stacking",
@@ -2682,32 +2694,32 @@ const Yr = C(
       info: "If your saw supports cutting multiple stock simultaneously, set the maximum total allowed height."
     }
   ),
-  cutType: Yr,
-  cutPreference: Zr,
+  cutType: Jr,
+  cutPreference: eo,
   // ========== Guillotine Options ==========
-  guillotineOptions: Jr,
+  guillotineOptions: so,
   // ========== Efficiency Options ==========
-  efficiencyOptions: eo,
+  efficiencyOptions: no,
   // ========== General Options ==========
-  options: S({
-    stockSelection: Xr,
-    minSpacing: nt({ allowZero: !0, nullable: !1 }).default(0),
-    stackingMode: Qr,
-    minSpacingDimension: S({
-      dimension: nt({ allowZero: !0, nullable: !0 }).optional(),
-      minSpacing: nt({ allowZero: !0, nullable: !0 }).optional()
+  options: x({
+    stockSelection: to,
+    minSpacing: ot({ allowZero: !0, nullable: !1 }).default(0),
+    stackingMode: io,
+    minSpacingDimension: x({
+      dimension: ot({ allowZero: !0, nullable: !0 }).optional(),
+      minSpacing: ot({ allowZero: !0, nullable: !0 }).optional()
     }).optional()
   }).default({
     stockSelection: "efficiency",
     minSpacing: 0,
     stackingMode: "identical"
   })
-}), uo = {
+}), go = {
   // Include validation computed properties (isValid)
-  ...je,
+  ...Be,
   // Get valid cut types for current stock type
   validCutTypes: {
-    compute: (t) => ri(t.stockType),
+    compute: (t) => ai(t.stockType),
     metadata: {
       cache: !0,
       dependencies: ["stockType"],
@@ -2717,7 +2729,7 @@ const Yr = C(
   },
   // Get valid cut preferences for current stock type and cut type
   validCutPreferences: {
-    compute: (t) => oi(t.stockType, t.cutType),
+    compute: (t) => li(t.stockType, t.cutType),
     metadata: {
       cache: !0,
       dependencies: ["stockType", "cutType"],
@@ -2725,51 +2737,51 @@ const Yr = C(
       returnType: "CutPreference[]"
     }
   }
-}, fo = S({
+}, mo = x({
   // Entity type added during serialization by toData() method
   // Used for automatic class recreation during deserialization
   __entityType: p().optional().describe("Entity type added during serialization by AutoSerializable.toData()"),
   // Reference marker for reference-based recreation
   // Used when objects reference each other
   __ref: p().optional().describe("Reference marker for object recreation")
-}), ho = S({
+}), yo = x({
   // ========== Selection State (excluded from compression) ==========
-  selected: Me.boolean({
+  selected: $e.boolean({
     label: "fields.selected",
     description: "Whether item is selected for multi-edit"
   }).behavior({ compress: "exclude", serialize: "exclude" }),
-  multiEdit: Me.boolean({
+  multiEdit: $e.boolean({
     label: "fields.multiEdit",
     description: "Whether this is the multi-edit item"
   }).behavior({ compress: "exclude", serialize: "exclude" }),
-  readonly: Me.boolean({
+  readonly: $e.boolean({
     label: "fields.readonly",
     description: "Whether input is readonly"
   }).behavior({ compress: "exclude", serialize: "exclude" }),
   // ========== Validation State (excluded from compression and serialization) ==========
-  isNew: Me.boolean({
+  isNew: $e.boolean({
     label: "fields.isNew",
     description: "Whether this is a newly created item that should skip validation until first user interaction",
     hidden: !0
   }).behavior({ compress: "exclude", serialize: "exclude" })
-}), po = S({
-  l1: C(
-    De((t) => t ?? 0, u()).default(0),
+}), bo = x({
+  l1: E(
+    Le((t) => t ?? 0, u()).default(0),
     { label: "fields.l1", group: "trim", allowZero: !0, min: 0, required: !1 }
   ),
-  l2: C(
-    De((t) => t ?? 0, u()).default(0),
+  l2: E(
+    Le((t) => t ?? 0, u()).default(0),
     { label: "fields.l2", group: "trim", allowZero: !0, min: 0, required: !1 }
   ),
-  w1: C(
-    De((t) => t ?? 0, u()).default(0),
+  w1: E(
+    Le((t) => t ?? 0, u()).default(0),
     { label: "fields.w1", group: "trim", allowZero: !0, min: 0, required: !1 }
   ),
-  w2: C(
-    De((t) => t ?? 0, u()).default(0),
+  w2: E(
+    Le((t) => t ?? 0, u()).default(0),
     { label: "fields.w2", group: "trim", allowZero: !0, min: 0, required: !1 }
   )
-}).default({ l1: 0, l2: 0, w1: 0, w2: 0 }), go = De(
+}).default({ l1: 0, l2: 0, w1: 0, w2: 0 }), wo = Le(
   (t) => {
     if (t == null)
       return { l1: 0, l2: 0, w1: 0, w2: 0 };
@@ -2777,7 +2789,7 @@ const Yr = C(
       const e = t, i = (s) => {
         if (s == null) return 0;
         if (typeof s == "string") {
-          const n = P({ v: s });
+          const n = D({ v: s });
           return n === null ? 0 : n;
         }
         return typeof s == "number" ? s : 0;
@@ -2791,73 +2803,73 @@ const Yr = C(
     }
     return t;
   },
-  po
-), mo = S({
+  bo
+), So = x({
   // ========== Identity ==========
-  id: es,
+  id: ss,
   index: u().int().min(0).optional(),
   // ========== Dimensions ==========
   // Input dimensions can be strings (for fractions) or numbers
-  l: Dt({
+  l: Ct({
     label: "fields.l",
     placeholder: "fields.l"
   }),
-  w: Dt({
+  w: Ct({
     label: "fields.w",
     placeholder: "fields.w"
   }),
-  t: Dt({
+  t: Ct({
     label: "fields.t",
     placeholder: "fields.t"
   }),
-  q: io(),
+  q: oo(),
   // ========== Material Properties ==========
   // Input name with uppercase transform
-  name: so(),
-  material: no(),
+  name: ao(),
+  material: lo(),
   // ========== Cost ==========
-  cost: ro(),
+  cost: co(),
   // ========== Discount ==========
-  discount: oo(),
+  discount: uo(),
   // ========== Trim Configuration ==========
-  trim: go,
+  trim: wo,
   // ========== Rotation (Runtime) ==========
-  rot: pi.default(0),
+  rot: mi.default(0),
   // ========== Flags ==========
-  preventAutoRotation: Me.boolean({
+  preventAutoRotation: $e.boolean({
     label: "fields.preventAutoRotation",
     description: "Prevent automatic rotation during optimization",
     group: "options"
   }),
-  offcut: Me.boolean({
+  offcut: $e.boolean({
     label: "fields.offcut",
     description: "Mark as offcut material",
     group: "options"
   }),
-  processed: Me.boolean({
+  processed: $e.boolean({
     label: "fields.processed",
     description: "Has been processed",
     hidden: !0
   }).behavior({ compress: "exclude", serialize: "exclude" }),
   // ========== Notes ==========
-  notes: ao()
-}), Mt = S({
-  ...fo.shape,
-  // System properties from AutoSerializable
-  ...Pe.shape,
+  notes: fo()
+}), $t = x({
   ...mo.shape,
+  // System properties from AutoSerializable
+  ...De.shape,
+  ...So.shape,
   // Core business fields
-  ...ho.shape,
+  ...yo.shape,
   // Input-specific UI fields
   // Override id with strict validation for input shapes/stock (allows blank)
   id: p().regex(/^(\d+\.\d+)?$/, 'ID must be blank or in format "1.0" (e.g., "1.0", "2.1")').default("").describe('Structured identifier for input shapes/stock in format 1.0 (e.g., "1.0") or blank')
-}), Di = {
+}), Li = {
   // Include validation computed properties (isValid)
-  ...je,
+  ...Be,
   // Get the longer side dimension
   longSide: {
     compute: (t) => {
-      const e = P({ v: t.l }) ?? 0, i = P({ v: t.w }) ?? 0;
+      const e = D({ v: t.l }) ?? 0, i = D({ v: t.w }) ?? 0;
       return Math.max(e, i);
     },
     metadata: {
@@ -2870,7 +2882,7 @@ const Yr = C(
   // Get the short side dimension
   shortSide: {
     compute: (t) => {
-      const e = P({ v: t.l }) ?? 0, i = P({ v: t.w }) ?? 0;
+      const e = D({ v: t.l }) ?? 0, i = D({ v: t.w }) ?? 0;
       return Math.min(e, i);
     },
     metadata: {
@@ -2904,7 +2916,7 @@ const Yr = C(
   // Check if the rectangle is square (length equals width)
   isSquare: {
     compute: (t) => {
-      const e = P({ v: t.l }) ?? 0, i = P({ v: t.w }) ?? 0;
+      const e = D({ v: t.l }) ?? 0, i = D({ v: t.w }) ?? 0;
       return e === i;
     },
     metadata: {
@@ -2914,15 +2926,15 @@ const Yr = C(
       returnType: "boolean"
     }
   }
-}, Ct = Mt.extend({
+}, Lt = $t.extend({
   // Add grain field for shapes
   //[] is grain needed for inputs?
-  grain: Ts(),
+  grain: Os(),
   // Add orientationLock with input-specific transform
-  orientationLock: to(),
+  orientationLock: ro(),
   // ========== Shared Shape Properties ==========
-  upDirection: C(
-    cs,
+  upDirection: E(
+    ds,
     {
       label: "fields.upDirection",
       description: "Direction that should face up",
@@ -2935,27 +2947,35 @@ const Yr = C(
       ]
     }
   ),
-  stockLock: C(
-    ls,
+  stockLock: E(
+    fs,
     { label: "fields.stockLock" }
   ),
   // ========== Stock Matching ==========
-  stockMatch: Gn.nullable().optional(),
+  stockMatch: Bn.nullable().optional(),
+  // ========== Stock Reference ==========
+  // Identifies which stock/material this shape was created from (for ecommerce material persistence)
+  stock: x({
+    db_id: p().optional(),
+    code: p().optional(),
+    material: p().optional(),
+    thickness: u().optional()
+  }).nullable().optional(),
   // ========== Custom Data ==========
-  customData: C(
-    us,
+  customData: E(
+    hs,
     { label: "fields.customData", description: "Custom user-defined data" }
   ),
   // ========== Order Tracking ==========
   order_id: p().nullable().optional().describe("Order ID this shape belongs to (for order optimization workflow)"),
   // ========== UI Extension (excluded from compression) ==========
-  selectedMaterial: C(
-    Z().optional(),
+  selectedMaterial: E(
+    H().optional(),
     { label: "fields.selectedMaterial", description: "Selected material object" }
   ).behavior({ compress: "exclude" }),
   // ========== Machining ==========
   // Override default reference behavior to serialize full data
-  machining: E("Machining", {
+  machining: $("Machining", {
     nullable: !0,
     description: "Machining operations for this shape",
     fieldBehavior: {
@@ -2969,7 +2989,7 @@ const Yr = C(
   // ========== Extras ==========
   // Container for all extras (banding, finish, planing, etc.)
   // Override default reference behavior to serialize full data
-  extras: E("Extras", {
+  extras: $("Extras", {
     nullable: !0,
     description: "Extras container for this shape",
     fieldBehavior: {
@@ -2982,17 +3002,20 @@ const Yr = C(
   }).optional(),
   // ========== Full Stock ==========
   // When true, purchase entire sheet without cutting
-  fullStock: C(
-    b().default(!1),
+  fullStock: E(
+    w().default(!1),
     {
       label: "fields.fullStock",
       description: "Purchase full stock sheet without cutting",
       group: "properties"
     }
-  )
-}), yo = {
+  ),
+  // ========== Nesting ==========
+  // Polygon outline for irregular nesting shapes (from DXF import)
+  outline: C(x({ x: u(), y: u() })).nullable().optional()
+}), xo = {
   // Inherit all computed properties from InputRectangle (including isValid)
-  ...Di,
+  ...Li,
   // Check if has grain direction
   hasGrain: {
     compute: (t) => t.grain === "l" || t.grain === "w",
@@ -3002,32 +3025,32 @@ const Yr = C(
       returnType: "boolean"
     }
   }
-}, Lt = S({
-  ...Mt.shape,
-  ...ns.shape,
+}, Rt = x({
+  ...$t.shape,
+  ...as.shape,
   // ========== Stock-specific Properties ==========
   // Override l to allow 0 for infinite length rolls
-  l: Dt({
+  l: Ct({
     label: "fields.l",
     placeholder: "fields.l",
     allowZero: !0
   }),
   // Add grain field for stock
-  grain: Ts(),
-  preventGrainRotation: Me.boolean({
+  grain: Os(),
+  preventGrainRotation: $e.boolean({
     label: "fields.preventGrainRotation",
     description: "Prevent rotation that would change grain direction",
     group: "options",
     order: 4
   }),
   // Stock-specific flags (infiniteLength is now in sharedStockPropertiesSchema from merge above)
-  used: Me.boolean({
+  used: $e.boolean({
     label: "fields.used",
     description: "Whether stock has been used"
   }),
   // Display and filtering properties
-  color: C(
-    is,
+  color: E(
+    rs,
     {
       label: "fields.color",
       description: 'Material color ({ hex: "#FF5733", name: "Red" } or legacy string)',
@@ -3035,7 +3058,7 @@ const Yr = C(
       order: 1
     }
   ),
-  weight: C(
+  weight: E(
     u().positive().optional(),
     {
       label: "fields.weight",
@@ -3044,8 +3067,8 @@ const Yr = C(
       order: 2
     }
   ),
-  imageUrl: C(
-    j([p().url(), z("")]).optional(),
+  imageUrl: E(
+    B([p().url(), j("")]).optional(),
     {
       label: "fields.imageUrl",
       description: "Image URL for stock display",
@@ -3054,8 +3077,8 @@ const Yr = C(
     }
   ),
   // Stock filter and categorization properties
-  tags: C(
-    L(p()).optional(),
+  tags: E(
+    C(p()).optional(),
     {
       label: "fields.tags",
       description: "Searchable tags for filtering",
@@ -3063,8 +3086,8 @@ const Yr = C(
       order: 4
     }
   ),
-  available: C(
-    b().optional(),
+  available: E(
+    w().optional(),
     {
       label: "fields.available",
       description: "Whether stock is available for selection (defaults to true)",
@@ -3073,7 +3096,7 @@ const Yr = C(
     }
   ),
   // Database ID (MongoDB ObjectId as string)
-  db_id: C(
+  db_id: E(
     p().optional(),
     {
       label: "fields.db_id",
@@ -3081,24 +3104,33 @@ const Yr = C(
       group: "system"
     }
   ),
+  // Material/product code from supplier catalogue
+  code: E(
+    p().optional(),
+    {
+      label: "fields.code",
+      description: "Material or product code from supplier",
+      group: "system"
+    }
+  ),
   // ========== Custom Data ==========
-  customData: C(
-    us,
+  customData: E(
+    hs,
     { label: "fields.customData", description: "Custom user-defined data" }
   ),
   // Saw configuration (excluded from compression)
-  saw: C(
-    Z().optional(),
+  saw: E(
+    H().optional(),
     { label: "fields.saw", description: "Saw configuration data" }
   ).behavior({ compress: "exclude" }),
   // Available extras from material (for e-commerce checkout)
   // Contains arrays of extra IDs that are available for this stock item
-  extras: C(
-    S({
-      banding: L(p()).optional(),
-      finish: L(p()).optional(),
-      planing: L(p()).optional(),
-      machining: L(p()).optional()
+  extras: E(
+    x({
+      banding: C(p()).optional(),
+      finish: C(p()).optional(),
+      planing: C(p()).optional(),
+      machining: C(p()).optional()
     }).optional(),
     {
       label: "fields.extras",
@@ -3106,63 +3138,68 @@ const Yr = C(
       group: "display"
     }
   )
-}), bo = {
+}), ko = {
   // Inherit all computed properties from InputRectangle (including isValid)
-  ...Di
+  ...Li
   // InputStock doesn't define additional computed properties
-}, Ps = Pe.extend({
+}, vo = x({
+  autoId: p().describe("Shape autoId"),
+  x: u().default(0).describe("X position within group (0 = left edge, increases rightward)"),
+  y: u().default(0).describe("Y position within group (0 = bottom edge, increases upward)")
+}), Cs = De.extend({
   // ========== Identification ==========
   id: p().optional().describe("Unique identifier"),
   // ========== Shape References ==========
-  shapeIds: L(p()).default([]).describe("List of shape IDs in this group"),
-  shapes: L(p()).default([]).transform((t) => t?.map(String) ?? []).describe("Shape identifiers"),
+  shapeIds: C(p()).default([]).describe("List of shape IDs in this group"),
+  shapes: C(p()).default([]).transform((t) => t?.map(String) ?? []).describe("Shape identifiers"),
+  // ========== Positions ==========
+  positions: C(vo).default([]).describe("XY positions for each shape within the group"),
   // ========== Group Properties ==========
-  direction: Si,
-  // 'horizontal' | 'vertical'
   q: u().int().min(1).default(1).describe("Quantity of groups"),
-  duplicate: b().default(!1).describe("If a duplicate"),
+  duplicate: w().default(!1).describe("If a duplicate"),
   // ========== Material Properties (from Group) ==========
   name: p().optional().describe("Group name"),
   material: p().optional().describe("Material type"),
   grain: yt.describe("Grain direction"),
   // ========== Stock Matching (excluded during compression) ==========
-  stockMatch: S({
+  stockMatch: x({
     stockId: p().optional(),
     material: p().optional(),
     thickness: u().optional(),
     grain: yt.optional()
   }).optional().describe("Matching stock information").behavior({ compress: "exclude" }),
   // ========== Runtime Properties ==========
-  shapeList: L(Z()).optional().describe("Runtime shape list for validation").behavior({ compress: "exclude" })
-}), wo = {
+  shapeList: C(H()).optional().describe("Runtime shape list for validation").behavior({ compress: "exclude" })
+}), Io = {
   // Include validation computed properties (isValid)
-  ...je
+  ...Be
   // InputUserGroup doesn't define additional computed properties
-};
-S({
-  parts: L(u()).describe("Indices of shapes/parts in the parts array (user-friendly name for shapes)"),
-  direction: Si,
+}, Po = x({
+  part: u().int().min(0).describe("Index of the part in the parts array"),
+  x: u().min(0).describe("X position within group (0 = left edge, increases rightward)"),
+  y: u().min(0).describe("Y position within group (0 = bottom edge, increases upward)")
+}), Zl = x({
+  positions: C(Po).min(2).describe("Part positions within the group. Each entry specifies a part index and its x,y coordinates."),
   q: u().int().min(1).describe("Quantity of groups")
-});
-const So = Pe.extend({
+}), To = De.extend({
   // Collections of machining operations
-  holes: ee("Hole").default([]).describe("Array of holes").behavior({
+  holes: re("Hole").default([]).describe("Array of holes").behavior({
     serialize: "full",
     clone: "copy"
   }),
-  hingeHoles: ee("HingeHole").default([]).describe("Array of hinge hole sets").behavior({
+  hingeHoles: re("HingeHole").default([]).describe("Array of hinge hole sets").behavior({
     serialize: "full",
     clone: "copy"
   }),
-  corners: ee("Corner").default([]).describe("Array of corner operations").behavior({
+  corners: re("Corner").default([]).describe("Array of corner operations").behavior({
     serialize: "full",
     clone: "copy"
   }),
   // Validation
-  enabled: b().default(!0).describe("Whether machining is enabled")
-}), xo = {
+  enabled: w().default(!0).describe("Whether machining is enabled")
+}), Ao = {
   // Inherit computed properties from validation base
-  ...je,
+  ...Be,
   // Check if any machining exists
   hasAnyMachining: {
     compute: (t) => t.holes && t.holes.length > 0 || t.hingeHoles && t.hingeHoles.length > 0 || t.corners && t.corners.length > 0,
@@ -3181,7 +3218,7 @@ const So = Pe.extend({
       returnType: "number"
     }
   }
-}, jl = {
+}, Xl = {
   cacheResults: !1,
   successMetric: "efficiency",
   calculateCuts: !0,
@@ -3243,7 +3280,8 @@ const So = Pe.extend({
     },
     secondPass: !1,
     strips: {
-      rearrange: !1
+      rearrange: !1,
+      duplicateStrips: !0
     }
   },
   subset: {
@@ -3258,10 +3296,25 @@ const So = Pe.extend({
   evo: {
     disable: !1,
     stockLimit: 40
+  },
+  nesting: {
+    rotationSteps: 12,
+    spacing: 0,
+    contourAnalysis: !0,
+    maxShapesForFullNFP: 50
   }
-}, ko = Ut, vo = {
+};
+let Ls = () => {
+};
+function Ql(t) {
+  Ls = t;
+}
+function Gt(t, e, i, s, n) {
+  Ls(t, e, i, s, n);
+}
+const Do = Ht, Oo = {
   // Inherit computed properties from Extra base
-  ...ki,
+  ...Ii,
   // Check if any planing is applied
   hasAnyPlaning: {
     compute: (t) => {
@@ -3304,15 +3357,15 @@ const So = Pe.extend({
       returnType: "string[]"
     }
   }
-}, Io = S({
+}, Co = x({
   // ========== Storage ==========
   // Points stored as a map (will be converted to/from Map in class)
   // In serialized form this is a record, at runtime it's a Map
-  points: j([
-    Zs(p(), E("Point")),
-    U(p(), E("Point"))
+  points: B([
+    en(p(), $("Point")),
+    W(p(), $("Point"))
   ]).default(() => /* @__PURE__ */ new Map())
-}), To = {
+}), Lo = {
   // Get the number of points in the collection
   size: {
     compute: (t) => t.points instanceof Map ? t.points.size : Object.keys(t.points || {}).length,
@@ -3331,24 +3384,24 @@ const So = Pe.extend({
       returnType: "boolean"
     }
   }
-}, li = Pe.extend({
+}, ui = De.extend({
   // Core properties from shared schema
-  stockType: yi,
-  stackHeight: vi.describe("Maximum stack height"),
-  cutType: Ii,
-  cutPreference: Ti,
+  stockType: wi,
+  stackHeight: Pi.describe("Maximum stack height"),
+  cutType: Ti,
+  cutPreference: Ai,
   // Blade width (numeric for runtime)
-  bladeWidth: Ur.describe("Blade width"),
+  bladeWidth: Zr.describe("Blade width"),
   // Guillotine options
-  guillotineOptions: vs,
+  guillotineOptions: As,
   // Efficiency options
-  efficiencyOptions: Oi,
+  efficiencyOptions: Ci,
   // General options (nested stockSelection and stackingMode)
-  options: S({
-    stockSelection: Pi,
-    minSpacing: Is,
-    stackingMode: Ai,
-    minSpacingDimension: Kr
+  options: x({
+    stockSelection: Di,
+    minSpacing: Ds,
+    stackingMode: Oi,
+    minSpacingDimension: Qr
   }).default({
     stockSelection: "efficiency",
     minSpacing: 0,
@@ -3358,9 +3411,9 @@ const So = Pe.extend({
       minSpacing: 0
     }
   }).describe("General saw options")
-}), Po = {
+}), Ro = {
   // Include validation computed properties
-  ...je,
+  ...Be,
   // Blade width / 2 for convenience
   halfBladeWidth: {
     compute: (t) => t.bladeWidth / 2,
@@ -3398,39 +3451,39 @@ const So = Pe.extend({
     }
   }
 };
-li.describe(JSON.stringify({
+ui.describe(JSON.stringify({
   name: "Saw",
   description: "Runtime saw configuration for optimization",
   version: "1.0.0",
   category: "configuration"
 }));
-const st = 1e-10, Ao = 10, Oo = Number.MAX_SAFE_INTEGER, Do = 4294967295, me = (t) => typeof t == "number" && Number.isFinite(t), Rt = (t) => Array.isArray(t) && t.length > 0;
-function pt(t, e, i = st) {
+const rt = 1e-10, Eo = 10, Fo = Number.MAX_SAFE_INTEGER, Mo = 4294967295, we = (t) => typeof t == "number" && Number.isFinite(t), Et = (t) => Array.isArray(t) && t.length > 0;
+function pt(t, e, i = rt) {
   if (t === e) return 0;
   if (Number.isInteger(t) && Number.isInteger(e))
     return t > e ? 1 : -1;
   const s = t - e;
   return Math.abs(s) < i ? 0 : s;
 }
-const Co = {
-  greaterThan: (t, e, i = st) => !me(t) || !me(e) ? !1 : pt(t, e, i) > 0,
-  greaterThanOrEqualTo: (t, e, i = st) => !me(t) || !me(e) ? !1 : pt(t, e, i) >= 0,
-  lessThan: (t, e, i = st) => !me(t) || !me(e) ? !1 : pt(t, e, i) < 0,
-  lessThanOrEqualTo: (t, e, i = st) => !me(t) || !me(e) ? !1 : pt(t, e, i) <= 0,
-  equalTo: (t, e, i = st) => !me(t) || !me(e) ? !1 : pt(t, e, i) === 0
+const _o = {
+  greaterThan: (t, e, i = rt) => !we(t) || !we(e) ? !1 : pt(t, e, i) > 0,
+  greaterThanOrEqualTo: (t, e, i = rt) => !we(t) || !we(e) ? !1 : pt(t, e, i) >= 0,
+  lessThan: (t, e, i = rt) => !we(t) || !we(e) ? !1 : pt(t, e, i) < 0,
+  lessThanOrEqualTo: (t, e, i = rt) => !we(t) || !we(e) ? !1 : pt(t, e, i) <= 0,
+  equalTo: (t, e, i = rt) => !we(t) || !we(e) ? !1 : pt(t, e, i) === 0
 };
-function Lo(t) {
-  return me(t) ? Number.isInteger(t) ? t : Number(t.toFixed(Ao)) : !1;
+function $o(t) {
+  return we(t) ? Number.isInteger(t) ? t : Number(t.toFixed(Eo)) : !1;
 }
-function Ro(t) {
-  if (!me(t) || t < 0 || t > Oo)
+function Go(t) {
+  if (!we(t) || t < 0 || t > Fo)
     throw new Error("Invalid length parameter");
-  return Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] / (Do + 1) * t);
+  return Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] / (Mo + 1) * t);
 }
-function Eo(t, e) {
-  if (!Rt(t))
+function zo(t, e) {
+  if (!Et(t))
     throw new Error("Invalid array parameter");
-  if (!me(e) || e < 0 || e > t.length)
+  if (!we(e) || e < 0 || e > t.length)
     throw new Error("Invalid size parameter");
   const i = t.slice(), s = t.length - e;
   for (let n = t.length - 1; n >= s; n--) {
@@ -3439,14 +3492,14 @@ function Eo(t, e) {
   }
   return i.slice(s);
 }
-class vt {
+class It {
   static calculateMean(e) {
-    if (!Rt(e))
+    if (!Et(e))
       throw new Error("Invalid input array");
     return e.reduce((i, s) => i + s, 0) / e.length;
   }
   static calculateStandardDeviation(e, i = null) {
-    if (!Rt(e))
+    if (!Et(e))
       throw new Error("Invalid input array");
     const s = i ?? this.calculateMean(e), n = e.reduce((o, r) => {
       const a = r - s;
@@ -3455,7 +3508,7 @@ class vt {
     return Math.sqrt(n);
   }
   static calculateCoefficientOfVariation(e) {
-    if (!Rt(e))
+    if (!Et(e))
       throw new Error("Invalid input array");
     const i = this.calculateMean(e);
     if (i === 0)
@@ -3463,24 +3516,24 @@ class vt {
     return this.calculateStandardDeviation(e, i) / i;
   }
 }
-const I = {
-  ...Co,
-  isNumber: me,
-  round: Lo,
-  getRandom: Ro,
-  getRandomSample: Eo,
-  calculateStandardDeviation: vt.calculateStandardDeviation.bind(vt),
-  calculateCoefficientOfVariation: vt.calculateCoefficientOfVariation.bind(vt)
+const v = {
+  ..._o,
+  isNumber: we,
+  round: $o,
+  getRandom: Go,
+  getRandomSample: zo,
+  calculateStandardDeviation: It.calculateStandardDeviation.bind(It),
+  calculateCoefficientOfVariation: It.calculateCoefficientOfVariation.bind(It)
 };
-function Gi(t) {
+function ji(t) {
   return t && typeof t == "object" && typeof t.toData == "function";
 }
-let zi = 0, ji = Date.now();
-const Fo = 1e4;
-function _o() {
-  return zi % Fo === 0 && (ji = Date.now()), `${ji}-${(zi++).toString(36)}`;
+let Bi = 0, Vi = Date.now();
+const No = 1e4;
+function jo() {
+  return Bi % No === 0 && (Vi = Date.now()), `${Vi}-${(Bi++).toString(36)}`;
 }
-class Mo {
+class Ge {
   // System-generated unique ID for tracking and reassociation
   // This is different from user-facing 'id' which is for display
   autoId;
@@ -3503,10 +3556,24 @@ class Mo {
   static computedProperties;
   // Static cache for field behaviors - computed once per class
   static _fieldBehaviorCache;
+  /**
+   * Cache for partial schemas - avoids recomputing schema.partial() on every call
+   * schema.partial() traverses all fields and creates new ZodOptional wrappers each time
+   * Caching this gives O(1) lookups instead of O(fields) per call
+   */
+  static _partialSchemaCache = /* @__PURE__ */ new WeakMap();
+  /**
+   * Get a cached partial schema for the given schema
+   * Creates and caches the partial schema on first call
+   */
+  static getCachedPartialSchema(e) {
+    let i = Ge._partialSchemaCache.get(e);
+    return i || (i = e.partial(), Ge._partialSchemaCache.set(e, i)), i;
+  }
   // Private flag for compression mode (will be set as non-enumerable in constructor)
   _serializationMode;
   constructor(e) {
-    this.autoId = e?.autoId || _o(), Object.defineProperty(this, "_serializationMode", {
+    this.autoId = e?.autoId || jo(), Object.defineProperty(this, "_serializationMode", {
       value: "full",
       writable: !0,
       enumerable: !1,
@@ -3566,25 +3633,25 @@ class Mo {
             if (r = r._def.innerType || r._def.type, !r) break;
           } else if (l === "ZodUnion" && r._def.options?.length > 0) {
             const c = r._def.options, f = s ? `${s}.${n}` : n;
-            for (const h of c) {
-              if (!h) continue;
-              const d = ii(h);
-              if (d) {
+            for (const d of c) {
+              if (!d) continue;
+              const h = ni(d);
+              if (h) {
                 const g = f;
-                i[g] || (i[g] = d);
+                i[g] || (i[g] = h);
                 break;
               }
             }
-            for (const h of c) {
-              if (!h || !h._def) continue;
-              const d = ht(h);
-              for (const [g, y] of Object.entries(d)) {
-                const v = s ? `${s}.${n}.${g}` : `${n}.${g}`;
-                i[v] || (i[v] = y);
+            for (const d of c) {
+              if (!d || !d._def) continue;
+              const h = ht(d);
+              for (const [g, m] of Object.entries(h)) {
+                const S = s ? `${s}.${n}.${g}` : `${n}.${g}`;
+                i[S] || (i[S] = m);
               }
-              if (h && h.shape) {
+              if (d && d.shape) {
                 const g = s ? `${s}.${n}` : n;
-                this.extractNestedBehaviors(h.shape, i, g);
+                this.extractNestedBehaviors(d.shape, i, g);
               }
             }
             r = null;
@@ -3667,7 +3734,7 @@ class Mo {
     if (s && typeof s == "object" && "_def" in s) {
       const r = e.validationMode === "none" || e.skipSchemaValidation;
       let a;
-      r ? a = e : a = s.partial().parse(e);
+      r ? a = e : a = Ge.getCachedPartialSchema(s).parse(e);
       for (const l in a) {
         if (!Object.prototype.hasOwnProperty.call(e, l))
           continue;
@@ -3705,8 +3772,8 @@ class Mo {
       try {
         return e.parse(this.toData()), "issues" in this && (this.issues = []), "warnings" in this && (this.warnings = []), "valid" in this && (this.valid = !0), [];
       } catch (s) {
-        if (s instanceof Yi) {
-          const n = s.issues.map((o) => new T({
+        if (s instanceof Qi) {
+          const n = s.issues.map((o) => new I({
             message: o.message,
             type: "error",
             field: o.path.length > 0 ? [o.path.map(String)] : void 0,
@@ -3729,19 +3796,19 @@ class Mo {
     const s = "id" in this && this.id ? String(this.id).split(".") : ["clone"];
     let n;
     if (e) {
-      const g = s.pop() || "0", y = parseInt(g, 10);
-      isNaN(y) && s.push(g), n = String(e);
+      const g = s.pop() || "0", m = parseInt(g, 10);
+      isNaN(m) && s.push(g), n = String(e);
     } else {
-      const g = s.pop() || "0", y = parseInt(g, 10);
-      isNaN(y) ? (s.push(g), n = "1") : n = String(y + 1);
+      const g = s.pop() || "0", m = parseInt(g, 10);
+      isNaN(m) ? (s.push(g), n = "1") : n = String(m + 1);
     }
     s.push(n);
     const o = s.join("."), a = `${this.autoId.includes(".") ? this.autoId.substring(0, this.autoId.indexOf(".")) : this.autoId}.${n}`, l = this.constructor, c = this.getDirectPropertyCopy(i), f = l.schema;
-    let h = {};
-    f && (h = ht(f));
-    const d = l.defaults || (f ? f.parse({}) : {}) || {};
-    for (const [g, y] of Object.entries(h))
-      y.clone === "reset" && (g in d ? c[g] = d[g] : delete c[g]);
+    let d = {};
+    f && (d = ht(f));
+    const h = l.defaults || (f ? f.parse({}) : {}) || {};
+    for (const [g, m] of Object.entries(d))
+      m.clone === "reset" && (g in h ? c[g] = h[g] : delete c[g]);
     return "id" in c && (c.id = o), c.autoId = a, c.duplicate = !0, c.skipValidation = !0, new l(c);
   }
   /**
@@ -3845,16 +3912,16 @@ class Mo {
       return e;
     if (Array.isArray(e))
       return e.map((r) => {
-        if (Gi(r)) {
+        if (ji(r)) {
           if (i?.serialize === "reference" || s === "compressed" && i?.compress === "reference") {
             const c = "autoId" in r && r.autoId, f = typeof r.getType == "function";
             if (c) {
-              const h = f ? r.getType() : r.constructor.name;
+              const d = f ? r.getType() : r.constructor.name;
               return {
                 __ref: !0,
                 id: r?.id,
                 autoId: r.autoId,
-                __entityType: h
+                __entityType: d
               };
             }
           }
@@ -3863,7 +3930,7 @@ class Mo {
         }
         return r;
       });
-    if (Gi(e)) {
+    if (ji(e)) {
       if (i?.serialize === "reference" || s === "compressed" && i?.compress === "reference") {
         const l = "autoId" in e && e.autoId, c = typeof e.getType == "function";
         if (l) {
@@ -3954,7 +4021,7 @@ class Mo {
     return e;
   }
 }
-class H extends Mo {
+class q extends Ge {
   /**
    * Fast type identification property
    * Set during construction for O(1) type checking via guards
@@ -3974,7 +4041,7 @@ class H extends Mo {
    * Called by recreation.ts after it's loaded to break circular dependency
    */
   static registerRecreateFunction(e) {
-    H.recreateFunc = e;
+    q.recreateFunc = e;
   }
   /**
    * Zod schema for validation and property definition
@@ -4011,15 +4078,15 @@ class H extends Mo {
       if (a.success)
         r = a.data;
       else {
-        const l = i.partial().safeParse(e);
+        const l = Ge.getCachedPartialSchema(i).safeParse(e);
         l.success ? r = l.data : r = this.filterInvalidFields(e, l.error, i);
       }
     }
     if (i && r) {
-      let a = H._schemaKeysCache.get(i);
+      let a = q._schemaKeysCache.get(i);
       if (!a) {
         const l = i.shape || i._def?.shape;
-        l && (a = Object.keys(l), H._schemaKeysCache.set(i, a));
+        l && (a = Object.keys(l), q._schemaKeysCache.set(i, a));
       }
       if (a) {
         const l = {};
@@ -4074,7 +4141,7 @@ class H extends Mo {
     r.forEach((l) => {
       delete o[l];
     });
-    const a = s.partial().safeParse(o);
+    const a = Ge.getCachedPartialSchema(s).safeParse(o);
     return a.success ? a.data : o;
   }
   /**
@@ -4086,15 +4153,23 @@ class H extends Mo {
    */
   recreateNestedClasses(e, i) {
     if (!e || typeof e != "object" || Array.isArray(e)) return e;
-    const s = { ...e }, n = i.shape;
-    for (const [o, r] of Object.entries(n)) {
-      const a = s[o];
-      if (a == null || typeof a == "object" && typeof a.getType == "function")
-        continue;
-      const l = this.extractClassNameFromSchema(r);
-      l ? s[o] = this.deserializeValueWithClassName(a, l) : s[o] = this.deserializeValue(a);
+    let s = q._zRefFieldsCache.get(i);
+    if (s === void 0) {
+      s = null;
+      const o = i.shape;
+      for (const [r, a] of Object.entries(o)) {
+        const l = this.extractClassNameFromSchema(a);
+        l && (s || (s = /* @__PURE__ */ new Map()), s.set(r, l));
+      }
+      q._zRefFieldsCache.set(i, s);
     }
-    return s;
+    if (!s) return e;
+    let n = e;
+    for (const [o, r] of s) {
+      const a = e[o];
+      a != null && (typeof a == "object" && typeof a.getType == "function" || (n === e && (n = { ...e }), n[o] = this.deserializeValueWithClassName(a, r)));
+    }
+    return n;
   }
   /**
    * Extract className from a zRef schema field
@@ -4175,7 +4250,7 @@ class H extends Mo {
         if (r) return r;
       }
     }
-    return e && typeof e == "object" ? (s && (e.id || e.autoId), H.recreateFunc ? H.recreateFunc(e, s, i) : { ...e, __ref: i }) : e;
+    return e && typeof e == "object" ? (s && (e.id || e.autoId), q.recreateFunc ? q.recreateFunc(e, s, i) : { ...e, __ref: i }) : e;
   }
   /**
    * Static cache tracking which classes have had computed properties initialized on their prototype
@@ -4186,15 +4261,21 @@ class H extends Mo {
    */
   static _schemaKeysCache = /* @__PURE__ */ new WeakMap();
   /**
+   * Static cache for zRef field names per schema
+   * Maps schema → Map<fieldName, className> for fields that need nested class recreation
+   * null value means the cache has been built but no zRef fields exist
+   */
+  static _zRefFieldsCache = /* @__PURE__ */ new WeakMap();
+  /**
    * Apply computed properties as getters
    * Optimized: Defines getters on prototype once per class, not on every instance
    */
   applyComputedProperties() {
     const e = this.constructor;
-    if (H._computedPropsInitialized.has(e)) return;
+    if (q._computedPropsInitialized.has(e)) return;
     const i = e.computedProperties;
     if (!i) {
-      H._computedPropsInitialized.add(e);
+      q._computedPropsInitialized.add(e);
       return;
     }
     const s = e.prototype;
@@ -4209,7 +4290,7 @@ class H extends Mo {
         configurable: !0
       }));
     }
-    H._computedPropsInitialized.add(e);
+    q._computedPropsInitialized.add(e);
   }
   /**
    * Update properties with validation
@@ -4228,7 +4309,7 @@ class H extends Mo {
     if (n)
       o = this.recreateNestedClasses(e, i);
     else {
-      const r = i.partial().safeParse(e);
+      const r = Ge.getCachedPartialSchema(i).safeParse(e);
       r.success ? o = r.data : o = this.filterInvalidFields(e, r.error, i);
     }
     for (const r in o)
@@ -4271,7 +4352,7 @@ class H extends Mo {
       const i = this.toData ? this.toData() : { ...this };
       return e.parse(i), [];
     } catch (i) {
-      if (i instanceof Yi)
+      if (i instanceof Qi)
         return i.issues.map((s) => ({
           code: s.code,
           path: s.path.map((n) => typeof n == "symbol" ? n.toString() : n),
@@ -4287,7 +4368,7 @@ class H extends Mo {
   static cleanEntityForAPI(e) {
     if (!e) return e;
     if (Array.isArray(e))
-      return e.map((s) => H.cleanEntityForAPI(s));
+      return e.map((s) => q.cleanEntityForAPI(s));
     if (typeof e != "object")
       return e;
     const i = { ...e };
@@ -4307,8 +4388,8 @@ class H extends Mo {
         continue;
       }
       const r = this.unwrapSchema(o);
-      if (r instanceof Xs) {
-        const a = r.options.some((c) => c instanceof Qs), l = r.options.some((c) => c instanceof Js);
+      if (r instanceof tn) {
+        const a = r.options.some((c) => c instanceof sn), l = r.options.some((c) => c instanceof nn);
         a && l && i.push(n);
       }
     }
@@ -4319,9 +4400,9 @@ class H extends Mo {
    */
   static unwrapSchema(e) {
     const i = e._def?.typeName;
-    if (e instanceof en || e instanceof tn)
+    if (e instanceof rn || e instanceof on)
       return this.unwrapSchema(e._def?.innerType);
-    if (e instanceof sn)
+    if (e instanceof an)
       return this.unwrapSchema(e._def?.innerType);
     if (i === "ZodEffects")
       return this.unwrapSchema(e._def?.schema);
@@ -4333,10 +4414,10 @@ class H extends Mo {
     return e;
   }
 }
-class Qe extends H {
+class et extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = un;
-  static computedProperties = fn;
+  static schema = pn;
+  static computedProperties = gn;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -4356,17 +4437,17 @@ class Qe extends H {
     * Get entity type
     */
   getType() {
-    return m.Line;
+    return y.Line;
   }
   /**
     * Validate line
     */
   validate() {
     const e = [];
-    return (!I.isNumber(this.x1) || !I.isNumber(this.x2) || !I.isNumber(this.y1) || !I.isNumber(this.y2)) && e.push(new T({
+    return (!v.isNumber(this.x1) || !v.isNumber(this.x2) || !v.isNumber(this.y1) || !v.isNumber(this.y2)) && e.push(new I({
       message: "Line coordinates must be valid numbers",
       type: "error"
-    })), this.x1 === this.x2 && this.y1 === this.y2 && e.push(new T({
+    })), this.x1 === this.x2 && this.y1 === this.y2 && e.push(new I({
       message: "Line must have non-zero length",
       type: "error"
     })), this.issues = e, e;
@@ -4383,7 +4464,7 @@ class Qe extends H {
     const o = i.filter((r) => r.added);
     for (const r of o) {
       let a = !1, l = !1;
-      if (this.dimension === "l" ? (a = I.greaterThan(this.x2, r.x) && I.lessThan(this.x1, r.x + r.l), l = I.greaterThan(this.y1 + n, r.y) && I.lessThan(this.y1 - n, r.y + r.w)) : this.dimension === "w" && (a = I.greaterThan(this.x1 + n, r.x) && I.lessThan(this.x1 - n, r.x + r.l), l = I.greaterThan(this.y2, r.y) && I.lessThan(this.y1, r.y + r.w)), a && l)
+      if (this.dimension === "l" ? (a = v.greaterThan(this.x2, r.x) && v.lessThan(this.x1, r.x + r.l), l = v.greaterThan(this.y1 + n, r.y) && v.lessThan(this.y1 - n, r.y + r.w)) : this.dimension === "w" && (a = v.greaterThan(this.x1 + n, r.x) && v.lessThan(this.x1 - n, r.x + r.l), l = v.greaterThan(this.y2, r.y) && v.lessThan(this.y1, r.y + r.w)), a && l)
         if (s)
           this.shapeCollisions.push(r);
         else
@@ -4416,13 +4497,13 @@ class Qe extends H {
     * Create line from coordinates
     */
   static fromCoordinates(e, i, s, n, o, r) {
-    return new Qe({ x1: e, y1: i, x2: s, y2: n, origin: o, type: r });
+    return new et({ x1: e, y1: i, x2: s, y2: n, origin: o, type: r });
   }
   get lineDimension() {
-    return !I.isNumber(this.x1) || !I.isNumber(this.x2) || !I.isNumber(this.y1) || !I.isNumber(this.y2) ? null : this.x1 === this.x2 && this.y1 !== this.y2 ? "w" : this.y1 === this.y2 && this.x1 !== this.x2 ? "l" : null;
+    return !v.isNumber(this.x1) || !v.isNumber(this.x2) || !v.isNumber(this.y1) || !v.isNumber(this.y2) ? null : this.x1 === this.x2 && this.y1 !== this.y2 ? "w" : this.y1 === this.y2 && this.x1 !== this.x2 ? "l" : null;
   }
   get lineDirection() {
-    return !I.isNumber(this.x1) || !I.isNumber(this.x2) || !I.isNumber(this.y1) || !I.isNumber(this.y2) ? null : this.x1 < this.x2 ? "lr" : this.x1 > this.x2 ? "rl" : this.y1 < this.y2 ? "bt" : this.y1 > this.y2 ? "tb" : null;
+    return !v.isNumber(this.x1) || !v.isNumber(this.x2) || !v.isNumber(this.y1) || !v.isNumber(this.y2) ? null : this.x1 < this.x2 ? "lr" : this.x1 > this.x2 ? "rl" : this.y1 < this.y2 ? "bt" : this.y1 > this.y2 ? "tb" : null;
   }
   get coordinates() {
     return {
@@ -4435,7 +4516,7 @@ class Qe extends H {
   // length is a computed property defined in the schema
   // It is automatically added as a getter by applySchemaComputedProperties
 }
-const $o = {
+const Bo = {
   tb: {
     bottomLeft: {
       top: "topRight",
@@ -4476,7 +4557,7 @@ const $o = {
       bottomRight: "bottomRight"
     }
   }
-}, It = {
+}, Pt = {
   topLeft: {
     top: ["topRight"],
     default: ["topRight"]
@@ -4507,10 +4588,10 @@ const $o = {
     default: ["bottomRight", "topLeft"]
   }
 };
-class be extends H {
+class xe extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = gn;
-  static computedProperties = mn;
+  static schema = wn;
+  static computedProperties = Sn;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -4523,7 +4604,7 @@ class be extends H {
     // All private fields (starting with _) are automatically excluded by AutoSerializable
   ];
   constructor(e, i, s) {
-    typeof e == "object" ? super(e) : super({
+    typeof e == "object" ? super(e) : typeof i == "number" ? super({ x: e, y: i, z: s ?? 0 }) : super({
       x: parseFloat(String(e)),
       y: parseFloat(String(i)),
       z: s !== void 0 ? parseFloat(String(s)) : 0
@@ -4533,7 +4614,7 @@ class be extends H {
    * Get entity type
    */
   getType() {
-    return m.Point;
+    return y.Point;
   }
   /**
    * Validate point coordinates
@@ -4559,7 +4640,7 @@ class be extends H {
    * Create a point from coordinates
    */
   static fromCoords(e, i, s) {
-    return new be(e, i, s);
+    return new xe(e, i, s);
   }
   /**
    * Get unique key for this point (used by PointCollection)
@@ -4572,10 +4653,13 @@ class be extends H {
    * NOTE: optimized for performance
    */
   cloneAt(e = null, i = null) {
-    const s = new be(e ?? this.x, i ?? this.y);
-    for (const n in this)
-      n !== "x" && n !== "y" && n !== "autoId" && (s[n] = this[n]);
-    return s;
+    const s = {
+      x: e ?? this.x,
+      y: i ?? this.y,
+      z: this.z,
+      _validated: !0
+    };
+    return this.a !== void 0 && (s.a = this.a), this.b !== void 0 && (s.b = this.b), this.stock && (s.stock = this.stock), this.direction && (s.direction = this.direction), this.type && (s.type = this.type), this.corner && (s.corner = this.corner), this.shapePosition && (s.shapePosition = this.shapePosition), this.grid && (s.grid = this.grid), this.raycast && (s.raycast = this.raycast), this.collision && (s.collision = this.collision), this.tooClose && (s.tooClose = this.tooClose), this.adjustedForMinSpacing && (s.adjustedForMinSpacing = this.adjustedForMinSpacing), new xe(s);
   }
   /**
    * Check if point collides with a shape
@@ -4597,50 +4681,57 @@ class be extends H {
   getAvailableShapePositions(e) {
     const i = /* @__PURE__ */ new Set();
     if (this.raycast) {
-      const s = $o[this.direction];
+      const s = Bo[this.direction];
       return s && s[this.corner] && s[this.corner][this.grid] && i.add(s[this.corner][this.grid]), i;
     }
-    return e?.cutType !== "efficiency" ? (It[this.corner] && (this.grid ? It[this.corner][this.grid] && It[this.corner][this.grid].forEach((s) => i.add(s)) : It[this.corner].default?.forEach((s) => i.add(s))), i) : (Tt[this.corner] && (this.grid ? Tt[this.corner][this.grid] && Tt[this.corner][this.grid].forEach((s) => i.add(s)) : Tt[this.corner].default?.forEach((s) => i.add(s))), i);
+    return e?.cutType !== "efficiency" ? (Pt[this.corner] && (this.grid ? Pt[this.corner][this.grid] && Pt[this.corner][this.grid].forEach((s) => i.add(s)) : Pt[this.corner].default?.forEach((s) => i.add(s))), i) : (Tt[this.corner] && (this.grid ? Tt[this.corner][this.grid] && Tt[this.corner][this.grid].forEach((s) => i.add(s)) : Tt[this.corner].default?.forEach((s) => i.add(s))), i);
   }
 }
 function de(t) {
   return !(t === void 0 || t === null || t === "" || typeof t == "object" && !Object.values(t).length);
 }
-function $e(t) {
+function ze(t) {
   return t ? t === "l" ? "w" : "l" : null;
 }
-function Nl(t) {
+function Jl(t) {
   return t ? t === "x" ? "y" : "x" : null;
 }
-function Vl(t) {
+function ec(t) {
   return t === "l" ? "x" : t === "w" ? "y" : null;
 }
-function Bl(t) {
+function tc(t) {
   return t === "x" ? "l" : t === "y" ? "w" : null;
 }
-function Wl(t, e) {
-  return nn(t, e);
+function Vo(t, e, i) {
+  if (!e || !t?.length || t.length <= 1) return null;
+  const s = t.map((l) => l[e]).filter((l) => typeof l == "number");
+  if (!s.length || s.length <= 1) return null;
+  const n = s.reduce((l, c) => l + c, 0) / s.length, o = i * 0.2, r = Math.max(n, o);
+  return Math.min(...s) > r ? null : r;
 }
-function ql(t, e) {
-  return Y(t, e);
+function ic(t, e) {
+  return ln(t, e);
 }
-function Ul(t, e, i) {
-  rn(t, e, i);
+function sc(t, e) {
+  return Z(t, e);
 }
-function Hl(t, e = !1) {
+function nc(t, e, i) {
+  cn(t, e, i);
+}
+function rc(t, e = !1) {
   if (!de(t) || typeof t != "object") return !1;
   const i = Object.values(t);
   return i.length === 0 ? !1 : e ? i.some((s) => de(s) && s) : i.some((s) => de(s));
 }
-function Kl(t) {
+function oc(t) {
   if (!t?.length) return [];
   const e = t.filter((s) => !s.added), i = {};
   return e.forEach((s) => {
-    const n = Go(s.stock) || 1;
+    const n = Wo(s.stock) || 1;
     i[s.parentId] ? i[s.parentId].count += n : (i[s.parentId] = {}, i[s.parentId].count = n, i[s.parentId].id = s.parentId, i[s.parentId].name = s?.name ? s.name : s.id, i[s.parentId].l = s.l, i[s.parentId].w = s.w, i[s.parentId].t = s.t, i[s.parentId].material = s.material, i[s.parentId].rot = s.rot, i[s.parentId].orientationLock = s.orientationLock);
   }), Object.values(i);
 }
-function Go(t, e = []) {
+function Wo(t, e = []) {
   if (!t) return 1;
   if (t?.stack?.number) return t.stack.number;
   if (t?.stack?.stock) {
@@ -4650,17 +4741,17 @@ function Go(t, e = []) {
   }
   return typeof t?.stack == "string" && e.find((s) => s.id === t.stack)?.stack?.number || 1;
 }
-function Yl() {
+function ac() {
   const t = document.documentElement;
   return "requestFullscreen" in t || "webkitRequestFullscreen" in t || "mozRequestFullScreen" in t || "msRequestFullscreen" in t;
 }
-function Zl(t, e) {
+function lc(t, e) {
   if (t == null) return "-";
   let i = Math.round(t).toString();
   for (; i.length < e; ) i = "0" + i;
   return i;
 }
-function at(t, e = !1) {
+function Ke(t, e = !1) {
   if (typeof t.l == "number" && typeof t.w == "number") {
     if (!e || !("trim" in t)) return { l: t.l, w: t.w };
     if (t.trimmed === !0) return { l: t.l, w: t.w };
@@ -4671,27 +4762,27 @@ function at(t, e = !1) {
       w: t.w - +(a.l1 || 0) - +(a.l2 || 0)
     } : { l: t.l, w: t.w };
   }
-  const i = typeof t.l == "string" ? P({ v: t.l }) : t.l, s = typeof t.w == "string" ? P({ v: t.w }) : t.w;
+  const i = typeof t.l == "string" ? D({ v: t.l }) : t.l, s = typeof t.w == "string" ? D({ v: t.w }) : t.w;
   if (!e || !("trim" in t))
     return { l: i, w: s };
-  if (bs(t))
+  if (ks(t))
     return { l: i, w: s };
-  if (ys(t) && !t.hasTrim)
+  if (xs(t) && !t.hasTrim)
     return { l: i, w: s };
-  const n = t.trim, o = P({ v: n.w1 ?? 0 }) + P({ v: n.w2 ?? 0 }), r = P({ v: n.l1 ?? 0 }) + P({ v: n.l2 ?? 0 });
+  const n = t.trim, o = D({ v: n.w1 ?? 0 }) + D({ v: n.w2 ?? 0 }), r = D({ v: n.l1 ?? 0 }) + D({ v: n.l2 ?? 0 });
   return {
-    l: i - (typeof o == "string" ? P({ v: o }) : o),
-    w: s - (typeof r == "string" ? P({ v: r }) : r)
+    l: i - (typeof o == "string" ? D({ v: o }) : o),
+    w: s - (typeof r == "string" ? D({ v: r }) : r)
   };
 }
-function zo(t, e) {
-  if ("trim" in t && !bs(t)) {
+function qo(t, e) {
+  if ("trim" in t && !ks(t)) {
     const i = t.trim;
-    e.l = e.l - (P({ v: i.w1 ?? 0 }) + P({ v: i.w2 ?? 0 })), e.w = e.w - (P({ v: i.l1 ?? 0 }) + P({ v: i.l2 ?? 0 }));
+    e.l = e.l - (D({ v: i.w1 ?? 0 }) + D({ v: i.w2 ?? 0 })), e.w = e.w - (D({ v: i.l1 ?? 0 }) + D({ v: i.l2 ?? 0 }));
   }
   return e;
 }
-function et(t, e, i = !1) {
+function it(t, e, i = !1) {
   if (typeof t.l == "number" && typeof t.w == "number") {
     let o = t.l, r = t.w;
     const a = ("rot" in t ? t.rot : 0) ?? 0;
@@ -4705,66 +4796,70 @@ function et(t, e, i = !1) {
     l: t.l,
     w: t.w
   };
-  (xi(t) || ye(t) || xt(t)) && (s = {
-    l: P({ v: t.l }),
-    w: P({ v: t.w })
+  (ki(t) || Se(t) || xt(t)) && (s = {
+    l: D({ v: t.l }),
+    w: D({ v: t.w })
   });
   const n = ("rot" in t ? t.rot : 0) ?? 0;
-  return i && (s = zo(t, s)), n === e || ([s.l, s.w] = [s.w, s.l]), s;
+  return i && (s = qo(t, s)), n === e || ([s.l, s.w] = [s.w, s.l]), s;
 }
-function As(t) {
+function Rs(t) {
   if (!("l" in t) || !("w" in t)) throw new Error("rotatable item must have l & w properties");
 }
-function jo(t) {
-  X(t) || (As(t), [t.l, t.w] = [t.w, t.l]);
+function Uo(t) {
+  Q(t) || (Rs(t), [t.l, t.w] = [t.w, t.l]);
 }
-function Ni(t, e) {
-  return I.lessThanOrEqualTo(t, e);
+function Wi(t, e) {
+  return v.lessThanOrEqualTo(t, e);
 }
-function tt(t, e) {
-  return Ni(t.l, e.l) && Ni(t.w, e.w);
+function st(t, e) {
+  return Wi(t.l, e.l) && Wi(t.w, e.w);
 }
-function ft(t, e, i = null) {
+function Ho(t) {
+  const e = "allowExactFitShapes" in t && t.allowExactFitShapes === !0, i = Ke(t, !0), s = e ? Ke(t, !1) : i;
+  return { withTrim: i, withoutTrim: s, allowExactFit: e };
+}
+function kt(t, e, i = null, s) {
   if (!e || !t)
     throw new Error("Container and shape are required");
-  const s = "allowExactFitShapes" in e && e.allowExactFitShapes === !0, n = at(e, !0), o = s ? at(e, !1) : n, r = at(t, !0);
-  let a = n;
-  if (s && (I.equalTo(r.l, o.l) && I.equalTo(r.w, o.w) || I.equalTo(r.l, o.w) && I.equalTo(r.w, o.l)) && (a = o), r.l * r.w > a.l * a.w)
+  const n = s ? s.allowExactFit : "allowExactFitShapes" in e && e.allowExactFitShapes === !0, o = s ? s.withTrim : Ke(e, !0), r = s ? s.withoutTrim : n ? Ke(e, !1) : o, a = Ke(t, !0);
+  let l = o;
+  if (n && (v.equalTo(a.l, r.l) && v.equalTo(a.w, r.w) || v.equalTo(a.l, r.w) && v.equalTo(a.w, r.l)) && (l = r), a.l * a.w > l.l * l.w)
     return !1;
-  const l = $t(t, e);
+  const c = zt(t, e);
   if (t.orientationLock || i !== null) {
-    const h = i ?? (l === "w" ? 1 : 0), d = et(t, h, !0);
-    if (s) {
-      const g = et(t, h, !1);
-      if (I.equalTo(g.l, o.l) && I.equalTo(g.w, o.w))
-        return tt(g, a);
+    const h = i ?? (c === "w" ? 1 : 0), g = it(t, h, !0);
+    if (n) {
+      const m = it(t, h, !1);
+      if (v.equalTo(m.l, r.l) && v.equalTo(m.w, r.w))
+        return st(m, l);
     }
-    return tt(d, a);
+    return st(g, l);
   }
-  const c = et(t, 0, !0);
-  if (s) {
-    const h = et(t, 0, !1);
-    if (I.equalTo(h.l, o.l) && I.equalTo(h.w, o.w) && tt(h, a)) return !0;
+  const f = it(t, 0, !0);
+  if (n) {
+    const h = it(t, 0, !1);
+    if (v.equalTo(h.l, r.l) && v.equalTo(h.w, r.w) && st(h, l)) return !0;
   }
-  if (tt(c, a)) return !0;
-  const f = et(t, 1, !0);
-  if (s) {
-    const h = et(t, 1, !1);
-    if (I.equalTo(h.l, o.l) && I.equalTo(h.w, o.w) && tt(h, a)) return !0;
+  if (st(f, l)) return !0;
+  const d = it(t, 1, !0);
+  if (n) {
+    const h = it(t, 1, !1);
+    if (v.equalTo(h.l, r.l) && v.equalTo(h.w, r.w) && st(h, l)) return !0;
   }
-  return tt(f, a);
+  return st(d, l);
 }
-function No(t) {
+function Yo(t) {
   if ("orientationLock" in t)
     return t.orientationLock;
   let e = null;
-  return (X(t) || xt(t) || oe(t) || ye(t)) && (e = t.orientationLock), e;
+  return (Q(t) || xt(t) || fe(t) || Se(t)) && (e = t.orientationLock), e;
 }
-function $t(t, e) {
-  const i = No(t);
+function zt(t, e) {
+  const i = Yo(t);
   if (!de(i)) return null;
   if (!e || "direction" in t) return i;
-  if (!X(t) && Ht(t)) return null;
+  if (!Q(t) && Yt(t)) return null;
   if ("getStock" in e) {
     const s = e.getStock;
     if (s && de(s.grain))
@@ -4772,45 +4867,45 @@ function $t(t, e) {
   }
   return i;
 }
-function Os(t, e) {
-  if (X(t))
-    return ft(t, e, t.rot) ? [t.rot] : [];
+function Es(t, e) {
+  if (Q(t))
+    return kt(t, e, t.rot) ? [t.rot] : [];
   const i = [];
   for (let s = 0; s <= 1; s++)
-    we(t, s, e) && ft(t, e, s) && i.push(s);
+    ke(t, s, e) && i.push(s);
   return i;
 }
-function we(t, e = null, i = null) {
+function ke(t, e = null, i = null) {
   if (!de(e))
     throw new Error("no rotation provided to canRotate");
-  if (e === !0 && (e = 1), e === !1 && (e = 0), t.preventAutoRotation && e !== 0 || !X(t) && Ht(t) && e !== 0 || i && !ft(t, i, e))
+  if (e === !0 && (e = 1), e === !1 && (e = 0), t.preventAutoRotation && e !== 0 || !Q(t) && Yt(t) && e !== 0 || i && !kt(t, i, e))
     return !1;
-  const s = $t(t, i);
+  const s = zt(t, i);
   return !(s === "l" && e === 1 || s === "w" && e === 0);
 }
-function Vo(t, e = null, i = null) {
+function Ko(t, e = null, i = null) {
   const s = "rot" in t ? t.rot : 0;
-  return e === null && (e = s === 0 ? 1 : 0), !X(t) && Ht(t) ? !0 : we(t, e, i) ? (s === e || jo(t), !0) : !1;
+  return e === null && (e = s === 0 ? 1 : 0), !Q(t) && Yt(t) ? !0 : ke(t, e, i) ? (s === e || Uo(t), !0) : !1;
 }
-function ue(t, e = null, i = null) {
-  return e ? e = 1 : e = 0, i && e && !ft(t, i, e) ? !1 : Vo(t, e, i);
+function ce(t, e = null, i = null) {
+  return e ? e = 1 : e = 0, i && e && !kt(t, i, e) ? !1 : Ko(t, e, i);
 }
-function Xl(t, e) {
-  if (X(t)) return t.rot;
-  if (!de(t.orientationLock) || Ht(t)) return null;
+function cc(t, e) {
+  if (Q(t)) return t.rot;
+  if (!de(t.orientationLock) || Yt(t)) return null;
   const i = e.getStock;
   return !t.orientationLock || !de(i?.grain) ? null : t.orientationLock === i?.grain ? 0 : 1;
 }
-function Vi(t, e, i, s, n = null) {
+function qi(t, e, i, s, n = null) {
   if (!s) throw new Error("requiredSide not supplied to canRotateToDimensionRange");
-  const o = at(t);
+  const o = Ke(t);
   if (o.l >= e && o.l <= i || o.w >= e && o.w <= i) {
     if (t.l === t.w) return !0;
     const r = Math.max(o.l, o.w), a = Math.min(o.l, o.w);
     if (n) {
       if (s === "l") {
-        if (r >= e && r <= i && we(t, 0, n) || a >= e && a <= i && we(t, 1, n)) return !0;
-      } else if (s === "w" && (a >= e && a <= i && we(t, 0, n) || r >= e && r <= i && we(t, 1, n)))
+        if (r >= e && r <= i && ke(t, 0, n) || a >= e && a <= i && ke(t, 1, n)) return !0;
+      } else if (s === "w" && (a >= e && a <= i && ke(t, 0, n) || r >= e && r <= i && ke(t, 1, n)))
         return !0;
     } else if (t.orientationLock) {
       if (t.orientationLock === "l")
@@ -4821,46 +4916,46 @@ function Vi(t, e, i, s, n = null) {
   }
   return !1;
 }
-function Bo(t, e, i, s) {
+function Zo(t, e, i, s) {
   if (!i) throw new Error("requiredSide not supplied to rotateToDimension");
   if (t.l !== e && t.w !== e) return !1;
   if (t.l === t.w) return !0;
-  const n = at(t), o = Math.max(n.l, n.w), r = Math.min(n.l, n.w);
+  const n = Ke(t), o = Math.max(n.l, n.w), r = Math.min(n.l, n.w);
   if (i === "l") {
-    if (o === e && we(t, 0, s)) return ue(t, 0);
-    if (r === e && we(t, 1, s)) return ue(t, 1);
+    if (o === e && ke(t, 0, s)) return ce(t, 0);
+    if (r === e && ke(t, 1, s)) return ce(t, 1);
   } else if (i === "w") {
-    if (r === e && we(t, 0, s)) return ue(t, 0);
-    if (o === e && we(t, 1, s)) return ue(t, 1);
+    if (r === e && ke(t, 0, s)) return ce(t, 0);
+    if (o === e && ke(t, 1, s)) return ce(t, 1);
   }
   return !1;
 }
-function Ht(t) {
-  As(t);
-  const e = at(t);
-  return I.equalTo(e.l, e.w);
+function Yt(t) {
+  Rs(t);
+  const e = Ke(t);
+  return v.equalTo(e.l, e.w);
 }
-class Kt extends H {
+class Kt extends q {
   // Zod schema for validation and serialization
-  static schema = gi;
-  static computedProperties = mi;
+  static schema = yi;
+  static computedProperties = bi;
   constructor(e = {}) {
     super(e);
     let i = !1;
-    Ie(this) && (i = this.infiniteLength), !e?.preventAutoRotation && !i && (this.orientationLock ? (this.orientationLock === "l" && ue(this, 0), this.orientationLock === "w" && ue(this, 1)) : this.w > this.l && ([this.l, this.w] = [this.w, this.l], this.grain && !e?.preventGrainRotation && (this.grain = $e(this.grain)))), this.calculateDimensions(), e.skipValidation || e.skipBusinessValidation || e.validationMode === "none" || e.validationMode === "schema" || this.validate();
+    Ae(this) && (i = this.infiniteLength), !e?.preventAutoRotation && !i && (this.orientationLock ? (this.orientationLock === "l" && ce(this, 0), this.orientationLock === "w" && ce(this, 1)) : this.w > this.l && ([this.l, this.w] = [this.w, this.l], this.grain && !e?.preventGrainRotation && (this.grain = ze(this.grain)))), this.calculateDimensions(), e.skipValidation || e.skipBusinessValidation || e.validationMode === "none" || e.validationMode === "schema" || this.validate();
   }
   /**
    * Calculate derived dimensions (area, longSide, shortSide, parentId)
    * Called automatically in constructor and after dimension changes
    */
   calculateDimensions() {
-    this.area = this.l * this.w, this.longSide = Math.max(this.l, this.w), this.shortSide = Math.min(this.l, this.w), this.parentId = In(this.id);
+    this.area = this.l * this.w, this.longSide = Math.max(this.l, this.w), this.shortSide = Math.min(this.l, this.w), this.parentId = Dn(this.id);
   }
   /**
    * Get entity type
    */
   getType() {
-    return m.Rectangle;
+    return y.Rectangle;
   }
   /**
    * Validate business rules for the rectangle
@@ -4868,7 +4963,7 @@ class Kt extends H {
    * Override this method in subclasses for domain-specific validation
    */
   validate() {
-    if (this.issues = [], this.warnings = [], (this.l <= 0 || this.w <= 0) && this.issues.push(new T({
+    if (this.issues = [], this.warnings = [], (this.l <= 0 || this.w <= 0) && this.issues.push(new I({
       message: "Rectangle dimensions must be positive",
       type: "error",
       field: [["l"], ["w"]],
@@ -4878,12 +4973,12 @@ class Kt extends H {
         x: (this.trim.w1 || 0) + (this.trim.w2 || 0),
         y: (this.trim.l1 || 0) + (this.trim.l2 || 0)
       };
-      e.x >= this.l && this.warnings.push(new T({
+      e.x >= this.l && this.warnings.push(new I({
         message: "Trim values exceed length",
         type: "warning",
         field: [["trim"]],
         item: this
-      })), e.y >= this.w && this.warnings.push(new T({
+      })), e.y >= this.w && this.warnings.push(new I({
         message: "Trim values exceed width",
         type: "warning",
         field: [["trim"]],
@@ -4942,7 +5037,7 @@ class Kt extends H {
     if (!this.hasTrim || this.trimmed) return;
     const e = this.l - this.trim.w1 - this.trim.w2, i = this.w - this.trim.l1 - this.trim.l2;
     if (e <= 0 || i <= 0) {
-      this.q = 0, this.issues.push(new T({
+      this.q = 0, this.issues.push(new I({
         message: "Trim values exceed part dimensions",
         type: "error",
         field: [["trim"]],
@@ -5012,7 +5107,7 @@ class Kt extends H {
     const i = this.x ?? 0, s = this.y ?? 0;
     switch (e) {
       case "bottom":
-        return new Qe({
+        return new et({
           x1: i,
           x2: i + this.l,
           y1: s,
@@ -5022,7 +5117,7 @@ class Kt extends H {
           // parentId: this.id
         });
       case "right":
-        return new Qe({
+        return new et({
           x1: i + this.l,
           x2: i + this.l,
           y1: s,
@@ -5032,7 +5127,7 @@ class Kt extends H {
           // parentId: this.id
         });
       case "top":
-        return new Qe({
+        return new et({
           x1: i,
           x2: i + this.l,
           y1: s + this.w,
@@ -5042,7 +5137,7 @@ class Kt extends H {
           // parentId: this.id
         });
       case "left":
-        return new Qe({
+        return new et({
           x1: i,
           x2: i,
           y1: s,
@@ -5081,10 +5176,10 @@ class Kt extends H {
   }
   getCorners() {
     return {
-      bottomLeft: new be(this.x, this.y),
-      topLeft: new be(this.x, this.y + this.w),
-      topRight: new be(this.x + this.l, this.y + this.w),
-      bottomRight: new be(this.x + this.l, this.y)
+      bottomLeft: new xe(this.x, this.y),
+      topLeft: new xe(this.x, this.y + this.w),
+      topRight: new xe(this.x + this.l, this.y + this.w),
+      bottomRight: new xe(this.x + this.l, this.y)
     };
   }
   /**
@@ -5110,10 +5205,10 @@ class Kt extends H {
     return this.proximity = { rectangle: s, distance: e }, s;
   }
 }
-class Ci extends Kt {
+class Ri extends Kt {
   // Zod schema for validation and serialization
-  static schema = bi;
-  static computedProperties = wi;
+  static schema = Si;
+  static computedProperties = xi;
   constructor(e = {}) {
     super(e), e.skipValidation || this.validateContainer(e);
   }
@@ -5123,7 +5218,7 @@ class Ci extends Kt {
     * Get entity type
     */
   getType() {
-    return m.Container;
+    return y.Container;
   }
   /**
     * Validate container-specific properties
@@ -5131,7 +5226,7 @@ class Ci extends Kt {
   validateContainer(e) {
     const i = ["sheet", "linear", "roll", null, void 0, ""], s = this?.stockType;
     if (!i.includes(s)) {
-      const n = new T({
+      const n = new I({
         item: this,
         field: [["type"]],
         message: `Container type ${s ?? "N/A"} is not valid`
@@ -5166,7 +5261,7 @@ class Ci extends Kt {
     * Automatically updates all schema-defined properties
     */
   update(e) {
-    const i = Ci.schema.partial().parse(e);
+    const i = Ge.getCachedPartialSchema(Ri.schema).parse(e);
     for (const s in i)
       this[s] = i[s];
   }
@@ -5189,13 +5284,13 @@ class Ci extends Kt {
     * Defined as a getter to avoid circular type reference in generated properties
     */
   get getStock() {
-    return Ie(this) ? this : ot(this) ? this.stock : X(this) ? this.stock : null;
+    return Ae(this) ? this : lt(this) ? this.stock : Q(this) ? this.stock : null;
   }
 }
-class _e extends H {
+class _e extends q {
   // Required: Define schema and computed properties
-  static schema = rs;
-  static computedProperties = Cn;
+  static schema = ls;
+  static computedProperties = Fn;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -5256,7 +5351,7 @@ class _e extends H {
    * Get entity type
    */
   getType() {
-    return m.GuillotineState;
+    return y.GuillotineState;
   }
   getStripShapeBatchData(e) {
     return typeof e != "number" || !this?.stripShapeBatches || !this.stripShapeBatches.groups || !(e in this.stripShapeBatches.groups) ? !1 : this.stripShapeBatches.groups[e];
@@ -5277,10 +5372,10 @@ class _e extends H {
     this.stripShapeBatches || (this.stripShapeBatches = { groups: {} }), this.stripShapeBatches.groups || (this.stripShapeBatches.groups = {}), this.stripShapeBatches.groups[e] = i;
   }
 }
-class Li extends H {
+class Ei extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Ar;
-  static computedProperties = Or;
+  static schema = Lr;
+  static computedProperties = Rr;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -5298,13 +5393,13 @@ class Li extends H {
     if (!e.stock)
       throw new Error("Stock is required for Cut creation");
     const i = { ...e };
-    i.x2 < i.x1 && ([i.x1, i.x2] = [i.x2, i.x1]), i.y2 < i.y1 && ([i.y1, i.y2] = [i.y2, i.y1]), super(i), this.dimension || (this.dimension = this.lineDimension);
+    i.x1 !== i.x2 && i.y1 !== i.y2 || (i.x2 < i.x1 && ([i.x1, i.x2] = [i.x2, i.x1]), i.y2 < i.y1 && ([i.y1, i.y2] = [i.y2, i.y1])), super(i), this.dimension || (this.dimension = this.lineDimension);
   }
   /**
     * Get entity type
     */
   getType() {
-    return m.Cut;
+    return y.Cut;
   }
   /**
     * Validate cut
@@ -5336,7 +5431,7 @@ class Li extends H {
     * Create cut from coordinates
     */
   static fromCoordinates(e, i, s, n, o, r) {
-    return new Li({ x1: e, y1: i, x2: s, y2: n, position: r, stock: o });
+    return new Ei({ x1: e, y1: i, x2: s, y2: n, position: r, stock: o });
   }
   // Note: lineDimension, coordinates, and length are now computed properties from schema
   /**
@@ -5349,7 +5444,7 @@ class Li extends H {
     };
   }
 }
-class Ds extends Kt {
+class Fs extends Kt {
   // Zod schema for validation and serialization
   static schema = wt;
   static computedProperties = St;
@@ -5360,7 +5455,7 @@ class Ds extends Kt {
       const i = typeof this.guillotineState == "object" && !Array.isArray(this.guillotineState) ? this.guillotineState : {};
       this.guillotineState = new _e(i);
     }
-    (!this.firstShape || typeof this.firstShape != "object") && (this.firstShape = { sampleRotations: [], isFirstShape: !1 }), (!this.priority || typeof this.priority != "object") && (this.priority = {}), oe(this) && (!this.group || typeof this.group != "object") && (this.group = {
+    (!this.firstShape || typeof this.firstShape != "object") && (this.firstShape = { sampleRotations: [], isFirstShape: !1 }), (!this.priority || typeof this.priority != "object") && (this.priority = {}), fe(this) && (!this.group || typeof this.group != "object") && (this.group = {
       inUserGroup: !1,
       inGroup: !1,
       reference: null,
@@ -5394,7 +5489,7 @@ class Ds extends Kt {
    * Get entity type
    */
   getType() {
-    return m.Placeable;
+    return y.Placeable;
   }
   /**
    * Validate business rules for the placeable
@@ -5418,7 +5513,7 @@ class Ds extends Kt {
         this.guillotineState.reset();
     else
       this.guillotineState = new _e();
-    oe(this) && (s || "group" in this && this.group && (delete this.group.placementOrder, this.group.inGroup = !1, this.group.inUserGroup = !1, this.group.reference = null, this.group.addedAsGroup = null)), X(this) && "shapes" in this && Array.isArray(this.shapes) && this.shapes.forEach((o) => {
+    fe(this) && (s || "group" in this && this.group && (delete this.group.placementOrder, this.group.inGroup = !1, this.group.inUserGroup = !1, this.group.reference = null, this.group.addedAsGroup = null)), Q(this) && "shapes" in this && Array.isArray(this.shapes) && this.shapes.forEach((o) => {
       "reset" in o && typeof o.reset == "function" && o.reset(e, i, s);
     });
   }
@@ -5426,10 +5521,10 @@ class Ds extends Kt {
    * Add shape to stock (placeholder for optimization logic)
    */
   addToStock(e) {
-    this.stock = e, this.added = !0, e.used = !0, this.grain = e.grain, !X(this) && e?.grain && this.rot && (this.grain = $e(e.grain));
+    this.stock = e, this.added = !0, e.used = !0, this.grain = e.grain, !Q(this) && e?.grain && this.rot && (this.grain = ze(e.grain));
   }
   removeFromStock() {
-    this.placementOrder = null, this.stock = null, this.added = !1, oe(this) && (this.group.addedAsGroup = null, this.firstShape.isFirstShape = !1), X(this) && this.shapes.forEach((e) => {
+    this.placementOrder = null, this.stock = null, this.added = !1, fe(this) && (this.group.addedAsGroup = null, this.firstShape.isFirstShape = !1), Q(this) && this.shapes.forEach((e) => {
       "removeFromStock" in e && typeof e.removeFromStock == "function" && e.removeFromStock();
     });
   }
@@ -5441,7 +5536,7 @@ class Ds extends Kt {
   getStripShapeBatchData(e) {
     if (typeof e != "number") return !1;
     const i = this.guillotineState;
-    return !i || Qn(i) || !i.stripShapeBatches?.groups || !(e in i.stripShapeBatches.groups) ? !1 : i.stripShapeBatches.groups[e];
+    return !i || ir(i) || !i.stripShapeBatches?.groups || !(e in i.stripShapeBatches.groups) ? !1 : i.stripShapeBatches.groups[e];
   }
   /**
    * Set best score
@@ -5454,7 +5549,7 @@ class Ds extends Kt {
       rot: e.rot,
       total: e.score.total,
       score: e.score,
-      group: oe(e) ? e.group.reference : null,
+      group: fe(e) ? e.group.reference : null,
       stock: e.stock,
       weighting: {},
       // Use empty object instead of null
@@ -5466,7 +5561,7 @@ class Ds extends Kt {
     };
   }
   setPositionToBestScore() {
-    ue(this, this.bestScore.rot), this.x = this.bestScore.x, this.y = this.bestScore.y;
+    ce(this, this.bestScore.rot), this.x = this.bestScore.x, this.y = this.bestScore.y;
   }
   resetPosition() {
     this.x = 0, this.y = 0, this.placementOrder = null, this.ensureGuillotineState(), this.guillotineState.reset();
@@ -5492,8 +5587,8 @@ class Ds extends Kt {
   /**
    * Check if shape will fit in given dimensions
    */
-  willItFit(e, i = null) {
-    return Ie(e) && typeof this.fitsStock?.[e.parentId] < "u" ? this.fitsStock?.[e.parentId]?.[i ?? "any"] === !0 : ft(this, e, i);
+  willItFit(e, i = null, s) {
+    return Ae(e) && typeof this.fitsStock?.[e.parentId] < "u" ? this.fitsStock?.[e.parentId]?.[i ?? "any"] === !0 : kt(this, e, i, s);
   }
   /**
    * Check if shape is an exact fit
@@ -5548,14 +5643,14 @@ class Ds extends Kt {
     this.stock = e;
   }
   getCoords(e, i = !1) {
-    const s = new be(this.x + this.l, this.y);
+    const s = new xe(this.x + this.l, this.y);
     s.corner = "bottomRight";
-    const n = new be(this.x, this.y + this.w);
+    const n = new xe(this.x, this.y + this.w);
     if (n.corner = "topLeft", e?.cutType !== "efficiency" && !i)
       return [n, s];
-    const o = new be(this.x, this.y);
+    const o = new xe(this.x, this.y);
     o.corner = "bottomLeft";
-    const r = new be(this.x + this.l, this.y + this.w);
+    const r = new xe(this.x + this.l, this.y + this.w);
     return r.corner = "topRight", [o, n, r, s];
   }
   getTopPosition(e = !0, i = null) {
@@ -5588,11 +5683,11 @@ class Ds extends Kt {
   isIdentical(e, i = !1) {
     if (this.constructor !== e.constructor || this.t !== e.t || this.orientationLock !== e.orientationLock || this.material !== e.material)
       return !1;
-    if (this.getType() === m.Shape && this.identicalTo?.length && (this.parentId === e.parentId || this.identicalTo.includes(e.parentId)))
+    if (this.getType() === y.Shape && this.identicalTo?.length && (this.parentId === e.parentId || this.identicalTo.includes(e.parentId)))
       return !0;
-    if (this.getType() !== m.Group) {
+    if (this.getType() !== y.Group) {
       if (e.parentId === this.parentId) return !0;
-      if (this.getType() === m.Shape && i && this.parentId !== e.parentId) return !1;
+      if (this.getType() === y.Shape && i && this.parentId !== e.parentId) return !1;
     } else if (e.autoId === this.autoId) return !0;
     const { w: s, l: n } = this, { w: o, l: r } = e;
     if (!(s === o && n === r) && !(s === r && n === o)) return !1;
@@ -5603,7 +5698,7 @@ class Ds extends Kt {
    * Get perimeter cut vectors (for export)
    */
   getPerimeterCutVectors(e = null) {
-    return e === null && (e = Ie(this.stock) ? this.stock.bladeWidth / 2 : 0), [
+    return e === null && (e = Ae(this.stock) ? this.stock.bladeWidth / 2 : 0), [
       //bottom
       {
         x1: this.x - e,
@@ -5641,8 +5736,8 @@ class Ds extends Kt {
   createPerimeterCuts(e = null) {
     let i = [];
     if (e = e || this.stock, !e) throw new Error("stock is required to create a cut");
-    return this.getPerimeterCutVectors().forEach((n) => i.push(new Li({
-      stock: Ie(this.stock) ? this.stock : e,
+    return this.getPerimeterCutVectors().forEach((n) => i.push(new Ei({
+      stock: Ae(this.stock) ? this.stock : e,
       x1: n.x1,
       x2: n.x2,
       y1: n.y1,
@@ -5651,34 +5746,38 @@ class Ds extends Kt {
     }))), i = i.filter((n) => n.isInsideStock), i;
   }
 }
-let Pt = null, ei = !1;
-function Wo() {
-  if (ei)
-    return Pt;
+let At = null, ti = !1;
+function Xo() {
+  if (ti)
+    return At;
   try {
-    Pt = { runTests: !1, throwErrorsOnFailedTests: !1 }, ei = !0;
+    At = { runTests: !1, throwErrorsOnFailedTests: !1 }, ti = !0;
   } catch {
-    Pt = { runTests: !1, throwErrorsOnFailedTests: !1 }, ei = !0;
+    At = { runTests: !1, throwErrorsOnFailedTests: !1 }, ti = !0;
   }
-  return Pt;
+  return At;
 }
-const Bi = Zi("tests");
-Zi("timers");
-let qo, J;
+const Ui = Ji("tests");
+Ji("timers");
+let Qo, ie;
 try {
   {
     const t = new Proxy({}, { get: () => () => t });
-    J = () => t;
+    ie = () => t;
   }
 } catch {
   const e = new Proxy({}, { get: () => () => e });
-  J = () => e;
+  ie = () => e;
 }
-function pe(t = [], e = null) {
-  if (!t?.length) return;
-  const i = Wo();
-  if (Ue() && i && i.runTests) {
-    const n = i?.testCollector || qo;
+let ii;
+function Jo() {
+  return ii === void 0 && (ii = Ye()), ii;
+}
+function ye(t = [], e = null) {
+  if (!t?.length || !Jo()) return;
+  const i = Xo();
+  if (i && i.runTests) {
+    const n = i?.testCollector || Qo;
     for (const o of t) {
       if (!o || typeof o != "function") {
         console.error("Invalid test function provided:", o);
@@ -5689,7 +5788,7 @@ function pe(t = [], e = null) {
       try {
         o(), a = !0;
       } catch (c) {
-        if (a = !1, l = c instanceof Error ? c.message : String(c), e ? Bi(e, l) : Bi(l), n && n.addResult({
+        if (a = !1, l = c instanceof Error ? c.message : String(c), e ? Ui(e, l) : Ui(l), n && n.addResult({
           passed: !1,
           error: l,
           issueMessage: e || void 0,
@@ -5704,13 +5803,13 @@ function pe(t = [], e = null) {
     }
   }
 }
-function Uo(t) {
+function ea(t) {
   return t === "horizontal" ? "x" : t === "vertical" ? "y" : null;
 }
-function Wi(t) {
+function Hi(t) {
   return t === "horizontal" ? "l" : t === "vertical" ? "w" : null;
 }
-class Yt extends Ds {
+class Zt extends Fs {
   // Compatibility getters for direct access
   //[] deprecate
   get banding() {
@@ -5725,9 +5824,9 @@ class Yt extends Ds {
   get imageUpload() {
     return this.extras?.imageUpload;
   }
-  static schema = si;
-  static computedProperties = fs;
-  static defaults = si.parse({});
+  static schema = ri;
+  static computedProperties = ps;
+  static defaults = ri.parse({});
   constructor(e = {}) {
     super(e);
   }
@@ -5735,13 +5834,13 @@ class Yt extends Ds {
     * Get entity type
     */
   getType() {
-    return m.Shape;
+    return y.Shape;
   }
   /**
     * Create shape with live objects
     */
   static create(e) {
-    const i = new Yt(e.data);
+    const i = new Zt(e.data);
     return e.group && (i.group.reference = e.group, i.group.inGroup = !0), e.machining && (i.machining = e.machining), i;
   }
   /**
@@ -5786,7 +5885,7 @@ class Yt extends Ds {
    * Apply best score position
    */
   setPositionToBestScore() {
-    ue(this, this.bestScore.rot), this.x = this.bestScore.x, this.y = this.bestScore.y;
+    ce(this, this.bestScore.rot), this.x = this.bestScore.x, this.y = this.bestScore.y;
   }
   clearPriority() {
     this.priority = {};
@@ -5802,10 +5901,10 @@ class Yt extends Ds {
     return i.x < 0 && (i.x = 0, i.l -= e), i.y < 0 && (i.y = 0, i.w -= e), i.x + i.l > this.stock.l && (i.l = this.stock.l - i.x), i.y + i.w > this.stock.w && (i.w = this.stock.w - i.y), i;
   }
 }
-class Zt extends Ds {
+class Xt extends Fs {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Fn;
-  static computedProperties = _n;
+  static schema = Gn;
+  static computedProperties = zn;
   constructor(e = {}) {
     const i = { ...e };
     e.skipValidation === void 0 && (i.skipValidation = !0), super(i), this.initGroup(i);
@@ -5819,22 +5918,22 @@ class Zt extends Ds {
       const s = this.direction === "horizontal" ? "-h" : "-v";
       !this.id.endsWith("-h") && !this.id.endsWith("-v") && (this.id = this.id + s);
     }
-    !e.groupLength || !e.groupWidth ? this.shapes && this.shapes.length > 0 && this.updatePositions() : this.direction && (this.direction === "horizontal" ? (this.l = this.groupLength, this.w = this.groupWidth) : (this.l = this.groupWidth, this.w = this.groupLength)), this.w > this.l ? this.orientationLock = "w" : this.orientationLock = "l";
+    !e.groupLength || !e.groupWidth ? this.shapes && this.shapes.length > 0 && this.updatePositions() : this.type === "user" && this.userPositions?.length ? (this.l = e.l ?? 0, this.w = e.w ?? 0) : this.direction && (this.direction === "horizontal" ? (this.l = this.groupLength, this.w = this.groupWidth) : (this.l = this.groupWidth, this.w = this.groupLength)), this.w > this.l ? this.orientationLock = "w" : this.orientationLock = "l";
   }
   /**
     * Get entity type
     */
   getType() {
-    return this.type === "user" ? m.UserGroup : this.type === "strip" ? m.StripGroup : this.type === "firstShape" ? m.FirstShapeGroup : m.Group;
+    return this.type === "user" ? y.UserGroup : this.type === "strip" ? y.StripGroup : this.type === "firstShape" ? y.FirstShapeGroup : y.Group;
   }
   /**
     * Initialize shapes array with optional context for reference resolution
     */
   initShapes(e, i) {
     return e.map((s) => {
-      if (!oe(s) && !tr(s))
+      if (!fe(s) && !rr(s))
         throw console.log(s), new Error("[GROUP] attempted to init a group with an item other than a shape");
-      if (oe(s))
+      if (fe(s))
         return s.group.reference = this, s.group.inGroup = !0, s;
       if (i && i.shapeList && s) {
         const o = i.shapeList.find((r) => r.autoId === s.autoId);
@@ -5842,7 +5941,7 @@ class Zt extends Ds {
           return o.group.reference = this, o.group.inGroup = !0, o;
       }
       const n = i ? { ...s, __context: i } : s;
-      return new Yt(n);
+      return new Zt(n);
     });
   }
   /**
@@ -5894,7 +5993,7 @@ class Zt extends Ds {
     * Create group with live objects
     */
   static create(e) {
-    const i = { ...e.data, shapes: e.shapes }, s = new Zt(i);
+    const i = { ...e.data, shapes: e.shapes }, s = new Xt(i);
     return e.container && (s.container = e.container), s;
   }
   /**
@@ -5949,12 +6048,12 @@ class Zt extends Ds {
       if (this.positions && this.positions.length > 0)
         for (const i of this.positions) {
           const s = this.shapes.find((n) => n.autoId === i.autoId);
-          s && (ue(s, i.rot, this.container) || console.error(`  ❌ FAILED to restore rotation for ${s.id} from ${s.rot} to ${i.rot}`));
+          s && (ce(s, i.rot, this.container) || console.error(`  ❌ FAILED to restore rotation for ${s.id} from ${s.rot} to ${i.rot}`));
         }
       if (this.positions && this.positions.length > 0)
         for (const i of this.positions) {
           const s = this.shapes.find((n) => n.autoId === i.autoId);
-          s && s.rot !== i.rot && (console.warn(`[placeMyShapes] Shape ${s.id} has wrong rotation ${s.rot}, expected ${i.rot} - forcing rotation now`), ue(s, i.rot, this.container) || console.error(`[placeMyShapes] ❌ CRITICAL: Cannot fix rotation for ${s.id}`));
+          s && s.rot !== i.rot && (console.warn(`[placeMyShapes] Shape ${s.id} has wrong rotation ${s.rot}, expected ${i.rot} - forcing rotation now`), ce(s, i.rot, this.container) || console.error(`[placeMyShapes] ❌ CRITICAL: Cannot fix rotation for ${s.id}`));
         }
       if (this.updatePositions(), !this.positions || this.positions.length === 0)
         throw new Error(`Group ${this.id} cannot place shapes: positions array could not be initialized`);
@@ -5966,12 +6065,12 @@ class Zt extends Ds {
           const a = this.shapes.map((c) => c.autoId).join(", "), l = this.positions.map((c) => c.autoId).join(", ");
           throw new Error(`Position not found for shape ${s.autoId} in group ${this.id}. Shapes: [${a}]. Positions: [${l}]`);
         }
-        if (s.x = this.x + n.x, s.y = this.y + n.y, !ue(s, n.rot, this.container)) throw new Error("placeMyShapes - unable to set rotation for shape in group");
-        i === 0 && this.x === 0 && this.y === 0 && (s.firstShape.isFirstShape = !0), s.group.addedAsGroup = this, pe([
-          () => J(this.type === "position" ? s.group.inGroup : !s.group.inGroup).toBe(!0)
-        ], `placeMyShapes: Shape ${s.id} inGroup flag should match group type (${this.type})`), pe([
-          () => J(s.group.addedAsGroup).toBe(this),
-          () => J(typeof s.group.addedAsGroup).not.toBe("string")
+        if (s.x = this.x + n.x, s.y = this.y + n.y, !ce(s, n.rot, this.container)) throw new Error("placeMyShapes - unable to set rotation for shape in group");
+        i === 0 && this.x === 0 && this.y === 0 && (s.firstShape.isFirstShape = !0), s.group.addedAsGroup = this, ye([
+          () => ie(this.type === "position" ? s.group.inGroup : !s.group.inGroup).toBe(!0)
+        ], `placeMyShapes: Shape ${s.id} inGroup flag should match group type (${this.type})`), ye([
+          () => ie(s.group.addedAsGroup).toBe(this),
+          () => ie(typeof s.group.addedAsGroup).not.toBe("string")
         ], `placeMyShapes: Shape ${s.id} addedAsGroup should be Group reference`), s.score = this.score;
         const r = s.guillotineState?.stripShapeBatches;
         if (this.guillotineState) {
@@ -5993,7 +6092,9 @@ class Zt extends Ds {
    * This recalculates groupLength/groupWidth based on the container's saw spacing
    */
   updateShapeSpacing(e) {
-    if (this.container = e, this.updatePositions(), this.w > this.l ? this.orientationLock = "w" : this.orientationLock = "l", this.container && this.direction) {
+    if (this.container = e, this.updatePositions(), this.w > this.l ? this.orientationLock = "w" : this.orientationLock = "l", this.type === "user" && this.userPositions?.length)
+      this.calculateEfficiency();
+    else if (this.container && this.direction) {
       const i = this.direction === "horizontal" ? e.l : e.w;
       this.efficiency = this.groupLength / i;
     }
@@ -6009,59 +6110,92 @@ class Zt extends Ds {
     if (!this.shapes || this.shapes.length === 0)
       throw new Error("updatePositions requires shapes");
     if (!this.container) return;
+    if (this.type === "user" && this.userPositions?.length) {
+      this.updateUserGroupPositions();
+      return;
+    }
     const e = /* @__PURE__ */ new Map();
     if (this.positions && this.positions.length > 0) {
       for (const l of this.positions)
         e.set(l.autoId, l.rot);
       for (const [l, c] of e) {
-        const f = this.shapes.find((h) => h.autoId === l);
-        f && f.rot !== c && ue(f, c, this.container);
+        const f = this.shapes.find((d) => d.autoId === l);
+        f && f.rot !== c && ce(f, c, this.container);
       }
     }
     this.positions = [], this.type !== "user" && this.sortShapes();
     let i = 0;
-    const s = Uo(this.direction), n = Wi(this.direction);
+    const s = ea(this.direction), n = Hi(this.direction);
     let o = 0;
     for (const l of this.shapes) {
       if (!l) continue;
       const c = o === this.shapes.length - 1 ? 0 : l.getMinSpacing(this.container.saw), f = e.get(l.autoId) ?? l.rot.valueOf();
-      let h;
-      f !== l.rot ? h = n === "l" ? l.w : l.l : h = l[n];
-      const d = {
+      let d;
+      f !== l.rot ? d = n === "l" ? l.w : l.l : d = l[n];
+      const h = {
         autoId: l.autoId,
         x: 0,
         y: 0,
         rot: f
       };
-      s === "x" ? d.x = i : d.y = i, this.positions.push(d), l.group.inGroup = !0, i += o === this.shapes.length - 1 ? h : h + c, o++;
+      s === "x" ? h.x = i : h.y = i, this.positions.push(h), l.group.inGroup = !0, i += o === this.shapes.length - 1 ? d : d + c, o++;
     }
     this.groupLength = i;
-    const r = $e(n), a = this.shapes.reduce(
+    const r = ze(n), a = this.shapes.reduce(
       (l, c) => {
         const f = e.get(c.autoId);
-        let h;
-        return f !== void 0 && f !== c.rot ? h = r === "l" ? c.w : c.l : h = c[r], h > l ? h : l;
+        let d;
+        return f !== void 0 && f !== c.rot ? d = r === "l" ? c.w : c.l : d = c[r], d > l ? d : l;
       },
       0
     );
-    if (this.groupWidth = a, Ue()) {
-      const l = this.shapes.slice(0, -1).reduce((h, d) => h + d.getMinSpacing(this.container.saw), 0), f = this.shapes.reduce((h, d) => h + d[n], 0) + l;
-      pe([
-        () => J(
-          I.equalTo(f, this.groupLength),
+    if (this.groupWidth = a, Ye()) {
+      const l = this.shapes.slice(0, -1).reduce((d, h) => d + h.getMinSpacing(this.container.saw), 0), f = this.shapes.reduce((d, h) => d + h[n], 0) + l;
+      ye([
+        () => ie(
+          v.equalTo(f, this.groupLength),
           "group dimension is incorrect in direction"
         ).to.be.true,
-        () => J(
+        () => ie(
           i,
           "currentPosition is incorrect in direction"
         ).to.equal(this.groupLength),
-        () => J(
+        () => ie(
           a,
           "group dimension in other direction is not correct"
         ).to.equal(this.groupWidth)
       ]);
     }
     this.direction === "horizontal" ? (this.l = this.groupLength, this.w = this.groupWidth) : (this.l = this.groupWidth, this.w = this.groupLength), this.calculateDimensions();
+  }
+  /**
+   * Update positions for free-placement user groups
+   * Uses user-defined positions from InputUserGroup rather than linear layout
+   */
+  updateUserGroupPositions() {
+    const e = /* @__PURE__ */ new Map();
+    if (this.positions && this.positions.length > 0) {
+      for (const n of this.positions)
+        e.set(n.autoId, n.rot);
+      for (const [n, o] of e) {
+        const r = this.shapes.find((a) => a.autoId === n);
+        r && r.rot !== o && ce(r, o, this.container);
+      }
+    }
+    this.positions = [];
+    let i = 0, s = 0;
+    for (const n of this.shapes) {
+      const o = this.userPositions.find((a) => a.autoId === n.autoId);
+      if (!o) continue;
+      const r = e.get(n.autoId) ?? n.rot.valueOf();
+      this.positions.push({
+        autoId: n.autoId,
+        x: o.x,
+        y: o.y,
+        rot: r
+      }), i = Math.max(i, o.x + n.l), s = Math.max(s, o.y + n.w);
+    }
+    this.groupLength = Math.max(i, s), this.groupWidth = Math.min(i, s), this.l = i, this.w = s, this.calculateDimensions();
   }
   /**
    * Calculate the required rotation for a shape to fit in the group
@@ -6107,7 +6241,7 @@ class Zt extends Ds {
    * Then by direction dimension, then by ID
    */
   sortShapes() {
-    const e = Wi(this.direction), i = $e(e);
+    const e = Hi(this.direction), i = ze(e);
     this.shapes.sort((s, n) => n[i] !== s[i] ? n[i] - s[i] : n[e] !== s[e] ? n[e] - s[e] : s.id.localeCompare(n.id, void 0, { numeric: !0 }));
   }
   /**
@@ -6122,9 +6256,9 @@ class Zt extends Ds {
           keepGuillotineBatchData: !0,
           keepGroupData: !1
         }), s.group && (s.group.inGroup = !1, s.group.reference = void 0, s.group.addedAsGroup = void 0);
-      pe([
-        () => J(e.every((s) => !s.group?.inGroup)).toBe(!0),
-        () => J(e.every((s) => !s.group?.reference)).toBe(!0)
+      ye([
+        () => ie(e.every((s) => !s.group?.inGroup)).toBe(!0),
+        () => ie(e.every((s) => !s.group?.reference)).toBe(!0)
       ], `destroy: All children of ${i} group should be released`);
     }
     this.shapes = [], this.positions = [], this.container = void 0, this.added = !1;
@@ -6140,17 +6274,17 @@ class Zt extends Ds {
     return s && n && s === n ? !0 : this.type === "position" && e.type === "position" ? this.isSameSize(e) : super.isIdentical(e, i);
   }
 }
-function Ho(t, e) {
+function ta(t, e) {
   const i = e === "x" ? "l" : "w", s = e === "x" ? "y" : "x";
   return t?.length ? t.reduce((o, r) => {
     const a = o[e] + o[i], l = r[e] + r[i];
     return a > l ? o : l > a ? r : o[s] < r[s] ? o : r;
   }) : null;
 }
-function Ql(t, e = null) {
+function uc(t, e = null) {
   return e ? t.filter((i) => i.added && i?.stock?.id === e.id) : t.filter((i) => i.added);
 }
-function Jl(t, e = !1, i = !1) {
+function fc(t, e = !1, i = !1) {
   if (!t?.length) return [];
   let s = t;
   if (e !== null && (s = t.filter((a) => a.added === e), !s.length))
@@ -6158,34 +6292,34 @@ function Jl(t, e = !1, i = !1) {
   const n = /* @__PURE__ */ new Map(), o = i ? /* @__PURE__ */ new Map() : null, r = [];
   for (const a of s) {
     let l;
-    if (oe(a))
+    if (fe(a))
       l = a.parentId;
-    else if (X(a))
+    else if (Q(a))
       l = a.id;
     else
       continue;
     if (!n.has(l)) {
       if (n.set(l, !0), o) {
-        const c = a.l <= a.w, f = c ? a.l : a.w, h = c ? a.w : a.l, d = f + "-" + h + "-" + a.orientationLock;
-        if (o.has(d)) continue;
-        o.set(d, !0);
+        const c = a.l <= a.w, f = c ? a.l : a.w, d = c ? a.w : a.l, h = f + "-" + d + "-" + a.orientationLock;
+        if (o.has(h)) continue;
+        o.set(h, !0);
       }
       r.push(a);
     }
   }
   return r;
 }
-const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
+const ia = ({ item: t, index: e, isWarning: i = !1 }) => {
   const s = [];
-  return Ss(t, "orientationLock", ["l", "w"], e, i, s), s;
-}, Yo = ({ item: t, index: e, isWarning: i = !1 }) => {
+  return Is(t, "orientationLock", ["l", "w"], e, i, s), s;
+}, sa = ({ item: t, index: e, isWarning: i = !1 }) => {
   const s = [];
-  return Ss(t, "grain", ["l", "w"], e, i, s), s;
-}, Zo = ({ item: t, index: e, isWarning: i = !1 }) => {
-  const s = [], n = Y(t, "banding");
-  return n != null && (typeof n != "object" || n === null) && new T({
+  return Is(t, "grain", ["l", "w"], e, i, s), s;
+}, na = ({ item: t, index: e, isWarning: i = !1 }) => {
+  const s = [], n = Z(t, "banding");
+  return n != null && (typeof n != "object" || n === null) && new I({
     item: t,
-    message: Te("errors.validation.must_be_object", { 0: "banding" }),
+    message: Ie("errors.validation.must_be_object", { 0: "banding" }),
     shouldTranslate: !1,
     field: [["banding"]],
     index: [e],
@@ -6193,14 +6327,14 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     issues: s,
     category: ["part"]
   }), s;
-}, Xo = ({ item: t, index: e, isWarning: i = !1, category: s = [] }) => {
-  const n = [], o = Y(t, "customData");
+}, ra = ({ item: t, index: e, isWarning: i = !1, category: s = [] }) => {
+  const n = [], o = Z(t, "customData");
   if (o == null) return n;
   if (typeof o != "object" || o === null)
-    return new T({
+    return new I({
       item: t,
-      message: Te("errors.validation.must_be_object", {
-        0: ut.customData
+      message: Ie("errors.validation.must_be_object", {
+        0: ft.customData
       }),
       shouldTranslate: !1,
       field: [["customData"]],
@@ -6211,10 +6345,10 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
   for (const [, r] of Object.entries(o))
     if (r != null) {
       const a = typeof r;
-      ["string", "number", "boolean"].includes(a) || new T({
+      ["string", "number", "boolean"].includes(a) || new I({
         item: t,
-        message: Te("errors.validation.must_be_string_number_boolean", {
-          0: ut.customData
+        message: Ie("errors.validation.must_be_string_number_boolean", {
+          0: ft.customData
         }),
         shouldTranslate: !1,
         field: [["customData"]],
@@ -6225,18 +6359,18 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
       });
     }
   return n;
-}, Qo = ({ item: t, index: e }) => {
-  const i = Y(t, "machining");
+}, oa = ({ item: t, index: e }) => {
+  const i = Z(t, "machining");
   i && "validateEverything" in i && i.validateEverything(t, e);
-}, Jo = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
-  const o = [], r = Y(t, "x");
-  return r === null || r === "" || r === void 0 || i != null && P({ v: r }) > i && new T({
+}, aa = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
+  const o = [], r = Z(t, "x");
+  return r === null || r === "" || r === void 0 || i != null && D({ v: r }) > i && new I({
     item: t,
     message: "errors.validation.less_than_or_equal",
     params: {
-      0: ne("x", { returnKey: !0 }),
+      0: le("x", { returnKey: !0 }),
       // positional (legacy)
-      field: ne("x", { returnKey: !0 }),
+      field: le("x", { returnKey: !0 }),
       // named (new)
       1: i,
       // positional (legacy)
@@ -6249,15 +6383,15 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     issues: o,
     category: n
   }), o;
-}, ea = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
-  const o = [], r = Y(t, "y");
-  return r === null || r === "" || r === void 0 || i != null && P({ v: r }) > i && new T({
+}, la = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
+  const o = [], r = Z(t, "y");
+  return r === null || r === "" || r === void 0 || i != null && D({ v: r }) > i && new I({
     item: t,
     message: "errors.validation.less_than_or_equal",
     params: {
-      0: ne("y", { returnKey: !0 }),
+      0: le("y", { returnKey: !0 }),
       // positional (legacy)
-      field: ne("y", { returnKey: !0 }),
+      field: le("y", { returnKey: !0 }),
       // named (new)
       1: i,
       // positional (legacy)
@@ -6270,15 +6404,15 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     issues: o,
     category: n
   }), o;
-}, ta = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
-  const o = [], r = Y(t, "l");
-  return Y(t, "infiniteLength") || (r === null || r === "" || r === void 0 || r === 0) && new T({
+}, ca = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
+  const o = [], r = Z(t, "l");
+  return Z(t, "infiniteLength") || (r === null || r === "" || r === void 0 || r === 0) && new I({
     item: t,
     message: "errors.validation.not_set",
     params: {
-      0: ne("l", { returnKey: !0 }),
+      0: le("l", { returnKey: !0 }),
       // positional (legacy)
-      field: ne("l", { returnKey: !0 })
+      field: le("l", { returnKey: !0 })
       // named (new)
     },
     field: [["l"]],
@@ -6287,15 +6421,15 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     issues: o,
     category: n
   }), o;
-}, ia = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
-  const o = [], r = Y(t, "w");
-  return (r === null || r === "" || r === void 0) && new T({
+}, ua = ({ item: t, index: e, max: i, isWarning: s = !1, category: n = [] }) => {
+  const o = [], r = Z(t, "w");
+  return (r === null || r === "" || r === void 0) && new I({
     item: t,
     message: "errors.validation.not_set",
     params: {
-      0: ne("w", { returnKey: !0 }),
+      0: le("w", { returnKey: !0 }),
       // positional (legacy)
-      field: ne("w", { returnKey: !0 })
+      field: le("w", { returnKey: !0 })
       // named (new)
     },
     field: [["w"]],
@@ -6304,9 +6438,9 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     issues: o,
     category: n
   }), o;
-}, sa = ({ item: t, index: e, max: i, isWarning: s = !1, saw: n, category: o = [] }) => {
-  const r = [], a = Y(t, "t");
-  return n?.cutType === "beam" && !a && new T({
+}, fa = ({ item: t, index: e, max: i, isWarning: s = !1, saw: n, category: o = [] }) => {
+  const r = [], a = Z(t, "t");
+  return n?.cutType === "beam" && !a && new I({
     item: t,
     message: "errors.saw.thickness_required_for_beam_saw",
     field: [["t"]],
@@ -6315,10 +6449,34 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     issues: r,
     category: o
   }), r;
-}, na = ({ item: t, index: e, isWarning: i = !1, category: s = [] }) => {
-  const n = [], o = Y(t, "q"), r = Y(t, "autoAdd");
+}, da = ({ item: t, index: e, isWarning: i = !1, category: s = [] }) => {
+  const n = [], o = Z(t, "q"), r = Z(t, "autoAdd");
   return o == null || r === !0, n;
-}, ra = ({
+};
+function ha(t, e, i, s = !0) {
+  if (!t || !e || !i) return !1;
+  if (t.autoId === e.autoId)
+    throw console.error("[collision] ERROR: Shape/group is in testShapes array!"), console.error(`  thisShape: ${t.autoId} (${t.id})`), console.error(`  testShape: ${e.autoId} (${e.id})`), console.error(`  thisShape === testShape: ${t === e}`), new Error(`collision comparing to self ${t.autoId}, ${e.autoId}`);
+  const n = s ? i.bladeWidth : 0, o = t.x + t.l + n, r = e.x + e.l + n;
+  if (!v.lessThan(t.x, r) || !v.greaterThan(o, e.x))
+    return !1;
+  const a = t.y + t.w + n, l = e.y + e.w + n;
+  return v.lessThan(t.y, l) && v.greaterThan(a, e.y);
+}
+function pa(t, e, i) {
+  for (const s of e)
+    if (t.autoId !== s.autoId && ha(t, s, i))
+      return !0;
+  return !1;
+}
+function ga(t, e, i = 0) {
+  const s = t.x + t.l + i, n = e.x + e.l + i;
+  if (!v.lessThan(t.x, n) || !v.greaterThan(s, e.x))
+    return !1;
+  const o = t.y + t.w + i, r = e.y + e.w + i;
+  return v.lessThan(t.y, r) && v.greaterThan(o, e.y);
+}
+const ma = ({
   item: t,
   index: e,
   shapes: i,
@@ -6327,7 +6485,7 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
   category: o = ["group"]
 }) => {
   const r = [];
-  return i.length < s && new T({
+  return i.length < s && new I({
     item: t,
     message: "errors.groups.min_parts",
     index: [e],
@@ -6335,7 +6493,7 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     issues: r,
     category: o
   }), r;
-}, oa = ({
+}, ya = ({
   item: t,
   index: e,
   shapes: i,
@@ -6344,9 +6502,9 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
 }) => {
   const o = [];
   return i.forEach((r, a) => {
-    !(typeof r.isSquare == "function", r.isSquare) && !["l", "w"].includes(r.orientationLock) && new T({
+    !(typeof r.isSquare == "function", r.isSquare) && !["l", "w"].includes(r.orientationLock) && new I({
       item: t,
-      message: Te("errors.groups.part_needs_orientation_lock", { 0: a + 1 }),
+      message: Ie("errors.groups.part_needs_orientation_lock", { 0: a + 1 }),
       shouldTranslate: !1,
       field: [["orientationLock"]],
       index: [e],
@@ -6355,7 +6513,7 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
       category: n
     });
   }), o;
-}, aa = ({
+}, ba = ({
   item: t,
   index: e,
   shapes: i,
@@ -6367,14 +6525,14 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
   if (i.length < 2) return r;
   const a = i[0], l = a.trimmedDimensions ? a.trimmedDimensions[s] : a[s];
   return i.slice(1).forEach((c, f) => {
-    const h = c.trimmedDimensions ? c.trimmedDimensions[s] : c[s];
-    I.equalTo(h, l) || new T({
+    const d = c.trimmedDimensions ? c.trimmedDimensions[s] : c[s];
+    v.equalTo(d, l) || new I({
       item: t,
-      message: Te("errors.groups.dimension_not_correct", {
+      message: Ie("errors.groups.dimension_not_correct", {
         0: f + 2,
         1: s === "l" ? "length" : "width",
         2: l,
-        3: h
+        3: d
       }),
       shouldTranslate: !1,
       index: [e],
@@ -6383,7 +6541,34 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
       category: o
     });
   }), r;
-}, Cs = ({
+}, wa = ({
+  item: t,
+  index: e,
+  shapes: i,
+  positions: s,
+  bladeWidth: n = 0,
+  isWarning: o = !1,
+  category: r = ["group"]
+}) => {
+  const a = [];
+  if (s.length < 2) return a;
+  for (let l = 0; l < s.length; l++)
+    for (let c = l + 1; c < s.length; c++) {
+      const f = s[l], d = s[c], h = i.find((M) => M.autoId === f.autoId), g = i.find((M) => M.autoId === d.autoId);
+      if (!h || !g) continue;
+      const m = h.trimmedDimensions || { l: h.l, w: h.w }, S = g.trimmedDimensions || { l: g.l, w: g.w }, A = { x: f.x, y: f.y, l: m.l, w: m.w }, b = { x: d.x, y: d.y, l: S.l, w: S.w };
+      ga(A, b, n) && new I({
+        item: t,
+        message: Ie("errors.groups.shapes_overlap", { 0: l + 1, 1: c + 1 }),
+        shouldTranslate: !1,
+        index: [e],
+        type: o ? "warning" : "error",
+        issues: a,
+        category: r
+      });
+    }
+  return a;
+}, Ms = ({
   item: t,
   index: e,
   shapeId: i,
@@ -6395,9 +6580,9 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
   category: l = ["group"]
 }) => {
   const c = [];
-  return s > n && new T({
+  return s > n && new I({
     item: t,
-    message: Te("errors.groups.not_enough_of_part", {
+    message: Ie("errors.groups.not_enough_of_part", {
       0: o || (r ?? 0) + 1,
       1: s,
       2: n
@@ -6407,7 +6592,7 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     type: a ? "warning" : "error",
     issues: c,
     category: l
-  }), n === 0 && new T({
+  }), n === 0 && new I({
     item: t,
     message: "errors.groups.no_parts",
     index: [e],
@@ -6416,151 +6601,151 @@ const Ko = ({ item: t, index: e, isWarning: i = !1 }) => {
     category: l
   }), c;
 };
-function Gt(t) {
+function Nt(t) {
   return t && typeof t == "object" && "area" in t;
 }
-const ci = {
+const fi = {
   missingProperty: (t, e) => `[Sorting Warning] Missing property "${t}" in ${e}`,
   missingMethod: (t, e) => `[Sorting Warning] Missing method "${t}" in ${e}`,
   missingArea: "[Sorting Warning] One or both objects missing getArea method",
   missingAspect: "[Sorting Warning] One or both objects missing getAspect method",
   missingLongSide: "[Sorting Warning] One or both objects missing getLongSide method"
-}, ie = (t, e, i) => e in t ? t[e] : (console.warn(ci.missingProperty(String(e), i)), null), At = (t, e) => (i, s) => {
+}, oe = (t, e, i) => e in t ? t[e] : (console.warn(fi.missingProperty(String(e), i)), null), Dt = (t, e) => (i, s) => {
   const n = t(i, s);
   return n !== 0 ? n : e(i, s);
-}, it = (t, e) => {
-  if (Gt(t) && Gt(e))
+}, nt = (t, e) => {
+  if (Nt(t) && Nt(e))
     return t.area < e.area ? -1 : t.area > e.area ? 1 : 0;
   const i = "l" in t && "w" in t ? Number(t.l) * Number(t.w) : 0, s = "l" in e && "w" in e ? Number(e.l) * Number(e.w) : 0;
   return i < s ? -1 : i > s ? 1 : 0;
-}, ke = (t, e) => {
-  const i = ie(t, "id", "first item"), s = ie(e, "id", "second item");
+}, Pe = (t, e) => {
+  const i = oe(t, "id", "first item"), s = oe(e, "id", "second item");
   if (i === null || s === null || i === void 0 || s === void 0) return 0;
   const n = i.toString().split("."), o = s.toString().split(".");
   return n[0] !== o[0] ? parseInt(n[0]) - parseInt(o[0]) : parseInt(n[1]) - parseInt(o[1]);
 };
-function Ae(t) {
+function Oe(t) {
   const e = Array.isArray(t[0]) ? t.map(([i, s]) => ({ key: i, direction: s })) : t;
   return (i, s) => {
     for (const { key: n, direction: o } of e) {
-      const r = ie(i, n, "first item"), a = ie(s, n, "second item");
+      const r = oe(i, n, "first item"), a = oe(s, n, "second item");
       if (!(r === null || a === null) && r !== a)
         return o === "desc" ? r < a ? 1 : -1 : r < a ? -1 : 1;
     }
     return 0;
   };
 }
-function Ls(t) {
+function _s(t) {
   return t.length ? t.reduce((e, i) => {
     let s = 0, n = 0;
     return "area" in i && typeof i.area == "number" ? s = i.area : "l" in i && "w" in i && (s = Number(i.l) * Number(i.w)), "area" in e && typeof e.area == "number" ? n = e.area : "l" in e && "w" in e && (n = Number(e.l) * Number(e.w)), s > n ? i : e;
   }) : null;
 }
-function la(t) {
+function Sa(t) {
   return t.length ? t.reduce((e, i) => {
     let s = 0, n = 0;
     return "area" in i && typeof i.area == "number" ? s = i.area : "l" in i && "w" in i && (s = Number(i.l) * Number(i.w)), "area" in e && typeof e.area == "number" ? n = e.area : "l" in e && "w" in e && (n = Number(e.l) * Number(e.w)), s < n ? i : e;
   }) : null;
 }
-const Ce = {
+const Re = {
   // Dimension-based sorts
-  WDLD: Ae([
+  WDLD: Oe([
     ["w", "desc"],
     ["l", "desc"]
   ]),
-  WALA: Ae([
+  WALA: Oe([
     ["w", "asc"],
     ["l", "asc"]
   ]),
-  LDWD: Ae([
+  LDWD: Oe([
     ["l", "desc"],
     ["w", "desc"]
   ]),
-  LAWA: Ae([
+  LAWA: Oe([
     ["l", "asc"],
     ["w", "asc"]
   ]),
-  WD: Ae([["w", "desc"]]),
-  LD: Ae([["l", "desc"]]),
+  WD: Oe([["w", "desc"]]),
+  LD: Oe([["l", "desc"]]),
   // ID-based sorts
-  LDIDA: At(
-    Ae([["l", "desc"]]),
-    ke
+  LDIDA: Dt(
+    Oe([["l", "desc"]]),
+    Pe
   ),
-  WDIDA: At(
-    Ae([["w", "desc"]]),
-    ke
+  WDIDA: Dt(
+    Oe([["w", "desc"]]),
+    Pe
   ),
   // Area-based sorts
-  AD: (t, e) => -it(t, e),
-  AA: it,
-  AAID: At(
-    it,
-    ke
+  AD: (t, e) => -nt(t, e),
+  AA: nt,
+  AAID: Dt(
+    nt,
+    Pe
   ),
-  ADID: At(
-    (t, e) => -it(t, e),
-    ke
+  ADID: Dt(
+    (t, e) => -nt(t, e),
+    Pe
   ),
   // ID sorts
-  ID: ke,
-  IDDesc: (t, e) => -ke(t, e),
+  ID: Pe,
+  IDDesc: (t, e) => -Pe(t, e),
   StockID: (t, e) => {
     const i = "stock" in t ? t.stock : null, s = "stock" in e ? e.stock : null;
-    return !i || !s ? 0 : ke(i, s);
+    return !i || !s ? 0 : Pe(i, s);
   },
   StockIDAD: (t, e) => {
     const i = "stock" in t ? t.stock : null, s = "stock" in e ? e.stock : null;
     if (!i || !s) return 0;
-    const n = ke(i, s);
-    return n !== 0 ? n : -it(t, e);
+    const n = Pe(i, s);
+    return n !== 0 ? n : -nt(t, e);
   },
   // Position sorts
-  YX: Ae([
+  YX: Oe([
     ["y", "asc"],
     ["x", "asc"]
   ]),
-  XY: Ae([
+  XY: Oe([
     ["x", "asc"],
     ["y", "asc"]
   ]),
   // Placement order sorts
   placementOrder: (t, e) => {
-    const i = ie(t, "placementOrder", "first item") ?? 0, s = ie(e, "placementOrder", "second item") ?? 0;
+    const i = oe(t, "placementOrder", "first item") ?? 0, s = oe(e, "placementOrder", "second item") ?? 0;
     return i - s;
   },
   typePlacementOrder: (t, e) => {
-    const i = ie(t, "offcut", "first item"), s = ie(e, "offcut", "second item"), n = ie(t, "placementOrder", "first item") ?? 0, o = ie(e, "placementOrder", "second item") ?? 0;
+    const i = oe(t, "offcut", "first item"), s = oe(e, "offcut", "second item"), n = oe(t, "placementOrder", "first item") ?? 0, o = oe(e, "placementOrder", "second item") ?? 0;
     return i && !s ? 1 : !i && s ? -1 : n - o;
   },
   typeID: (t, e) => {
-    const i = ie(t, "offcut", "first item"), s = ie(e, "offcut", "second item");
-    return i && !s ? 1 : !i && s ? -1 : ke(t, e);
+    const i = oe(t, "offcut", "first item"), s = oe(e, "offcut", "second item");
+    return i && !s ? 1 : !i && s ? -1 : Pe(t, e);
   },
   stockIDTypePlacementOrder: (t, e) => {
     const i = "stock" in t ? t.stock : null, s = "stock" in e ? e.stock : null;
     if (!i || !s) return 0;
-    const n = ke(i, s);
+    const n = Pe(i, s);
     if (n !== 0) return n;
-    const o = ie(t, "offcut", "first item"), r = ie(e, "offcut", "second item");
+    const o = oe(t, "offcut", "first item"), r = oe(e, "offcut", "second item");
     if (o && !r) return 1;
     if (!o && r) return -1;
-    const a = ie(t, "placementOrder", "first item") ?? 0, l = ie(e, "placementOrder", "second item") ?? 0;
+    const a = oe(t, "placementOrder", "first item") ?? 0, l = oe(e, "placementOrder", "second item") ?? 0;
     return a - l;
   },
   offcutPlacementOrder: (t, e) => {
     const i = "stock" in t ? t.stock : null, s = "stock" in e ? e.stock : null;
     if (!i?.id || !s?.id) return 0;
-    const n = ke(i, s);
+    const n = Pe(i, s);
     if (n !== 0) return n;
     if ("placementOrder" in t && "placementOrder" in e) {
-      const o = ie(t, "placementOrder", "first item") ?? 0, r = ie(e, "placementOrder", "second item") ?? 0;
+      const o = oe(t, "placementOrder", "first item") ?? 0, r = oe(e, "placementOrder", "second item") ?? 0;
       return o - r;
     }
     return 0;
   },
   groupPlacementOrder: (t, e) => {
-    const i = ie(t, "placementOrder", "first item") ?? 0, s = ie(e, "placementOrder", "second item") ?? 0, n = i - s;
+    const i = oe(t, "placementOrder", "first item") ?? 0, s = oe(e, "placementOrder", "second item") ?? 0, n = i - s;
     if (n !== 0) return n;
     const o = t.group?.placementOrder ?? 0, r = e.group?.placementOrder ?? 0;
     return o - r;
@@ -6577,123 +6762,123 @@ const Ce = {
   },
   // Aspect and area sorts
   aspect(t, e) {
-    if (Gt(t) && Gt(e) && t.aspect && e.aspect)
+    if (Nt(t) && Nt(e) && t.aspect && e.aspect)
       return e.aspect - t.aspect;
     if (!("l" in t) || !("w" in t) || !("l" in e) || !("w" in e))
-      return console.warn(ci.missingAspect), 0;
+      return console.warn(fi.missingAspect), 0;
     const i = Math.max(Number(t.l), Number(t.w)) / Math.min(Number(t.l), Number(t.w));
     return Math.max(Number(e.l), Number(e.w)) / Math.min(Number(e.l), Number(e.w)) - i;
   },
   fillThenArea(t) {
-    return (e, i) => !("l" in e) || !("w" in e) || !("l" in i) || !("w" in i) ? (console.warn(ci.missingLongSide), 0) : i[t] === e[t] ? -it(e, i) : parseFloat(String(i[t])) - parseFloat(String(e[t]));
+    return (e, i) => !("l" in e) || !("w" in e) || !("l" in i) || !("w" in i) ? (console.warn(fi.missingLongSide), 0) : i[t] === e[t] ? -nt(e, i) : parseFloat(String(i[t])) - parseFloat(String(e[t]));
   },
   // Utility functions
-  getLargest: Ls,
-  getSmallest: la
+  getLargest: _s,
+  getSmallest: Sa
 };
-function ca(t) {
-  return ye(t) || oe(t) || xt(t);
+function xa(t) {
+  return Se(t) || vi(t) || xt(t);
 }
-function ua(t, e, i) {
+function ka(t, e, i) {
   if (!i) return !0;
   const s = e?.material?.toLowerCase(), n = t?.material?.toLowerCase();
   return !s && !n || s === n;
 }
-function fa(t, e, i) {
-  return i ? !de(t.t) || !de(e.t) ? !1 : I.equalTo(P({ v: t.t }), P({ v: e.t })) : !0;
+function va(t, e, i) {
+  return i ? !de(t.t) || !de(e.t) ? !1 : v.equalTo(D({ v: t.t }), D({ v: e.t })) : !0;
 }
-function da(t, e, i) {
-  return i?.stockType !== "linear" || !oe(t) && !ye(t) ? !0 : we(t, 0, e) && I.equalTo(P({ v: t.w }), P({ v: e.w })) || we(t, 1, e) && I.equalTo(P({ v: t.l }), P({ v: e.w }));
+function Ia(t, e, i) {
+  return i?.stockType !== "linear" || !vi(t) && !Se(t) ? !0 : ke(t, 0, e) && v.equalTo(D({ v: t.w }), D({ v: e.w })) || ke(t, 1, e) && v.equalTo(D({ v: t.l }), D({ v: e.w }));
 }
-function ha(t, e, i, s = 0) {
-  const n = ye(t[0]), o = i.stockType;
-  if (t.some((w) => de(w.stockLock) && w.stockLock.length))
+function Pa(t, e, i, s = 0) {
+  const n = Se(t[0]), o = i.stockType;
+  if (t.some((b) => de(b.stockLock) && b.stockLock.length))
     return { stockList: e, shapeList: t, unusableShapes: [], unusableStock: [], newIssues: [] };
-  e = e.filter((w) => n || w.autoAdd === !0 || de(w.q) && Number(w.q) > 0);
-  const a = e.some((w) => de(w.material)), l = e.some((w) => de(w.t)), c = /* @__PURE__ */ new Set(), f = /* @__PURE__ */ new Set(), h = /* @__PURE__ */ new Set(), d = /* @__PURE__ */ new Set(), g = [];
-  let y = s;
-  for (const w of t) {
-    const W = e.map((k, O) => {
-      const _ = ca(w) && ft(w, k), x = ua(w, k, a), A = fa(w, k, l), D = da(w, k, i);
+  e = e.filter((b) => n || b.autoAdd === !0 || de(b.q) && Number(b.q) > 0);
+  const a = e.some((b) => de(b.material)), l = e.some((b) => de(b.t)), c = /* @__PURE__ */ new Set(), f = /* @__PURE__ */ new Set(), d = /* @__PURE__ */ new Set(), h = /* @__PURE__ */ new Set(), g = [];
+  let m = s;
+  for (const b of t) {
+    const M = e.map((O, J) => {
+      const L = xa(b) && kt(b, O), R = ka(b, O, a), z = va(b, O, l), k = Ia(b, O, i);
       return {
-        stockItem: k,
-        stockIndex: O,
-        fit: _,
-        material: x,
-        thickness: A,
-        width: D,
+        stockItem: O,
+        stockIndex: J,
+        fit: L,
+        material: R,
+        thickness: z,
+        width: k,
         // For this stock item, does it satisfy all requirements?
-        satisfiesAll: _ && x && A && (o !== "linear" || D)
+        satisfiesAll: L && R && z && (o !== "linear" || k)
       };
     });
-    w.stockMatch = {
-      fit: W.some((k) => k.fit),
-      material: !a || W.some((k) => k.material),
-      thickness: !l || W.some((k) => k.thickness),
-      width: o !== "linear" || W.some((k) => k.width)
+    b.stockMatch = {
+      fit: M.some((O) => O.fit),
+      material: !a || M.some((O) => O.material),
+      thickness: !l || M.some((O) => O.thickness),
+      width: o !== "linear" || M.some((O) => O.width)
     };
-    const B = W.filter((k) => k.satisfiesAll), re = B.length > 0;
-    if (!n && re) {
-      const k = B.map((O) => O.stockItem.parentId);
-      w.stockLock = k, k.forEach((O) => c.add(O));
+    const _ = M.filter((O) => O.satisfiesAll), U = _.length > 0;
+    if (!n && U) {
+      const O = _.map((J) => J.stockItem.parentId);
+      b.stockLock = O, O.forEach((J) => c.add(J));
     }
-    w.stockMatch.fit ? re || (a && !w.stockMatch.material && (d.add(w), g.push(new T({
+    b.stockMatch.fit ? U || (a && !b.stockMatch.material && (h.add(b), g.push(new I({
       category: ["part", "stock"],
-      item: w,
+      item: b,
       field: [["material"]],
-      index: [y],
+      index: [m],
       message: "errors.validation.no_matching_stock_material"
-    }))), l && !w.stockMatch.thickness && (d.add(w), g.push(new T({
+    }))), l && !b.stockMatch.thickness && (h.add(b), g.push(new I({
       category: ["part", "stock"],
-      item: w,
+      item: b,
       field: [["t"]],
-      index: [y],
+      index: [m],
       message: "errors.validation.no_matching_stock_thickness"
-    }))), o === "linear" && !w.stockMatch.width && (h.add(w), g.push(new T({
+    }))), o === "linear" && !b.stockMatch.width && (d.add(b), g.push(new I({
       category: ["part", "stock"],
-      item: w,
+      item: b,
       field: [["w"]],
-      index: [y],
+      index: [m],
       message: "errors.validation.no_matching_stock_width"
-    }))), w.stockMatch.material && w.stockMatch.thickness && (o !== "linear" || w.stockMatch.width) && (d.add(w), g.push(new T({
+    }))), b.stockMatch.material && b.stockMatch.thickness && (o !== "linear" || b.stockMatch.width) && (h.add(b), g.push(new I({
       category: ["part", "stock"],
-      item: w,
+      item: b,
       field: [["material"], ["t"]],
-      index: [y],
+      index: [m],
       message: "errors.validation.no_stock_matches_all_requirements"
-    })))) : (f.add(w), g.push(new T({
+    })))) : (f.add(b), g.push(new I({
       category: ["part", "stock"],
-      item: w,
+      item: b,
       field: [["l"], ["w"]],
-      index: [y],
+      index: [m],
       message: "errors.validation.will_not_fit"
-    }))), y++;
+    }))), m++;
   }
-  t.forEach((w) => w.stockMatch = null);
-  let v, G;
-  return n ? (v = t.filter((w) => f.has(w) || h.has(w) || d.has(w)).sort(Ce.ID), G = []) : (v = t.filter((w) => f.has(w) || h.has(w) || d.has(w) || !w.stockLock || !w.stockLock.length).sort(Ce.ID), G = e.filter((w) => !c.has(w.parentId)).sort(Ce.ID), e = e.filter((w) => Ie(w)).filter((w) => c.has(w.parentId)), t = t.filter((w) => !f.has(w) && !h.has(w) && !d.has(w) && w?.stockLock?.length)), {
+  t.forEach((b) => b.stockMatch = null);
+  let S, A;
+  return n ? (S = t.filter((b) => f.has(b) || d.has(b) || h.has(b)).sort(Re.ID), A = []) : (S = t.filter((b) => f.has(b) || d.has(b) || h.has(b) || !b.stockLock || !b.stockLock.length).sort(Re.ID), A = e.filter((b) => !c.has(b.parentId)).sort(Re.ID), e = e.filter((b) => Ae(b)).filter((b) => c.has(b.parentId)), t = t.filter((b) => !f.has(b) && !d.has(b) && !h.has(b) && b?.stockLock?.length)), {
     stockList: e,
-    unusableStock: G,
+    unusableStock: A,
     shapeList: t,
-    unusableShapes: v,
+    unusableShapes: S,
     newIssues: g
   };
 }
-function pa(t) {
+function Ta(t) {
   return t?.issues?.length > 0;
 }
-const ga = ({
+const Aa = ({
   item: t,
   inputStockList: e,
   saw: i,
   partTrim: s = 0,
   index: n
 }) => {
-  const o = [], r = i.stockType, a = Y(t, "q"), l = Y(t, "l"), c = Y(t, "w");
-  return !a || !l || !c || ("applyPartTrim" in t && typeof t.applyPartTrim == "function" && t.applyPartTrim(s, r), pa(t)) || ha([t], e, i, n).newIssues.forEach((h) => {
-    o.push(h);
+  const o = [], r = i.stockType, a = Z(t, "q"), l = Z(t, "l"), c = Z(t, "w");
+  return !a || !l || !c || ("applyPartTrim" in t && typeof t.applyPartTrim == "function" && t.applyPartTrim(s, r), Ta(t)) || Pa([t], e, i, n).newIssues.forEach((d) => {
+    o.push(d);
   }), o;
-}, ma = ({
+}, Da = ({
   item: t,
   partTrim: e,
   index: i,
@@ -6701,11 +6886,11 @@ const ga = ({
 }) => {
   const n = [];
   if (!e) return n;
-  const o = Y(t, "l"), r = Y(t, "w");
+  const o = Z(t, "l"), r = Z(t, "w");
   if (!o || !r) return n;
   try {
-    const a = P({ v: e }), l = P({ v: o }), c = P({ v: r }), f = l - a * 2, h = c - a * 2;
-    (f <= 0 || h <= 0) && new T({
+    const a = D({ v: e }), l = D({ v: o }), c = D({ v: r }), f = l - a * 2, d = c - a * 2;
+    (f <= 0 || d <= 0) && new I({
       item: t,
       message: "errors.trim.too_much",
       params: {
@@ -6713,13 +6898,13 @@ const ga = ({
         // positional (legacy)
         1: a,
         // positional (legacy)
-        2: `${f}x${h}`,
+        2: `${f}x${d}`,
         // positional (legacy)
         item: "part",
         // named (new)
         trimValue: a,
         // named (new)
-        result: `${f}x${h}`
+        result: `${f}x${d}`
         // named (new)
       },
       field: [["l"], ["w"], ["trim"]],
@@ -6731,44 +6916,44 @@ const ga = ({
   } catch {
   }
   return n;
-}, ya = ({
+}, Oa = ({
   item: t,
   index: e,
   isWarning: i = !1,
   category: s = []
 }) => {
-  const n = [], o = Y(t, "l"), r = Y(t, "w"), a = Y(t, "trim");
+  const n = [], o = Z(t, "l"), r = Z(t, "w"), a = Z(t, "trim");
   if (!o || !r || !a) return n;
-  if ((!Ie(t) || Ie(t) && !("trimmed" in t && t.trimmed)) && typeof a == "object" && a !== null)
+  if ((!Ae(t) || Ae(t) && !("trimmed" in t && t.trimmed)) && typeof a == "object" && a !== null)
     try {
-      const c = P({ v: o }), f = P({ v: r }), h = (v) => {
-        if (v == null) return 0;
-        if (typeof v == "number" || typeof v == "string")
+      const c = D({ v: o }), f = D({ v: r }), d = (S) => {
+        if (S == null) return 0;
+        if (typeof S == "number" || typeof S == "string")
           try {
-            return P({ v }) || 0;
+            return D({ v: S }) || 0;
           } catch {
             return 0;
           }
         return 0;
-      }, d = {
-        w1: h(Y(a, "w1")),
-        w2: h(Y(a, "w2")),
-        l1: h(Y(a, "l1")),
-        l2: h(Y(a, "l2"))
-      }, g = d.w1 + d.w2, y = d.l1 + d.l2;
-      g >= c && new T({
+      }, h = {
+        w1: d(Z(a, "w1")),
+        w2: d(Z(a, "w2")),
+        l1: d(Z(a, "l1")),
+        l2: d(Z(a, "l2"))
+      }, g = h.w1 + h.w2, m = h.l1 + h.l2;
+      g >= c && new I({
         item: t,
         message: "errors.trim.too_much",
         params: {
-          0: `${ne("w1").toUpperCase()} + ${ne("w2").toUpperCase()}`,
+          0: `${le("w1").toUpperCase()} + ${le("w2").toUpperCase()}`,
           // positional (legacy)
-          1: ne("l"),
+          1: le("l"),
           // positional (legacy)
           2: c,
           // positional (legacy)
-          trimFields: `${ne("l1", { returnKey: !0 })} + ${ne("l2", { returnKey: !0 })}`,
+          trimFields: `${le("l1", { returnKey: !0 })} + ${le("l2", { returnKey: !0 })}`,
           // named (new)
-          dimension: ne("l", { returnKey: !0 }),
+          dimension: le("l", { returnKey: !0 }),
           // named (new)
           maxValue: c
           // named (new)
@@ -6778,19 +6963,19 @@ const ga = ({
         type: i ? "warning" : "error",
         issues: n,
         category: s
-      }), y >= f && new T({
+      }), m >= f && new I({
         item: t,
         message: "errors.trim.too_much",
         params: {
-          0: `${ne("l1").toUpperCase()} + ${ne("l2").toUpperCase()}`,
+          0: `${le("l1").toUpperCase()} + ${le("l2").toUpperCase()}`,
           // positional (legacy)
-          1: ne("w"),
+          1: le("w"),
           // positional (legacy)
           2: f,
           // positional (legacy)
-          trimFields: `${ne("l1", { returnKey: !0 })} + ${ne("l2", { returnKey: !0 })}`,
+          trimFields: `${le("l1", { returnKey: !0 })} + ${le("l2", { returnKey: !0 })}`,
           // named (new)
-          dimension: ne("w", { returnKey: !0 }),
+          dimension: le("w", { returnKey: !0 }),
           // named (new)
           maxValue: f
           // named (new)
@@ -6804,37 +6989,38 @@ const ga = ({
     } catch {
     }
   return n;
-}, he = {
+}, be = {
   // Dimensions
-  x: Jo,
-  y: ea,
-  l: ta,
-  w: ia,
-  t: sa,
-  q: na,
+  x: aa,
+  y: la,
+  l: ca,
+  w: ua,
+  t: fa,
+  q: da,
   // Trim
-  trim: ya,
-  partTrim: ma,
+  trim: Oa,
+  partTrim: Da,
   // Custom
-  customData: Xo,
-  banding: Zo,
-  orientationLock: Ko,
-  grain: Yo,
-  machining: Qo,
+  customData: ra,
+  banding: na,
+  orientationLock: ia,
+  grain: sa,
+  machining: oa,
   // Stock
-  stockMatch: ga,
+  stockMatch: Aa,
   // Groups
-  groupShapeCount: ra,
-  groupOrientationLock: oa,
-  groupDimensions: aa,
-  groupQuantity: Cs
+  groupShapeCount: ma,
+  groupOrientationLock: ya,
+  groupDimensions: ba,
+  groupOverlap: wa,
+  groupQuantity: Ms
 };
-class zt extends Ci {
-  static schema = ni;
-  static computedProperties = ds;
-  static defaults = ni.parse({});
+class jt extends Ri {
+  static schema = oi;
+  static computedProperties = gs;
+  static defaults = oi.parse({});
   constructor(e = {}) {
-    const i = zt.preprocessData(e);
+    const i = jt.preprocessData(e);
     super(i), (this.x === null || this.x === void 0) && (this.x = 0), (this.y === null || this.y === void 0) && (this.y = 0), this.stack || (this.stack = { number: 1 }), e.skipValidation || this.validateStock(e);
   }
   /**
@@ -6848,7 +7034,7 @@ class zt extends Ci {
     * Get entity type
     */
   getType() {
-    return m.Stock;
+    return y.Stock;
   }
   /**
     * Validate stock-specific properties
@@ -6860,10 +7046,10 @@ class zt extends Ci {
     }
     const i = [];
     if (!e.autoAdd) {
-      const n = he.q({ item: e, index: e?.index });
+      const n = be.q({ item: e, index: e?.index });
       i.push(...n);
     }
-    const s = he.grain({ item: e, index: e?.index });
+    const s = be.grain({ item: e, index: e?.index });
     i.push(...s), this.issues.push(...i.filter((n) => n));
   }
   /**
@@ -6872,7 +7058,7 @@ class zt extends Ci {
   static create(e) {
     const i = { ...e.data };
     e.saw && (i.saw = e.saw);
-    const s = new zt(i);
+    const s = new jt(i);
     return e.shapes && (s.shapes = e.shapes), s;
   }
   /**
@@ -6990,16 +7176,16 @@ class zt extends Ci {
   ];
   getCroppedLength(e = [], i = 0) {
     if (!e?.length) return;
-    const s = Ho(e.filter((o) => o.added && o.stock.id === this.id), "x"), n = s.x + s.l;
+    const s = ta(e.filter((o) => o.added && o.stock.id === this.id), "x"), n = s.x + s.l;
     if (n > this.l) throw new Error("Furthest shape position exceeds stock length");
-    return I.equalTo(n, this.l) ? n : n + i;
+    return v.equalTo(n, this.l) ? n : n + i;
   }
 }
-const Je = ["l1", "l2", "w1", "w2"], ba = ["a", "b", "c", "d"], qe = [...Je, ...ba], ve = ["a", "b"];
-class jt extends H {
+const tt = ["l1", "l2", "w1", "w2"], Ca = ["a", "b", "c", "d"], He = [...tt, ...Ca], Te = ["a", "b"];
+class Bt extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Ut;
-  static computedProperties = ki;
+  static schema = Ht;
+  static computedProperties = Ii;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -7029,12 +7215,12 @@ class jt extends H {
     return this.enabled;
   }
 }
-class Be extends jt {
+class qe extends Bt {
   // Properties are dynamically created from schema via SchemaClass
   // Type declarations are auto-generated in .properties.ts file
   // Static schema reference for automatic updates
-  static schema = Lr;
-  static computedProperties = Rr;
+  static schema = Mr;
+  static computedProperties = _r;
   // serializationProperties removed - automatically derived from schema
   // The base class will use all schema fields for serialization
   /**
@@ -7053,7 +7239,7 @@ class Be extends jt {
   validate(e) {
     const i = [], s = ["a", "b"];
     for (const n in this.faces)
-      s.includes(n) || i.push(new T({
+      s.includes(n) || i.push(new I({
         item: e,
         message: `Invalid finish face: ${n}. Valid faces are 'a' (front) and 'b' (back)`,
         type: "warning"
@@ -7092,7 +7278,7 @@ class Be extends jt {
   setFace(e, i) {
     if (!this.faces) {
       this.faces = {};
-      for (const s of ve)
+      for (const s of Te)
         this.faces[s] = !1;
     }
     i === !1 || i === "" || i === void 0 ? this.faces[e] = !1 : this.faces[e] = i;
@@ -7104,7 +7290,7 @@ class Be extends jt {
     const i = this.faces?.[e];
     if (!i) return !1;
     if (typeof i == "object" && !Array.isArray(i)) {
-      const s = i, n = Ge("finish");
+      const s = i, n = Ne("finish");
       if (n && n.labels && n.labels.length > 0) {
         const r = n.labels.map((a) => {
           const l = s[a];
@@ -7135,7 +7321,7 @@ class Be extends jt {
    */
   clear() {
     if (this.faces)
-      for (const e of ve)
+      for (const e of Te)
         this.faces[e] = !1;
   }
   /**
@@ -7149,7 +7335,7 @@ class Be extends jt {
    * Set both faces to the same value
    */
   setBothFaces(e) {
-    for (const i of ve)
+    for (const i of Te)
       this.setFace(i, e);
   }
   /**
@@ -7187,42 +7373,42 @@ class Be extends jt {
    * Create from plain data (for deserialization)
    */
   static fromData(e) {
-    return new Be(e);
+    return new qe(e);
   }
   /**
    * Create empty finish
    */
   static empty() {
-    return new Be();
+    return new qe();
   }
   /**
    * Create with both faces
    */
   static bothFaces(e = !0) {
-    const i = new Be();
+    const i = new qe();
     return i.setBothFaces(e), i;
   }
   /**
    * Create with front face only
    */
   static frontOnly(e = !0) {
-    const i = new Be();
+    const i = new qe();
     return i.setFace("a", e), i;
   }
   /**
    * Create with back face only
    */
   static backOnly(e = !0) {
-    const i = new Be();
+    const i = new qe();
     return i.setFace("b", e), i;
   }
 }
-class We extends jt {
+class Ue extends Bt {
   // Properties are dynamically created from schema via SchemaClass
   // Type declarations are auto-generated in .properties.ts file
   // Static schema reference for automatic updates
-  static schema = ko;
-  static computedProperties = vo;
+  static schema = Do;
+  static computedProperties = Oo;
   // serializationProperties removed - automatically derived from schema
   // The base class will use all schema fields for serialization
   /**
@@ -7243,7 +7429,7 @@ class We extends jt {
     if (this.faces) {
       const s = ["a", "b"];
       for (const n in this.faces)
-        s.includes(n) || i.push(new T({
+        s.includes(n) || i.push(new I({
           message: `Invalid planing face: ${n}. Valid faces are 'a' (front) and 'b' (back)`,
           type: "warning"
         }));
@@ -7251,7 +7437,7 @@ class We extends jt {
     if (this.sides) {
       const s = ["a", "b", "c", "d", "l1", "l2", "w1", "w2"];
       for (const n in this.sides)
-        s.includes(n) || i.push(new T({
+        s.includes(n) || i.push(new I({
           message: `Invalid planing side: ${n}`,
           type: "warning"
         }));
@@ -7271,7 +7457,7 @@ class We extends jt {
   setFace(e, i) {
     if (!this.faces) {
       this.faces = {};
-      for (const s of ve)
+      for (const s of Te)
         this.faces[s] = !1;
     }
     i === !1 || i === "" || i === void 0 ? this.faces[e] = !1 : this.faces[e] = i;
@@ -7283,7 +7469,7 @@ class We extends jt {
     const i = this.faces?.[e];
     if (!i) return !1;
     if (typeof i == "object" && !Array.isArray(i)) {
-      const s = i, n = Ge("planing");
+      const s = i, n = Ne("planing");
       if (n && n.labels && n.labels.length > 0) {
         const r = n.labels.map((a) => {
           const l = s[a];
@@ -7309,7 +7495,7 @@ class We extends jt {
   setSide(e, i) {
     if (!this.sides) {
       this.sides = {};
-      for (const s of qe)
+      for (const s of He)
         this.sides[s] = !1;
     }
     i === !1 || i === "" || i === void 0 ? this.sides[e] = !1 : this.sides[e] = i;
@@ -7321,7 +7507,7 @@ class We extends jt {
     const i = this.sides?.[e];
     if (!i) return !1;
     if (typeof i == "object" && !Array.isArray(i)) {
-      const s = i, n = Ge("planing");
+      const s = i, n = Ne("planing");
       if (n && n.labels && n.labels.length > 0) {
         const r = n.labels.map((a) => {
           const l = s[a];
@@ -7346,10 +7532,10 @@ class We extends jt {
    */
   clear() {
     if (this.faces)
-      for (const e of ve)
+      for (const e of Te)
         this.faces[e] = !1;
     if (this.sides)
-      for (const e of qe)
+      for (const e of He)
         this.sides[e] = !1;
   }
   /**
@@ -7370,14 +7556,14 @@ class We extends jt {
    * Set all faces to the same value
    */
   setAllFaces(e) {
-    for (const i of ve)
+    for (const i of Te)
       this.setFace(i, e);
   }
   /**
    * Set all sides to the same value
    */
   setAllSides(e) {
-    for (const i of qe)
+    for (const i of He)
       this.setSide(i, e);
   }
   /**
@@ -7387,7 +7573,7 @@ class We extends jt {
     let s = 0;
     if (this.faces) {
       const n = e * i;
-      for (const o of ve)
+      for (const o of Te)
         this.hasFace(o) && (s += n);
     }
     if (this.sides) {
@@ -7401,7 +7587,7 @@ class We extends jt {
         w1: e,
         w2: e
       };
-      for (const o of qe)
+      for (const o of He)
         this.hasSide(o) && n[o] && (s += n[o]);
     }
     return s;
@@ -7489,40 +7675,40 @@ class We extends jt {
    * Create from plain data (for deserialization)
    */
   static fromData(e) {
-    return new We(e);
+    return new Ue(e);
   }
   /**
    * Create empty planing
    */
   static empty() {
-    return new We();
+    return new Ue();
   }
   /**
    * Create with all faces and sides
    */
   static full(e = !0) {
-    const i = new We();
+    const i = new Ue();
     return i.setAllFaces(e), i.setAllSides(e), i;
   }
   /**
    * Create with faces only
    */
   static facesOnly(e = !0) {
-    const i = new We();
+    const i = new Ue();
     return i.setAllFaces(e), i;
   }
   /**
    * Create with sides only
    */
   static sidesOnly(e = !0) {
-    const i = new We();
+    const i = new Ue();
     return i.setAllSides(e), i;
   }
 }
-class se extends H {
+class ae extends q {
   // Zod schema for validation and serialization
-  static schema = Dr;
-  static computedProperties = Cr;
+  static schema = Er;
+  static computedProperties = Fr;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -7538,7 +7724,7 @@ class se extends H {
    * Get entity type
    */
   getType() {
-    return m.Extras;
+    return y.Extras;
   }
   constructor(e = {}) {
     const i = { ...e }, s = (n) => {
@@ -7560,21 +7746,21 @@ class se extends H {
    */
   validate(e) {
     const i = [];
-    if (Ne(this.banding)) {
+    if (Ve(this.banding)) {
       const s = this.banding.validate(e);
       i.push(...s);
     }
-    if (Ee(this.finish)) {
+    if (Fe(this.finish)) {
       const s = this.finish.validate(e);
       i.push(...s);
     }
-    if (Fe(this.planing)) {
+    if (Me(this.planing)) {
       const s = this.planing.validate(e);
       i.push(...s);
     }
-    if (Fe(this.planing) && Ee(this.finish) && e?.t) {
+    if (Me(this.planing) && Fe(this.finish) && e?.t) {
       const s = this.planing.getTotalFacePlaning();
-      s > 0 && e.t - s < 5 && i.push(new T({
+      s > 0 && e.t - s < 5 && i.push(new I({
         message: "Planing may not leave enough material for finish application",
         type: "warning"
       }));
@@ -7595,26 +7781,26 @@ class se extends H {
    */
   getTotalCost(e) {
     let i = 0;
-    return Ne(this.banding) && (i += this.banding.getCost(e)), Ee(this.finish) && (i += this.finish.getCost(e)), Fe(this.planing) && (i += this.planing.getCost(e)), i;
+    return Ve(this.banding) && (i += this.banding.getCost(e)), Fe(this.finish) && (i += this.finish.getCost(e)), Me(this.planing) && (i += this.planing.getCost(e)), i;
   }
   /**
    * Get human-readable description of all extras
    */
   getDescription() {
     const e = [];
-    return Ne(this.banding) && this.banding.hasValues() && e.push(this.banding.getDescription()), Ee(this.finish) && this.finish.hasValues() && e.push(this.finish.getDescription()), Fe(this.planing) && this.planing.hasValues() && e.push(this.planing.getDescription()), e.length > 0 ? e.join("; ") : "No extras";
+    return Ve(this.banding) && this.banding.hasValues() && e.push(this.banding.getDescription()), Fe(this.finish) && this.finish.hasValues() && e.push(this.finish.getDescription()), Me(this.planing) && this.planing.hasValues() && e.push(this.planing.getDescription()), e.length > 0 ? e.join("; ") : "No extras";
   }
   /**
    * Check if any extras are applied
    */
   hasExtras() {
-    return !!(Ne(this.banding) && this.banding.hasValues() || Ee(this.finish) && this.finish.hasValues() || Fe(this.planing) && this.planing.hasValues());
+    return !!(Ve(this.banding) && this.banding.hasValues() || Fe(this.finish) && this.finish.hasValues() || Me(this.planing) && this.planing.hasValues());
   }
   /**
    * Clear all extras
    */
   clear() {
-    Ne(this.banding) && this.banding.clear(), Ee(this.finish) && this.finish.clear(), Fe(this.planing) && this.planing.clear();
+    Ve(this.banding) && this.banding.clear(), Fe(this.finish) && this.finish.clear(), Me(this.planing) && this.planing.clear();
   }
   /**
    * Remove a specific extra type
@@ -7636,19 +7822,19 @@ class se extends H {
    * Set banding
    */
   setBanding(e) {
-    e ? e instanceof lt ? this.banding = e : this.banding = new lt(e) : this.banding = void 0;
+    e ? e instanceof ct ? this.banding = e : this.banding = new ct(e) : this.banding = void 0;
   }
   /**
    * Set finish
    */
   setFinish(e) {
-    e ? e instanceof Be ? this.finish = e : this.finish = new Be(e) : this.finish = void 0;
+    e ? e instanceof qe ? this.finish = e : this.finish = new qe(e) : this.finish = void 0;
   }
   /**
    * Set planing
    */
   setPlaning(e) {
-    e ? e instanceof We ? this.planing = e : this.planing = new We(e) : this.planing = void 0;
+    e ? e instanceof Ue ? this.planing = e : this.planing = new Ue(e) : this.planing = void 0;
   }
   /**
    * Set image upload
@@ -7681,35 +7867,35 @@ class se extends H {
    * Create from plain data (for deserialization)
    */
   static fromData(e) {
-    return new se(e);
+    return new ae(e);
   }
   /**
    * Create empty extras container
    */
   static empty() {
-    return new se();
+    return new ae();
   }
   /**
    * Create with specific extras
    */
   static create(e) {
-    return new se(e);
+    return new ae(e);
   }
   /**
    * Check if any extras are applicable to shape
    * Used for UI validation to determine if extras tab should be enabled
    */
   isApplicable(e) {
-    return !!(Ne(this.banding) && this.banding.isApplicable(e) || Ee(this.finish) && this.finish.isApplicable(e) || Fe(this.planing) && this.planing.isApplicable(e));
+    return !!(Ve(this.banding) && this.banding.isApplicable(e) || Fe(this.finish) && this.finish.isApplicable(e) || Me(this.planing) && this.planing.isApplicable(e));
   }
   /**
    * Get summary of active extras
    */
   getSummary() {
     return {
-      hasBanding: Ne(this.banding) && this.banding.hasValues() || !1,
-      hasFinish: Ee(this.finish) && this.finish.hasValues() || !1,
-      hasPlaning: Fe(this.planing) && this.planing.hasValues() || !1,
+      hasBanding: Ve(this.banding) && this.banding.hasValues() || !1,
+      hasFinish: Fe(this.finish) && this.finish.hasValues() || !1,
+      hasPlaning: Me(this.planing) && this.planing.hasValues() || !1,
       // hasImageUpload: ( isImageUpload( this.imageUpload ) && this.imageUpload.hasValues() ) || false,
       totalCost: this.getTotalCost(),
       description: this.getDescription()
@@ -7724,7 +7910,7 @@ class se extends H {
     const i = e?.extras;
     if (!i) return !1;
     const s = i.banding;
-    return s ? Ne(s) && typeof s.hasValues == "function" ? s.hasValues() : s.sides && typeof s.sides == "object" ? Object.keys(s.sides).some((n) => {
+    return s ? Ve(s) && typeof s.hasValues == "function" ? s.hasValues() : s.sides && typeof s.sides == "object" ? Object.keys(s.sides).some((n) => {
       const o = s.sides[n];
       return o !== void 0 && o !== !1 && o !== "";
     }) : !1 : !1;
@@ -7737,7 +7923,7 @@ class se extends H {
     const i = e?.extras;
     if (!i) return !1;
     const s = i.finish;
-    return s ? Ee(s) && typeof s.hasValues == "function" ? s.hasValues() : s.faces && typeof s.faces == "object" ? Object.keys(s.faces).some((n) => {
+    return s ? Fe(s) && typeof s.hasValues == "function" ? s.hasValues() : s.faces && typeof s.faces == "object" ? Object.keys(s.faces).some((n) => {
       const o = s.faces[n];
       return o !== void 0 && o !== !1 && o !== "";
     }) : !1 : !1;
@@ -7750,7 +7936,7 @@ class se extends H {
     const i = e?.extras;
     if (!i) return !1;
     const s = i.planing;
-    return s ? Fe(s) && typeof s.hasValues == "function" ? s.hasValues() : s.sides && typeof s.sides == "object" && Object.keys(s.sides).some((o) => {
+    return s ? Me(s) && typeof s.hasValues == "function" ? s.hasValues() : s.sides && typeof s.sides == "object" && Object.keys(s.sides).some((o) => {
       const r = s.sides[o];
       return r !== void 0 && r !== !1 && r !== "";
     }) ? !0 : s.faces && typeof s.faces == "object" ? Object.keys(s.faces).some((n) => {
@@ -7766,7 +7952,7 @@ class se extends H {
     const i = e?.extras;
     if (!i) return !1;
     const s = i.imageUpload;
-    return s ? er(s) && typeof s.hasValues == "function" ? s.hasValues() : s.images && Array.isArray(s.images) ? s.images.length > 0 : !1 : !1;
+    return s ? nr(s) && typeof s.hasValues == "function" ? s.hasValues() : s.images && Array.isArray(s.images) ? s.images.length > 0 : !1 : !1;
   }
   /**
    * Check if a shape has any extras of a specific type with actual values
@@ -7781,15 +7967,15 @@ class se extends H {
     if (i)
       switch (i) {
         case "banding":
-          return se.hasBanding(e);
+          return ae.hasBanding(e);
         case "finish":
-          return se.hasFinish(e);
+          return ae.hasFinish(e);
         case "planing":
-          return se.hasPlaning(e);
+          return ae.hasPlaning(e);
         case "imageUpload":
-          return se.hasImageUpload(e);
+          return ae.hasImageUpload(e);
       }
-    return se.hasBanding(e) || se.hasFinish(e) || se.hasPlaning(e) || se.hasImageUpload(e);
+    return ae.hasBanding(e) || ae.hasFinish(e) || ae.hasPlaning(e) || ae.hasImageUpload(e);
   }
   /**
    * Get array of active extra types for a shape
@@ -7800,25 +7986,25 @@ class se extends H {
    */
   static getActiveExtrasTypes(e) {
     const i = [];
-    return se.hasBanding(e) && i.push("banding"), se.hasFinish(e) && i.push("finish"), se.hasPlaning(e) && i.push("planing"), i;
+    return ae.hasBanding(e) && i.push("banding"), ae.hasFinish(e) && i.push("finish"), ae.hasPlaning(e) && i.push("planing"), i;
   }
 }
-const qi = !1;
-function wa() {
+const Yi = !1;
+function La() {
   return {
     banding: {
       scope: ["sides"],
-      sides: Je.map((t) => `side.${t}`)
+      sides: tt.map((t) => `side.${t}`)
       // Only use main sides (l1/l2/w1/w2), not corners
     },
     finish: {
       scope: ["faces"],
-      faces: ve.map((t) => `face.${t}`)
+      faces: Te.map((t) => `face.${t}`)
     },
     planing: {
       scope: ["faces", "sides"],
-      faces: ve.map((t) => `face.${t}`),
-      sides: Je.map((t) => `side.${t}`)
+      faces: Te.map((t) => `face.${t}`),
+      sides: tt.map((t) => `side.${t}`)
       // Only use main sides (l1/l2/w1/w2)
       /* constraints: {
       	// Example constraints for planing - you can customize these
@@ -7844,7 +8030,7 @@ function wa() {
     },
     info: {
       scope: ["sides"],
-      sides: qe.map((t) => `side.${t}`)
+      sides: He.map((t) => `side.${t}`)
     }
     /* imageUpload: {
     	scope: [ 'sides' ],
@@ -7852,41 +8038,41 @@ function wa() {
     } */
   };
 }
-const Sa = wa(), Le = (t) => Sa[t] || {
+const Ra = La(), Ee = (t) => Ra[t] || {
   scope: ["sides"],
-  sides: qe.map((e) => `side.${e}`)
-}, xa = (t) => {
-  const e = Le(t), i = [];
+  sides: He.map((e) => `side.${e}`)
+}, Ea = (t) => {
+  const e = Ee(t), i = [];
   return e.faces && i.push(...e.faces), e.sides && i.push(...e.sides), i;
-}, ec = (t) => (Le(t).faces || []).map((i) => {
-  const s = Ke(i);
+}, dc = (t) => (Ee(t).faces || []).map((i) => {
+  const s = Xe(i);
   return s.scope === "face" ? s.key : void 0;
-}).filter((i) => i !== void 0), tc = (t) => (Le(t).sides || []).map((i) => {
-  const s = Ke(i);
+}).filter((i) => i !== void 0), hc = (t) => (Ee(t).sides || []).map((i) => {
+  const s = Xe(i);
   return s.scope === "side" ? s.key : void 0;
-}).filter((i) => typeof i == "string"), Ke = (t) => {
+}).filter((i) => typeof i == "string"), Xe = (t) => {
   const e = t.split(".");
   if (e.length !== 2 || e[0] !== "face" && e[0] !== "side")
     throw new Error(`Invalid ExtraLocation format: ${t}. Must be 'face.X' or 'side.X'`);
   const i = e[0], s = e[1];
-  if (i === "face" && !ve.includes(s))
+  if (i === "face" && !Te.includes(s))
     throw new Error(`Invalid face key '${s}' in location '${t}'`);
-  if (i === "side" && !qe.includes(s))
+  if (i === "side" && !He.includes(s))
     throw new Error(`Invalid side key '${s}' in location '${t}'`);
   return {
     scope: i,
     key: s,
     original: t
   };
-}, ic = (t) => Ke(t).scope, Rs = (t) => Le(t).scope.includes("faces"), Es = (t) => Le(t).scope.includes("sides"), sc = (t) => {
-  const e = Le(t);
+}, pc = (t) => Xe(t).scope, $s = (t) => Ee(t).scope.includes("faces"), Gs = (t) => Ee(t).scope.includes("sides"), gc = (t) => {
+  const e = Ee(t);
   return e.scope.includes("faces") && e.scope.includes("sides");
-}, ka = (t, e) => {
+}, Fa = (t, e) => {
   if (t.length === 1 && t[0].length === 1 && t[0][0] === !0)
     return "boolean";
   const i = t.flat().filter((o) => typeof o == "string"), n = [.../* @__PURE__ */ new Set([...i, ...e || []])].length;
   return n === 0 ? "multiple" : n === 1 ? "single" : "multiple";
-}, nc = (t, e = "") => {
+}, mc = (t, e = "") => {
   if (typeof t == "string") return t;
   if (typeof t == "boolean") return t ? "Y" : e;
   if (typeof t == "object" && t !== null && !Array.isArray(t)) {
@@ -7894,26 +8080,26 @@ const Sa = wa(), Le = (t) => Sa[t] || {
     return i.length > 0 ? i.join("|") : e;
   }
   return e;
-}, va = (t, e) => {
+}, Ma = (t, e) => {
   const i = t;
   i.extras || (i.extras = {}), i.extras[e] || (i.extras[e] = {});
   const s = i.extras[e];
-  Rs(e) && (s.faces || (s.faces = {})), Es(e) && (s.sides || (s.sides = {}));
-}, Ia = (t, e, i) => {
-  va(t, e);
-  const n = t.extras[e], { scope: o } = Ke(i);
+  $s(e) && (s.faces || (s.faces = {})), Gs(e) && (s.sides || (s.sides = {}));
+}, _a = (t, e, i) => {
+  Ma(t, e);
+  const n = t.extras[e], { scope: o } = Xe(i);
   return o === "face" ? {
     extraContainer: n.faces || {}
   } : {
     extraContainer: n.sides || {}
   };
-}, rc = (t, e, i) => {
-  const s = Xt(t, e, i);
+}, yc = (t, e, i) => {
+  const s = Qt(t, e, i);
   if (s == null || s === !1 || s === "")
     return !1;
   if (typeof s != "object" || Array.isArray(s))
     return typeof s == "boolean" ? s : typeof s == "string" ? s.trim() !== "" : !!s;
-  const n = Ge(e);
+  const n = Ne(e);
   if (!n || !n.labels || n.labels.length === 0)
     return !!s;
   const o = s, r = [];
@@ -7928,10 +8114,10 @@ const Sa = wa(), Le = (t) => Sa[t] || {
     const c = o[l];
     return !(c == null || c === !1 || c === "" || typeof c == "string" && c.trim() === "");
   });
-}, Ta = (t, e, i, s, n) => {
-  const o = Ge(e);
+}, $a = (t, e, i, s, n) => {
+  const o = Ne(e);
   if (o) {
-    const r = Xt(t, e, i);
+    const r = Qt(t, e, i);
     if (r !== null) {
       if (typeof r == "boolean")
         return r;
@@ -7963,27 +8149,27 @@ const Sa = wa(), Le = (t) => Sa[t] || {
     }
   }
   return !1;
-}, oc = (t, e, i, s, n, o, r) => {
-  if (Ge(e))
-    switch (Da(e)) {
+}, bc = (t, e, i, s, n, o, r) => {
+  if (Ne(e))
+    switch (ja(e)) {
       case "boolean":
-        ti(t, e, i, !!n);
+        si(t, e, i, !!n);
         break;
       case "string":
-        ti(t, e, i, String(n));
+        si(t, e, i, String(n));
         break;
       case "object":
         {
-          let c = Xt(t, e, i) || {};
-          typeof c != "object" && (c = {}), c[s] = n, ti(t, e, i, c);
+          let c = Qt(t, e, i) || {};
+          typeof c != "object" && (c = {}), c[s] = n, si(t, e, i, c);
         }
         break;
     }
-}, Pa = (t, e, i, s) => {
-  Oa(t, e, i);
-}, ac = (t, e, i, s, n) => {
+}, Ga = (t, e, i, s) => {
+  Na(t, e, i);
+}, wc = (t, e, i, s, n) => {
   if (i.length === 0) return null;
-  const o = i.map((r) => Ta(t, e, r, s));
+  const o = i.map((r) => $a(t, e, r, s));
   if (n === "boolean" || n === "single") {
     const r = o.every((l) => !!l), a = o.every((l) => !l);
     return r ? !0 : a ? !1 : null;
@@ -7993,40 +8179,40 @@ const Sa = wa(), Le = (t) => Sa[t] || {
     return o.every((l) => l === r) ? r : null;
   }
   return null;
-}, lc = (t, e, i, s) => {
+}, Sc = (t, e, i, s) => {
   i.forEach((n) => {
-    Pa(t, e, n);
+    Ga(t, e, n);
   });
-}, cc = (t, e, i, s, n, o) => {
-  const r = Xt(t, e, i), a = [];
+}, xc = (t, e, i, s, n, o) => {
+  const r = Qt(t, e, i), a = [];
   if (r && o?.length)
     if (typeof r == "object" && !Array.isArray(r)) {
       const c = r;
       for (const f of o) {
-        const h = c[f];
-        if (!h) {
+        const d = c[f];
+        if (!d) {
           a.push("");
           continue;
         }
-        if (h === !0) {
-          const d = Ge(e), g = d?.labels.indexOf(f) ?? -1, y = g !== -1 && d?.options[g], v = y?.length === 1 ? y[0] : f;
-          a.push(v);
+        if (d === !0) {
+          const h = Ne(e), g = h?.labels.indexOf(f) ?? -1, m = g !== -1 && h?.options[g], S = m?.length === 1 ? m[0] : f;
+          a.push(S);
           continue;
         }
-        a.push(String(h));
+        a.push(String(d));
       }
     } else if (typeof r == "string") {
       const c = r.split("|");
-      o.forEach((f, h) => {
-        a.push(c[h] || "");
+      o.forEach((f, d) => {
+        a.push(c[d] || "");
       });
     } else
       a.push(String(r));
   else if (r)
     if (typeof r == "string" && o?.length) {
       const c = r.split("|");
-      o.forEach((f, h) => {
-        a.push(c[h] || "");
+      o.forEach((f, d) => {
+        a.push(c[d] || "");
       });
     } else
       a.push(String(r));
@@ -8036,20 +8222,20 @@ const Sa = wa(), Le = (t) => Sa[t] || {
   if (!s)
     return 0;
   try {
-    const c = l.map((h, d) => {
-      if (typeof h == "boolean" && h === !0 && n) {
-        const g = n[d];
+    const c = l.map((d, h) => {
+      if (typeof d == "boolean" && d === !0 && n) {
+        const g = n[h];
         if (g && g.length === 1)
           return String(g[0]);
       }
-      return String(h);
+      return String(d);
     });
     return s(e, c);
   } catch (c) {
     return console.error("Error calculating extras price:", c), !1;
   }
-}, uc = (t, e, i) => {
-  const s = /* @__PURE__ */ new Set(), n = Le(e);
+}, kc = (t, e, i) => {
+  const s = /* @__PURE__ */ new Set(), n = Ee(e);
   if (t.forEach((o) => {
     const a = o.extras[e];
     a && (n.faces && "faces" in a && a.faces && Object.values(a.faces).forEach((l) => {
@@ -8061,8 +8247,8 @@ const Sa = wa(), Le = (t) => Sa[t] || {
     const o = [.../* @__PURE__ */ new Set([...i.value, ...Array.from(s)])];
     i.value = o;
   }
-}, fc = (t, e, i, s) => {
-  const n = s[0], o = Le(e);
+}, vc = (t, e, i, s) => {
+  const n = s[0], o = Ee(e);
   n && t.forEach((r) => {
     const l = r.extras[e];
     if (!l) return;
@@ -8079,8 +8265,8 @@ const Sa = wa(), Le = (t) => Sa[t] || {
         l.sides[f] === !0 && (l.sides[f] = i);
     }
   });
-}, dc = (t, e, i) => {
-  const s = Le(e);
+}, Ic = (t, e, i) => {
+  const s = Ee(e);
   t.forEach((n) => {
     const r = n.extras[e];
     if (r) {
@@ -8092,13 +8278,13 @@ const Sa = wa(), Le = (t) => Sa[t] || {
           r.sides[a] === i && (r.sides[a] = !0);
     }
   });
-}, Aa = (t, e, i, s = !1) => {
-  const n = Le(e), o = t;
+}, za = (t, e, i, s = !1) => {
+  const n = Ee(e), o = t;
   o.extras[e] || (o.extras[e] = {});
   const r = o.extras[e];
   r.options || (r.options = {});
   const a = r.options;
-  if (Rs(e) && (r.faces || (r.faces = {}), a.faces || (a.faces = {})), Es(e) && (r.sides || (r.sides = {}), a.sides || (a.sides = {})), s) {
+  if ($s(e) && (r.faces || (r.faces = {}), a.faces || (a.faces = {})), Gs(e) && (r.sides || (r.sides = {}), a.sides || (a.sides = {})), s) {
     if (n.faces && r.faces) {
       for (const l in r.faces) {
         const c = r.faces[l];
@@ -8119,51 +8305,51 @@ const Sa = wa(), Le = (t) => Sa[t] || {
     }
   } else
     n.faces && a.faces, n.sides && a.sides;
-}, hc = (t, e, i, s = [], n = []) => {
-  const o = ka(i, n);
-  Aa(t, e, o === "boolean" ? [] : s, o === "boolean");
-}, pc = (t, e, i, s) => {
+}, Pc = (t, e, i, s = [], n = []) => {
+  const o = Fa(i, n);
+  za(t, e, o === "boolean" ? [] : s, o === "boolean");
+}, Tc = (t, e, i, s) => {
   if (!i || !Object.keys(i).length)
     return { valid: !0, messages: [], incompleteLocations: [] };
-  const n = [], o = [], r = xa(e), a = Object.keys(i), l = Math.max(...a.map((f) => f.split("|").length));
+  const n = [], o = [], r = Ea(e), a = Object.keys(i), l = Math.max(...a.map((f) => f.split("|").length));
   if (l <= 1)
     return { valid: !0, messages: [], incompleteLocations: [] };
   for (const f of r) {
-    const { extraContainer: h } = Ia(t, e, f), { key: d } = Ke(f), g = h[d];
+    const { extraContainer: d } = _a(t, e, f), { key: h } = Xe(f), g = d[h];
     if (!g)
       continue;
-    let y;
-    typeof g == "string" ? y = g.includes("|") ? g.split("|") : [g] : typeof g == "boolean" ? y = g ? ["true"] : [] : typeof g == "object" && !Array.isArray(g) && g !== null ? y = Object.values(g).filter((B) => B != null && B !== "" && B !== !1).map((B) => String(B)) : y = [String(g)];
-    const v = y.length;
-    if (v === 0)
+    let m;
+    typeof g == "string" ? m = g.includes("|") ? g.split("|") : [g] : typeof g == "boolean" ? m = g ? ["true"] : [] : typeof g == "object" && !Array.isArray(g) && g !== null ? m = Object.values(g).filter((_) => _ != null && _ !== "" && _ !== !1).map((_) => String(_)) : m = [String(g)];
+    const S = m.length;
+    if (S === 0)
       continue;
-    let G = !1, w = !1, W = "";
-    if (v > 0) {
+    let A = !1, b = !1, M = "";
+    if (S > 0) {
       if (s)
         try {
-          const B = y.filter((k) => k.trim() !== ""), re = s(e, B);
-          w = re !== null && re > 0;
-        } catch (B) {
-          console.error("[validateExtrasCompleteness] Error getting price:", B), w = !1;
+          const _ = m.filter((O) => O.trim() !== ""), U = s(e, _);
+          b = U !== null && U > 0;
+        } catch (_) {
+          console.error("[validateExtrasCompleteness] Error getting price:", _), b = !1;
         }
       else {
-        const B = y.join("|");
-        w = a.some((re) => re === B || re.startsWith(B + "|"));
+        const _ = m.join("|");
+        b = a.some((U) => U === _ || U.startsWith(_ + "|"));
       }
-      if (v < l) {
-        G = !0;
-        const B = y.join("|");
-        if (a.some((k) => k.startsWith(B + "|")) && !w) {
-          const k = l - v, O = y.join(", ");
-          W = `${e} selection incomplete for ${f}. Selected: "${O}" but ${k} more level${k > 1 ? "s" : ""} required.`;
+      if (S < l) {
+        A = !0;
+        const _ = m.join("|");
+        if (a.some((O) => O.startsWith(_ + "|")) && !b) {
+          const O = l - S, J = m.join(", ");
+          M = `${e} selection incomplete for ${f}. Selected: "${J}" but ${O} more level${O > 1 ? "s" : ""} required.`;
         }
       }
-      !w && !G && (W = `${e} selection invalid for ${f}. No pricing available for "${y.join(", ")}".`);
+      !b && !A && (M = `${e} selection invalid for ${f}. No pricing available for "${m.join(", ")}".`);
     }
-    v > 0 && !w && (o.push(f), n.push(W || `${e} pricing incomplete for ${f}: ${v}/${l} levels selected`));
+    S > 0 && !b && (o.push(f), n.push(M || `${e} pricing incomplete for ${f}: ${S}/${l} levels selected`));
   }
   return { valid: o.length === 0, messages: n, incompleteLocations: o };
-}, gc = (t, e, i) => {
+}, Ac = (t, e, i) => {
   if (!i || !i[e])
     return { valid: !0, violations: [] };
   const s = i[e], n = [], o = (a, l, c) => {
@@ -8186,41 +8372,41 @@ const Sa = wa(), Le = (t) => Sa[t] || {
     violations: n,
     message: s.message
   };
-}, mc = (t, e, i) => {
+}, Dc = (t, e, i) => {
   if (i)
     return i;
   const s = e.dimension === "t" ? "thickness" : e.dimension === "longSide" ? "long side" : "short side", n = e.constraint === "min" ? "minimum" : "maximum";
   return `${t.charAt(0).toUpperCase() + t.slice(1)} requires ${s} ${n} of ${e.limit} (current: ${e.value})`;
 };
-function yc(t, e = "banding") {
+function Oc(t, e = "banding") {
   const i = t.extras?.[e];
   if (!i?.sides) return;
   const s = i.sides, n = s.l1, o = s.l2, r = s.w1, a = s.w2;
   s.l1 = r, s.l2 = a, s.w1 = n, s.w2 = o;
 }
-let ui = null;
-const bc = (t) => {
-  ui = t;
-}, Ge = (t) => ui ? ui.getExtrasConfig(t) : null, ti = (t, e, i, s) => {
+let di = null;
+const Cc = (t) => {
+  di = t;
+}, Ne = (t) => di ? di.getExtrasConfig(t) : null, si = (t, e, i, s) => {
   t.extras || (t.extras = {}), t.extras[e] || (t.extras[e] = { sides: {}, faces: {} });
-  const { scope: n, key: o } = Ke(i), r = n === "face" ? t.extras[e].faces : t.extras[e].sides;
+  const { scope: n, key: o } = Xe(i), r = n === "face" ? t.extras[e].faces : t.extras[e].sides;
   r[o] = s;
-}, Xt = (t, e, i) => {
-  const { scope: s, key: n } = Ke(i), o = s === "face" ? t.extras?.[e]?.faces : t.extras?.[e]?.sides;
+}, Qt = (t, e, i) => {
+  const { scope: s, key: n } = Xe(i), o = s === "face" ? t.extras?.[e]?.faces : t.extras?.[e]?.sides;
   return o?.[n]?.value || o?.[n] || null;
-}, Oa = (t, e, i) => {
-  const { scope: s, key: n } = Ke(i), o = s === "face" ? t.extras?.[e]?.faces : t.extras?.[e]?.sides;
+}, Na = (t, e, i) => {
+  const { scope: s, key: n } = Xe(i), o = s === "face" ? t.extras?.[e]?.faces : t.extras?.[e]?.sides;
   o && n in o && delete o[n];
-}, Da = (t) => {
-  const e = Ge(t);
+}, ja = (t) => {
+  const e = Ne(t);
   return !e || e.options.length === 1 && Array.isArray(e.options[0]) && e.options[0].length === 1 && e.options[0][0] === !0 || e.options.length === 1 && Array.isArray(e.options[0]) && e.options[0].length === 0 ? "boolean" : e.options.length === 1 && Array.isArray(e.options[0]) && e.options[0].every((i) => typeof i == "string") ? "string" : e.options.length > 1 ? "object" : "string";
 };
-class lt extends jt {
+class ct extends Bt {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Sr;
+  static schema = Ir;
   static computedProperties = {
-    ...jt.computedProperties,
-    ...xr
+    ...Bt.computedProperties,
+    ...Pr
   };
   /**
    * Get entity type
@@ -8238,7 +8424,7 @@ class lt extends jt {
   validate(e) {
     const i = [];
     for (const s in this.sides)
-      Je.includes(s) || i.push(new T({
+      tt.includes(s) || i.push(new I({
         item: e,
         message: `Invalid banding side: ${s}`,
         type: "warning"
@@ -8278,7 +8464,7 @@ class lt extends jt {
     const i = this.sides[e];
     if (!i) return !1;
     if (typeof i == "object" && !Array.isArray(i)) {
-      const s = i, n = Ge("banding");
+      const s = i, n = Ne("banding");
       if (n && n.labels && n.labels.length > 0) {
         const r = n.labels.map((a) => {
           const l = s[a];
@@ -8323,7 +8509,7 @@ class lt extends jt {
    * Set all sides to the same value
    */
   setAllSides(e) {
-    for (const i of Je)
+    for (const i of tt)
       this.setSide(i, e);
   }
   /**
@@ -8372,26 +8558,26 @@ class lt extends jt {
    * Create from plain data (for deserialization)
    */
   static fromData(e) {
-    return new lt(e);
+    return new ct(e);
   }
   /**
    * Create empty banding
    */
   static empty() {
-    return new lt();
+    return new ct();
   }
   /**
    * Create with all sides
    */
   static allSides(e = !0) {
-    const i = new lt();
+    const i = new ct();
     return i.setAllSides(e), i;
   }
 }
-class ct extends H {
+class ut extends q {
   // Zod schema for validation and serialization
-  static schema = vr;
-  static computedProperties = Ir;
+  static schema = Ar;
+  static computedProperties = Dr;
   /**
    * Get entity type (required for AutoSerializable)
    */
@@ -8406,10 +8592,10 @@ class ct extends H {
    */
   validate() {
     const e = [];
-    return this.type && this.size !== null && this.size <= 0 && e.push(new T({
+    return this.type && this.size !== null && this.size <= 0 && e.push(new I({
       message: `Corner ${this.index + 1}: Size must be positive`,
       type: "error"
-    })), (this.index < 0 || this.index > 3) && e.push(new T({
+    })), (this.index < 0 || this.index > 3) && e.push(new I({
       message: "Corner index must be between 0 and 3",
       type: "error"
     })), this.issues = e, e;
@@ -8421,7 +8607,7 @@ class ct extends H {
     const s = this.validate();
     if (!this.type || !this.size || this.size <= 0) return s;
     const n = Math.min(e, i);
-    return this.size > n / 2 && s.push(new T({
+    return this.size > n / 2 && s.push(new I({
       message: `Corner ${this.index + 1}: Size cannot exceed half of shortest side (${n / 2})`,
       type: "error"
     })), this.issues = s, s;
@@ -8483,25 +8669,25 @@ class ct extends H {
    * Create from plain data (for deserialization)
    */
   static fromData(e) {
-    return new ct(e);
+    return new ut(e);
   }
   /**
    * Create a radius corner
    */
   static radius(e, i) {
-    return new ct({ type: "radius", size: e, index: i });
+    return new ut({ type: "radius", size: e, index: i });
   }
   /**
    * Create a bevel corner
    */
   static bevel(e, i) {
-    return new ct({ type: "bevel", size: e, index: i });
+    return new ut({ type: "bevel", size: e, index: i });
   }
 }
-class Oe extends H {
+class Ce extends q {
   // Zod schema for validation and serialization
-  static schema = $r;
-  static computedProperties = Gr;
+  static schema = jr;
+  static computedProperties = Br;
   /**
    * Get entity type (required for AutoSerializable)
    */
@@ -8516,13 +8702,13 @@ class Oe extends H {
     */
   validate() {
     const e = [];
-    return (this.x < 0 || this.y < 0) && e.push(new T({
+    return (this.x < 0 || this.y < 0) && e.push(new I({
       message: "Position cannot be negative",
       type: "error"
-    })), this.diameter <= 0 && e.push(new T({
+    })), this.diameter <= 0 && e.push(new I({
       message: "Diameter must be positive",
       type: "error"
-    })), this.depth !== void 0 && this.depth < 0 && e.push(new T({
+    })), this.depth !== void 0 && this.depth < 0 && e.push(new I({
       message: "Depth cannot be negative",
       type: "error"
     })), this.issues = e, e;
@@ -8606,23 +8792,23 @@ class Oe extends H {
     * Create hole from coordinates
     */
   static fromCoordinates(e, i, s, n = 0) {
-    return new Oe({ x: e, y: i, diameter: s, face: n });
+    return new Ce({ x: e, y: i, diameter: s, face: n });
   }
   /**
     * Create from plain data (for deserialization)
     */
   static fromData(e) {
-    return new Oe(e);
+    return new Ce(e);
   }
   get area() {
     const e = this.diameter / 2;
     return Math.PI * e * e;
   }
 }
-class Nt extends H {
+class Vt extends q {
   // Zod schema for validation and serialization
-  static schema = Fr;
-  static computedProperties = _r;
+  static schema = Gr;
+  static computedProperties = zr;
   /**
    * Get entity type (required for AutoSerializable)
    */
@@ -8637,24 +8823,24 @@ class Nt extends H {
    */
   validate() {
     const e = [];
-    if (this.position < 0 && e.push(new T({
+    if (this.position < 0 && e.push(new I({
       message: "Position cannot be negative",
       type: "error"
-    })), this.numHoles <= 0 && e.push(new T({
+    })), this.numHoles <= 0 && e.push(new I({
       message: "Number of holes must be positive",
       type: "error"
-    })), this.diameter <= 0 && e.push(new T({
+    })), this.diameter <= 0 && e.push(new I({
       message: "Diameter must be positive",
       type: "error"
-    })), this.hingeLength <= 0 && e.push(new T({
+    })), this.hingeLength <= 0 && e.push(new I({
       message: "Hinge length must be positive",
       type: "error"
-    })), this.depth !== void 0 && this.depth < 0 && e.push(new T({
+    })), this.depth !== void 0 && this.depth < 0 && e.push(new I({
       message: "Depth cannot be negative",
       type: "error"
     })), this.numHoles > 1) {
       const i = this.hingeLength - 2 * this.outerSpacing;
-      this.diameter * this.numHoles > i && e.push(new T({
+      this.diameter * this.numHoles > i && e.push(new I({
         message: "Holes do not fit within hinge length",
         type: "error"
       }));
@@ -8674,7 +8860,7 @@ class Nt extends H {
    */
   createHoles(e) {
     const i = e?.l || e?.getLongSide?.() || e?.longSide || 0, s = e?.w || e?.getShortSide?.() || e?.shortSide || 0;
-    return this.generateHoles(i, s).map((o) => new Oe(o));
+    return this.generateHoles(i, s).map((o) => new Ce(o));
   }
   /**
    * Generate individual holes from this hinge hole set
@@ -8702,7 +8888,7 @@ class Nt extends H {
         default:
           a = 0, l = 0;
       }
-      s.push(new Oe({
+      s.push(new Ce({
         x: a,
         y: l,
         diameter: this.diameter,
@@ -8740,17 +8926,17 @@ class Nt extends H {
    * Create from plain data (for deserialization)
    */
   static fromData(e) {
-    return new Nt(e);
+    return new Vt(e);
   }
 }
-class Ca extends H {
+class Ba extends q {
   // Validation properties (issues, warnings) are inherited from validationBasePropertiesSchema
   // via sawPropertiesSchema which extends it - they are initialized automatically
   // when the Zod schema is parsed in the constructor
   // isValid is also provided as a computed property from validationBaseComputedProperties
   // Zod schema for validation and serialization
-  static schema = li;
-  static computedProperties = Po;
+  static schema = ui;
+  static computedProperties = Ro;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -8764,7 +8950,7 @@ class Ca extends H {
   ];
   // Legacy compressionExcludedProperties removed - using schema-based compression behaviors
   // Static defaults inferred from Zod schema
-  static defaults = li.parse({});
+  static defaults = ui.parse({});
   constructor(e = {}) {
     super(e), this.stockType === "linear" && (this.cutType = void 0, this.cutPreference = void 0), this.cutType !== "efficiency" && this.options?.minSpacing !== 0 && (this.options = { ...this.options, minSpacing: 0 });
   }
@@ -8772,7 +8958,7 @@ class Ca extends H {
    * Get entity type
    */
   getType() {
-    return m.Saw;
+    return y.Saw;
   }
   /**
     * Validate the saw data
@@ -8780,7 +8966,7 @@ class Ca extends H {
     * Delegates to async validation which uses the schema
     */
   validate() {
-    return this.issues = [], this.warnings = [], this.bladeWidth < 0 && this.issues.push(new T({
+    return this.issues = [], this.warnings = [], this.bladeWidth < 0 && this.issues.push(new I({
       message: "Blade width cannot be negative",
       field: [["bladeWidth"]],
       type: "error",
@@ -8788,19 +8974,19 @@ class Ca extends H {
     })), this.issues;
   }
 }
-function Ri(t, e, i = "decimal") {
+function Fi(t, e, i = "decimal") {
   const s = { ...t };
   for (const [n, o] of Object.entries(e)) {
     const r = t[n];
     switch (o.type) {
       case "number":
-        r != null ? s[n] = typeof r == "string" ? P({ v: r, nf: i }) : r : r === null && (s[n] = null);
+        r != null ? s[n] = typeof r == "string" ? D({ v: r, nf: i }) : r : r === null && (s[n] = null);
         break;
       case "trim":
         if (r) {
           const a = {};
           for (const [l, c] of Object.entries(r))
-            a[l] = typeof c == "string" ? P({ v: c, nf: i }) : c;
+            a[l] = typeof c == "string" ? D({ v: c, nf: i }) : c;
           s[n] = a;
         }
         break;
@@ -8820,7 +9006,7 @@ function Ri(t, e, i = "decimal") {
   }
   return s;
 }
-const La = {
+const Va = {
   // Numeric fields that need conversion
   l: { type: "number" },
   w: { type: "number" },
@@ -8844,7 +9030,7 @@ const La = {
   multiEdit: { type: "omit" },
   selectedMaterial: { type: "omit" },
   readonly: { type: "omit" }
-}, Ra = {
+}, Wa = {
   // Numeric fields that need conversion
   l: { type: "number" },
   // Will be handled specially with default 0 in Stock constructor
@@ -8864,7 +9050,7 @@ const La = {
   selected: { type: "omit" },
   multiEdit: { type: "omit" },
   readonly: { type: "omit" }
-}, Ea = {
+}, qa = {
   // Numeric field that needs conversion
   bladeWidth: { type: "number" },
   // Stack height should ensure it's a number
@@ -8874,10 +9060,10 @@ const La = {
     type: "transform",
     transform: (t) => ({
       ...t,
-      minSpacing: typeof t?.minSpacing == "string" ? P({ v: t.minSpacing, nf: "decimal" }) : t?.minSpacing ?? 0,
+      minSpacing: typeof t?.minSpacing == "string" ? D({ v: t.minSpacing, nf: "decimal" }) : t?.minSpacing ?? 0,
       minSpacingDimension: {
-        dimension: typeof t?.minSpacingDimension?.dimension == "string" ? P({ v: t.minSpacingDimension.dimension, nf: "decimal" }) : t?.minSpacingDimension?.dimension ?? 0,
-        minSpacing: typeof t?.minSpacingDimension?.minSpacing == "string" ? P({ v: t.minSpacingDimension.minSpacing, nf: "decimal" }) : t?.minSpacingDimension?.minSpacing ?? 0
+        dimension: typeof t?.minSpacingDimension?.dimension == "string" ? D({ v: t.minSpacingDimension.dimension, nf: "decimal" }) : t?.minSpacingDimension?.dimension ?? 0,
+        minSpacing: typeof t?.minSpacingDimension?.minSpacing == "string" ? D({ v: t.minSpacingDimension.minSpacing, nf: "decimal" }) : t?.minSpacingDimension?.minSpacing ?? 0
       }
     })
   },
@@ -8889,10 +9075,10 @@ const La = {
   // All other fields (stockType, cutType, cutPreference, etc.)
   // are already in the correct format and will pass through as-is
 };
-function Vt() {
+function Wt() {
   this.issues = [], this.warnings && (this.warnings = []);
 }
-function rt(t) {
+function at(t) {
   t.type === "warning" && this.warnings ? this.warnings.push(t) : this.issues.push(t);
 }
 function dt(t) {
@@ -8906,7 +9092,7 @@ function dt(t) {
       const o = e;
       o.maximum !== void 0 && (i.maximum = o.maximum, i.max = o.maximum);
     }
-    return new T({
+    return new I({
       field: [[e.path.join(".")]],
       message: e.message,
       // Should be a translation key from our custom error map
@@ -8920,39 +9106,39 @@ function dt(t) {
     });
   });
 }
-function Ui(t, e) {
+function Ki(t, e) {
   const i = t.safeParse(e);
   return i.success ? [] : dt(i.error);
 }
-const Fs = {
-  clearValidation: Vt,
-  addIssue: rt,
-  validateWithSchema: Ui,
+const zs = {
+  clearValidation: Wt,
+  addIssue: at,
+  validateWithSchema: Ki,
   zodErrorsToIssues: dt,
   /**
    * Run standard validation flow
    */
   runValidation(t, e = {}) {
-    return Vt.call(this), e.skipSchemaValidation || Ui(t, this).forEach((s) => rt.call(this, s)), this.issues || [];
+    return Wt.call(this), e.skipSchemaValidation || Ki(t, this).forEach((s) => at.call(this, s)), this.issues || [];
   }
 };
-class wc extends H {
+class Lc extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = ai;
-  static computedProperties = uo;
+  static schema = ci;
+  static computedProperties = go;
   // Legacy compressionExcludedProperties removed - using schema-based compression behaviors
   constructor(e = {}) {
     super(e);
-    const i = ri(this.stockType);
+    const i = ai(this.stockType);
     i.includes(this.cutType) || (this.cutType = i.length > 0 ? i[0] : void 0);
-    const s = oi(this.stockType, this.cutType);
+    const s = li(this.stockType, this.cutType);
     this.cutPreference && !s.includes(this.cutPreference) ? this.cutPreference = s[0] || void 0 : !this.cutPreference && s.length > 0 && (this.cutPreference = s.includes("l") ? "l" : s[0]), this.stockType === "roll" && this.options?.stackingMode !== "none" && (this.options = { ...this.options, stackingMode: "none" }), this.cutType !== "efficiency" && this.options?.minSpacing !== 0 && (this.options = { ...this.options, minSpacing: 0 });
   }
   /**
    * Get entity type
    */
   getType() {
-    return m.InputSaw;
+    return y.InputSaw;
   }
   // Validation properties (issues, warnings, isValid) come from the schema via SchemaClass
   // clearValidation and addIssue are provided by validation-helpers
@@ -8961,28 +9147,28 @@ class wc extends H {
    * Implements the Validatable interface requirement
    */
   validate(e) {
-    if (Vt.call(this), e?.skipSchemaValidation || Fs.runValidation.call(
+    if (Wt.call(this), e?.skipSchemaValidation || zs.runValidation.call(
       this,
-      ai,
+      ci,
       e
     ), !e?.skipBusinessValidation) {
       if (this.bladeWidth !== void 0 && this.bladeWidth !== null) {
-        const i = P({ v: this.bladeWidth });
-        i === null || isNaN(i) || i < 0 ? rt.call(this, new T({
+        const i = D({ v: this.bladeWidth });
+        i === null || isNaN(i) || i < 0 ? at.call(this, new I({
           message: "Blade width must be a non-negative number",
           type: "error",
           field: [["bladeWidth"]]
-        })) : i > 100 && rt.call(this, new T({
+        })) : i > 100 && at.call(this, new I({
           message: "Blade width seems unusually large (> 100)",
           type: "warning",
           field: [["bladeWidth"]]
         }));
       }
-      this.stackHeight !== void 0 && this.stackHeight !== null && (this.stackHeight < 1 ? rt.call(this, new T({
+      this.stackHeight !== void 0 && this.stackHeight !== null && (this.stackHeight < 1 ? at.call(this, new I({
         message: "Stack height must be at least 1",
         type: "error",
         field: [["stackHeight"]]
-      })) : this.stackHeight > 1e3 && rt.call(this, new T({
+      })) : this.stackHeight > 1e3 && at.call(this, new I({
         message: "Stack height seems unusually large (> 1000)",
         type: "warning",
         field: [["stackHeight"]]
@@ -9013,11 +9199,11 @@ class wc extends H {
   update(e) {
     const i = this.stockType, s = this.cutType;
     super.update(e);
-    const n = ri(this.stockType);
+    const n = ai(this.stockType);
     n.includes(this.cutType) || (this.cutType = n.length > 0 ? n[0] : void 0);
     const o = i !== this.stockType, r = s !== this.cutType;
     if (o || r) {
-      const a = oi(this.stockType, this.cutType);
+      const a = li(this.stockType, this.cutType);
       this.cutPreference && !a.includes(this.cutPreference) ? a.length > 0 ? this.cutPreference = a.includes("l") ? "l" : a[0] : this.cutPreference = void 0 : !this.cutPreference && a.length > 0 && (this.cutPreference = a.includes("l") ? "l" : a[0]);
     }
     this.stockType === "roll" && this.options?.stackingMode !== "none" && (this.options = { ...this.options, stackingMode: "none" }), this.cutType !== "efficiency" && this.options?.minSpacing !== 0 && (this.options = { ...this.options, minSpacing: 0 }), this.validate();
@@ -9034,24 +9220,24 @@ class wc extends H {
    * Convert to Saw instance for runtime use
    */
   toSaw() {
-    const e = this.toData(), i = Ri(
+    const e = this.toData(), i = Fi(
       e,
-      Ea
+      qa
     );
-    return new Ca(i);
+    return new Ba(i);
   }
 }
-const _s = qe, Hi = ve;
-Je.map((t) => `side.${t}`), Hi.map((t) => `face.${t}`), Hi.map((t) => `face.${t}`), _s.map((t) => `side.${t}`);
-class Bt extends H {
+const Ns = He, Zi = Te;
+tt.map((t) => `side.${t}`), Zi.map((t) => `face.${t}`), Zi.map((t) => `face.${t}`), Ns.map((t) => `side.${t}`);
+class qt extends q {
   // Zod schema for validation and serialization
-  static schema = So;
-  static computedProperties = xo;
+  static schema = To;
+  static computedProperties = Ao;
   /**
    * Get entity type (required for AutoSerializable)
    */
   getType() {
-    return m.Machining;
+    return y.Machining;
   }
   constructor(e = {}) {
     super(e);
@@ -9062,20 +9248,20 @@ class Bt extends H {
   validate(e, i, s) {
     const n = [];
     return i === "holes" ? this.holes.forEach((o, r) => {
-      (o.x < 0 || o.y < 0) && n.push(new T({
+      (o.x < 0 || o.y < 0) && n.push(new I({
         message: `Hole ${r + 1}: Position cannot be negative`,
         type: "error"
-      })), o.diameter <= 0 && n.push(new T({
+      })), o.diameter <= 0 && n.push(new I({
         message: `Hole ${r + 1}: Diameter must be positive`,
         type: "error"
       }));
     }) : i === "hingeHoles" ? this.hingeHoles.forEach((o, r) => {
-      o.position < 0 && n.push(new T({
+      o.position < 0 && n.push(new I({
         message: `Hinge ${r + 1}: Position cannot be negative`,
         type: "error"
       }));
     }) : i === "corners" ? this.corners.forEach((o, r) => {
-      o.size <= 0 && n.push(new T({
+      o.size <= 0 && n.push(new I({
         message: `Corner ${r + 1}: Size must be positive`,
         type: "error"
       }));
@@ -9085,7 +9271,7 @@ class Bt extends H {
     * Add a hole
     */
   addHole(e) {
-    this.holes.push(e instanceof Oe ? e : new Oe(e)), this.validate();
+    this.holes.push(e instanceof Ce ? e : new Ce(e)), this.validate();
   }
   /**
     * Remove a hole by index
@@ -9104,7 +9290,7 @@ class Bt extends H {
     * Add a hinge hole set
     */
   addHingeHole(e) {
-    this.hingeHoles.push(e instanceof Nt ? e : new Nt(e)), this.validate();
+    this.hingeHoles.push(e instanceof Vt ? e : new Vt(e)), this.validate();
   }
   /**
     * Remove a hinge hole set by index
@@ -9123,7 +9309,7 @@ class Bt extends H {
     * Add or update a corner
     */
   setCorner(e) {
-    const i = e instanceof ct ? e : new ct(e);
+    const i = e instanceof ut ? e : new ut(e);
     this.corners = this.corners.filter((s) => s.index !== i.index), this.corners.push(i), this.validate();
   }
   /**
@@ -9146,7 +9332,7 @@ class Bt extends H {
     const i = [];
     return this.hingeHoles.forEach((s) => {
       this.generateHingeHoles(s, e).forEach((o) => {
-        i.push(o instanceof Oe ? o : new Oe(o));
+        i.push(o instanceof Ce ? o : new Ce(o));
       });
     }), i;
   }
@@ -9200,19 +9386,19 @@ class Bt extends H {
     * Create empty machining
     */
   static empty() {
-    return new Bt();
+    return new qt();
   }
   /**
     * Create from plain data (for deserialization)
     */
   static fromData(e) {
-    return new Bt(e);
+    return new qt(e);
   }
   get allHoles() {
     const e = [...this.holes];
     return this.hingeHoles.forEach((i) => {
       this.generateHingeHoles(i, null).forEach((n) => {
-        e.push(new Oe(n));
+        e.push(new Ce(n));
       });
     }), e;
   }
@@ -9229,11 +9415,11 @@ class Bt extends H {
     return (this.corners || []).length;
   }
 }
-function Fa(t, e, i) {
-  return i ? typeof t == "number" ? isNaN(t) ? null : t : typeof t == "string" ? t : null : e === "decimal" ? t ? P({ v: t, nf: "decimal" }) : null : t;
+function Ua(t, e, i) {
+  return i ? typeof t == "number" ? isNaN(t) ? null : t : typeof t == "string" ? t : null : e === "decimal" ? t ? D({ v: t, nf: "decimal" }) : null : t;
 }
-function _a(t, e, i, s = !1) {
-  const n = s ? Object.fromEntries(Je.map((a) => [a, 0])) : { l1: 0, l2: 0, w1: 0, w2: 0 };
+function Ha(t, e, i, s = !1) {
+  const n = s ? Object.fromEntries(tt.map((a) => [a, 0])) : { l1: 0, l2: 0, w1: 0, w2: 0 };
   if (!t) return n;
   const r = t && ("x1" in t || "x2" in t || "y1" in t || "y2" in t) ? {
     // CORRECT mapping: y1→l1, y2→l2, x1→w1, x2→w2
@@ -9246,13 +9432,13 @@ function _a(t, e, i, s = !1) {
     n[a] = r[a] ?? 0;
   }) : Object.keys(n).forEach((a) => {
     const l = r[a];
-    l != null && (n[a] = P({ v: l, nf: e }));
+    l != null && (n[a] = D({ v: l, nf: e }));
   }), n;
 }
-class Ms extends H {
+class js extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Mt;
-  static computedProperties = Di;
+  static schema = $t;
+  static computedProperties = Li;
   // Validation properties (issues, warnings, isValid) come from the schema via SchemaClass
   // The Validatable interface is satisfied by:
   // - issues: Issue[] - from validationBasePropertiesSchema
@@ -9268,14 +9454,14 @@ class Ms extends H {
   constructor(e = {}, i = "decimal") {
     const s = { ...e }, n = !!s.skipValidation, o = ["l", "w", "t", "cost"];
     for (const r of o)
-      s[r] === null || s[r] === void 0 ? delete s[r] : s[r] !== void 0 && (s[r] = Fa(s[r], i, n), s[r] === null && delete s[r]);
-    s.name?.length ? s.name = on(s.name)?.toUpperCase() : s.name = "", s.material ? s.material = s.material.trim().toUpperCase() : s.material = "", typeof s.notes == "string" ? s.notes = s.notes.replace(/,/g, " ") : s.notes = "", s.trim && (s.trim = _a(s.trim, i, n, !0)), super(s), this.issues || (this.issues = []), this.warnings || (this.warnings = []);
+      s[r] === null || s[r] === void 0 ? delete s[r] : s[r] !== void 0 && (s[r] = Ua(s[r], i, n), s[r] === null && delete s[r]);
+    s.name?.length ? s.name = un(s.name)?.toUpperCase() : s.name = "", s.material ? s.material = s.material.trim().toUpperCase() : s.material = "", typeof s.notes == "string" ? s.notes = s.notes.replace(/,/g, " ") : s.notes = "", s.trim && (s.trim = Ha(s.trim, i, n, !0)), super(s), this.issues || (this.issues = []), this.warnings || (this.warnings = []);
   }
   /**
    * Get entity type
    */
   getType() {
-    return m.InputRectangle;
+    return y.InputRectangle;
   }
   /**
      * Create ID for shape (override parent implementation)
@@ -9291,9 +9477,9 @@ class Ms extends H {
    * Base implementation - subclasses should override with specific validation
    */
   validate(e) {
-    return Vt.call(this), e?.skipSchemaValidation || Fs.runValidation.call(
+    return Wt.call(this), e?.skipSchemaValidation || zs.runValidation.call(
       this,
-      Mt,
+      $t,
       e
     ), this.issues;
   }
@@ -9302,7 +9488,7 @@ class Ms extends H {
    * Get trimmed dimensions
    */
   get trimmedDimensions() {
-    const e = this.longSide, i = this.shortSide, s = P({ v: this.trim.l1 }) ?? 0, n = P({ v: this.trim.l2 }) ?? 0, o = P({ v: this.trim.w1 }) ?? 0, r = P({ v: this.trim.w2 }) ?? 0;
+    const e = this.longSide, i = this.shortSide, s = D({ v: this.trim.l1 }) ?? 0, n = D({ v: this.trim.l2 }) ?? 0, o = D({ v: this.trim.w1 }) ?? 0, r = D({ v: this.trim.w2 }) ?? 0;
     return {
       name: this.name,
       id: this.id,
@@ -9312,14 +9498,14 @@ class Ms extends H {
     };
   }
 }
-class Sc extends Ms {
+class Rc extends js {
   // Required: Define schema and computed properties for SchemaClass
   // Use getters to defer schema access and avoid circular dependency
   static get schema() {
-    return Ct;
+    return Lt;
   }
   static get computedProperties() {
-    return yo;
+    return xo;
   }
   // UI helper properties (extends parent)
   warningKeys = ["q"];
@@ -9331,25 +9517,25 @@ class Sc extends Ms {
     return this.extras?.banding;
   }
   set banding(e) {
-    this.extras || (this.extras = new se()), this.extras.banding = e;
+    this.extras || (this.extras = new ae()), this.extras.banding = e;
   }
   get finish() {
     return this.extras?.finish;
   }
   set finish(e) {
-    this.extras || (this.extras = new se()), this.extras.finish = e;
+    this.extras || (this.extras = new ae()), this.extras.finish = e;
   }
   get planing() {
     return this.extras?.planing;
   }
   set planing(e) {
-    this.extras || (this.extras = new se()), this.extras.planing = e;
+    this.extras || (this.extras = new ae()), this.extras.planing = e;
   }
   get imageUpload() {
     return this.extras?.imageUpload;
   }
   set imageUpload(e) {
-    this.extras || (this.extras = new se()), this.extras.imageUpload = e;
+    this.extras || (this.extras = new ae()), this.extras.imageUpload = e;
   }
   // Note: Options getters/setters removed - options now centralized in CalculationData.extrasOptions
   // Legacy compressionExcludedProperties removed - using schema-based compression behaviors
@@ -9357,12 +9543,12 @@ class Sc extends Ms {
     const s = {
       ...e,
       // orientationLock transform is now handled by Zod schema
-      machining: e.machining || new Bt({
+      machining: e.machining || new qt({
         holes: [],
         hingeHoles: [],
         corners: []
       }),
-      extras: e.extras || new se()
+      extras: e.extras || new ae()
     };
     super(s, i);
   }
@@ -9370,14 +9556,14 @@ class Sc extends Ms {
    * Get entity type
    */
   getType() {
-    return m.InputShape;
+    return y.InputShape;
   }
   /**
     * Apply part trim
     */
   applyPartTrim(e, i) {
     if (!this.readonly)
-      if (e = P({ v: e }), this.trim) {
+      if (e = D({ v: e }), this.trim) {
         for (const s in this.trim)
           this.trim[s] = e;
         i === "linear" && (this.trim.w1 = 0, this.trim.w2 = 0);
@@ -9398,21 +9584,21 @@ class Sc extends Ms {
       return this.issues;
     if (e?.fields && Array.isArray(e.fields)) {
       const l = e.fields;
-      for (let d = this.issues.length - 1; d >= 0; d--)
-        this.issues[d].field.some((g) => l.includes(g[0])) && this.issues.splice(d, 1);
-      for (let d = this.warnings.length - 1; d >= 0; d--)
-        this.warnings[d].field.some((g) => l.includes(g[0])) && this.warnings.splice(d, 1);
-      const c = e.fields.reduce((d, g) => {
-        const y = g.split(".")[0];
-        return d[y] = !0, d;
-      }, {}), h = Ct.pick(c).safeParse(this.toData());
-      if (!h.success) {
-        const d = dt(h.error);
-        this.issues.push(...d);
+      for (let h = this.issues.length - 1; h >= 0; h--)
+        this.issues[h].field.some((g) => l.includes(g[0])) && this.issues.splice(h, 1);
+      for (let h = this.warnings.length - 1; h >= 0; h--)
+        this.warnings[h].field.some((g) => l.includes(g[0])) && this.warnings.splice(h, 1);
+      const c = e.fields.reduce((h, g) => {
+        const m = g.split(".")[0];
+        return h[m] = !0, h;
+      }, {}), d = Lt.pick(c).safeParse(this.toData());
+      if (!d.success) {
+        const h = dt(d.error);
+        this.issues.push(...h);
       }
     } else {
       this.issues.length = 0, this.warnings.length = 0;
-      const l = Ct.safeParse(this.toData());
+      const l = Lt.safeParse(this.toData());
       if (!l.success) {
         const c = dt(l.error);
         this.issues.push(...c);
@@ -9428,28 +9614,28 @@ class Sc extends Ms {
       useInventory: n = !1,
       fields: o = null
     } = e, r = (l) => !o || o.includes(l);
-    r("l") && he.l({
+    r("l") && be.l({
       item: this,
       index: s ?? this.index,
       category: ["part"]
-    }), r("w") && he.w({
+    }), r("w") && be.w({
       item: this,
       index: s ?? this.index,
       category: ["part"]
-    }), r("t") && he.t({
+    }), r("t") && be.t({
       item: this,
       index: s ?? this.index,
       category: ["part"],
       saw: e.saw
-    }), r("q") && he.q({
+    }), r("q") && be.q({
       item: this,
       index: s ?? this.index,
       category: ["part"]
-    }), r("trim") && he.trim({
+    }), r("trim") && be.trim({
       item: this,
       index: s ?? this.index,
       category: ["part"]
-    }), !n && i.length > 0, r("customData") && he.customData({
+    }), !n && i.length > 0, r("customData") && be.customData({
       item: this,
       index: s ?? this.index
     });
@@ -9465,12 +9651,12 @@ class Sc extends Ms {
    * Convert to Shape instance
    */
   toShape(e) {
-    const i = Ri(
+    const i = Fi(
       this.toData(),
-      La,
+      Va,
       e
     );
-    return this.isSquare && (i.orientationLock = null), new Yt(i);
+    return this.isSquare && (i.orientationLock = null), new Zt(i);
   }
   changeStockType(e) {
     switch (e) {
@@ -9480,16 +9666,16 @@ class Sc extends Ms {
         break;
       case "linear":
         this.orientationLock = "", this.banding = Object.fromEntries(
-          _s.map((i) => [i, !1])
+          Ns.map((i) => [i, !1])
         );
         break;
     }
   }
 }
-class xc extends Ms {
+class Ec extends js {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Lt;
-  static computedProperties = bo;
+  static schema = Rt;
+  static computedProperties = ko;
   // UI helper properties (extends parent)
   warningKeys = ["q"];
   issueKeys = ["l", "w", "t", "trim"];
@@ -9506,7 +9692,7 @@ class xc extends Ms {
    * Get entity type
    */
   getType() {
-    return m.InputStock;
+    return y.InputStock;
   }
   // isSquare is now a computed property inherited from InputRectangle
   /**
@@ -9519,34 +9705,34 @@ class xc extends Ms {
       return this.issues;
     if (e?.fields && Array.isArray(e.fields)) {
       const c = e.fields;
-      for (let d = this.issues.length - 1; d >= 0; d--)
-        this.issues[d].field.some((y) => c.includes(y[0])) && this.issues.splice(d, 1);
-      for (let d = this.warnings.length - 1; d >= 0; d--)
-        this.warnings[d].field.some((y) => c.includes(y[0])) && this.warnings.splice(d, 1);
+      for (let h = this.issues.length - 1; h >= 0; h--)
+        this.issues[h].field.some((m) => c.includes(m[0])) && this.issues.splice(h, 1);
+      for (let h = this.warnings.length - 1; h >= 0; h--)
+        this.warnings[h].field.some((m) => c.includes(m[0])) && this.warnings.splice(h, 1);
       const f = this.toData();
       console.log("[InputStock.validate] Field-level validation requested for fields:", e.fields), console.log("[InputStock.validate] Data to validate:", f);
-      const h = e.fields.reduce((d, g) => {
-        const y = g.split(".")[0];
-        return d[y] = !0, d;
+      const d = e.fields.reduce((h, g) => {
+        const m = g.split(".")[0];
+        return h[m] = !0, h;
       }, {});
       try {
-        const d = Lt.pick(h);
-        console.log("[InputStock.validate] Created partial schema for fields:", Object.keys(h));
-        const g = d.safeParse(f);
+        const h = Rt.pick(d);
+        console.log("[InputStock.validate] Created partial schema for fields:", Object.keys(d));
+        const g = h.safeParse(f);
         if (console.log("[InputStock.validate] Validation result:", g.success ? "SUCCESS" : "FAILED"), g.success)
           console.log("[InputStock.validate] No validation errors found");
         else {
           console.log("[InputStock.validate] Validation errors:", g.error.issues);
-          const y = dt(g.error);
-          this.issues = [...this.issues, ...y];
+          const m = dt(g.error);
+          this.issues = [...this.issues, ...m];
         }
-      } catch (d) {
-        console.warn(`Failed to validate fields ${e.fields.join(", ")}:`, d);
+      } catch (h) {
+        console.warn(`Failed to validate fields ${e.fields.join(", ")}:`, h);
       }
       this.isNew && (console.log("[InputStock.validate] Clearing isNew flag"), this.isNew = !1);
     } else {
       this.issues = [], this.warnings = [];
-      const c = Lt.safeParse(this.toData());
+      const c = Rt.safeParse(this.toData());
       if (!c.success) {
         const f = dt(c.error);
         this.issues = f;
@@ -9556,21 +9742,21 @@ class xc extends Ms {
       return this.issues;
     const o = e?.fields, r = (c) => !o || o.includes(c);
     ["l", "w", "t"].forEach((c) => {
-      r(c) && he[c]({
+      r(c) && be[c]({
         item: this,
         saw: s,
         index: n ?? this.index,
         category: ["stock"]
       });
-    }), r("grain") && he.grain({
+    }), r("grain") && be.grain({
       item: this,
       index: n ?? this.index,
       category: ["stock"]
-    }), r("trim") && he.trim({
+    }), r("trim") && be.trim({
       item: this,
       index: n ?? this.index,
       category: ["stock"]
-    }), r("q") && he.q({
+    }), r("q") && be.q({
       item: this,
       index: n ?? this.index,
       isWarning: !0,
@@ -9593,12 +9779,12 @@ class xc extends Ms {
   toStock(e, i) {
     const s = this.toData(), n = i?.stockType || this.saw?.stockType;
     s.trim && n && n === "linear" && (s.trim.w1 = 0, s.trim.w2 = 0);
-    const o = Ri(
+    const o = Fi(
       s,
-      Ra,
+      Wa,
       e
     );
-    return (i || this.saw) && (o.saw = i || this.saw), new zt(o);
+    return (i || this.saw) && (o.saw = i || this.saw), new jt(o);
   }
   changeType(e) {
     switch (e !== "sheet" && (this.grain = ""), e) {
@@ -9611,11 +9797,10 @@ class xc extends Ms {
     }
   }
 }
-class kc extends H {
+class Fc extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Ps;
-  static computedProperties = wo;
-  // Legacy compressionExcludedProperties removed - using schema-based compression behaviors
+  static schema = Cs;
+  static computedProperties = Io;
   constructor(e = {}) {
     const i = {
       ...e,
@@ -9630,7 +9815,7 @@ class kc extends H {
     * Get entity type
     */
   getType() {
-    return m.Group;
+    return y.InputUserGroup;
   }
   /**
    * Clear all validation issues and warnings
@@ -9652,7 +9837,7 @@ class kc extends H {
       this.clearValidation();
       return;
     }
-    this.clearValidation(), e.q !== void 0 && he.q({ item: e, index: "index" in e && typeof e.index == "number" ? e.index : 0 }).filter((s) => s).forEach((s) => this.addIssue(s));
+    this.clearValidation(), e.q !== void 0 && be.q({ item: e, index: "index" in e && typeof e.index == "number" ? e.index : 0 }).filter((s) => s).forEach((s) => this.addIssue(s));
   }
   /**
     * Validate with actual shape data
@@ -9660,26 +9845,27 @@ class kc extends H {
   validateWithShapes(e = []) {
     if (!e.length)
       throw new Error("A shapeList is required to validate an InputUserGroup.");
-    const i = [...this.issues], s = this.findShapes(e), n = he.groupShapeCount({
+    const i = [...this.issues], s = this.findShapes(e), n = be.groupShapeCount({
       item: this,
       index: 0,
       shapes: s,
       requiredCount: 2
     });
     if (i.push(...n), i.length) return i;
-    const o = he.groupOrientationLock({
-      item: this,
-      index: 0,
-      shapes: s
-    });
-    if (i.push(...o), i.length) return i;
-    const r = this.joinDimension, a = he.groupDimensions({
-      item: this,
-      index: 0,
-      shapes: s,
-      joinDirection: r
-    });
-    return i.push(...a), i;
+    if (this.positions?.length >= 2) {
+      const o = be.groupOverlap({
+        item: this,
+        index: 0,
+        shapes: s,
+        positions: this.positions.map((r) => ({
+          autoId: r.autoId,
+          x: r.x ?? 0,
+          y: r.y ?? 0
+        }))
+      });
+      i.push(...o);
+    }
+    return i;
   }
   /**
     * Find shapes from shape list
@@ -9688,10 +9874,10 @@ class kc extends H {
     if (this.shapeIds?.length && e.length) {
       const s = [];
       for (const n of this.shapeIds) {
-        const o = e.find((r) => !!(r.autoId === n || ye(r) && r.autoId === n || "id" in r && r.id === n));
-        o && (ye(o) || oe(o)) && s.push(o);
+        const o = e.find((r) => !!(r.autoId === n || Se(r) && r.autoId === n || "id" in r && r.id === n));
+        o && (Se(o) || fe(o)) && s.push(o);
       }
-      return s.length < this.shapeIds.length && this.addIssue(new T({
+      return s.length < this.shapeIds.length && this.addIssue(new I({
         message: "Could not find all shapes in the shape list",
         type: "error"
       })), s;
@@ -9699,88 +9885,114 @@ class kc extends H {
     if (!this.shapes.length) return [];
     const i = [];
     for (const s of this.shapes) {
-      const n = e.find((o) => !!(o.autoId === s || String(o.autoId) === String(s) || "id" in o && (o.id === s || String(o.id) === String(s)) || ye(o) && (o.autoId === s || String(o.autoId) === String(s))));
-      n && (ye(n) || oe(n)) && i.push(n);
+      const n = e.find((o) => !!(o.autoId === s || String(o.autoId) === String(s) || "id" in o && (o.id === s || String(o.id) === String(s)) || Se(o) && (o.autoId === s || String(o.autoId) === String(s))));
+      n && (Se(n) || fe(n)) && i.push(n);
     }
     return i;
   }
-  // isValid is now provided as a computed property from the validation schema
   /**
    * Populate parent IDs from shape list IDs
    */
   populateParentID(e) {
     e?.length && this?.shapeIds?.length && (this.shapes = this.shapeIds.map((i) => {
-      const s = e.find((n) => n.autoId === i || ye(n) && n.autoId === i);
+      const s = e.find((n) => n.autoId === i || Se(n) && n.autoId === i);
       return s ? (e.indexOf(s) + 1).toString() : null;
     }).filter((i) => i !== null));
   }
   /**
     * Create runtime Group from this user input
-    * @param groupParentID - Parent ID for the group (optional, for compatibility)
-    * @param groupIndex - Index for the group (optional, for compatibility)
-    * @param shapeList - List of shapes to create group from
+    * @param shapeList - List of shapes to create group from (can also be first positional param)
+    * @param _groupIndex - Unused, kept for signature compat
+    * @param shapeListAlt - Alternative shapeList parameter position
     * @param stock - Optional stock reference for spacing calculations
     */
   toGroup(e, i, s, n) {
-    if (Array.isArray(e) && (s = e, e = void 0, n = void 0), s) {
-      const d = s.filter((y) => ye(y) || oe(y)), g = this.validateWithShapes(d);
-      if (g.filter((y) => y.type === "error").length > 0)
-        throw new Error(`Cannot create Group: ${g[0].message}`);
+    if (Array.isArray(e) || (Array.isArray(s) ? e = s : e = []), e.length) {
+      const m = e.filter((A) => Se(A) || fe(A)), S = this.validateWithShapes(m);
+      if (S.filter((A) => A.type === "error").length > 0)
+        throw new Error(`Cannot create Group: ${S[0].message}`);
     }
-    const o = this.findShapes(s || []);
+    const o = this.findShapes(e || []);
     if (o.length === 0)
       throw new Error("No shapes found for Group creation");
-    const r = o.map((d) => ye(d) ? d.toShape() : d), a = r[0];
-    r.forEach((d) => {
-      if (s && Array.isArray(s)) {
-        const g = s.findIndex((y) => "group" in y && y.group?.inUserGroup ? !1 : "parentId" in y && "parentId" in d && y.parentId === d.parentId || "id" in y && "id" in d && y.id === d.id);
-        g !== -1 && s.splice(g, 1);
+    const r = o.map((m) => Se(m) ? m.toShape() : m), a = r[0];
+    r.forEach((m) => {
+      if (e && Array.isArray(e)) {
+        const S = e.findIndex((A) => "group" in A && A.group?.inUserGroup ? !1 : "parentId" in A && "parentId" in m && A.parentId === m.parentId || "id" in A && "id" in m && A.id === m.id);
+        S !== -1 && e.splice(S, 1);
       }
-      if ("setRotationToOrientationLockWithoutContainer" in d && typeof d.setRotationToOrientationLockWithoutContainer == "function")
-        d.setRotationToOrientationLockWithoutContainer();
-      else if ("orientationLock" in d && d.orientationLock) {
-        const g = d.orientationLock;
-        try {
-          g === "l" && "rot" in d ? d.rot = 0 : g === "w" && "rot" in d && (d.rot = 1);
-        } catch {
+      "group" in m && m.group && (m.group.inUserGroup = !0);
+    });
+    let l = this.positions?.length ? this.positions.map((m) => {
+      const S = o.find((b) => b.autoId === m.autoId), A = S ? r[o.indexOf(S)] : r.find((b) => b.autoId === m.autoId);
+      return {
+        autoId: A?.autoId || m.autoId,
+        x: m.x ?? 0,
+        y: m.y ?? 0,
+        rot: A?.rot ?? 0
+      };
+    }) : void 0, c = 0, f = 0;
+    if (l?.length) {
+      let m = 1 / 0, S = 1 / 0;
+      for (const b of l)
+        m = Math.min(m, b.x), S = Math.min(S, b.y);
+      (m !== 0 || S !== 0) && (l = l.map((b) => ({
+        ...b,
+        x: b.x - m,
+        y: b.y - S
+      })));
+      const A = n?.bladeWidth ?? 0;
+      if (A > 0) {
+        const b = /* @__PURE__ */ new Set(), M = /* @__PURE__ */ new Set();
+        for (const _ of l) {
+          const U = r.find((O) => O.autoId === _.autoId);
+          if (U)
+            for (const O of l)
+              _.autoId !== O.autoId && (Math.abs(_.x + U.l - O.x) < 0.01 && b.add(_.x + U.l), Math.abs(_.y + U.w - O.y) < 0.01 && M.add(_.y + U.w));
+        }
+        if (b.size || M.size) {
+          const _ = [...b].sort((O, J) => O - J), U = [...M].sort((O, J) => O - J);
+          l = l.map((O) => ({
+            ...O,
+            x: O.x + _.filter((J) => O.x >= J).length * A,
+            y: O.y + U.filter((J) => O.y >= J).length * A
+          }));
         }
       }
-      "group" in d && d.group && (d.group.inUserGroup = !0);
-    });
-    let l = 0, c = 0;
-    this.direction === "horizontal" ? (c = a.w, r.forEach((d) => l += d.l)) : (l = a.l, r.forEach((d) => c += d.w));
-    const f = {
+      for (const b of l) {
+        const M = r.find((_) => _.autoId === b.autoId);
+        M && (c = Math.max(c, b.x + M.l), f = Math.max(f, b.y + M.w));
+      }
+    } else {
+      const m = n?.bladeWidth ?? 0;
+      let S = 0;
+      for (const A of r)
+        S += A.l + m, f = Math.max(f, A.w);
+      c = S - m, c < 0 && (c = 0);
+    }
+    const d = l, h = {
       autoId: this.autoId,
-      // Use the same autoId as the InputUserGroup
       shapes: r,
-      direction: this.direction,
-      // Already 'horizontal' or 'vertical'
-      l,
-      w: c,
+      userPositions: d,
+      l: c,
+      w: f,
       t: a?.t,
       material: a?.material,
-      orientationLock: c > l ? "w" : "l",
-      // Set based on which dimension is longer
+      orientationLock: f > c ? "w" : "l",
       type: "user",
       q: 1,
-      // Groups always have q=1
       preventAutoRotation: !0,
       container: n,
       skipValidation: !0
-      // Already validated
-    }, h = new Zt(f);
-    return n && "updateShapeSpacing" in h && typeof h.updateShapeSpacing == "function" && h.updateShapeSpacing(n), h;
+    }, g = new Xt(h);
+    return n && "updateShapeSpacing" in g && typeof g.updateShapeSpacing == "function" && g.updateShapeSpacing(n), g;
   }
   /**
     * Convert to plain data object
     */
   toData() {
     const e = super.toData();
-    if ("__entityType" in e) {
-      const { __entityType: i, ...s } = e;
-      return s;
-    }
-    return e;
+    return e.__entityType = y.InputUserGroup, e;
   }
   /**
     * Update properties from data
@@ -9794,8 +10006,29 @@ class kc extends H {
   validate() {
     return this.issues;
   }
-  get joinDimension() {
-    return this.direction === "horizontal" ? "w" : "l";
+  /**
+   * Update the position of a shape within the group
+   */
+  setShapePosition(e, i, s) {
+    this.positions || (this.positions = []);
+    const n = this.positions.find((o) => o.autoId === e);
+    n ? (n.x = i, n.y = s) : this.positions.push({ autoId: e, x: i, y: s });
+  }
+  /**
+   * Get the bounding box of all positioned shapes
+   */
+  getBoundingBox(e = []) {
+    if (!this.positions?.length) return { l: 0, w: 0 };
+    const i = this.findShapes(e);
+    let s = 1 / 0, n = 1 / 0, o = -1 / 0, r = -1 / 0;
+    for (const a of this.positions) {
+      const l = i.find((c) => c.autoId === a.autoId);
+      if (l) {
+        const c = l.trimmedDimensions || { l: l.l, w: l.w };
+        s = Math.min(s, a.x), n = Math.min(n, a.y), o = Math.max(o, a.x + c.l), r = Math.max(r, a.y + c.w);
+      }
+    }
+    return isFinite(s) ? { l: o - s, w: r - n } : { l: 0, w: 0 };
   }
   get excludedFields() {
     return ["proximity"];
@@ -9804,7 +10037,7 @@ class kc extends H {
     return ["issues", "stockMatch"];
   }
 }
-function $s(t) {
+function Bs(t) {
   return {
     entities: /* @__PURE__ */ new Map(),
     stockList: [],
@@ -9812,12 +10045,12 @@ function $s(t) {
     ...t
   };
 }
-function Et(t, e) {
+function Ft(t, e) {
   if (Array.isArray(e))
     for (const i of e)
       i && typeof i == "object" && (i.autoId && t.entities.set(i.autoId, i), i.id && i.id !== i.autoId && t.entities.set(i.id, i));
 }
-function Ma(t, e) {
+function Ya(t, e) {
   if (e) {
     if (e && typeof e == "object" && typeof e.getType == "function")
       return e;
@@ -9827,61 +10060,61 @@ function Ma(t, e) {
       return t.entities.get(e.autoId);
   }
 }
-function fi(t, e) {
+function hi(t, e) {
   if (!t || typeof t != "object") return t;
   if (Array.isArray(t))
-    return t.map((s) => fi(s, e));
+    return t.map((s) => hi(s, e));
   if (typeof t.getType == "function")
     return t;
   if (t.__ref && (t.id || t.autoId)) {
     const s = t.autoId || t.id;
-    return Ma(e, s) || t;
+    return Ya(e, s) || t;
   }
   const i = { ...t };
   for (const s in i)
-    Object.prototype.hasOwnProperty.call(i, s) && (i[s] = fi(i[s], e));
+    Object.prototype.hasOwnProperty.call(i, s) && (i[s] = hi(i[s], e));
   return i;
 }
-function Gs(t, e, i) {
+function Vs(t, e, i) {
   if (t == null || t && typeof t == "object" && typeof t.getType == "function")
     return t;
   if (Array.isArray(t))
-    return t.every((a) => a && typeof a == "object" && typeof a.getType == "function") ? t : t.map((a) => Gs(a, e));
+    return t.every((a) => a && typeof a == "object" && typeof a.getType == "function") ? t : t.map((a) => Vs(a, e));
   if (!t || typeof t != "object" || !t.__entityType && !t.__ref && !t.type)
     return t;
   const s = t.__entityType;
-  e?.preventAutoRotation && s && (s === m.Rectangle || s === m.Placeable || s === m.Container || s === m.Shape || s === m.Group || s === m.Offcut || s === m.Stock || s === m.Segment) && (t.preventAutoRotation = !0), e && (t.__context = e);
+  e?.preventAutoRotation && s && (s === y.Rectangle || s === y.Placeable || s === y.Container || s === y.Shape || s === y.Group || s === y.Offcut || s === y.Stock || s === y.Segment) && (t.preventAutoRotation = !0), e && (t.__context = e);
   const n = t.__ref || s, o = bt();
   if (n && o.has(n)) {
-    const r = o.get(n), { __ref: a, __entityType: l, __context: c, ...f } = t, h = new r(f);
-    return h.issues && Array.isArray(h.issues) && (h.issues = h.issues.map((d) => d instanceof T ? d : T.fromData(d, h))), h.warnings && Array.isArray(h.warnings) && (h.warnings = h.warnings.map((d) => d instanceof T ? d : T.fromData(d, h))), h;
+    const r = o.get(n), { __ref: a, __entityType: l, __context: c, ...f } = t, d = new r(f);
+    return d.issues && Array.isArray(d.issues) && (d.issues = d.issues.map((h) => h instanceof I ? h : I.fromData(h, d))), d.warnings && Array.isArray(d.warnings) && (d.warnings = d.warnings.map((h) => h instanceof I ? h : I.fromData(h, d))), d;
   }
   return delete t.__context, t;
 }
-function Xe(t, e) {
-  if (e || (e = $s()), Array.isArray(t)) {
+function Je(t, e) {
+  if (e || (e = Bs()), Array.isArray(t)) {
     const n = [];
     for (const o of t) {
-      const r = Xe(o, e);
-      n.push(r), r && typeof r == "object" && (r.autoId || r.id) && Et(e, [r]);
+      const r = Je(o, e);
+      n.push(r), r && typeof r == "object" && (r.autoId || r.id) && Ft(e, [r]);
     }
     return n;
   }
   if (t && typeof t == "object" && typeof t.getType == "function")
-    return (t.autoId || t.id) && Et(e, [t]), t;
-  const i = fi(t, e), s = Gs(i, e);
-  return s && typeof s == "object" && (s.autoId || s.id) && Et(e, [s]), s;
+    return (t.autoId || t.id) && Ft(e, [t]), t;
+  const i = hi(t, e), s = Vs(i, e);
+  return s && typeof s == "object" && (s.autoId || s.id) && Ft(e, [s]), s;
 }
-function vc(t, e) {
-  const i = $s(e), s = t?.saw ? Xe(t.saw, i) : void 0;
-  s && Et(i, [s]);
-  const n = t?.stockList ? Xe(t.stockList, i) : [];
+function Mc(t, e) {
+  const i = Bs(e), s = t?.saw ? Je(t.saw, i) : void 0;
+  s && Ft(i, [s]);
+  const n = t?.stockList ? Je(t.stockList, i) : [];
   n.length > 0 && (i.stockList = n);
-  const o = t?.shapeList ? Xe(t.shapeList, i) : [];
+  const o = t?.shapeList ? Je(t.shapeList, i) : [];
   o.length > 0 && (i.shapeList = o);
-  const r = t?.cutList ? Xe(t.cutList, i) : [], a = t?.segmentList ? Xe(t.segmentList, i) : [];
+  const r = t?.cutList ? Je(t.cutList, i) : [], a = t?.segmentList ? Je(t.segmentList, i) : [];
   a.length > 0 && (i.segmentList = a);
-  const l = t?.offcuts ? Xe(t.offcuts, i) : [];
+  const l = t?.offcuts ? Je(t.offcuts, i) : [];
   return {
     saw: s,
     stockList: n,
@@ -9892,10 +10125,10 @@ function vc(t, e) {
     context: i
   };
 }
-function Ic(t, e = [], i) {
-  return t?.length ? e?.length ? t.map((n) => $a(n, e, i)).filter((n) => X(n)) : [] : [];
+function _c(t, e = [], i) {
+  return t?.length ? e?.length ? t.map((n) => Ka(n, e, i)).filter((n) => Q(n)) : [] : [];
 }
-function $a(t, e, i) {
+function Ka(t, e, i) {
   if (t.type === "user") {
     const n = e.find((o) => o.id === t.id);
     n && (e = n.shapes);
@@ -9910,7 +10143,7 @@ function $a(t, e, i) {
     return n && n.id ? e.find((o) => o.id === n.id) : n;
   }).filter(Boolean)), t.shapes = s;
   try {
-    const n = bt(), o = n.get("Group") || n.get(m.Group);
+    const n = bt(), o = n.get("Group") || n.get(y.Group);
     if (o) {
       const r = new o(t);
       return r.shapes && Array.isArray(r.shapes) && r.shapes.forEach((a) => {
@@ -9922,23 +10155,23 @@ function $a(t, e, i) {
     return !1;
   }
 }
-function Tc(t, e) {
-  Ue() && (t.stocks && t.stocks.forEach((i, s) => {
-    Ie(i) || console.warn(`[${e}] Stock at index ${s} is not a proper Stock instance:`, i);
+function $c(t, e) {
+  Ye() && (t.stocks && t.stocks.forEach((i, s) => {
+    Ae(i) || console.warn(`[${e}] Stock at index ${s} is not a proper Stock instance:`, i);
   }), t.shapes && t.shapes.forEach((i, s) => {
-    !oe(i) && !X(i) && console.warn(`[${e}] Shape at index ${s} is not a proper Shape/Group instance:`, i);
+    !vi(i) && !Q(i) && console.warn(`[${e}] Shape at index ${s} is not a proper Shape/Group instance:`, i);
   }), t.segments && t.segments.forEach((i, s) => {
-    ot(i) || console.warn(`[${e}] Segment at index ${s} is not a proper Segment instance:`, i);
+    lt(i) || console.warn(`[${e}] Segment at index ${s} is not a proper Segment instance:`, i);
   }), t.groups && t.groups.forEach((i, s) => {
-    X(i) || console.warn(`[${e}] Group at index ${s} is not a proper Group instance:`, i);
+    Q(i) || console.warn(`[${e}] Group at index ${s} is not a proper Group instance:`, i);
   }), t.inputUserGroups && t.inputUserGroups.forEach((i, s) => {
-    ms(i) || console.warn(`[${e}] InputUserGroup at index ${s} is not a proper InputUserGroup instance:`, i);
+    Ss(i) || console.warn(`[${e}] InputUserGroup at index ${s} is not a proper InputUserGroup instance:`, i);
   }));
 }
-function Pc(t, e) {
+function Gc(t, e) {
   return Math.random() * (e - t) + t;
 }
-function Ki(t, e) {
+function Xi(t, e) {
   if (!de(t.stockLock) || Array.isArray(t.stockLock) && !t?.stockLock?.length)
     return !0;
   if (Array.isArray(t.stockLock)) {
@@ -9946,7 +10179,7 @@ function Ki(t, e) {
   } else if (t.stockLock === e.parentId) return !0;
   return !1;
 }
-function Ac(t, e = null, i = "filter", s = !1) {
+function zc(t, e = null, i = "filter", s = !1) {
   if (!t?.length) return [];
   function n(o) {
     if (s === !0) return o.added;
@@ -9955,13 +10188,15 @@ function Ac(t, e = null, i = "filter", s = !1) {
   }
   if (e) {
     if (e?.saw?.stockType === "linear")
-      return t[i]((o) => n(o) && !o.group?.inGroup && Ki(o, e) && o.l <= e.l);
-    if (e?.saw?.stockType !== "roll")
-      return e && Ie(e) ? t[i]((o) => n(o) && !o.group?.inGroup && Ki(o, e) && o.willItFit(e)) : t[i]((o) => n(o) && !o.group?.inGroup && o.willItFit(e));
+      return t[i]((o) => n(o) && !o.group?.inGroup && Xi(o, e) && o.l <= e.l);
+    if (e?.saw?.stockType !== "roll") {
+      const o = Ho(e);
+      return e && Ae(e) ? t[i]((r) => n(r) && !r.group?.inGroup && Xi(r, e) && r.willItFit(e, null, o)) : t[i]((r) => n(r) && !r.group?.inGroup && r.willItFit(e, null, o));
+    }
   }
   return t[i]((o) => n(o) && !o.group?.inGroup);
 }
-function Oc(t, e = null) {
+function Nc(t, e = null) {
   const i = t.filter((o) => !o?.unusable && (e === null || o.used === e)), s = /* @__PURE__ */ new Map();
   for (const o of i) {
     const r = o.parentId;
@@ -9969,7 +10204,7 @@ function Oc(t, e = null) {
   }
   return Array.from(s.values());
 }
-function Dc(t, e = null) {
+function jc(t, e = null) {
   function i(n) {
     if (e === !0) return n.used;
     if (e === !1) return !n.used;
@@ -9984,60 +10219,70 @@ function Dc(t, e = null) {
   }
   return Array.from(s.values());
 }
-function Cc(t, e, i) {
+function Bc(t, e, i) {
   const s = t.filter((o) => o[e] === 0), n = e === "y" ? "l" : "w";
   return s.reduce((o, r, a) => a > 0 ? o + r[n] + i : o + r[n], 0);
 }
-function Ga(t, e, i) {
+function Za(t, e, i) {
   if (e.length <= 1) return t;
-  const s = Na(e, i), n = t.reduce((a, l) => (a[l.id] = Va(l, s), a), {}), o = Math.min(...Object.values(n));
+  const s = Ja(e, i), n = t.reduce((a, l) => (a[l.id] = el(l, s), a), {}), o = Math.min(...Object.values(n));
   return t.filter((a) => !a.added && n[a.id] === o);
 }
-function za(t, e) {
+function Xa(t, e) {
   const i = e.parentId;
   return t.filter((s) => s.parentId === i).length;
 }
-function ja(t, e) {
+function Qa(t, e) {
   const i = e.parentId, s = t.filter((n) => n.used && n.parentId === i).length;
   return e.q - s;
 }
-function Lc(t, e) {
-  return za(t, e) < e.q;
+function Vc(t, e) {
+  return Xa(t, e) < e.q;
 }
-function Na(t, e) {
+function Ja(t, e) {
   const i = {};
-  return t.forEach((s) => i[s.parentId] = ja(e, s)), i;
+  return t.forEach((s) => i[s.parentId] = Qa(e, s)), i;
 }
-function Va(t, e) {
+function el(t, e) {
   return t.stockLock.reduce((s, n) => s + (e?.[n] ? e[n] : 0), 0);
 }
-function Ba(t, e, i = !1) {
-  const s = /* @__PURE__ */ new Map(), n = [], o = /* @__PURE__ */ new Set();
-  for (let r = 0; r < t.length; r++) {
-    const a = t[r], l = a.autoId;
-    if (s.has(l)) {
-      const c = s.get(l);
-      c && (n.push(c.item), s.set(l, null)), n.push(a), o.add(r);
-    } else
-      s.set(l, { item: a, index: r });
+function tl(t, e, i = !1) {
+  const s = /* @__PURE__ */ new Set();
+  let n = !1;
+  for (let l = 0; l < t.length; l++) {
+    if (s.has(t[l].autoId)) {
+      n = !0;
+      break;
+    }
+    s.add(t[l].autoId);
   }
-  if (n.length > 0) {
-    const r = e ? ` [${e}]` : "", a = [...new Set(n.map((l) => l.autoId))];
-    if (console.warn(`[duplicateIdsPresent]${r} Found duplicates!`), console.warn(`  Total items: ${t.length}`), console.warn(`  Duplicate autoIds: ${a.join(", ")}`), n.forEach((l) => {
-      console.warn(`  ${l.id} (autoId=${l.autoId}): added=${l.added}, x=${l.x}, y=${l.y}, isGroup=${!!l.shapes}`);
+  if (!n) return !1;
+  const o = /* @__PURE__ */ new Map(), r = [], a = /* @__PURE__ */ new Set();
+  for (let l = 0; l < t.length; l++) {
+    const c = t[l], f = c.autoId;
+    if (o.has(f)) {
+      const d = o.get(f);
+      d && (r.push(d.item), o.set(f, null)), r.push(c), a.add(l);
+    } else
+      o.set(f, { item: c, index: l });
+  }
+  if (r.length > 0) {
+    const l = e ? ` [${e}]` : "", c = [...new Set(r.map((f) => f.autoId))];
+    if (console.warn(`[duplicateIdsPresent]${l} Found duplicates!`), console.warn(`  Total items: ${t.length}`), console.warn(`  Duplicate autoIds: ${c.join(", ")}`), r.forEach((f) => {
+      console.warn(`  ${f.id} (autoId=${f.autoId}): added=${f.added}, x=${f.x}, y=${f.y}, isGroup=${!!f.shapes}`);
     }), i) {
-      const l = Array.from(o).sort((c, f) => f - c);
-      for (const c of l)
-        t.splice(c, 1);
-      console.warn(`  Removed ${l.length} duplicate items. New length: ${t.length}`);
+      const f = Array.from(a).sort((d, h) => h - d);
+      for (const d of f)
+        t.splice(d, 1);
+      console.warn(`  Removed ${f.length} duplicate items. New length: ${t.length}`);
     }
   }
-  return n.length > 0;
+  return r.length > 0;
 }
-function Rc(t, e) {
+function Wc(t, e) {
   return t.filter((i) => i.l >= e && i.w >= e);
 }
-function Wa(t, e) {
+function il(t, e) {
   if (t.stock?.autoId !== e.stock?.autoId) return !1;
   const i = t.x, s = t.x + t.l, n = t.y, o = t.y + t.w, r = e.x, a = e.x + e.l, l = e.y, c = e.y + e.w;
   return !(s <= r || // shape1 is completely to the left of shape2
@@ -10045,36 +10290,28 @@ function Wa(t, e) {
   o <= l || // shape1 is completely below shape2
   c <= n);
 }
-function Ec(t) {
+function qc(t) {
   const e = [], i = t.filter((s) => s.added);
   for (let s = 0; s < i.length; s++)
     for (let n = s + 1; n < i.length; n++)
-      Wa(i[s], i[n]) && e.push({
+      il(i[s], i[n]) && e.push({
         shape1: i[s],
         shape2: i[n]
       });
   return e;
 }
-function Fc(t) {
-  t.sort(Ce.groupPlacementOrder);
+function Uc(t) {
+  t.sort(Re.groupPlacementOrder);
   for (let e = 0; e < t.length; e++)
     t[e].placementOrder = e;
 }
-function _c(t, e) {
+function Hc(t, e) {
   e && t && (e.score = t.score, e.duplicatePattern = t.id);
 }
-let zs = () => {
-};
-function Mc(t) {
-  zs = t;
-}
-function Wt(t, e, i, s, n) {
-  zs(t, e, i, s, n);
-}
-class Ye extends H {
+class Qe extends q {
   // Required: Define schema and computed properties for SchemaClass
-  static schema = Io;
-  static computedProperties = To;
+  static schema = Co;
+  static computedProperties = Lo;
   /**
    * Leave serializationProperties empty to trigger automatic enumeration
    * We use serializationExcludedProperties for exclusion-based approach
@@ -10093,7 +10330,7 @@ class Ye extends H {
    * Get entity type
    */
   getType() {
-    return m.PointCollection;
+    return y.PointCollection;
   }
   /**
    * Add a point to the collection
@@ -10160,7 +10397,7 @@ class Ye extends H {
    * Create from array of points
    */
   static fromArray(e) {
-    const i = new Ye();
+    const i = new Qe();
     return e.forEach((s) => i.add(s)), i;
   }
   /**
@@ -10207,23 +10444,7 @@ class Ye extends H {
       i.validate(), this.deletePoint(i);
   }
 }
-function qa(t, e, i, s = !0) {
-  if (!t || !e || !i) return !1;
-  if (t.autoId === e.autoId)
-    throw console.error("[collision] ERROR: Shape/group is in testShapes array!"), console.error(`  thisShape: ${t.autoId} (${t.id})`), console.error(`  testShape: ${e.autoId} (${e.id})`), console.error(`  thisShape === testShape: ${t === e}`), new Error(`collision comparing to self ${t.autoId}, ${e.autoId}`);
-  const n = s ? i.bladeWidth : 0, o = t.x + t.l + n, r = e.x + e.l + n;
-  if (!I.lessThan(t.x, r) || !I.greaterThan(o, e.x))
-    return !1;
-  const a = t.y + t.w + n, l = e.y + e.w + n;
-  return I.lessThan(t.y, l) && I.greaterThan(a, e.y);
-}
-function Ua(t, e, i) {
-  for (const s of e)
-    if (t.autoId !== s.autoId && qa(t, s, i))
-      return !0;
-  return !1;
-}
-function $c(t, e, i, s = !1) {
+function Yc(t, e, i, s = !1) {
   if (!i || !i.length) return !1;
   if (!t?.dimension)
     throw new Error("no line direction provided to collisionWithShapes");
@@ -10231,67 +10452,67 @@ function $c(t, e, i, s = !1) {
   t.shapeCollisions = t.shapeCollisions || [], i = i.filter((o) => o.added);
   for (const o of i) {
     let r = !1, a = !1;
-    if (t.dimension === "l" ? (r = I.greaterThan(t.x2, o.x) && I.lessThan(t.x1, o.x + o.l), a = I.greaterThan(t.y1 + n, o.y) && I.lessThan(t.y1 - n, o.y + o.w)) : t.dimension === "w" && (r = I.greaterThan(t.x1 + n, o.x) && I.lessThan(t.x1 - n, o.x + o.l), a = I.greaterThan(t.y2, o.y) && I.lessThan(t.y1, o.y + o.w)), r && a)
+    if (t.dimension === "l" ? (r = v.greaterThan(t.x2, o.x) && v.lessThan(t.x1, o.x + o.l), a = v.greaterThan(t.y1 + n, o.y) && v.lessThan(t.y1 - n, o.y + o.w)) : t.dimension === "w" && (r = v.greaterThan(t.x1 + n, o.x) && v.lessThan(t.x1 - n, o.x + o.l), a = v.greaterThan(t.y2, o.y) && v.lessThan(t.y1, o.y + o.w)), r && a)
       if (s) t.shapeCollisions.push(o);
       else return !0;
   }
   return s ? t.shapeCollisions : t.shapeCollisions.length > 0;
 }
-function Ve(t, e, i, s, n = null, o = null) {
-  return new Qe({ x1: t, y1: e, x2: i, y2: s, origin: n, type: o });
+function We(t, e, i, s, n = null, o = null) {
+  return new et({ x1: t, y1: e, x2: i, y2: s, origin: n, type: o });
 }
-function Ha(t, e) {
+function sl(t, e) {
   const i = t.getCorners(), s = {};
-  return i.bottomLeft.x > 0 && i.bottomLeft.y > 0 && (s.bottomLeftDown = Ve(
+  return i.bottomLeft.x > 0 && i.bottomLeft.y > 0 && (s.bottomLeftDown = We(
     i.bottomLeft.x,
     i.bottomLeft.y,
     i.bottomLeft.x,
     0,
     "bottomLeft",
     "bottomLeftDown"
-  ), s.bottomLeftLeft = Ve(
+  ), s.bottomLeftLeft = We(
     i.bottomLeft.x,
     i.bottomLeft.y,
     0,
     i.bottomLeft.y,
     "bottomLeft",
     "bottomLeftLeft"
-  )), i.topLeft.x > 0 && i.topLeft.y < e.w && (s.topLeftLeft = Ve(
+  )), i.topLeft.x > 0 && i.topLeft.y < e.w && (s.topLeftLeft = We(
     i.topLeft.x,
     i.topLeft.y,
     0,
     i.topLeft.y,
     "topLeft",
     "topLeftLeft"
-  ), s.topLeftTop = Ve(
+  ), s.topLeftTop = We(
     i.topLeft.x,
     i.topLeft.y,
     i.topLeft.x,
     e.w,
     "topLeft",
     "topLeftTop"
-  )), i.topRight.y < e.w && i.topRight.x < e.l && (s.topRightTop = Ve(
+  )), i.topRight.y < e.w && i.topRight.x < e.l && (s.topRightTop = We(
     i.topRight.x,
     i.topRight.y,
     i.topRight.x,
     e.w,
     "topRight",
     "topRightTop"
-  ), s.topRightRight = Ve(
+  ), s.topRightRight = We(
     i.topRight.x,
     i.topRight.y,
     e.l,
     i.topRight.y,
     "topRight",
     "topRightRight"
-  )), i.bottomRight.x < e.l && i.bottomRight.y > 0 && (s.bottomRightRight = Ve(
+  )), i.bottomRight.x < e.l && i.bottomRight.y > 0 && (s.bottomRightRight = We(
     i.bottomRight.x,
     i.bottomRight.y,
     e.l,
     i.bottomRight.y,
     "bottomRight",
     "bottomRightRight"
-  ), s.bottomRightDown = Ve(
+  ), s.bottomRightDown = We(
     i.bottomRight.x,
     i.bottomRight.y,
     i.bottomRight.x,
@@ -10300,7 +10521,7 @@ function Ha(t, e) {
     "bottomRightDown"
   )), s;
 }
-function kt(t, e, i = null) {
+function vt(t, e, i = null) {
   if (t.has(e.x, e.y)) {
     const s = t.get(e.x, e.y);
     s.type === "group" && !i && (s.type = void 0);
@@ -10308,17 +10529,17 @@ function kt(t, e, i = null) {
   }
   i && (e.type = i), t.add(e);
 }
-function Ft(t, e, i = null) {
+function Mt(t, e, i = null) {
   for (const s of e) {
     if (!s) return;
-    kt(t, s, i);
+    vt(t, s, i);
   }
 }
 function V(t, e, i, s, n) {
-  const o = Ka[t](e, i);
+  const o = nl[t](e, i);
   return s && (o.corner = s), n && (o.direction = n), o;
 }
-const Ka = {
+const nl = {
   bottom: (t, e) => {
     const i = t.cloneAt(t.x, t.y - e);
     return i.grid = "bottom", i;
@@ -10356,8 +10577,8 @@ const Ka = {
     return i.grid = "topRight", i;
   }
 };
-function Ya(t, e, i) {
-  const s = new Ye(), n = i.toArray().sort(js), o = e.bladeWidth;
+function rl(t, e, i) {
+  const s = new Qe(), n = i.toArray().sort(Ws), o = e.bladeWidth;
   if (n.forEach((r) => {
     const a = r.corner, l = r.type;
     if (!o)
@@ -10420,17 +10641,17 @@ function Ya(t, e, i) {
     const r = /* @__PURE__ */ new Set();
     let a, l, c, f;
     e?.constructor?.name === "Stock" && e?.trimmed || e?.constructor?.name === "Segment" ? (a = e.x, l = e.y, c = e.x + e.l, f = e.y + e.w) : (a = e.x + (e?.trim?.w1 ?? 0), l = e.y + (e?.trim?.l1 ?? 0), c = e.x + e.l - (e?.trim?.w2 ?? 0), f = e.y + e.w - (e?.trim?.l2 ?? 0));
-    let h = s.toArray();
-    for (let d = h.length; d--; ) {
-      const g = h[d];
-      (I.lessThan(g.x, a) || I.lessThan(g.y, l) || I.greaterThan(g.x, c) || I.greaterThan(g.y, f)) && h.splice(d, 1);
+    let d = s.toArray();
+    for (let h = d.length; h--; ) {
+      const g = d[h];
+      (v.lessThan(g.x, a) || v.lessThan(g.y, l) || v.greaterThan(g.x, c) || v.greaterThan(g.y, f)) && d.splice(h, 1);
     }
-    s.clear(), h.forEach((d) => s.add(d)), r.clear(), h = s.toArray();
-    for (let d = h.length; d--; ) {
-      const g = h[d];
-      for (let y = t.length; y--; ) {
-        const v = t[y];
-        if (g.collidesWith(v)) {
+    s.clear(), d.forEach((h) => s.add(h)), r.clear(), d = s.toArray();
+    for (let h = d.length; h--; ) {
+      const g = d[h];
+      for (let m = t.length; m--; ) {
+        const S = t[m];
+        if (g.collidesWith(S)) {
           s.remove(g.x, g.y);
           break;
         }
@@ -10439,7 +10660,7 @@ function Ya(t, e, i) {
   }
   return s;
 }
-function Gc(t, e, i) {
+function Kc(t, e, i) {
   let s = [];
   const n = t.getMinSpacing(i.saw), o = e.corner, r = e.direction;
   if (e.type === "shape")
@@ -10469,49 +10690,49 @@ function Gc(t, e, i) {
         break;
     }
   if (s = s.filter((l) => l.x >= 0 && l.y >= 0), !s.length) return null;
-  const a = new Ye();
+  const a = new Qe();
   for (const l of s)
-    l.raycast = !0, Ft(a, tl(t, l, i).toArray());
-  return Vs(t, i, a), a;
+    l.raycast = !0, Mt(a, fl(t, l, i).toArray());
+  return Us(t, i, a), a;
 }
-function Za(t, e) {
-  const i = new Ye();
-  return t.sort(js), t.forEach((s) => {
-    X(s) ? (Ft(i, s.getCoords(e)), s.shapes.forEach((n) => {
+function ol(t, e) {
+  const i = new Qe();
+  return t.sort(Ws), t.forEach((s) => {
+    Q(s) ? (Mt(i, s.getCoords(e)), s.shapes.forEach((n) => {
       const o = n.getCoords(e);
-      Ft(i, o, "group");
-    })) : Ft(i, s.getCoords(e));
+      Mt(i, o, "group");
+    })) : Mt(i, s.getCoords(e));
   }), i.points.forEach((s) => {
     s.stock = e.getStock;
   }), i;
 }
-function zc(t = [], e, i) {
-  const s = Za(
+function Zc(t = [], e, i) {
+  const s = ol(
     t === null ? e : t,
     i
   );
-  return Ya(
+  return rl(
     e,
     i,
     s
   );
 }
-function js(t, e) {
+function Ws(t, e) {
   return t.y === e.y ? e.x - t.x : e.y - t.y;
 }
-function Ns(t, e, i, s, n, o) {
+function qs(t, e, i, s, n, o) {
   t.a = e.id, t.b = i ? i.id : null, t.direction = s, t.raycast = !0, t.type = n, t.corner = o;
 }
-function jc(t, e) {
+function Xc(t, e) {
   if (t.saw.cutType !== "efficiency" || e.length <= 1) return null;
-  let i = new Ye();
-  const s = Xa(e, t);
+  let i = new Qe();
+  const s = al(e, t);
   for (const a of e)
     for (const l of s) {
       if (l.shape.id === a.id) continue;
       const c = Object.values(l.rays).filter((f) => f !== void 0);
       for (const f of c)
-        Qa(
+        ll(
           f,
           l.shape,
           a,
@@ -10522,21 +10743,21 @@ function jc(t, e) {
   return s.filter(({ shape: a }) => a.id === r.id).forEach(({ shape: a, rays: l }) => {
     const c = Object.values(l).filter((f) => f !== void 0);
     for (const f of c) {
-      const h = new be(f.x2, f.y2);
-      o === f.direction && (Ns(h, a, null, f.direction, "edge"), kt(i, h));
+      const d = new xe(f.x2, f.y2);
+      o === f.direction && (qs(d, a, null, f.direction, "edge"), vt(i, d));
     }
-  }), i = Ja(i), i;
+  }), i = cl(i), i;
 }
-function Xa(t, e) {
+function al(t, e) {
   return t.map((i) => {
-    const s = Ha(i, e);
+    const s = sl(i, e);
     return {
       shape: i,
       rays: s
     };
   });
 }
-function Qa(t, e, i, s) {
+function ll(t, e, i, s) {
   switch (t.direction) {
     case "rl":
       Ot(
@@ -10579,27 +10800,27 @@ function Qa(t, e, i, s) {
 function Ot(t, e, i, s, n) {
   const o = t.dimension === "w", r = o ? "y" : "x", a = o ? "x" : "y", l = o ? "l" : "w";
   if (t[`${a}1`] >= i[a] && t[`${a}1`] <= i[a] + i[l]) {
-    const c = t.direction === "lr" && t[`${r}1`] <= n && t[`${r}2`] >= n, f = t.direction === "rl" && t[`${r}1`] >= n && t[`${r}2`] <= n, h = t.direction === "bt" && t[`${r}1`] <= n && t[`${r}2`] >= n, d = t.direction === "tb" && t[`${r}1`] >= n && t[`${r}2`] <= n;
-    if (c || f || h || d) {
-      const y = o ? t[`${a}1`] : n, v = o ? n : t[`${a}1`], G = new be(y, v), w = t.origin;
-      Ns(G, e, i, t.direction, "shape", w), kt(s, G);
+    const c = t.direction === "lr" && t[`${r}1`] <= n && t[`${r}2`] >= n, f = t.direction === "rl" && t[`${r}1`] >= n && t[`${r}2`] <= n, d = t.direction === "bt" && t[`${r}1`] <= n && t[`${r}2`] >= n, h = t.direction === "tb" && t[`${r}1`] >= n && t[`${r}2`] <= n;
+    if (c || f || d || h) {
+      const m = o ? t[`${a}1`] : n, S = o ? n : t[`${a}1`], A = new xe(m, S), b = t.origin;
+      qs(A, e, i, t.direction, "shape", b), vt(s, A);
     }
   }
 }
-function Ja(t) {
-  const e = new Ye();
+function cl(t) {
+  const e = new Qe();
   return t.points.size === 0 || new Set(t.toArray().map((s) => s.a)).forEach((s) => {
     const n = t.toArray().filter((o) => o.a === s);
     ["right", "left", "top", "bottom"].forEach((o) => {
-      const r = el(
+      const r = ul(
         n,
         o
       );
-      r && kt(e, r);
+      r && vt(e, r);
     });
   }), e;
 }
-function el(t, e) {
+function ul(t, e) {
   return t.length === 0 ? null : t.reduce((i, s) => {
     switch (e) {
       case "left":
@@ -10615,11 +10836,11 @@ function el(t, e) {
     }
   }, null);
 }
-function tl(t, e, i) {
-  const s = new Ye(), n = e.getAvailableShapePositions(i);
+function fl(t, e, i) {
+  const s = new Qe(), n = e.getAvailableShapePositions(i);
   for (const o of n) {
     let r;
-    switch (r = il(e, t, i), o) {
+    switch (r = dl(e, t, i), o) {
       case "bottomLeft":
         r = r.cloneAt(r.x - t.l, r.y - t.w), r.shapePosition = "bottomLeft";
         break;
@@ -10633,11 +10854,11 @@ function tl(t, e, i) {
         r = r.cloneAt(r.x, r.y), r.shapePosition = "topRight";
         break;
     }
-    kt(s, r);
+    vt(s, r);
   }
-  return Vs(t, i, s), s;
+  return Us(t, i, s), s;
 }
-function il(t, e, i) {
+function dl(t, e, i) {
   if (i.saw.cutType !== "efficiency") return t;
   const s = e.getMinSpacing(i.saw), n = i.bladeWidth;
   if (!s || s === n) return t;
@@ -10659,19 +10880,19 @@ function il(t, e, i) {
   }
   return o ? (o.x < 0 && (o.x = 0), o.y < 0 && (o.y = 0), o.adjustedForMinSpacing = !0, o) : t;
 }
-function Vs(t, e, i) {
+function Us(t, e, i) {
   let s, n, o, r;
   e?.constructor?.name === "Stock" && e?.trimmed || e?.constructor?.name === "Segment" ? (s = 0, n = 0, o = e.x + e.l - t.l, r = e.y + e.w - t.w) : (s = e?.trim?.w1 ?? 0, n = e?.trim?.l1 ?? 0, o = e.l - (e?.trim?.w2 ?? 0) - t.l, r = e.w - (e?.trim?.l2 ?? 0) - t.w);
   const a = i.toArray();
   for (let l = a.length; l--; ) {
     const c = a[l];
-    (I.lessThan(c.x, s) || I.lessThan(c.y, n) || I.greaterThan(c.x, o) || I.greaterThan(c.y, r) || c.x < 0 || c.y < 0) && i.remove(c.x, c.y);
+    (v.lessThan(c.x, s) || v.lessThan(c.y, n) || v.greaterThan(c.x, o) || v.greaterThan(c.y, r) || c.x < 0 || c.y < 0) && i.remove(c.x, c.y);
   }
 }
-function sl(t, e, i = null) {
+function hl(t, e, i = null) {
   const s = /* @__PURE__ */ new Map();
   for (let n = t.length; n--; ) {
-    const o = t[n], r = Os(o, e.getStock), a = o.shortSide, l = o.longSide;
+    const o = t[n], r = Es(o, e.getStock), a = o.shortSide, l = o.longSide;
     r.forEach((c) => {
       if (!o.willItFit(e, c)) return;
       let f;
@@ -10683,20 +10904,20 @@ function sl(t, e, i = null) {
   }
   return s;
 }
-function di(t, e) {
+function pi(t, e) {
   if (t?.length)
     for (let i = t.length; i--; ) {
       const s = t[i];
-      nl(
+      pl(
         s,
         e
       );
     }
 }
-function nl(t, e) {
+function pl(t, e) {
   if (!t.isSquare) {
     if (t.shortSide === e.w && t.rot) {
-      if (!ue(
+      if (!ce(
         t,
         0,
         e
@@ -10704,7 +10925,7 @@ function nl(t, e) {
         throw new Error(
           "could not rotate shape correctly for subset calculation"
         );
-    } else if (!e.isSquare && t.longSide === e.w && !t.rot && !ue(
+    } else if (!e.isSquare && t.longSide === e.w && !t.rot && !ce(
       t,
       1,
       e
@@ -10714,24 +10935,24 @@ function nl(t, e) {
       );
   }
 }
-function Nc(t, e, i = "l", s = null) {
+function Qc(t, e, i = "l", s = null) {
   if (!t || !e?.length) return !1;
-  e.forEach((f) => f.orientationLock = null), di(
+  e.forEach((f) => f.orientationLock = null), pi(
     e,
     t
   );
   const n = t.bladeWidth, o = [];
   let r = this.config.subset.shuffles;
   (e.length === 1 || e[0].parentId === e[e.length - 1].parentId) && (r = 1), i === "l" ? e.sort(
-    Ce.LD
+    Re.LD
   ) : e.sort(
-    Ce.WD
+    Re.WD
   ), s || (s = e[0]);
-  function a(f, h = !0) {
-    h && Ce.shuffle(
+  function a(f, d = !0) {
+    d && Re.shuffle(
       e
     );
-    const d = hi(
+    const h = gi(
       n,
       e,
       t.getStock,
@@ -10740,8 +10961,8 @@ function Nc(t, e, i = "l", s = null) {
       !1,
       s
     );
-    d !== !1 && f.push(
-      d
+    h !== !1 && f.push(
+      h
     );
   }
   a(
@@ -10752,33 +10973,33 @@ function Nc(t, e, i = "l", s = null) {
     o
   );
   if (o.sort(
-    (f, h) => h.score.efficiency - f.score.efficiency
+    (f, d) => d.score.efficiency - f.score.efficiency
   ), !o.length) return !1;
   const l = o[0];
   let c = null;
   return l.totalLength + n < t.l && (c = t.l - (l.totalLength + n), l.offcut = c), l;
 }
-function rl(t, e, i, s = "l", n, o = !1, r = this.config.subset.shuffles, a = null, l = this.config.subset.efficiency.limit) {
+function gl(t, e, i, s = "l", n, o = !1, r = this.config.subset.shuffles, a = null, l = this.config.subset.efficiency.limit) {
   if (!e?.length) return !1;
   const c = [], f = [
-    (y, v) => v[s] - y[s],
+    (m, S) => S[s] - m[s],
     // Largest first
-    (y, v) => y[s] - v[s],
+    (m, S) => m[s] - S[s],
     // Smallest first
-    (y, v) => v[s] / v.area - y[s] / y.area,
+    (m, S) => S[s] / S.area - m[s] / m.area,
     // Best dimension-to-area ratio
-    (y, v) => v.area - y.area,
+    (m, S) => S.area - m.area,
     // Largest area first
-    (y, v) => y.area - v.area
+    (m, S) => m.area - S.area
     // Smallest area first
-  ], h = e.every(
-    (y, v, G) => v === 0 || y.isIdentical(G[v - 1])
+  ], d = e.every(
+    (m, S, A) => S === 0 || m.isIdentical(A[S - 1])
   );
   if (!o) {
-    const y = e.reduce((v, G) => v + G[s] + t, 0) - t;
-    if (y <= n)
-      return y / n > l ? {
-        totalLength: y,
+    const m = e.reduce((S, A) => S + A[s] + t, 0) - t;
+    if (m <= n)
+      return m / n > l ? {
+        totalLength: m,
         shapes: e,
         firstShape: e[0],
         firstShapeRotation: e[0].rot,
@@ -10786,28 +11007,28 @@ function rl(t, e, i, s = "l", n, o = !1, r = this.config.subset.shuffles, a = nu
         cutType: "guillotine",
         type: "subset",
         score: {
-          efficiency: y / n,
+          efficiency: m / n,
           totalShapesPlaced: e.length
         },
-        area: e.reduce((v, G) => v + G.area, 0)
+        area: e.reduce((S, A) => S + A.area, 0)
       } : !1;
   }
-  const d = hi(t, e, i, s, n, o, a);
-  if (d !== !1 && (c.push(d), d.score.efficiency > 0.95 && e.length > 10))
-    return d;
-  if (h)
+  const h = gi(t, e, i, s, n, o, a);
+  if (h !== !1 && (c.push(h), h.score.efficiency > 0.95 && e.length > 10))
+    return h;
+  if (d)
     return c[0] || !1;
   const g = Math.min(r, f.length);
-  for (let y = 0; y < g; y++) {
-    const v = [...e];
-    v.sort(f[y % f.length]);
-    const G = hi(t, v, i, s, n, o, a);
-    if (G !== !1 && (c.push(G), G.score.efficiency > 0.98 && e.length > 30))
+  for (let m = 0; m < g; m++) {
+    const S = [...e];
+    S.sort(f[m % f.length]);
+    const A = gi(t, S, i, s, n, o, a);
+    if (A !== !1 && (c.push(A), A.score.efficiency > 0.98 && e.length > 30))
       break;
   }
-  return c.sort((y, v) => v.score.efficiency - y.score.efficiency), c[0] || !1;
+  return c.sort((m, S) => S.score.efficiency - m.score.efficiency), c[0] || !1;
 }
-function hi(t, e, i, s = "l", n, o = !1, r = null) {
+function gi(t, e, i, s = "l", n, o = !1, r = null) {
   if (!n || n <= 0 || e?.length < 1) return !1;
   let a = 0;
   const l = [];
@@ -10817,11 +11038,11 @@ function hi(t, e, i, s = "l", n, o = !1, r = null) {
   );
   c > -1 && e.splice(c, 1);
   for (const f of e) {
-    const h = f[s], d = f.getMinSpacing(
+    const d = f[s], h = f.getMinSpacing(
       i.saw,
       !0
     );
-    if (!(a + t + d + h > n) && (a += t + d + h, l.push(f), a + t + d >= n))
+    if (!(a + t + h + d > n) && (a += t + h + d, l.push(f), a + t + h >= n))
       break;
   }
   if (r && e.splice(
@@ -10842,306 +11063,310 @@ function hi(t, e, i, s = "l", n, o = !1, r = null) {
       firstShape: r,
       firstShapeRotation: r?.rot,
       area: l.reduce(
-        (h, d) => h + d.area,
+        (d, h) => d + h.area,
         0
       )
     };
   }
   return !1;
 }
-function ol(t, e, i = null, s = "l", n = !0, o = !0) {
+function ml(t, e, i = null, s = "l", n = !0, o = !0) {
   if (!t?.length) return;
   if (!e) throw new Error(
     "positionShapes requires stock"
   );
   const r = s === "l" ? "x" : "y", a = s === "l" ? "y" : "x";
   let l = 0;
-  X(i) ? di(
+  Q(i) ? pi(
     t,
     i
-  ) : di(
+  ) : pi(
     t,
     i ?? e
   ), o && (s === "l" ? t.sort(
-    Ce.LDIDA
+    Re.LDIDA
   ) : t.sort(
-    Ce.WDIDA
+    Re.WDIDA
   )), t.forEach(
     (c, f) => {
-      c[r] = i ? i[r] + l : l, i && (c[a] = i[a]), l += c[r === "x" ? "l" : "w"] + e.bladeWidth + c.getMinSpacing(e.saw, !0), pe(
-        [() => J(
+      c[r] = i ? i[r] + l : l, i && (c[a] = i[a]), l += c[r === "x" ? "l" : "w"] + e.bladeWidth + c.getMinSpacing(e.saw, !0), ye(
+        [() => ie(
           l
         ).to.be.a(
           "number"
         )]
-      ), X(i) ? c.group.placementOrder = f : c.placementOrder = f, n && c.addToStock(e);
+      ), Q(i) ? c.group.placementOrder = f : c.placementOrder = f, n && c.addToStock(e);
     }
   );
 }
-function Vc(t = null, e, i, s = "l") {
+function Jc(t = null, e, i, s = "l") {
   if (!e) return [];
   if (!t) return [];
   i.sort(
-    Ce.ID
+    Re.ID
   );
   const n = t.shapes;
-  return ol(
+  return ml(
     n,
     e,
     null,
     s
   ), n;
 }
-function Bc(t, e, i) {
-  Wt("subset", `guillotine subset for segment ${t.id}`);
-  function s(k, O = []) {
-    const { shapes: _ } = o(k);
-    return _.filter((x) => {
-      if (x.added || O.find((A) => A.id === x.id)) return !1;
-      if (x.orientationLock)
-        return I.equalTo(x[f], k) ? I.lessThanOrEqualTo(x.l, t.l) && I.lessThanOrEqualTo(x.w, t.w) : !1;
-      if (I.equalTo(x.l, k) || I.equalTo(x.w, k)) {
-        const A = I.equalTo(x.l, k) ? x.w : x.l;
-        return I.lessThanOrEqualTo(A, t[t.cutPreference]);
+function eu(t, e, i) {
+  Gt("subset", `guillotine subset for segment ${t.id}`);
+  function s(L, R = []) {
+    const { shapes: z } = o(L);
+    return z.filter((k) => {
+      if (k.added || R.find((T) => T.id === k.id)) return !1;
+      if (k.orientationLock)
+        return v.equalTo(k[f], L) ? v.lessThanOrEqualTo(k.l, t.l) && v.lessThanOrEqualTo(k.w, t.w) : !1;
+      if (v.equalTo(k.l, L) || v.equalTo(k.w, L)) {
+        const T = v.equalTo(k.l, L) ? k.w : k.l;
+        return v.lessThanOrEqualTo(T, t[t.cutPreference]);
       }
       return !1;
     });
   }
-  function n(k, O, _, x = null) {
-    let A = s(
-      k,
-      O
+  function n(L, R, z, k = null) {
+    let T = s(
+      L,
+      R
     );
-    if (x) {
-      const F = A.find(
-        ($) => $.parentId === x.parentId
+    if (k) {
+      const N = T.find(
+        (Y) => Y.parentId === k.parentId
       );
-      if (F) return F;
+      if (N) return N;
     }
-    if (!A.length) return !1;
-    const D = [];
-    for (const F of A) {
-      const $ = F.l === k ? F.w : F.l;
-      _.includes($) && D.push(F);
+    if (!T.length) return !1;
+    const P = [];
+    for (const N of T) {
+      const Y = N.l === L ? N.w : N.l;
+      z.includes(Y) && P.push(N);
     }
-    return A = D.length ? D : A, Ls(A);
+    return T = P.length ? P : T, _s(T);
   }
-  function o(k) {
-    const O = k;
-    return re.has(O) || re.set(O, { shapes: [], priorities: [] }), re.get(O);
+  function o(L) {
+    const R = L;
+    return U.has(R) || U.set(R, { shapes: [], priorities: [] }), U.get(R);
   }
-  function r(k = null) {
-    function O(x, A, D) {
-      const { shapes: M, priorities: F } = o(A);
-      M.includes(x) || (M.push(x), F.push(D));
+  function r(L = null) {
+    function R(k, T, P) {
+      const { shapes: G, priorities: N } = o(T);
+      G.includes(k) || (G.push(k), N.push(P));
     }
-    if (!g?.length) return re;
-    const _ = t.getStock;
-    for (const x of g) {
-      let A = x.getPriority(_);
-      k && x.parentId !== k.parentId && (A = 0);
-      const D = $e(f);
-      if (!x.orientationLock)
-        x.longSide <= d && x.shortSide <= t[D] && O(x, x.l, A), !x.isSquare && x.shortSide <= d && x.longSide <= t[D] && O(x, x.w, A);
+    if (!g?.length) return U;
+    const z = t.getStock;
+    for (const k of g) {
+      let T = k.getPriority(z);
+      L && k.parentId !== L.parentId && (T = 0);
+      const P = ze(f);
+      if (!k.orientationLock)
+        k.longSide <= h && k.shortSide <= t[P] && R(k, k.l, T), !k.isSquare && k.shortSide <= h && k.longSide <= t[P] && R(k, k.w, T);
       else {
-        const M = Os(
-          x,
+        const G = Es(
+          k,
           t.getStock
         );
-        if (pe([() => J(M.length).to.equal(1)]), ue(
-          x,
-          M[0],
+        if (ye([() => ie(G.length).to.equal(1)]), ce(
+          k,
+          G[0],
           t.getStock
         ) === !1)
           throw new Error(
             "could not rotate shape correctly for subset calculation"
           );
-        const $ = $e(f);
-        x[f] <= d && x[$] <= t[$] && O(x, x[f], A);
+        const Y = ze(f);
+        k[f] <= h && k[Y] <= t[Y] && R(k, k[f], T);
       }
     }
-    return re;
+    return U;
   }
   function a() {
-    const k = [], O = Array.from(re.entries()).map(([x, { shapes: A, priorities: D }]) => ({
-      dimension: x,
-      count: A.length,
-      totalPriority: A.length * Math.max(...D, 0)
+    const L = [], R = Array.from(U.entries()).map(([k, { shapes: T, priorities: P }]) => ({
+      dimension: k,
+      count: T.length,
+      totalPriority: T.length * Math.max(...P, 0)
     }));
-    let _ = O.reduce((x, { totalPriority: A }) => x + A, 0);
-    for (; O.length > 0; )
-      if (_ <= 0 || !Number.isFinite(_)) {
-        const x = [];
-        O.forEach(({ dimension: A, count: D }) => {
-          x.push(...Array(D).fill(A));
+    let z = R.reduce((k, { totalPriority: T }) => k + T, 0);
+    for (; R.length > 0; )
+      if (z <= 0 || !Number.isFinite(z)) {
+        const k = [];
+        R.forEach(({ dimension: T, count: P }) => {
+          k.push(...Array(P).fill(T));
         });
-        for (let A = x.length - 1; A > 0; A--) {
-          const D = Math.floor(Math.random() * (A + 1));
-          [x[A], x[D]] = [x[D], x[A]];
+        for (let T = k.length - 1; T > 0; T--) {
+          const P = Math.floor(Math.random() * (T + 1));
+          [k[T], k[P]] = [k[P], k[T]];
         }
-        k.push(...x);
+        L.push(...k);
         break;
       } else {
-        const x = Math.random() * _;
-        let A = 0, D = -1;
-        for (let Q = 0; Q < O.length; Q++)
-          if (A += O[Q].totalPriority, A > x) {
-            D = Q;
+        const k = Math.random() * z;
+        let T = 0, P = -1;
+        for (let ee = 0; ee < R.length; ee++)
+          if (T += R[ee].totalPriority, T > k) {
+            P = ee;
             break;
           }
-        D === -1 && (D = Math.floor(Math.random() * O.length));
-        const { dimension: M, count: F, totalPriority: $ } = O[D];
-        k.push(M), O[D].count--, O[D].totalPriority -= $ / F, O[D].count === 0 ? (_ -= $, O.splice(D, 1)) : _ -= $ / F;
+        P === -1 && (P = Math.floor(Math.random() * R.length));
+        const { dimension: G, count: N, totalPriority: Y } = R[P];
+        L.push(G), R[P].count--, R[P].totalPriority -= Y / N, R[P].count === 0 ? (z -= Y, R.splice(P, 1)) : z -= Y / N;
       }
-    return k;
+    if (J !== null) {
+      const k = L.filter((P) => P <= J), T = L.filter((P) => P > J);
+      return [...k, ...T];
+    }
+    return L;
   }
-  function l(k, O, _, x, A, D, M) {
-    return _ += k + O, x.push(k), A.push(
-      D.l === k ? D.w : D.l
-    ), M.push(D), _;
+  function l(L, R, z, k, T, P, G) {
+    return z += L + R, k.push(L), T.push(
+      P.l === L ? P.w : P.l
+    ), G.push(P), z;
   }
-  function c(k = null) {
+  function c(L = null) {
     if (!g?.length) return [];
-    if (!re.size) return [];
-    const O = /* @__PURE__ */ new Map();
-    let _ = 0;
-    const x = [], A = [], D = [];
-    let M = null, F = !0;
-    for (let q = 0; q < this.config.subset.guillotine.shuffles; q++) {
-      _ = 0, x.length = 0, A.length = 0, D.length = 0, M = null, F = !0;
-      const N = a();
-      for (const le of N) {
-        if (F ? M = le : M = h + le, _ + M > d) continue;
+    if (!U.size) return [];
+    const R = /* @__PURE__ */ new Map();
+    let z = 0;
+    const k = [], T = [], P = [];
+    let G = null, N = !0;
+    for (let ue = 0; ue < this.config.subset.guillotine.shuffles; ue++) {
+      z = 0, k.length = 0, T.length = 0, P.length = 0, G = null, N = !0;
+      const X = a();
+      for (const te of X) {
+        if (N ? G = te : G = d + te, z + G > h) continue;
         const ge = n(
-          le,
-          A,
-          D,
-          k
+          te,
+          T,
+          P,
+          L
         );
-        ge && (_ = l(
-          le,
-          F ? 0 : h,
-          _,
-          x,
-          D,
+        ge && (z = l(
+          te,
+          N ? 0 : d,
+          z,
+          k,
+          P,
           ge,
-          A
-        ), F = !1);
+          T
+        ), N = !1);
       }
-      if (_) {
-        const le = _ / d;
-        if (pe([() => J(le).to.lessThanOrEqual(1)]), le < this.config.subset.efficiency.limit) continue;
-        const ge = A.map((K, fe) => fe);
-        ge.sort((K, fe) => D[fe] !== D[K] ? D[fe] - D[K] : x[fe] - x[K]);
-        const ce = ge.map(
-          (K) => x[K]
-        ), Ze = ge.map(
-          (K) => A[K]
+      if (z) {
+        const te = z / h;
+        if (ye([() => ie(te).to.lessThanOrEqual(1)]), te < this.config.subset.efficiency.limit) continue;
+        const ge = T.map((ne, me) => me);
+        ge.sort((ne, me) => P[me] !== P[ne] ? P[me] - P[ne] : k[me] - k[ne]);
+        const K = ge.map(
+          (ne) => k[ne]
+        ), he = ge.map(
+          (ne) => T[ne]
         );
-        pe([
-          () => J(Ba(Ze)).to.be.false
-        ]), O.set(
-          ce.join("-"),
+        ye([
+          () => ie(tl(he)).to.be.false
+        ]), R.set(
+          K.join("-"),
           {
-            usedDimensions: ce,
-            usedShapes: Ze,
-            efficiency: le,
-            target: d,
-            totalLength: _,
-            priorityShape: k ? k.parentId : null
+            usedDimensions: K,
+            usedShapes: he,
+            efficiency: te,
+            target: h,
+            totalLength: z,
+            priorityShape: L ? L.parentId : null
           }
         );
       }
     }
-    if (O.size === 0) return [];
-    const $ = Array.from(
-      O.values()
+    if (R.size === 0) return [];
+    const Y = Array.from(
+      R.values()
     );
-    $.sort(
-      (q, N) => q.efficiency > N.efficiency ? -1 : q.efficiency < N.efficiency ? 1 : q.efficiency === N.efficiency ? N.usedDimensions.length - q.usedDimensions.length : 0
+    Y.sort(
+      (ue, X) => ue.efficiency > X.efficiency ? -1 : ue.efficiency < X.efficiency ? 1 : ue.efficiency === X.efficiency ? X.usedDimensions.length - ue.usedDimensions.length : 0
     );
-    const Q = $.slice(
+    const ee = Y.slice(
       0,
       20
     );
-    if (!Q.length) return [];
-    const ae = Q.slice(
+    if (!ee.length) return [];
+    const pe = ee.slice(
       0,
       typeof this.config.guillotine.stripShapes.iterations == "number" ? this.config.guillotine.stripShapes.iterations : 1
     );
-    return ae.length ? (ae.forEach(
-      (q) => {
-        q.usedShapes.forEach(
-          (N, le) => {
-            const ge = q.usedDimensions[le];
-            pe([() => J([N.l, N.w].includes(ge)).to.be.true]);
-            let ce;
-            N.isSquare ? ce = 0 : N.longSide === ge ? ce = t.getStock.cutPreference === "l" ? 1 : 0 : ce = t.getStock.cutPreference === "l" ? 0 : 1, N.guillotineState || (N.guillotineState = new _e({})), N.guillotineState.setStripShapeBatchGroup(B, {
+    return pe.length ? (pe.forEach(
+      (ue) => {
+        ue.usedShapes.forEach(
+          (X, te) => {
+            const ge = ue.usedDimensions[te];
+            ye([() => ie([X.l, X.w].includes(ge)).to.be.true]);
+            let K;
+            X.isSquare ? K = 0 : X.longSide === ge ? K = t.getStock.cutPreference === "l" ? 1 : 0 : K = t.getStock.cutPreference === "l" ? 0 : 1, X.guillotineState || (X.guillotineState = new _e({})), X.guillotineState.setStripShapeBatchGroup(_, {
               stockId: t.getStock.autoId,
               dimension: ge,
-              rot: ce,
-              order: le,
+              rot: K,
+              order: te,
               //by this point sorting should have taken place
-              priorityShape: q.priorityShape
+              priorityShape: ue.priorityShape
             });
           }
-        ), B++, pe(
+        ), _++, ye(
           [
             () => {
-              const N = q.usedDimensions.reduce(
-                (ce, Ze) => ce + Ze,
+              const X = ue.usedDimensions.reduce(
+                (K, he) => K + he,
                 0
-              ), le = (q.usedDimensions.length - 1) * h, ge = N + le;
-              return J(I.lessThanOrEqualTo(ge, d)).to.be.true;
+              ), te = (ue.usedDimensions.length - 1) * d, ge = X + te;
+              return ie(v.lessThanOrEqualTo(ge, h)).to.be.true;
             },
-            () => J(
-              ae.every((N) => N.efficiency >= this.config.subset.efficiency.limit)
+            () => ie(
+              pe.every((X) => X.efficiency >= this.config.subset.efficiency.limit)
             ).to.be.true,
-            () => J(
-              ae.every(
-                (N) => N.usedDimensions.length === N.usedShapes.length
+            () => ie(
+              pe.every(
+                (X) => X.usedDimensions.length === X.usedShapes.length
               )
             ).to.be.true
           ]
         );
       }
-    ), ae) : [];
+    ), pe) : [];
   }
-  const f = $e(t.cutPreference), h = t.getStock.bladeWidth, d = t[f];
-  pe([() => J(d).to.be.a("number")]);
-  const g = Ga(
-    t.shapes.filter((k) => !X(k)),
+  const f = ze(t.cutPreference), d = t.getStock.bladeWidth, h = t[f];
+  ye([() => ie(h).to.be.a("number")]);
+  const g = Za(
+    t.shapes.filter((L) => !Q(L)),
     e,
     i
-  ), y = t.getStock, v = t.cutPreference, G = y[v], w = this.config.guillotine.firstShapeFullSizeThreshold;
-  g.sort((k, O) => {
-    const _ = k[v] >= w * G, x = O[v] >= w * G;
-    if (_ && !x) return -1;
-    if (x && !_) return 1;
-    const A = O.getPriority(y) - k.getPriority(y);
-    if (A !== 0) return A;
-    const D = k.id.toString().split("."), M = O.id.toString().split(".");
-    return D[0] !== M[0] ? parseInt(D[0]) - parseInt(M[0]) : parseInt(D[1]) - parseInt(M[1]);
+  ), m = t.getStock, S = t.cutPreference, A = m[S], b = this.config.guillotine.firstShapeFullSizeThreshold;
+  g.sort((L, R) => {
+    const z = L[S] >= b * A, k = R[S] >= b * A;
+    if (z && !k) return -1;
+    if (k && !z) return 1;
+    const T = R.getPriority(m) - L.getPriority(m);
+    if (T !== 0) return T;
+    const P = L.id.toString().split("."), G = R.id.toString().split(".");
+    return P[0] !== G[0] ? parseInt(P[0]) - parseInt(G[0]) : parseInt(P[1]) - parseInt(G[1]);
   });
-  const W = [];
-  let B = 0;
-  const re = /* @__PURE__ */ new Map();
-  if (!this.config.priority.enable || t.type !== "root" || !t.shapes[0].getPriority(y)) {
+  const M = [];
+  let _ = 0;
+  const U = /* @__PURE__ */ new Map(), J = m.saw.guillotineOptions?.limitStripDimensions !== !1 ? Vo(g, f, h) : null;
+  if (!this.config.priority.enable || t.type !== "root" || !t.shapes[0].getPriority(m)) {
     r();
-    const k = c.call(this);
-    W.push(...k);
+    const L = c.call(this);
+    M.push(...L);
   } else {
-    const k = t.shapes[0];
-    r(k);
-    const O = Math.min(t.shapes.length, this.config.guillotine.stripShapes.numPriorityShapes);
-    for (let _ = 0; _ < O; _++) {
-      const x = c.call(this, k);
-      W.push(...x);
+    const L = t.shapes[0];
+    r(L);
+    const R = Math.min(t.shapes.length, this.config.guillotine.stripShapes.numPriorityShapes);
+    for (let z = 0; z < R; z++) {
+      const k = c.call(this, L);
+      M.push(...k);
     }
   }
-  return Wt("subset", `${W.length} strip shape results ${W.map((k) => k.usedShapes.map((O) => O.id).join()).join(" | ")}`), W?.length ? W.length : 0;
+  return Gt("subset", `${M.length} strip shape results ${M.map((L) => L.usedShapes.map((R) => R.id).join()).join(" | ")}`), M?.length ? M.length : 0;
 }
-function al(t) {
+function yl(t) {
   const e = {};
   return t.forEach((i) => {
     i.shapeIds.forEach((s) => {
@@ -11150,10 +11375,10 @@ function al(t) {
     });
   }), e;
 }
-function Wc(t, e, i = !0) {
-  const s = al(t), n = [];
+function tu(t, e, i = !0) {
+  const s = yl(t), n = [];
   for (const o in s) {
-    const r = s[o], a = e.findIndex((f) => f.autoId === o), l = e[a], c = Cs({
+    const r = s[o], a = e.findIndex((f) => f.autoId === o), l = e[a], c = Ms({
       item: null,
       // No specific item context for this validation
       index: a >= 0 ? a : 0,
@@ -11170,7 +11395,7 @@ function Wc(t, e, i = !0) {
     r?.length && n.push(...r);
   }), n;
 }
-function Bs(t) {
+function Hs(t) {
   const {
     shapes: e,
     container: i,
@@ -11182,44 +11407,44 @@ function Bs(t) {
     firstShape: l = null,
     iterations: c,
     type: f = "position",
-    tolerance: h = 1e-3,
-    config: d
-  } = t, g = c ?? d?.subset?.shuffles ?? 10;
-  pe([
-    () => J(s).to.be.greaterThan(0)
+    tolerance: d = 1e-3,
+    config: h
+  } = t, g = c ?? h?.subset?.shuffles ?? 10;
+  ye([
+    () => ie(s).to.be.greaterThan(0)
   ]);
-  const y = ll(e, a, n, i, h);
-  if (y.length < 2) return !1;
-  const v = { config: d }, G = rl.call(
-    v,
+  const m = bl(e, a, n, i, d);
+  if (m.length < 2) return !1;
+  const S = { config: h }, A = gl.call(
+    S,
     i.bladeWidth,
-    y,
+    m,
     i.getStock,
-    ul(a),
+    Sl(a),
     s,
     r,
     g,
     l
   );
-  if (!G) return !1;
-  if (G?.shapes?.length > 1 && G?.totalLength) {
-    let w;
+  if (!A) return !1;
+  if (A?.shapes?.length > 1 && A?.totalLength) {
+    let b;
     try {
-      w = new Zt({
+      b = new Xt({
         id: o,
         direction: a,
-        shapes: G.shapes,
+        shapes: A.shapes,
         container: i,
         type: f
-      }), Wt("groups", `[createGroup] Created group ${w.id} direction=${a} dims=${w.l}x${w.w} with ${w.shapes.length} shapes, [${w.shapes.map((W) => W.id).join()} for ${i.getType()} ${i.id}]`);
-    } catch (W) {
-      return console.error("group error", W), !1;
+      }), Gt("groups", `[createGroup] Created group ${b.id} direction=${a} dims=${b.l}x${b.w} with ${b.shapes.length} shapes, [${b.shapes.map((M) => M.id).join()} for ${i.getType()} ${i.id}]`);
+    } catch (M) {
+      return console.error("group error", M), !1;
     }
-    return w;
+    return b;
   }
   return !1;
 }
-function qc(t) {
+function iu(t) {
   const {
     shapes: e,
     container: i,
@@ -11231,8 +11456,8 @@ function qc(t) {
     tolerance: l,
     maxGroups: c,
     config: f,
-    counters: h,
-    type: d
+    counters: d,
+    type: h
   } = t, g = l ?? f?.groups?.tolerance ?? 0.05;
   if (!de(s))
     throw new Error("attempting to create a group with no target size");
@@ -11241,252 +11466,252 @@ function qc(t) {
   if (!de(i))
     throw new Error("attempting to create a group with no container");
   if (!e?.length || e.length < 2) return [];
-  const y = Ws(o), v = $e(o), G = y === "horizontal" ? i.w : i.l, w = i.getStock;
-  let W = [...e], B = r;
-  if (B)
-    if (Bo(
-      B,
-      B[v],
-      v,
-      w
+  const m = Ys(o), S = ze(o), A = m === "horizontal" ? i.w : i.l, b = i.getStock;
+  let M = [...e], _ = r;
+  if (_)
+    if (Zo(
+      _,
+      _[S],
+      S,
+      b
     ) === !1)
-      B = null;
+      _ = null;
     else {
-      const F = B[v], $ = F * (1 - g);
-      let Q = F * (1 + g);
-      Q > i[v] && (Q = i[v]), W = e.filter((ae) => !oe(ae) || ae.autoId === B.autoId ? !1 : Vi(
-        ae,
-        $,
-        Q,
-        v,
-        w
+      const P = _[S], G = P * (1 - g);
+      let N = P * (1 + g);
+      N > i[S] && (N = i[S]), M = e.filter((Y) => !fe(Y) || Y.autoId === _.autoId ? !1 : qi(
+        Y,
+        G,
+        N,
+        S,
+        b
       ));
     }
-  const re = sl(
-    W,
+  const U = hl(
+    M,
     i,
-    v
-  ), k = Array.from(re.keys()).filter((M) => M <= G).sort((M, F) => F - M);
-  if (k.length === 0) return [];
-  const O = /* @__PURE__ */ new Map(), _ = /* @__PURE__ */ new Map();
-  for (const M of W) {
-    const F = /* @__PURE__ */ new Map();
-    for (const $ of k) {
-      const Q = $ * (1 - g);
-      let ae = $ * (1 + g);
-      ae > i[v] && (ae = i[v]);
-      const q = Vi(
-        M,
-        Q,
-        ae,
-        v,
-        w
+    S
+  ), O = Array.from(U.keys()).filter((T) => T <= A).sort((T, P) => P - T);
+  if (O.length === 0) return [];
+  const J = /* @__PURE__ */ new Map(), L = /* @__PURE__ */ new Map();
+  for (const T of M) {
+    const P = /* @__PURE__ */ new Map();
+    for (const G of O) {
+      const N = G * (1 - g);
+      let Y = G * (1 + g);
+      Y > i[S] && (Y = i[S]);
+      const ee = qi(
+        T,
+        N,
+        Y,
+        S,
+        b
       );
-      F.set($, q);
+      P.set(G, ee);
     }
-    _.set(M.autoId, F);
+    L.set(T.autoId, P);
   }
-  for (const M of k) {
-    const F = [];
-    for (const $ of W) {
-      if (!oe($)) continue;
-      _.get($.autoId)?.get(M) && F.push($);
+  for (const T of O) {
+    const P = [];
+    for (const G of M) {
+      if (!fe(G)) continue;
+      L.get(G.autoId)?.get(T) && P.push(G);
     }
-    O.set(M, F);
+    J.set(T, P);
   }
-  const x = [], A = /* @__PURE__ */ new Set(), D = /* @__PURE__ */ new Map();
-  for (const M of k) {
-    if (c !== void 0 && x.length >= c)
+  const R = [], z = /* @__PURE__ */ new Set(), k = /* @__PURE__ */ new Map();
+  for (const T of O) {
+    if (c !== void 0 && R.length >= c)
       break;
-    const F = [];
-    let $ = O.get(M).filter((Q) => !A.has(Q.autoId));
-    if (!($.length < 2)) {
-      for (; $.length >= 2 && !(c !== void 0 && x.length + F.length >= c); ) {
-        let Q, ae = !1;
-        if (F.length && !a) {
-          const q = F[F.length - 1], N = q.shapes.slice(), le = /* @__PURE__ */ new Set(), ge = new Set($.map((K) => K.autoId)), ce = [];
-          let Ze = !0;
-          for (const K of N) {
-            let fe = !1;
-            if (ge.has(K.autoId) && !le.has(K.autoId)) {
-              const Se = $.find((Re) => Re.autoId === K.autoId);
-              Se && (ce.push(Se), le.add(K.autoId), fe = !0);
+    const P = [];
+    let G = J.get(T).filter((N) => !z.has(N.autoId));
+    if (!(G.length < 2)) {
+      for (; G.length >= 2 && !(c !== void 0 && R.length + P.length >= c); ) {
+        let N, Y = !1;
+        if (P.length && !a) {
+          const ee = P[P.length - 1], pe = ee.shapes.slice(), ue = /* @__PURE__ */ new Set(), X = new Set(G.map((K) => K.autoId)), te = [];
+          let ge = !0;
+          for (const K of pe) {
+            let he = !1;
+            if (X.has(K.autoId) && !ue.has(K.autoId)) {
+              const ne = G.find((me) => me.autoId === K.autoId);
+              ne && (te.push(ne), ue.add(K.autoId), he = !0);
             }
-            if (!fe)
-              for (const Se of $) {
-                if (le.has(Se.autoId)) continue;
-                const Re = `${Se.autoId}-${K.autoId}`;
-                if (D.has(Re) || D.set(Re, Se.isIdentical(K)), D.get(Re)) {
-                  ce.push(Se), le.add(Se.autoId), fe = !0;
+            if (!he)
+              for (const ne of G) {
+                if (ue.has(ne.autoId)) continue;
+                const me = `${ne.autoId}-${K.autoId}`;
+                if (k.has(me) || k.set(me, ne.isIdentical(K)), k.get(me)) {
+                  te.push(ne), ue.add(ne.autoId), he = !0;
                   break;
                 }
               }
-            if (!fe) {
-              Ze = !1;
+            if (!he) {
+              ge = !1;
               break;
             }
           }
-          if (Ze && ce.length === N.length) {
-            if (ae = !0, q.positions?.length === ce.length)
-              for (let K = 0; K < ce.length; K++) {
-                const fe = ce[K], Se = N[K], Re = q.positions[K]?.rot ?? Se.rot;
-                if (fe.rot !== Re && !ue(fe, Re, i)) {
-                  console.warn(`  Failed to rotate ${fe.id} to ${Re} - skipping clone`), ae = !1;
+          if (ge && te.length === pe.length) {
+            if (Y = !0, ee.positions?.length === te.length)
+              for (let K = 0; K < te.length; K++) {
+                const he = te[K], ne = pe[K], me = ee.positions[K]?.rot ?? ne.rot;
+                if (he.rot !== me && !ce(he, me, i)) {
+                  console.warn(`  Failed to rotate ${he.id} to ${me} - skipping clone`), Y = !1;
                   break;
                 }
               }
-            ae && (pe([
-              () => J(ce.every((K, fe) => {
-                const Se = q.positions[fe]?.rot ?? N[fe].rot;
-                return K.rot === Se;
+            Y && (ye([
+              () => ie(te.every((K, he) => {
+                const ne = ee.positions[he]?.rot ?? pe[he].rot;
+                return K.rot === ne;
               }), "at least one identical group shape not rotated correctly").to.be.true
-            ]), Q = q.cloneWithNewShapes(ce));
+            ]), N = ee.cloneWithNewShapes(te));
           }
         }
-        if (!ae) {
-          let q = "g" + (typeof h?.group == "number" ? h.group : 0);
-          d === "firstShape" && (q = "fs-" + q), Q = Bs({
-            shapes: $,
+        if (!Y) {
+          let ee = "g" + (typeof d?.group == "number" ? d.group : 0);
+          h === "firstShape" && (ee = "fs-" + ee), N = Hs({
+            shapes: G,
             container: i,
             targetSize: s,
-            d: M,
-            id: q,
+            d: T,
+            id: ee,
             exact: n,
-            groupDirection: y,
-            firstShape: B,
+            groupDirection: m,
+            firstShape: _,
             tolerance: g,
             config: f,
-            type: d
+            type: h
           });
         }
-        if (Q) {
-          typeof h?.group == "number" && h.group++, F.push(Q), Q.shapes.forEach((N) => A.add(N.autoId));
-          const q = [];
-          for (const N of $)
-            A.has(N.autoId) || q.push(N);
-          if ($ = q, $.length < 2) break;
+        if (N) {
+          typeof d?.group == "number" && d.group++, P.push(N), N.shapes.forEach((pe) => z.add(pe.autoId));
+          const ee = [];
+          for (const pe of G)
+            z.has(pe.autoId) || ee.push(pe);
+          if (G = ee, G.length < 2) break;
         } else
           break;
       }
-      x.push(...F);
+      R.push(...P);
     }
   }
-  return x;
+  return R;
 }
-function ll(t, e, i, s, n = 1e-3) {
+function bl(t, e, i, s, n = 1e-3) {
   return t.filter((o) => {
-    const r = $t(o, s);
+    const r = zt(o, s);
     if (r) {
-      const d = r === "w" ? 1 : 0;
-      if (o.rot !== d && !ue(o, d, s))
+      const h = r === "w" ? 1 : 0;
+      if (o.rot !== h && !ce(o, h, s))
         return !1;
     }
     if (o.isSquare) return !0;
     const a = i * (1 - n), l = i * (1 + n), c = o.l >= a && o.l <= l, f = o.w >= a && o.w <= l;
-    let h = null;
+    let d = null;
     if (c && f) {
-      const d = Math.abs(o.l - i), g = Math.abs(o.w - i);
-      h = d <= g ? "l" : "w";
-    } else c ? h = "l" : f && (h = "w");
-    if (h !== null) {
-      const d = cl(
-        h,
+      const h = Math.abs(o.l - i), g = Math.abs(o.w - i);
+      d = h <= g ? "l" : "w";
+    } else c ? d = "l" : f && (d = "w");
+    if (d !== null) {
+      const h = wl(
+        d,
         e,
         o.rot
-      ), g = $t(o, s), y = d ? 1 : 0;
-      return g && (g === "l" && y === 1 || g === "w" && y === 0) || !we(o, d, s) ? !1 : ue(o, d, s);
+      ), g = zt(o, s), m = h ? 1 : 0;
+      return g && (g === "l" && m === 1 || g === "w" && m === 0) || !ke(o, h, s) ? !1 : ce(o, h, s);
     }
     return !1;
   });
 }
-function cl(t, e, i) {
+function wl(t, e, i) {
   return e === null ? t === "l" : t === (e === "vertical" ? "l" : "w") ? i === 1 : i === 0;
 }
-function Ws(t) {
+function Ys(t) {
   if (!["l", "w"].includes(t)) throw new Error("incorrect direction value");
   if (t === "l") return "horizontal";
   if (t === "w") return "vertical";
 }
-function ul(t) {
+function Sl(t) {
   if (!["horizontal", "vertical"].includes(t)) throw new Error("incorrect groupDirection value");
   if (t === "horizontal") return "l";
   if (t === "vertical") return "w";
 }
-function fl(t, e, i) {
+function xl(t, e, i) {
   return t.filter((s) => s.l === e[i] || s.w === e[i]);
 }
-function dl(t, e) {
+function kl(t, e) {
   const i = Array.isArray(e) ? e : [e], s = /* @__PURE__ */ new Set();
   for (const n of i)
     if (n.shapes?.length)
       for (const o of n.shapes)
         s.add(o.autoId);
-  return t.filter((n) => X(n) || !s.has(n.autoId));
+  return t.filter((n) => Q(n) || !s.has(n.autoId));
 }
-function hl(t, e = "") {
+function vl(t, e = "") {
   const i = /* @__PURE__ */ new Set();
-  t.filter(X).forEach((r) => {
+  t.filter(Q).forEach((r) => {
     r.shapes?.forEach((a) => {
       i.add(a.autoId);
     });
   });
-  const n = t.filter((r) => oe(r)).filter((r) => i.has(r.autoId)), o = e ? ` [${e}]` : "";
-  J(
+  const n = t.filter((r) => fe(r)).filter((r) => i.has(r.autoId)), o = e ? ` [${e}]` : "";
+  ie(
     n.length,
     `${o} Found ${n.length} shapes that exist both in groups and independently: ${n.map((r) => r.id || r.autoId).join(", ")}`
   ).to.equal(0);
 }
-function pl(t, e) {
+function Il(t, e) {
   const i = [...t, e];
   i.sort((n, o) => (o.score?.total || 0) - (n.score?.total || 0));
   const s = i[0];
-  if (s.score?.total && X(s) && (s.score?.total ?? 0) > (e.bestScore?.total ?? 0))
+  if (s.score?.total && Q(s) && (s.score?.total ?? 0) > (e.bestScore?.total ?? 0))
     return e.setBestScore(s), e.bestScore.group = s, s;
 }
-function Uc(t) {
+function su(t) {
   const { container: e, containerPlacedShapes: i, unplacedShapes: s, shape: n, point: o, config: r, scoreFunction: a } = t;
   if (s.length < 3) return;
   let l = !1;
   n.orientationLock || (l = !0, n.orientationLock = n.rot === 1 ? "w" : "l");
   let c = [], f = [];
-  ot(e) ? f = [e.cutDirection] : f = e?.saw?.stockType === "roll" ? ["w"] : ["l", "w"];
+  lt(e) ? f = [e.cutDirection] : f = e?.saw?.stockType === "roll" ? ["w"] : ["l", "w"];
   for (const g of f) {
-    const y = $e(g), v = g === "l" ? "x" : "y", G = e[g] - n[v] - e.bladeWidth;
-    if (G <= 0) continue;
-    const w = fl(
+    const m = ze(g), S = g === "l" ? "x" : "y", A = e[g] - n[S] - e.bladeWidth;
+    if (A <= 0) continue;
+    const b = xl(
       s,
       n,
-      y
+      m
     );
-    if (w.length < 2) continue;
-    const W = Bs({
-      shapes: w,
+    if (b.length < 2) continue;
+    const M = Hs({
+      shapes: b,
       container: e,
-      targetSize: G,
-      d: n[y],
+      targetSize: A,
+      d: n[m],
       id: "g" + n.id + "-" + n.rot + "-" + g.substring(0, 1),
       exact: !1,
-      groupDirection: Ws(g),
+      groupDirection: Ys(g),
       firstShape: n,
       iterations: 40,
       config: {
         subset: r.subset
       }
     });
-    W && c.push(W);
+    M && c.push(M);
   }
-  c.sort((g, y) => y.efficiency - g.efficiency), c.length > r.sample.groupSize && (c = c.slice(0, r.sample.groupSize)), pe([() => c.every((g) => !oe(g), "shapes in the groups array")]);
+  c.sort((g, m) => m.efficiency - g.efficiency), c.length > r.sample.groupSize && (c = c.slice(0, r.sample.groupSize)), ye([() => c.every((g) => !fe(g), "shapes in the groups array")]);
   for (const g of c)
-    g.x = o.x, g.y = o.y, g.outOfBounds = g.x + g.l > e.l || g.y + g.w > e.w, !g.outOfBounds && (Ua(g, i, e) || a(g, e, i, s, o));
+    g.x = o.x, g.y = o.y, g.outOfBounds = g.x + g.l > e.l || g.y + g.w > e.w, !g.outOfBounds && (pa(g, i, e) || a(g, e, i, s, o));
   s.forEach((g) => g.resetGroupData());
-  const h = pl(c, n), d = c.filter((g) => X(g) && g !== h);
-  return d.length > 0 && d.forEach((g) => {
-    Wt("groups", `  Destroying group ${g.id} (${g.shapes?.length || 0} shapes)`), g.destroy();
-  }), h && ot(e) && (e.shapes.push(h), e.shapes = dl(e.shapes, h)), l && (n.orientationLock = null), h && ot(e) && pe([
-    () => hl(e.shapes, "POSITION GROUPS")
-  ]), h;
+  const d = Il(c, n), h = c.filter((g) => Q(g) && g !== d);
+  return h.length > 0 && h.forEach((g) => {
+    Gt("groups", `  Destroying group ${g.id} (${g.shapes?.length || 0} shapes)`), g.destroy();
+  }), d && lt(e) && (e.shapes.push(d), e.shapes = kl(e.shapes, d)), l && (n.orientationLock = null), d && lt(e) && ye([
+    () => vl(e.shapes, "POSITION GROUPS")
+  ]), d;
 }
-const gl = S({
+const Pl = x({
   id: p(),
   count: u(),
   name: p(),
@@ -11494,52 +11719,52 @@ const gl = S({
   w: u(),
   t: u(),
   material: p()
-}), Ei = S({
-  inputStock: L(Lt),
-  inputShapes: L(Ct),
-  inputSaw: ai,
-  inputUserGroups: L(Ps),
+}), Mi = x({
+  inputStock: C(Rt),
+  inputShapes: C(Lt),
+  inputSaw: ci,
+  inputUserGroups: C(Cs),
   // Centralized extras options for UI dropdowns
-  extrasOptions: S({
-    banding: S({
-      options: L(p())
+  extrasOptions: x({
+    banding: x({
+      options: C(p())
     }).optional(),
-    finish: S({
-      options: L(p())
+    finish: x({
+      options: C(p())
     }).optional(),
-    planing: S({
-      options: L(p())
+    planing: x({
+      options: C(p())
     }).optional()
   }).optional()
-}).optional(), ml = S({
+}).optional(), Tl = x({
   // Banding metrics
-  bandingLengthByType: U(p(), u()).default({}),
+  bandingLengthByType: W(p(), u()).default({}),
   // Finish metrics (by face)
-  finishAreaByType: U(p(), u()).default({}),
+  finishAreaByType: W(p(), u()).default({}),
   // Planing metrics (by type)
-  planingAreaByType: U(p(), u()).default({}),
+  planingAreaByType: W(p(), u()).default({}),
   // Material summary with nested structure
-  materialSummary: U(
+  materialSummary: W(
     p(),
     // material name
-    U(
+    W(
       p(),
       // thickness
-      S({
+      x({
         used: u(),
         stacks: u(),
-        bandingLengthByType: U(p(), u())
+        bandingLengthByType: W(p(), u())
       })
     )
   ).default({}),
   // Tallies
-  usedStockTally: U(p(), u()).default({}),
-  addedPartTally: U(p(), u()).default({}),
+  usedStockTally: W(p(), u()).default({}),
+  addedPartTally: W(p(), u()).default({}),
   // Cost metrics
   stockAreaCost: u().default(0),
   totalStockCost: u().default(0),
   // Machining metrics
-  hasMachining: b().default(!1),
+  hasMachining: w().default(!1),
   numHoles: u().default(0),
   numCorners: u().default(0),
   // Efficiency metrics
@@ -11570,86 +11795,90 @@ const gl = S({
   totalRollLength: u().optional(),
   totalStockWeight: u().optional(),
   totalPartWeight: u().optional()
-}), qs = ml.extend({
-  bandingLengthByType: U(p(), u()).default({}),
-  unplacedParts: L(gl).default([]),
+}), Ks = Tl.extend({
+  bandingLengthByType: W(p(), u()).default({}),
+  unplacedParts: C(Pl).default([]),
   // Ecommerce pricing - calculated client-side
   offcutCost: u().optional()
-}), yl = S({
+}), Al = x({
   // Core optimization results
-  stockList: ee("Stock"),
-  shapeList: ee("Shape"),
-  cutList: ee("Cut").optional(),
-  segmentList: ee("Segment").optional(),
-  offcuts: ee("Offcut").optional(),
-  saw: E("Saw"),
-  unusableShapes: ee("Shape").optional(),
-  unavailableStock: ee("Stock").optional(),
-  evolutionVisData: L(S({})).optional(),
+  stockList: re("Stock"),
+  shapeList: re("Shape"),
+  cutList: re("Cut").optional(),
+  segmentList: re("Segment").optional(),
+  offcuts: re("Offcut").optional(),
+  saw: $("Saw"),
+  unusableShapes: re("Shape").optional(),
+  unavailableStock: re("Stock").optional(),
+  evolutionVisData: C(x({})).optional(),
   performance: p().optional(),
   apiVersion: u().optional(),
   // Renamed from 'v'
-  metadata: qs.optional(),
+  metadata: Ks.optional(),
   credits: u().optional(),
+  // CNC cutting plans per stock (keyed by stock autoId)
+  cuttingPlans: W(p(), H()).optional(),
   // Optional input data for debugging/API reporting
-  inputs: Ei
+  inputs: Mi
 });
-S({
+x({
   // Job execution metadata
-  success: b(),
+  success: w(),
   socketId: p().nullable().default(null),
   userId: p(),
-  api: b(),
-  app: b(),
-  widget: b().optional(),
-  cached: b().optional(),
+  api: w(),
+  app: w(),
+  widget: w().optional(),
+  cached: w().optional(),
   hash: p().optional(),
   webhook: p().optional(),
-  config: Z().optional(),
+  config: H().optional(),
   error: p().optional(),
   jobId: u().optional(),
   // Input data
-  inputs: Ei,
+  inputs: Mi,
   // The actual optimization results
-  optimisation: yl
+  optimisation: Al
 });
-S({
+x({
   // Database metadata
   jobId: u().optional(),
   // Job execution data
-  success: b(),
+  success: w(),
   socketId: p().nullable().default(null),
   userId: p(),
-  api: b(),
-  app: b(),
-  widget: b().optional(),
-  cached: b().optional(),
+  api: w(),
+  app: w(),
+  widget: w().optional(),
+  cached: w().optional(),
   hash: p().optional(),
   webhook: p().optional(),
-  config: Z().optional(),
+  config: H().optional(),
   error: p().optional(),
   // Optimization results (flattened from optimization object)
-  stockList: ee("Stock"),
-  shapeList: ee("Shape"),
-  cutList: ee("Cut").optional(),
-  segmentList: ee("Segment").optional(),
-  offcuts: ee("Offcut").optional(),
-  saw: E("Saw"),
-  unusableShapes: ee("Shape").optional(),
-  unavailableStock: ee("Stock").optional(),
+  stockList: re("Stock"),
+  shapeList: re("Shape"),
+  cutList: re("Cut").optional(),
+  segmentList: re("Segment").optional(),
+  offcuts: re("Offcut").optional(),
+  saw: $("Saw"),
+  unusableShapes: re("Shape").optional(),
+  unavailableStock: re("Stock").optional(),
   performance: p().optional(),
-  metadata: qs.optional(),
+  metadata: Ks.optional(),
   apiVersion: u().optional(),
   credits: u().optional(),
+  // CNC cutting plans per stock (keyed by stock autoId)
+  cuttingPlans: W(p(), H()).optional(),
   // Input data
-  inputs: Ei,
+  inputs: Mi,
   // Computed fields for easier querying/display
   numParts: u().optional(),
   numStock: u().optional(),
   workerName: p().optional(),
   queueName: p().optional()
 });
-S({
+x({
   id: p().optional(),
   name: p().optional(),
   l: u(),
@@ -11657,22 +11886,22 @@ S({
   t: u().nullable().optional(),
   material: p().optional(),
   q: u().optional(),
-  orientationLock: j([
-    z(""),
-    z("l"),
-    z("w")
+  orientationLock: B([
+    j(""),
+    j("l"),
+    j("w")
   ]).nullable().optional(),
   // Basic extras for display
-  banding: Z().optional(),
-  finish: Z().optional(),
-  planing: Z().optional()
+  banding: H().optional(),
+  finish: H().optional(),
+  planing: H().optional()
 });
-const bl = S({
-  issues: L(p()),
+const Dl = x({
+  issues: C(p()),
   id: p(),
-  duplicate: b(),
+  duplicate: w(),
   name: p(),
-  added: b(),
+  added: w(),
   x: u(),
   y: u(),
   l: u(),
@@ -11680,65 +11909,65 @@ const bl = S({
   t: u(),
   q: u().optional(),
   // Add quantity for checkout compatibility
-  orientationLock: j([
-    z(""),
-    z("l"),
-    z("w")
+  orientationLock: B([
+    j(""),
+    j("l"),
+    j("w")
   ]),
-  trim: S({
+  trim: x({
     l1: u(),
     l2: u(),
     w1: u(),
     w2: u()
   }),
   material: p(),
-  banding: Z(),
+  banding: H(),
   // Using any for now, could use bandingPropertiesSchema
-  bandingType: Z(),
+  bandingType: H(),
   // Legacy field
-  finish: Z(),
+  finish: H(),
   // Using any for now, could use finishPropertiesSchema
-  stock: S({ id: p() }),
-  rot: b(),
+  stock: x({ id: p() }),
+  rot: w(),
   notes: p(),
-  customData: U(p(), j([p(), u(), b()]))
+  customData: W(p(), B([p(), u(), w()]))
 });
-S({
-  issues: L(p()),
+x({
+  issues: C(p()),
   id: p(),
-  duplicate: b().optional(),
+  duplicate: w().optional(),
   name: p(),
   l: u(),
   w: u(),
   t: u().nullable(),
   material: p(),
   cost: u(),
-  used: b(),
-  grain: j([
-    z(""),
-    z("l"),
-    z("w"),
-    ze()
+  used: w(),
+  grain: B([
+    j(""),
+    j("l"),
+    j("w"),
+    je()
   ]).nullable(),
-  trim: S({
+  trim: x({
     l1: u(),
     l2: u(),
     w1: u(),
     w2: u()
   }),
-  parts: L(bl),
+  parts: C(Dl),
   efficiency: u(),
   notes: p().optional(),
   // Legacy V1 fields
-  blade: S({
+  blade: x({
     width: u()
   }).optional(),
-  cutPreference: j([
-    z("l"),
-    z("w")
+  cutPreference: B([
+    j("l"),
+    j("w")
   ]).optional(),
   // Analysis data
-  analysis: S({
+  analysis: x({
     partArea: u(),
     totalParts: u(),
     areaEfficiency: u(),
@@ -11748,203 +11977,208 @@ S({
     rollLength: u().optional()
   }).optional(),
   // Stack info
-  stack: Z().optional(),
+  stack: H().optional(),
   // Stock quantity for checkout compatibility
   q: u().optional()
 });
 export {
-  Tc as $,
-  Zl as A,
-  oe as B,
-  Ci as C,
-  An as D,
-  m as E,
-  Ho as F,
-  pe as G,
-  J as H,
-  T as I,
-  Nl as J,
-  Ar as K,
-  Li as L,
-  $c as M,
-  Vl as N,
-  ps as O,
-  Ds as P,
-  hl as Q,
-  Ba as R,
-  _e as S,
-  Ce as T,
-  Ql as U,
-  Cc as V,
-  Ac as W,
-  Bn as X,
-  Ll as Y,
-  tr as Z,
-  Fl as _,
-  ee as a,
-  ve as a$,
-  Rl as a0,
-  Ic as a1,
-  xt as a2,
-  hs as a3,
-  ue as a4,
-  we as a5,
-  ft as a6,
-  Vo as a7,
-  gs as a8,
-  dl as a9,
-  ni as aA,
-  zt as aB,
-  Gs as aC,
-  _c as aD,
-  H as aE,
-  Oc as aF,
-  ha as aG,
-  Dc as aH,
-  Fc as aI,
-  Lc as aJ,
-  za as aK,
-  Al as aL,
-  Kt as aM,
-  Yt as aN,
-  lt as aO,
-  ct as aP,
-  se as aQ,
-  Be as aR,
-  Nt as aS,
-  Oe as aT,
-  wc as aU,
-  Sc as aV,
-  xc as aW,
-  kc as aX,
-  Bt as aY,
-  We as aZ,
-  Je as a_,
-  Ec as aa,
-  Qe as ab,
-  Rc as ac,
-  qc as ad,
-  Ua as ae,
-  Bc as af,
-  Zt as ag,
-  Ws as ah,
-  de as ai,
-  Os as aj,
-  qa as ak,
-  Zn as al,
-  Ki as am,
-  El as an,
-  Nc as ao,
-  Vc as ap,
-  Xl as aq,
-  zc as ar,
-  jc as as,
-  be as at,
-  Ye as au,
-  Gc as av,
-  tl as aw,
-  Uc as ax,
-  P as ay,
-  Ca as az,
-  wi as b,
-  ko as b$,
-  nc as b0,
-  ql as b1,
-  Wl as b2,
-  Hl as b3,
-  ye as b4,
-  ms as b5,
-  hc as b6,
-  ic as b7,
-  Es as b8,
-  Rs as b9,
-  ur as bA,
-  C as bB,
-  so as bC,
-  Dt as bD,
-  Wc as bE,
-  $l as bF,
-  gc as bG,
-  mc as bH,
-  pc as bI,
-  ne as bJ,
-  Hr as bK,
-  yt as bL,
-  Br as bM,
-  zl as bN,
-  ss as bO,
-  Cl as bP,
-  qs as bQ,
-  is as bR,
-  Oi as bS,
-  vs as bT,
-  vi as bU,
-  Ti as bV,
-  Ii as bW,
-  Ur as bX,
-  qr as bY,
-  Ai as bZ,
-  Pi as b_,
-  sc as ba,
-  Xt as bb,
-  Ta as bc,
-  ac as bd,
-  dc as be,
-  fc as bf,
-  uc as bg,
-  ec as bh,
-  tc as bi,
-  lc as bj,
-  Pa as bk,
-  oc as bl,
-  xa as bm,
-  bc as bn,
-  Ml as bo,
-  rr as bp,
-  qe as bq,
-  Ge as br,
-  ti as bs,
-  ml as bt,
-  si as bu,
-  vc as bv,
-  Go as bw,
-  Kl as bx,
-  Xa as by,
-  _l as bz,
-  bi as c,
-  Lr as c0,
-  Sr as c1,
-  rc as c2,
-  xi as c3,
-  yc as c4,
-  Gl as c5,
-  cc as c6,
-  Yl as c7,
-  Nr as c8,
-  ut as c9,
-  Ul as ca,
-  cr as cb,
-  ki as d,
-  Ut as e,
-  jl as f,
-  dn as g,
-  Ps as h,
-  ai as i,
-  Lt as j,
-  Ct as k,
-  Dl as l,
-  jt as m,
-  Mc as n,
-  Ol as o,
-  X as p,
-  Ie as q,
-  Jl as r,
-  yi as s,
-  Wt as t,
-  Pc as u,
-  I as v,
-  Bl as w,
-  $e as x,
-  ot as y,
-  E as z
+  Yc as $,
+  Gl as A,
+  zl as B,
+  Ri as C,
+  Ln as D,
+  y as E,
+  Te as F,
+  Bt as G,
+  I as H,
+  Ec as I,
+  Ei as J,
+  Ae as K,
+  v as L,
+  tt as M,
+  tc as N,
+  ze as O,
+  Fs as P,
+  fe as Q,
+  ye as R,
+  Zt as S,
+  ie as T,
+  lt as U,
+  Gt as V,
+  lc as W,
+  ta as X,
+  Q as Y,
+  Jl as Z,
+  Lr as _,
+  sc as a,
+  Xa as a$,
+  ec as a0,
+  Ho as a1,
+  fc as a2,
+  Gc as a3,
+  bs as a4,
+  vl as a5,
+  tl as a6,
+  _e as a7,
+  Re as a8,
+  uc as a9,
+  Ys as aA,
+  Es as aB,
+  ha as aC,
+  er as aD,
+  Xi as aE,
+  Vl as aF,
+  Qc as aG,
+  Jc as aH,
+  cc as aI,
+  Zc as aJ,
+  Xc as aK,
+  xe as aL,
+  Qe as aM,
+  Kc as aN,
+  fl as aO,
+  su as aP,
+  Ba as aQ,
+  oi as aR,
+  jt as aS,
+  Vs as aT,
+  Hc as aU,
+  q as aV,
+  Nc as aW,
+  Pa as aX,
+  jc as aY,
+  Uc as aZ,
+  Vc as a_,
+  Bc as aa,
+  zc as ab,
+  Hn as ac,
+  jl as ad,
+  rr as ae,
+  Wl as af,
+  vi as ag,
+  xt as ah,
+  $c as ai,
+  Bl as aj,
+  _c as ak,
+  ys as al,
+  ce as am,
+  ke as an,
+  kt as ao,
+  Ko as ap,
+  Vo as aq,
+  ws as ar,
+  kl as as,
+  qc as at,
+  et as au,
+  Wc as av,
+  iu as aw,
+  pa as ax,
+  eu as ay,
+  Xt as az,
+  ic as b,
+  As as b$,
+  $l as b0,
+  Kt as b1,
+  ct as b2,
+  ut as b3,
+  ae as b4,
+  qe as b5,
+  Vt as b6,
+  Ce as b7,
+  Lc as b8,
+  Rc as b9,
+  Ne as bA,
+  si as bB,
+  Tl as bC,
+  Zl as bD,
+  Mc as bE,
+  Wo as bF,
+  oc as bG,
+  al as bH,
+  ql as bI,
+  pr as bJ,
+  ao as bK,
+  Ct as bL,
+  tu as bM,
+  Hl as bN,
+  Ac as bO,
+  Dc as bP,
+  Tc as bQ,
+  le as bR,
+  Xr as bS,
+  yt as bT,
+  Hr as bU,
+  Kl as bV,
+  os as bW,
+  Nl as bX,
+  Ks as bY,
+  rs as bZ,
+  Ci as b_,
+  Fc as ba,
+  qt as bb,
+  Ue as bc,
+  Se as bd,
+  Ss as be,
+  Pc as bf,
+  pc as bg,
+  Gs as bh,
+  $s as bi,
+  gc as bj,
+  Qt as bk,
+  $a as bl,
+  wc as bm,
+  Ic as bn,
+  vc as bo,
+  kc as bp,
+  dc as bq,
+  hc as br,
+  Sc as bs,
+  Ga as bt,
+  bc as bu,
+  Ea as bv,
+  Cc as bw,
+  Ul as bx,
+  cr as by,
+  He as bz,
+  D as c,
+  Pi as c0,
+  Ai as c1,
+  Ti as c2,
+  Zr as c3,
+  Kr as c4,
+  Oi as c5,
+  Di as c6,
+  Do as c7,
+  Mr as c8,
+  Ir as c9,
+  yc as ca,
+  ki as cb,
+  Oc as cc,
+  Yl as cd,
+  xc as ce,
+  ac as cf,
+  qr as cg,
+  Si as d,
+  re as e,
+  E as f,
+  mc as g,
+  xi as h,
+  Rt as i,
+  Ht as j,
+  Ii as k,
+  hr as l,
+  ri as m,
+  ps as n,
+  rc as o,
+  Ql as p,
+  Xl as q,
+  mn as r,
+  nc as s,
+  Cs as t,
+  ft as u,
+  de as v,
+  Lt as w,
+  ci as x,
+  wi as y,
+  $ as z
 };
