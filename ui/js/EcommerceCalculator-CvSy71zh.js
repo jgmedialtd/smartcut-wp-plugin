@@ -7,7 +7,7 @@ import { f as Tl, d as El, l as Ft, e as Qi, c as es, i as Ze, r as Lt, g as oi,
 import { a as Ml } from "./vendor-lodash-B8VQpKjD.js";
 import { o as Nl, f as Bl, s as Vl, a as Dl } from "./vendor-floating-ui-DZfk4g77.js";
 import { t as ye } from "./i18n-CYUWq18B.js";
-import { _ as mi } from "./Launch-Ctx3PgLR.js";
+import { _ as mi } from "./Launch-MjRX7mQF.js";
 import { b as jn } from "./environment-BeBZzWz6.js";
 function ba(t, e = "cc") {
   if (!t) return t;
@@ -8767,7 +8767,7 @@ const Wd = {
   },
   emits: ["inputs-changed", "calculating", "validation-error", "before-calculate", "result", "no-result", "log", "error"],
   setup(t, { expose: e, emit: n }) {
-    const i = Fn(() => import("./InputIssues-DqasGdVG.js")), s = Fn(() => import("./Machining-WX_h4cB_.js")), a = Fn(() => import("./ImportCSV-0oCykKGc.js")), o = Fn(() => import("./ObjectViewer-DZKwr4_x.js")), l = Fn(() => import("./ImageUpload-CDkPhW_5.js")), {
+    const i = Fn(() => import("./InputIssues-DqasGdVG.js")), s = Fn(() => import("./Machining-9mU7m9Dq.js")), a = Fn(() => import("./ImportCSV-szBVIZhn.js")), o = Fn(() => import("./ObjectViewer-DkGCIFpQ.js")), l = Fn(() => import("./ImageUpload-BpAd7vqW.js")), {
       inputs: r,
       totalInputShapes: h,
       getShapeGrainSummary: v,
@@ -9749,7 +9749,7 @@ const Wd = {
         domain: zt,
         extrasOptions: Ce(),
         source: "checkout",
-        sourceVersion: "4.1.3"
+        sourceVersion: "4.1.4"
       };
       if (hn.value?.enabled && hn.value?.rules?.length > 0) {
         const F = Du(

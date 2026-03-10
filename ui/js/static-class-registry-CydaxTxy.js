@@ -6192,7 +6192,7 @@ function Va(t) {
 async function Ja(t, e, n) {
   let i;
   try {
-    i = (await import("./__vite-browser-external-7nOErx8v.js").then((l) => l._)).Worker;
+    i = (await import("./__vite-browser-external-DS-vB_Y_.js").then((l) => l._)).Worker;
   } catch {
     return null;
   }
