@@ -283,7 +283,7 @@ class Product
 		wp_enqueue_style(
 			'smartcut-checkout-style',
 			plugin_dir_url(dirname(__DIR__) . '/smartcut.php') . 'ui/css/checkout.css',
-			array('storefront-style', 'storefront-woocommerce-style'),
+			array(),
 			SMARTCUT_CURRENT_VERSION
 		);
 

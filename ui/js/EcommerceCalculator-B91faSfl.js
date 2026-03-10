@@ -1,13 +1,13 @@
-import { r as z, w as Re, c as T, Y as rt, Z as st, n as gt, d as Qe, a as K, b as B, F as at, k as qt, l as xt, p as tt, f as re, y as aa, t as Oe, L as oa, D as kn, o as fn, H as mo, _ as vo, J as wt, $ as bo, S as gi, j as $e, u as L, e as ue, a0 as ci, s as yo, x as wo, C as xo, a1 as tn, q as ui, N as Ji, g as Ge, m as Wn, O as So, a2 as Ot, V as ko, A as ai, W as Co, h as Fn } from "./vendor-vue-9U543O5d.js";
-import { bd as Be, be as Qt, aT as Po, ba as la, bf as Yt, bg as Gn, bh as ra, bi as ca, bj as ua, bk as di, bl as un, bm as bs, bn as Ao, bo as Io, bp as Oo, bq as da, br as fa, bs as Ti, bt as Lo, bu as Zn, bv as fi, bw as Fo, b9 as Kn, I as Jn, x as Cn, b8 as Rt, w as Pn, i as dn, H as Tt, aX as To, bx as ys, by as Eo, b2 as Tn, bz as En, b5 as $n, F as Mn, bA as ws, bB as xs, bC as $o, m as Ss, A as Mo, _ as No, aR as Bo, bD as Vo, aQ as pa, bE as Do, a8 as Go, bF as Ro, bG as jo, aJ as qo, bH as Uo, aK as Wo, aM as zo, aO as _o, aN as Ho, aL as wn, c as me, v as ze, bI as Zo, bJ as ha, f as Dt, bK as Ko, bL as ks, t as Jo, e as Zt, y as Yo, r as Ei, z as Xo, q as Qo, bM as el, bN as Yi, b4 as tl, bO as nl, bP as il, bQ as sl, bR as al, bS as ga, bT as ol, bU as ll, bV as $i, bW as ma, bX as rl, bY as va, bZ as cl, b_ as ul, b$ as dl, c0 as fl, c1 as pl, c2 as hl, c3 as gl, c4 as Xi, c5 as ml, c6 as vl, c7 as bl, c8 as yl, c9 as wl, ca as nn, cb as Mi, cc as xl, a as Xt, cd as Cs, ce as Ni, cf as Sl, cg as Ps, o as As, b as Is, u as Bi, s as Vi } from "./result.zod-CDxo7LoF.js";
+import { r as z, w as Re, c as T, Y as rt, Z as st, n as gt, d as Qe, a as K, b as B, F as at, k as qt, l as xt, p as tt, f as re, y as aa, t as Oe, L as oa, D as kn, o as fn, H as mo, _ as vo, J as wt, $ as bo, S as gi, j as $e, u as L, e as ue, a0 as ci, s as yo, x as wo, C as xo, a1 as tn, q as ui, N as Ji, g as Ge, m as Wn, O as So, a2 as Ot, U as ko, A as ai, V as Co, h as Fn } from "./vendor-vue-XczpOw2V.js";
+import { bd as Be, be as Qt, aT as Po, ba as la, bf as Yt, bg as Gn, bh as ra, bi as ca, bj as ua, bk as di, bl as un, bm as bs, bn as Ao, bo as Io, bp as Oo, bq as da, br as fa, bs as Ti, bt as Lo, bu as Zn, bv as fi, bw as Fo, b9 as Kn, I as Jn, x as Cn, b8 as Rt, w as Pn, i as dn, H as Tt, aX as To, bx as ys, by as Eo, b2 as Tn, bz as En, b5 as $n, F as Mn, bA as ws, bB as xs, bC as $o, m as Ss, A as Mo, _ as No, aR as Bo, bD as Vo, aQ as pa, bE as Do, a8 as Go, bF as Ro, bG as jo, aJ as qo, bH as Uo, aK as Wo, aM as zo, aO as _o, aN as Ho, aL as wn, c as me, v as ze, bI as Zo, bJ as ha, f as Dt, bK as Ko, bL as ks, t as Jo, e as Zt, y as Yo, r as Ei, z as Xo, q as Qo, bM as el, bN as Yi, b4 as tl, bO as nl, bP as il, bQ as sl, bR as al, bS as ga, bT as ol, bU as ll, bV as $i, bW as rl, bX as ma, bY as va, bZ as cl, b_ as ul, b$ as dl, c0 as fl, c1 as pl, c2 as hl, c3 as gl, c4 as Xi, c5 as ml, c6 as vl, c7 as bl, c8 as yl, c9 as wl, ca as nn, cb as Mi, cc as xl, a as Xt, cd as Cs, ce as Ni, cf as Sl, cg as Ps, o as As, b as Is, u as Bi, s as Vi } from "./result.zod-Jpm7fspL.js";
 import { G as Rn, Z as Yn, o as Z, j as ie, q as W, i as S, n as Os, H as Et, I as kl, m as ce, k as $t, u as He, l as Ie, J as Ls, K as Xn, L as Cl, M as Pl, N as Fs, O as Al, Q as Qn, S as Di, T as Gi, U as Ri, V as Il, h as Me, W as Ol } from "./vendor-BwVe8GCL.js";
 import { s as ji, u as Ll, l as qi, b as Fl } from "./i18n-DT7wACvc.js";
 import "./vendor-i18next-2OYl82kj.js";
 import { f as Tl, d as El, l as Ft, e as Qi, c as es, i as Ze, r as Lt, g as oi, h as $l } from "./vendor-d3-DNaL3zcO.js";
 import { a as Ml } from "./vendor-lodash-B8VQpKjD.js";
 import { o as Nl, f as Bl, s as Vl, a as Dl } from "./vendor-floating-ui-DZfk4g77.js";
-import { t as ye } from "./i18n-BcF5TYdp.js";
-import { _ as mi } from "./Launch-f21ynuad.js";
+import { t as ye } from "./i18n-CYUWq18B.js";
+import { _ as mi } from "./Launch-Ctx3PgLR.js";
 import { b as jn } from "./environment-BeBZzWz6.js";
 function ba(t, e = "cc") {
   if (!t) return t;
@@ -2157,7 +2157,7 @@ const Pa = Z({
   saw: Cn.describe("Saw configuration used"),
   // Result data (internal format - l1/l2/w1/w2)
   // Using actual schemas to strip internal-only fields
-  stock: ie(Bo).describe("Stock items with placement layouts"),
+  stock: ie(Bo).describe("Stock items"),
   parts: ie(Ss).describe("Parts with coordinates and properties"),
   cuts: ie(No).optional().describe("Cut instructions"),
   offcuts: ie(Mo).optional().describe("Remaining offcut pieces"),
@@ -2760,7 +2760,7 @@ function Ds(t, e, n) {
   });
 }
 function Kr() {
-  if (!this.props.cuttingPlan?.value) return;
+  if (!this.settings.main || !this.props.cuttingPlan?.value) return;
   const t = this.props.cuttingPlan.value;
   if (!t.contours?.length) return;
   this.selections.cuttingPathGroup || (this.selections.cuttingPathGroup = this.selections.svgCanvas.append("g").attr("class", "cutting-path")), this.selections.cuttingPathGroup.selectAll("*").remove();
@@ -7451,7 +7451,7 @@ const ja = Z({
   t: W().nullable(),
   q: W(),
   stockId: S()
-}), qa = rl, Ua = Z({
+}), qa = rl.partial(), Ua = Z({
   bladeWidth: W().optional(),
   cutType: S().optional(),
   cutPreference: S().optional(),
@@ -8767,7 +8767,7 @@ const Wd = {
   },
   emits: ["inputs-changed", "calculating", "validation-error", "before-calculate", "result", "no-result", "log", "error"],
   setup(t, { expose: e, emit: n }) {
-    const i = Fn(() => import("./InputIssues-B_vFXDPu.js")), s = Fn(() => import("./Machining-BQ4iRUbF.js")), a = Fn(() => import("./ImportCSV-C9aRN8Qy.js")), o = Fn(() => import("./ObjectViewer-D6Hbg9id.js")), l = Fn(() => import("./ImageUpload-DCqCDLSS.js")), {
+    const i = Fn(() => import("./InputIssues-DqasGdVG.js")), s = Fn(() => import("./Machining-WX_h4cB_.js")), a = Fn(() => import("./ImportCSV-0oCykKGc.js")), o = Fn(() => import("./ObjectViewer-DZKwr4_x.js")), l = Fn(() => import("./ImageUpload-CDkPhW_5.js")), {
       inputs: r,
       totalInputShapes: h,
       getShapeGrainSummary: v,
@@ -9749,7 +9749,7 @@ const Wd = {
         domain: zt,
         extrasOptions: Ce(),
         source: "checkout",
-        sourceVersion: "4.1.2"
+        sourceVersion: "4.1.3"
       };
       if (hn.value?.enabled && hn.value?.rules?.length > 0) {
         const F = Du(

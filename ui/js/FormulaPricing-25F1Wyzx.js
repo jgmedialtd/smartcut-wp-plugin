@@ -1,6 +1,6 @@
-import { F as U, _ as B } from "./EcommerceCalculator-CNt9J5Wx.js";
-import { t as O } from "./i18n-BcF5TYdp.js";
-import { d as G, i as z, w as Q, r as m, c as w, o as W, a as p, b as o, e as _, f as h, g as X, u as b, h as Y, j as D, F as j, k as L, t as s, n as V } from "./vendor-vue-9U543O5d.js";
+import { F as U, _ as B } from "./EcommerceCalculator-B91faSfl.js";
+import { t as O } from "./i18n-CYUWq18B.js";
+import { d as G, i as z, w as Q, r as m, c as w, o as W, a as p, b as o, e as _, f as h, g as X, u as b, h as Y, j as D, F as j, k as L, t as s, n as V } from "./vendor-vue-XczpOw2V.js";
 const Z = {
   key: 0,
   class: "debug"
@@ -37,7 +37,7 @@ const Z = {
   },
   emits: ["hardware-result", "panel-result"],
   setup(d, { emit: H }) {
-    const R = Y(() => import("./ObjectViewer-D6Hbg9id.js")), u = d, k = H, K = z("calculator"), n = w(() => K()), A = m("production");
+    const R = Y(() => import("./ObjectViewer-DZKwr4_x.js")), u = d, k = H, K = z("calculator"), n = w(() => K()), A = m("production");
     let i = null;
     const v = m(null), r = m([]), g = m(!1), F = m(""), C = w(() => {
       if (!g.value || !r.value.length || r.value.every((t) => t.value === null)) return null;

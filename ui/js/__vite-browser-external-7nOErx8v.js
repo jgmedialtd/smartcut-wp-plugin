@@ -1,8 +1,8 @@
 const { initializeZodTranslations: y } = await import("./zod-error-map-DuHGJg29.js");
 y();
-const { initializeStaticRegistry: S } = await import("./static-class-registry-EHqom19V.js");
+const { initializeStaticRegistry: S } = await import("./static-class-registry-D-5jTJ7r.js");
 S();
-const { clearStorageOnceAboveThreshold: A, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", _ = "version/checkout/last-clear", R = "4.0.58", P = "4.1.2";
+const { clearStorageOnceAboveThreshold: A, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", _ = "version/checkout/last-clear", R = "4.0.58", P = "4.1.3";
 {
   const a = E();
   A(
@@ -13,7 +13,7 @@ const { clearStorageOnceAboveThreshold: A, createLocalStorageAdapter: E } = awai
     a
   );
 }
-const { library: x } = await import("./vendor-fortawesome-C_yAXOw5.js").then((a) => a.r), { FontAwesomeIcon: I } = await import("./vendor-vue-9U543O5d.js").then((a) => a.a4), { createApp: b } = await import("./vendor-vue-9U543O5d.js").then((a) => a.a3), O = async () => {
+const { library: x } = await import("./vendor-fortawesome-C_yAXOw5.js").then((a) => a.r), { FontAwesomeIcon: I } = await import("./vendor-vue-XczpOw2V.js").then((a) => a.a4), { createApp: b } = await import("./vendor-vue-XczpOw2V.js").then((a) => a.a3), O = async () => {
   try {
     const [
       { faArrowsLeftRight: a },
@@ -70,11 +70,11 @@ const { library: x } = await import("./vendor-fortawesome-C_yAXOw5.js").then((a)
   }
 }, T = async () => {
   try {
-    return await (await import("./i18n-BcF5TYdp.js")).i18nextReady;
+    return await (await import("./i18n-CYUWq18B.js")).i18nextReady;
   } catch (a) {
     return console.warn("Failed to load i18n:", a.message), Promise.resolve();
   }
-}, v = await import("./Launch-f21ynuad.js").then((a) => a.L), C = v.default;
+}, v = await import("./Launch-Ctx3PgLR.js").then((a) => a.L), C = v.default;
 let r = null, n = !1;
 const F = async () => {
   if (!n) {

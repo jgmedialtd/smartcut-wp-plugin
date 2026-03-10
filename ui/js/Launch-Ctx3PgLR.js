@@ -1,4 +1,4 @@
-import { d as _, B as i, r as p, c as l, j as y, a as f, e as d, C as k, t as v, h as u, b as m } from "./vendor-vue-9U543O5d.js";
+import { d as _, B as i, r as p, c as l, j as y, a as f, e as d, C as k, t as v, h as u, b as m } from "./vendor-vue-XczpOw2V.js";
 const h = {
   key: 1,
   class: "error-message"
@@ -9,8 +9,8 @@ const h = {
   },
   setup(t, { expose: s }) {
     const o = p(!1), n = p(null), a = i({
-      wordpress: u(() => import("./WordPress-L1UCK6vc.js")),
-      vanilla: u(() => import("./Vanilla-BLiO1VYv.js").then((c) => c.V))
+      wordpress: u(() => import("./WordPress-C6Z2R0S1.js")),
+      vanilla: u(() => import("./Vanilla-DSGkcpr1.js").then((c) => c.V))
     }), e = t, r = l(() => {
       if (!e.type) return null;
       const c = e?.type?.toLowerCase();
