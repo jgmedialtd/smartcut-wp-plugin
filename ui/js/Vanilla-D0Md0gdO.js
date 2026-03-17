@@ -1,8 +1,8 @@
 import { r as s, w as Be, c as O, d as je, M as Le, o as Me, D as Ve, a as he, b as V, g as De, j as ye, u as re, h as ne, F as Oe, e as le, y as $e, f as Te, t as Re, L as qe, n as be, E as We } from "./vendor-vue-XczpOw2V.js";
-import { I as _e, i as He, f as c, a as U, b as $ } from "./result.zod-Jpm7fspL.js";
-import { c as Ae, E as Je, m as Qe } from "./EcommerceCalculator-CvSy71zh.js";
+import { I as _e, i as He, f as c, a as U, b as $ } from "./result.zod-P7rQl8ib.js";
+import { c as Ae, E as Je, m as Qe } from "./EcommerceCalculator-5LWTyQpi.js";
 import { o as H, h as R, i as u, j as te, k as we, u as Ge, l as Se, m as N, n as Y, q, t as ke } from "./vendor-BwVe8GCL.js";
-import { _ as Ke } from "./Launch-MjRX7mQF.js";
+import { _ as Ke } from "./Launch-Xe82f4hD.js";
 function W(_) {
   return _.db_id ? _.db_id : `${_.material}-${_.l}-${_.w}-${_.t}`;
 }
@@ -620,7 +620,7 @@ const ot = {
   __name: "Vanilla",
   emits: ["ready"],
   setup(_, { expose: P, emit: y }) {
-    const S = ne(() => import("./StockFilter-B7kLtNFJ.js")), B = ne(() => import("./FormulaPricing-Ce4Ltv_C.js")), k = ne(() => import("./ProductBrowser-Bw_c8iPn.js")), g = ne(() => import("./Notices-Du1WXYEB.js")), m = ne(() => import("./OrderLookup-DyvQknzq.js")), p = y, w = "production", ie = "4.1.4", v = s(!1), d = s([]), f = s({
+    const S = ne(() => import("./StockFilter-CHq2JoCG.js")), B = ne(() => import("./FormulaPricing-EqdUi8JJ.js")), k = ne(() => import("./ProductBrowser-BAsdRna6.js")), g = ne(() => import("./Notices-CJT9Dpvh.js")), m = ne(() => import("./OrderLookup-CSqP-wRP.js")), p = y, w = "production", ie = "4.1.5", v = s(!1), d = s([]), f = s({
       banding: null,
       finish: null,
       planing: null,
@@ -825,6 +825,7 @@ const ot = {
           "initial-product-id": ue.value,
           "server-pagination": Ce.value,
           mode: Z.value.mode || "stock",
+          "show-selection-bar": !1,
           onStockAdded: fe,
           onStockRemoved: Fe,
           onSelectionConfirmed: Ee
@@ -869,7 +870,7 @@ const ot = {
       ], 64))
     ], 64));
   }
-}), it = /* @__PURE__ */ Ke(lt, [["__scopeId", "data-v-8bc04fa0"]]), mt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({ __proto__: null, default: it }, Symbol.toStringTag, { value: "Module" }));
+}), it = /* @__PURE__ */ Ke(lt, [["__scopeId", "data-v-74a46f95"]]), mt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({ __proto__: null, default: it }, Symbol.toStringTag, { value: "Module" }));
 export {
   mt as V,
   pt as b,

@@ -15,7 +15,8 @@
       "Bash(then echo \"❌ WARNING: Found .git files in zip!\")",
       "Bash(unzip:*)",
       "Bash(else echo \"✓ No .git files found in zip\")",
-      "WebFetch(domain:support.servbay.com)"
+      "WebFetch(domain:support.servbay.com)",
+      "Bash(npm run:*)"
     ],
     "deny": [],
     "ask": []

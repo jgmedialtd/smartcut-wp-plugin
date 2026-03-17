@@ -26,6 +26,7 @@ class PricingStrategy
 			'part_area' => __('This product is priced by part area, so adding fractions of a stock to the cart is possible.', 'smartcut'),
 			'full_stock_plus_cut_length' => __('This product is priced by full stock plus cut length.', 'smartcut'),
 			'full_stock_plus_num_parts' => __('This product is priced by full stock plus number of parts.', 'smartcut'),
+			'full_stock_plus_part_perimeter' => __('This product is priced by full stock plus total part perimeter.', 'smartcut'),
 			'full_stock' => __('This product is priced by full sheet.', 'smartcut'),
 			'cut_length' => __('This product is priced by cut length.', 'smartcut'),
 			'roll_length' => __('This product is priced by roll length.', 'smartcut')
@@ -113,7 +114,7 @@ class PricingStrategy
 
 		$is_variable = $this->product->is_type('variable');
 
-		if (($is_variable && !in_array($this->strategy, ['part_area'], true)) || (!$is_variable && !in_array($this->strategy, ['full_stock_plus_cut_length', 'full_stock_plus_num_parts', 'full_stock', 'part_area'], true))) {
+		if (($is_variable && !in_array($this->strategy, ['part_area'], true)) || (!$is_variable && !in_array($this->strategy, ['full_stock_plus_cut_length', 'full_stock_plus_num_parts', 'full_stock_plus_part_perimeter', 'full_stock', 'part_area'], true))) {
 
 			$components[] = array(
 				'id' => 'smartcut-stock-total',
@@ -136,6 +137,14 @@ class PricingStrategy
 				$components[] = array(
 					'id' => 'smartcut-per-part-total',
 					'label' => __('Part total', 'smartcut'),
+					'initial_price' => 0
+				);
+				break;
+
+			case 'full_stock_plus_part_perimeter':
+				$components[] = array(
+					'id' => 'smartcut-cut-length-total',
+					'label' => __('Cut length total', 'smartcut'),
 					'initial_price' => 0
 				);
 				break;
@@ -190,6 +199,12 @@ class PricingStrategy
 			case 'full_stock_plus_num_parts':
 				if (!isset($settings['per_part_price'])) {
 					$messages[] = 'When using the full sheet plus number of parts pricing strategy, a part price must be supplied.';
+				}
+				break;
+
+			case 'full_stock_plus_part_perimeter':
+				if (!isset($settings['cut_length_price'])) {
+					$messages[] = 'When using the full stock plus part perimeter strategy, a cut length price must be supplied.';
 				}
 				break;
 		}

@@ -1,8 +1,8 @@
-import { d as oe, a as i, b as l, O as ce, l as re, p as N, x as ae, c as p, f as a, e as f, r as U, t as n, A as Oe, u, F as W, k as Y, o as we, S as qe, w as J, U as Ye, N as et, y as tt, z as st, V as ot, j as ve, g as Ve, W as pe, q as Ie, X as lt } from "./vendor-vue-XczpOw2V.js";
-import { c as it, u as nt } from "./EcommerceCalculator-CvSy71zh.js";
+import { d as oe, a as i, b as l, O as ce, l as re, p as N, x as ae, c as p, f as a, e as f, r as U, t as n, A as Oe, u, F as W, k as Y, o as we, S as Be, w as J, U as Ye, N as et, y as tt, z as st, V as ot, j as ve, g as Ve, W as pe, q as Ie, X as lt } from "./vendor-vue-XczpOw2V.js";
+import { c as it, u as nt } from "./EcommerceCalculator-5LWTyQpi.js";
 import { t as r } from "./i18n-CYUWq18B.js";
-import { u as at, b as _e, g as E } from "./Vanilla-FZmY3nNG.js";
-import { _ as ue } from "./Launch-MjRX7mQF.js";
+import { u as at, b as _e, g as E } from "./Vanilla-D0Md0gdO.js";
+import { _ as ue } from "./Launch-Xe82f4hD.js";
 const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src", "alt"], dt = {
   key: 1,
   class: "stock-filter-row__thumb-placeholder"
@@ -48,7 +48,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
 }, Pt = { class: "stock-filter-row__action" }, Mt = ["disabled"], Ot = ["onKeydown"], Vt = { class: "stock-filter-card__image-wrapper" }, It = {
   key: 0,
   class: "stock-filter-card__image"
-}, qt = ["src", "alt"], Bt = {
+}, Bt = ["src", "alt"], qt = {
   key: 1,
   class: "stock-filter-card__image-placeholder"
 }, Rt = {
@@ -137,7 +137,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     }), z = p(() => {
       const s = [];
       return t.stock.category && s.push(t.stock.category), t.stock.finish && s.push(t.stock.finish), t.stock.variant && s.push(t.stock.variant), A.value && s.push(A.value), t.stock.weight && s.push(`${t.stock.weight}kg`), s;
-    }), K = p(() => t.stock.t == null ? "" : t.unitSystem === "imperial" ? `${(t.stock.t / 25.4).toFixed(2)}"` : `${t.stock.t} mm`), q = p(() => {
+    }), K = p(() => t.stock.t == null ? "" : t.unitSystem === "imperial" ? `${(t.stock.t / 25.4).toFixed(2)}"` : `${t.stock.t} mm`), B = p(() => {
       const s = t.stock.extras;
       return s ? !!(s.banding?.length || s.finish?.length || s.planing?.length || s.machining?.length) : !1;
     }), le = p(() => {
@@ -236,8 +236,8 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
             alt: e.stock.name || e.stock.material,
             loading: "lazy",
             onError: v[1] || (v[1] = (P) => _.value = !0)
-          }, null, 40, qt)
-        ])) : (l(), i("div", Bt)),
+          }, null, 40, Bt)
+        ])) : (l(), i("div", qt)),
         e.stock.t != null ? (l(), i("span", Rt, n(K.value), 1)) : f("", !0),
         e.stock.finish ? (l(), i("span", Tt, n(e.stock.finish), 1)) : f("", !0)
       ]),
@@ -258,7 +258,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
           }, null, 4),
           $.value ? (l(), i("span", Et, n($.value), 1)) : f("", !0)
         ])) : f("", !0),
-        q.value || e.stock.sample?.enabled ? (l(), i("div", Kt, [
+        B.value || e.stock.sample?.enabled ? (l(), i("div", Kt, [
           e.stock.sample?.enabled ? (l(), i("span", Gt, n(u(r)("stockFilter.samplesAvailable")), 1)) : f("", !0),
           e.stock.extras?.banding?.length ? (l(), i("span", Ht, n(u(r)("stockFilter.banding")), 1)) : f("", !0),
           e.stock.extras?.finish?.length ? (l(), i("span", Qt, n(u(r)("stockFilter.finishOption")), 1)) : f("", !0),
@@ -408,7 +408,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     function K() {
       _.value = {}, k("clear-filters");
     }
-    function q(d) {
+    function B(d) {
       x.value = x.value === d ? null : d;
     }
     function le(d) {
@@ -420,7 +420,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     }
     return we(() => {
       document.addEventListener("click", Z);
-    }), qe(() => {
+    }), Be(() => {
       document.removeEventListener("click", Z);
     }), (d, h) => (l(), i("div", is, [
       a("div", ns, [
@@ -457,7 +457,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
                 a("button", {
                   type: "button",
                   class: "multiselect__trigger",
-                  onClick: (v) => q(s.field)
+                  onClick: (v) => B(s.field)
                 }, [
                   a("span", ys, n(le(s)), 1)
                 ], 8, bs),
@@ -515,7 +515,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       ])
     ]));
   }
-}), Is = /* @__PURE__ */ ue(Vs, [["__scopeId", "data-v-a7ee4797"]]), qs = { class: "stock-filter-results" }, Bs = { class: "results-header" }, Rs = { class: "results-info" }, Ts = {
+}), Is = /* @__PURE__ */ ue(Vs, [["__scopeId", "data-v-a7ee4797"]]), Bs = { class: "stock-filter-results" }, qs = { class: "results-header" }, Rs = { class: "results-info" }, Ts = {
   key: 0,
   class: "results-count"
 }, Us = {
@@ -587,7 +587,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     }
     we(() => {
       F.value = document.querySelector(".stock-filter-results"), I(), V = new ResizeObserver(I), F.value && V.observe(F.value);
-    }), qe(() => {
+    }), Be(() => {
       V?.disconnect();
     }), J(x, (g) => {
       !g && t.displayMode === "list" && _("update:displayMode", "grid");
@@ -600,8 +600,8 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
         g.push(K);
       return g;
     });
-    return (g, b) => (l(), i("div", qs, [
-      a("div", Bs, [
+    return (g, b) => (l(), i("div", Bs, [
+      a("div", qs, [
         a("div", Rs, [
           e.loading ? (l(), i("div", Us, n(u(r)("actions.loading")) + "...", 1)) : (l(), i("div", Ts, n(e.totalResults) + " " + n(e.totalResults === 1 ? u(r)("stockFilter.result_one") : u(r)("stockFilter.result_other")), 1))
         ]),
@@ -882,6 +882,10 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     unitSystem: {
       type: String,
       default: "metric"
+    },
+    showSelectionBar: {
+      type: Boolean,
+      default: !0
     }
   },
   emits: ["stock-added", "stock-removed", "selection-changed", "selection-confirmed", "labels-changed", "order-sample"],
@@ -907,7 +911,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       currentPage: A,
       filteredStock: z,
       paginatedStock: K,
-      selectedStock: q,
+      selectedStock: B,
       totalPages: le,
       totalItems: Z,
       isLoading: d,
@@ -918,7 +922,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       toggleStockSelection: y,
       isStockSelected: R,
       clearSelection: Se,
-      selectById: Be,
+      selectById: qe,
       createInputStock: G,
       getUniqueValues: ge,
       getFieldRange: $e,
@@ -936,7 +940,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     }
     const de = p(() => k.config.itemsPerPage || 20), Ue = p(() => {
       const o = (te.value - 1) * de.value, m = o + de.value;
-      return q.value.slice(o, m);
+      return B.value.slice(o, m);
     }), Ce = p(() => j.value ? Ue.value : K.value), Ae = p(() => _e(Ce.value)), xe = p(() => {
       const o = {
         code: !1,
@@ -955,17 +959,17 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       for (const c of m)
         c.code && (o.code = !0), c.description && (o.description = !0), c.finish && (o.finish = !0), c.variant && (o.variant = !0), c.grain && (o.grain = !0), c.color && (o.color = !0), c.category && (o.category = !0), c.t != null && (o.thickness = !0), c.weight && (o.weight = !0), c.cost && (o.price = !0), c.q != null && (o.quantity = !0), c.tags?.length && (o.tags = !0);
       return o;
-    }), Le = p(() => j.value ? q.value.length : Z.value), je = p(() => j.value ? Math.max(1, Math.ceil(q.value.length / de.value)) : le.value), Ne = p(() => j.value ? te.value : A.value);
+    }), Le = p(() => j.value ? B.value.length : Z.value), je = p(() => j.value ? Math.max(1, Math.ceil(B.value.length / de.value)) : le.value), Ne = p(() => j.value ? te.value : A.value);
     function De(o) {
       j.value ? te.value = o : P(o);
     }
     J(j, () => {
       te.value = 1;
-    }), J(() => q.value.length, (o) => {
+    }), J(() => B.value.length, (o) => {
       o === 0 && j.value && (j.value = !1);
       const m = Math.max(1, Math.ceil(o / de.value));
-      if (te.value > m && (te.value = m), q.value.length > 0) {
-        const c = _e(q.value);
+      if (te.value > m && (te.value = m), B.value.length > 0) {
+        const c = _e(B.value);
         for (const [w, S] of L.value) {
           const M = c.get(w);
           if (M)
@@ -976,7 +980,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       }
     });
     const ze = p(() => k.loading || d.value), he = U(!1);
-    J(q, (o) => {
+    J(B, (o) => {
       he.value || (ie.value = o.map((m) => E(m)));
     }, { deep: !0 });
     async function Ee(o) {
@@ -985,20 +989,20 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       try {
         const O = new URL(M);
         O.searchParams.set("limit", "1");
-        const B = {}, se = o.match(/^([a-f0-9]{24})-t(\d+(?:\.\d+)?)$/i);
+        const q = {}, se = o.match(/^([a-f0-9]{24})-t(\d+(?:\.\d+)?)$/i);
         if (se)
-          B._id = se[1], B.t = parseFloat(se[2]);
+          q._id = se[1], q.t = parseFloat(se[2]);
         else if (/^[a-f0-9]{24}$/i.test(o))
-          B._id = o;
+          q._id = o;
         else {
           const ne = o.split("-");
           if (ne.length >= 4) {
             const We = parseFloat(ne.pop()), Je = parseFloat(ne.pop()), Ze = parseFloat(ne.pop()), Xe = ne.join("-");
-            B.material = Xe, B.l = Ze, B.w = Je, B.t = We;
+            q.material = Xe, q.l = Ze, q.w = Je, q.t = We;
           } else
             return null;
         }
-        O.searchParams.set("filters", JSON.stringify(B));
+        O.searchParams.set("filters", JSON.stringify(q));
         const ke = await fetch(O.toString(), { credentials: "include" });
         if (!ke.ok) return null;
         const X = (await ke.json()).items || [];
@@ -1033,8 +1037,8 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
                   if (O.length > 0)
                     Q(O, S), L.value.set(M, O), H(O, M);
                   else {
-                    const B = G(S);
-                    Q([B], S), L.value.set(M, [B]), H([B], M);
+                    const q = G(S);
+                    Q([q], S), L.value.set(M, [q]), H([q], M);
                   }
                 } finally {
                   ee.value = !1;
@@ -1051,7 +1055,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     }
     we(async () => {
       if (k.initialProductId) {
-        const o = Be(k.initialProductId);
+        const o = qe(k.initialProductId);
         if (!o) return;
         const m = E(o);
         if (k.mode === "material" && k.serverPagination) {
@@ -1078,7 +1082,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
     const Fe = p(() => k.config.availableFilters.filter((o) => {
       const m = ge(o.field);
       return m.length > 0 && m.some((c) => c != null);
-    })), Pe = p(() => q.value.length === 0 ? null : q.value[0].db_sawId || null);
+    })), Pe = p(() => B.value.length === 0 ? null : B.value[0].db_sawId || null);
     function Me(o) {
       if (!Pe.value) return !1;
       const m = o.db_sawId;
@@ -1091,16 +1095,16 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
         const M = new URL(S);
         M.searchParams.set("limit", "500");
         const O = {};
-        let B = null;
+        let q = null;
         if (o.db_materialId)
-          B = o.db_materialId;
+          q = o.db_materialId;
         else if (o._id && /^[a-f0-9]{24}$/i.test(o._id))
-          B = o._id;
+          q = o._id;
         else if (o.db_id) {
           const X = o.db_id.match(/^([a-f0-9]{24})-t\d+(?:\.\d+)?$/i);
-          X && (B = X[1]);
+          X && (q = X[1]);
         }
-        B ? O.db_materialId = B : O.material = o.name || o.material, o.t != null && (O.t = o.t), M.searchParams.set("filters", JSON.stringify(O)), console.log("[StockFilter] fetchStockForMaterial URL:", M.toString());
+        q ? O.db_materialId = q : O.material = o.name || o.material, o.t != null && (O.t = o.t), M.searchParams.set("filters", JSON.stringify(O)), console.log("[StockFilter] fetchStockForMaterial URL:", M.toString());
         const se = await fetch(M.toString(), { credentials: "include" });
         if (!se.ok) return [];
         const be = (await se.json()).items || [];
@@ -1110,7 +1114,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       }
     }
     function Q(o, m) {
-      const w = _e(q.value).get(E(m));
+      const w = _e(B.value).get(E(m));
       if (w)
         for (const S of o)
           S.material = w;
@@ -1145,7 +1149,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       _("stock-removed", o);
     }
     function He() {
-      for (const o of q.value) {
+      for (const o of B.value) {
         const m = E(o), c = L.value.get(m);
         c ? c.forEach(fe) : fe(G(o));
       }
@@ -1159,7 +1163,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       removeFilter: s,
       clearFilters: v,
       clearSelection: Se,
-      selectedStock: q,
+      selectedStock: B,
       filteredStock: z,
       getUniqueValues: ge,
       getFieldRange: $e
@@ -1226,9 +1230,9 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
       }, 8, ["total-results", "display-mode", "loading", "has-active-filters", "current-page", "total-pages", "visible-columns", "onClearFilters"]),
       Ve(lt, { name: "selection-bar" }, {
         default: Ie(() => [
-          u(q).length > 0 ? (l(), i("div", Fo, [
+          k.showSelectionBar && u(B).length > 0 ? (l(), i("div", Fo, [
             a("div", Po, [
-              a("span", Mo, n(u(q).length) + " " + n(u(q).length === 1 ? "material" : "materials") + " selected ", 1),
+              a("span", Mo, n(u(B).length) + " " + n(u(B).length === 1 ? "material" : "materials") + " selected ", 1),
               a("button", {
                 type: "button",
                 class: "c-btn c-btn--sm c-btn--no-effects no-margin",
@@ -1244,7 +1248,7 @@ const ct = ["onKeydown"], rt = { class: "stock-filter-row__thumb" }, ut = ["src"
               type: "button",
               class: "c-btn c-btn--md no-margin selection-bar__confirm",
               style: re({ backgroundColor: e.colors.button, color: e.colors.buttonText }),
-              onClick: m[5] || (m[5] = (c) => _("selection-confirmed", u(q)))
+              onClick: m[5] || (m[5] = (c) => _("selection-confirmed", u(B)))
             }, n(u(r)("stockFilter.create_cut_list")), 5)
           ])) : f("", !0)
         ]),

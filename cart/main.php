@@ -304,6 +304,16 @@ class CartManager
 			}
 		}
 
+		$settings = \SmartCut\Settings\getGlobalSettings();
+		$minCutToSizePrice = floatval($settings['minimum_cut_to_size_price'] ?? 0.0);
+
+		if ($minCutToSizePrice > 0) {
+			$orderPrice = floatval($_POST['smartcut-custom-price'] ?? 0.0);
+			if ($orderPrice < $minCutToSizePrice) {
+				return false;
+			}
+		}
+
 		return $passed;
 	}
 
@@ -1140,6 +1150,51 @@ class CartManager
 		wp_redirect(remove_query_arg('cc'));
 		exit;
 	}
+
+	/**
+	 * Enforce minimum order price (pre-tax subtotal)
+	 */
+	public static function notifyMinimumOrderPrice(): void
+	{
+		$settings = \SmartCut\Settings\getGlobalSettings();
+		$minPrice = floatval($settings['minimum_order_price'] ?? 0.0);
+
+		if ($minPrice <= 0) return;
+
+		$subtotal = WC()->cart->get_subtotal();
+
+		if ($subtotal < $minPrice) {
+			wc_add_notice(
+				sprintf(
+					__('A minimum order of %s is required. Your current order total is %s.', 'smartcut'),
+					wc_price($minPrice),
+					wc_price($subtotal)
+				),
+				'notice'
+			);
+		}
+	}
+
+	public static function checkMinimumOrderPrice(): void
+	{
+		$settings = \SmartCut\Settings\getGlobalSettings();
+		$minPrice = floatval($settings['minimum_order_price'] ?? 0.0);
+
+		if ($minPrice <= 0) return;
+
+		$subtotal = WC()->cart->get_subtotal();
+
+		if ($subtotal < $minPrice) {
+			wc_add_notice(
+				sprintf(
+					__('A minimum order of %s is required. Your current order total is %s.', 'smartcut'),
+					wc_price($minPrice),
+					wc_price($subtotal)
+				),
+				'error'
+			);
+		}
+	}
 }
 
 // Main WooCommerce hooks
@@ -1152,6 +1207,8 @@ add_filter('woocommerce_cart_item_quantity', [CartManager::class, 'disableCartQu
 add_action('woocommerce_checkout_create_order_line_item', [CartManager::class, 'checkoutCreateOrderLineItem'], 10, 4);
 add_action('woocommerce_before_add_to_cart_button', [CartManager::class, 'addUserFields']);
 add_action('woocommerce_before_add_to_cart_button', [CartManager::class, 'addHiddenFields']);
+add_action('woocommerce_check_cart_items', [CartManager::class, 'notifyMinimumOrderPrice']);
+add_action('woocommerce_checkout_process', [CartManager::class, 'checkMinimumOrderPrice']);
 
 // Handle order deletion
 add_action('before_delete_post', function (int $postId): void {

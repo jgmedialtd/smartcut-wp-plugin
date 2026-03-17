@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SmartCut plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SmartCut 5.1.2\n"
+"Project-Id-Version: SmartCut 5.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smartcut\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-10T09:27:54+00:00\n"
+"POT-Creation-Date: 2026-03-17T10:18:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: smartcut\n"
@@ -36,17 +36,22 @@ msgstr ""
 msgid "Cut list already in cart."
 msgstr ""
 
-#: cart/main.php:336
+#: cart/main.php:346
 msgid "Yes"
 msgstr ""
 
-#: cart/main.php:337
+#: cart/main.php:347
 msgid "No"
 msgstr ""
 
-#: cart/main.php:736
-#: cart/main.php:773
+#: cart/main.php:746
+#: cart/main.php:783
 msgid "Include offcuts"
+msgstr ""
+
+#: cart/main.php:1169
+#: cart/main.php:1190
+msgid "A minimum order of %s is required. Your current order total is %s."
 msgstr ""
 
 #: product-admin/formula.php:21
@@ -98,54 +103,59 @@ msgid "This product is priced by full stock plus number of parts."
 msgstr ""
 
 #: product/pricing.php:29
-msgid "This product is priced by full sheet."
+msgid "This product is priced by full stock plus total part perimeter."
 msgstr ""
 
 #: product/pricing.php:30
-msgid "This product is priced by cut length."
+msgid "This product is priced by full sheet."
 msgstr ""
 
 #: product/pricing.php:31
+msgid "This product is priced by cut length."
+msgstr ""
+
+#: product/pricing.php:32
 msgid "This product is priced by roll length."
 msgstr ""
 
-#: product/pricing.php:47
+#: product/pricing.php:48
 msgid "Banding total"
 msgstr ""
 
-#: product/pricing.php:55
+#: product/pricing.php:56
 msgid "Finish total"
 msgstr ""
 
-#: product/pricing.php:63
+#: product/pricing.php:64
 msgid "Machining total"
 msgstr ""
 
-#: product/pricing.php:73
+#: product/pricing.php:74
 msgid "Part area"
 msgstr ""
 
-#: product/pricing.php:81
+#: product/pricing.php:82
 msgid "Offcut area"
 msgstr ""
 
-#: product/pricing.php:120
+#: product/pricing.php:121
 msgid "Stock total"
 msgstr ""
 
-#: product/pricing.php:130
+#: product/pricing.php:131
+#: product/pricing.php:147
 msgid "Cut length total"
 msgstr ""
 
-#: product/pricing.php:138
+#: product/pricing.php:139
 msgid "Part total"
 msgstr ""
 
-#: product/pricing.php:146
+#: product/pricing.php:155
 msgid "Roll length total"
 msgstr ""
 
-#: product/pricing.php:155
+#: product/pricing.php:164
 msgid "Cutting charge total"
 msgstr ""
 

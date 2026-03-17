@@ -1,5 +1,5 @@
 import { d as L, v as $, r as U, o as D, m as O, a as o, b as d, e as _, f as u, g as f, u as R, h as A, F as B, k as V } from "./vendor-vue-XczpOw2V.js";
-import { _ as M } from "./Launch-MjRX7mQF.js";
+import { _ as M } from "./Launch-Xe82f4hD.js";
 const P = { id: "uploader" }, S = {
   key: 0,
   class: "debug"
@@ -38,7 +38,7 @@ const P = { id: "uploader" }, S = {
   },
   emits: ["update", "remove"],
   setup(g, { emit: w }) {
-    const F = A(() => import("./ObjectViewer-DkGCIFpQ.js")), h = U(null), t = U({
+    const F = A(() => import("./ObjectViewer-CykR8qB-.js")), h = U(null), t = U({
       shapeId: "",
       files: [],
       previewUrls: [],

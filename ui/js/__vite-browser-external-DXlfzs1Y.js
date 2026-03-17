@@ -1,8 +1,8 @@
 const { initializeZodTranslations: y } = await import("./zod-error-map-DuHGJg29.js");
 y();
-const { initializeStaticRegistry: S } = await import("./static-class-registry-CydaxTxy.js");
+const { initializeStaticRegistry: S } = await import("./static-class-registry-6UW2TDd8.js");
 S();
-const { clearStorageOnceAboveThreshold: A, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", _ = "version/checkout/last-clear", R = "4.0.58", P = "4.1.4";
+const { clearStorageOnceAboveThreshold: A, createLocalStorageAdapter: E } = await import("./version-utils-DJMibzAZ.js"), L = "version/checkout/current", _ = "version/checkout/last-clear", R = "4.0.58", P = "4.1.5";
 {
   const a = E();
   A(
@@ -74,7 +74,7 @@ const { library: x } = await import("./vendor-fortawesome-C_yAXOw5.js").then((a)
   } catch (a) {
     return console.warn("Failed to load i18n:", a.message), Promise.resolve();
   }
-}, v = await import("./Launch-MjRX7mQF.js").then((a) => a.L), C = v.default;
+}, v = await import("./Launch-Xe82f4hD.js").then((a) => a.L), C = v.default;
 let r = null, n = !1;
 const F = async () => {
   if (!n) {

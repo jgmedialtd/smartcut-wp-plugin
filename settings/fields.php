@@ -326,6 +326,24 @@ define('SMARTCUT_FIELDS', [
 		'description' => 'Minimum fee for any finishing.',
 		'show' => ['global']
 	],
+	'minimum_order_price' => [
+		'type' => 'float',
+		'default' => 0.0,
+		'min' => 0.0,
+		'group' => ['pricing', 'order'],
+		'label' => 'Minimum Order Price',
+		'description' => 'Minimum order subtotal (before tax) required to proceed to checkout. Set to 0 to disable.',
+		'show' => ['global']
+	],
+	'minimum_cut_to_size_price' => [
+		'type' => 'float',
+		'default' => 0.0,
+		'min' => 0.0,
+		'group' => ['pricing', 'order'],
+		'label' => 'Minimum Cut-to-Size Price',
+		'description' => 'Minimum price for a single cut-to-size order. Orders below this amount cannot be added to the cart. Set to 0 to disable.',
+		'show' => ['global']
+	],
 	'cut_length_price' => [
 		'type' => 'float',
 		'default' => 0.0,
@@ -648,6 +666,7 @@ define('SMARTCUT_FIELDS', [
 			'cut_length' => 'Cut Length',
 			'full_stock_plus_cut_length' => 'Full Stock Plus Cut Length',
 			'full_stock_plus_num_parts' => 'Full Stock Plus Number of Parts',
+			'full_stock_plus_part_perimeter' => 'Full Stock Plus Part Perimeter',
 			'roll_length' => 'Roll length',
 		],
 		'show' => ['global', 'product']
@@ -739,7 +758,8 @@ define('SMARTCUT_GROUPS', [
 		'surcharge' => ['title' => 'Surcharge Settings', 'description' => 'Configure surcharge options'],
 		'extras' => ['title' => 'Extras Products', 'description' => 'Separate products control extras pricing'],
 		'machining' => ['title' => 'Machining Products', 'description' => 'Separate products control machining pricing'],
-		'offcuts' => ['title' => 'Offcuts', 'description' => 'Configure treatment of offcuts']
+		'offcuts' => ['title' => 'Offcuts', 'description' => 'Configure treatment of offcuts'],
+		'order' => ['title' => 'Order Settings', 'description' => 'Configure minimum order requirements']
 	],
 	'extras' => [
 		'general' => ['title' => 'Extra Options', 'description' => 'Configure additional options']
@@ -1073,7 +1093,8 @@ function cutLengthPriceScript()
 			var cutLengthPriceField = $('#smartcut_cut_length_price');
 
 			function toggleCutLengthPriceField() {
-				if (pricingStrategyField.val() === 'full_stock_plus_cut_length') {
+				var strategiesWithCutLength = ['full_stock_plus_cut_length', 'full_stock_plus_part_perimeter', 'cut_length'];
+				if (strategiesWithCutLength.indexOf(pricingStrategyField.val()) !== -1) {
 					cutLengthPriceField.prop('disabled', false);
 				} else {
 					cutLengthPriceField.val('');
