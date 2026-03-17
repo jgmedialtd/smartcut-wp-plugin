@@ -16,7 +16,11 @@
       "Bash(unzip:*)",
       "Bash(else echo \"✓ No .git files found in zip\")",
       "WebFetch(domain:support.servbay.com)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(grep -rn \"cutting.path\\\\|cuttingPath\\\\|cutting_path\" /Users/Jon/JGMedia/Apps/smartcut/ --include=*.ts --include=*.vue --include=*.js)",
+      "Bash(find /Users/Jon/JGMedia/Apps/smartcut -name *.json -path */i18n/* -o -name *i18n* -type f)",
+      "Bash(find /Users/Jon/JGMedia/Apps/smartcut/ecommerce -type f \\\\\\(-name *.json -o -name *.ts \\\\\\) -path */locales/* -o -name *locale* -o -name *i18n*)",
+      "Bash(find /Users/Jon/JGMedia/Apps/smartcut/ecommerce/src -name *esult* -o -name *iagram*)"
     ],
     "deny": [],
     "ask": []
