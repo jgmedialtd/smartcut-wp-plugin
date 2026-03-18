@@ -1,5 +1,5 @@
 import { d as _, m as v, j as a, b as t, f as o, g as k, q as h, a as i, F as C, k as g, u as c, p as r, r as N, e as y, t as T, c as B, T as F, s as w } from "./vendor-vue-XczpOw2V.js";
-import { u as x } from "./EcommerceCalculator-CqgjFsMg.js";
+import { u as x } from "./EcommerceCalculator-Cp9dpABY.js";
 const L = {
   id: "smartcut-notices",
   class: "smartcut-content"

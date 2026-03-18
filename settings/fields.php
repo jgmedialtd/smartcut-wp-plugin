@@ -49,6 +49,14 @@ define('SMARTCUT_FIELDS', [
 		'description' => 'Make the cut list PDF available to customers.',
 		'show' => ['global']
 	],
+	'store_api_result' => [
+		'type' => 'boolean',
+		'default' => '0',
+		'group' => ['files', 'order'],
+		'label' => 'Store API Result',
+		'description' => 'Store the full API calculation result as a JSON file on the order (admin only).',
+		'show' => ['global']
+	],
 	'enable_banding' => [
 		'type' => 'boolean',
 		'default' => '0',
@@ -351,6 +359,15 @@ define('SMARTCUT_FIELDS', [
 		'group' => ['pricing', 'strategy'],
 		'label' => 'Cut Length Price',
 		'description' => 'Price per unit length of cuts.',
+		'show' => ['global', 'product']
+	],
+	'min_cut_length_charge' => [
+		'type' => 'float',
+		'default' => 0.0,
+		'min' => 0.0,
+		'group' => ['pricing', 'strategy'],
+		'label' => 'Minimum Cut Length Charge',
+		'description' => 'Minimum fee for cut length pricing. Set to 0 to disable.',
 		'show' => ['global', 'product']
 	],
 	'per_part_price' => [
@@ -980,6 +997,10 @@ define('SMARTCUT_SETTINGS_SCRIPTS', [
 		'callback' => 'SmartCut\Settings\Fields\cutLengthPriceScript',
 		'dependencies' => ['pricing_strategy']
 	],
+	'min_cut_length_charge' => [
+		'callback' => 'SmartCut\Settings\Fields\minCutLengthChargeScript',
+		'dependencies' => ['pricing_strategy']
+	],
 	'per_part_price' => [
 		'callback' => 'SmartCut\Settings\Fields\perPartPriceScript',
 		'dependencies' => ['pricing_strategy']
@@ -1106,6 +1127,34 @@ function cutLengthPriceScript()
 
 			pricingStrategyField.change(function() {
 				toggleCutLengthPriceField();
+			});
+		});
+	</script>
+<?php
+}
+
+function minCutLengthChargeScript()
+{
+?>
+	<script>
+		jQuery(document).ready(function($) {
+			var pricingStrategyField = $('#smartcut_pricing_strategy');
+			var minCutLengthChargeField = $('#smartcut_min_cut_length_charge');
+
+			function toggleMinCutLengthChargeField() {
+				var strategiesWithCutLength = ['full_stock_plus_cut_length', 'full_stock_plus_part_perimeter', 'cut_length'];
+				if (strategiesWithCutLength.indexOf(pricingStrategyField.val()) !== -1) {
+					minCutLengthChargeField.prop('disabled', false);
+				} else {
+					minCutLengthChargeField.val('');
+					minCutLengthChargeField.prop('disabled', true);
+				}
+			}
+
+			toggleMinCutLengthChargeField();
+
+			pricingStrategyField.change(function() {
+				toggleMinCutLengthChargeField();
 			});
 		});
 	</script>

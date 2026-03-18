@@ -1,6 +1,6 @@
 import { d as Te, G as ne, H as ze, I as Pe, J as le, w as W, r as P, o as Be, n as re, m as We, a as g, b as u, f as C, e as k, u as R, g as J, h as Ee, t as E, p as M, c as z, j as Me, l as oe, F as O, k as j, x as Ge, K as Fe, y as Ve, L as qe } from "./vendor-vue-XczpOw2V.js";
 import { c as y, M as he, v as I, u as Re, s as $e, a as Ne } from "./result.zod-BdTA-p3B.js";
-import { b as Oe, h as je, _ as Ie } from "./EcommerceCalculator-CqgjFsMg.js";
+import { b as Oe, h as je, _ as Ie } from "./EcommerceCalculator-Cp9dpABY.js";
 import { t as S } from "./i18n-CYUWq18B.js";
 import { l as _e, s as Ue, a as Ke, b as Xe, p as Je, S as Qe, c as Ze, d as et, e as tt, f as st, g as it, h as at, i as nt, j as lt, k as rt } from "./vendor-d3-DNaL3zcO.js";
 const L = {
@@ -408,7 +408,7 @@ const ht = { class: "inputs" }, dt = {
   }),
   emits: /* @__PURE__ */ ne(["update:shape", "close"], ["update:inputShape"]),
   setup(A, { emit: s }) {
-    const n = Ee(() => import("./ObjectViewer-CFp4DxgQ.js")), e = A, m = s, v = "production", h = P(), r = P(), d = z(() => je(i.value)), x = z(() => {
+    const n = Ee(() => import("./ObjectViewer-BW_ItcGL.js")), e = A, m = s, v = "production", h = P(), r = P(), d = z(() => je(i.value)), x = z(() => {
       if (!f.value?.length) return 0;
       if (l.value === "banding") return 1;
       let t = Object.values(p.value).filter((a) => a.enabled).length;

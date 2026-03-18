@@ -7,7 +7,7 @@ import { f as Ml, d as Nl, l as Tt, e as es, c as ts, i as Ze, r as Ft, g as li,
 import { a as Vl } from "./vendor-lodash-B8VQpKjD.js";
 import { o as Dl, f as Gl, s as Rl, a as jl } from "./vendor-floating-ui-DZfk4g77.js";
 import { t as ye } from "./i18n-CYUWq18B.js";
-import { _ as vi } from "./Launch-DrD-8UqN.js";
+import { _ as vi } from "./Launch-CPiAvAe9.js";
 import { b as jn } from "./environment-BeBZzWz6.js";
 function ya(t, e = "cc") {
   if (!t) return t;
@@ -3905,20 +3905,6 @@ class Ec {
       Ze(this).classed("hover", !0);
     }).on("mouseout", function() {
       Ze(this).classed("hover", !1);
-    }).on("mousedown", (e, n) => {
-      console.log("Group:", {
-        dimensions: {
-          x: n.x,
-          y: n.y,
-          width: n.w,
-          length: n.l
-        },
-        shapes: n.shapes.map((i) => ({
-          id: i.id,
-          parentId: i.parentId,
-          addedAsGroup: i.group.addedAsGroup
-        }))
-      });
     });
   }
   // Clear Selection
@@ -8828,7 +8814,7 @@ const Hd = {
   },
   emits: ["inputs-changed", "calculating", "validation-error", "before-calculate", "result", "no-result", "log", "error"],
   setup(t, { expose: e, emit: n }) {
-    const i = Fn(() => import("./InputIssues-DqasGdVG.js")), s = Fn(() => import("./Machining-CxsoCgx-.js")), a = Fn(() => import("./ImportCSV-rfIjQc4j.js")), o = Fn(() => import("./ObjectViewer-CFp4DxgQ.js")), l = Fn(() => import("./ImageUpload-KnszY2i-.js")), {
+    const i = Fn(() => import("./InputIssues-DqasGdVG.js")), s = Fn(() => import("./Machining-DTvqjEyg.js")), a = Fn(() => import("./ImportCSV-BbxQVFQI.js")), o = Fn(() => import("./ObjectViewer-BW_ItcGL.js")), l = Fn(() => import("./ImageUpload-DzrBs60D.js")), {
       inputs: r,
       totalInputShapes: h,
       getShapeGrainSummary: v,
@@ -9810,7 +9796,7 @@ const Hd = {
         domain: zt,
         extrasOptions: Pe(),
         source: "checkout",
-        sourceVersion: "4.1.6"
+        sourceVersion: "4.1.7"
       };
       if (hn.value?.enabled && hn.value?.rules?.length > 0) {
         const F = ju(

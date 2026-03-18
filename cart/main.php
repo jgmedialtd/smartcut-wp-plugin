@@ -40,7 +40,7 @@ class CartManager
 	 * File handling constants
 	 * Configure file upload constraints and accepted formats
 	 */
-	const VALID_FILE_EXTENSIONS = ['pdf', 'csv', 'dxf', 'ptx', 'zip', 'jpg', 'jpeg', 'png'];
+	const VALID_FILE_EXTENSIONS = ['pdf', 'csv', 'dxf', 'ptx', 'zip', 'jpg', 'jpeg', 'png', 'json'];
 	const MAX_FILE_SIZE = 10 * 1024 * 1024;  // 10MB in bytes
 
 	/**
@@ -73,27 +73,35 @@ class CartManager
 			'type' => self::TYPE_LINK,
 			'display_order' => 2
 		],
+		'api_result' => [
+			'field_type' => 'file',
+			'label' => 'API Result',
+			'group' => self::GROUP_COMMON,
+			'type' => self::TYPE_LINK,
+			'private' => true,
+			'display_order' => 3
+		],
 		'layout_pdf' => [
 			'label' => 'Layout PDF',
 			'group' => self::GROUP_FILES,
-			'display_order' => 3
+			'display_order' => 4
 		],
 		'stock_summary' => [
 			'label' => 'Stock summary',
 			'group' => self::GROUP_COMMON,
-			'display_order' => 4
+			'display_order' => 5
 		],
 		'total_parts' => [
 			'label' => 'Total parts',
 			'group' => self::GROUP_COMMON,
-			'display_order' => 5
+			'display_order' => 6
 		],
 
 		// 'part_area' => ['label' => 'Part area', 'group' => self::GROUP_COMMON, 'display_order' => 3],
-		'dimensions' => ['label' => 'Dimensions', 'group' => self::GROUP_COMMON, 'display_order' => 6],
+		'dimensions' => ['label' => 'Dimensions', 'group' => self::GROUP_COMMON, 'display_order' => 7],
 
 		// Special fields
-		'include_offcuts' => ['label' => 'Include offcuts', 'display_order' => 7],
+		'include_offcuts' => ['label' => 'Include offcuts', 'display_order' => 8],
 
 		// Pricing fields
 		'stock_total_price' => [
@@ -380,6 +388,54 @@ class CartManager
 				}
 			}
 
+			// The API result is generated on the front end and sent as a file upload
+			$settings = \SmartCut\Settings\getProductSettings($productId);
+			if (($settings['store_api_result'] ?? false) && isset($_FILES['smartcut_api_result'])) {
+				$uploadedFile = $_FILES['smartcut_api_result'];
+
+				if ($uploadedFile['error'] !== UPLOAD_ERR_OK) {
+					throw new \Exception('API result file upload failed: ' . $uploadedFile['error']);
+				}
+
+				if (!empty($uploadedFile['tmp_name']) && filesize($uploadedFile['tmp_name']) > 0) {
+					$jsonContent = file_get_contents($uploadedFile['tmp_name']);
+
+					json_decode($jsonContent);
+					if (json_last_error() !== JSON_ERROR_NONE) {
+						throw new \Exception('Invalid JSON in API result file');
+					}
+
+					$fileName = 'api-result-' . uniqid() . '.json';
+					$upload = wp_upload_bits($fileName, null, $jsonContent);
+
+					if (!$upload || !empty($upload['error'])) {
+						throw new \Exception(
+							'Failed to upload API result JSON: ' . ($upload['error'] ?? 'Unknown error')
+						);
+					}
+
+					$attachment = array(
+						'post_mime_type' => 'application/json',
+						'post_title' => preg_replace('/\.[^.]+$/', '', $fileName),
+						'post_content' => '',
+						'post_status' => 'private'
+					);
+
+					$attach_id = wp_insert_attachment($attachment, $upload['file']);
+
+					if (is_wp_error($attach_id)) {
+						throw new \Exception("Failed to create attachment: " . $attach_id->get_error_message());
+					}
+
+					require_once(ABSPATH . 'wp-admin/includes/image.php');
+					$attach_data = wp_generate_attachment_metadata($attach_id, $upload['file']);
+					wp_update_attachment_metadata($attach_id, $attach_data);
+
+					$cartItemData['smartcut_api_result'] = $upload['url'];
+					$cartItemData['smartcut_api_result_attach_id'] = $attach_id;
+				}
+			}
+
 			return $cartItemData;
 		} catch (\Exception $e) {
 			if ($e instanceof FileValidationException) {
@@ -624,6 +680,10 @@ class CartManager
 		}
 
 		if (!isset($field['display_order'])) {
+			return false;
+		}
+
+		if (!empty($field['private']) && !is_admin()) {
 			return false;
 		}
 
@@ -1036,6 +1096,12 @@ class CartManager
 				$attachmentIds[] = is_array($orderSummaryId) ? $orderSummaryId[0] : $orderSummaryId;
 			}
 
+			// Add API result attachment ID if it exists
+			if (!empty($removedItem['smartcut_api_result_attach_id'])) {
+				$apiResultId = $removedItem['smartcut_api_result_attach_id'];
+				$attachmentIds[] = is_array($apiResultId) ? $apiResultId[0] : $apiResultId;
+			}
+
 			// Clean up any found attachments
 			if (!empty($attachmentIds)) {
 				$result = self::cleanupAttachments($attachmentIds);
@@ -1087,6 +1153,12 @@ class CartManager
 				$orderSummaryId = $item->get_meta('smartcut_order_summary_attach_id');
 				if (!empty($orderSummaryId)) {
 					$attachmentIds[] = is_array($orderSummaryId) ? $orderSummaryId[0] : $orderSummaryId;
+				}
+
+				// Check for API result attachment ID
+				$apiResultId = $item->get_meta('smartcut_api_result_attach_id');
+				if (!empty($apiResultId)) {
+					$attachmentIds[] = is_array($apiResultId) ? $apiResultId[0] : $apiResultId;
 				}
 
 				// Check other file fields
