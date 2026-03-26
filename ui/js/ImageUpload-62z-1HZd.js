@@ -1,5 +1,5 @@
-import { d as L, v as $, r as U, o as D, m as O, a as o, b as d, e as _, f as u, g as f, u as R, h as A, F as B, k as V } from "./vendor-vue-XczpOw2V.js";
-import { _ as M } from "./Launch-CPiAvAe9.js";
+import { d as L, A as $, r as U, o as A, l as D, a as o, b as d, e as _, f as u, g as f, u as O, h as R, F as B, k as V } from "./vendor-vue-DyIrsOEK.js";
+import { _ as M } from "./Launch-DkkhHqxE.js";
 const P = { id: "uploader" }, S = {
   key: 0,
   class: "debug"
@@ -38,7 +38,7 @@ const P = { id: "uploader" }, S = {
   },
   emits: ["update", "remove"],
   setup(g, { emit: w }) {
-    const F = A(() => import("./ObjectViewer-BW_ItcGL.js")), h = U(null), t = U({
+    const F = R(() => import("./ObjectViewer-U19I7q9o.js")), h = U(null), t = U({
       shapeId: "",
       files: [],
       previewUrls: [],
@@ -92,7 +92,7 @@ Only JPG and PNG files are allowed.`), a.value = "";
     };
     return $(() => {
       t.value?.previewUrls && t.value.previewUrls.forEach((e) => URL.revokeObjectURL(e));
-    }), D(() => {
+    }), A(() => {
       t.value.shapeId = s.shapeId;
       const e = s.images.find((a) => a.shapeId === s.shapeId);
       if (e) {
@@ -103,10 +103,10 @@ Only JPG and PNG files are allowed.`), a.value = "";
         };
       }
     }), (e, a) => {
-      const n = O("FontAwesomeIcon");
+      const n = D("FontAwesomeIcon");
       return d(), o("div", P, [
         g.env === "development" && J ? (d(), o("div", S, [
-          f(R(F), {
+          f(O(F), {
             data: [t.value],
             paths: ["imageData"]
           }, null, 8, ["data"])

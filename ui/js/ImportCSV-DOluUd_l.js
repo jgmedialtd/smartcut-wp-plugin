@@ -1,9 +1,9 @@
-import { P as te } from "./vendor-BwVe8GCL.js";
-import { l as V } from "./result.zod-BdTA-p3B.js";
-import { B as ne, a as W, b as K, f as ae, t as re, x as se, p as ie, d as oe, o as le, g as ce, u as ue, r as m, c as N } from "./vendor-vue-XczpOw2V.js";
-import { _ as de } from "./Launch-CPiAvAe9.js";
-import { u as fe } from "./EcommerceCalculator-Cp9dpABY.js";
-import { t as c } from "./i18n-CYUWq18B.js";
+import { P as te } from "./vendor-CFKbllLs.js";
+import { l as V } from "./result.zod-CxfvOYCR.js";
+import { C as ne, a as W, b as K, f as ae, t as re, q as se, p as ie, d as oe, o as le, g as ce, u as ue, r as m, c as N } from "./vendor-vue-DyIrsOEK.js";
+import { _ as de } from "./Launch-DkkhHqxE.js";
+import { u as fe } from "./EcommerceCalculator-zkjR6l-4.js";
+import { t as c } from "./i18n-Ck7sLK64.js";
 const he = {
   name: "Drop",
   props: {
@@ -122,7 +122,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
   },
   emits: ["error", "import"],
   setup(u, { emit: f }) {
-    const { addNotice: l } = fe(), s = u, v = f, g = m([]), b = m([]), L = m([]), q = m([]), w = m({}), P = m([]), S = m(!1), T = m(null), x = m(null), j = m({}), $ = [
+    const { addNotice: l } = fe(), s = u, v = f, g = m([]), b = m([]), L = m([]), O = m([]), w = m({}), P = m([]), S = m(!1), T = m(null), $ = m(null), j = m({}), x = [
       "l",
       "w",
       "t",
@@ -133,19 +133,19 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       "banding",
       "finish",
       "cost"
-    ], B = N(() => {
+    ], M = N(() => {
       if (Object.keys(j.value).length === g.value.length)
         return j.value;
       const e = {};
       return g.value.forEach((t, n) => {
         e[n] = {};
         for (const [r, a] of Object.entries(t)) {
-          if (!$.includes(r)) continue;
+          if (!x.includes(r)) continue;
           const i = z(r, a);
           (i === !0 || i === !1) && (e[n][r] = i);
         }
       }), j.value = e, e;
-    }), R = N(() => s.customFields.map((e) => e.label)), M = (e, t) => {
+    }), R = N(() => s.customFields.map((e) => e.label)), B = (e, t) => {
       if (!t || Array.isArray(t) && t.length === 0 || typeof t == "object" && Object.keys(t).length === 0)
         return;
       const n = (Array.isArray(t), t), r = (Array.isArray(n), Object.keys(n));
@@ -159,7 +159,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
         }), a.splice(0, a.length, ...h);
       });
       const i = /* @__PURE__ */ new Set();
-      a.forEach((o) => i.add(o.join("|").toLowerCase())), e === "banding" ? T.value = i : x.value = i;
+      a.forEach((o) => i.add(o.join("|").toLowerCase())), e === "banding" ? T.value = i : $.value = i;
     }, z = (e, t) => {
       if (t === "???") return !0;
       function n(a) {
@@ -167,7 +167,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       }
       const r = {
         banding: (a) => H(a, T.value, "banding"),
-        finish: (a) => H(a, x.value, "finish"),
+        finish: (a) => H(a, $.value, "finish"),
         orientationLock: n
       };
       return e in r ? r[e](t) : null;
@@ -192,7 +192,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       }
       return a;
     }, I = (e, t) => {
-      const n = B.value[t]?.banding !== !1, r = B.value[t]?.finish !== !1, a = !!e.banding, i = !!e.finish;
+      const n = M.value[t]?.banding !== !1, r = M.value[t]?.finish !== !1, a = !!e.banding, i = !!e.finish;
       if (!a && !i)
         return;
       const o = {};
@@ -204,10 +204,10 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
             if (k && k.trim() && y[D]) {
               const C = k.trim();
               if (C.includes("|") && s.bandingLabels.length > 1) {
-                const F = C.split("|"), A = {};
-                s.bandingLabels.forEach((_, O) => {
-                  F[O] && (A[_] = F[O]);
-                }), p[y[D]] = A;
+                const F = C.split("|"), q = {};
+                s.bandingLabels.forEach((_, A) => {
+                  F[A] && (q[_] = F[A]);
+                }), p[y[D]] = q;
               } else
                 p[y[D]] = C;
             }
@@ -222,10 +222,10 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
             if (k && k.trim() && y[D]) {
               const C = k.trim();
               if (C.includes("|") && s.finishLabels.length > 1) {
-                const F = C.split("|"), A = {};
-                s.finishLabels.forEach((_, O) => {
-                  F[O] && (A[_] = F[O]);
-                }), p[y[D]] = A;
+                const F = C.split("|"), q = {};
+                s.finishLabels.forEach((_, A) => {
+                  F[A] && (q[_] = F[A]);
+                }), p[y[D]] = q;
               } else
                 p[y[D]] = C;
             }
@@ -276,9 +276,9 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       );
       return n.length > 1 ? null : n[0];
     }, U = () => {
-      S.value = !1, q.value = Object.values(w.value).map((t) => !t || t === "N" ? null : $.includes(t) ? t : (S.value = !0, null));
-      const e = q.value.filter((t, n) => q.value.indexOf(t) !== n);
-      P.value = e.map((t) => q.value.reduce(
+      S.value = !1, O.value = Object.values(w.value).map((t) => !t || t === "N" ? null : x.includes(t) ? t : (S.value = !0, null));
+      const e = O.value.filter((t, n) => O.value.indexOf(t) !== n);
+      P.value = e.map((t) => O.value.reduce(
         (n, r, a) => (r && r === t && n.push(a), n),
         []
       ));
@@ -305,7 +305,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       e?.length && v("import", e);
     };
     return le(() => {
-      M("banding", s.bandingOptions), M("finish", s.finishOptions);
+      B("banding", s.bandingOptions), B("finish", s.finishOptions);
     }), (e, t) => (K(), W("div", ge, [
       ce(me, {
         label: ue(c)("Drop CSV file here"),

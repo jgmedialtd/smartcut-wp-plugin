@@ -1,4 +1,4 @@
-import { d as Se, e as Ol, f as Ys, z as es } from "./vendor-BwVe8GCL.js";
+import { d as Se, e as Ol, f as Ys, z as es } from "./vendor-CFKbllLs.js";
 var Jt = /* @__PURE__ */ (function() {
   return typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : this;
 })();
@@ -6483,7 +6483,7 @@ endobj\r
   var d = h.getContext("2d");
   d.fillStyle = "#fff", d.fillRect(0, 0, h.width, h.height);
   var v = { ignoreMouse: !0, ignoreAnimation: !0, ignoreDimensions: !0 }, L = this;
-  return (Jt.canvg ? Promise.resolve(Jt.canvg) : import("./vendor-canvg-CDbgtf68.js")).catch(function(S) {
+  return (Jt.canvg ? Promise.resolve(Jt.canvg) : import("./vendor-canvg-CdeN8Tfw.js")).catch(function(S) {
     return Promise.reject(new Error("Could not load canvg: " + S));
   }).then(function(S) {
     return S.default ? S.default : S;

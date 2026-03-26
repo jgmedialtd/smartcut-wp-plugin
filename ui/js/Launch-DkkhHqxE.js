@@ -1,4 +1,4 @@
-import { d as _, B as i, r as p, c as l, j as y, a as f, e as d, C as k, t as v, h as u, b as m } from "./vendor-vue-XczpOw2V.js";
+import { d as _, C as i, r as p, c as l, j as y, a as f, e as d, D as k, t as v, h as u, b as m } from "./vendor-vue-DyIrsOEK.js";
 const h = {
   key: 1,
   class: "error-message"
@@ -9,8 +9,8 @@ const h = {
   },
   setup(t, { expose: s }) {
     const o = p(!1), n = p(null), a = i({
-      wordpress: u(() => import("./WordPress-DSC4-UBR.js")),
-      vanilla: u(() => import("./Vanilla-DAsLSIrM.js").then((c) => c.V))
+      wordpress: u(() => import("./WordPress-C_26dNTC.js")),
+      vanilla: u(() => import("./Vanilla-OWebG3QT.js").then((c) => c.V))
     }), e = t, r = l(() => {
       if (!e.type) return null;
       const c = e?.type?.toLowerCase();
@@ -31,8 +31,8 @@ const h = {
   for (const [n, a] of s)
     o[n] = a;
   return o;
-}, L = /* @__PURE__ */ g(C, [["__scopeId", "data-v-86786479"]]), B = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({ __proto__: null, default: L }, Symbol.toStringTag, { value: "Module" }));
+}, L = /* @__PURE__ */ g(C, [["__scopeId", "data-v-86786479"]]), j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({ __proto__: null, default: L }, Symbol.toStringTag, { value: "Module" }));
 export {
-  B as L,
+  j as L,
   g as _
 };

@@ -1,6 +1,6 @@
-import { F as U, _ as B } from "./EcommerceCalculator-Cp9dpABY.js";
-import { t as O } from "./i18n-CYUWq18B.js";
-import { d as G, i as z, w as Q, r as m, c as w, o as W, a as p, b as o, e as _, f as h, g as X, u as b, h as Y, j as D, F as j, k as L, t as s, n as V } from "./vendor-vue-XczpOw2V.js";
+import { F as U, b as B } from "./EcommerceCalculator-zkjR6l-4.js";
+import { t as O } from "./i18n-Ck7sLK64.js";
+import { d as G, i as z, w as Q, r as m, c as w, o as W, a as p, b as o, e as j, f as h, g as X, u as b, h as Y, j as D, F as k, k as L, t as s, n as V } from "./vendor-vue-DyIrsOEK.js";
 const Z = {
   key: 0,
   class: "debug"
@@ -37,16 +37,16 @@ const Z = {
   },
   emits: ["hardware-result", "panel-result"],
   setup(d, { emit: H }) {
-    const R = Y(() => import("./ObjectViewer-BW_ItcGL.js")), u = d, k = H, K = z("calculator"), n = w(() => K()), A = m("production");
+    const R = Y(() => import("./ObjectViewer-U19I7q9o.js")), u = d, _ = H, K = z("calculator"), n = w(() => K()), A = m("production");
     let i = null;
     const v = m(null), r = m([]), g = m(!1), F = m(""), C = w(() => {
       if (!g.value || !r.value.length || r.value.every((t) => t.value === null)) return null;
       const e = J();
-      return V(() => k("panel-result", e)), e;
+      return V(() => _("panel-result", e)), e;
     }), y = w(() => {
       if (!n.value || !g.value || !r.value.length || r.value.every((t) => t.value === null)) return;
       const e = M();
-      return V(() => k("hardware-result", e, x.value)), e;
+      return V(() => _("hardware-result", e, x.value)), e;
     }), x = w(() => {
       if (y.value)
         return Object.values(y.value).reduce((e, t) => e + t.totalCost, 0);
@@ -107,14 +107,14 @@ const Z = {
       }
       u.url ? (N(`SmartCut - Formula calculator init from url: ${u.url}`), i = new U({ url: u.url }), v.value = await i.getSpec()) : u.spec && (N("SmartCut - Formula calculator init with JSON"), i = new U({ spec: u.spec }), v.value = await i.getSpec()), E(), g.value = !0;
     };
-    return (e, t) => (o(), p(j, null, [
+    return (e, t) => (o(), p(k, null, [
       A.value === "development" && ne ? (o(), p("div", Z, [
         t[1] || (t[1] = h("div", null, "Developer information", -1)),
         X(b(R), {
           data: [C.value],
           paths: ["panelResult"]
         }, null, 8, ["data"])
-      ])) : _("", !0),
+      ])) : j("", !0),
       h("div", ee, [
         v.value?.projectName ? (o(), D(B, {
           key: 0,
@@ -124,8 +124,8 @@ const Z = {
           placeholder: "Name",
           value: F.value,
           "onUpdate:value": t[0] || (t[0] = (l) => F.value = l)
-        }, null, 8, ["value"])) : _("", !0),
-        (o(!0), p(j, null, L(v.value?.inputs, (l, f, a) => (o(), D(B, {
+        }, null, 8, ["value"])) : j("", !0),
+        (o(!0), p(k, null, L(v.value?.inputs, (l, f, a) => (o(), D(B, {
           id: "formula-field-" + a,
           key: a,
           type: l.type,
@@ -139,9 +139,9 @@ const Z = {
         }, null, 8, ["id", "type", "label", "placeholder", "min", "max", "default", "value", "onUpdate:value"]))), 128)),
         y.value ? (o(), p("div", ae, [
           h("div", te, s(b(O)("Hardware")), 1),
-          (o(!0), p(j, null, L(y.value, (l, f) => (o(), p("div", { key: f }, s(l.name) + " x" + s(l.q) + " = " + s(d.formatPrice(l.totalCost)), 1))), 128)),
+          (o(!0), p(k, null, L(y.value, (l, f) => (o(), p("div", { key: f }, s(l.name) + " x" + s(l.q) + " = " + s(d.formatPrice(l.totalCost)), 1))), 128)),
           h("div", le, s(b(O)("Hardware total")) + " = " + s(d.formatPrice(x.value)), 1)
-        ])) : _("", !0),
+        ])) : j("", !0),
         h("div", re, s(b(O)("Panels")), 1)
       ])
     ], 64));

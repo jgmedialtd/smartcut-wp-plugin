@@ -112,6 +112,40 @@
     margin: 0 0 var(--label-margin-bottom);
     text-transform: none;
   }
+
+  .c-field-action {
+
+    > label,
+    .input-wrapper label {
+      align-items: center;
+      display: flex;
+      margin: 0;
+    }
+
+    select,
+    input:not([type="checkbox"], [type="radio"], [type="color"]) {
+      border: none;
+      border-radius: 0;
+    }
+
+    > button,
+    > .c-btn {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    > :last-child {
+      border-end-end-radius: calc(var(--field-border-radius, 4px) - var(--border-width, 1px));
+      border-start-end-radius: calc(var(--field-border-radius, 4px) - var(--border-width, 1px));
+    }
+  }
+
+  .extras-grid {
+    display: grid;
+    row-gap: 5px;
+    column-gap: 10px;
+  }
 }
 
 table.variations .label {

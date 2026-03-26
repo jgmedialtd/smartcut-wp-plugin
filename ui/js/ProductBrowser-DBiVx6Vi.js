@@ -1,5 +1,5 @@
-import { d as Q, a as c, b as n, e as I, f as v, N as u, O as V, p as D, x as q, r as m, t as S, c as T, l as ne, F as G, k as H, u as N, g as J, w as ce, j as ie, P as ue, q as B, Q as j, R as z } from "./vendor-vue-XczpOw2V.js";
-import { _ as R } from "./Launch-CPiAvAe9.js";
+import { d as Q, a as c, b as n, e as S, f as v, O as u, P as V, p as L, q, r as m, t as I, c as T, x as ne, F as G, k as H, u as D, g as J, w as ce, j as ie, Q as ue, y as B, R as j, S as z } from "./vendor-vue-DyIrsOEK.js";
+import { _ as R } from "./Launch-DkkhHqxE.js";
 const de = ["onKeydown"], ge = {
   key: 0,
   class: "catalog-card__image"
@@ -48,7 +48,7 @@ const de = ["onKeydown"], ge = {
       b.disabled || C("select");
     }
     return (s, w) => (n(), c("div", {
-      class: D(["catalog-card", {
+      class: L(["catalog-card", {
         "catalog-card--selected": e.selected,
         "catalog-card--disabled": e.disabled,
         "catalog-card--list": e.displayMode === "list"
@@ -70,18 +70,18 @@ const de = ["onKeydown"], ge = {
             loading: "lazy",
             onError: w[0] || (w[0] = (a) => k.value = !0)
           }, null, 40, ve)) : (n(), c("div", be, [
-            v("span", null, S(f.value), 1)
+            v("span", null, I(f.value), 1)
           ]))
         ], !0)
-      ])) : I("", !0),
+      ])) : S("", !0),
       v("div", me, [
         u(s.$slots, "content", {}, () => [
-          v("h3", fe, S(e.title), 1),
-          e.description ? (n(), c("p", ye, S(e.description), 1)) : I("", !0)
+          v("h3", fe, I(e.title), 1),
+          e.description ? (n(), c("p", ye, I(e.description), 1)) : S("", !0)
         ], !0),
         s.$slots.badges ? (n(), c("div", he, [
           u(s.$slots, "badges", {}, void 0, !0)
-        ])) : I("", !0)
+        ])) : S("", !0)
       ]),
       v("div", we, [
         u(s.$slots, "footer", {}, () => [
@@ -92,18 +92,18 @@ const de = ["onKeydown"], ge = {
             u(s.$slots, "actions", {}, () => [
               v("button", {
                 type: "button",
-                class: D(["c-btn c-btn--sm c-btn--no-effects no-margin", { "c-btn--delete": e.selected }]),
+                class: L(["c-btn c-btn--sm c-btn--no-effects no-margin", { "c-btn--delete": e.selected }]),
                 style: ne(l.value),
                 disabled: e.disabled,
                 onClick: q(y, ["stop"])
-              }, S(e.actionLabel), 15, ke)
+              }, I(e.actionLabel), 15, ke)
             ], !0)
           ])
         ], !0)
       ])
     ], 42, de));
   }
-}), W = /* @__PURE__ */ R(Pe, [["__scopeId", "data-v-e4c7de2c"]]), Ie = { class: "catalog-browser" }, Se = {
+}), W = /* @__PURE__ */ R(Pe, [["__scopeId", "data-v-e4c7de2c"]]), Se = { class: "catalog-browser" }, Ie = {
   key: 0,
   class: "catalog-browser__categories"
 }, pe = ["onClick"], Be = {
@@ -115,10 +115,10 @@ const de = ["onKeydown"], ge = {
 }, Ue = {
   key: 3,
   class: "catalog-browser__empty"
-}, Ne = {
+}, De = {
   key: 5,
   class: "catalog-browser__pagination"
-}, De = ["disabled"], Le = { class: "pagination-info" }, Me = ["disabled"], Ee = /* @__PURE__ */ Q({
+}, Le = ["disabled"], Me = { class: "pagination-info" }, Ne = ["disabled"], Ee = /* @__PURE__ */ Q({
   __name: "CatalogBrowser",
   props: {
     browser: {},
@@ -131,8 +131,8 @@ const de = ["onKeydown"], ge = {
   },
   setup(e) {
     const d = e, { getItemId: b, getItemName: C, getItemDescription: k, getItemImage: f } = d;
-    return (l, r) => (n(), c("div", Ie, [
-      e.showCategories && e.browser.hasCategories.value ? (n(), c("div", Se, [
+    return (l, r) => (n(), c("div", Se, [
+      e.showCategories && e.browser.hasCategories.value ? (n(), c("div", Ie, [
         u(l.$slots, "categories", {
           categories: e.browser.categories.value,
           active: e.browser.activeCategory.value,
@@ -140,17 +140,17 @@ const de = ["onKeydown"], ge = {
         }, () => [
           v("button", {
             type: "button",
-            class: D(["category-chip", { "category-chip--active": !e.browser.activeCategory.value }]),
+            class: L(["category-chip", { "category-chip--active": !e.browser.activeCategory.value }]),
             onClick: r[0] || (r[0] = (o) => e.browser.setCategory(null))
           }, " All ", 2),
           (n(!0), c(G, null, H(e.browser.categories.value, (o) => (n(), c("button", {
             key: o._id,
             type: "button",
-            class: D(["category-chip", { "category-chip--active": e.browser.activeCategory.value === o._id }]),
+            class: L(["category-chip", { "category-chip--active": e.browser.activeCategory.value === o._id }]),
             onClick: (y) => e.browser.setCategory(o._id || null)
-          }, S(o.name), 11, pe))), 128))
+          }, I(o.name), 11, pe))), 128))
         ], !0)
-      ])) : I("", !0),
+      ])) : S("", !0),
       e.showSearch ? (n(), c("div", Be, [
         u(l.$slots, "search", {
           query: e.browser.searchQuery.value,
@@ -164,7 +164,7 @@ const de = ["onKeydown"], ge = {
             onInput: r[1] || (r[1] = (o) => e.browser.updateSearch(o.target.value))
           }, null, 40, Fe)
         ], !0)
-      ])) : I("", !0),
+      ])) : S("", !0),
       e.browser.isLoading.value ? (n(), c("div", Te, [
         u(l.$slots, "loading", {}, () => [
           r[5] || (r[5] = v("div", { class: "loading-spinner" }, null, -1)),
@@ -178,11 +178,11 @@ const de = ["onKeydown"], ge = {
             type: "button",
             class: "c-btn c-btn--sm",
             onClick: r[2] || (r[2] = (o) => e.browser.clearFilters())
-          }, " Clear filters ")) : I("", !0)
+          }, " Clear filters ")) : S("", !0)
         ], !0)
       ])) : (n(), c("div", {
         key: 4,
-        class: D(["catalog-browser__grid", `catalog-browser__grid--${e.browser.displayMode.value}`])
+        class: L(["catalog-browser__grid", `catalog-browser__grid--${e.browser.displayMode.value}`])
       }, [
         u(l.$slots, "items", {
           items: e.browser.items.value,
@@ -190,15 +190,15 @@ const de = ["onKeydown"], ge = {
           isSelected: e.browser.isSelected
         }, () => [
           (n(!0), c(G, null, H(e.browser.items.value, (o) => u(l.$slots, "item", {
-            key: N(b)(o),
+            key: D(b)(o),
             item: o,
             select: () => e.browser.selectItem(o),
             selected: e.browser.isSelected(o)
           }, () => [
             J(W, {
-              title: N(C)(o),
-              description: N(k)(o),
-              "image-url": N(f)(o),
+              title: D(C)(o),
+              description: D(k)(o),
+              "image-url": D(f)(o),
               selected: e.browser.isSelected(o),
               "display-mode": e.browser.displayMode.value,
               "action-label": e.browser.isSelected(o) ? "Selected" : "Select",
@@ -208,7 +208,7 @@ const de = ["onKeydown"], ge = {
           ], !0)), 128))
         ], !0)
       ], 2)),
-      e.browser.totalPages.value > 1 ? (n(), c("div", Ne, [
+      e.browser.totalPages.value > 1 ? (n(), c("div", De, [
         u(l.$slots, "pagination", {
           currentPage: e.browser.currentPage.value,
           totalPages: e.browser.totalPages.value,
@@ -219,16 +219,16 @@ const de = ["onKeydown"], ge = {
             class: "pagination-btn",
             disabled: e.browser.currentPage.value <= 1,
             onClick: r[3] || (r[3] = (o) => e.browser.goToPage(e.browser.currentPage.value - 1))
-          }, " Previous ", 8, De),
-          v("span", Le, " Page " + S(e.browser.currentPage.value) + " of " + S(e.browser.totalPages.value), 1),
+          }, " Previous ", 8, Le),
+          v("span", Me, " Page " + I(e.browser.currentPage.value) + " of " + I(e.browser.totalPages.value), 1),
           v("button", {
             type: "button",
             class: "pagination-btn",
             disabled: e.browser.currentPage.value >= e.browser.totalPages.value,
             onClick: r[4] || (r[4] = (o) => e.browser.goToPage(e.browser.currentPage.value + 1))
-          }, " Next ", 8, Me)
+          }, " Next ", 8, Ne)
         ], !0)
-      ])) : I("", !0)
+      ])) : S("", !0)
     ]));
   }
 }), je = /* @__PURE__ */ R(Ee, [["__scopeId", "data-v-b6f71d9e"]]);
@@ -239,11 +239,11 @@ function ze(e) {
     transformItem: C = (t) => t,
     getItemId: k = (t) => t._id || t.id
   } = e, f = m([]), l = m(null), r = m([]), o = m(null), y = m(""), s = m("name"), w = m("asc"), a = m("grid"), h = m(1), $ = m(1), p = m(0), P = m(!1), F = m(null);
-  let M = null;
+  let N = null;
   function E(t) {
     if (!d.value) return "";
-    const { apiUrl: i, orgSlug: g, isCustomDomain: L } = d.value;
-    return L ? `${i}ecommerce/${t}` : `${i}ecommerce/${g}/${t}`;
+    const { apiUrl: i, orgSlug: g, isCustomDomain: M } = d.value;
+    return M ? `${i}ecommerce/${t}` : `${i}ecommerce/${g}/${t}`;
   }
   async function U() {
     if (d.value) {
@@ -289,14 +289,14 @@ function ze(e) {
         if (g.status === 404) return null;
         throw new Error(`Server returned ${g.status}`);
       }
-      const L = await g.json();
-      return C(L.data || L);
+      const M = await g.json();
+      return C(M.data || M);
     } catch (i) {
       return console.error("[useCatalogBrowser] Fetch by slug error:", i), null;
     }
   }
   function K() {
-    f.value = [], P.value = !0, M && clearTimeout(M), M = setTimeout(() => {
+    f.value = [], P.value = !0, N && clearTimeout(N), N = setTimeout(() => {
       U();
     }, d.value?.debounceMs || 300);
   }
@@ -417,7 +417,7 @@ const Re = {
       selectProduct: l.selectItem,
       selectedProduct: l.selectedItem
     }), (s, w) => (n(), ie(je, {
-      browser: N(l),
+      browser: D(l),
       "show-categories": e.showCategories,
       "show-search": e.showSearch,
       "get-item-id": (a) => a._id || "",
@@ -431,7 +431,7 @@ const Re = {
           description: a.shortDescription || a.description,
           "image-url": a.imageUrl,
           selected: $,
-          "display-mode": N(l).displayMode.value,
+          "display-mode": D(l).displayMode.value,
           "action-label": $ ? "Selected" : "Configure",
           "button-color": e.buttonColor,
           "button-text-color": e.buttonTextColor,
@@ -440,14 +440,14 @@ const Re = {
         }, {
           badges: B(() => [
             v("span", {
-              class: D(["catalog-badge", `catalog-badge--${a.type}`])
-            }, S(r[a.type] || a.type), 3),
-            a.featured ? (n(), c("span", Re, " Featured ")) : I("", !0),
-            a.category && typeof a.category == "object" ? (n(), c("span", Ae, S(a.category.name), 1)) : I("", !0)
+              class: L(["catalog-badge", `catalog-badge--${a.type}`])
+            }, I(r[a.type] || a.type), 3),
+            a.featured ? (n(), c("span", Re, " Featured ")) : S("", !0),
+            a.category && typeof a.category == "object" ? (n(), c("span", Ae, I(a.category.name), 1)) : S("", !0)
           ]),
           meta: B(() => [
             u(s.$slots, "product-meta", { product: a }, () => [
-              a.type === "simple" && a.simpleConfig?.price ? (n(), c("span", Ke, S(o(a.simpleConfig.price)), 1)) : I("", !0)
+              a.type === "simple" && a.simpleConfig?.price ? (n(), c("span", Ke, I(o(a.simpleConfig.price)), 1)) : S("", !0)
             ], !0)
           ]),
           _: 2
