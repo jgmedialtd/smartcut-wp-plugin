@@ -1,8 +1,8 @@
 import { M as je, r as u, w as Ne, c as D, d as Me, N as Ve, o as $e, K as qe, a as me, b as V, g as Oe, j as ge, u as ne, h as le, F as Re, e as ie, m as We, f as De, t as Ae, v as Je, n as he, L as Qe } from "./vendor-vue-DyIrsOEK.js";
 import { I as Te, i as He, f as s, g as U, b as $ } from "./result.zod-CxfvOYCR.js";
-import { e as Ie, d as Ke, m as ze } from "./EcommerceCalculator-zkjR6l-4.js";
+import { e as Ie, d as Ke, m as ze } from "./EcommerceCalculator-DIT6YeNX.js";
 import { l as Ge, o as W, h as T, i, j as Y, k as Se, u as Xe, m as ye, n as N, q as G, t as q, v as be } from "./vendor-CFKbllLs.js";
-import { _ as Ye } from "./Launch-DkkhHqxE.js";
+import { _ as Ye } from "./Launch-BtYy4DRB.js";
 function Ze() {
   const b = u(!1);
   let d = null;
@@ -261,7 +261,7 @@ function gt(b) {
       return l.value.hasExtras;
     const t = c ? v.value : d.value, a = { banding: !1, finish: !1, planing: !1, machining: !1 };
     for (const e of t)
-      if (e.extras?.banding?.length && (a.banding = !0), e.extras?.finish?.length && (a.finish = !0), e.extras?.planing?.length && (a.planing = !0), e.extras?.machining?.length && (a.machining = !0), a.banding && a.finish && a.planing && a.machining) break;
+      if (e.extras?.banding && (a.banding = !0), e.extras?.finish && (a.finish = !0), e.extras?.planing && (a.planing = !0), e.extras?.machining && (a.machining = !0), a.banding && a.finish && a.planing && a.machining) break;
     return a;
   }
   function pe(t) {
@@ -621,7 +621,7 @@ const lt = {
   __name: "Vanilla",
   emits: ["ready"],
   setup(b, { expose: d, emit: C }) {
-    const F = le(() => import("./StockFilter-D_pZ84-S.js")), Z = le(() => import("./FormulaPricing-DE6DxoHv.js")), O = le(() => import("./ProductBrowser-DBiVx6Vi.js")), m = le(() => import("./Notices-DSNwSRMz.js")), S = le(() => import("./OrderLookup-B-MiEFWQ.js")), B = C, R = "production", ue = "4.1.10", p = u(!1), f = u([]), c = u({
+    const F = le(() => import("./StockFilter-BwnO5kWI.js")), Z = le(() => import("./FormulaPricing-jwI-6KD8.js")), O = le(() => import("./ProductBrowser-mkqTfqAo.js")), m = le(() => import("./Notices-DwYHWHXh.js")), S = le(() => import("./OrderLookup-Btfw4gb4.js")), B = C, R = "production", ue = "4.1.12", p = u(!1), f = u([]), c = u({
       banding: null,
       finish: null,
       planing: null,
