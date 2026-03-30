@@ -1,5 +1,5 @@
 import { d as Q, a as c, b as n, e as S, f as v, O as u, P as V, p as L, q, r as m, t as I, c as T, x as ne, F as G, k as H, u as D, g as J, w as ce, j as ie, Q as ue, y as B, R as j, S as z } from "./vendor-vue-DyIrsOEK.js";
-import { _ as R } from "./Launch-BtYy4DRB.js";
+import { _ as R } from "./Launch-CW1xtdsr.js";
 const de = ["onKeydown"], ge = {
   key: 0,
   class: "catalog-card__image"
@@ -92,7 +92,7 @@ const de = ["onKeydown"], ge = {
             u(s.$slots, "actions", {}, () => [
               v("button", {
                 type: "button",
-                class: L(["c-btn c-btn--sm c-btn--no-effects no-margin", { "c-btn--delete": e.selected }]),
+                class: L(["c-btn c-btn--sm", { "c-btn--delete": e.selected }]),
                 style: ne(l.value),
                 disabled: e.disabled,
                 onClick: q(y, ["stop"])
@@ -103,7 +103,7 @@ const de = ["onKeydown"], ge = {
       ])
     ], 42, de));
   }
-}), W = /* @__PURE__ */ R(Pe, [["__scopeId", "data-v-e4c7de2c"]]), Se = { class: "catalog-browser" }, Ie = {
+}), W = /* @__PURE__ */ R(Pe, [["__scopeId", "data-v-1f0431be"]]), Se = { class: "catalog-browser" }, Ie = {
   key: 0,
   class: "catalog-browser__categories"
 }, pe = ["onClick"], Be = {

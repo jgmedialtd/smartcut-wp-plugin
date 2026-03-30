@@ -1,5 +1,5 @@
-import { d as vs, z as we, e as xt, D as Pi, h as Es, j as ks, k as Rs, m as Ds, n as As, p as Ms, q as Ls, r as ze, t as Os, i as Gs, w as Fs, x as Xs, y as qs, P as Je, A as Bs, B as Ys, E as J, C as Ze, G as Ns, H as ne, S as _e, J as Ie, K as et, L as D, N as Ti, O as W, Q as N, R as B, T as k, U as nt, V as X, W as $t, X as Bt, Y as F, Z as Rt, _ as Ws, $ as mn, a0 as Vt, a1 as qe, a2 as Dt, a3 as He, a4 as ct, a5 as vi, a6 as ft, a7 as $e, a8 as vt, a9 as bt, aa as je, ab as at, ac as Qt, ad as se, ae as Ke, af as zs, ag as Ce, ah as it, ai as Ei, aj as Hs, ak as js, al as Pe, am as At, an as Yt, ao as Jt, ap as Us, aq as ki, ar as Ri, as as Di, at as Ai, au as le, av as Vs, aw as Mi, ax as Te, ay as Js, az as Qe, aA as Zs, v as wt, aB as Be, aC as Li, aD as _s, aE as On, aF as Ks, aG as Qs, aH as to, aI as eo, aJ as Gn, aK as no, aL as tn, aM as en, aN as io, aO as so, aP as oo, c as pe, aQ as ve, aR as ro, aS as nn, aT as sn, aU as ao, aV as lo, aW as te, aX as co, aY as uo, aZ as ge, a_ as Ue, a$ as fo, b0 as ho, b1 as q, b2 as Fn, b3 as Xn, b4 as qn, b5 as Bn, b6 as Yn, b7 as Nn, b8 as Wn, b9 as zn, ba as Hn, I as jn, bb as Un, bc as Vn, bd as Jn } from "./result.zod-CxfvOYCR.js";
-import { n as Ct, t as rt, k as Ee, o as yn, m as Zn, i as Gt, j as Ut, w as st, x as pt, y as Q, A as gt, B as jt, C as ke, D as tt, E as j, F as po, G as go } from "./vendor-CFKbllLs.js";
+import { d as vs, z as we, e as xt, D as Pi, h as Es, j as ks, k as Rs, m as Ds, n as As, p as Ms, q as Ls, r as ze, t as Os, i as Gs, w as Fs, x as Xs, y as qs, P as Je, A as Bs, B as Ys, E as J, C as Ze, G as Ns, H as ne, S as _e, J as Ie, K as et, L as D, N as Ti, O as W, Q as N, R as B, T as k, U as nt, V as X, W as $t, X as Bt, Y as F, Z as Rt, _ as Ws, $ as mn, a0 as Vt, a1 as qe, a2 as Dt, a3 as He, a4 as ct, a5 as vi, a6 as ft, a7 as $e, a8 as vt, a9 as bt, aa as je, ab as at, ac as Qt, ad as se, ae as Ke, af as zs, ag as Ce, ah as st, ai as Ei, aj as Hs, ak as js, al as Pe, am as At, an as Yt, ao as Jt, ap as Us, aq as ki, ar as Ri, as as Di, at as Ai, au as le, av as Vs, aw as Mi, ax as Te, ay as Js, az as Qe, aA as Zs, v as wt, aB as Be, aC as Li, aD as _s, aE as On, aF as Ks, aG as Qs, aH as to, aI as eo, aJ as Gn, aK as no, aL as tn, aM as en, aN as io, aO as so, aP as oo, c as pe, aQ as ve, aR as ro, aS as nn, aT as sn, aU as ao, aV as lo, aW as te, aX as co, aY as uo, aZ as ge, a_ as Ue, a$ as fo, b0 as ho, b1 as q, b2 as Fn, b3 as Xn, b4 as qn, b5 as Bn, b6 as Yn, b7 as Nn, b8 as Wn, b9 as zn, ba as Hn, I as jn, bb as Un, bc as Vn, bd as Jn } from "./result.zod-IZEZ_DzE.js";
+import { n as Ct, t as rt, k as Ee, o as yn, m as Zn, i as Gt, j as Ut, w as ot, x as pt, y as Q, A as gt, B as jt, C as ke, D as tt, E as j, F as po, G as go } from "./vendor-CFKbllLs.js";
 import { m as Oi, g as mo } from "./vendor-lodash-B8VQpKjD.js";
 import { i as Et } from "./environment-BeBZzWz6.js";
 import "./vendor-i18next-2OYl82kj.js";
@@ -181,7 +181,7 @@ on.describe(JSON.stringify({
   extends: "Shape",
   computedProperties: Object.keys(Xi)
 }));
-st.colors = [
+ot.colors = [
   2,
   3,
   4,
@@ -193,7 +193,7 @@ st.colors = [
   14,
   159
 ];
-const Re = st("logs"), qi = st("cuts"), xn = st("groups"), Sn = st("guillotine"), Bi = st("results"), Yi = st("scoring"), Ni = st("firstShapes"), Wi = st("calculations"), zi = st("subset"), Hi = st("secondRun"), ji = st("stack"), wn = st("errors"), Ui = st("allStock"), bn = st("reset"), In = st("swarm");
+const Re = ot("logs"), qi = ot("cuts"), xn = ot("groups"), Sn = ot("guillotine"), Bi = ot("results"), Yi = ot("scoring"), Ni = ot("firstShapes"), Wi = ot("calculations"), zi = ot("subset"), Hi = ot("secondRun"), ji = ot("stack"), wn = ot("errors"), Ui = ot("allStock"), bn = ot("reset"), In = ot("swarm");
 wn.color = 1;
 xn.color = 14;
 Sn.color = 159;
@@ -3245,7 +3245,7 @@ function ce({
         Et() && (console.warn(`[updateShapeListFromBestResult] Shape ${l.autoId || l.id} from result not found in shapeList!`), console.warn(`  Available autoIds in shapeList: ${e.slice(0, 5).map((d) => d.autoId).join(", ")}...`));
         continue;
       }
-      if (Et() && (Ce(f) || F(f) || console.warn(`Shape ${l.autoId} in shapeList is not a live instance!`)), it(f)) {
+      if (Et() && (Ce(f) || F(f) || console.warn(`Shape ${l.autoId} in shapeList is not a live instance!`)), st(f)) {
         const { shapes: d, ...u } = l;
         f.update({ ...u, validationMode: "none" });
       } else
@@ -3297,7 +3297,7 @@ async function me(t, e, n, i = null) {
   if (B([
     () => k(et(e)).to.be.true,
     () => {
-      if (n.length) return k(N(n[0]) || it(n[0])).to.be.true;
+      if (n.length) return k(N(n[0]) || st(n[0])).to.be.true;
     }
   ]), B([() => k(ft(n), "duplicates found").to.be.false]), Ki(), i || (i = Zr.call(this, e, n)), !i) throw new Error("no root segment created");
   if (this.config.sample.enable) {
@@ -3422,8 +3422,8 @@ async function Wr(t, e, n, i, r) {
   B([
     () => k(et(i)).to.be.true,
     () => {
-      if (n.length) return k(N(n[0]) || it(n[0])).to.be.true;
-      if (e.length) return k(N(e[0] || it(n[0]))).to.be.true;
+      if (n.length) return k(N(n[0]) || st(n[0])).to.be.true;
+      if (e.length) return k(N(e[0] || st(n[0]))).to.be.true;
     }
   ]), R("guillotine", `running refinement for stock ${i.id}`);
   try {
@@ -3443,8 +3443,8 @@ async function zr(t, e, n, i, r) {
   if (B([
     () => k(et(i)).to.be.true,
     () => {
-      if (n.length) return k(N(n[0]) || it(n[0])).to.be.true;
-      if (e.length) return k(N(e[0]) || it(n[0])).to.be.true;
+      if (n.length) return k(N(n[0]) || st(n[0])).to.be.true;
+      if (e.length) return k(N(e[0]) || st(n[0])).to.be.true;
     }
   ]), !this.config.guillotine.secondPass || !this.saw?.guillotineOptions?.headCuts) return !1;
   R("guillotine", `running second pass for stock ${i.id}`), await ea.call(this, i, n, e, r);
@@ -3633,9 +3633,9 @@ async function re(t, e, n, i = null, r = null, s = null) {
     stockList: this.stockList,
     resetShapes: this.resetShapes?.bind(this)
   }), xr(n, !0), Ri(l) && n.shapes.push(l), n.shapes = Di(n.shapes, l), B([
-    () => k(n.shapes.filter((u) => F(u)).every((u) => ct(u) || it(u)), "non-strip/user groups found in segment after removeGroupsFromSegment").to.be.true,
+    () => k(n.shapes.filter((u) => F(u)).every((u) => ct(u) || st(u)), "non-strip/user groups found in segment after removeGroupsFromSegment").to.be.true,
     () => vi(n.shapes, "segmentCalculations after removeGroupsFromSegment"),
-    () => k(n.shapes.every((u) => !Pe(u) || it(u)), "found non-user groups in segment after removal").to.be.true
+    () => k(n.shapes.every((u) => !Pe(u) || st(u)), "found non-user groups in segment after removal").to.be.true
   ]);
   let f = null;
   if (this.config.guillotine.strips.duplicateStrips && s !== null && this.bestPartialResult?.container) {
@@ -3870,7 +3870,7 @@ async function Jr({ fs: t, segment: e, stock: n, segmentShapes: i, stripShapeBat
 async function Ve(t, e, n = !1) {
   if (!this.config.sample.enable && n === !1) return !1;
   B([
-    () => k(e.shapes.every((a) => N(a) || it(a)), "segment shapes contains groups").to.be.true
+    () => k(e.shapes.every((a) => N(a) || st(a)), "segment shapes contains groups").to.be.true
   ]);
   let i = [];
   if (e.shapes.length > 1) {
@@ -4549,7 +4549,7 @@ function ua(t, e) {
     return t.some((c) => a.parentId === c.parentId && !c.added) && On(a, n) && a.willItFit(e);
   }
   const s = t.some((a) => On(a, n) && a.willItFit(e) && a.l >= i || a.w >= i);
-  return t.filter((a) => a.added ? !1 : (it(a) && a.updateShapeSpacing(e), t.length === 1 || !s ? r(a) : a.l < i && a.w < i ? !1 : r(a)));
+  return t.filter((a) => a.added ? !1 : (st(a) && a.updateShapeSpacing(e), t.length === 1 || !s ? r(a) : a.l < i && a.w < i ? !1 : r(a)));
 }
 function ps(t, e, n, i = null, r = !1) {
   if (!this.config.sample.enable && r === !1) return [];
@@ -6192,7 +6192,7 @@ function Za(t) {
 async function _a(t, e, n) {
   let i;
   try {
-    i = (await import("./__vite-browser-external-DcPfb-cP.js").then((l) => l._)).Worker;
+    i = (await import("./__vite-browser-external-B9keiSH7.js").then((l) => l._)).Worker;
   } catch {
     return null;
   }
@@ -6992,7 +6992,7 @@ async function al({
     throw new Error("findBestShapePosition was not passed any unplacedShapes");
   if (!t)
     throw new Error("findBestShapePosition was not passed a shape");
-  if (it(t))
+  if (st(t))
     try {
       t.updateShapeSpacing(e);
     } catch {
@@ -7139,7 +7139,7 @@ async function gn(t, e, n) {
       }
     const h = d.filter((x) => {
       if (ct(x)) return !1;
-      if (Pe(x) || it(x)) {
+      if (Pe(x) || st(x)) {
         const g = x;
         return !(!g.shapes || g.shapes.length === 0);
       }
@@ -7202,7 +7202,7 @@ async function gn(t, e, n) {
           rayCastCoords: h,
           placedCoords: l
         }
-      ), F(I) && !ct(I) && !it(I)) {
+      ), F(I) && !ct(I) && !st(I)) {
         const $ = I;
         if (!$.bestScore || typeof $.bestScore.total != "number") {
           R("groups", () => `[placeShapes] Group ${$.id} has no valid placement. Releasing it and all clones.`);
@@ -7426,7 +7426,7 @@ const gl = de.model(
   "material",
   zt,
   "materials"
-), $i = de.Schema, ot = new $i({
+), $i = de.Schema, it = new $i({
   organisation: {
     type: String,
     required: !0
@@ -7501,26 +7501,27 @@ function ml(t) {
     w2: 0
   };
 }
-ot.pre("save", function() {
+it.pre("save", function() {
   this.material = this.material?.toLowerCase(), this.area = (this.l - parseFloat(this?.trim?.[2]) - parseFloat(this?.trim?.[3])) * (this.w - parseFloat(this?.trim?.[0]) - parseFloat(this?.trim?.[1]));
 });
-ot.index({ organisation: 1, name: 1 });
-ot.index({ organisation: 1, material: 1 });
-ot.index({ organisation: 1, db_materialId: 1 });
-ot.index({ organisation: 1, ecommerce: 1, isOffcut: 1, name: 1 });
-ot.index({ organisation: 1, ecommerce: 1, isOffcut: 1, material: 1 });
-ot.index({ organisation: 1, ecommerce: 1, isOffcut: 1, _id: -1 });
-ot.index({ organisation: 1, ecommerce: 1, isOffcut: 1, t: 1 });
-ot.index({ organisation: 1, ecommerce: 1, isOffcut: 1, cost: 1 });
-ot.index({ organisation: 1, ecommerce: 1, isOffcut: 1, l: 1, w: 1 });
-ot.index({ organisation: 1, ecommerce: 1, isOffcut: 1, category: 1 });
-ot.index({ organisation: 1, ecommerce: 1, q: 1 });
-ot.index({ organisation: 1, isOffcut: 1, material: 1 });
-ot.index({ name: "text", material: "text", category: "text", tags: "text" });
-ot.plugin(Gi);
+it.index({ organisation: 1, name: 1 });
+it.index({ organisation: 1, material: 1 });
+it.index({ organisation: 1, db_materialId: 1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, name: 1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, material: 1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, _id: -1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, t: 1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, cost: 1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, l: 1, w: 1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, category: 1 });
+it.index({ organisation: 1, ecommerce: 1, q: 1 });
+it.index({ organisation: 1, ecommerce: 1, isOffcut: 1, material: 1, name: 1, l: 1, w: 1, t: 1 });
+it.index({ organisation: 1, isOffcut: 1, material: 1 });
+it.index({ name: "text", material: "text", category: "text", tags: "text" });
+it.plugin(Gi);
 const yl = de.model(
   "stock",
-  ot,
+  it,
   "stock"
 );
 async function xl(t = [], e, n = []) {
@@ -8117,7 +8118,7 @@ class Ci extends lo {
       }
     for (let s = this.shapeList.length; s--; ) {
       const o = this.shapeList[s];
-      it(o) && (o.added && o.stock && o.placeMyShapes(o.stock), this.shapeList.splice(s, 1), this.shapeList.push(...o.shapes));
+      st(o) && (o.added && o.stock && o.placeMyShapes(o.stock), this.shapeList.splice(s, 1), this.shapeList.push(...o.shapes));
     }
     this.groupList = [];
   }
@@ -8534,7 +8535,7 @@ class Ci extends lo {
         const c = e.length;
         for (let l = c; l--; ) {
           const f = e[l];
-          if (it(f)) {
+          if (st(f)) {
             f.added || e.splice(l, 1);
             continue;
           }
@@ -8560,7 +8561,7 @@ class Ci extends lo {
         const a = e.length;
         for (let c = a; c--; ) {
           const l = e[c];
-          if (it(l)) {
+          if (st(l)) {
             l.added = !1;
             continue;
           }

@@ -9,8 +9,8 @@ const h = {
   },
   setup(t, { expose: s }) {
     const o = p(!1), n = p(null), a = i({
-      wordpress: u(() => import("./WordPress-2LJ1J3IN.js")),
-      vanilla: u(() => import("./Vanilla-BpGpbIIC.js").then((c) => c.V))
+      wordpress: u(() => import("./WordPress-BWokzotu.js")),
+      vanilla: u(() => import("./Vanilla-DrGtkUy7.js").then((c) => c.V))
     }), e = t, r = l(() => {
       if (!e.type) return null;
       const c = e?.type?.toLowerCase();
