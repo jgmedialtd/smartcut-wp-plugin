@@ -7,7 +7,7 @@ import { f as nr, d as ir, l as Vt, e as fs, c as ps, i as Ye, r as Bt, g as Si,
 import { a as ar } from "./vendor-lodash-B8VQpKjD.js";
 import { o as or, f as lr, s as rr, a as cr } from "./vendor-floating-ui-DZfk4g77.js";
 import { t as Se } from "./i18n-Ck7sLK64.js";
-import { _ as Xn } from "./Launch-CW1xtdsr.js";
+import { _ as Xn } from "./Launch-BfGLN3s_.js";
 import { b as Kn } from "./environment-BeBZzWz6.js";
 function Ea(t, e = "cc") {
   if (!t) return t;
@@ -5767,7 +5767,7 @@ const Ju = (t) => ![
   },
   emits: ["show"],
   setup(t, { emit: e }) {
-    const { r: n, stackedStock: i, activeStock: s } = Fi(), { items: a } = Za("stockList"), o = mn(() => import("./Diagram-GpABOELh.js")), l = mn(() => import("./StockNavigation-DzYdWHw1.js")), r = Z(null), g = Z(null), m = Z(null), y = t, p = Z(0), { stop: F } = ba(r, Wo((Y) => {
+    const { r: n, stackedStock: i, activeStock: s } = Fi(), { items: a } = Za("stockList"), o = mn(() => import("./Diagram-iPQ0pOgP.js")), l = mn(() => import("./StockNavigation-BwhonOO-.js")), r = Z(null), g = Z(null), m = Z(null), y = t, p = Z(0), { stop: F } = ba(r, Wo((Y) => {
       const se = Y[0], { width: E } = se.contentRect;
       E > 0 && (p.value = E);
     }, 100)), I = $(() => {
@@ -9431,7 +9431,7 @@ const Uf = {
   },
   emits: ["inputs-changed", "calculating", "validation-error", "before-calculate", "result", "no-result", "log", "error"],
   setup(t, { expose: e, emit: n }) {
-    const i = mn(() => import("./InputIssues-DMOspRQ8.js")), s = mn(() => import("./Machining-BXFW4OUb.js")), a = mn(() => import("./ImportCSV-Lhbdr513.js")), o = mn(() => import("./ObjectViewer-CAuCuTVs.js")), l = mn(() => import("./ImageUpload-DA2DlOoz.js")), {
+    const i = mn(() => import("./InputIssues-DMOspRQ8.js")), s = mn(() => import("./Machining-yz3B5VSs.js")), a = mn(() => import("./ImportCSV-B0X8FnwS.js")), o = mn(() => import("./ObjectViewer-D_txyYGU.js")), l = mn(() => import("./ImageUpload-DMTnmIGo.js")), {
       inputs: r,
       totalInputShapes: g,
       getShapeGrainSummary: m,
@@ -10485,7 +10485,7 @@ const Uf = {
         domain: Ft,
         extrasOptions: se(),
         source: "checkout",
-        sourceVersion: "4.1.15"
+        sourceVersion: "4.1.17"
       };
       if (yn.value?.enabled && yn.value?.rules?.length > 0) {
         const O = Dd(
@@ -10894,7 +10894,7 @@ const Uf = {
                 K("button", {
                   disabled: A(r).inputShapes.value.length <= 1,
                   type: "button",
-                  class: "delete",
+                  class: "c-btn delete",
                   "aria-label": `${A(Se)("actions.remove")} ${A(Xi)(A(Se)("woodwork.part"))}`,
                   onClick: (O) => A(F)(u.autoId)
                 }, [
@@ -11126,7 +11126,7 @@ const Uf = {
       ]);
     };
   }
-}), Jp = /* @__PURE__ */ Xn(Bp, [["__scopeId", "data-v-def40101"]]);
+}), Jp = /* @__PURE__ */ Xn(Bp, [["__scopeId", "data-v-d8a78eb2"]]);
 export {
   ss as E,
   Ss as F,

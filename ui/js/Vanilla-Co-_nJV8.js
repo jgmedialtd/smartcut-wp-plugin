@@ -1,8 +1,8 @@
 import { M as je, r as u, w as Be, c as T, d as Me, N as Ve, o as $e, K as qe, a as me, b as V, g as Oe, j as ge, u as ne, h as le, F as Re, e as ie, m as We, f as Te, t as Ae, v as Je, n as he, L as Qe } from "./vendor-vue-DyIrsOEK.js";
 import { I as De, i as He, f as s, g as U, b as $ } from "./result.zod-IZEZ_DzE.js";
-import { e as Ie, d as Ke, m as ze } from "./EcommerceCalculator-DI2zhyU0.js";
+import { e as Ie, d as Ke, m as ze } from "./EcommerceCalculator-Dh9Rp8oe.js";
 import { l as Ge, o as W, h as D, i, j as Y, k as Se, u as Xe, m as ye, n as B, q as G, t as q, v as be } from "./vendor-CFKbllLs.js";
-import { _ as Ye } from "./Launch-CW1xtdsr.js";
+import { _ as Ye } from "./Launch-BfGLN3s_.js";
 function Ze() {
   const b = u(!1);
   let d = null;
@@ -621,7 +621,7 @@ const lt = {
   __name: "Vanilla",
   emits: ["ready"],
   setup(b, { expose: d, emit: C }) {
-    const F = le(() => import("./StockFilter-Bmcg__P5.js")), Z = le(() => import("./FormulaPricing-B_bkj2VQ.js")), O = le(() => import("./ProductBrowser-CVVA55f-.js")), m = le(() => import("./Notices-DxRCLkf2.js")), S = le(() => import("./OrderLookup-C2elY-vu.js")), N = C, R = "production", ue = "4.1.15", p = u(!1), f = u([]), c = u({
+    const F = le(() => import("./StockFilter-qVmbiNeM.js")), Z = le(() => import("./FormulaPricing-B0cdKtSF.js")), O = le(() => import("./ProductBrowser-Cg3X5IcA.js")), m = le(() => import("./Notices-Bd8hOYKb.js")), S = le(() => import("./OrderLookup-Cz8S5IyT.js")), N = C, R = "production", ue = "4.1.17", p = u(!1), f = u([]), c = u({
       banding: null,
       finish: null,
       planing: null,
