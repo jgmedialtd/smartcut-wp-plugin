@@ -867,13 +867,13 @@ class CartManager
 		$settings = \SmartCut\Settings\getGlobalSettings();
 
 		// dxf
-		if ($settings['layout_dxf'] ?? false === "1") {
+		if (($settings['layout_dxf'] ?? false) === "1") {
 			$fileTypes[] = 'dxf';
 			$fileOptions[] = 'layout';
 		}
 
 		//ptx
-		if ($settings['layout_ptx'] ?? false === "1") {
+		if (($settings['layout_ptx'] ?? false) === "1") {
 			$fileTypes[] = 'ptx';
 			$fileOptions[] = 'layout';
 		}
@@ -891,7 +891,7 @@ class CartManager
 			'id' => $jobId
 		];
 
-		if ($settings['customer_cutlist'] ?? false === "1") {
+		if (($settings['customer_cutlist'] ?? false) === "1") {
 			// Remove PDF and layout from arrays
 			$pdfIndex = array_search('pdf', $fileTypes);
 
@@ -916,7 +916,7 @@ class CartManager
 			$cartItemData
 		);
 
-		if ($settings['customer_cutlist'] ?? false === "1") {
+		if (($settings['customer_cutlist'] ?? false) === "1") {
 			// Handle separate layout PDF download
 			$pdfQueryParams = [
 				'type' => 'pdf',
@@ -948,18 +948,28 @@ class CartManager
 	private static function remoteGetWithRetry(string $url)
 	{
 		$attempts = 0;
-		$lastResponseCode = null;
+		$lastError = null;
 
-		while ($attempts <  self::MAX_RETRY_ATTEMPTS) {
+		while ($attempts < self::MAX_RETRY_ATTEMPTS) {
 			$response = wp_remote_get($url);
+
+			if (is_wp_error($response)) {
+				$lastError = $response->get_error_message();
+				$attempts++;
+				if ($attempts < self::MAX_RETRY_ATTEMPTS) {
+					sleep(self::RETRY_DELAY);
+				}
+				continue;
+			}
+
 			$responseCode = wp_remote_retrieve_response_code($response);
 
 			if ($responseCode === 200) {
 				return $response;
 			}
 
+			$lastError = sprintf("HTTP %d: %s", $responseCode, wp_remote_retrieve_body($response));
 			$attempts++;
-			$lastResponseCode = $responseCode;
 
 			if ($attempts < self::MAX_RETRY_ATTEMPTS) {
 				sleep(self::RETRY_DELAY);
@@ -967,9 +977,9 @@ class CartManager
 		}
 
 		throw new FileDownloadException(sprintf(
-			"Failed to download cut list files after %d attempts. Last response code: %d",
+			"Failed to download cut list files after %d attempts. Last error: %s",
 			self::MAX_RETRY_ATTEMPTS,
-			$lastResponseCode
+			$lastError ?? 'Unknown error'
 		));
 	}
 

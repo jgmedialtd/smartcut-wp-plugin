@@ -1,5 +1,5 @@
 import { r as Z, w as Ue, c as $, Y as pt, Z as lt, W as Vo, n as ht, K as $n, d as Xe, o as dn, G as ba, _ as Do, I as At, a as j, b as L, p as We, $ as Ro, M as Yn, f as K, j as Ie, u as A, e as ae, a0 as Pi, t as ue, z as Go, q as ya, x as yt, F as He, k as tt, D as jo, a1 as rn, y as Ci, A as qo, m as ys, B as _o, O as cs, g as De, l as bn, P as Uo, a2 as Ot, s as Qe, h as mn, J as Wo, U as zo, v as wa, V as Ho } from "./vendor-vue-DyIrsOEK.js";
-import { be as Re, bf as on, aT as Ko, bb as Sa, bg as sn, bh as zn, bi as ka, bj as xa, bk as Pa, bl as Ii, bm as hn, bn as $s, bo as Zo, bp as Jo, bq as Yo, br as Ca, bs as Ia, bt as Ui, bu as Xo, bv as ri, bw as Ai, bx as Qo, ba as ci, I as ui, x as En, b9 as Ht, w as Tn, i as vn, H as Dt, aX as el, by as Es, bz as tl, b3 as Dn, bA as Rn, b6 as Gn, F as jn, bB as Ts, bC as Ms, bD as nl, m as Ns, A as il, _ as sl, aR as al, bE as ol, aQ as Aa, bF as ll, a8 as wi, bG as rl, bH as cl, aJ as ul, bI as dl, aK as fl, aM as pl, aO as gl, aN as hl, aL as On, c as me, v as ze, bJ as di, bK as ml, bL as Oa, bM as vl, f as Wt, bN as bl, bO as Bs, t as yl, e as en, y as wl, r as Wi, z as Sl, q as kl, bP as xl, bQ as us, b5 as Pl, bR as Cl, bS as Il, bT as Al, bU as Ol, bV as La, bW as Ll, bX as Fl, bY as zi, bZ as $l, b_ as El, b$ as Fa, c0 as $a, c1 as Tl, c2 as Ml, c3 as Nl, c4 as Bl, c5 as Vl, c6 as Dl, c7 as Rl, c8 as ds, c9 as Gl, ca as jl, cb as ql, cc as _l, cd as Ul, ce as cn, cf as Hi, cg as Wl, g as an, ch as Vs, ci as Ki, cj as zl, ck as Ds, o as Rs, b as Gs, u as Zi, s as Ji } from "./result.zod-IZEZ_DzE.js";
+import { be as Re, bf as on, aT as Ko, bb as Sa, bg as sn, bh as zn, bi as ka, bj as xa, bk as Pa, bl as Ii, bm as hn, bn as $s, bo as Zo, bp as Jo, bq as Yo, br as Ca, bs as Ia, bt as Ui, bu as Xo, bv as ri, bw as Ai, bx as Qo, ba as ci, I as ui, x as En, b9 as Ht, w as Tn, i as vn, H as Dt, aX as el, by as Es, bz as tl, b3 as Dn, bA as Rn, b6 as Gn, F as jn, bB as Ts, bC as Ms, bD as nl, m as Ns, A as il, _ as sl, aR as al, bE as ol, aQ as Aa, bF as ll, a8 as wi, bG as rl, bH as cl, aJ as ul, bI as dl, aK as fl, aM as pl, aO as gl, aN as hl, aL as On, c as me, v as ze, bJ as di, bK as ml, bL as Oa, bM as vl, f as Wt, bN as bl, bO as Bs, t as yl, e as en, y as wl, r as Wi, z as Sl, q as kl, bP as xl, bQ as us, b5 as Pl, bR as Cl, bS as Il, bT as Al, bU as Ol, bV as La, bW as Ll, bX as Fl, bY as zi, bZ as $l, b_ as El, b$ as Fa, c0 as $a, c1 as Tl, c2 as Ml, c3 as Nl, c4 as Bl, c5 as Vl, c6 as Dl, c7 as Rl, c8 as ds, c9 as Gl, ca as jl, cb as ql, cc as _l, cd as Ul, ce as cn, cf as Hi, cg as Wl, g as an, ch as Vs, ci as Ki, cj as zl, ck as Ds, o as Rs, b as Gs, u as Zi, s as Ji } from "./result.zod-DtmPQoSB.js";
 import { s as Yi, d as Hl, u as Kl, l as Xi, b as Zl } from "./i18n-DT7wACvc.js";
 import { H as Hn, Z as fi, o as z, j as fe, t as _, i as v, q as js, I as Rt, J as Jl, n as de, k as Gt, u as _e, m as Pe, K as qs, L as pi, M as Yl, N as Xl, O as _s, Q as Ql, S as gi, T as Qi, U as es, V as ts, l as er, h as Oe, W as tr } from "./vendor-CFKbllLs.js";
 import "./vendor-i18next-2OYl82kj.js";
@@ -7,7 +7,7 @@ import { f as nr, d as ir, l as Vt, e as fs, c as ps, i as Ye, r as Bt, g as Si,
 import { a as ar } from "./vendor-lodash-B8VQpKjD.js";
 import { o as or, f as lr, s as rr, a as cr } from "./vendor-floating-ui-DZfk4g77.js";
 import { t as Se } from "./i18n-Ck7sLK64.js";
-import { _ as Xn } from "./Launch-BfGLN3s_.js";
+import { _ as Xn } from "./Launch-DG6yieBM.js";
 import { b as Kn } from "./environment-BeBZzWz6.js";
 function Ea(t, e = "cc") {
   if (!t) return t;
@@ -5767,7 +5767,7 @@ const Ju = (t) => ![
   },
   emits: ["show"],
   setup(t, { emit: e }) {
-    const { r: n, stackedStock: i, activeStock: s } = Fi(), { items: a } = Za("stockList"), o = mn(() => import("./Diagram-iPQ0pOgP.js")), l = mn(() => import("./StockNavigation-BwhonOO-.js")), r = Z(null), g = Z(null), m = Z(null), y = t, p = Z(0), { stop: F } = ba(r, Wo((Y) => {
+    const { r: n, stackedStock: i, activeStock: s } = Fi(), { items: a } = Za("stockList"), o = mn(() => import("./Diagram-ebs8FBTX.js")), l = mn(() => import("./StockNavigation-Bi-nzrQ-.js")), r = Z(null), g = Z(null), m = Z(null), y = t, p = Z(0), { stop: F } = ba(r, Wo((Y) => {
       const se = Y[0], { width: E } = se.contentRect;
       E > 0 && (p.value = E);
     }, 100)), I = $(() => {
@@ -9431,7 +9431,7 @@ const Uf = {
   },
   emits: ["inputs-changed", "calculating", "validation-error", "before-calculate", "result", "no-result", "log", "error"],
   setup(t, { expose: e, emit: n }) {
-    const i = mn(() => import("./InputIssues-DMOspRQ8.js")), s = mn(() => import("./Machining-yz3B5VSs.js")), a = mn(() => import("./ImportCSV-B0X8FnwS.js")), o = mn(() => import("./ObjectViewer-D_txyYGU.js")), l = mn(() => import("./ImageUpload-DMTnmIGo.js")), {
+    const i = mn(() => import("./InputIssues-DMOspRQ8.js")), s = mn(() => import("./Machining-H_IN_pYM.js")), a = mn(() => import("./ImportCSV-Df4VhTyD.js")), o = mn(() => import("./ObjectViewer-N4EWqvGu.js")), l = mn(() => import("./ImageUpload-jtrAXxA4.js")), {
       inputs: r,
       totalInputShapes: g,
       getShapeGrainSummary: m,
@@ -10485,7 +10485,7 @@ const Uf = {
         domain: Ft,
         extrasOptions: se(),
         source: "checkout",
-        sourceVersion: "4.1.17"
+        sourceVersion: "4.1.19"
       };
       if (yn.value?.enabled && yn.value?.rules?.length > 0) {
         const O = Dd(

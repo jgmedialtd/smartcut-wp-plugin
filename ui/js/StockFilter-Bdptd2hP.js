@@ -1,8 +1,8 @@
 import { c as C, d as se, a as l, b as s, P as ae, x as J, p as I, q as ie, f as i, e as v, r as q, t as n, F as N, k as D, s as Pe, u as g, o as Ve, M as et, U as tt, O as st, w as te, m as lt, B as ot, V as nt, j as ve, g as Oe, W as pe, y as Me, X as it } from "./vendor-vue-DyIrsOEK.js";
-import { e as at, u as ct } from "./EcommerceCalculator-Dh9Rp8oe.js";
+import { e as at, u as ct } from "./EcommerceCalculator-Baq5iGGk.js";
 import { t as f } from "./i18n-Ck7sLK64.js";
-import { u as rt, g as G } from "./Vanilla-Co-_nJV8.js";
-import { _ as ce } from "./Launch-BfGLN3s_.js";
+import { u as rt, g as G } from "./Vanilla-C2dXXgeh.js";
+import { _ as ce } from "./Launch-DG6yieBM.js";
 const ut = [
   "material",
   "name",

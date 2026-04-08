@@ -1,7 +1,7 @@
-import { c as ut, M as oe, a as vt, F as se, g as B, I as ce, b as zt, o as le } from "./result.zod-IZEZ_DzE.js";
+import { c as ut, M as oe, a as vt, F as se, g as B, I as ce, b as zt, o as le } from "./result.zod-DtmPQoSB.js";
 import { J as ue } from "./vendor-jszip-CrvM3pe8.js";
 import { t as fe, b as pe } from "./i18n-DT7wACvc.js";
-import { c as de, d as me, u as _e } from "./EcommerceCalculator-Dh9Rp8oe.js";
+import { c as de, d as me, u as _e } from "./EcommerceCalculator-Baq5iGGk.js";
 import { t as ge } from "./i18n-Ck7sLK64.js";
 import { E as he, a as N } from "./vendor-jspdf-zXVbrxOb.js";
 import { d as be, o as ye, a as It, b as lt, g as yt, e as kt, j as qt, u as tt, h as wt, f as ke, K as we, r as U, c as ve, F as Pe, n as Se, L as xe, C as Fe } from "./vendor-vue-DyIrsOEK.js";
@@ -406,7 +406,7 @@ const Ie = (a, l, f, C = (m) => m.toString()) => {
 }, je = !1, Ne = /* @__PURE__ */ be({
   __name: "WordPress",
   setup(a) {
-    const l = wt(() => import("./FormulaPricing-B0cdKtSF.js")), f = wt(() => import("./ObjectViewer-D_txyYGU.js")), C = wt(() => import("./Notices-Bd8hOYKb.js")), { inputShapes: m } = de(), { addNotice: c } = _e(), G = "production", T = {}, L = {}, y = U(null);
+    const l = wt(() => import("./FormulaPricing-CCmfc81X.js")), f = wt(() => import("./ObjectViewer-N4EWqvGu.js")), C = wt(() => import("./Notices-rqVMklDh.js")), { inputShapes: m } = de(), { addNotice: c } = _e(), G = "production", T = {}, L = {}, y = U(null);
     let V, s, e;
     const I = {
       banding: null,

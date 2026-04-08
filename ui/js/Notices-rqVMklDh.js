@@ -1,5 +1,5 @@
 import { d as k, w as g, r, o as C, l as w, j as l, b as t, f as a, g as y, y as N, a as u, F as T, k as B, u as p, p as d, e as F, t as x, c as E, T as L, z as M } from "./vendor-vue-DyIrsOEK.js";
-import { u as P } from "./EcommerceCalculator-Dh9Rp8oe.js";
+import { u as P } from "./EcommerceCalculator-Baq5iGGk.js";
 const V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], I = /* @__PURE__ */ k({
   __name: "Notices",
   props: {
