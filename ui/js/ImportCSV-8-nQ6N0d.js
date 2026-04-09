@@ -1,8 +1,8 @@
 import { P as te } from "./vendor-CFKbllLs.js";
-import { l as V } from "./result.zod-DtmPQoSB.js";
-import { C as ne, a as W, b as K, f as ae, t as re, q as se, p as ie, d as oe, o as le, g as ce, u as ue, r as m, c as N } from "./vendor-vue-DyIrsOEK.js";
-import { _ as de } from "./Launch-DG6yieBM.js";
-import { u as fe } from "./EcommerceCalculator-Baq5iGGk.js";
+import { l as V } from "./result.zod-B05sXwuC.js";
+import { B as ne, a as W, b as K, f as ae, t as re, x as se, q as ie, d as oe, o as le, g as ce, u as ue, r as m, c as N } from "./vendor-vue-BJlZsQnE.js";
+import { _ as de } from "./Launch-CP9cQM76.js";
+import { u as fe } from "./EcommerceCalculator-jfzcy_Dy.js";
 import { t as c } from "./i18n-Ck7sLK64.js";
 const he = {
   name: "Drop",
@@ -122,7 +122,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
   },
   emits: ["error", "import"],
   setup(u, { emit: f }) {
-    const { addNotice: l } = fe(), s = u, v = f, g = m([]), b = m([]), L = m([]), O = m([]), w = m({}), P = m([]), S = m(!1), T = m(null), $ = m(null), j = m({}), x = [
+    const { addNotice: l } = fe(), s = u, v = f, g = m([]), b = m([]), L = m([]), O = m([]), w = m({}), P = m([]), S = m(!1), T = m(null), x = m(null), j = m({}), $ = [
       "l",
       "w",
       "t",
@@ -133,19 +133,19 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       "banding",
       "finish",
       "cost"
-    ], M = N(() => {
+    ], B = N(() => {
       if (Object.keys(j.value).length === g.value.length)
         return j.value;
       const e = {};
       return g.value.forEach((t, n) => {
         e[n] = {};
         for (const [r, a] of Object.entries(t)) {
-          if (!x.includes(r)) continue;
+          if (!$.includes(r)) continue;
           const i = z(r, a);
           (i === !0 || i === !1) && (e[n][r] = i);
         }
       }), j.value = e, e;
-    }), R = N(() => s.customFields.map((e) => e.label)), B = (e, t) => {
+    }), R = N(() => s.customFields.map((e) => e.label)), M = (e, t) => {
       if (!t || Array.isArray(t) && t.length === 0 || typeof t == "object" && Object.keys(t).length === 0)
         return;
       const n = (Array.isArray(t), t), r = (Array.isArray(n), Object.keys(n));
@@ -159,7 +159,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
         }), a.splice(0, a.length, ...h);
       });
       const i = /* @__PURE__ */ new Set();
-      a.forEach((o) => i.add(o.join("|").toLowerCase())), e === "banding" ? T.value = i : $.value = i;
+      a.forEach((o) => i.add(o.join("|").toLowerCase())), e === "banding" ? T.value = i : x.value = i;
     }, z = (e, t) => {
       if (t === "???") return !0;
       function n(a) {
@@ -167,7 +167,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       }
       const r = {
         banding: (a) => H(a, T.value, "banding"),
-        finish: (a) => H(a, $.value, "finish"),
+        finish: (a) => H(a, x.value, "finish"),
         orientationLock: n
       };
       return e in r ? r[e](t) : null;
@@ -192,7 +192,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       }
       return a;
     }, I = (e, t) => {
-      const n = M.value[t]?.banding !== !1, r = M.value[t]?.finish !== !1, a = !!e.banding, i = !!e.finish;
+      const n = B.value[t]?.banding !== !1, r = B.value[t]?.finish !== !1, a = !!e.banding, i = !!e.finish;
       if (!a && !i)
         return;
       const o = {};
@@ -276,7 +276,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       );
       return n.length > 1 ? null : n[0];
     }, U = () => {
-      S.value = !1, O.value = Object.values(w.value).map((t) => !t || t === "N" ? null : x.includes(t) ? t : (S.value = !0, null));
+      S.value = !1, O.value = Object.values(w.value).map((t) => !t || t === "N" ? null : $.includes(t) ? t : (S.value = !0, null));
       const e = O.value.filter((t, n) => O.value.indexOf(t) !== n);
       P.value = e.map((t) => O.value.reduce(
         (n, r, a) => (r && r === t && n.push(a), n),
@@ -305,7 +305,7 @@ const me = /* @__PURE__ */ de(he, [["render", pe]]), ge = { id: "import-file" },
       e?.length && v("import", e);
     };
     return le(() => {
-      B("banding", s.bandingOptions), B("finish", s.finishOptions);
+      M("banding", s.bandingOptions), M("finish", s.finishOptions);
     }), (e, t) => (K(), W("div", ge, [
       ce(me, {
         label: ue(c)("Drop CSV file here"),

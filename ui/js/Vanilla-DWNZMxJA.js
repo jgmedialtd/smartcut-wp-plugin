@@ -1,8 +1,8 @@
-import { M as je, r as u, w as Be, c as _, d as Me, N as Ve, o as $e, K as qe, a as me, b as V, g as Oe, j as ge, u as ne, h as le, F as Re, e as ie, m as We, f as _e, t as Ie, v as Je, n as he, L as Qe } from "./vendor-vue-DyIrsOEK.js";
-import { I as Te, i as He, f as s, g as A, b as $ } from "./result.zod-DtmPQoSB.js";
-import { e as Ue, d as Ke, m as ze } from "./EcommerceCalculator-Baq5iGGk.js";
+import { M as je, r as u, w as Be, c as _, d as Me, N as Ve, o as $e, K as qe, a as me, b as V, g as Oe, j as ge, u as ne, h as le, F as Re, e as ie, y as We, f as _e, t as Ie, J as Je, n as he, L as Qe } from "./vendor-vue-BJlZsQnE.js";
+import { I as Te, i as He, f as s, g as A, b as $ } from "./result.zod-B05sXwuC.js";
+import { e as Ue, d as Ke, m as ze } from "./EcommerceCalculator-jfzcy_Dy.js";
 import { l as Ge, o as W, h as T, i, j as Y, k as Se, u as Xe, m as ye, n as B, q as G, t as q, v as be } from "./vendor-CFKbllLs.js";
-import { _ as Ye } from "./Launch-DG6yieBM.js";
+import { _ as Ye } from "./Launch-CP9cQM76.js";
 function Ze() {
   const b = u(!1);
   let d = null;
@@ -621,7 +621,7 @@ const lt = {
   __name: "Vanilla",
   emits: ["ready"],
   setup(b, { expose: d, emit: C }) {
-    const F = le(() => import("./StockFilter-Bdptd2hP.js")), Z = le(() => import("./FormulaPricing-CCmfc81X.js")), O = le(() => import("./ProductBrowser-DNeJeMYw.js")), m = le(() => import("./Notices-rqVMklDh.js")), S = le(() => import("./OrderLookup-CAvD2OIu.js")), N = C, R = "production", ue = "4.1.19", p = u(!1), f = u([]), c = u({
+    const F = le(() => import("./StockFilter-2gwPxCKR.js")), Z = le(() => import("./FormulaPricing-D121pJ0s.js")), O = le(() => import("./ProductBrowser-Cwqrkpok.js")), m = le(() => import("./Notices-CDXnmOSG.js")), S = le(() => import("./OrderLookup-D0iF4WZh.js")), N = C, R = "production", ue = "4.1.25", p = u(!1), f = u([]), c = u({
       banding: null,
       finish: null,
       planing: null,

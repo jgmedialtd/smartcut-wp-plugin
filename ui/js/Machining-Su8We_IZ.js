@@ -1,6 +1,6 @@
-import { d as Te, E as le, G as We, H as Pe, I as re, w as W, r as P, o as Be, n as oe, l as Ee, a as g, b as p, f as D, e as C, u as $, g as J, h as Me, t as q, p as B, c as z, j as qe, x as he, F as O, k as j, q as Ve, J as Fe, m as Re, v as $e } from "./vendor-vue-DyIrsOEK.js";
-import { c as w, M as de, v as I, u as Ne, s as Oe, g as je } from "./result.zod-DtmPQoSB.js";
-import { E as Ie, h as Ue, b as Ke } from "./EcommerceCalculator-Baq5iGGk.js";
+import { d as Te, D as le, E as We, G as Pe, H as re, w as W, r as P, o as Be, n as oe, m as Ee, a as g, b as p, f as D, e as C, u as $, g as J, h as Me, t as q, q as B, c as z, j as qe, l as he, F as N, k as j, x as Ve, I as Fe, y as Re, J as $e } from "./vendor-vue-BJlZsQnE.js";
+import { c as w, M as de, v as I, u as Oe, s as Ne, g as je } from "./result.zod-B05sXwuC.js";
+import { E as Ie, h as Ue, b as Ke } from "./EcommerceCalculator-jfzcy_Dy.js";
 import { t as b } from "./i18n-Ck7sLK64.js";
 import { l as Xe, s as _e, a as Je, b as Qe, p as Ze, S as et, c as tt, d as st, e as it, f as at, g as nt, h as lt, i as rt, j as ot, k as ht } from "./vendor-d3-DNaL3zcO.js";
 const L = {
@@ -420,7 +420,7 @@ const ct = { class: "inputs" }, ut = {
   }),
   emits: /* @__PURE__ */ le(["update:shape", "close"], ["update:inputShape"]),
   setup(k, { emit: i }) {
-    const n = Me(() => import("./ObjectViewer-N4EWqvGu.js")), e = k, h = i, m = "production", d = P(), o = P(), c = z(() => Ue(s.value)), x = z(() => {
+    const n = Me(() => import("./EcommerceCalculator-jfzcy_Dy.js").then((t) => t.O)), e = k, h = i, m = "production", d = P(), o = P(), c = z(() => Ue(s.value)), x = z(() => {
       if (!f.value?.length) return 0;
       if (l.value === "banding") return 1;
       let t = Object.values(v.value).filter((a) => a.enabled).length;
@@ -1078,7 +1078,7 @@ const ct = { class: "inputs" }, ut = {
               "extra-keys": F.value,
               labels: k.options.banding.labels,
               "all-options": k.options.banding.options,
-              "user-friendly-field-map": $(Ne),
+              "user-friendly-field-map": $(Oe),
               "part-columns": 1,
               "allow-custom-names": !0,
               "custom-names": ce.value,
@@ -1097,7 +1097,7 @@ const ct = { class: "inputs" }, ut = {
           }, [
             D("div", xt, [
               Q() ? (p(), g("div", St)) : C("", !0),
-              (p(!0), g(O, null, j(v.value, (u, H) => Re((p(), g("div", {
+              (p(!0), g(N, null, j(v.value, (u, H) => Re((p(), g("div", {
                 key: H,
                 class: "cell"
               }, q(u.label ?? H), 1)), [
@@ -1105,20 +1105,20 @@ const ct = { class: "inputs" }, ut = {
               ])), 128)),
               a[9] || (a[9] = D("div", { class: "cell" }, null, -1))
             ]),
-            (p(!0), g(O, null, j(V.value, (u, H) => (p(), g("div", {
+            (p(!0), g(N, null, j(V.value, (u, H) => (p(), g("div", {
               key: H,
               class: "row"
             }, [
               Q() ? (p(), g("div", yt, [
                 D("div", wt, q(ge(H)), 1)
               ])) : C("", !0),
-              (p(!0), g(O, null, j(f.value, (S, N) => (p(), g("div", {
-                key: N,
+              (p(!0), g(N, null, j(f.value, (S, O) => (p(), g("div", {
+                key: O,
                 class: "cell"
               }, [
                 J(Ke, {
                   type: v.value[S].type,
-                  id: S + "-" + N,
+                  id: S + "-" + O,
                   warning: Ae(H, S),
                   "enable-label": !1,
                   placeholder: v.value[S].label ?? S,
@@ -1126,7 +1126,7 @@ const ct = { class: "inputs" }, ut = {
                   value: $(je)(u, S),
                   output: v.value[S].output,
                   options: v.value[S].options,
-                  "onUpdate:value": (ze) => $(Oe)(u, S, ze)
+                  "onUpdate:value": (ze) => $(Ne)(u, S, ze)
                 }, null, 8, ["type", "id", "warning", "placeholder", "disabled", "value", "output", "options", "onUpdate:value"])
               ]))), 128)),
               D("div", Ht, [
@@ -1138,8 +1138,8 @@ const ct = { class: "inputs" }, ut = {
                   J(r, { icon: ["fass", "trash"] })
                 ], 8, Ct)
               ]),
-              (p(!0), g(O, null, j(De(H), (S, N) => (p(), g("div", {
-                key: N,
+              (p(!0), g(N, null, j(De(H), (S, O) => (p(), g("div", {
+                key: O,
                 class: "group validation",
                 style: he({ "grid-column-end": "span " + x.value })
               }, q(S), 5))), 128))

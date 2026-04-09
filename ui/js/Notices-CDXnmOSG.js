@@ -1,6 +1,6 @@
-import { d as k, w as g, r, o as C, l as w, j as l, b as t, f as a, g as y, y as N, a as u, F as T, k as B, u as p, p as d, e as F, t as x, c as E, T as L, z as M } from "./vendor-vue-DyIrsOEK.js";
-import { u as P } from "./EcommerceCalculator-Baq5iGGk.js";
-const V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], I = /* @__PURE__ */ k({
+import { d as k, w as g, r, o as C, m as w, j as l, b as t, f as a, g as N, p as y, a as u, F as T, k as B, u as p, q as d, e as F, t as x, c as E, T as L, s as M } from "./vendor-vue-BJlZsQnE.js";
+import { u as P } from "./EcommerceCalculator-jfzcy_Dy.js";
+const V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], j = /* @__PURE__ */ k({
   __name: "Notices",
   props: {
     position: { default: "top-left" }
@@ -13,7 +13,7 @@ const V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], I = /* @__PU
       n.value.length > 0 && e.value && e.value.showPopover();
     });
     const _ = E(() => c.position.includes("right") ? "notice-right" : "notice-left");
-    return (i, z) => {
+    return (i, A) => {
       const h = w("FontAwesomeIcon");
       return t(), l(M, { to: "body" }, [
         a("div", {
@@ -23,13 +23,13 @@ const V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], I = /* @__PU
           class: "smartcut-content",
           popover: "manual"
         }, [
-          y(L, {
+          N(L, {
             name: _.value,
             "move-class": "notice-move",
             tag: "div",
             class: d(["notices-container", c.position])
           }, {
-            default: N(() => [
+            default: y(() => [
               (t(!0), u(T, null, B(p(n), (s) => (t(), u("div", {
                 key: s.id,
                 ref_for: !0,
@@ -67,5 +67,5 @@ const V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], I = /* @__PU
   }
 });
 export {
-  I as default
+  j as default
 };

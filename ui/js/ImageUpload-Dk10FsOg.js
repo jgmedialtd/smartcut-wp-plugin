@@ -1,5 +1,5 @@
-import { d as L, A as $, r as U, o as A, l as D, a as o, b as d, e as _, f as u, g as f, u as O, h as R, F as B, k as V } from "./vendor-vue-DyIrsOEK.js";
-import { _ as M } from "./Launch-DG6yieBM.js";
+import { d as L, v as O, r as U, o as $, m as D, a as o, b as d, e as _, f as u, g as f, u as R, h as A, F as B, k as V } from "./vendor-vue-BJlZsQnE.js";
+import { _ as M } from "./Launch-CP9cQM76.js";
 const P = { id: "uploader" }, S = {
   key: 0,
   class: "debug"
@@ -38,7 +38,7 @@ const P = { id: "uploader" }, S = {
   },
   emits: ["update", "remove"],
   setup(g, { emit: w }) {
-    const F = R(() => import("./ObjectViewer-N4EWqvGu.js")), h = U(null), t = U({
+    const F = A(() => import("./EcommerceCalculator-jfzcy_Dy.js").then((e) => e.O)), h = U(null), t = U({
       shapeId: "",
       files: [],
       previewUrls: [],
@@ -90,9 +90,9 @@ Only JPG and PNG files are allowed.`), a.value = "";
         t.value = l, p("update", l);
       }
     };
-    return $(() => {
+    return O(() => {
       t.value?.previewUrls && t.value.previewUrls.forEach((e) => URL.revokeObjectURL(e));
-    }), A(() => {
+    }), $(() => {
       t.value.shapeId = s.shapeId;
       const e = s.images.find((a) => a.shapeId === s.shapeId);
       if (e) {
@@ -106,7 +106,7 @@ Only JPG and PNG files are allowed.`), a.value = "";
       const n = D("FontAwesomeIcon");
       return d(), o("div", P, [
         g.env === "development" && J ? (d(), o("div", S, [
-          f(O(F), {
+          f(R(F), {
             data: [t.value],
             paths: ["imageData"]
           }, null, 8, ["data"])

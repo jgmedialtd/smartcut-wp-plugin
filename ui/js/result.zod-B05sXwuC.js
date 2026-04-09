@@ -5768,8 +5768,8 @@ try {
     ie = () => t;
   }
 } catch {
-  const e = new Proxy({}, { get: () => () => e });
-  ie = () => e;
+  const t = new Proxy({}, { get: () => () => t });
+  ie = () => t;
 }
 let si;
 function ea() {
