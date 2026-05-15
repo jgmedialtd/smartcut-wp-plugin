@@ -101,8 +101,8 @@ define('SMARTCUT_FIELDS', [
 		'type' => 'boolean',
 		'default' => '0',
 		'group' => ['formula', 'general'],
-		'label' => 'Enable formula pricing [BETA]',
-		'description' => 'Enable formula pricing for products.',
+		'label' => 'Enable Configurator [BETA]',
+		'description' => 'Enable the Configurator for products.',
 		'show' => ['global', 'product']
 	],
 	'enable_image_upload' => [
@@ -352,13 +352,19 @@ define('SMARTCUT_FIELDS', [
 		'description' => 'Minimum price for a single cut-to-size order. Orders below this amount cannot be added to the cart. Set to 0 to disable.',
 		'show' => ['global']
 	],
+	// Shared by two strategies that charge by linear units:
+	//   - full_stock_plus_cut_length: applied to API-reported cut length
+	//     (shared edges between adjacent parts counted once).
+	//   - full_stock_plus_part_perimeter: applied to Σ 2·(l+w)·q across the
+	//     ordered parts (each part outline counted in full, no edge sharing).
+	// Both apply the `min_cut_length_charge` floor to the resulting leg.
 	'cut_length_price' => [
 		'type' => 'float',
 		'default' => 0.0,
 		'min' => 0.0,
 		'group' => ['pricing', 'strategy'],
-		'label' => 'Cut Length Price',
-		'description' => 'Price per unit length of cuts.',
+		'label' => 'Cut / Perimeter Length Price',
+		'description' => 'Price per unit length applied to cut length (or part perimeter, depending on the chosen pricing strategy).',
 		'show' => ['global', 'product']
 	],
 	'min_cut_length_charge' => [
@@ -688,6 +694,26 @@ define('SMARTCUT_FIELDS', [
 		],
 		'show' => ['global', 'product']
 	],
+	// Post-calc stock-cost override. When set, the checkout widget evaluates
+	// this expression once per stock sheet using the calculation result, and
+	// the returned price replaces the strategy's per-sheet STOCK-COST leg
+	// only. Other legs (cut length, per part, perimeter) and extras
+	// (banding, finish, surcharges, tax) still apply on top.
+	// Variables: usedFraction, stockArea, l, w, t, q, cost, weight,
+	// analysis.partArea, analysis.areaEfficiency, analysis.totalParts,
+	// analysis.cutLength, analysis.stackedCutLength, analysis.numberOfCuts,
+	// analysis.stackedNumberOfCuts, analysis.bandingLength, analysis.finishArea,
+	// analysis.rollLength.
+	// See shared/formula/pricing-variables.ts in the smartcut platform repo.
+	'pricing_formula' => [
+		'type' => 'string',
+		'output' => 'string',
+		'default' => '',
+		'group' => ['pricing', 'strategy'],
+		'label' => 'Stock Pricing Formula',
+		'description' => 'Replaces the per-sheet stock cost only. Cut-length / per-part / surcharge legs and extras still apply on top. The formula returns the price for ONE sheet — total = formula × sheets used. Example: usedFraction > 0.5 ? 150 : (usedFraction > 0.25 ? 120 : 100). Leave empty to use the selected strategy.',
+		'show' => ['global', 'product']
+	],
 	'surcharge_type' => [
 		'type' => 'select',
 		'output' => 'string',
@@ -751,8 +777,8 @@ define('SMARTCUT_FIELDS', [
 		'type' => 'json_upload',
 		'default' => '',
 		'group' => ['formula', 'general'],
-		'label' => 'Formula JSON Upload',
-		'description' => 'Upload a JSON file with formula pricing data.',
+		'label' => 'Configurator JSON Upload',
+		'description' => 'Upload a JSON file with Configurator spec data.',
 	],
 ]);
 
@@ -798,7 +824,7 @@ define('SMARTCUT_GROUPS', [
 		'text' => ['title' => 'Text Colors', 'description' => 'Configure colors for interface text']
 	],
 	'formula' => [
-		'general' => ['title' => 'Formula Pricing', 'description' => 'Configure formula pricing settings']
+		'general' => ['title' => 'Configurator', 'description' => 'Configure the Configurator settings']
 	]
 ]);
 

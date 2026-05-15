@@ -39,15 +39,21 @@ main() {
     check_npm
     check_package_json
 
+    # Compute the candidate versions for each bump type so the menu shows real numbers.
+    current_version=$(get_current_version)
+    next_major=$(node -p "const [M]=require('./package.json').version.split('.').map(Number); \`\${M+1}.0.0\`")
+    next_minor=$(node -p "const [M,m]=require('./package.json').version.split('.').map(Number); \`\${M}.\${m+1}.0\`")
+    next_patch=$(node -p "const [M,m,p]=require('./package.json').version.split('.').map(Number); \`\${M}.\${m}.\${p+1}\`")
+
     # Display version selection menu
     print_colored "blue" "📦 Version Update Selection"
-    print_colored "yellow" "Current version: $(get_current_version)"
+    print_colored "yellow" "Current version: ${current_version}"
     echo
     echo "Select version update type:"
-    echo "1) Major (x.0.0) - For incompatible API changes"
-    echo "2) Minor (0.x.0) - For backwards-compatible functionality"
-    echo "3) Patch (0.0.x) - For backwards-compatible bug fixes"
-    echo "4) None (keep current version)"
+    echo "1) Major (${next_major}) - For incompatible API changes"
+    echo "2) Minor (${next_minor}) - For backwards-compatible functionality"
+    echo "3) Patch (${next_patch}) - For backwards-compatible bug fixes"
+    echo "4) None (keep ${current_version})"
     echo
 
     # Get version type from user

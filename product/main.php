@@ -246,6 +246,27 @@ class Product
 		}
 	}
 
+	/**
+	 * Variation → platform stock cost mapping.
+	 *
+	 * The `price` of the SELECTED variation is what the smartcut platform
+	 * reports back as `stock.cost` on the calculation result. Callers and
+	 * template authors should think of `_regular_price` per variation as
+	 * "cost per sheet of this stock piece" — not as "price the customer
+	 * pays for this option". The customer-facing total still flows through
+	 * the pricing strategy (and `pricing_formula` when configured).
+	 *
+	 * Concretely:
+	 *   - "1000x1000" variation with `_regular_price = 100` →
+	 *     platform returns `stock.cost = 100` per 1000×1000 sheet used.
+	 *   - "Cut to size" variation with `_regular_price = 100` →
+	 *     platform uses 100 as the per-sheet cost when fulfilling cuts.
+	 *
+	 * Implication: if variations on the same material have different
+	 * `_regular_price` values, the per-sheet stock cost will appear to
+	 * change as the customer flips between variations, which is rarely
+	 * desired. Keep variations on the same material at the same price.
+	 */
 	private function getVariationsConfig(): array
 	{
 		if (!$this->product instanceof \WC_Product_Variable) {

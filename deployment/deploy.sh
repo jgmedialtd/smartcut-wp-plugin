@@ -85,13 +85,13 @@ set -e
 
 # Push new version to GitHub with a tag
 git add .
-git commit -m "Release version $new_version"
-git tag -a "$new_version" -m "Version $new_version"
+git commit -m "release plugin v$new_version"
+git tag -a "plugin-$new_version" -m "plugin v$new_version"
 git push origin main
-git push origin "$new_version"
+git push origin "plugin-$new_version"
 
 # Create a release on GitHub and upload the zip file
-gh release create "$new_version" -t "Version $new_version" -n "Download smartcut.zip from the assets below, then 'Add New Plugin' > 'Upload Plugin' in WordPress."
-gh release upload "$new_version" "${parent_dir}/${dir_name}.zip"
+gh release create "plugin-$new_version" -t "plugin v$new_version" -n "Download smartcut.zip from the assets below, then 'Add New Plugin' > 'Upload Plugin' in WordPress."
+gh release upload "plugin-$new_version" "${parent_dir}/${dir_name}.zip"
 
 echo "Release $new_version published successfully."

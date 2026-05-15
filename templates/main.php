@@ -55,6 +55,15 @@ define('SMARTCUT_TEMPLATES', [
 		'price' => 1,
 	],
 
+	// Vanilla WC product (no smartcut metadata) — used by
+	// browser-tests/plugin.spec.ts to confirm the smartcut plugin doesn't
+	// interfere with ordinary WC products.
+	'Simple product – not SmartCut' => [
+		'vanilla_wc' => true,
+		'price' => 10,
+		'content' => '<p>Vanilla WC product (no smartcut config). Used to verify the plugin doesn\'t hijack non-smartcut products.</p>',
+	],
+
 	'SC - Machining - corners' => [
 		'is_machining' => true,
 		'price' => 1,
@@ -114,6 +123,16 @@ define('SMARTCUT_TEMPLATES', [
 		'cut_preference' => 'length',
 		'formula' => true,
 		'price' => 100,
+	],
+
+	'SC - Sheet with pricing formula' => [
+		'length' => '2440',
+		'width' => '1220',
+		'stock_type' => 'sheet',
+		'cut_preference' => 'length',
+		'pricing_formula' => 'usedFraction > 0.5 ? discountedCost * 1.5 : (usedFraction > 0.25 ? discountedCost * 1.2 : discountedCost)',
+		'price' => 100,
+		'content' => '<p>The <strong>Stock Pricing Formula</strong> replaces the per-sheet stock cost only — extras (banding, finish, surcharge) and the other pricing legs still apply on top. This example tiers the price by how much of each sheet is used.</p>',
 	],
 
 	//simple sheet - multiple simple banding
@@ -553,8 +572,15 @@ class TemplateManager
 		}
 
 		$product = $this->createProduct($name, $productData);
-		$this->setupProductAttributes($product, $productData);
-		$this->setupProductSettings($product, $productData);
+
+		// `vanilla_wc` flags a fixture that should remain a plain WC product —
+		// no smartcut attributes, no smartcut meta, no cut-list category. Used
+		// by browser-tests/plugin.spec.ts to verify the smartcut plugin doesn't
+		// hijack ordinary WC products.
+		if (empty($productData['vanilla_wc'])) {
+			$this->setupProductAttributes($product, $productData);
+			$this->setupProductSettings($product, $productData);
+		}
 
 		if (!empty($productData['variable'])) {
 			$this->createVariations($product, $productData);
@@ -610,7 +636,7 @@ class TemplateManager
 	{
 		$content = '';
 
-		if (!isset($productData['is_extra']) && !isset($productData['is_machining'])) {
+		if (!isset($productData['is_extra']) && !isset($productData['is_machining']) && empty($productData['vanilla_wc'])) {
 			$content .= '<p>Dimensions are set in Attributes. Other settings available in the SmartCut menu.</p>';
 		}
 
@@ -637,6 +663,7 @@ class TemplateManager
 			'Pricing strategy' => 'pricing_strategy',
 			'Cut length price' => 'cut_length_price',
 			'Price per part' => 'per_part_price',
+			'Stock pricing formula' => 'pricing_formula',
 			'Edge banding types' => 'banding_types',
 			'Finish types' => 'finish_types',
 			'Holes' => 'machining_holes_product',
@@ -673,8 +700,10 @@ class TemplateManager
 
 	private function setProductCategory($product, $productData)
 	{
+		// Skip cut-list category for extras, machining, and vanilla-WC fixtures.
 		if ((!isset($productData['is_extra']) || !$productData['is_extra']) &&
-			(!isset($productData['is_machining']) || !$productData['is_machining'])
+			(!isset($productData['is_machining']) || !$productData['is_machining']) &&
+			empty($productData['vanilla_wc'])
 		) {
 			$category = get_term_by('slug', $this->cutlistCategory, 'product_cat');
 			if ($category) {
@@ -737,6 +766,7 @@ class TemplateManager
 			'pricing_strategy' => $productData['pricing_strategy'] ?? 'full_stock',
 			'cut_length_price' => $productData['cut_length_price'] ?? '0.00',
 			'per_part_price' => $productData['per_part_price'] ?? '0.00',
+			'pricing_formula' => $productData['pricing_formula'] ?? '',
 			'surcharge_type' => $productData['surcharge_type'] ?? 'none',
 			'surcharge' => $productData['surcharge'] ?? '0.00',
 			'enable_machining' => isset($productData['machining_holes_product']) || isset($productData['machining_corners_product']) ? true : false,
@@ -790,6 +820,12 @@ class TemplateManager
 			return;
 		}
 
+		// Flat price across all variations. The smartcut platform reads the
+		// selected variation's `_regular_price` as the per-sheet stock cost,
+		// so incrementing per variation produced surprise: e.g. "Cut to size"
+		// ending up more expensive than "1000x1000" on the same material.
+		// Keep them uniform; per-variant pricing isn't part of the template
+		// generator's contract.
 		foreach ($productData['thickness'] as $thickness) {
 			$variation = new \WC_Product_Variation();
 			$variation->set_parent_id($product->get_id());
@@ -797,7 +833,6 @@ class TemplateManager
 			$variation->set_attributes(['thickness' => $thickness]);
 			$variation->set_regular_price(number_format($price, 2, '.'));
 			$variation->save();
-			$price += 100;
 		}
 	}
 
@@ -810,6 +845,7 @@ class TemplateManager
 			return;
 		}
 
+		// Flat price — see createThicknessVariations() for rationale.
 		foreach ($productData['thickness'] as $thickness) {
 			foreach ($productData['size'] as $size) {
 				$variation = new \WC_Product_Variation();
@@ -821,7 +857,6 @@ class TemplateManager
 				]);
 				$variation->set_regular_price(number_format($price, 2, '.'));
 				$variation->save();
-				$price += 100;
 			}
 		}
 	}
@@ -845,8 +880,6 @@ class TemplateManager
 			$variation->set_attributes($combination);
 			$variation->set_regular_price(number_format($price, 2, '.'));
 			$variation->save();
-
-			$price += 1;
 		}
 	}
 

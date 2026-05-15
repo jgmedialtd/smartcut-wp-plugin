@@ -106,6 +106,42 @@ class PricingStrategy
 	}
 
 	/**
+	 * Whether the breakdown should expose a "Stock total" row.
+	 *
+	 * The stock leg is folded into WC's `quantity × _regular_price` math for
+	 * simple products under quantity-pricing strategies, so showing the row
+	 * there duplicates information the customer can already see in the cart
+	 * line. Variable products and non-stock-leg strategies always show it.
+	 *
+	 * A configured `pricing_formula` overrides the default: when a formula is
+	 * present the leg can disagree with `_regular_price × quantity`, so the
+	 * customer needs the breakdown row to understand the displayed total.
+	 */
+	private function shouldShowStockLeg(bool $isVariable): bool
+	{
+		$hasFormula = !empty($this->settings['pricing_formula'] ?? null)
+			&& trim((string) $this->settings['pricing_formula']) !== '';
+		if ($hasFormula) return true;
+
+		$qtyPricingStrategies = [
+			'full_stock',
+			'part_area',
+			'full_stock_plus_cut_length',
+			'full_stock_plus_num_parts',
+			'full_stock_plus_part_perimeter',
+		];
+
+		if ($isVariable) {
+			// Variable products show the stock leg for every strategy except
+			// part_area (where the breakdown shows part-area cost instead).
+			return $this->strategy !== 'part_area';
+		}
+
+		// Simple products: hide for any qty-pricing strategy.
+		return !in_array($this->strategy, $qtyPricingStrategies, true);
+	}
+
+	/**
 	 * Get base pricing components
 	 */
 	public function getPricingComponents()
@@ -114,7 +150,7 @@ class PricingStrategy
 
 		$is_variable = $this->product->is_type('variable');
 
-		if (($is_variable && !in_array($this->strategy, ['part_area'], true)) || (!$is_variable && !in_array($this->strategy, ['full_stock_plus_cut_length', 'full_stock_plus_num_parts', 'full_stock_plus_part_perimeter', 'full_stock', 'part_area'], true))) {
+		if ($this->shouldShowStockLeg($is_variable)) {
 
 			$components[] = array(
 				'id' => 'smartcut-stock-total',
