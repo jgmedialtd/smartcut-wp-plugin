@@ -1,7 +1,7 @@
-import { F as le, I as ne } from "./EcommerceCalculator-CIJmnT15.js";
+import { F as le, I as ne } from "./EcommerceCalculator-D8U1LupG.js";
 import { j as k, q as K, k as Oe, n as A, v as T, t as fe, A as je, C as Fe, D as pe, E as He } from "./vendor-CN6j6kBQ.js";
-import { d as qe, R as Xe, w as L, r as H, m as V, f as Ke, c as N, o as F, a as D, b as oe, i as re, u as Ze, y as Qe, h as ye, F as J, k as we, H as Ye, l as ae, t as ie, p as et } from "./vendor-vue-BgOQH8dC.js";
-import { _ as tt } from "./Launch-BRH4wqOZ.js";
+import { d as qe, R as Xe, w as L, r as H, m as V, f as Ke, c as N, o as F, a as D, b as oe, i as re, u as Ze, y as Qe, h as ye, F as J, k as we, H as Ye, l as ae, t as ie, p as et } from "./vendor-vue-Tt3m9hlc.js";
+import { _ as tt } from "./Launch-Br9fQuik.js";
 function nt(n, e) {
   const o = {};
   for (let r = 0; r < n.length; r++) {
@@ -783,7 +783,7 @@ const Tt = {
   },
   emits: ["hardware-result", "panel-result", "scene", "scene-error"],
   setup(n, { expose: e, emit: o }) {
-    const r = Qe(() => import("./EcommerceCalculator-CIJmnT15.js").then((c) => c.o)), t = n, a = o, s = Xe("calculator"), l = V(() => s());
+    const r = Qe(() => import("./EcommerceCalculator-D8U1LupG.js").then((c) => c.o)), t = n, a = o, s = Xe("calculator"), l = V(() => s());
     let u = null;
     const i = H(null), d = H([]), h = H(!1), g = H(""), z = V(() => {
       const c = Object.entries(i.value?.inputs ?? {}), p = [];

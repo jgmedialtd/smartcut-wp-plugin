@@ -1,10 +1,10 @@
-import { e as nt, M as fe, o as vt, F as de, j as I, p as pe, q as zt, t as me } from "./result.zod-n9AiX9Qf.js";
+import { e as nt, M as fe, o as vt, F as de, j as I, p as pe, q as zt, w as me } from "./result.zod-B0Qqh9wj.js";
 import { J as _e } from "./vendor-jszip-CDtxDv8r.js";
-import { t as ge, b as he } from "./i18n-B29Te7vQ.js";
-import { F as be, f as ye, a as ke, g as we, u as ve } from "./EcommerceCalculator-CIJmnT15.js";
-import { t as Pe } from "./i18n-BkCqM2rg.js";
+import { b as ge, d as he } from "./i18n-uloQAa9l.js";
+import { F as be, f as ye, a as ke, g as we, u as ve } from "./EcommerceCalculator-D8U1LupG.js";
+import { t as Pe } from "./i18n-BEBY52oR.js";
 import { E as Ce, a as Y } from "./vendor-jspdf-D--HlhzI.js";
-import { d as Se, f as xe, c as jt, o as ut, i as yt, a as kt, h as qt, u as ft, y as wt, r as N, b as Fe, O as Ae, m as Ee, F as Le, H as Te, P as $e, E as ze } from "./vendor-vue-BgOQH8dC.js";
+import { d as Se, f as xe, c as jt, o as ut, i as yt, a as kt, h as qt, u as ft, y as wt, r as N, b as Fe, O as Ae, m as Ee, F as Le, H as Te, P as $e, E as ze } from "./vendor-vue-Tt3m9hlc.js";
 const Ot = new be({});
 function Pt(n, i, d) {
   const y = n?.pricingFormula, s = typeof y == "string" && y.trim() ? y : typeof i == "string" && i.trim() ? i : null;
@@ -552,7 +552,7 @@ const Ye = (n, i, d, y = (s) => s.toString()) => {
 }, nn = /* @__PURE__ */ Se({
   __name: "WordPress",
   setup(n) {
-    const i = wt(() => import("./Configurator-DS7QdehL.js")), d = wt(() => import("./EcommerceCalculator-CIJmnT15.js").then((e) => e.o)), y = wt(() => import("./Notices-D3BnaiQW.js")), { inputShapes: s } = ke(), { addNotice: c } = ve(), b = {}, F = {}, E = N(null);
+    const i = wt(() => import("./Configurator-C57IOs9O.js")), d = wt(() => import("./EcommerceCalculator-D8U1LupG.js").then((e) => e.o)), y = wt(() => import("./Notices-CkK3zzKZ.js")), { inputShapes: s } = ke(), { addNotice: c } = ve(), b = {}, F = {}, E = N(null);
     let L, _, t;
     const l = {
       banding: null,

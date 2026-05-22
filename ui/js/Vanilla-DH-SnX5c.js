@@ -1,8 +1,8 @@
-import { M as We, r as u, w as Le, m as A, d as Je, Q as Ke, f as Qe, O as He, c as ye, o as $, i as Re, h as be, u as ne, y as le, F as Ue, a as ie, z as ze, b as Te, t as Ae, A as Ge, H as Se, P as Ye } from "./vendor-vue-BgOQH8dC.js";
-import { p as _e, w as Xe, x as s, j as T, q } from "./result.zod-n9AiX9Qf.js";
-import { i as Ie, g as Ze, m as et } from "./EcommerceCalculator-CIJmnT15.js";
+import { M as We, r as u, w as Le, m as A, d as Je, Q as Ke, f as Qe, O as He, c as ye, o as $, i as Re, h as be, u as ne, y as le, F as Ue, a as ie, z as ze, b as Te, t as Ae, A as Ge, H as Se, P as Ye } from "./vendor-vue-Tt3m9hlc.js";
+import { p as _e, x as Xe, y as s, j as T, q } from "./result.zod-B0Qqh9wj.js";
+import { i as Ie, g as Ze, m as et } from "./EcommerceCalculator-D8U1LupG.js";
 import { l as tt, j as B, k as _, n as i, q as G, t as ue, v as at, w as te, x, y as H, A as C, B as ke } from "./vendor-CN6j6kBQ.js";
-import { _ as ot } from "./Launch-BRH4wqOZ.js";
+import { _ as ot } from "./Launch-Br9fQuik.js";
 function rt() {
   const S = u(!1);
   let p = null;
@@ -687,7 +687,7 @@ const ut = {
   __name: "Vanilla",
   emits: ["ready"],
   setup(S, { expose: p, emit: P }) {
-    const R = le(() => import("./Catalogue-lKFgJna5.js")), ae = le(() => import("./Configurator-DS7QdehL.js")), E = le(() => import("./ProductBrowser-DWiJe32S.js")), g = le(() => import("./Notices-D3BnaiQW.js")), k = le(() => import("./OrderLookup-EkKvCLvH.js")), j = P, I = "production", se = "4.2.0", d = u(!1), f = u([]), c = u({
+    const R = le(() => import("./Catalogue-CNe92Gxz.js")), ae = le(() => import("./Configurator-C57IOs9O.js")), E = le(() => import("./ProductBrowser--AW6AFxC.js")), g = le(() => import("./Notices-CkK3zzKZ.js")), k = le(() => import("./OrderLookup-D755vrxa.js")), j = P, I = "production", se = "4.2.3", d = u(!1), f = u([]), c = u({
       banding: null,
       finish: null,
       planing: null,

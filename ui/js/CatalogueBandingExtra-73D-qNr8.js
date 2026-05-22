@@ -1,6 +1,6 @@
-import { I as N, E as T, O as Y, L as J } from "./EcommerceCalculator-CIJmnT15.js";
-import { d as Q, w as W, r as B, c as f, o as u, b as r, h as X, a as b, t as S, i as m, m as o, u as Z, y as ee, l as te, F as ae, k as se, B as ie } from "./vendor-vue-BgOQH8dC.js";
-import { _ as ne } from "./Launch-BRH4wqOZ.js";
+import { I as N, E as T, O as Y, L as J } from "./EcommerceCalculator-D8U1LupG.js";
+import { d as Q, w as W, r as B, c as f, o as u, b as r, h as X, a as b, t as S, i as m, m as o, u as Z, y as ee, l as te, F as ae, k as se, B as ie } from "./vendor-vue-Tt3m9hlc.js";
+import { _ as ne } from "./Launch-Br9fQuik.js";
 const oe = { class: "catalogue-banding-extra" }, le = { class: "cbe-header" }, re = {
   key: 0,
   class: "cbe-sku-badge"
@@ -27,7 +27,7 @@ const oe = { class: "catalogue-banding-extra" }, le = { class: "cbe-header" }, r
   },
   setup(n) {
     const P = ee({
-      loader: () => import("./CatalogueBandingPicker-QfSkSwfv.js"),
+      loader: () => import("./CatalogueBandingPicker-BHQyLEX0.js"),
       loadingComponent: () => ie(J, { size: "small", label: "Loading decor picker…" }),
       delay: 200
     }), F = {

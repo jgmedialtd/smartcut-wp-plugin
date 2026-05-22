@@ -1,5 +1,5 @@
-import { d as k, w as g, r as c, f as C, g as w, h as l, o as t, b as a, i as N, j as y, c as u, F as T, k as B, u as p, l as d, a as F, t as P, m as x, T as E, p as L } from "./vendor-vue-BgOQH8dC.js";
-import { u as M } from "./EcommerceCalculator-CIJmnT15.js";
+import { d as k, w as g, r as c, f as C, g as w, h as l, o as t, b as a, i as N, j as y, c as u, F as T, k as B, u as p, l as d, a as F, t as P, m as x, T as E, p as L } from "./vendor-vue-Tt3m9hlc.js";
+import { u as M } from "./EcommerceCalculator-D8U1LupG.js";
 const V = { class: "content" }, $ = ["onClick"], b = ["innerHTML"], j = /* @__PURE__ */ k({
   __name: "Notices",
   props: {

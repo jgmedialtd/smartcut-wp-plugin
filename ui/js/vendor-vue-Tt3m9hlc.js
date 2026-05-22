@@ -1,4 +1,4 @@
-import { x as cl, y as br } from "./vendor-fortawesome-lgMTL6gF.js";
+import { y as cl, z as br } from "./vendor-fortawesome-relhcbvc.js";
 import { c as ul, i as al, g as dl } from "./vendor-floating-ui-CCq0hEoe.js";
 // @__NO_SIDE_EFFECTS__
 function Dr(e) {

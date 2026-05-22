@@ -1,6 +1,6 @@
 import { a as c } from "./environment-BeBZzWz6.js";
 import { i as j, B as u } from "./vendor-i18next-DIDhOEvY.js";
-import { s as m, c as d, a as f } from "./i18n-B29Te7vQ.js";
+import { s as m, c as d, a as f } from "./i18n-uloQAa9l.js";
 const g = (n, t, r) => {
   const i = n[t];
   return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, p) => {

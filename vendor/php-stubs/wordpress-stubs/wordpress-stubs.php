@@ -32062,6 +32062,7 @@ namespace {
          *   data?: string|WP_Error,
          *   supplemental?: array,
          * } $args
+         * @phpstan-return non-falsy-string
          */
         public function add($args = '')
         {
@@ -46442,6 +46443,7 @@ namespace {
          * @param string     $group      Optional. Where the cache contents are grouped. Default 'default'.
          * @param bool       $deprecated Optional. Unused. Default false.
          * @return bool True on success, false if the contents were not deleted.
+         * @phpstan-param false $deprecated
          */
         public function delete($key, $group = 'default', $deprecated = \false)
         {
@@ -54909,6 +54911,7 @@ namespace {
          * @phpstan-param array{
          *   with_supports?: bool,
          * } $options
+         * @phpstan-param array{} $deprecated
          */
         public static function get_theme_data($deprecated = array(), $options = array())
         {
@@ -58923,6 +58926,7 @@ namespace {
          *
          * @param int $deprecated Not used.
          * @final
+         * @phpstan-param 1 $deprecated
          * @phpstan-return void
          */
         public function update_callback($deprecated = 1)
@@ -68700,7 +68704,6 @@ namespace {
          *     // Outputs: "free <egg> lang-en "
          *
          * @since 6.4.0
-         * @phpstan-return void
          */
         public function class_list()
         {
@@ -69551,6 +69554,14 @@ namespace {
          * @since 6.7.0
          */
         const TEXT_IS_WHITESPACE = 'TEXT_IS_WHITESPACE';
+        /**
+         * Wakeup magic method.
+         *
+         * @since 6.9.2
+         */
+        public function __wakeup()
+        {
+        }
     }
     /**
      * Core class used to safely parse and modify an HTML document.
@@ -89903,6 +89914,7 @@ namespace {
      *                                 if it matches the current link's relationship.
      *                                 Default empty string.
      * @param mixed  $deprecated       Deprecated. Not used.
+     * @phpstan-param '' $deprecated
      */
     function xfn_check($xfn_relationship, $xfn_value = '', $deprecated = '')
     {
@@ -91265,6 +91277,7 @@ namespace {
      * @since 4.6.0 The `$type_selector` parameter was deprecated.
      *
      * @param bool $deprecated Not used.
+     * @phpstan-param true $deprecated
      */
     function install_search_form($deprecated = \true)
     {
@@ -91709,6 +91722,8 @@ namespace {
      * @param string   $deprecated Not used.
      * @return bool|null|WP_Error True on success, false if `$plugins` is empty, `WP_Error` on failure.
      *                            `null` if filesystem credentials are required to proceed.
+     * @phpstan-param '' $deprecated
+     * @phpstan-return ($plugins is empty ? false : true|null|WP_Error)
      */
     function delete_plugins($plugins, $deprecated = '')
     {
@@ -94223,6 +94238,7 @@ namespace {
      *
      * @param string $title      Optional. Title of the Iframe page. Default empty.
      * @param bool   $deprecated Not used.
+     * @phpstan-param false $deprecated
      */
     function iframe_header($title = '', $deprecated = \false)
     {
@@ -95376,6 +95392,7 @@ namespace {
      *   password: string,
      *   password_message: string,
      * }
+     * @phpstan-param '' $deprecated
      */
     function wp_install(
         $blog_title,
@@ -96963,6 +96980,7 @@ namespace {
      *                                                     of ability behavior.
      * }
      * @return WP_Ability|null The registered ability instance on success, `null` on failure.
+     * @phpstan-param lowercase-string&non-falsy-string $name
      */
     function wp_register_ability(string $name, array $args): ?\WP_Ability
     {
@@ -97544,6 +97562,7 @@ namespace {
      *
      * @param string $deprecated Deprecated.
      * @return string The author's display name, empty string if unknown.
+     * @phpstan-param '' $deprecated
      */
     function get_the_author($deprecated = '')
     {
@@ -97567,6 +97586,8 @@ namespace {
      * @param string $deprecated      Deprecated.
      * @param bool   $deprecated_echo Deprecated. Use get_the_author(). Echo the string or return it.
      * @return string The author's display name, from get_the_author().
+     * @phpstan-param '' $deprecated
+     * @phpstan-param true $deprecated_echo
      */
     function the_author($deprecated = '', $deprecated_echo = \true)
     {
@@ -97719,6 +97740,7 @@ namespace {
      * @since 4.4.0 Converted into a wrapper for get_the_author_posts_link()
      *
      * @param string $deprecated Unused.
+     * @phpstan-param '' $deprecated
      */
     function the_author_posts_link($deprecated = '')
     {
@@ -98251,6 +98273,7 @@ namespace {
      * @since 6.3.0 Add 'pattern-directory/core' to the pattern's 'source'.
      *
      * @param WP_Screen $deprecated Unused. Formerly the screen that the current request was triggered from.
+     * @phpstan-param null $deprecated
      * @phpstan-return void
      */
     function _load_remote_block_patterns($deprecated = \null)
@@ -98624,6 +98647,7 @@ namespace {
      *
      * @param array $block Block object.
      * @return string The unique class name.
+     * @phpstan-return non-falsy-string
      */
     function wp_get_elements_class_name($block)
     {
@@ -99081,6 +99105,7 @@ namespace {
      *   slug?: string,
      *   size?: string|int|float,
      * } $preset
+     * @phpstan-param array $settings
      */
     function wp_get_typography_font_size_value($preset, $settings = array())
     {
@@ -99508,6 +99533,7 @@ namespace {
      * @since 6.0.0 Adds the whole theme to the export archive.
      *
      * @return WP_Error|string Path of the ZIP file or error on failure.
+     * @phpstan-return non-falsy-string|\WP_Error
      */
     function wp_generate_block_templates_export_file()
     {
@@ -99546,6 +99572,7 @@ namespace {
      *                                    prepared for inserting or updating the database.
      * @param WP_REST_Request $deprecated Deprecated. Not used.
      * @return stdClass|WP_Error The updated object representing a template or template part.
+     * @phpstan-param null $deprecated
      */
     function inject_ignored_hooked_blocks_metadata_attributes($changes, $deprecated = \null)
     {
@@ -100915,6 +100942,7 @@ namespace {
      * @param array $attributes The block attributes.
      *
      * @return string Returns the post content with archives added.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_archives($attributes)
     {
@@ -101612,6 +101640,7 @@ namespace {
      *
      * @param  array $context home link block context.
      * @return array Colors CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string}
      */
     function block_core_home_link_build_css_colors($context)
     {
@@ -101624,6 +101653,7 @@ namespace {
      *
      * @param  array $context Home link block context.
      * @return array Font size CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string}
      */
     function block_core_home_link_build_css_font_sizes($context)
     {
@@ -101772,6 +101802,7 @@ namespace {
      *
      * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
      * @return string The post title if set; "(no title)" if no title is set.
+     * @phpstan-return non-falsy-string
      */
     function wp_latest_comments_draft_or_post_title($post = 0)
     {
@@ -101784,6 +101815,7 @@ namespace {
      * @param array $attributes The block attributes.
      *
      * @return string Returns the post content with latest comments added.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_latest_comments($attributes)
     {
@@ -101819,6 +101851,7 @@ namespace {
      * @param array $attributes The block attributes.
      *
      * @return string Returns the post content with latest posts added.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_latest_posts($attributes)
     {
@@ -101918,6 +101951,7 @@ namespace {
      * @param array $attributes The block attributes.
      *
      * @return string Returns the login-out link or form.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_loginout($attributes)
     {
@@ -101961,6 +101995,7 @@ namespace {
      * @param  array $attributes  Block attributes.
      * @param  bool  $is_sub_menu Whether the link is part of a sub-menu. Default false.
      * @return array Colors CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string}
      */
     function block_core_navigation_link_build_css_colors($context, $attributes, $is_sub_menu = \false)
     {
@@ -101973,6 +102008,7 @@ namespace {
      *
      * @param  array $context Navigation block context.
      * @return array Font size CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string}
      */
     function block_core_navigation_link_build_css_font_sizes($context)
     {
@@ -101983,6 +102019,7 @@ namespace {
      * @since 5.9.0
      *
      * @return string
+     * @phpstan-return non-falsy-string
      */
     function block_core_navigation_link_render_submenu_icon()
     {
@@ -102067,6 +102104,7 @@ namespace {
      *
      * @param  array $context Navigation block context.
      * @return array Font size CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string}
      */
     function block_core_navigation_submenu_build_css_font_sizes($context)
     {
@@ -102077,6 +102115,7 @@ namespace {
      * @since 5.9.0
      *
      * @return string
+     * @phpstan-return non-falsy-string
      */
     function block_core_navigation_submenu_render_submenu_icon()
     {
@@ -102164,6 +102203,7 @@ namespace {
      * @param array $attributes Navigation block attributes.
      *
      * @return array Colors CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string, overlay_css_classes: list<string>, overlay_inline_styles: string}
      */
     function block_core_navigation_build_css_colors($attributes)
     {
@@ -102177,6 +102217,7 @@ namespace {
      * @param array $attributes Navigation block attributes.
      *
      * @return array Font size CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string}
      */
     function block_core_navigation_build_css_font_sizes($attributes)
     {
@@ -102187,6 +102228,7 @@ namespace {
      * @since 5.9.0
      *
      * @return string
+     * @phpstan-return non-falsy-string
      */
     function block_core_navigation_render_submenu_icon()
     {
@@ -102375,6 +102417,7 @@ namespace {
      * @param  array $attributes Block attributes.
      * @param  array $context    Navigation block context.
      * @return array Colors CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string, overlay_css_classes: list<string>, overlay_inline_styles: string}
      */
     function block_core_page_list_build_css_colors($attributes, $context)
     {
@@ -102387,6 +102430,7 @@ namespace {
      *
      * @param  array $context Navigation block context.
      * @return array Font size CSS classes and inline styles.
+     * @phpstan-return array{css_classes: list<string>, inline_styles: string}
      */
     function block_core_page_list_build_css_font_sizes($context)
     {
@@ -102822,6 +102866,7 @@ namespace {
      *
      * @return string The rendered word count.
      * @phpstan-param 'words'|'characters_excluding_spaces'|'characters_including_spaces' $type
+     * @phpstan-return int<0, max>
      */
     function block_core_post_time_to_read_word_count($text, $type)
     {
@@ -103020,6 +103065,7 @@ namespace {
      * @param WP_Block $block      Block instance.
      *
      * @return string The rendered block content.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_query_total($attributes, $content, $block)
     {
@@ -103097,6 +103143,7 @@ namespace {
      * @param array $attributes The block attributes.
      *
      * @return string Returns the block content with received rss items.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_rss($attributes)
     {
@@ -103117,6 +103164,7 @@ namespace {
      * @param array $attributes The block attributes.
      *
      * @return string The search block markup.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_search($attributes)
     {
@@ -103270,6 +103318,7 @@ namespace {
      * @param array $attributes The block attributes.
      *
      * @return string The render.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_site_logo($attributes)
     {
@@ -103687,6 +103736,7 @@ namespace {
      * @param WP_Block $block The block.
      *
      * @return string Rendered block.
+     * @phpstan-return non-falsy-string
      */
     function render_block_core_widget_group($attributes, $content, $block)
     {
@@ -104784,6 +104834,7 @@ namespace {
      * @param bool   $nicename    Optional. Whether to use nice name for display. Default false.
      * @param array  $deprecated  Not used.
      * @return string|WP_Error A list of category parents on success, WP_Error on failure.
+     * @phpstan-param array{} $deprecated
      */
     function get_category_parents($category_id, $link = \false, $separator = '/', $nicename = \false, $deprecated = array())
     {
@@ -106189,6 +106240,8 @@ namespace {
      *
      * @param string $deprecated   Not Used.
      * @param string $deprecated_2 Not Used.
+     * @phpstan-param '' $deprecated
+     * @phpstan-param '' $deprecated_2
      */
     function comments_link($deprecated = '', $deprecated_2 = '')
     {
@@ -106343,6 +106396,7 @@ namespace {
      * @param bool $deprecated_echo Not used.
      * @return void|string Should only be used to echo the trackback URL, use get_trackback_url()
      *                     for the result instead.
+     * @phpstan-param true $deprecated_echo
      */
     function trackback_url($deprecated_echo = \true)
     {
@@ -106355,6 +106409,7 @@ namespace {
      * @since 0.71
      *
      * @param int|string $deprecated Not used (Was $timezone = 0).
+     * @phpstan-param '' $deprecated
      * @phpstan-return void
      */
     function trackback_rdf($deprecated = '')
@@ -107889,6 +107944,7 @@ namespace {
      * @param string $url        URL to ping.
      * @param string $deprecated Not Used.
      * @return string|false String containing URI on success, false on failure.
+     * @phpstan-param '' $deprecated
      */
     function discover_pingback_server_uri($url, $deprecated = '')
     {
@@ -113086,6 +113142,7 @@ namespace {
      *
      * @param string $deprecated Unused.
      * @return string The document title.
+     * @phpstan-param '&#8211;' $deprecated
      */
     function get_wp_title_rss($deprecated = '&#8211;')
     {
@@ -113097,6 +113154,7 @@ namespace {
      * @since 4.4.0 The optional `$sep` parameter was deprecated and renamed to `$deprecated`.
      *
      * @param string $deprecated Unused.
+     * @phpstan-param '&#8211;' $deprecated
      */
     function wp_title_rss($deprecated = '&#8211;')
     {
@@ -114451,6 +114509,7 @@ namespace {
      * @param string $content    String of characters to be converted.
      * @param string $deprecated Not used.
      * @return string Converted string.
+     * @phpstan-param '' $deprecated
      */
     function convert_chars($content, $deprecated = '')
     {
@@ -114923,6 +114982,7 @@ namespace {
      * @param string $email      Email address to verify.
      * @param bool   $deprecated Deprecated.
      * @return string|false Valid email address on success, false on failure.
+     * @phpstan-param false $deprecated
      */
     function is_email($email, $deprecated = \false)
     {
@@ -116189,6 +116249,7 @@ namespace {
      * @param string $url        URL to retrieve HTTP headers from.
      * @param bool   $deprecated Not Used.
      * @return \WpOrg\Requests\Utility\CaseInsensitiveDictionary|false Headers on success, false on failure.
+     * @phpstan-param false $deprecated
      */
     function wp_get_http_headers($url, $deprecated = \false)
     {
@@ -116940,6 +117001,8 @@ namespace {
      *   type: string,
      *   error: string|false,
      * }
+     * @phpstan-param non-empty-string $name
+     * @phpstan-param null $deprecated
      */
     function wp_upload_bits($name, $deprecated, $bits, $time = \null)
     {
@@ -123355,6 +123418,7 @@ namespace {
      * @param string $css        A string of CSS rules.
      * @param string $deprecated Not used.
      * @return string Filtered string of CSS rules.
+     * @phpstan-param '' $deprecated
      */
     function safecss_filter_attr($css, $deprecated = '')
     {
@@ -123899,6 +123963,7 @@ namespace {
      * @param string|false $plugin_rel_path Optional. Relative path to WP_PLUGIN_DIR where the .mo file resides.
      *                                      Default false.
      * @return bool True when textdomain is successfully loaded, false otherwise.
+     * @phpstan-param false $deprecated
      */
     function load_plugin_textdomain($domain, $deprecated = \false, $plugin_rel_path = \false)
     {
@@ -124813,6 +124878,7 @@ namespace {
      * @param string      $deprecated   Not used.
      * @param bool        $force_delete Optional. Whether to bypass Trash and force deletion. Default false.
      * @return string|void The delete post link URL for the given post.
+     * @phpstan-param '' $deprecated
      */
     function get_delete_post_link($post = 0, $deprecated = '', $force_delete = \false)
     {
@@ -127840,7 +127906,6 @@ namespace {
      * @see https://html.spec.whatwg.org/multipage/rendering.html#img-contain-size
      * @see https://core.trac.wordpress.org/ticket/62413
      * @see https://core.trac.wordpress.org/ticket/62731
-     * @phpstan-return void
      */
     function wp_enqueue_img_auto_sizes_contain_css_fix(): void
     {
@@ -129340,6 +129405,7 @@ namespace {
      *   show_in_rest?: bool|array,
      *   revisions_enabled?: bool,
      * } $args
+     * @phpstan-param null $deprecated
      */
     function register_meta($object_type, $meta_key, $args, $deprecated = \null)
     {
@@ -129609,6 +129675,7 @@ namespace {
      * @param mixed  $value      The option value.
      * @param mixed  $deprecated Not used.
      * @return bool True if the value was updated, false otherwise.
+     * @phpstan-param null $deprecated
      */
     function update_blog_option($id, $option, $value, $deprecated = \null)
     {
@@ -129634,6 +129701,7 @@ namespace {
      * @param int  $new_blog_id The ID of the blog to switch to. Default: current blog.
      * @param bool $deprecated  Not used.
      * @return true Always returns true.
+     * @phpstan-param null $deprecated
      */
     function switch_to_blog($new_blog_id, $deprecated = \null)
     {
@@ -129746,6 +129814,7 @@ namespace {
      *                          Can be used for pagination. Default 0.
      * @param int   $quantity   Optional. The maximum number of blogs to retrieve. Default 40.
      * @return array The list of blogs.
+     * @phpstan-param '' $deprecated
      */
     function get_last_updated($deprecated = '', $start = 0, $quantity = 40)
     {
@@ -130675,6 +130744,7 @@ namespace {
      * @param WP_Site|int $blog_id    The new site's object or ID.
      * @param string      $deprecated Not used.
      * @return bool
+     * @phpstan-param '' $deprecated
      */
     function newblog_notify_siteadmin($blog_id, $deprecated = '')
     {
@@ -130842,6 +130912,7 @@ namespace {
      * @global wpdb $wpdb WordPress database abstraction object.
      *
      * @param string $deprecated Not used.
+     * @phpstan-param '' $deprecated
      */
     function update_posts_count($deprecated = '')
     {
@@ -130875,6 +130946,7 @@ namespace {
      * @phpstan-return array{
      *   0: string,
      * }
+     * @phpstan-param '' $deprecated
      */
     function redirect_this_site($deprecated = '')
     {
@@ -132898,6 +132970,7 @@ namespace {
      *                              to not autoload them, by using false.
      *                              Default is null, which means WordPress will determine the autoload value.
      * @return bool True if the option was added, false otherwise.
+     * @phpstan-param '' $deprecated
      */
     function add_option($option, $value = '', $deprecated = '', $autoload = \null)
     {
@@ -132979,6 +133052,7 @@ namespace {
      *
      * @param string $transient Transient name. Expected to not be SQL-escaped.
      * @return mixed Value of transient.
+     * @phpstan-impure
      */
     function get_transient($transient)
     {
@@ -133126,6 +133200,7 @@ namespace {
      * @param mixed  $default_value Optional. Value to return if the option doesn't exist. Default false.
      * @param bool   $deprecated    Whether to use cache. Multisite only. Always set to true.
      * @return mixed Value set for the option.
+     * @phpstan-param true $deprecated
      */
     function get_site_option($option, $default_value = \false, $deprecated = \true)
     {
@@ -133360,6 +133435,7 @@ namespace {
      * @param string   $option_group The settings group name used during registration.
      * @param string   $option_name  The name of the option to unregister.
      * @param callable $deprecated   Optional. Deprecated.
+     * @phpstan-param '' $deprecated
      */
     function unregister_setting($option_group, $option_name, $deprecated = '')
     {
@@ -133676,6 +133752,7 @@ namespace {
      * @param string|string[] $attachments Optional. Paths to files to attach.
      * @param string|string[] $embeds      Optional. Paths to files to embed.
      * @return bool Whether the email was sent successfully.
+     * @phpstan-impure
      */
     function wp_mail($to, $subject, $message, $headers = '', $attachments = array(), $embeds = array())
     {
@@ -135821,6 +135898,7 @@ namespace {
      * @param bool        $fullsize   Optional. Whether to use full size. Default false.
      * @param bool        $deprecated Deprecated. Not used.
      * @param bool        $permalink Optional. Whether to include permalink. Default false.
+     * @phpstan-param false $deprecated
      */
     function the_attachment_link($post = 0, $fullsize = \false, $deprecated = \false, $permalink = \false)
     {
@@ -135934,6 +136012,7 @@ namespace {
      *
      * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
      * @param string      $type 'all' (default), 'revision' or 'autosave'
+     * @phpstan-param 'all'|'revision'|'autosave' $type
      * @phpstan-return void
      */
     function wp_list_post_revisions($post = 0, $type = 'all')
@@ -140078,6 +140157,8 @@ namespace {
      * @param bool   $override        Optional. If the route already exists, should we override it? True overrides,
      *                                false merges (with newer overriding if duplicate keys exist). Default false.
      * @return bool True on success, false on error.
+     * @phpstan-param non-falsy-string $route_namespace
+     * @phpstan-param non-falsy-string $route
      */
     function register_rest_route($route_namespace, $route, $args = array(), $override = \false)
     {
@@ -141187,6 +141268,7 @@ namespace {
      *                                  for insertion as a post revision. Default empty array.
      * @param bool          $deprecated Not used.
      * @return string[] Array of fields that can be versioned.
+     * @phpstan-param false $deprecated
      */
     function _wp_post_revision_fields($post = array(), $deprecated = \false)
     {
@@ -143300,7 +143382,6 @@ namespace {
      *
      * @since 6.8.0
      * @access private
-     * @phpstan-return void
      */
     function wp_print_speculation_rules(): void
     {
@@ -144152,6 +144233,7 @@ namespace {
      *   meta_type_key?: string,
      *   meta_query?: array,
      * } $args See WP_Term_Query::__construct()
+     * @phpstan-param '' $deprecated
      * @phpstan-return ($args is array{fields: 'count'}&array ? numeric-string : ($args is array{fields: 'names'|'slugs'}&array ? list<string> : ($args is array{fields: 'id=>name'|'id=>slug'}&array ? array<int, string> : ($args is array{fields: 'id=>parent'}&array ? array<int, int> : ($args is array{fields: 'ids'|'tt_ids'}&array ? list<int> : array<int, \WP_Term>)))))|\WP_Error
      */
     function get_terms($args = array(), $deprecated = '')
@@ -144477,6 +144559,7 @@ namespace {
      *   meta_type_key?: string,
      *   meta_query?: array,
      * } $args See WP_Term_Query::__construct()
+     * @phpstan-param '' $deprecated
      * @phpstan-return numeric-string|\WP_Error
      */
     function wp_count_terms($args = array(), $deprecated = '')
@@ -147669,6 +147752,7 @@ namespace {
      * @param int    $user       Optional. User ID.
      * @param string $deprecated Use get_option() to check for an option in the options table.
      * @return mixed User option value on success, false on failure.
+     * @phpstan-param '' $deprecated
      */
     function get_user_option($option, $user = 0, $deprecated = '')
     {
@@ -149504,6 +149588,7 @@ namespace {
      *
      * @param bool $deprecated Not used (argument deprecated).
      * @return array Upgraded list of widgets to version 3 array format when called from the admin.
+     * @phpstan-param true $deprecated
      */
     function wp_get_sidebars_widgets($deprecated = \true)
     {

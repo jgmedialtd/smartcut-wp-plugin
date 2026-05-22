@@ -1,7 +1,7 @@
-import { d as Ve, q as de, I as Fe, s as Re, J as ce, w as W, r as B, f as $e, H as ue, g as Oe, c as g, o as p, b as L, a as w, u as R, i as ee, y as Ne, t as V, l as G, m as Y, h as pe, n as ge, F as U, k as K, v as je, z as Ie, A as Ue, K as Ke } from "./vendor-vue-BgOQH8dC.js";
-import { e as H, M as fe, h as X, u as ve, s as Xe, j as Je } from "./result.zod-n9AiX9Qf.js";
-import { b as me, h as Qe, I as Ze } from "./EcommerceCalculator-CIJmnT15.js";
-import { t as x } from "./i18n-BkCqM2rg.js";
+import { d as Ve, q as de, I as Fe, s as Re, J as ce, w as W, r as B, f as $e, H as ue, g as Oe, c as g, o as p, b as L, a as w, u as R, i as ee, y as Ne, t as V, l as G, m as Y, h as pe, n as ge, F as U, k as K, v as je, z as Ie, A as Ue, K as Ke } from "./vendor-vue-Tt3m9hlc.js";
+import { e as H, M as fe, h as X, u as ve, s as Xe, j as Je } from "./result.zod-B0Qqh9wj.js";
+import { b as me, h as Qe, I as Ze } from "./EcommerceCalculator-D8U1LupG.js";
+import { t as x } from "./i18n-BEBY52oR.js";
 import { l as _e, a as et, b as tt, c as st, p as it, S as at, e as nt, f as lt, g as rt, h as ot, i as ht, j as dt, s as ct, k as ut, m as pt } from "./vendor-d3-DI9vO-24.js";
 const A = {
   precisionFixed: pt,
@@ -421,7 +421,7 @@ const vt = { class: "inputs" }, mt = {
   }),
   emits: /* @__PURE__ */ de(["update:shape", "close"], ["update:inputShape"]),
   setup(S, { emit: a }) {
-    const n = Ne(() => import("./EcommerceCalculator-CIJmnT15.js").then((t) => t.o)), e = S, d = a, v = "production", c = B(), h = B(), u = Y(() => Qe(i.value)), b = Y(() => (e.customMachiningProducts?.length ?? 0) > 0), D = Y(() => {
+    const n = Ne(() => import("./EcommerceCalculator-D8U1LupG.js").then((t) => t.o)), e = S, d = a, v = "production", c = B(), h = B(), u = Y(() => Qe(i.value)), b = Y(() => (e.customMachiningProducts?.length ?? 0) > 0), D = Y(() => {
       const t = /* @__PURE__ */ new Set();
       for (const s of e.customMachiningProducts ?? [])
         (s.labels ?? []).forEach((l) => t.add(l));
