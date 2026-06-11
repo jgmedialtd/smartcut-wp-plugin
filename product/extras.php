@@ -164,6 +164,7 @@ class ExtraProductsManager
 
 			$variationsData[$variationId] = [
 				'name' => $variationProduct->get_name(),
+				'sku' => $variationProduct->get_sku(),
 				'price' => $price,
 				'options' => $attributes
 			];
