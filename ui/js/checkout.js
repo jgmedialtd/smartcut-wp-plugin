@@ -1,135 +1,50 @@
-const { initializeZodTranslations: x } = await import("./zod-error-map-kT2szFol.js");
-x();
-const { initializeStaticRegistry: F } = await import("./static-class-registry-BndGRtse.js");
-F();
-const { clearStorageOnceAboveThreshold: I, createLocalStorageAdapter: T } = await import("./version-utils-B1dFJ3xe.js"), _ = "version/checkout/current", b = "version/checkout/last-clear", O = "4.0.58", k = "4.3.0";
+const { initializeZodTranslations: c } = await import("./zod-error-map-fpxZzbhF.js");
+c();
+const { initializeStaticRegistry: i } = await import("./static-class-registry-frontend-DdB1yXOf.js");
+i();
+const { clearStorageOnceAboveThreshold: s, createLocalStorageAdapter: l } = await import("./version-utils-B1dFJ3xe.js"), u = "version/checkout/current", p = "version/checkout/last-clear", m = "4.0.58", d = "4.3.2";
 {
-  const e = T();
-  I(
-    k,
-    O,
-    _,
-    b,
-    e
+  const t = l();
+  s(
+    d,
+    m,
+    u,
+    p,
+    t
   );
 }
-const { library: H } = await import("./vendor-fortawesome-DRpSFlIU.js").then((e) => e.A), { FontAwesomeIcon: q } = await import("./vendor-vue-QD0FJS8o.js").then((e) => e.a3), { createApp: N } = await import("./vendor-vue-QD0FJS8o.js").then((e) => e.a2), U = async () => {
+const { Icon: w } = await import("./index-DLa-cABK.js"), { createApp: y } = await import("./vendor-vue-DcIxm_xE.js").then((t) => t.a1), h = async () => {
   try {
-    const [
-      { faArrowsLeftRight: e },
-      { faArrowsUpDown: r },
-      { faExpand: o },
-      { faPlusLarge: n },
-      { faArrowUpRightFromSquare: s },
-      { faCalculator: c },
-      { faChevronLeft: m },
-      { faChevronRight: p },
-      { faChevronsLeft: l },
-      { faChevronsRight: h },
-      { faCube: f },
-      { faExpand: u },
-      { faFilePdf: d },
-      { faFileLines: w },
-      { faFiles: g },
-      { faHammer: L },
-      { faHammerBrush: y },
-      { faImage: A },
-      { faInfoCircle: R },
-      { faPlusLarge: S },
-      { faSprayCan: E },
-      { faTrash: v },
-      { faUser: C },
-      { faXmark: P }
-    ] = await Promise.all([
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.f),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.a),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.b),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.c),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.d),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.e),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.g),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.h),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.i),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.j),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.k),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.l),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.m),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.n),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.o),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.p),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.q),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.r),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.s),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.t),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.u),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.v),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.w),
-      import("./vendor-fortawesome-DRpSFlIU.js").then((t) => t.x)
-    ]);
-    H.add(
-      P,
-      u,
-      o,
-      S,
-      n,
-      e,
-      r,
-      s,
-      m,
-      p,
-      l,
-      h,
-      f,
-      d,
-      w,
-      L,
-      y,
-      E,
-      A,
-      g,
-      v,
-      c,
-      R,
-      C
-    );
-  } catch (e) {
-    console.warn("Failed to load icons:", e.message);
+    return await (await import("./i18n-BsG8Q9fA.js")).i18nextReady;
+  } catch (t) {
+    return console.warn("Failed to load i18n:", t.message), Promise.resolve();
   }
-}, V = async () => {
-  try {
-    return await (await import("./i18n-Dj6izb6_.js")).i18nextReady;
-  } catch (e) {
-    return console.warn("Failed to load i18n:", e.message), Promise.resolve();
-  }
-}, z = await import("./Launch-NSW_K3VG.js").then((e) => e.L), D = z.default;
-let a = null, i = !1;
-const K = async () => {
-  if (!i) {
-    i = !0;
+}, S = await import("./Launch-CoGHL0vS.js").then((t) => t.L), A = S.default;
+let o = null, e = !1;
+const R = async () => {
+  if (!e) {
+    e = !0;
     try {
-      const e = document.querySelector("#smartcut-app");
-      if (!e) {
+      const t = document.querySelector("#smartcut-app");
+      if (!t) {
         console.warn("No #smartcut-app element found");
         return;
       }
-      const r = e.getAttribute("data-type") || "";
-      a = N(D, { type: r });
-      const [, o] = await Promise.all([
-        U(),
-        V()
-      ]);
-      o && await o, a.component("FontAwesomeIcon", q);
-      const { vTooltip: n } = await import("./vTooltip-BnbzR9FD.js");
-      a.directive("tooltip", n), a.mount("#smartcut-app");
-    } catch (e) {
-      console.error("SmartCut mount error:", e);
+      const n = t.getAttribute("data-type") || "";
+      o = y(A, { type: n });
+      const a = await h();
+      a && await a, o.component("Icon", w);
+      const { vTooltip: r } = await import("./vTooltip-BnbzR9FD.js");
+      o.directive("tooltip", r), o.mount("#smartcut-app");
+    } catch (t) {
+      console.error("SmartCut mount error:", t);
     } finally {
-      i = !1;
+      e = !1;
     }
   }
 };
-K();
+R();
 export {
-  a as app,
-  K as mount
+  o as app,
+  R as mount
 };

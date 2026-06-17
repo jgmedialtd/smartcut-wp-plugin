@@ -193,6 +193,7 @@ class ExtraProductsManager
 		return [
 			'name' => $productName,
 			'slug' => $productSlug,
+			'sku' => $productSku,
 			'price' => $price,
 			'options' => [$optionKey => $optionName]
 		];
