@@ -1,8 +1,8 @@
 const { initializeZodTranslations: c } = await import("./zod-error-map-fpxZzbhF.js");
 c();
-const { initializeStaticRegistry: i } = await import("./static-class-registry-frontend-6urVAS7N.js");
+const { initializeStaticRegistry: i } = await import("./static-class-registry-frontend-NNtiykXn.js");
 i();
-const { clearStorageOnceAboveThreshold: s, createLocalStorageAdapter: l } = await import("./version-utils-B1dFJ3xe.js"), u = "version/checkout/current", p = "version/checkout/last-clear", m = "4.0.58", d = "4.3.4";
+const { clearStorageOnceAboveThreshold: s, createLocalStorageAdapter: l } = await import("./version-utils-DJMibzAZ.js"), u = "version/checkout/current", p = "version/checkout/last-clear", m = "4.0.58", d = "4.5.0";
 {
   const t = l();
   s(
@@ -13,13 +13,13 @@ const { clearStorageOnceAboveThreshold: s, createLocalStorageAdapter: l } = awai
     t
   );
 }
-const { Icon: w } = await import("./index-DQLns-fu.js"), { createApp: y } = await import("./vendor-vue-D6ZfZC0P.js").then((t) => t.a1), h = async () => {
+const { Icon: w } = await import("./index-BYdfCLOt.js"), { createApp: y } = await import("./vendor-vue-CeWGZ1lm.js").then((t) => t.a2), h = async () => {
   try {
-    return await (await import("./i18n-cONG3r0U.js")).i18nextReady;
+    return await (await import("./i18n-gSInbpCa.js")).i18nextReady;
   } catch (t) {
     return console.warn("Failed to load i18n:", t.message), Promise.resolve();
   }
-}, S = await import("./Launch-BnHg2-HI.js").then((t) => t.L), A = S.default;
+}, S = await import("./Launch-_29Ox10h.js").then((t) => t.L), A = S.default;
 let o = null, e = !1;
 const R = async () => {
   if (!e) {
