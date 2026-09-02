@@ -285,7 +285,7 @@ class CartManager
 	/**
 	 * Validate cart with nonce verification
 	 */
-	public static function validateCart(bool $passed, $productId = null, $quantity = null)
+	public static function validateCart(bool $passed, $productId = null, $quantity = null, $variationId = null)
 	{
 
 		$jobId = isset($_POST['smartcut_job_id']) ? sanitize_text_field($_POST['smartcut_job_id']) : '';
@@ -316,8 +316,30 @@ class CartManager
 		$minCutToSizePrice = floatval($settings['minimum_cut_to_size_price'] ?? 0.0);
 
 		if ($minCutToSizePrice > 0) {
-			$orderPrice = floatval($_POST['smartcut-custom-price'] ?? 0.0);
-			if ($orderPrice < $minCutToSizePrice) {
+			// Gate on what this line will actually come to, taking the same
+			// branch setCartPrice() does: a non-empty custom price overrides the
+			// product price, otherwise WooCommerce charges the product's own
+			// price — either way × the quantity being added. The custom price
+			// field on its own is 0 whenever the stock leg is priced natively
+			// (full_stock / part_area quantity pricing, cut_length), so comparing
+			// it directly blocked every such product.
+			// (The hidden input is named with underscores — see addHiddenFields.)
+			$customPrice = floatval($_POST[self::getFieldKey('custom_price')] ?? 0.0);
+			$lineProduct = wc_get_product($variationId ?: $productId);
+			$unitPrice = $customPrice > 0
+				? $customPrice
+				: ($lineProduct ? floatval($lineProduct->get_price()) : 0.0);
+			$orderTotal = $unitPrice * floatval($quantity ?? 1);
+
+			if ($orderTotal < $minCutToSizePrice) {
+				wc_add_notice(
+					sprintf(
+						__('A minimum cut-to-size order of %s is required. Your order total is %s.', 'smartcut'),
+						wc_price($minCutToSizePrice),
+						wc_price($orderTotal)
+					),
+					'error'
+				);
 				return false;
 			}
 		}
@@ -1280,7 +1302,7 @@ class CartManager
 }
 
 // Main WooCommerce hooks
-add_filter('woocommerce_add_to_cart_validation', [CartManager::class, 'validateCart'], 10, 3);
+add_filter('woocommerce_add_to_cart_validation', [CartManager::class, 'validateCart'], 10, 4);
 add_filter('woocommerce_add_cart_item_data', [CartManager::class, 'addCartItemData'], 10, 2);
 add_action('woocommerce_before_calculate_totals', [CartManager::class, 'setCartPrice'], 10, 1);
 add_filter('woocommerce_get_item_data', [CartManager::class, 'getItemData'], 10, 2);

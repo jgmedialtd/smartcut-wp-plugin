@@ -25,6 +25,14 @@ define('SMARTCUT_FIELDS', [
 		'description' => 'Hide the cutting diagram from users.',
 		'show' => ['global']
 	],
+	'allow_full_stock_orders' => [
+		'type' => 'boolean',
+		'default' => '0',
+		'group' => ['optimisation', 'stock'],
+		'label' => 'Allow Full Stock Orders',
+		'description' => 'Allow a part that matches the untrimmed stock size to be ordered. The edge trim is dropped for that part, so it is supplied as a full uncut sheet. Leave off to limit parts to the usable (trimmed) size.',
+		'show' => ['global']
+	],
 	'allow_offcuts' => [
 		'type' => 'boolean',
 		'default' => '0',

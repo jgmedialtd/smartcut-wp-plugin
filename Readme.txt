@@ -1,10 +1,10 @@
 === SmartCut ===
 
 Contributors: cutrevolution
-Tags: cut-to-size, cutlist, cut list optimizer, woocommerce, cutting
+Tags: cut-to-size,cut list,cut list optimizer,cutlist
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 5.3.3
+Stable tag: 3.0.4
 Requires PHP: 7.4
 
 Quotation and cut list generation for your cut-to-size business.

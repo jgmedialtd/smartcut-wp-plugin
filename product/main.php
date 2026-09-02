@@ -132,7 +132,7 @@ class Product
 
 		wp_enqueue_script(
 			'smartcut-upload',
-			plugin_dir_url(dirname(__DIR__) . '/main-plugin-file.php') . 'ui/js/checkout/upload.js',
+			plugin_dir_url(dirname(__DIR__) . '/main-plugin-file.php') . 'ui/js/upload.js',
 			['jquery'],
 			SMARTCUT_CURRENT_VERSION,
 			true
